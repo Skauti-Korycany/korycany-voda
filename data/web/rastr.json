@@ -1,0 +1,199 @@
+{
+ "verze": 1,
+ "datum": "2026-10-19",
+ "pozn": "mrizka EPSG:5514 (S-JTSK), radek 0 = sever. Bunka (col,row): X = x0 + (col+0.5)*krok, Y = y1 - (row+0.5)*krok.",
+ "mrizka": {
+  "epsg": 5514,
+  "x0": -562500.0,
+  "y1": -1170000.0,
+  "krok_m": 5.0,
+  "ncol": 1500,
+  "nrow": 1600,
+  "plocha_bunky_m2": 25.0
+ },
+ "obal_wgs84_priblizne": {
+  "lon_min": 17.11870275851303,
+  "lon_max": 17.209948444560577,
+  "lat_min": 49.07424718539729,
+  "lat_max": 49.15258429038693
+ },
+ "prevod": {
+  "pozn": "polynom 2. radu, clen = [1, u, v, u*u, u*v, v*v]; spocteno pyproj EPSG:4326 <-> EPSG:5514 na mrizce 41x41 bodu",
+  "chyba_max_m": {
+   "lonlat_na_xy": 0.0006901316810399294,
+   "xy_na_lonlat": 0.0012765597328698152
+  },
+  "lonlat_na_xy": {
+   "u": "(lon - lon0) * 100",
+   "v": "(lat - lat0) * 100",
+   "lon0": 17.16428950653176,
+   "lat0": 49.11342083695675,
+   "cx": [
+    -558750.0572311278,
+    726.3091567381176,
+    111.40895801421654,
+    0.004821766281129664,
+    -0.14603069862499593,
+    0.0001045309884042504
+   ],
+   "cy": [
+    -1174000.446317789,
+    -73.13481469596493,
+    1106.4131676956956,
+    0.04793117012580726,
+    0.014690309234499448,
+    0.0009315543619819329
+   ]
+  },
+  "xy_na_lonlat": {
+   "u": "(X - xc) / 1000",
+   "v": "(Y - yc) / 1000",
+   "xc": -558750.0,
+   "yc": -1174000.0,
+   "clon": [
+    17.164289674039615,
+    0.01363004495755607,
+    -0.001372460771303986,
+    2.4701500605406753e-07,
+    2.4270728094556114e-06,
+    -2.470151472876036e-07
+   ],
+   "clat": [
+    49.11342488194793,
+    0.0009009570543715509,
+    0.008947492701803282,
+    -8.048591071689287e-07,
+    1.608709256922109e-07,
+    -1.492414686012869e-08
+   ]
+  },
+  "kontrolni_body": [
+   {
+    "xy5514": [
+     -562000.0,
+     -1170500.0
+    ],
+    "lonlat": [
+     17.115160382817024,
+     49.141802478733865
+    ]
+   },
+   {
+    "xy5514": [
+     -559000.0,
+     -1174000.0
+    ],
+    "lonlat": [
+     17.160882178546416,
+     49.113199592353446
+    ]
+   },
+   {
+    "xy5514": [
+     -555500.0,
+     -1177500.0
+    ],
+    "lonlat": [
+     17.213362915673766,
+     49.0850262570566
+    ]
+   },
+   {
+    "xy5514": [
+     -559180.53,
+     -1174691.52
+    ],
+    "lonlat": [
+     17.159371265644882,
+     49.10684951354512
+    ]
+   }
+  ]
+ },
+ "pasma": {
+  "vyska": {
+   "soubor": "vyska.png",
+   "bity": 16,
+   "jednotka": "m n. m. (Bpv)",
+   "dekod": "m = 200 + hodnota / 10",
+   "nodata": 0,
+   "zdroj": "CUZK DMR 5G (CC BY 4.0), 01_dmr_grid.py"
+  },
+  "sklon": {
+   "soubor": "sklon.png",
+   "bity": 8,
+   "jednotka": "stupne",
+   "dekod": "deg = hodnota / 4 (max 63,5)",
+   "nodata": 255,
+   "zdroj": "02_rozvodnice.py (Horn)"
+  },
+  "akumulace": {
+   "soubor": "akumulace.png",
+   "bity": 8,
+   "jednotka": "pocet bunek nad bunkou (vcetne)",
+   "dekod": "bunek = 10 ** ((hodnota - 1) / 40); presnost ~6 %",
+   "nodata": 0,
+   "zdroj": "02_rozvodnice.py (D8)"
+  },
+  "smer": {
+   "soubor": "smer.png",
+   "bity": 8,
+   "jednotka": "kod D8",
+   "dekod": "1=V, 2=JV, 4=J, 8=JZ, 16=Z, 32=SZ, 64=S, 128=SV, 0=bez odtoku (deprese/okraj)",
+   "nodata": 255,
+   "zdroj": "02_rozvodnice.py"
+  },
+  "cn": {
+   "soubor": "cn.png",
+   "bity": 8,
+   "jednotka": "CN (IPS II), 0 = mimo",
+   "dekod": "hodnota primo",
+   "nodata": 0,
+   "zdroj": "06_cn.py, Janecek 2012 + TR-55"
+  },
+  "vyuziti": {
+   "soubor": "vyuziti.png",
+   "bity": 8,
+   "jednotka": "kod vyuziti pudy, legenda data/vyuziti_pudy.json",
+   "dekod": "hodnota primo",
+   "nodata": 0,
+   "zdroj": "04_vyuziti_pudy.py (ZABAGED, INSPIRE BU)"
+  },
+  "hsp": {
+   "soubor": "hsp.png",
+   "bity": 8,
+   "jednotka": "hydrologicka skupina pud 1=A 2=B 3=C 4=D, 0 = mimo",
+   "dekod": "hodnota primo",
+   "nodata": 0,
+   "zdroj": "05_hsp.py (BPEJ SPU + Janecek tab. 2.2)"
+  },
+  "hsp_zdroj": {
+   "soubor": "hsp_zdroj.png",
+   "bity": 8,
+   "jednotka": "1 = z BPEJ, 2 = odhad (nejblizsi bonitovana plocha), 3 = VUMOP",
+   "dekod": "hodnota primo",
+   "nodata": 0,
+   "zdroj": "05_hsp.py"
+  },
+  "povodi": {
+   "soubor": "povodi.png",
+   "bity": 8,
+   "jednotka": "id dilciho povodi (data/povodi.geojson, typ sidlo), 0 = mimo",
+   "dekod": "hodnota primo",
+   "nodata": 0,
+   "zdroj": "02_rozvodnice.py"
+  }
+ },
+ "velikost_B": {
+  "vyska": 1485364,
+  "sklon": 1126658,
+  "akumulace": 1681351,
+  "smer": 668381,
+  "cn": 88669,
+  "vyuziti": 112863,
+  "hsp": 21988,
+  "hsp_zdroj": 18603,
+  "povodi": 10780
+ },
+ "licence": "data CC BY 4.0 (CUZK DMR 5G, ZABAGED, INSPIRE BU); BPEJ SPU otevrena data; odvozeno skripty tools/01-06"
+}

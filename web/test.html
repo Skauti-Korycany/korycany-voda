@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jádro - zkušební prohlížeč</title>
+<link rel="stylesheet" href="../tools/vendor/leaflet-1.9.4/leaflet.css">
+<style>
+  html,body{margin:0;height:100%;font:14px/1.4 system-ui,sans-serif}
+  #map{position:absolute;inset:0}
+  #panel{position:absolute;top:10px;right:10px;z-index:1000;background:#fff;padding:10px 12px;border-radius:6px;box-shadow:0 1px 6px rgba(0,0,0,.3);max-width:340px;max-height:92vh;overflow:auto}
+  #panel h1{font-size:15px;margin:0 0 6px}
+  #panel label{display:block;margin:4px 0}
+  #out{white-space:pre-wrap;font-family:ui-monospace,monospace;font-size:12px;margin-top:8px}
+  .warn{color:#a00}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="panel">
+  <h1>Jádro v0.1 - zkouška nad skutečnými daty</h1>
+  <label><input type="radio" name="rezim" value="povodi" checked> klik = povodí bodu (co steče k místu)</label>
+  <label><input type="radio" name="rezim" value="nadrz"> klik = hráz, výška <input id="h" type="number" value="3" min="0.5" max="15" step="0.5" style="width:4em"> m</label>
+  <label>návrhový déšť <input id="P" type="number" value="40" min="5" max="150" step="5" style="width:4em"> mm, IPS
+    <select id="ips"><option value="1">I suchá</option><option value="2" selected>II</option><option value="3">III mokrá</option></select></label>
+  <label>podklad: <select id="vrstva"><option value="">nic</option><option value="cn">CN</option><option value="sklon">sklon</option><option value="vyuziti">využití</option><option value="hsp">HSP (A-D)</option><option value="akumulace">akumulace</option></select></label>
+  <div id="out">Načítám rastry (5 MB)...</div>
+  <p style="font-size:11px;color:#555;margin:8px 0 0">Zjednodušený model pro osvětu, nevalidováno. Data ČÚZK (CC BY 4.0), SPÚ, skripty tools/01-09.</p>
+</div>
+<script src="../tools/vendor/leaflet-1.9.4/leaflet.js"></script>
+<script src="jadro.js"></script>
+<script>
+const map = L.map('map').setView([49.106, 17.165], 14);
+L.tileLayer('https://ags.cuzk.gov.cz/arcgis1/rest/services/ZTM_WM/MapServer/WMTS/tile/1.0.0/ZTM_WM/default/GoogleMapsCompatible/{z}/{y}/{x}', { maxZoom: 19, attribution: 'ČÚZK - on-line (ZTM)' }).addTo(map);
+const $ = id => document.getElementById(id);
+let vysl = null, podklad = null, znacka = null, legenda = {};
+fetch('../data/vyuziti_pudy.json').then(r => r.json()).then(j => legenda = j.legenda);
+
+function overlayZObrazku(im, opacity) {
+  const c = document.createElement('canvas'); c.width = im.width; c.height = im.height;
+  c.getContext('2d').putImageData(new ImageData(im.data, im.width, im.height), 0, 0);
+  return L.imageOverlay(c.toDataURL(), im.bounds, { opacity: opacity == null ? 0.6 : opacity, interactive: false });
+}
+const ramp = (t, a, b) => a.map((x, k) => Math.round(x + (b[k] - x) * Math.max(0, Math.min(1, t))));
+const BARVY = {
+  cn: i => { const v = Jadro.cn(i); return v ? ramp((v - 35) / 65, [60, 160, 60], [200, 30, 30]) : null; },
+  sklon: i => { const v = Jadro.sklonDeg(i); return v == null ? null : ramp(v / 30, [255, 255, 200], [120, 20, 120]); },
+  hsp: i => { const v = Jadro.hsp(i); return v ? [[90, 170, 255], [60, 200, 90], [240, 180, 40], [200, 50, 50]][v - 1] : null; },
+  vyuziti: i => { const v = Jadro.vyuziti(i); if (!v) return null; const h = (v * 47) % 360, s = 0.55, l = 0.55, c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = l - c / 2; const [r, g, b] = h < 60 ? [c, x, 0] : h < 120 ? [x, c, 0] : h < 180 ? [0, c, x] : h < 240 ? [0, x, c] : h < 300 ? [x, 0, c] : [c, 0, x]; return [(r + m) * 255, (g + m) * 255, (b + m) * 255]; },
+  akumulace: i => { const v = Jadro.akumulace(i); return v && v > 400 ? ramp(Math.log10(v) / 6, [120, 180, 255], [0, 0, 120]) : null; },
+};
+$('vrstva').onchange = () => {
+  if (podklad) { map.removeLayer(podklad); podklad = null; }
+  const k = $('vrstva').value; if (!k) return;
+  const o = Jadro.info.obal_wgs84_priblizne;
+  podklad = overlayZObrazku(Jadro.obrazek(BARVY[k], [o.lon_min, o.lat_min, o.lon_max, o.lat_max], 1500), 0.55).addTo(map);
+};
+const f1 = x => x.toLocaleString('cs-CZ', { maximumFractionDigits: 1 });
+const f0 = x => Math.round(x).toLocaleString('cs-CZ');
+function vyuzitiText(ha, celkem) {
+  return Object.entries(ha).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k, v]) => `${legenda[k] || k} ${f1(100 * v / celkem)} %`).join(', ');
+}
+Jadro.nacti('../data/web/').then(() => {
+  $('out').textContent = 'Rastry načteny. Klikni do mapy.';
+  map.on('click', e => {
+    if (vysl) { map.removeLayer(vysl); vysl = null; }
+    if (znacka) { map.removeLayer(znacka); znacka = null; }
+    const P = +$('P').value, ips = +$('ips').value;
+    const t0 = performance.now();
+    if (document.querySelector('input[name=rezim]:checked').value === 'povodi') {
+      const r = Jadro.povodiBodu(e.latlng.lng, e.latlng.lat, 100, P, ips);
+      if (!r) { $('out').textContent = 'Mimo rastr.'; return; }
+      const s = r.stat;
+      vysl = overlayZObrazku(Jadro.obrazek(i => r.maska[i] ? [30, 100, 220, 110] : null, Jadro.obalMasky(r.maska, 50), 1024)).addTo(map);
+      znacka = L.circleMarker([s.uzaver_lonlat[1], s.uzaver_lonlat[0]], { radius: 6, color: '#c00' }).addTo(map);
+      $('out').innerHTML = `<b>Povodí bodu</b> (uzávěr přichycen k toku do 100 m)\n` +
+        `plocha ${f1(s.plocha_km2)} km² = ${f0(s.plocha_ha)} ha${s.orez_okrajem ? ' <span class=warn>(oříznuto okrajem dat!)</span>' : ''}\n` +
+        `CN vážené ${f1(s.cn_vazene)} (HSP odhad na ${f0(100 * s.hsp_odhad_ha / s.plocha_ha)} % plochy)\n` +
+        `sklon průměr ${f1(s.sklon_prumer_deg)}° (${f1(s.sklon_prumer_pct)} %), výška ${f0(s.vyska_min)}-${f0(s.vyska_max)} m\n` +
+        `využití: ${vyuzitiText(s.vyuziti_ha, s.plocha_ha)}\n` +
+        `HSP: A ${f0(100 * s.hsp_ha.A / s.plocha_ha)} / B ${f0(100 * s.hsp_ha.B / s.plocha_ha)} / C ${f0(100 * s.hsp_ha.C / s.plocha_ha)} / D ${f0(100 * s.hsp_ha.D / s.plocha_ha)} %\n` +
+        `<b>déšť ${P} mm (IPS ${ips}): odtok ${f1(s.odtok.Q_mm)} mm = ${f0(s.odtok.objem_m3)} m³, koef. ${s.odtok.koef.toFixed(2)}</b>\n` +
+        `(${f0(performance.now() - t0)} ms)`;
+    } else {
+      const h = +$('h').value;
+      const n = Jadro.nadrz(e.latlng.lng, e.latlng.lat, h, 60);
+      if (!n) { $('out').textContent = 'Mimo rastr.'; return; }
+      vysl = overlayZObrazku(Jadro.obrazek(i => n.maska[i] ? [20, 60, 200, 170] : null, Jadro.obalMasky(n.maska, 30), 1024)).addTo(map);
+      znacka = L.circleMarker([n.hraz_lonlat[1], n.hraz_lonlat[0]], { radius: 6, color: '#c00' }).addTo(map);
+      $('out').innerHTML = `<b>Nádrž / poldr</b>, hráz ${h} m (přichycena k toku do 60 m)\n` +
+        `dno ${f1(n.kota_dna)} m, hladina ${f1(n.hladina)} m\n<b>objem ${f0(n.objem_m3)} m³, plocha ${f1(n.plocha_ha)} ha</b>, hloubka max ${f1(n.hloubka_max_m)} m, průměr ${f1(n.hloubka_prumer_m)} m\n` +
+        `povodí k hrázi ${f1(n.povodi_km2)} km²\nzatopeno: ${vyuzitiText(n.zatopene_vyuziti_ha, n.plocha_ha || 1)}\n` +
+        `odtok z povodí při ${P} mm: ${f0(Jadro.statBunek(Jadro.povodiBunky(n.hraz).bunky, P, ips).odtok.objem_m3)} m³ -> nádrž pojme ${f0(100 * Math.min(1, n.objem_m3 / Math.max(1, Jadro.statBunek(Jadro.povodiBunky(n.hraz).bunky, P, ips).odtok.objem_m3)))} % (bez ztrát, bez tvaru hráze 🤔)\n` +
+        `(${f0(performance.now() - t0)} ms)`;
+    }
+  });
+}).catch(e => { $('out').textContent = 'Chyba načtení: ' + e; });
+</script>
+</body>
+</html>

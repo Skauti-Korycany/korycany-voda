@@ -1,8 +1,8 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 19. 10. 2026 (relace 6, konec; **blok E srážky ČHMÚ hotov** - stanice Koryčany 1920-2026, N-leté úhrny, rok 2026 a hodinová data pro epizody Kachníku)
+Aktualizováno: 19. 10. 2026 (relace 6, konec; **blok E srážky ČHMÚ** a **blok F jádro v0.1 nad skutečnými rastry** hotovy)
 
-## Fáze: 1 hotová (katalog, vrstvy, měření, datový formát, návrh rozhraní, prototyp). Fáze 2 hotová (HSP zatím náhradně z BPEJ, vyměnitelné za VÚMOP). Další je fáze 3: výpočetní jádro nad skutečnými rastry.
+## Fáze: 1 a 2 hotové. Fáze 3 (jádro) rozpracovaná: v0.1 umí statistiku pozemku, SCS-CN po buňkách, povodí bodu, nádrž/poldr z DMR; chybí transformace vlny, bilance P-ET, USLE, napojení opatření.
 
 ### Hotovo
 - Instrukce projektu (docs/00-instrukce-projektu.md).
@@ -36,6 +36,8 @@ Aktualizováno: 19. 10. 2026 (relace 6, konec; **blok E srážky ČHMÚ hotov** 
 
 - **Blok E (krok 0), 19. 10. - srážky ČHMÚ hotovy** -> `docs/SRAZKY.md`. opendata.chmi.cz ✅ (`historical_csv` do 2025, `recent` 2026; formát ověřen z knihovny wetterdienst; z Claude je server blokovaný, skripty běží na PC). **V Koryčanech je manuální stanice ČHMÚ** (WSI 0-203-0-41701068002, 305 m, 1,2 km od středu území): denní úhrny 1920-2025, 88 úplných let, 2026 do 31. 8. Normál 1991-2020 **632 mm**; N2/N10/N100 denní (Gumbel, orientačně) 37/58/84 mm; max 114 mm (2. 7. 1954), 93,5 mm (12. 6. 2012). Staré Hutě (427 m, 9 km) 717 mm, N10 72 mm. Automatické stanice s 1h/10min daty: **Nemochovice (7,8 km) a Staré Hutě (9,4 km)**. Epizody Kachníku léto 2026: 14.-15. 7. (bouřka 14. 7. večer, 12 mm/h Staré Hutě 15. 7. 05 UTC), 1. 8. (21 mm/h a 10,8 mm/10 min jen u Nemochovic, Koryčany 5 mm), 8. 9. **bez deště na obou stanicích**, 11. a 17. 9. trvalý slabý déšť. Léto 2026 v Koryčanech VI-VIII 113 mm = polovina normálu. Skripty `tools/07_srazky_chmi.py` + `vyrob_srazky.bat`, `tools/08_srazky_recent.py` + `vyrob_srazky_2026.bat`; výstupy `data/srazky_chmi.json`, `srazky_stanice.json`, `srazky_2026.json`, `docs/img/srazky_nahled.png`; surovina `data/chmi/` (gitignore).
 
+- **Blok F (fáze 3), 19. 10. - jádro v0.1 hotovo** -> `docs/JADRO.md`. `tools/09_balicek_web.py` (+ `vyrob_balicek_web.bat`): rastry -> `data/web/` (9 PNG pásem, 5,0 MB, `rastr.json` s polynomem WGS84<->S-JTSK, chyba < 2 mm). `web/jadro.js`: převody, SCS-CN (+ IPS I/III), rasterizace polygonu, statistika buněk (plocha, CN, sklon, využití, HSP, odtok po buňkách), povodí bodu (zpětné D8, 4,2 km² za 65 ms), nádrž/poldr (zatopení pod hladinou), vykreslení masky do Leafletu. `web/test_jadro.js` (node + pngjs): 22 testů OK, shoda s 06_cn.py (území modelu CN 72,0, P40 78 248 m³; Stříbrník 4,23 km², CN 65,2). `web/test.html`: zkušební prohlížeč (klik = povodí bodu nebo hráz, podklady CN/sklon/využití/HSP/akumulace), ověřen v headless Chromiu; **živě: https://skauti-korycany.github.io/korycany-voda/web/test.html**. Balíček vygenerován v Claude z rastrů staženým z PC (data/dmr), uživatel nic nespouštěl.
+
 ### Rozpracováno
 - **Žádost VÚMOP odeslána 19. 10. 2026** (data@vumop.cz, z adresy oddílu): vektor hydrologických skupin půd (mapa velkého měřítka, metadata ID 5cc1bdc2-de34-4eee-a439-41420a000319), správní území obce Koryčany + obal ~500 m, SHP/GPKG v EPSG:5514; dotazy na licenci pro veřejnou webovou aplikaci, zpoplatnění nekomerčního užití a HSP pro lesy mimo ZPF. Odkaz na stav.html v textu. Čeká se na odpověď. Erozní ohroženost a zamokřené půdy v žádosti nejsou - případně druhá žádost po odpovědi.
 - Chybějící podklady od uživatele: NOO 2026 (XLSX) a NOO 2025_2; seznam platných SPPK (aopk.gov.cz/platne-standardy); znění vodního zákona (e-Sbírka) § 15b, 17, 46, 47, 55; nejbližší stanice ČHMÚ; text ČSN 75 9010.
@@ -45,7 +47,7 @@ Aktualizováno: 19. 10. 2026 (relace 6, konec; **blok E srážky ČHMÚ hotov** 
 
 ### Další kroky (pořadí)
 0. ~~srážková data~~ hotovo 19. 10. (blok E). Zbývá: licence otevřených dat ČHMÚ (otevřít podmínky na opendata.chmi.cz, zapsat do VRSTVY.md); srážkoměr VD Koryčany do žádosti na Povodí Moravy.
-1. **Fáze 3 - jádro**: `jadro.js` s výpočty nad skutečnými daty (CN, sklon, akumulace, plochy tříd za pozemek/povodí), testy; datový balíček pro web (rastry -> PNG dlaždice nebo COG + GeoJSON vrstvy). Uživatel chce co nejdřív vizualizovat a ladit vstupy.
+1. **Fáze 3 pokračování**: (a) uživatel vyzkouší web/test.html a dá zpětnou vazbu (přichycení k toku, čitelnost, co chybí); (b) napojit opatření z `opatreni.json` (EFF z prototypu) na `statPolygon` reálného pozemku - základ rozhraní Můj pozemek; (c) transformace vlny poldrem (zjednodušeně), (d) N-leté úhrny do konstant (dočasně Gumbel Koryčany N10 58 mm).
 2. Návrhové úhrny N-letých dešťů pro Koryčany (ČHMÚ / ČVUT metodika 2023 "Krátkodobé srážky"), přepočet IPS I/III (J12 obr. 2.2).
 3. Až přijde VÚMOP: `--vumop` v vyrob_cn.bat, přepočet, porovnat s BPEJ odhadem.
 4. Názvy toků do toky_cuzk.geojson: z INSPIRE HY-P (ČÚZK) nebo DIBAVOD A02 (NAZ_TOK) - až bude potřeba v rozhraní.
@@ -54,6 +56,9 @@ Aktualizováno: 19. 10. 2026 (relace 6, konec; **blok E srážky ČHMÚ hotov** 
 7. Dotační okna: AOPK OPŽP ZMV 17. výzva 20. 10. - 3. 11. 2026; OPŽP 105 do 17. 12. 2026.
 
 ## Rozhodnutí
+- 19. 10. 2026 - **Rastry pro web zůstávají v mřížce S-JTSK** (ne warp do Mercatoru): D8 a sousednost platí jen v původní mřížce; převod souřadnic dělá polynom 2. řádu z pyproj (v `rastr.json`), zobrazení převzorkováním v JS. Pásma jako 8/16bit PNG (bez knihoven, bezztrátově), 5 MB celkem - pro verzi 1 přijatelné; ořez na území modelu až bude třeba.
+- 19. 10. 2026 - **Odtok SCS-CN se počítá po buňkách a sčítá** (ne z průměrného CN) - vzorec je nelineární; shoda s 06_cn.py.
+- 19. 10. 2026 - **Nádrž = zatopení terénu pod hladinou** uvnitř povodí hráze, bez tvaru hráze a ztrát; viditelně označeno jako orientační.
 - 19. 10. 2026 - **Srážky ze stanice ČHMÚ Koryčany** (ne Kroměříž, ne interpolace); pro lesní část Chřibů orientačně Staré Hutě. Stanice 8-9 km daleko se neberou jako měření nad povodím pro přívaly (1. 8. 2026: 21 mm/h Nemochovice vs. 5 mm Koryčany) - pro validaci je nutný srážkoměr v povodí (VD Koryčany nebo škola u Kachníku).
 - 19. 10. 2026 - **Data ČHMÚ stahuje skript na PC** (opendata.chmi.cz je z Claude blokované); surovina mimo git, do gitu jen souhrnné JSON.
 - 19. 10. 2026 - **HSP náhradně z BPEJ (SPÚ, otevřená data) + Janeček tab. 2.2**, lesy a intravilán doplněny nejbližší bonitovanou plochou a označeny jako odhad. Data VÚMOP, až přijdou, se vymění jedním parametrem (`--vumop`), navazující výpočty se přepočítají .bat souborem. Uživatel chce rychle do vizualizace a ladění; přesnost HSP v lesích je známá slabina, viditelně označená.
@@ -110,6 +115,8 @@ Aktualizováno: 19. 10. 2026 (relace 6, konec; **blok E srážky ČHMÚ hotov** 
 - Licence repozitáře: MIT (kód) + CC BY 4.0 (data, texty) - potvrzení uživatele.
 
 ## Zvolené předpoklady
+- Převod CN na IPS I/III: standardní vztahy SCS (NEH-4/Hawkins) 💻; Janeček 2012 má jen graf (obr. 2.2) - ověřit, že čísla sedí.
+- Polynom WGS84<->S-JTSK platí jen uvnitř rastru (extrapolace mimo něj neověřena).
 - Metadatové záznamy Micka institucí beru jako oficiální zdroj adres a licencí.
 - DMR 5G: CRS přiřazeno EPSG:5514 natvrdo (LAZ ČÚZK CRS nenese); třída 8 = body modelu terénu; výškový systém Bpv 💻.
 - Součinitele odtoku z tabulky tzb-info/ČVUT ✅; text normy neotevřen.
@@ -125,6 +132,7 @@ Aktualizováno: 19. 10. 2026 (relace 6, konec; **blok E srážky ČHMÚ hotov** 
 - Depresní vrstva obsahuje hladinu VN Koryčany a umělé prohlubně (zářezy, lom) - pro "kde voda stojí" je nutné filtrovat podle sklonu a ortofota (fáze 3).
 
 ## Na co ses nezeptal a měl bys
+- Jak velká smí být aplikace na mobilu? 5 MB rastrů jde snížit (ořez na území modelu, hrubší akumulace) - rozhodni po vyzkoušení test.html na telefonu.
 - Má škola nebo oddíl vlastní srážkoměr u Kachníku? Bez něj epizody čidla nejde spárovat s deštěm (viz 8. 9.).
 - Stanice ČHMÚ Koryčany je manuální - víš, kde stojí a kdo ji odečítá? Pozorovatel může být partner projektu.
 - Má město pasport zeleně nebo zpevněných ploch? Ušetřilo by ruční klasifikaci z ortofota.
