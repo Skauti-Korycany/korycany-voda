@@ -1,0 +1,77 @@
+{
+ "pozn": "Bod má buď 'lonlat' (WGS84 [lon, lat]) nebo 'xy5514' (S-JTSK [X, Y]). Přichytí se ke korytu (buňka s největší akumulací) v okruhu polomer_m. Uprav a spusť skript znovu.",
+ "hlavni": {
+  "nazev": "Kyjovka pod Koryčany (pod soutokem se Stříbrníkem)",
+  "pod_soutokem_id": 2,
+  "min_km2": 15,
+  "pozn": "bod se najde automaticky: od profilu Stříbrník (id 2) po proudu až k soutoku s Kyjovkou, první buňka za soutokem. Chceš-li jiný profil, nahraď 'pod_soutokem_id' klíčem 'xy5514' nebo 'lonlat'."
+ },
+ "sidla": [
+  {
+   "id": 1,
+   "nazev": "Koryčany (Kyjovka, ř. km 75,69)",
+   "xy5514": [
+    -558794.48,
+    -1173991.39
+   ],
+   "polomer_m": 60,
+   "min_km2": 10,
+   "zdroj": "edpp.cz, hlásné profily ORP Kroměříž (kat. C, město Koryčany); souřadnice z odkazu na mapu"
+  },
+  {
+   "id": 2,
+   "nazev": "Koryčany (Stříbrník, ř. km 1,07)",
+   "xy5514": [
+    -559180.53,
+    -1174691.52
+   ],
+   "polomer_m": 150,
+   "min_km2": 2,
+   "zdroj": "edpp.cz, hlásný profil kat. C"
+  },
+  {
+   "id": 3,
+   "nazev": "VN Koryčany (Kyjovka pod přehradou, ř. km 77,76)",
+   "xy5514": [
+    -556751.96,
+    -1173879.95
+   ],
+   "polomer_m": 80,
+   "min_km2": 5,
+   "zdroj": "edpp.cz, hlásný profil kat. A (Povodí Moravy)"
+  },
+  {
+   "id": 4,
+   "nazev": "Lískovec",
+   "lonlat": [
+    17.1808,
+    49.1236
+   ],
+   "polomer_m": 300,
+   "min_km2": 0.3,
+   "zdroj": "střed obce cs.wikipedia; bod = tok procházející obcí"
+  },
+  {
+   "id": 5,
+   "nazev": "Blišice",
+   "lonlat": [
+    17.1656,
+    49.1228
+   ],
+   "polomer_m": 300,
+   "min_km2": 0.3,
+   "zdroj": "střed obce cs.wikipedia; bod = tok procházející obcí"
+  },
+  {
+   "id": 6,
+   "nazev": "Jestřabice",
+   "lonlat": [
+    17.1297,
+    49.0919
+   ],
+   "polomer_m": 300,
+   "min_km2": 0.3,
+   "zdroj": "střed obce cs.wikipedia (soutok Jestřabického potoka a Kratinky); mimo povodí Kyjovky nad Koryčany"
+  }
+ ]
+}

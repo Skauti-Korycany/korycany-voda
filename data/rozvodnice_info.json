@@ -1,0 +1,209 @@
+{
+ "zdroj_dem": "data/dmr/dmr5g_5m.tif",
+ "res_m": 5.0,
+ "ncol": 1500,
+ "nrow": 1600,
+ "metoda": "priority-flood fill (eps 1e-4 m) -> D8 -> akumulace; sklon Horn 3x3; toky >= prah",
+ "prah_toku_km2": 0.25,
+ "uzaverove_body": [
+  {
+   "id": 1,
+   "nazev": "Koryčany (Kyjovka, ř. km 75,69)",
+   "zadano_lonlat": [
+    17.163672,
+    49.113462
+   ],
+   "zadano_5514": [
+    -558794.5,
+    -1173991.4
+   ],
+   "zdroj": "edpp.cz, hlásné profily ORP Kroměříž (kat. C, město Koryčany); souřadnice z odkazu na mapu",
+   "pozn": "",
+   "prichyceno_lonlat": [
+    17.162882,
+    49.1134
+   ],
+   "prichyceno_5514": [
+    -558852.5,
+    -1173992.5
+   ],
+   "posun_m": 60.0,
+   "plocha_km2": 13.716,
+   "vyska_m": 268.5,
+   "stav": "ok"
+  },
+  {
+   "id": 2,
+   "nazev": "Koryčany (Stříbrník, ř. km 1,07)",
+   "zadano_lonlat": [
+    17.159371,
+    49.10685
+   ],
+   "zadano_5514": [
+    -559180.5,
+    -1174691.5
+   ],
+   "zdroj": "edpp.cz, hlásný profil kat. C",
+   "pozn": "",
+   "prichyceno_lonlat": [
+    17.160264,
+    49.10803
+   ],
+   "prichyceno_5514": [
+    -559102.5,
+    -1174567.5
+   ],
+   "posun_m": 148.4,
+   "plocha_km2": 4.23,
+   "vyska_m": 274.9,
+   "stav": "ok"
+  },
+  {
+   "id": 3,
+   "nazev": "VN Koryčany (Kyjovka pod přehradou, ř. km 77,76)",
+   "zadano_lonlat": [
+    17.19136,
+    49.116296
+   ],
+   "zadano_5514": [
+    -556752.0,
+    -1173879.9
+   ],
+   "zdroj": "edpp.cz, hlásný profil kat. A (Povodí Moravy)",
+   "pozn": "",
+   "prichyceno_lonlat": [
+    17.190402,
+    49.116662
+   ],
+   "prichyceno_5514": [
+    -556817.5,
+    -1173832.5
+   ],
+   "posun_m": 79.1,
+   "plocha_km2": 5.822,
+   "vyska_m": 285.8,
+   "stav": "ok"
+  },
+  {
+   "id": 4,
+   "nazev": "Lískovec",
+   "zadano_lonlat": [
+    17.1808,
+    49.1236
+   ],
+   "zadano_5514": [
+    -557437.7,
+    -1172994.8
+   ],
+   "zdroj": "střed obce cs.wikipedia; bod = tok procházející obcí",
+   "pozn": "",
+   "prichyceno_lonlat": [
+    17.177536,
+    49.122005
+   ],
+   "prichyceno_5514": [
+    -557692.5,
+    -1173147.5
+   ],
+   "posun_m": 298.4,
+   "plocha_km2": 0.434,
+   "vyska_m": 288.2,
+   "stav": "ok"
+  },
+  {
+   "id": 5,
+   "nazev": "Blišice",
+   "zadano_lonlat": [
+    17.1656,
+    49.1228
+   ],
+   "zadano_5514": [
+    -558550.4,
+    -1172972.3
+   ],
+   "zdroj": "střed obce cs.wikipedia; bod = tok procházející obcí",
+   "pozn": "",
+   "prichyceno_lonlat": [
+    17.161981,
+    49.12152
+   ],
+   "prichyceno_5514": [
+    -558827.5,
+    -1173087.5
+   ],
+   "posun_m": 298.1,
+   "plocha_km2": 0.582,
+   "vyska_m": 282.3,
+   "stav": "ok"
+  },
+  {
+   "id": 6,
+   "nazev": "Jestřabice",
+   "zadano_lonlat": [
+    17.1297,
+    49.0919
+   ],
+   "zadano_5514": [
+    -561503.1,
+    -1176127.9
+   ],
+   "zdroj": "střed obce cs.wikipedia (soutok Jestřabického potoka a Kratinky); mimo povodí Kyjovky nad Koryčany",
+   "pozn": "",
+   "prichyceno_lonlat": [
+    17.12612,
+    49.090626
+   ],
+   "prichyceno_5514": [
+    -561777.5,
+    -1176242.5
+   ],
+   "posun_m": 298.1,
+   "plocha_km2": 0.748,
+   "vyska_m": 270.7,
+   "stav": "ok"
+  },
+  {
+   "id": 0,
+   "nazev": "Kyjovka pod Koryčany (pod soutokem se Stříbrníkem)",
+   "pozn": "bod se najde automaticky: od profilu Stříbrník (id 2) po proudu až k soutoku s Kyjovkou, první buňka za soutokem. Chceš-li jiný profil, nahraď 'pod_soutokem_id' klíčem 'xy5514' nebo 'lonlat'.",
+   "prichyceno_lonlat": [
+    17.155236,
+    49.112984
+   ],
+   "prichyceno_5514": [
+    -559412.5,
+    -1173982.5
+   ],
+   "posun_m": 0,
+   "plocha_km2": 19.949,
+   "vyska_m": 264.4,
+   "stav": "ok"
+  }
+ ],
+ "povodi_id_kody": {
+  "1": "Koryčany (Kyjovka, ř. km 75,69)",
+  "2": "Koryčany (Stříbrník, ř. km 1,07)",
+  "3": "VN Koryčany (Kyjovka pod přehradou, ř. km 77,76)",
+  "4": "Lískovec",
+  "5": "Blišice",
+  "6": "Jestřabice"
+ },
+ "odtok_z_rastru": {
+  "lonlat": [
+   17.109908,
+   49.131443
+  ],
+  "plocha_km2": 31.72,
+  "pozn": "buňka s největší akumulací = kde hlavní tok opouští rastr"
+ },
+ "deprese": {
+  "max_hloubka_m": 9.51,
+  "plocha_nad_0_2m_ha": 80.3,
+  "pozn": "obsahuje i hladinu VN Koryčany a umělé prohlubně (silniční zářezy, lomy)"
+ },
+ "sklon": {
+  "prumer_deg": 9.42,
+  "podil_nad_12deg_pct": 28.5
+ },
+ "kontrola": "Zkontroluj rozvodnice_nahled.png: toky mají ležet v údolích, body na tocích, hranice po hřebenech."
+}
