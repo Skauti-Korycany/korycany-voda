@@ -21,3 +21,5 @@ data/HY-NET/
 *.xml.zip
 data/zabaged/
 data/bpej/
+# stažená data ČHMÚ (opendata.chmi.cz) - nepatří do repozitáře
+data/chmi/
