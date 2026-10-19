@@ -5,7 +5,7 @@ Použití (z libovolné složky):
     python tools/04_vyuziti_pudy.py [--bez-stahovani] [--buffer 200]
 
 Krok 1 - stažení: WFS ZABAGED polohopis (https://ags.cuzk.gov.cz/arcgis/services/ZABAGED_POLOHOPIS/MapServer/WFSServer,
-    WFS 2.0, GeoJSON, EPSG:5514, max 1000 prvků na dotaz -> stránkování startIndex). Bbox = území modelu + buffer.
+    WFS 2.0, GeoJSON, EPSG:5514, max 1000 prvků na dotaz; startIndex server ignoruje -> dělení bboxu na čtvrtiny). Bbox = území modelu + buffer.
     Soubory do data/zabaged/<vrstva>.geojson (mimo git; při dalším běhu se nestahují znovu, smaž složku pro obnovu).
     Licence ČÚZK: CC BY 4.0, uvádět "ČÚZK - on-line".
 Krok 2 - rastr: polygony se vypálí do mřížky DEM (5 m, EPSG:5514) v pořadí od obecného ke konkrétnímu,
@@ -64,34 +64,42 @@ LEGENDA = {1: "orná půda", 2: "ostatní nespecifikovaná plocha", 3: "trvalý 
            20: "silnice", 21: "ulice", 22: "cesta zpevněná", 30: "budova", 31: "kůlna, skleník, přístřešek"}
 EXTRA = ["Rozvodnice"]  # jen uložit, nevypalovat
 
-def wfs_fetch(layer, bbox, out_path, count=1000):
-    """Stáhne celou vrstvu v bboxu po stránkách do GeoJSON. Vrací počet prvků."""
-    feats = []; start = 0
-    while True:
-        q = {"service": "WFS", "version": "2.0.0", "request": "GetFeature", "outputFormat": "GEOJSON",
-             "srsName": "urn:ogc:def:crs:EPSG::5514", "count": count, "startIndex": start,
-             "typeNames": "ZABAGED_POLOHOPIS:" + layer,
-             "bbox": "{},{},{},{},urn:ogc:def:crs:EPSG::5514".format(*bbox)}
-        url = WFS + "?" + urllib.parse.urlencode(q, quote_via=urllib.parse.quote)
-        req = urllib.request.Request(url, headers={"User-Agent": "korycany-voda/1.0 (skauti; nekomercni)"})
-        for pokus in range(3):
-            try:
-                with urllib.request.urlopen(req, timeout=120) as r:
-                    txt = r.read().decode("utf-8")
-                break
-            except Exception as e:
-                if pokus == 2:
-                    raise
-                log(f"   {layer}: chyba {e}, zkouším znovu"); time.sleep(3)
+def wfs_get(layer, bbox, count=1000):
+    q = {"service": "WFS", "version": "2.0.0", "request": "GetFeature", "outputFormat": "GEOJSON",
+         "srsName": "urn:ogc:def:crs:EPSG::5514", "count": count,
+         "typeNames": "ZABAGED_POLOHOPIS:" + layer,
+         "bbox": "{},{},{},{},urn:ogc:def:crs:EPSG::5514".format(*bbox)}
+    url = WFS + "?" + urllib.parse.urlencode(q, quote_via=urllib.parse.quote)
+    req = urllib.request.Request(url, headers={"User-Agent": "korycany-voda/1.0 (skauti; nekomercni)"})
+    for pokus in range(3):
         try:
-            j = json.loads(txt)
-        except Exception:
-            sys.exit(f"WFS nevrátil JSON pro {layer}: {txt[:300]}")
-        f = j.get("features", [])
-        feats += f
-        if len(f) < count:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                txt = r.read().decode("utf-8")
             break
-        start += count
+        except Exception as e:
+            if pokus == 2:
+                raise
+            log(f"   {layer}: chyba {e}, zkouším znovu"); time.sleep(3)
+    try:
+        return json.loads(txt).get("features", [])
+    except Exception:
+        sys.exit(f"WFS nevrátil JSON pro {layer}: {txt[:300]}")
+
+def wfs_fetch(layer, bbox, out_path, count=1000, depth=0):
+    """Stáhne vrstvu v bboxu. Server ignoruje startIndex (ověřeno 19. 10. 2026), proto když vrátí plných 1000 prvků,
+    bbox se rozdělí na čtvrtiny a stáhne se znovu (rekurzivně); prvky se slučují podle GmlID."""
+    feats = {}
+    def grab(bb, d):
+        f = wfs_get(layer, bb, count)
+        if len(f) >= count and d < 6:
+            x0, y0, x1, y1 = bb; xm = (x0 + x1) / 2; ym = (y0 + y1) / 2
+            for sub in ((x0, y0, xm, ym), (xm, y0, x1, ym), (x0, ym, xm, y1), (xm, ym, x1, y1)):
+                grab(sub, d + 1)
+        else:
+            for ft in f:
+                feats[ft["properties"].get("GmlID") or ft.get("id") or len(feats)] = ft
+    grab(tuple(bbox), depth)
+    feats = list(feats.values())
     with open(out_path, "w", encoding="utf-8") as fh:
         json.dump({"type": "FeatureCollection", "crs": {"type": "name", "properties": {"name": "EPSG:5514"}},
                    "zdroj": "ČÚZK ZABAGED polohopis, WFS, CC BY 4.0, staženo " + time.strftime("%Y-%m-%d"),
@@ -146,7 +154,13 @@ def main():
         for L in vrstvy:
             p = os.path.join(raw, L + ".geojson")
             if os.path.exists(p):
-                continue
+                try:
+                    n_old = len(json.load(open(p, encoding="utf-8"))["features"])
+                except Exception:
+                    n_old = -1
+                if n_old != 1000:        # přesně 1000 = oříznuto limitem serveru (stará verze skriptu) -> stáhnout znovu
+                    continue
+                log(f"   {L}: soubor má přesně 1000 prvků (oříznuto), stahuji znovu po dlaždicích")
             n = wfs_fetch(L, bbox, p)
             log(f"   {L}: {n} prvků")
     else:
@@ -280,7 +294,7 @@ def main():
     ax.plot(ring[:, 0], ring[:, 1], color="k", lw=1)
     ax.set_xlim(xmin - 300, xmax + 300); ax.set_ylim(ymin - 300, ymax + 300)
     pres = [k for k in ks if (kod[mask] == k).any()]
-    ax.legend(handles=[Patch(color=barvy[k], label=LEGENDA[k]) for k in pres], loc="lower left", fontsize=7, ncol=2, framealpha=.9)
+    ax.legend(handles=[Patch(color=barvy[k], label=LEGENDA[k]) for k in pres], loc="upper left", bbox_to_anchor=(1.01, 1), fontsize=8, framealpha=.9)
     ax.set_title("Využití půdy v území modelu (ZABAGED, 5 m)"); ax.set_xlabel("X [m] EPSG:5514"); ax.set_ylabel("Y [m]")
     png = os.path.join(data, "vyuziti_nahled.png")
     fig.savefig(png, dpi=150, bbox_inches="tight"); plt.close(fig)
