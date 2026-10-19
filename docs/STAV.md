@@ -42,6 +42,7 @@ Aktualizováno: 19. 10. 2026 (relace 5, konec; **fáze 2 hotová** v náhradní 
 - Otevřené body rozhraní (ROZHRANI.md kap. 6).
 
 ### Další kroky (pořadí)
+0. **Příští relace začíná tady (rozhodnutí uživatele 19. 10.)**: natáhnout reálná srážková data - historické řady ČHMÚ (denní úhrny nejbližší stanice, ideálně i 10min/hodinová pro přívaly) nebo jiný zdroj (Intersucho, Povodí Moravy, vlastní měření školy). Potřeba pro: N-leté návrhové úhrny, roční bilanci P-ET, porovnání s epizodami z čidla Kachník (léto 2026), odhady úhrnů během roku. Známé překážky: opendata.chmi.cz je z Claude blokované -> uživatel stáhne ručně nebo skript na PC; nejbližší stanice ČHMÚ k Koryčanům zatím nedohledána (otevřená otázka). Zdroje ověřit online, žádné hodnoty z paměti.
 1. **Fáze 3 - jádro**: `jadro.js` s výpočty nad skutečnými daty (CN, sklon, akumulace, plochy tříd za pozemek/povodí), testy; datový balíček pro web (rastry -> PNG dlaždice nebo COG + GeoJSON vrstvy). Uživatel chce co nejdřív vizualizovat a ladit vstupy.
 2. Návrhové úhrny N-letých dešťů pro Koryčany (ČHMÚ / ČVUT metodika 2023 "Krátkodobé srážky"), přepočet IPS I/III (J12 obr. 2.2).
 3. Až přijde VÚMOP: `--vumop` v vyrob_cn.bat, přepočet, porovnat s BPEJ odhadem.
