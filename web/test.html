@@ -23,6 +23,7 @@
   <label><input type="radio" name="rezim" value="nadrz"> klik = hráz, výška <input id="h" type="number" value="3" min="0.5" max="15" step="0.5" style="width:4em"> m</label>
   <label>návrhový déšť <input id="P" type="number" value="40" min="5" max="150" step="5" style="width:4em"> mm, IPS
     <select id="ips"><option value="1">I suchá</option><option value="2" selected>II</option><option value="3">III mokrá</option></select></label>
+  <label>přichytit k toku do <select id="r"><option value="0">0 m (přesně klik)</option><option value="30">30 m</option><option value="60" selected>60 m</option><option value="100">100 m</option><option value="200">200 m</option></select></label>
   <label>podklad: <select id="vrstva"><option value="">nic</option><option value="cn">CN</option><option value="sklon">sklon</option><option value="vyuziti">využití</option><option value="hsp">HSP (A-D)</option><option value="akumulace">akumulace</option></select></label>
   <div id="out">Načítám rastry (5 MB)...</div>
   <p style="font-size:11px;color:#555;margin:8px 0 0">Zjednodušený model pro osvětu, nevalidováno. Data ČÚZK (CC BY 4.0), SPÚ, skripty tools/01-09.</p>
@@ -33,7 +34,7 @@
 const map = L.map('map').setView([49.106, 17.165], 14);
 L.tileLayer('https://ags.cuzk.gov.cz/arcgis1/rest/services/ZTM_WM/MapServer/WMTS/tile/1.0.0/ZTM_WM/default/GoogleMapsCompatible/{z}/{y}/{x}', { maxZoom: 19, attribution: 'ČÚZK - on-line (ZTM)' }).addTo(map);
 const $ = id => document.getElementById(id);
-let vysl = null, podklad = null, znacka = null, legenda = {};
+let vysl = null, podklad = null, znacka = null, znacka2 = null, cara = null, legenda = {};
 fetch('../data/vyuziti_pudy.json').then(r => r.json()).then(j => legenda = j.legenda);
 
 function overlayZObrazku(im, opacity) {
@@ -65,16 +66,23 @@ Jadro.nacti('../data/web/').then(() => {
   map.on('click', e => {
     if (vysl) { map.removeLayer(vysl); vysl = null; }
     if (znacka) { map.removeLayer(znacka); znacka = null; }
-    const P = +$('P').value, ips = +$('ips').value;
+    if (znacka2) { map.removeLayer(znacka2); znacka2 = null; }
+    if (cara) { map.removeLayer(cara); cara = null; }
+    const P = +$('P').value, ips = +$('ips').value, R = +$('r').value;
+    const ukazPosun = (ll, posun) => {
+      znacka2 = L.circleMarker(e.latlng, { radius: 4, color: '#000', fillOpacity: 1 }).addTo(map);
+      if (posun > 2) cara = L.polyline([e.latlng, [ll[1], ll[0]]], { color: '#c00', weight: 1, dashArray: '3 3' }).addTo(map);
+      return posun > 2 ? ` - přichyceno k toku o ${f0(posun)} m (černá = klik, červená = použitý bod)` : '';
+    };
     const t0 = performance.now();
     if (document.querySelector('input[name=rezim]:checked').value === 'povodi') {
-      const r = Jadro.povodiBodu(e.latlng.lng, e.latlng.lat, 100, P, ips);
+      const r = Jadro.povodiBodu(e.latlng.lng, e.latlng.lat, R, P, ips);
       if (!r) { $('out').textContent = 'Mimo rastr.'; return; }
       const s = r.stat;
       vysl = overlayZObrazku(Jadro.obrazek(i => r.maska[i] ? [30, 100, 220, 110] : null, Jadro.obalMasky(r.maska, 50), 1024)).addTo(map);
       znacka = L.circleMarker([s.uzaver_lonlat[1], s.uzaver_lonlat[0]], { radius: 6, color: '#c00' }).addTo(map);
-      $('out').innerHTML = `<b>Povodí bodu</b> (uzávěr přichycen k toku do 100 m)\n` +
-        `plocha ${f1(s.plocha_km2)} km² = ${f0(s.plocha_ha)} ha${s.orez_okrajem ? ' <span class=warn>(oříznuto okrajem dat!)</span>' : ''}\n` +
+      $('out').innerHTML = `<b>Povodí bodu</b>${ukazPosun(s.uzaver_lonlat, s.posun_m)}\n` +
+        `plocha ${f1(s.plocha_km2)} km² = ${f0(s.plocha_ha)} ha (${s.n_platnych} buněk)${s.orez_okrajem ? ' <span class=warn>(oříznuto okrajem dat!)</span>' : ''}${s.pod_rozlisenim ? ' <span class=warn>POD ROZLIŠENÍM (méně než 8 buněk po 25 m²)</span>' : ''}\n` +
         `CN vážené ${f1(s.cn_vazene)} (HSP odhad na ${f0(100 * s.hsp_odhad_ha / s.plocha_ha)} % plochy)\n` +
         `sklon průměr ${f1(s.sklon_prumer_deg)}° (${f1(s.sklon_prumer_pct)} %), výška ${f0(s.vyska_min)}-${f0(s.vyska_max)} m\n` +
         `využití: ${vyuzitiText(s.vyuziti_ha, s.plocha_ha)}\n` +
@@ -83,12 +91,13 @@ Jadro.nacti('../data/web/').then(() => {
         `(${f0(performance.now() - t0)} ms)`;
     } else {
       const h = +$('h').value;
-      const n = Jadro.nadrz(e.latlng.lng, e.latlng.lat, h, 60);
+      const n = Jadro.nadrz(e.latlng.lng, e.latlng.lat, h, R);
       if (!n) { $('out').textContent = 'Mimo rastr.'; return; }
       vysl = overlayZObrazku(Jadro.obrazek(i => n.maska[i] ? [20, 60, 200, 170] : null, Jadro.obalMasky(n.maska, 30), 1024)).addTo(map);
       znacka = L.circleMarker([n.hraz_lonlat[1], n.hraz_lonlat[0]], { radius: 6, color: '#c00' }).addTo(map);
-      $('out').innerHTML = `<b>Nádrž / poldr</b>, hráz ${h} m (přichycena k toku do 60 m)\n` +
-        `dno ${f1(n.kota_dna)} m, hladina ${f1(n.hladina)} m\n<b>objem ${f0(n.objem_m3)} m³, plocha ${f1(n.plocha_ha)} ha</b>, hloubka max ${f1(n.hloubka_max_m)} m, průměr ${f1(n.hloubka_prumer_m)} m\n` +
+      $('out').innerHTML = `<b>Nádrž / poldr</b>, hráz ${h} m${ukazPosun(n.hraz_lonlat, n.posun_m)}\n` +
+        `dno ${f1(n.kota_dna)} m, hladina ${f1(n.hladina)} m\n<b>objem ${f0(n.objem_m3)} m³, plocha ${f0(n.plocha_ha * 1e4)} m² (${n.n_bunek} buněk)</b>, hloubka max ${f1(n.hloubka_max_m)} m, průměr ${f1(n.hloubka_prumer_m)} m\n` +
+        (n.pod_rozlisenim ? `<span class=warn>POD ROZLIŠENÍM MODELU: méně než 8 buněk po 25 m². DMR 5G (5 m, 0,1 bodu/m²) potůček v zahradě nevidí; tohle číslo je šum, ne odhad.</span>\n` : '') +
         `povodí k hrázi ${f1(n.povodi_km2)} km²\nzatopeno: ${vyuzitiText(n.zatopene_vyuziti_ha, n.plocha_ha || 1)}\n` +
         `odtok z povodí při ${P} mm: ${f0(Jadro.statBunek(Jadro.povodiBunky(n.hraz).bunky, P, ips).odtok.objem_m3)} m³ -> nádrž pojme ${f0(100 * Math.min(1, n.objem_m3 / Math.max(1, Jadro.statBunek(Jadro.povodiBunky(n.hraz).bunky, P, ips).odtok.objem_m3)))} % (bez ztrát, bez tvaru hráze 🤔)\n` +
         `(${f0(performance.now() - t0)} ms)`;

@@ -212,11 +212,13 @@
   J.povodiBodu = function (lon, lat, polomerM, P, ips) {
     const b = J.lonLatNaBunku(lon, lat);
     if (!b) return null;
-    const i0 = J.prichytKToku(b.i, polomerM == null ? 50 : polomerM);
+    const i0 = J.prichytKToku(b.i, polomerM == null ? 50 : polomerM);   // polomerM = 0 -> bez prichyceni
     const pov = J.povodiBunky(i0);
     const st = J.statBunek(pov.bunky, P, ips);
     st.plocha_km2 = st.plocha_ha / 100;
     st.uzaver_lonlat = J.xyNaLonLat(...J.bunkaNaXY(i0));
+    st.posun_m = Math.hypot(...J.bunkaNaXY(i0).map((v, k) => v - J.bunkaNaXY(b.i)[k]));
+    st.pod_rozlisenim = st.n_platnych < 8;
     st.orez_okrajem = pov.orez || J.naOkraji(pov.maska);
     return { stat: st, maska: pov.maska, bunky: pov.bunky, uzaver: i0 };
   };
@@ -241,7 +243,8 @@
     while (fronta.length) {
       const i = fronta.pop();
       const z = J.vyska(i);
-      const d = hl - z; objem += d * J.plochaB; n++; if (d > hloubkaMax) hloubkaMax = d;
+      const d = hl - z;
+      if (i !== i0) { objem += d * J.plochaB; n++; if (d > hloubkaMax) hloubkaMax = d; }   // bunka hraze = teleso hraze, nepocita se
       const row = Math.floor(i / J.ncol), col = i - row * J.ncol;
       for (const [dc, dr] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
         const r = row + dr, c = col + dc;
@@ -253,11 +256,13 @@
         zat[k] = 1; fronta.push(k);
       }
     }
+    zat[i0] = 0;   // bunka hraze neni zatopena plocha
     const pStat = J.statBunek(pov.bunky);
-    return { hraz: i0, hraz_lonlat: J.xyNaLonLat(...J.bunkaNaXY(i0)), kota_dna: z0, hladina: hl, vyska_hraze_m: vyskaHrazeM,
+    return { hraz: i0, hraz_lonlat: J.xyNaLonLat(...J.bunkaNaXY(i0)), klik_bunka: b.i, posun_m: Math.hypot(...J.bunkaNaXY(i0).map((v, k) => v - J.bunkaNaXY(b.i)[k])),
+      kota_dna: z0, hladina: hl, vyska_hraze_m: vyskaHrazeM, n_bunek: n, pod_rozlisenim: n < 8,
       objem_m3: objem, plocha_ha: n * J.plochaB / 1e4, hloubka_max_m: hloubkaMax, hloubka_prumer_m: n ? objem / (n * J.plochaB) : 0,
       povodi_km2: pStat.plocha_ha / 100, maska: zat, zatopene_vyuziti_ha: J.statBunek(J.maskaNaBunky(zat)).vyuziti_ha,
-      pozn: 'zatopeni terenu pod hladinou, bez objemu hraze a bez ztrat; orientacni' };
+      pozn: 'zatopeni terenu pod hladinou (5 m bunky), bunka hraze vynechana, bez ztrat; pod 8 bunek je vysledek pod rozlisenim DMR' };
   };
   J.maskaNaBunky = function (maska) { const o = []; for (let i = 0; i < maska.length; i++) if (maska[i]) o.push(i); return o; };
 
