@@ -38,7 +38,9 @@
    ],
    "polomer_m": 80,
    "min_km2": 5,
-   "zdroj": "edpp.cz, hlásný profil kat. A (Povodí Moravy)"
+   "zdroj": "edpp.cz, hlásný profil kat. A (Povodí Moravy)",
+   "vyloucit_z_modelu": true,
+   "pozn": "odtok z nádrže je řízený -> hráz je horní hranice modelu (rozhodnutí 19. 10. 2026)"
   },
   {
    "id": 4,

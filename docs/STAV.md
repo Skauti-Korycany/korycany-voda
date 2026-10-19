@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice hotovy, čeká na spuštění u uživatele)
+Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice hotovy a potvrzeny, hranice modelu rozhodnuta)
 
 ## Fáze: 1 hotová (katalog, vrstvy, měření, datový formát, návrh rozhraní, prototyp). Fáze 2 běží: terén a rozvodnice hotovy, další je CN/eroze a vektory (budovy, toky DIBAVOD).
 
@@ -22,20 +22,20 @@ Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice hotovy, čeká na s
 - **Blok B část 2 (fáze 2), 19. 10. - rozvodnice hotovy (otestováno v Claude na skutečném dmr5g_5m.tif, 32 s).** Skript `tools/02_rozvodnice.py` + `tools/vyrob_rozvodnice.bat`: priority-flood vyplnění depresí, D8 směr, akumulace, sklon a expozice (Horn), údolnice >= 0,25 km², povodí k uzávěrovým bodům. Bez whitebox/pysheds (čistý numpy/scipy; whitebox stahuje binárku z webu, což u uživatele nemusí projít). Rastry v `repo\data\dmr\`: smer_odtoku, akumulace, sklon_deg, expozice_deg, deprese, povodi_id (.tif, mimo git). Do gitu: `data/povodi.geojson` (8 polygonů), `data/toky_dmr.geojson` (108 linií), `data/rozvodnice_body.json` (uzávěrové body, upravitelné), `data/rozvodnice_info.json`, náhledy `docs/img/rozvodnice_nahled.png`, `sklon_nahled.png`. Výsledky: hlavní povodí Kyjovka pod soutokem se Stříbrníkem **19,9 km²** (bod -559412, -1173982; nalezen automaticky po proudu od profilu Stříbrník), profil Kyjovka ř. km 75,69 = 13,7 km² (z toho pod přehradou 5,8 km² - **oříznuto východním okrajem rastru**), Stříbrník ř. km 1,07 = 4,2 km², Lískovec 0,4, Blišice 0,6, Jestřabice 0,7 km² (jen potůčky obcemi). Celý rastr odvodňuje 31,7 km² k výstupu Kyjovky na západním okraji (17.1099 E, 49.1314 N). Průměrný sklon 9,4°, 28,5 % buněk nad 12°. Souřadnice hlásných profilů ✅ edpp.cz (ORP Kroměříž): Kyjovka 75,69 = -558794,48/-1173991,39; Stříbrník 1,068 = -559180,53/-1174691,52; pod přehradou 77,76 = -556751,96/-1173879,95. Středy obcí ✅ cs.wikipedia: Lískovec 49.1236/17.1808, Blišice 49.1228/17.1656, Jestřabice 49.0919/17.1297, VN Koryčany 49.1167/17.1964.
 
 ### Rozpracováno
-- **Blok B část 2 - u uživatele**: spustit `repo\tools\vyrob_rozvodnice.bat`, poslat náhled; rozhodnout o uzávěrových bodech (viz otázky) a o dotažení listů na východ (BUCO15-18, příp. BUCO05-08), aby povodí nad přehradou nebylo oříznuté.
 - Chybějící podklady od uživatele: NOO 2026 (XLSX) a NOO 2025_2; seznam platných SPPK (aopk.gov.cz/platne-standardy); znění vodního zákona (e-Sbírka) § 15b, 17, 46, 47, 55; nejbližší stanice ČHMÚ; text ČSN 75 9010.
 - Data z měření: uživatel požádá Povodí Moravy. Text žádosti na vyžádání.
 - Zpětná vazba k prototypu (tón textů, pořadí kroků, síla "Na co to nestačí") - čeká na uživatele.
 - Otevřené body rozhraní (ROZHRANI.md kap. 6).
 
 ### Další kroky (pořadí)
-1. Blok B část 2 dokončit: uživatel spustí .bat, potvrdí/upraví uzávěrové body a hranici; případně dostáhne východní listy a pustí oba .bat znovu. Pak ZABAGED budovy (vektor, CC BY) a DIBAVOD toky jako GeoJSON ořezané na povodí; CN rastr (HSP + využití půdy) a USLE vstupy.
+1. Blok B část 3: ZABAGED budovy (vektor, CC BY) a DIBAVOD toky jako GeoJSON ořezané na území modelu; CN rastr (HSP + využití půdy) a USLE vstupy (K z BPEJ/HSP, LS ze sklonu a akumulace).
 2. Jádro (fáze 3): vyčlenit výpočty z prototypu do `jadro.js` s testy na syntetickém pozemku; napojit skutečné sklony a hranici území.
 3. Blok D: "reakce toku na déšť" léto 2026 z CSV Kachník + srážky ČHMÚ.
 4. Uživatel ověří WMS označené ❌ ve VRSTVY.md (LPIS MZe, katastr ČÚZK, CENIA vojenská mapování); napíše na data@vumop.cz (HSP, BPEJ, zamokřené půdy).
 5. Dotační okna: AOPK OPŽP ZMV 17. výzva 20. 10. - 3. 11. 2026; OPŽP 105 do 17. 12. 2026.
 
 ## Rozhodnutí
+- 19. 10. 2026 - **Hranice modelu = hráz VN Koryčany nahoře, profil Kyjovky pod soutokem se Stříbrníkem dole.** Odtok z nádrže je řízený, povodí nad hrází se nemodeluje (a je navíc oříznuté rastrem). Území modelu = 19,9 - 5,8 = **14,1 km²**, polygon `typ: uzemi_modelu` v `data/povodi.geojson`; v `rozvodnice_body.json` má bod id 3 příznak `vyloucit_z_modelu`. Uživatel potvrdil 19. 10. (body 1-3: hráz jako hranice, profil pod soutokem OK, Stříbrník = potok podél ulice Lhotka kolem rybníka Kachník, ústí do Kyjovky u Petrželky). Východní listy BUCO15-18 se nestahují.
 - 19. 10. 2026 - **Hydrologie bez externích knihoven**: whitebox při prvním importu stahuje binárku z whiteboxgeo.com/GitHubu (v Claude 403, u uživatele nejisté), pysheds táhne numba. Vyplnění depresí, D8 a akumulace napsány v numpy/scipy přímo ve skriptu; na 2,4 M buněk 30 s. Nerozhodovat znovu, dokud rastr nepřesáhne ~10 M buněk.
 - 19. 10. 2026 - **Hlavní profil = Kyjovka těsně pod soutokem se Stříbrníkem** (automaticky z dat), ne hlásný profil ř. km 75,69 - ten leží nad soutokem, takže by vynechal povodí Stříbrníku (4,2 km², celé jižní zázemí města). Hlásné profily 75,69 a 1,07 jsou v datech jako dílčí povodí (id 1, 2). Změna profilu = úprava `data/rozvodnice_body.json` a nové spuštění .bat.
 - 19. 10. 2026 - **Uzávěrové body obcí Lískovec, Blišice, Jestřabice** = tok procházející středem obce (okruh 300 m) - dávají jen malá povodí potůčků (0,4-0,7 km²). Pro model "co steče na obec" stačí; kdo chce jiné vymezení, upraví JSON.
@@ -67,7 +67,6 @@ Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice hotovy, čeká na s
 - 15. 10. 2026 - Hydrogeologická mapa ČGS: volat přes 4326.
 
 ## Otevřené otázky
-- Dotáhnout východní listy BUCO15-18 (povodí nad přehradou), nebo brát hráz VN Koryčany jako horní hranici modelu (odtok z nádrže je řízený)? Druhá varianta je levnější a pro model opatření v intravilánu a na svazích stačí.
 - Povodí Jestřabic (Kratinka) leží z většiny západně mimo rastr (BUCO5x); zatím jen 0,7 km² uvnitř.
 - Kanalizace Koryčany (jednotná/oddílná): nedohledáno online. Potvrdit u města (S02).
 - Data Povodí Moravy: po odpovědi na žádost.
@@ -103,6 +102,4 @@ Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice hotovy, čeká na s
 - Chce oddíl nebo město využít výzvu AOPK ZMV (20. 10. - 3. 11.) nebo OPŽP 105 (do 17. 12.)?
 - Jsou pole kolem Koryčan v LPIS vedené jako SEO/MEO? Lesy: kdo je vlastník?
 - Kdo bude mít v organizaci Skauti-Korycany práva k repozitáři po tobě (aspoň dva správci)?
-- Souhlasíš s hlavním profilem pod soutokem se Stříbrníkem (19,9 km²)? Pokud má být níž (u nádraží, u silnice k Blišicím), dej mi místo - stačí popis nebo bod z mapy.
-- Je Stříbrník ten potok, který přitéká do Kyjovky od jihu ze Chřibů (ústí u bodu -559412, -1173982, tj. 17.1552 E, 49.1130 N)? Skript vyšel z hlásného profilu; místní znalost to potvrdí rychleji než mapa.
 - Chceš vidět v náhledu i ortofoto/ZTM podklad místo stínovaného reliéfu? Jde to přidat přes WMS, ale náhled se pak generuje déle.

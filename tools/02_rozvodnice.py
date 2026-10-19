@@ -19,7 +19,7 @@ Výstupy (rastry, EPSG:5514, 5 m, stejná mřížka jako DEM):
     data/dmr/deprese.tif          hloubka vyplněných prohlubní v m (kde voda stojí, než přeteče)
     data/dmr/povodi_id.tif        id dílčího povodí (uint8, 0 = mimo), kódy v rozvodnice_info.json
 Výstupy lehké (do gitu, WGS84):
-    data/povodi.geojson           polygony: celé povodí k hlavnímu profilu + dílčí povodí sídel
+    data/povodi.geojson           polygony: hlavní povodí, území modelu (bez povodí nad hrází), dílčí povodí, celý rastr
     data/toky_dmr.geojson         údolnice (vodní toky odvozené z terénu, plocha >= --tok-km2)
     data/rozvodnice_body.json     uzávěrové body (vstup, upravitelný)
     data/rozvodnice_info.json     plochy, souřadnice přichycených bodů, kontroly
@@ -64,7 +64,8 @@ VYCHOZI_BODY = {
     {"id": 2, "nazev": "Koryčany (Stříbrník, ř. km 1,07)", "xy5514": [-559180.53, -1174691.52], "polomer_m": 150, "min_km2": 2,
      "zdroj": "edpp.cz, hlásný profil kat. C"},
     {"id": 3, "nazev": "VN Koryčany (Kyjovka pod přehradou, ř. km 77,76)", "xy5514": [-556751.96, -1173879.95], "polomer_m": 80,
-     "min_km2": 5, "zdroj": "edpp.cz, hlásný profil kat. A (Povodí Moravy)"},
+     "min_km2": 5, "zdroj": "edpp.cz, hlásný profil kat. A (Povodí Moravy)", "vyloucit_z_modelu": True,
+     "pozn": "odtok z nádrže je řízený -> hráz je horní hranice modelu (rozhodnutí 19. 10. 2026)"},
     {"id": 4, "nazev": "Lískovec", "lonlat": [17.1808, 49.1236], "polomer_m": 300, "min_km2": 0.3,
      "zdroj": "střed obce cs.wikipedia; bod = tok procházející obcí"},
     {"id": 5, "nazev": "Blišice", "lonlat": [17.1656, 49.1228], "polomer_m": 300, "min_km2": 0.3,
@@ -434,6 +435,19 @@ def main():
     for f in sub: f["properties"]["typ"] = "sidlo"
     feats += sub
     # celé území odvodňované přes buňku s největší akumulací (kde hlavní tok opouští rastr)
+    # území modelu = hlavní povodí bez dílčích povodí označených vyloucit_z_modelu (nad hrází VN)
+    if main_idx is not None:
+        model_lab = main_lab.copy()
+        for p in body["sidla"]:
+            if p.get("vyloucit_z_modelu"):
+                model_lab[sidla_lab == int(p["id"])] = 0
+        total_km2 = {1: float((model_lab > 0).sum() * cell_km2)}
+        mdl = poly_features(model_lab, {1: "území modelu (hlavní povodí bez povodí nad hrází VN Koryčany)"})
+        for f in mdl: f["properties"]["typ"] = "uzemi_modelu"
+        feats += mdl
+        info_model_km2 = total_km2[1]
+    else:
+        info_model_km2 = None
     cele_lab = label_basins(filled, recv, valid, {1: imax})
     total_km2 = {1: float(acc.max() * cell_km2)}
     cele = poly_features(cele_lab, {1: "celé povodí k výstupu z rastru"})
@@ -467,6 +481,7 @@ def main():
         "metoda": "priority-flood fill (eps 1e-4 m) -> D8 -> akumulace; sklon Horn 3x3; toky >= prah",
         "prah_toku_km2": a.tok_km2,
         "uzaverove_body": info_pts,
+        "uzemi_modelu_km2": None if info_model_km2 is None else round(info_model_km2, 3),
         "povodi_id_kody": {str(int(p["id"])): p["nazev"] for p in body["sidla"]},
         "odtok_z_rastru": {"lonlat": [round(lonm, 6), round(latm, 6)], "plocha_km2": round(float(acc.max() * cell_km2), 2),
                            "pozn": "buňka s největší akumulací = kde hlavní tok opouští rastr"},
