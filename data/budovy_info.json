@@ -1,0 +1,90 @@
+{
+ "zdroj": "ČÚZK, INSPIRE Budovy (BU), obec Koryčany [588601], CC BY 4.0; půdorysy z RÚIAN/ISKN, přesnost ~1,5 m",
+ "stazeno": "2026-10-19",
+ "pozn": "Bez č.p., adres a identifikátorů budov (pravidlo projektu). Plocha = půdorys, ne plocha střechy se sklonem. Účel podle RÚIAN, u mnoha budov 'neuvedeno'.",
+ "budov_celkem_v_obci": 1898,
+ "budov_v_uzemi_modelu": 1487,
+ "plocha_pudorysu_v_uzemi_m2": 253940,
+ "podle_casti_obce": {
+  "Blišice": {
+   "pocet": 22,
+   "plocha_strech_m2": 3447
+  },
+  "Koryčany": {
+   "pocet": 913,
+   "plocha_strech_m2": 125387
+  },
+  "Lískovec": {
+   "pocet": 171,
+   "plocha_strech_m2": 28110
+  },
+  "neuvedeno": {
+   "pocet": 381,
+   "plocha_strech_m2": 96995
+  }
+ },
+ "podle_ucelu": {
+  "průmysl": {
+   "pocet": 75,
+   "plocha_strech_m2": 64660
+  },
+  "rodinný dům": {
+   "pocet": 957,
+   "plocha_strech_m2": 114999
+  },
+  "vedlejší stavba (garáž, kůlna)": {
+   "pocet": 303,
+   "plocha_strech_m2": 20497
+  },
+  "veřejná služba": {
+   "pocet": 40,
+   "plocha_strech_m2": 12807
+  },
+  "bytový dům": {
+   "pocet": 44,
+   "plocha_strech_m2": 9945
+  },
+  "zemědělství": {
+   "pocet": 55,
+   "plocha_strech_m2": 28129
+  },
+  "obchod": {
+   "pocet": 4,
+   "plocha_strech_m2": 777
+  },
+  "kancelář": {
+   "pocet": 5,
+   "plocha_strech_m2": 1961
+  },
+  "obchod a služby": {
+   "pocet": 2,
+   "plocha_strech_m2": 72
+  },
+  "bydlení": {
+   "pocet": 1,
+   "plocha_strech_m2": 68
+  },
+  "neuvedeno": {
+   "pocet": 1,
+   "plocha_strech_m2": 24
+  }
+ },
+ "podle_povodi": {
+  "Koryčany (Kyjovka, ř. km 75,69)": {
+   "pocet": 600,
+   "plocha_strech_m2": 112917
+  },
+  "mimo dílčí povodí": {
+   "pocet": 555,
+   "plocha_strech_m2": 89282
+  },
+  "Koryčany (Stříbrník, ř. km 1,07)": {
+   "pocet": 238,
+   "plocha_strech_m2": 33369
+  },
+  "Lískovec": {
+   "pocet": 94,
+   "plocha_strech_m2": 18371
+  }
+ }
+}

@@ -14,3 +14,8 @@ __pycache__/
 !docs/img/*.png
 .DS_Store
 Thumbs.db
+# stažené vstupy ČÚZK (INSPIRE BU, HY-NET) - nepatří do repozitáře
+data/588601/
+data/HY-NET/
+*.gpkg
+*.xml.zip
