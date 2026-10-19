@@ -1,0 +1,283 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Katalog opatření Koryčany resilience",
+ "type": "object",
+ "required": [
+  "meta",
+  "ciselniky",
+  "konstanty",
+  "zdroje",
+  "programy",
+  "nastroje",
+  "opatreni"
+ ],
+ "properties": {
+  "zdroje": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "id",
+     "nazev",
+     "znacka"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "nazev": {
+      "type": "string"
+     },
+     "url": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "rok": {
+      "type": [
+       "integer",
+       "null"
+      ]
+     },
+     "znacka": {
+      "enum": [
+       "overeno",
+       "overeno_stare",
+       "citace",
+       "odhad",
+       "pamet"
+      ]
+     },
+     "overeno_dne": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "pozn": {
+      "type": [
+       "string",
+       "null"
+      ]
+     }
+    }
+   }
+  },
+  "programy": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "nazev",
+     "zadatel",
+     "stav"
+    ],
+    "properties": {
+     "stav": {
+      "enum": [
+       "vzdy",
+       "otevreno",
+       "uzavreno",
+       "ukonceno",
+       "nastroj",
+       "zavisi_na_obci"
+      ]
+     }
+    }
+   }
+  },
+  "opatreni": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "nazev",
+     "misto",
+     "rozhoduje",
+     "pracnost",
+     "ucinky",
+     "meritko",
+     "kontext",
+     "kvantifikace",
+     "vhodnost",
+     "vazby",
+     "povoleni",
+     "ceny",
+     "financovani"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^(Z|S|U|P|L|LES|T|C|M)[0-9]{2}$"
+     },
+     "misto": {
+      "type": "array",
+      "items": {
+       "enum": [
+        "Z",
+        "S",
+        "U",
+        "P",
+        "L",
+        "LES",
+        "T",
+        "C"
+       ]
+      }
+     },
+     "rozhoduje": {
+      "type": "array",
+      "items": {
+       "enum": [
+        "J",
+        "V",
+        "O",
+        "SP",
+        "S"
+       ]
+      }
+     },
+     "pracnost": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+     },
+     "ucinky": {
+      "type": "object",
+      "properties": {
+       "primarni": {
+        "type": "array",
+        "items": {
+         "enum": [
+          "R",
+          "I",
+          "Q",
+          "E",
+          "CH",
+          "ER",
+          "B",
+          "W"
+         ]
+        }
+       },
+       "vedlejsi": {
+        "type": "array",
+        "items": {
+         "enum": [
+          "R",
+          "I",
+          "Q",
+          "E",
+          "CH",
+          "ER",
+          "B",
+          "W"
+         ]
+        }
+       }
+      }
+     },
+     "meritko": {
+      "enum": [
+       "pozemek",
+       "lokalita",
+       "uzemi"
+      ]
+     },
+     "kvantifikace": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "ucinek",
+        "typ",
+        "popis",
+        "znacka"
+       ],
+       "properties": {
+        "typ": {
+         "enum": [
+          "vzorec",
+          "hodnota",
+          "kvalitativne"
+         ]
+        },
+        "znacka": {
+         "enum": [
+          "overeno",
+          "overeno_stare",
+          "citace",
+          "odhad",
+          "pamet"
+         ]
+        },
+        "zdroj": {
+         "type": [
+          "array",
+          "null"
+         ],
+         "items": {
+          "type": "string"
+         }
+        }
+       }
+      }
+     },
+     "povoleni": {
+      "type": [
+       "integer",
+       "null"
+      ],
+      "minimum": 0,
+      "maximum": 2
+     },
+     "ceny": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "polozka",
+        "jednotka"
+       ],
+       "properties": {
+        "hodnota": {
+         "type": [
+          "number",
+          "null"
+         ]
+        },
+        "rozsah": {
+         "type": [
+          "array",
+          "null"
+         ]
+        },
+        "rok": {
+         "type": [
+          "integer",
+          "null"
+         ]
+        },
+        "zdroj": {
+         "type": [
+          "string",
+          "null"
+         ]
+        }
+       }
+      }
+     },
+     "vahy_skaly": {
+      "type": [
+       "object",
+       "null"
+      ],
+      "description": "rezervováno: sucho, prival, vedro, vitr_mraz, biodiverzita 0-3 (NAPADY-ROZHRANI.md)"
+     }
+    }
+   }
+  }
+ }
+}

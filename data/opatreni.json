@@ -1,0 +1,6367 @@
+{
+ "meta": {
+  "nazev": "Katalog opatření - Koryčany resilience",
+  "verze": "0.3",
+  "datum": "2026-10-18",
+  "licence_dat": "CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
+  "upozorneni": "Zjednodušený osvětový model, ne projektová dokumentace. Každé číslo má zdroj a značku původu. Ceny jen se zdrojem a datem; jinak 'cena neověřena'. Paragrafy vodního zákona ověřit v e-Sbírce.",
+  "zdroje_md": [
+   "claude/KATALOG.md",
+   "claude/KATALOG-Z-S.md",
+   "claude/KATALOG-U-P.md",
+   "claude/KATALOG-L-LES-T-C.md"
+  ]
+ },
+ "ciselniky": {
+  "misto": {
+   "Z": "zahrada, dvůr",
+   "S": "střecha, stavba",
+   "U": "veřejný prostor obce",
+   "P": "orná půda",
+   "L": "louka, pastvina",
+   "LES": "les",
+   "T": "tok, niva, prameniště",
+   "C": "cesta, svah, strž"
+  },
+  "rozhoduje": {
+   "J": "jednotlivec na svém pozemku",
+   "V": "vlastník půdy (přes pacht N01 nebo vyjmutí N02)",
+   "O": "obec",
+   "SP": "správce toku/lesa (Povodí Moravy, LČR)",
+   "S": "škola",
+   "zemedelec": "uživatel DPB (jen pro SZP dotace)"
+  },
+  "pracnost": {
+   "1": "víkend a ruce",
+   "2": "dny až týdny, malá technika",
+   "3": "projekt + firma"
+  },
+  "ucinek": {
+   "R": "zadržení objemu",
+   "I": "infiltrace do půdy",
+   "Q": "zpomalení odtoku",
+   "E": "omezení neproduktivního výparu / větru",
+   "CH": "ochlazení mikroklimatu",
+   "ER": "protierozní",
+   "B": "biodiverzita",
+   "W": "šetření pitnou vodou"
+  },
+  "meritko": {
+   "pozemek": "účinek na pozemku + příspěvek do součtu",
+   "lokalita": "ulice, lán, úsek toku",
+   "uzemi": "povodí; kontextová opatření"
+  },
+  "povoleni": {
+   "0": "nic",
+   "1": "ohlášení / souhlas vlastníka či správce",
+   "2": "vodoprávní nebo stavební řízení"
+  },
+  "znacka": {
+   "overeno": "✅ ověřeno online v uvedený den",
+   "overeno_stare": "✅⏳ ověřeno, zdroj starší 12 měsíců",
+   "citace": "📄 doložený zdroj, originál nečten",
+   "odhad": "🤔 odhad bez zdroje",
+   "pamet": "💻 z paměti, neověřeno"
+  },
+  "kvantifikace_typ": {
+   "vzorec": "jádro počítá z parametrů",
+   "hodnota": "doložená konstanta nebo rozsah",
+   "kvalitativne": "bez čísla, zobrazit slovně"
+  }
+ },
+ "konstanty": {
+  "srazky_rocni_mm": {
+   "hodnota": 571.5,
+   "pozn": "normál 1991-2020 stanice Kroměříž; Koryčany 🤔 vlhčí, bližší stanice nedohledána",
+   "zdroj": "vukrom2021",
+   "znacka": "overeno"
+  },
+  "navrhovy_dest_p02": {
+   "15min_mm": 16.5,
+   "60min_mm": 26.2,
+   "24h_mm": 44.2,
+   "pozn": "ČSN 75 9010 tab. A.1/A.2, periodicita 0,2 (1x za 5 let), příklad Brno; pro Koryčany ověřit v normě",
+   "zdroj": "csn759010",
+   "znacka": "overeno"
+  },
+  "soucinitel_odtoku": {
+   "pozn": "sklon <1 % / 1-5 % / >5 %",
+   "strecha": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "strecha_souvrstvi_nad_100mm": [
+    0.5,
+    0.5,
+    0.5
+   ],
+   "strecha_souvrstvi_do_100mm": [
+    0.7,
+    0.7,
+    0.8
+   ],
+   "asfalt_beton_zalita_dlazba": [
+    0.7,
+    0.8,
+    0.9
+   ],
+   "dlazba_piskove_spary": [
+    0.5,
+    0.6,
+    0.7
+   ],
+   "sterk_upraveny": [
+    0.3,
+    0.4,
+    0.5
+   ],
+   "zatravnovaci_tvarnice": [
+    0.2,
+    0.3,
+    0.4
+   ],
+   "vegetacni_dlazba": [
+    0.25,
+    0.35,
+    0.45
+   ],
+   "zahrady_hriste": [
+    0.1,
+    0.15,
+    0.2
+   ],
+   "travnik": [
+    0.05,
+    0.1,
+    0.15
+   ],
+   "zdroj": [
+    "tab_c",
+    "izomat"
+   ],
+   "znacka": "overeno"
+  },
+  "vsak": {
+   "vyprazdneni_max_h": 72,
+   "nad_hladinou_pv_min_m": 1.0,
+   "odstup_budova_nehydroizolovana_m": 5,
+   "odstup_budova_hydroizolovana_m": 2,
+   "kf_pruleh_min_m_s": 5e-06,
+   "kf_nadrz_min_m_s": 1e-05,
+   "zkouska_30min_cm": {
+    "nevhodne_pod": 2,
+    "stredni": [
+     4,
+     8
+    ],
+    "dobre_nad": 8
+   },
+   "zdroj": [
+    "csn759010",
+    "praha2009_dv"
+   ],
+   "znacka": "overeno",
+   "pozn": "prahy kf podle Stránský (ČVUT), ne přímo text normy"
+  },
+  "usle": {
+   "Gp_t_ha_rok": {
+    "od_2022-07-01": {
+     "melke": 3,
+     "ostatni": 12
+    },
+    "od_2026-07-01": {
+     "melke": 2,
+     "ostatni": 9
+    },
+    "od_2030-07-01": {
+     "melke": 1,
+     "ostatni": 5
+    }
+   },
+   "C": {
+    "kukurice_zrno_orba": [
+     0.7,
+     0.9,
+     0.7,
+     0.35,
+     0.7,
+     0.4
+    ],
+    "obilniny_olejniny_po_obilninach": [
+     0.65,
+     0.7,
+     0.45,
+     0.08,
+     0.25,
+     0.04
+    ],
+    "cukrovka_brambory": [
+     0.65,
+     0.8,
+     0.65,
+     0.3,
+     0.7
+    ],
+    "travni_porost": 0.01,
+    "vicelete_picniny": 0.015
+   },
+   "P_vrstevnice_podle_sklonu_stupne": {
+    "0-4": 0.6,
+    "4-6": 0.7,
+    "6-8": 0.8,
+    "8-10": 0.9,
+    ">10": 1.0
+   },
+   "P_pasove_stridani_sklon_pct": {
+    "okopaniny+picniny": {
+     "2-7": 0.3,
+     "7-12": 0.35,
+     "12-18": 0.4,
+     "18-24": 0.45
+    },
+    "okopaniny+ozimy": {
+     "2-7": 0.5,
+     "7-12": 0.6,
+     "12-18": 0.75,
+     "18-24": 0.9
+    },
+    "max_sirka_pasu_m": {
+     "2-7": 40,
+     "7-12": 30,
+     "12-18": 20,
+     "18-24": 20
+    }
+   },
+   "zdroj": [
+    "kalkulacka_manual",
+    "janecek2012"
+   ],
+   "znacka": "overeno",
+   "pozn": "R faktor převzít z kalkulačky pro Koryčany"
+  },
+  "regulovany_odtok_l_s_ha": {
+   "hodnota": 3,
+   "zdroj": [
+    "brno2024",
+    "tsk2025"
+   ],
+   "pozn": "praxe Brno/Praha, pro Koryčany nezávazné"
+  }
+ },
+ "zdroje": {
+  "csn759010": {
+   "id": "csn759010",
+   "nazev": "ČSN 75 9010 Vsakovací zařízení srážkových vod (2012) - výtah přes tzb-info/ASIO/MZe/ČVUT",
+   "url": "https://www.tzb-info.cz/normy/csn-75-9010-2012-02",
+   "rok": 2012,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": "text normy neotevřen; hodnoty z prezentací ASIO, MZe (Novotná), ČVUT (Stránský)"
+  },
+  "tnv759011": {
+   "id": "tnv759011",
+   "nazev": "TNV 75 9011 Hospodaření se srážkovými vodami (MZe, 2013)",
+   "url": "https://mze.gov.cz/public/portal/-q363041---QOCSTmOG/tnv-75-9011-hospodareni-se-srazkovymi",
+   "rok": 2013,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "tab_c": {
+   "id": "tab_c",
+   "nazev": "Tabulka součinitelů odtoku (tzb-info, reprodukce ČSN)",
+   "url": "https://www.tzb-info.cz/docu/tabulky/0000/000088_help.html",
+   "rok": null,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": "zdroj normy na stránce neuveden"
+  },
+  "izomat": {
+   "id": "izomat",
+   "nazev": "Izomat, technický list vegetační a zatravňovací dlažby (součinitel odtoku)",
+   "url": "https://www.izomat.cz/out/media/114-tl_dlazby_vegetacni_a_zatravnovaci-1.pdf",
+   "rok": null,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": "výrobce, ne norma"
+  },
+  "nzu2026": {
+   "id": "nzu2026",
+   "nazev": "SFŽP, Závazné pokyny NZÚ Rodinné domy, platné od 28. 5. 2026",
+   "url": "https://sfzp.gov.cz/files/documents/storage/2026/05/29/1780055187_2026-05-27_NZ%C3%9A-RD26+.pdf",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "szuz2019": {
+   "id": "szuz2019",
+   "nazev": "SZÚZ, Vegetační souvrství zelených střech - standardy 2019",
+   "url": "https://novazelenausporam.cz/files/documents/storage/2020/04/02/1585808609_Vegetacni_souvrstvi_zelenych_strech_Standardy_%202019_web-1.pdf",
+   "rok": 2019,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "zilina2024": {
+   "id": "zilina2024",
+   "nazev": "estav.cz 2. 7. 2024: měření zelené střechy, Žilinská univerzita",
+   "url": "https://www.estav.cz/cz/12505.strecha-s-vegetaci-jak-rostliny-chrani-dum-pred-horkem-nebo-kolik-zadrzi-vody-vedci-to-zmerili",
+   "rok": 2024,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "ujep2023": {
+   "id": "ujep2023",
+   "nazev": "UJEP IEEP, Zpráva pro klíčové aktéry č. 4: zelené střechy (leden 2023)",
+   "url": "https://www.fse.ujep.cz/wp-content/uploads/2024/01/Zprava_pro_klicove_aktery_c_4_zelene_strechy.pdf",
+   "rok": 2023,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "hornbach_nadrz": {
+   "id": "hornbach_nadrz",
+   "nazev": "Hornbach 18. 10. 2026: podzemní nádrž 4rain Flat 5000 l vč. šachty",
+   "url": "https://www.hornbach.cz/p/nadrz-na-destovou-vodu-4rain-flat-295126-podzemni-5000-l-vc-sachtove-kopule/10356772/",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "hornbach_ibc": {
+   "id": "hornbach_ibc",
+   "nazev": "Hornbach 18. 10. 2026: IBC kontejner 1000 l nový",
+   "url": "https://www.hornbach.cz/p/ibc-kontejner-tba-un-1000-l-paleta-novy/10235182/",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "mendelu2022_dz": {
+   "id": "mendelu2022_dz",
+   "nazev": "MENDELU ZF, přednáška Dešťové zahrady (2022)",
+   "url": "https://ubz.zf.mendelu.cz/wcd/w-zf-ubz/prednasky/seubz_2022_2_destovezahrady_prez.pdf",
+   "rok": 2022,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "praha2009_dv": {
+   "id": "praha2009_dv",
+   "nazev": "Praha / Ústav pro ekopolitiku + ČVUT: Jak hospodařit s dešťovou vodou na soukromém pozemku (2009)",
+   "url": "https://www.praha14.cz/app/uploads/sites/4/2021/06/jak_hospodarit_s_destovou_vodou-1.pdf",
+   "rok": 2009,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "sppk_b02_001": {
+   "id": "sppk_b02_001",
+   "nazev": "SPPK B02 001:2014 Vytváření a obnova tůní (AOPK, ČVUT)",
+   "url": "https://www.mas-rakovnicko.cz/evt_file.php?file=3152",
+   "rok": 2014,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "vz_55": {
+   "id": "vz_55",
+   "nazev": "Vodní zákon 254/2001 Sb. § 55 (zrcadlo pracepropravniky.cz, bez data znění)",
+   "url": "https://www.pracepropravniky.cz/zakony/vodni-zakon/paragraf-55/",
+   "rok": null,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": "ověřit v e-Sbírce"
+  },
+  "vz_15b": {
+   "id": "vz_15b",
+   "nazev": "Vodní zákon § 15b (zák. 312/2019 Sb.)",
+   "url": "https://www.sagit.cz/info/sb19312",
+   "rok": 2019,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "mmr2025_sz": {
+   "id": "mmr2025_sz",
+   "nazev": "MMR, odpověď 3. 9. 2025 ke stavebnímu zákonu 283/2021 příl. 2 (terénní úpravy k zadržování vody)",
+   "url": "https://mmr.gov.cz/getmedia/484d345e-55e0-402b-bab1-7a6f2e5c2f0d/MMR-60951-25-31-ze-dne-3-9-2025.pdf.aspx?ext=.pdf",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "sppk_a02_001": {
+   "id": "sppk_a02_001",
+   "nazev": "SPPK A02 001:2013 Výsadba stromů (AOPK)",
+   "url": "https://www.mashlinecko.cz/_uploads/content/431/12-6-standard-aopk.pdf",
+   "rok": 2013,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": "existuje aktualizované vydání, rok neověřen"
+  },
+  "sppk_a02_003": {
+   "id": "sppk_a02_003",
+   "nazev": "SPPK A02 003:2013 Výsadba a řez keřů a lián (AOPK)",
+   "url": "https://www.mashlinecko.cz/_uploads/content/431/12-6-standard-aopk.pdf",
+   "rok": 2013,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "sppk_c02_003": {
+   "id": "sppk_c02_003",
+   "nazev": "SPPK C02 003:2014 Funkční výsadby ovocných dřevin v zemědělské krajině (AOPK, MENDELU)",
+   "url": "https://www.mashlinecko.cz/_uploads/content/431/12-6-standard-aopk.pdf",
+   "rok": 2014,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "sppk_d02_004": {
+   "id": "sppk_d02_004",
+   "nazev": "SPPK D02 004 Sečení (AOPK) - kód doložen přes SPPK C02 007 a Chytrá a kol. 2024",
+   "url": "https://www.mashlinecko.cz/_uploads/content/438/7.pdf",
+   "rok": null,
+   "znacka": "citace",
+   "overeno_dne": null,
+   "pozn": null
+  },
+  "sppk_d02_003": {
+   "id": "sppk_d02_003",
+   "nazev": "SPPK D02 003 Pastva (AOPK, FŽP ČZU) - existence potvrzena, rok a PDF nedohledány",
+   "url": "https://aopk.gov.cz/web/cz/standardy-pece-o-prirodu-a-krajinu",
+   "rok": null,
+   "znacka": "citace",
+   "overeno_dne": null,
+   "pozn": null
+  },
+  "epa2008_trees": {
+   "id": "epa2008_trees",
+   "nazev": "US EPA, Reducing Urban Heat Islands: Compendium, kap. 2 Trees and Vegetation (2008)",
+   "url": "https://www.epa.gov/sites/default/files/2017-05/documents/reducing_urban_heat_islands_ch_2.pdf",
+   "rok": 2008,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "epa_trees_benefits": {
+   "id": "epa_trees_benefits",
+   "nazev": "US EPA, Benefits of Trees and Vegetation (cituje Knight et al. 2021, 308 studií)",
+   "url": "https://epa.gov/heatislands/benefits-trees-and-vegetation",
+   "rok": null,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "epa2008_coolroof": {
+   "id": "epa2008_coolroof",
+   "nazev": "US EPA, Cool Roofs Compendium (2008)",
+   "url": "https://www.epa.gov/sites/default/files/2014-06/documents/coolroofscompendium.pdf",
+   "rok": 2008,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "epa2025_coolroof": {
+   "id": "epa2025_coolroof",
+   "nazev": "US EPA, Using Cool Roofs (snapshot 2025; cituje Synnefa 2007)",
+   "url": "https://19january2025snapshot.epa.gov/heatislands/using-cool-roofs-reduce-heat-islands/index.html",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "mulc2024": {
+   "id": "mulc2024",
+   "nazev": "Přehledový článek Irrigation Science 2024, DOI 10.1007/s00271-024-00924-8 (mulč a výpar z půdy)",
+   "url": "https://link.springer.com/article/10.1007/s00271-024-00924-8",
+   "rok": 2024,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": "název a autoři nedohledáni"
+  },
+  "unl_windbreak": {
+   "id": "unl_windbreak",
+   "nazev": "Univ. Nebraska-Lincoln EC1763 How Windbreaks Work (2002-2006)",
+   "url": "https://extensionpubs.unl.edu/publication/ec1763/2006/pdf/view/ec1763-2006.pdf",
+   "rok": 2006,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "dufkova2007": {
+   "id": "dufkova2007",
+   "nazev": "Dufková J. 2007, Acta Univ. Agric. Silvic. Mendel. Brun. 55(5), větrolamy jižní Morava",
+   "url": "https://acta.mendelu.cz/pdfs/acu/2007/05/09.pdf",
+   "rok": 2007,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": "jedno měření, neobecňovat"
+  },
+  "vumop_vitr2016": {
+   "id": "vumop_vitr2016",
+   "nazev": "VÚMOP, Doležal, Podhrázská a kol.: Řízení rizika větrné eroze, certifikovaná metodika (2016/2017)",
+   "url": "https://agronavigator.cz/sites/default/files/2025-04/Nmet%252B-%252BMetodika%252B%25C5%2599%25C3%25ADzen%25C3%25AD%252Bv%25C4%259Btrn%25C3%25A9%252Beroze.pdf",
+   "rok": 2017,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "mze2022_vitr": {
+   "id": "mze2022_vitr",
+   "nazev": "MZe, prezentace Podhrázská a kol., opatření proti větrné erozi (17. 5. 2022)",
+   "url": "https://mze.gov.cz/public/portal/mze/-a74770---r9wNxZdR/prezentace-podhrazska-jana-opatreni-proti-vetrne-erozi",
+   "rok": 2022,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "vukrom2021": {
+   "id": "vukrom2021",
+   "nazev": "VÚKROM, Obilnářské listy 2/2021: srážkové normály stanice Kroměříž",
+   "url": "https://www.vukrom.cz/userfiles/files/obilnarske_listy/2021/2021_2/39_43.pdf",
+   "rok": 2021,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "kalkulacka_manual": {
+   "id": "kalkulacka_manual",
+   "nazev": "VÚMOP, Protierozní kalkulačka - manuál (Novotný a kol. 2017); kalkulacka.vumop.cz",
+   "url": "https://kalkulacka.vumop.cz/docs/manual.pdf",
+   "rok": 2017,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "janecek2012": {
+   "id": "janecek2012",
+   "nazev": "Janeček a kol. 2012, Ochrana zemědělské půdy před erozí (ČZU)",
+   "url": "https://storm.fsv.cvut.cz/data/files/p%C5%99edm%C4%9Bty/YPEO/Metodika_PEO_novelizace%20upravene%2025_1_2012.pdf",
+   "rok": 2012,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "dumbrovsky2021": {
+   "id": "dumbrovsky2021",
+   "nazev": "Dumbrovský, Šarapatka a kol. 2021, Vrstevnicové obdělávání a pásové střídání plodin (VÚMOP)",
+   "url": "https://protieroznipasy.vumop.cz/data/Vrstevnicové%20obdělávání%20a%20pásové%20střídaní%20plodin.pdf",
+   "rok": 2021,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "vumop_pasy2022": {
+   "id": "vumop_pasy2022",
+   "nazev": "VÚMOP 2022, Návrh protierozních travních pásů (R-Software), příručka",
+   "url": "https://protieroznipasy.vumop.cz/data/protierozni_pasy_metodika.pdf",
+   "rok": 2022,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "tacr2025_pasy": {
+   "id": "tacr2025_pasy",
+   "nazev": "MŽP/TAČR PTK Ochranné pásy, 17. 12. 2025 (pilotní měření Centrum Voda)",
+   "url": "https://tacr.gov.cz/wp-content/uploads/documents/2026/01/14/1768398787_TACR%20Ochranne%20pasy%20-%20PTK%2017122025%20-%20V%C3%A1clav%20B%C3%ADl%C3%BD.pdf",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "vopravil2025": {
+   "id": "vopravil2025",
+   "nazev": "Vopravil (VÚMOP), prezentace MZe 22. 10. 2025: polní simulátor deště, půdoochranné technologie",
+   "url": "https://mze.gov.cz/public/portal/mze/-a84150---QEFagIDj/prezentace-z-22.-10.-2025-vliv-pudy-a-jejiho-stavu-na-vodni-rezim-krajiny",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "hladik_pot": {
+   "id": "hladik_pot",
+   "nazev": "Hladík (VÚMOP), prezentace Půdoochranné technologie (bez data)",
+   "url": "https://aa.ecn.cz/img_upload/410697af7dfcb092dfd4e3937dd69e3f/pudoochranne-technologie_zandov_jiri-hladik_prezentace.pdf",
+   "rok": null,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": "tvrzení o organické hmotě bez zdroje"
+  },
+  "dzes5_2026": {
+   "id": "dzes5_2026",
+   "nazev": "MZe, Metodická příručka DZES 5 pro jarní osevy 2026 (verze září 2025)",
+   "url": "https://www.mze.gov.cz/public/portal/mze/-a81614---9i2f6ULe/metodicka-prirucka-k-plneni-standardu-dzes-5-dobry-zemedelsky-a-environmentalni-stav-pudy-pro-jarni-osevy-roku-2026-a-nasledujici-obdobi",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "agroles2026": {
+   "id": "agroles2026",
+   "nazev": "MZe, Metodika agrolesnictví 2026 (SZP 2023-2027)",
+   "url": "https://mze.gov.cz/public/portal/mze/-a91928---kRzRGYfn/metodika-agrolesnictvi-2026",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "czu2026_als": {
+   "id": "czu2026_als",
+   "nazev": "Weger, Lojka a kol. (VÚK, ČZU): Agrolesnictví jako součást bioekonomiky, Senát 20. 5. 2026",
+   "url": "https://bioeconomy.czu.cz/dl/156269?lang=cs",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "zajicek2021": {
+   "id": "zajicek2021",
+   "nazev": "Zajíček a kol. (VÚMOP) 2021, metodika revitalizace HOZ a drenáží (TAČR TH02030397)",
+   "url": "https://agronavigator.cz/sites/default/files/2025-04/HOZ_metodika_publ.pdf",
+   "rok": 2021,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "spu_meliorace": {
+   "id": "spu_meliorace",
+   "nazev": "Portál gov.cz: Žádost o informaci o výskytu melioračních staveb (SPÚ)",
+   "url": "https://portal.gov.cz/sluzby-vs/S43666",
+   "rok": null,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "ipr_manual": {
+   "id": "ipr_manual",
+   "nazev": "IPR Praha, Manuál tvorby veřejných prostranství, kap. D.2.1 Stromy",
+   "url": "https://iprpraha.cz/uploads/assets/manual_tvorby_verejnych_prostranstvi/pdf/D.2.pdf",
+   "rok": null,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "brno2024": {
+   "id": "brno2024",
+   "nazev": "Brno, Nařízení č. 14/2024 Brněnské stavební předpisy",
+   "url": "https://www.cka.cz/++api++/sluzby/legislativa/pravni-predpisy/provadeci-vyhlasky/narizeni-c-142024-o-pozadavcich-na-vystavbu-ve-statutarnim-meste-brne-brnenske-stavebni-predpisy.pdf/@@download/file",
+   "rok": 2024,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "tsk2025": {
+   "id": "tsk2025",
+   "nazev": "TSK Praha, TP odvodnění komunikací 06/2025",
+   "url": "https://cdn.tsk-praha.cz/portal/2026/01/TP_Odvodneni-komunikaci-TSK-06.2025.pdf",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "uur2025_zelen": {
+   "id": "uur2025_zelen",
+   "nazev": "ÚÚR/RTS, Průměrné ceny dopravní a technické infrastruktury obcí 2025, kap. 9 zeleň",
+   "url": "https://www.uur.cz/media/4jebc4v3/09-zelen-ceny-ti-2025.pdf",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "uur2025_komunikace": {
+   "id": "uur2025_komunikace",
+   "nazev": "ÚÚR/RTS 2025, kap. 8 komunikace",
+   "url": "https://www.uur.cz/media/y1ulzdvg/08-komunikace-ceny-ti-2025.pdf",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "uur2025_kanalizace": {
+   "id": "uur2025_kanalizace",
+   "nazev": "ÚÚR/RTS 2025, kap. 3 kanalizace",
+   "url": "https://www.uur.cz/media/xa3pha4j/03-kanalizace-ceny-ti-2025.pdf",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": "při druhé kontrole 18. 10. znovu neotevřeno; ověřit ve fázi 6"
+  },
+  "noo2024": {
+   "id": "noo2024",
+   "nazev": "MŽP, Náklady obvyklých opatření (NOO) verze 2024, platné od 1. 11. 2023, bez DPH",
+   "url": "https://mzp.gov.cz/system/files/2025-04/O610-NPO_POPFK_vyzva_c_5_2024_priloha_c_7_NOO-20240614.pdf",
+   "rok": 2024,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": "novější NOO 2025_2 a 2026 existují, z Claude nevytažitelné"
+  },
+  "aopk_grenzteich": {
+   "id": "aopk_grenzteich",
+   "nazev": "AOPK, realizace Tůně Grenzteich (2024, NPO POPFK)",
+   "url": "https://dotace.aopk.gov.cz/-/tune-grenzteich",
+   "rok": 2024,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "spu_malavrbka": {
+   "id": "spu_malavrbka",
+   "nazev": "SPÚ Hodonín, stavba mokřadu Malá Vrbka (kolaudace 20. 11. 2024)",
+   "url": "https://spu.gov.cz/frontend/webroot/uploads/files/2025/02/170a24801._stavba_mokradu_1_v_k24801.u24801._mala_vrbka24801.pdf",
+   "rok": 2024,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "aopk_piskova": {
+   "id": "aopk_piskova",
+   "nazev": "AOPK, realizace Větrolam Písková Lhota (podzim 2025)",
+   "url": "https://dotace.aopk.gov.cz/-/vetrolam-piskova-lhota",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "chytra2024": {
+   "id": "chytra2024",
+   "nazev": "Chytrá a kol. 2024, Příroda 44: 87-104 (seč suchých trávníků, jižní Morava)",
+   "url": "https://www.priroda.nature.cz/index.php/priroda/article/download/66/94/289",
+   "rok": 2024,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "mhmp2019_sec": {
+   "id": "mhmp2019_sec",
+   "nazev": "MHMP, Management travnatých ploch v období sucha a horka (2019)",
+   "url": "https://eud.praha.eu/pub/deska/6000004/4/6000003%23MHMPAWO0A020%23MHMP1011LEE0%230/6000003%23MHMPAWO0A020%23MHMP1011HPIR/1_Metodick%C3%A9%20doporu%C4%8Den%C3%AD%20k%20se%C4%8Den%C3%AD%20tr%C3%A1vn%C3%ADk%C5%AF.pdf",
+   "rok": 2019,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "oz_pacht": {
+   "id": "oz_pacht",
+   "nazev": "Občanský zákoník 89/2012 Sb., § 2334-2348 (pacht, zemědělský pacht)",
+   "url": "https://businesscenter.podnikatel.cz/pravo/zakony/obcansky-zakonik/f4586359/",
+   "rok": null,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "zak139_2002": {
+   "id": "zak139_2002",
+   "nazev": "Zákon 139/2002 Sb. o pozemkových úpravách, § 6 odst. 3",
+   "url": "https://www.dauc.cz/predpisy/247/139-2002-sb",
+   "rok": null,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "spu_kopu_form": {
+   "id": "spu_kopu_form",
+   "nazev": "SPÚ, Žádost o pozemkové úpravy - formulář",
+   "url": "https://spu.gov.cz/pozemkove-upravy/zadost-o-pozemkove-upravy-formular",
+   "rok": 2023,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "fucik2015_pastva": {
+   "id": "fucik2015_pastva",
+   "nazev": "Fučík a kol. 2015, Metodický postup pro hodnocení vlivu pastvy skotu (VÚMOP, ČZU, JČU, CzechGlobe)",
+   "url": "https://agronavigator.cz/sites/default/files/2025-04/metodika-PASTVA_VUMOP_komplet_final%252Bend.pdf",
+   "rok": 2015,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": "čísla v metodice jsou zahraniční citace (📄)"
+  },
+  "mze2020_bystriny": {
+   "id": "mze2020_bystriny",
+   "nazev": "MZe, Technická doporučení pro hrazení bystřin a strží (2020)",
+   "url": "https://mze.gov.cz/public/portal/mze/-q321647---Qfn_joPV/td-pro-hrazeni-bystrin-a-strzi-mze-2020",
+   "rok": 2020,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "vyhl239_2017": {
+   "id": "vyhl239_2017",
+   "nazev": "Vyhláška č. 239/2017 Sb. (lesní cesty, hrazení bystřin)",
+   "url": "https://www.tzb-info.cz/docu/predpisy/download/V239-2017.pdf",
+   "rok": 2017,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "lcr_strani": {
+   "id": "lcr_strani",
+   "nazev": "LČR, zadávací list Černý potok ve Strání PŠ 2024 (smlouvy.gov.cz)",
+   "url": "https://smlouvy.gov.cz/smlouva/soubor/43163565/SML-00211-2025-957-P.pdf",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "avcr2023_liz": {
+   "id": "avcr2023_liz",
+   "nazev": "AV ČR, Ústav pro hydrodynamiku, TZ 23. 11. 2023: smrk vs. buk, povodí Liz (DOI 10.1016/j.jhydrol.2019.124285)",
+   "url": "https://www.avcr.cz/export/sites/avcr.cz/.content/galerie-souboru/tiskove-zpravy/2023/TZ-UH-23.11.23-BUKY-NAKLADAJI-S-PUDNI-VODOU-MENE-HOSPODARNE-NEZ-SMRKY-.pdf",
+   "rok": 2023,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "hemr2023": {
+   "id": "hemr2023",
+   "nazev": "Hemr, Vichta, Kupec et al. 2023, Eur. J. For. Res. 142 (intercepce buk, dub)",
+   "url": "https://link.springer.com/article/10.1007/s10342-023-01592-7",
+   "rok": 2023,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "czu2011_plo36": {
+   "id": "czu2011_plo36",
+   "nazev": "ČZU FLD 2011, PLO 36 Středomoravské Karpaty - zastoupení LVS",
+   "url": "https://rozcestnik.fld.czu.cz/vyzkum/maps/kolm/PLO36.pdf",
+   "rok": 2011,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "wolstenholme2024": {
+   "id": "wolstenholme2024",
+   "nazev": "Wolstenholme et al., EGUsphere preprint 2024-2132 (leaky dams, CAESAR-Lisflood)",
+   "url": "https://egusphere.copernicus.org/preprints/2024/egusphere-2024-2132/egusphere-2024-2132-manuscript-version3.pdf",
+   "rok": 2024,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "aopk2020_toky": {
+   "id": "aopk2020_toky",
+   "nazev": "Just a kol., Ochrana a zlepšování morfologického stavu vodních toků, AOPK 2020",
+   "url": "https://vodnitoky.ochranaprirody.cz/download/183/aopk_metodika_ochrana_vodnich_toku_kap_1_az_7.pdf",
+   "rok": 2020,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "vz_17_46_47": {
+   "id": "vz_17_46_47",
+   "nazev": "Vodní zákon § 17, § 46, § 47 (zrcadlo pracepropravniky.cz, bez data znění)",
+   "url": "https://www.pracepropravniky.cz/zakony/vodni-zakon/",
+   "rok": null,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": "ověřit v e-Sbírce"
+  },
+  "studanky2025": {
+   "id": "studanky2025",
+   "nazev": "Mladí ochránci přírody, Od pramene ke studánce (2025), ISBN 978-80-87221-34-1",
+   "url": "https://wp.estudanky.eu/down/let/nrps-od-pramene-ke-studance.pdf",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "kalny2017": {
+   "id": "kalny2017",
+   "nazev": "Kalny et al. 2017, KMAE 418:5 (stínění toku a teplota vody)",
+   "url": "https://www.kmae-journal.org/articles/kmae/abs/2017/01/kmae160097/kmae160097.html",
+   "rok": 2017,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "trimmel2018": {
+   "id": "trimmel2018",
+   "nazev": "Trimmel et al. 2018, HESS 22:437-461 (vegetace a teplota vody, Pinka)",
+   "url": "https://hess.copernicus.org/articles/22/437/2018/hess-22-437-2018.pdf",
+   "rok": 2018,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "tnv752415": {
+   "id": "tnv752415",
+   "nazev": "TNV 75 2415 Suché nádrže (MZe, leden 2013)",
+   "url": "https://mze.gov.cz/public/portal/mze/-q363047---5Jh01CKw/tnv-75-2415-suche-nadrze",
+   "rok": 2013,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "tpeo2014": {
+   "id": "tpeo2014",
+   "nazev": "Kadlec a kol. 2014, Navrhování technických protierozních opatření (VÚMOP, ČVUT)",
+   "url": "https://storm.fsv.cvut.cz/data/files/p%C5%99edm%C4%9Bty/YPEO/Metodika_TPEO.pdf",
+   "rok": 2014,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "vumop2020_siltfence": {
+   "id": "vumop2020_siltfence",
+   "nazev": "VÚMOP 2020 (Kincl a kol.), Metodika projektování krajinných opatření, část II: silt-fence",
+   "url": "https://www.mzp.gov.cz/system/files/2024-12/OAZK-Metodika_projektovani_a_realizace_krajinnych_opatreni_cast2-20240801.pdf",
+   "rok": 2020,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "zivavoda2018": {
+   "id": "zivavoda2018",
+   "nazev": "Živá voda z.s. (Malík), Zádrž vody v povodí Zdoňovsko, studie proveditelnosti 2018",
+   "url": "https://www.zememeric.cz/wp-content/uploads/2020/05/VODA-Zdonov.pdf",
+   "rok": 2018,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-18",
+   "pozn": "autory označena za předběžnou"
+  },
+  "opzp105": {
+   "id": "opzp105",
+   "nazev": "OPŽP, 105. výzva (opatření 1.3.4, srážková voda v intravilánu), příjem 17. 6. - 17. 12. 2026",
+   "url": "https://opzp.cz/files/documents/storage/2026/06/02/1780378967_Text%20výzvy%20-%20105.%20výzva.pdf",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "aopk_zmv17": {
+   "id": "aopk_zmv17",
+   "nazev": "AOPK, OPŽP ZMV 17. výzva SC 1.3 (projekty do 200 000 EUR), znovuotevření 20. 10. - 3. 11. 2026",
+   "url": "https://dotace.aopk.gov.cz/-/aopk-opzp-zmv-17-vyzva",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "opzp104": {
+   "id": "opzp104",
+   "nazev": "OPŽP, 104. výzva (1.3.1), uzavřena 25. 9. 2026",
+   "url": "https://opzp.cz/files/documents/storage/2026/06/30/1782797467_104.%20výzva%20SC%201.3%20Opatření%201.3.1_změna%20č.%201_v2.pdf",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "ppkb2026": {
+   "id": "ppkb2026",
+   "nazev": "AOPK, PPK B výzvy 1/2026 a 2/2026 (uzavřeny)",
+   "url": "https://dotace.aopk.gov.cz/-/vyzva-ppk-b-2-pro-rok-2026",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "popfk": {
+   "id": "popfk",
+   "nazev": "AOPK, NPO POPFK - program 2022-2025, pro 2026 bez výzvy",
+   "url": "https://dotace.aopk.gov.cz/npo-popfk",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  },
+  "pdp_zk2021": {
+   "id": "pdp_zk2021",
+   "nazev": "Plány dílčích povodí 2021-2027, základní informace pro Zlínský kraj (12/2021)",
+   "url": "https://zlinskykraj.cz/file/6526a2a5cc8b4a0f8404e1a4",
+   "rok": 2021,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-18",
+   "pozn": null
+  }
+ },
+ "programy": {
+  "vlastni": {
+   "nazev": "Vlastní prostředky",
+   "zadatel": [
+    "J",
+    "V",
+    "O",
+    "S",
+    "SP"
+   ],
+   "stav": "vzdy",
+   "pozn": null,
+   "zdroj": null
+  },
+  "nzu_rd_2026": {
+   "nazev": "NZÚ Rodinné domy 2026 (kompenzace úroků úvěru, ne dotace)",
+   "zadatel": [
+    "J"
+   ],
+   "stav": "otevreno",
+   "od": "2026-06-25",
+   "do": null,
+   "pozn": "D.2 dešťová voda pro WC (+zálivka) max. 100 000 Kč úvěr, nádrž min. 2 m³; D.1 zelená střecha 2 000 Kč/m², max. 150 000 Kč; jen v kombinaci se zateplením (A) nebo zdrojem (C). Nádrž jen na zálivku a zasakování nejsou podporovány.",
+   "zdroj": "nzu2026"
+  },
+  "opzp_1_3_4": {
+   "nazev": "OPŽP 105. výzva, opatření 1.3.4 - srážková voda v intravilánu",
+   "zadatel": [
+    "O",
+    "S"
+   ],
+   "stav": "otevreno",
+   "od": "2026-06-17",
+   "do": "2026-12-17",
+   "pozn": "70 % (85 % propojené systémy MZI, 30 % vybrané); obce, školy, spolky; 200 mil. Kč",
+   "zdroj": "opzp105"
+  },
+  "aopk_zmv": {
+   "nazev": "AOPK OPŽP ZMV 17. výzva - malé projekty do 200 000 EUR",
+   "zadatel": [
+    "O",
+    "S",
+    "V",
+    "J"
+   ],
+   "stav": "otevreno",
+   "od": "2026-10-20",
+   "do": "2026-11-03",
+   "pozn": "tůně, MVN, revitalizace (1.3.1.1), vegetační prvky a protierozní opatření (1.3.1.2), sídelní zeleň (1.3.1.4, ne FO), eliminace odvodnění (1.3.1.5); jednorázové částky dle NOO; min. 250 000 Kč bez DPH; max. 100 %",
+   "zdroj": "aopk_zmv17"
+  },
+  "opzp_1_3_1": {
+   "nazev": "OPŽP 1.3.1 / 1.3.11 - velké projekty (tůně, MVN, vegetační prvky, odvodnění)",
+   "zadatel": [
+    "O",
+    "S",
+    "V",
+    "SP"
+   ],
+   "stav": "uzavreno",
+   "od": null,
+   "do": "2026-09-25",
+   "pozn": "tůně až 100 %, MVN 60-85 %, vegetační prvky 80 % (ÚSES 100 %), eliminace odvodnění 100 %; čekat další kolo",
+   "zdroj": "opzp104"
+  },
+  "ppk_b": {
+   "nazev": "Program péče o krajinu B (AOPK)",
+   "zadatel": [
+    "J",
+    "V",
+    "O",
+    "S"
+   ],
+   "stav": "uzavreno",
+   "od": null,
+   "do": "2026-06-18",
+   "pozn": "max. 250 000 Kč/projekt, až 100 %; B.1 péče (seč, pastva, obnova tůní), B.3 nové prvky (výsadby, meze, tůně) jen mimo zastavěné území; 🤔 další kolo 12/2026 nebo 5/2027",
+   "zdroj": "ppkb2026"
+  },
+  "popfk": {
+   "nazev": "NPO POPFK (ukončen)",
+   "zadatel": [],
+   "stav": "ukonceno",
+   "pozn": "program 2022-2025, pro 2026 žádná výzva",
+   "zdroj": "popfk"
+  },
+  "szp_agroles": {
+   "nazev": "SZP 2023-2027 - agrolesnické systémy",
+   "zadatel": [
+    "zemedelec"
+   ],
+   "stav": "otevreno",
+   "od": null,
+   "do": "2026-11-30",
+   "pozn": "4 353 EUR/ha zavedení, 754 EUR/ha/rok 5 let; 100 ks/ha, pásy 1-10 m; žadatel je uživatel DPB, ne vlastník",
+   "zdroj": "agroles2026"
+  },
+  "kopu": {
+   "nazev": "Komplexní pozemkové úpravy (SPÚ) - společná zařízení",
+   "zadatel": [
+    "V",
+    "O"
+   ],
+   "stav": "nastroj",
+   "pozn": "vlastníci nadpoloviční výměry ZP v k.ú. mohou vyvolat (§ 6 odst. 3 zák. 139/2002); financuje stát",
+   "zdroj": "zak139_2002"
+  },
+  "participativni": {
+   "nazev": "Participativní rozpočet obce",
+   "zadatel": [
+    "J",
+    "S"
+   ],
+   "stav": "zavisi_na_obci",
+   "pozn": "zjistit, zda Koryčany mají",
+   "zdroj": null
+  }
+ },
+ "nastroje": [
+  {
+   "id": "N01",
+   "nazev": "Pachtovní smlouva s půdoochrannými podmínkami",
+   "rozhoduje": [
+    "V"
+   ],
+   "umoznuje": [
+    "P03",
+    "P04",
+    "P12",
+    "P01",
+    "P09"
+   ],
+   "parametry": "OZ § 2345 zemědělský pacht; § 2336 pachtýř pečuje jako řádný hospodář; § 2334 změna hospodářského určení jen se souhlasem propachtovatele; pachtovní rok 1. 10. - 30. 9. Půdoochranné podmínky ve smlouvě: OZ dispozitivní, smluvně možné 🤔 (právní výklad neověřen).",
+   "zdroj": [
+    "oz_pacht"
+   ]
+  },
+  {
+   "id": "N02",
+   "nazev": "Vyjmutí pozemku nebo jeho části z pachtu",
+   "rozhoduje": [
+    "V"
+   ],
+   "umoznuje": [
+    "P01",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10",
+    "P11"
+   ],
+   "parametry": "§ 2347: pacht na dobu neurčitou lze vypovědět v 12měsíční výpovědní době; u doby určité podle smlouvy.",
+   "zdroj": [
+    "oz_pacht"
+   ]
+  },
+  {
+   "id": "N03",
+   "nazev": "Směna nebo koupě pozemku v klíčové poloze (údolnice, niva)",
+   "rozhoduje": [
+    "V",
+    "O"
+   ],
+   "umoznuje": [
+    "T01",
+    "T02",
+    "P05"
+   ],
+   "parametry": null,
+   "zdroj": []
+  },
+  {
+   "id": "N04",
+   "nazev": "Žádost o komplexní pozemkové úpravy",
+   "rozhoduje": [
+    "V",
+    "O"
+   ],
+   "umoznuje": [
+    "P01",
+    "P02",
+    "P08",
+    "C01"
+   ],
+   "parametry": "Zák. 139/2002 § 6 odst. 3: pozemkový úřad zahájí řízení vždy, pokud se vysloví vlastníci nadpoloviční výměry zemědělské půdy v k.ú.; formulář SPÚ. KoPÚ v Koryčanech neproběhly.",
+   "zdroj": [
+    "zak139_2002",
+    "spu_kopu_form"
+   ]
+  },
+  {
+   "id": "N05",
+   "nazev": "Dotace a programy",
+   "rozhoduje": [
+    "J",
+    "V",
+    "O",
+    "S"
+   ],
+   "umoznuje": [
+    "*"
+   ],
+   "parametry": "viz číselník programy",
+   "zdroj": []
+  },
+  {
+   "id": "N06",
+   "nazev": "Dohoda se správcem toku (Povodí Moravy) nebo lesa (LČR)",
+   "rozhoduje": [
+    "O",
+    "SP"
+   ],
+   "umoznuje": [
+    "T03",
+    "T04",
+    "T06",
+    "T07",
+    "LES01",
+    "LES02",
+    "LES03"
+   ],
+   "parametry": "Vodní zákon § 17 (souhlas vodoprávního úřadu), § 46 (zákaz zásahů do koryta), § 47 (povinnosti správce) - ověřit znění v e-Sbírce.",
+   "zdroj": [
+    "vz_17_46_47"
+   ]
+  }
+ ],
+ "opatreni": [
+  {
+   "id": "Z01",
+   "nazev": "Dešťová zahrada (zasakovací záhon)",
+   "popis": "Mělká prohlubeň s výsadbou, do které je svedena voda ze střechy nebo dvora; voda se do 72 h vsákne.",
+   "misto": [
+    "Z",
+    "U"
+   ],
+   "rozhoduje": [
+    "J",
+    "O",
+    "S"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "I",
+     "R"
+    ],
+    "vedlejsi": [
+     "CH",
+     "B"
+    ]
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Objem zadržený = plocha zahrady × hloubka vzdutí (max 0,25-0,3 m)",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_m3 = A_zahrada_m2 * h_vzduti_m",
+     "zdroj": [
+      "mendelu2022_dz",
+      "praha2009_dv"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "I",
+     "typ": "vzorec",
+     "popis": "Plocha zahrady 10-20 % napojené zpevněné plochy podle propustnosti; při správném návrhu zasákne celý odtok ze střechy (rok: A_strechy × 0,57 m)",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "A_zahrada_m2 = A_zpevnena_m2 * (0.10..0.20); V_rok_m3 = A_strechy_m2 * 0.5715",
+     "zdroj": [
+      "praha2009_dv",
+      "mendelu2022_dz"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "CH",
+     "typ": "kvalitativne",
+     "popis": "Vlhké stanoviště, výsadba",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    },
+    {
+     "ucinek": "B",
+     "typ": "kvalitativne",
+     "popis": "Výsadba, vlhké stanoviště",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "hsp": [
+     "A",
+     "B",
+     "C"
+    ],
+    "sklon_max_pct": 5,
+    "odstup_stavba_min_m": 5,
+    "odstup_stavba_jil_m": [
+     6,
+     10
+    ],
+    "nad_hladinou_pv_min_m": 1,
+    "vyloucit": [
+     "niva s mělkou podzemní vodou"
+    ]
+   },
+   "vazby": {
+    "potrebuje": [
+     "S02"
+    ],
+    "synergie": [
+     "S01",
+     "Z05"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "do 300 m² mimo koryto; § 55 odst. 3 vodního zákona",
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [
+    "csn759010"
+   ],
+   "nedohledano": [
+    "cena 2025-2026"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "Z02",
+   "nazev": "Zahradní tůň bez fólie (hliněná, jílem těsněná)",
+   "popis": "Mělká tůň napájená srážkami a povrchovým odtokem, bez hráze a technických objektů.",
+   "misto": [
+    "Z"
+   ],
+   "rozhoduje": [
+    "J",
+    "S"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "R",
+     "CH",
+     "B"
+    ],
+    "vedlejsi": [
+     "I"
+    ]
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Objem = plocha × průměrná hloubka (0,5-1,0 m); tůň 2x1 m, 0,5 m = 1 m³",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_m3 = A_m2 * h_prum_m",
+     "zdroj": [
+      "sppk_b02_001"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "B",
+     "typ": "kvalitativne",
+     "popis": "Hlavní přínos malé tůně",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    },
+    {
+     "ucinek": "CH",
+     "typ": "kvalitativne",
+     "popis": "Výpar z hladiny chladí okolí; část zadržené vody se odpaří (bez čísla, zdroj nedohledán)",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "hsp": [
+     "C",
+     "D"
+    ],
+    "misto_typ": [
+     "zamokřené místo",
+     "úpatí svahu",
+     "niva"
+    ],
+    "sklon_max_pct": 3
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "Z01",
+     "Z03"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "bez hráze mimo koryto není vodní dílo (§ 55 odst. 3); do 300 m² a 1,5 m 💻 bez povolení - ověřit na vodoprávním úřadě ORP Kroměříž; nad 300 m² ohlášení (§ 15b)",
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [
+    "sppk_b02_001",
+    "vz_55",
+    "vz_15b",
+    "mmr2025_sz"
+   ],
+   "nedohledano": [
+    "výpar z malé hladiny (mm/den)",
+    "cena svépomocí"
+   ],
+   "pozn_poctivost": "SPPK B02 001: průměrná hloubka 0,8-1,0 m, max 1,5 m, mělčiny do 50 cm min. polovina plochy, břehy max 1:3.",
+   "vahy_skaly": null
+  },
+  {
+   "id": "Z03",
+   "nazev": "Zasakovací průleh / rýha po vrstevnici (svejl) v zahradě nebo sadu",
+   "popis": null,
+   "misto": [
+    "Z",
+    "L"
+   ],
+   "rozhoduje": [
+    "J"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "I",
+     "Q",
+     "ER"
+    ],
+    "vedlejsi": [
+     "R"
+    ]
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Objem = délka × průřez",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_m3 = L_m * S_m2",
+     "zdroj": [
+      "csn759010"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "Q",
+     "typ": "vzorec",
+     "popis": "Zachytí povrchový odtok z vlastní plochy nad průlehem: V = A_nad × srážka × C",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_odtok_m3 = A_nad_m2 * P_m * C",
+     "zdroj": [
+      "tab_c"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "I",
+     "typ": "kvalitativne",
+     "popis": "Vliv na vlhkost půdy nekvantifikován",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "hsp": [
+     "A",
+     "B",
+     "C"
+    ],
+    "sklon_min_pct": 3,
+    "sklon_max_pct": 15,
+    "odstup_stavba_min_m": 5
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "Z06",
+     "Z05"
+    ],
+    "konflikt": [
+     "nad budovou ve svahu bez odstupu"
+    ]
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [
+    "csn759010"
+   ],
+   "nedohledano": [
+    "kvantifikace účinku na vlhkost půdy",
+    "cena"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "Z04",
+   "nazev": "Náhrada zpevněných ploch propustnými (zatravňovací dlažba, štěrk, propustná dlažba)",
+   "popis": null,
+   "misto": [
+    "Z",
+    "U"
+   ],
+   "rozhoduje": [
+    "J",
+    "O"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "I",
+     "CH"
+    ],
+    "vedlejsi": [
+     "R"
+    ]
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "I",
+     "typ": "vzorec",
+     "popis": "Zisk = plocha × srážka × (C_puvodni - C_nove); asfalt 0,8 -> tvárnice 0,3",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "dV_m3 = A_m2 * P_m * (C_old - C_new)",
+     "zdroj": [
+      "tab_c",
+      "izomat"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "CH",
+     "typ": "hodnota",
+     "popis": "Trávník: vzduch o 1-2 °C chladnější než zpevněné plochy (EPA); povrch - citace 📄",
+     "hodnota": null,
+     "jednotka": "°C",
+     "rozsah": [
+      1,
+      2
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "epa2008_trees"
+     ],
+     "znacka": "overeno_stare"
+    }
+   ],
+   "vhodnost": {
+    "hsp": [
+     "A",
+     "B",
+     "C"
+    ],
+    "sklon_max_pct": 3,
+    "nad_hladinou_pv_min_m": 1
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "S02"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "0-1",
+   "ceny": [
+    {
+     "polozka": "zatravňovací tvárnice vč. podkladu",
+     "hodnota": 1136,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2025,
+     "zdroj": "uur2025_komunikace",
+     "pozn": null
+    },
+    {
+     "polozka": "zámková dlažba 8 cm vč. podkladu",
+     "hodnota": 2240,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2025,
+     "zdroj": "uur2025_komunikace",
+     "pozn": null
+    },
+    {
+     "polozka": "asfalt celá konstrukce (pro srovnání)",
+     "hodnota": 1411,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2025,
+     "zdroj": "uur2025_komunikace",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "opzp_1_3_4"
+   ],
+   "standardy": [
+    "csn759010"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "Z05",
+   "nazev": "Trvalý pokryv půdy: mulč, kompost, organická hmota",
+   "popis": null,
+   "misto": [
+    "Z",
+    "L",
+    "P"
+   ],
+   "rozhoduje": [
+    "J",
+    "V"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "I",
+     "E",
+     "CH"
+    ],
+    "vedlejsi": [
+     "ER"
+    ]
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "E",
+     "typ": "hodnota",
+     "popis": "Mulč snižuje výpar z půdy o 17-79 % za sezónu proti holé půdě, typicky 33-40 %; slámový mulč 30-35 %",
+     "hodnota": 35,
+     "jednotka": "%",
+     "rozsah": [
+      17,
+      79
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "mulc2024"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "I",
+     "typ": "kvalitativne",
+     "popis": "Organická hmota zvyšuje retenci půdy; kvantifikace nedohledána",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "vsude": true
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "Z01",
+     "Z02",
+     "Z03"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "vlastní kompost, štěpka",
+     "hodnota": 0,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": 2026,
+     "zdroj": null,
+     "pozn": "🤔 nula až stovky Kč"
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [],
+   "nedohledano": [
+    "retence půdy podle organické hmoty (český zdroj)"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "Z06",
+   "nazev": "Výsadba stromu (stín, vzrostlý strom, ovocný strom)",
+   "popis": null,
+   "misto": [
+    "Z",
+    "U",
+    "L"
+   ],
+   "rozhoduje": [
+    "J",
+    "O",
+    "S"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "CH",
+     "E"
+    ],
+    "vedlejsi": [
+     "I",
+     "B"
+    ]
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "CH",
+     "typ": "hodnota",
+     "popis": "Stín snižuje povrchovou teplotu stěn a střech o 11-25 °C",
+     "hodnota": null,
+     "jednotka": "°C",
+     "rozsah": [
+      11,
+      25
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "epa2008_trees"
+     ],
+     "znacka": "overeno_stare"
+    },
+    {
+     "ucinek": "CH",
+     "typ": "hodnota",
+     "popis": "Vzduch ve skupinách stromů až o 5 °C nižší (vrchol dne); předměstí se stromy o 2-3 °C; městská zeleň průměr -1,6 °C (Knight 2021, 308 studií)",
+     "hodnota": null,
+     "jednotka": "°C",
+     "rozsah": [
+      1.6,
+      5
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "epa2008_trees",
+      "epa_trees_benefits"
+     ],
+     "znacka": "overeno_stare"
+    },
+    {
+     "ucinek": "E",
+     "typ": "kvalitativne",
+     "popis": "Zástin půdy, zpomalení větru",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "mimo_ochranna_pasma_siti": true,
+    "strana_budovy_pro_stin": [
+     "J",
+     "Z"
+    ]
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "Z07",
+     "Z03"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "1 u sítí; odstupy od hranice dle OZ 💻",
+   "ceny": [
+    {
+     "polozka": "strom prostokořenný do 200 cm",
+     "hodnota": 1775,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2025,
+     "zdroj": "uur2025_zelen",
+     "pozn": null
+    },
+    {
+     "polozka": "strom s balem do 200 cm",
+     "hodnota": 2835,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2025,
+     "zdroj": "uur2025_zelen",
+     "pozn": null
+    },
+    {
+     "polozka": "strom s balem 250-350 cm",
+     "hodnota": 6100,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2025,
+     "zdroj": "uur2025_zelen",
+     "pozn": null
+    },
+    {
+     "polozka": "ovocný strom prostokořenný",
+     "hodnota": null,
+     "rozsah": [
+      240,
+      350
+     ],
+     "jednotka": "Kč/ks",
+     "rok": 2025,
+     "zdroj": "uur2025_zelen",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "ppk_b",
+    "aopk_zmv"
+   ],
+   "standardy": [
+    "sppk_a02_001",
+    "sppk_c02_003"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "Z07",
+   "nazev": "Živý plot / keřový pás místo plotu nebo zdi",
+   "popis": null,
+   "misto": [
+    "Z",
+    "U"
+   ],
+   "rozhoduje": [
+    "J",
+    "O"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "E",
+     "CH",
+     "B"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "E",
+     "typ": "hodnota",
+     "popis": "Za překážkou s propustností 40-60 % rychlost větru nižší o ~70 % v 5 H, 50 % v 10 H, 25 % v 20 H; RH v závětří +2-4 %",
+     "hodnota": null,
+     "jednotka": "% rychlosti větru",
+     "rozsah": [
+      25,
+      70
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "unl_windbreak"
+     ],
+     "znacka": "overeno_stare"
+    },
+    {
+     "ucinek": "E",
+     "typ": "vzorec",
+     "popis": "Chráněná plocha = délka × (10-20) × výška",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "A_chranena_m2 = L_m * H_m * (10..20)",
+     "zdroj": [
+      "unl_windbreak"
+     ],
+     "znacka": "overeno_stare"
+    }
+   ],
+   "vhodnost": {
+    "strana": "návětrná (Z/JZ 🤔, ověřit z dat ČHMÚ)"
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "Z06"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "listnatý keř prostokořenný do 60 cm",
+     "hodnota": 190,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [
+    "sppk_a02_003"
+   ],
+   "nedohledano": [
+    "snížení evapotranspirace v %"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "Z08",
+   "nazev": "Květnatá louka místo trávníku, vyšší a méně častá seč, mozaika",
+   "popis": null,
+   "misto": [
+    "Z",
+    "U",
+    "L"
+   ],
+   "rozhoduje": [
+    "J",
+    "O",
+    "S"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "E",
+     "CH",
+     "B"
+    ],
+    "vedlejsi": [
+     "I"
+    ]
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "E",
+     "typ": "kvalitativne",
+     "popis": "Vyšší porost stíní půdu; kvantifikace vlhkosti nedohledána",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    },
+    {
+     "ucinek": "B",
+     "typ": "hodnota",
+     "popis": "Nepravidelně kosené plochy o 20 % druhově chudší než pravidelně fázovaně kosené; nekosené -34 % (jižní Morava)",
+     "hodnota": null,
+     "jednotka": "% druhů",
+     "rozsah": [
+      20,
+      34
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "chytra2024"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "vsude": true
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "trávník luční (založení)",
+     "hodnota": 40,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2025,
+     "zdroj": "uur2025_zelen",
+     "pozn": null
+    },
+    {
+     "polozka": "zatravnění regionální směsí",
+     "hodnota": 86600,
+     "rozsah": null,
+     "jednotka": "Kč/ha",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "ppk_b"
+   ],
+   "standardy": [
+    "sppk_d02_004",
+    "mhmp2019_sec"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": "SPPK D02 004: 10-20 % plochy ponechat neposečené; Praha 2019: výška 10-15 cm, neseče se nad 26 °C.",
+   "vahy_skaly": null
+  },
+  {
+   "id": "Z09",
+   "nazev": "Zelená fasáda, popínavky, pergola se zelení",
+   "popis": null,
+   "misto": [
+    "Z",
+    "S"
+   ],
+   "rozhoduje": [
+    "J",
+    "O",
+    "S"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "CH"
+    ],
+    "vedlejsi": [
+     "E"
+    ]
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "CH",
+     "typ": "hodnota",
+     "popis": "Stín na fasádě: povrch o 11-25 °C chladnější (obecná hodnota pro stín stromů, EPA)",
+     "hodnota": null,
+     "jednotka": "°C",
+     "rozsah": [
+      11,
+      25
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "epa2008_trees"
+     ],
+     "znacka": "overeno_stare"
+    }
+   ],
+   "vhodnost": {
+    "strana_budovy": [
+     "J",
+     "Z"
+    ]
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [],
+   "nedohledano": [
+    "kvantifikace pro zelené fasády",
+    "cena"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "Z10",
+   "nazev": "Vsakovací objekt pro střešní vodu (štěrkové těleso, vsakovací bloky, šachta)",
+   "popis": null,
+   "misto": [
+    "Z",
+    "U"
+   ],
+   "rozhoduje": [
+    "J",
+    "O"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "I",
+     "R"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Návrh na déšť p=0,2 (24 h 44 mm): V = A_strechy × 0,044 minus vsak během deště",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_m3 = A_strechy_m2 * 0.044 - V_vsak",
+     "zdroj": [
+      "csn759010"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "I",
+     "typ": "vzorec",
+     "popis": "Rok: celý odtok ze střechy zasákne",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_rok_m3 = A_strechy_m2 * 0.5715",
+     "zdroj": [
+      "csn759010",
+      "vukrom2021"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "hsp": [
+     "A",
+     "B"
+    ],
+    "kf_min_m_s": 1e-05,
+    "nad_hladinou_pv_min_m": 1,
+    "odstup_stavba_min_m": 5
+   },
+   "vazby": {
+    "potrebuje": [
+     "S02"
+    ],
+    "synergie": [],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "0-1; u větších objektů posudek vsaku 💻",
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [
+    "csn759010",
+    "tnv759011"
+   ],
+   "nedohledano": [
+    "cena bloků a výkopu 2025-2026"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "Z11",
+   "nazev": "Zálivka zachycenou vodou, kapková závlaha",
+   "popis": null,
+   "misto": [
+    "Z"
+   ],
+   "rozhoduje": [
+    "J",
+    "S"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "W",
+     "E"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "W",
+     "typ": "kvalitativne",
+     "popis": "Šetří pitnou vodu; úspora nekvantifikována (český zdroj nedohledán)",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "vsude": true
+   },
+   "vazby": {
+    "potrebuje": [
+     "S01"
+    ],
+    "synergie": [],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "S01",
+   "nazev": "Nádrž na dešťovou vodu (sud, IBC, podzemní jímka) s využitím",
+   "popis": null,
+   "misto": [
+    "S",
+    "Z"
+   ],
+   "rozhoduje": [
+    "J",
+    "O",
+    "S"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "R",
+     "W"
+    ],
+    "vedlejsi": [
+     "Q"
+    ]
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Každých 10 mm deště ze 100 m² střechy = 1 m³; nádrž pojme V_nadrz, zbytek přepad",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_zachyceno_m3 = min(V_nadrz_m3, A_strechy_m2 * P_m * 1.0)",
+     "zdroj": [
+      "tab_c"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Rok: potenciál A × 0,5715 m; využije se jen spotřeba mezi dešti",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_rok_potencial_m3 = A_strechy_m2 * 0.5715",
+     "zdroj": [
+      "vukrom2021"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "W",
+     "typ": "kvalitativne",
+     "popis": "Zálivka/WC z dešťovky; spotřeba nekvantifikována",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "kazda_strecha": true
+   },
+   "vazby": {
+    "potrebuje": [
+     "S02"
+    ],
+    "synergie": [
+     "Z01",
+     "Z10",
+     "Z11"
+    ],
+    "konflikt": [
+     "přepad do kanalizace"
+    ]
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "podzemní nádrž 🤔 1",
+   "ceny": [
+    {
+     "polozka": "IBC kontejner 1000 l nový",
+     "hodnota": 7250,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": 2026,
+     "zdroj": "hornbach_ibc",
+     "pozn": "18. 10. 2026, s DPH"
+    },
+    {
+     "polozka": "podzemní nádrž 5000 l vč. šachty, bez montáže",
+     "hodnota": 50830,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": 2026,
+     "zdroj": "hornbach_nadrz",
+     "pozn": "18. 10. 2026, s DPH"
+    },
+    {
+     "polozka": "montáž a výkop",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "nzu_rd_2026"
+   ],
+   "standardy": [
+    "csn759010"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": "NZÚ 2026 podporuje jen nádrž pro WC (min. 2 m³) a jen s A/C; nádrž pouze na zálivku ne.",
+   "vahy_skaly": null
+  },
+  {
+   "id": "S02",
+   "nazev": "Odpojení dešťových svodů od kanalizace, svedení na pozemek",
+   "popis": null,
+   "misto": [
+    "S"
+   ],
+   "rozhoduje": [
+    "J",
+    "O"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "Q",
+     "I",
+     "R"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "Q",
+     "typ": "vzorec",
+     "popis": "Objem, který nejde do kanalizace: A_strechy × srážka × 1,0",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_m3 = A_strechy_m2 * P_m",
+     "zdroj": [
+      "tab_c"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "podminka": "svody vedou do jednotné kanalizace - v Koryčanech neověřeno (podle uživatele místy oddílná kvůli ČOV)"
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "Z01",
+     "Z10",
+     "S01"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "0-1; souhlas provozovatele kanalizace 💻",
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [
+    "csn759010",
+    "tnv759011"
+   ],
+   "nedohledano": [
+    "typ kanalizace v Koryčanech",
+    "cena"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "S03",
+   "nazev": "Zelená střecha (extenzivní)",
+   "popis": null,
+   "misto": [
+    "S"
+   ],
+   "rozhoduje": [
+    "J",
+    "O",
+    "S"
+   ],
+   "pracnost": 3,
+   "ucinky": {
+    "primarni": [
+     "R",
+     "CH",
+     "Q"
+    ],
+    "vedlejsi": [
+     "B"
+    ]
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "hodnota",
+     "popis": "Zadrží ~75 % běžného deště; u přívalu >30 mm odtok nižší o 77-83 %",
+     "hodnota": null,
+     "jednotka": "%",
+     "rozsah": [
+      75,
+      83
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "zilina2024"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "Q",
+     "typ": "vzorec",
+     "popis": "Návrhově C 0,3-0,5 (souvrství >100 mm 0,5; SZÚZ příklad 0,3)",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_odtok_m3 = A_m2 * P_m * (0.3..0.5)",
+     "zdroj": [
+      "tab_c",
+      "szuz2019"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "CH",
+     "typ": "hodnota",
+     "popis": "Povrch vegetace o 5-7 °C chladnější než holá fólie (fólie téměř 60 °C)",
+     "hodnota": null,
+     "jednotka": "°C",
+     "rozsah": [
+      5,
+      7
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "zilina2024"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "nosnost": "ověřit",
+    "sklon_max_pct": 30,
+    "souvrstvi_mm": [
+     60,
+     150
+    ]
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [],
+    "konflikt": []
+   },
+   "povoleni": 1,
+   "povoleni_pozn": "1-2 (statika; veřejné budovy stavební úřad 💻)",
+   "ceny": [
+    {
+     "polozka": "extenzivní zelená střecha",
+     "hodnota": null,
+     "rozsah": [
+      1000,
+      2500
+     ],
+     "jednotka": "Kč/m²",
+     "rok": 2023,
+     "zdroj": "ujep2023",
+     "pozn": "⏳ 2023; 2025-2026 nedohledáno"
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "nzu_rd_2026",
+    "opzp_1_3_4"
+   ],
+   "standardy": [
+    "szuz2019"
+   ],
+   "nedohledano": [
+    "cena 2025-2026",
+    "C extenzivní vs. intenzivní z normy"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "S04",
+   "nazev": "Světlá střecha a plochy (albedo, cool roof)",
+   "popis": null,
+   "misto": [
+    "S",
+    "U"
+   ],
+   "rozhoduje": [
+    "J",
+    "O"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "CH"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "CH",
+     "typ": "hodnota",
+     "popis": "Povrch chladné střechy o 28-33 °C nižší než tmavé (tmavé 66-85 °C, chladné 43-46 °C)",
+     "hodnota": null,
+     "jednotka": "°C povrch",
+     "rozsah": [
+      28,
+      33
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "epa2008_coolroof"
+     ],
+     "znacka": "overeno_stare"
+    },
+    {
+     "ucinek": "CH",
+     "typ": "hodnota",
+     "popis": "Vnitřní maximum o 1,2-3,3 °C nižší; špičková potřeba chlazení -11 až -27 %",
+     "hodnota": null,
+     "jednotka": "°C interiér",
+     "rozsah": [
+      1.2,
+      3.3
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "epa2025_coolroof"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "CH",
+     "typ": "hodnota",
+     "popis": "Vzduch ve městě při 50 % pokrytí střech jen o 0,2-0,3 °C (simulace NYC) - v součtu za území ukazovat jen plochu ochlazených střech, ne °C vzduchu",
+     "hodnota": null,
+     "jednotka": "°C vzduch",
+     "rozsah": [
+      0.2,
+      0.3
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "epa2008_coolroof"
+     ],
+     "znacka": "overeno_stare"
+    }
+   ],
+   "vhodnost": {
+    "strecha_typ": [
+     "tmavá plochá",
+     "mírně šikmá"
+    ],
+    "objekty": [
+     "bytovky",
+     "haly",
+     "škola",
+     "garáže",
+     "parkoviště"
+    ]
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [],
+   "nedohledano": [
+    "cena reflexního nátěru 2025-2026"
+   ],
+   "pozn_poctivost": "Rozlišovat účinek na budovu (silný) vs. na mikroklima obce (slabý).",
+   "vahy_skaly": null
+  },
+  {
+   "id": "U01",
+   "nazev": "Uliční stromořadí s vsakovacími rabátky",
+   "popis": null,
+   "misto": [
+    "U"
+   ],
+   "rozhoduje": [
+    "O"
+   ],
+   "pracnost": 3,
+   "ucinky": {
+    "primarni": [
+     "CH",
+     "I",
+     "Q"
+    ],
+    "vedlejsi": [
+     "B"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "CH",
+     "typ": "hodnota",
+     "popis": "Stín -11 až -25 °C povrch; vzduch v zeleni až -5 °C v horku",
+     "hodnota": null,
+     "jednotka": "°C povrch",
+     "rozsah": [
+      11,
+      25
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "epa2008_trees"
+     ],
+     "znacka": "overeno_stare"
+    },
+    {
+     "ucinek": "I",
+     "typ": "vzorec",
+     "popis": "Rabátko: min. 6 m² propustné plochy, prokořenitelný prostor min. 16 m² × 0,8 m; retence 🤔 1-3 m³ na strom (bez českého zdroje)",
+     "hodnota": null,
+     "jednotka": "m³/strom",
+     "rozsah": [
+      1,
+      3
+     ],
+     "vzorec": "V_m3 = A_rabatko_m2 * h_m * porovitost",
+     "zdroj": [
+      "ipr_manual"
+     ],
+     "znacka": "odhad"
+    },
+    {
+     "ucinek": "Q",
+     "typ": "vzorec",
+     "popis": "Odvodnění ulice do rabátka: C 0,1 místo 0,8",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "dV_m3 = A_ulice_m2 * P_m * (0.8 - 0.1)",
+     "zdroj": [
+      "tab_c"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "ulice_se_sklonem_k_rabatku": true,
+    "site": "ověřit",
+    "vysadbovy_pas_min_m": [
+     0.8,
+     1.5
+    ]
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "U02",
+     "U03"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 2,
+   "povoleni_pozn": "1-2 (sítě, komunikace)",
+   "ceny": [
+    {
+     "polozka": "strom s balem 250-350 cm",
+     "hodnota": 6100,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2025,
+     "zdroj": "uur2025_zelen",
+     "pozn": null
+    },
+    {
+     "polozka": "rabátko se strukturním substrátem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "opzp_1_3_4",
+    "aopk_zmv"
+   ],
+   "standardy": [
+    "ipr_manual",
+    "brno2024",
+    "sppk_a02_001"
+   ],
+   "nedohledano": [
+    "cena rabátka",
+    "metodika MZI MŽP"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "U02",
+   "nazev": "Propustné povrchy parkovišť, chodníků, dvorů veřejných budov",
+   "popis": null,
+   "misto": [
+    "U"
+   ],
+   "rozhoduje": [
+    "O"
+   ],
+   "pracnost": 3,
+   "ucinky": {
+    "primarni": [
+     "I",
+     "CH"
+    ],
+    "vedlejsi": [
+     "R"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "I",
+     "typ": "vzorec",
+     "popis": "Zisk = A × P × (C_old - C_new); parkoviště 1000 m², 20 mm: 16 -> 6 m³ s tvárnicemi; rok 456 -> 171 m³",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "dV_m3 = A_m2 * P_m * (C_old - C_new)",
+     "zdroj": [
+      "tab_c",
+      "izomat"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "hsp": [
+     "A",
+     "B",
+     "C"
+    ]
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "U01"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 2,
+   "povoleni_pozn": "1-2",
+   "ceny": [
+    {
+     "polozka": "zatravňovací tvárnice",
+     "hodnota": 1136,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2025,
+     "zdroj": "uur2025_komunikace",
+     "pozn": null
+    },
+    {
+     "polozka": "zámková dlažba 8 cm vč. podkladu",
+     "hodnota": 2240,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2025,
+     "zdroj": "uur2025_komunikace",
+     "pozn": null
+    },
+    {
+     "polozka": "vsakovací boxy pod parkovištěm 500 m²",
+     "hodnota": 157040,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": 2025,
+     "zdroj": "uur2025_kanalizace",
+     "pozn": null
+    },
+    {
+     "polozka": "vsakovací boxy pod parkovištěm 1000 m²",
+     "hodnota": 266330,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": 2025,
+     "zdroj": "uur2025_kanalizace",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "opzp_1_3_4"
+   ],
+   "standardy": [
+    "csn759010"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "U03",
+   "nazev": "Zasakovací pásy a průlehy podél komunikací, příkopy s retencí",
+   "popis": null,
+   "misto": [
+    "U",
+    "C"
+   ],
+   "rozhoduje": [
+    "O"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "I",
+     "Q",
+     "R"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Objem = délka × průřez; 100 m × 1 m² = 100 m³ = 20 mm z 0,5 ha",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_m3 = L_m * S_m2",
+     "zdroj": [
+      "tsk2025"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "Q",
+     "typ": "hodnota",
+     "popis": "Regulovaný odtok praxe 3 l/s/ha",
+     "hodnota": 3,
+     "jednotka": "l/s/ha",
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "brno2024",
+      "tsk2025"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "sklon": "podle TSK svahy 1:3",
+    "hsp": [
+     "A",
+     "B",
+     "C"
+    ]
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "C01"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 2,
+   "povoleni_pozn": "1-2",
+   "ceny": [
+    {
+     "polozka": "travnaté průlehy a meze s terénními úpravami",
+     "hodnota": 200,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "opzp_1_3_4"
+   ],
+   "standardy": [
+    "csn759010",
+    "tsk2025"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "U04",
+   "nazev": "Retence a zasakování vody z veřejných budov (škola, úřad)",
+   "popis": null,
+   "misto": [
+    "U",
+    "S"
+   ],
+   "rozhoduje": [
+    "O",
+    "S"
+   ],
+   "pracnost": 3,
+   "ucinky": {
+    "primarni": [
+     "R",
+     "I",
+     "W"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Škola střecha 1500 m²: 20 mm = 30 m³; rok 855 m³",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_m3 = A_strechy_m2 * P_m",
+     "zdroj": [
+      "tab_c",
+      "vukrom2021"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "podle_objektu": true
+   },
+   "vazby": {
+    "potrebuje": [
+     "S02"
+    ],
+    "synergie": [
+     "S01",
+     "Z01",
+     "Z10"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 1,
+   "povoleni_pozn": "1-2",
+   "ceny": [
+    {
+     "polozka": "podzemní ŽB retenční nádrž",
+     "hodnota": null,
+     "rozsah": [
+      18500,
+      28500
+     ],
+     "jednotka": "Kč/m³",
+     "rok": 2025,
+     "zdroj": "uur2025_kanalizace",
+     "pozn": null
+    },
+    {
+     "polozka": "plastová nádrž 5000 l bez montáže",
+     "hodnota": 50830,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": 2026,
+     "zdroj": "hornbach_nadrz",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "opzp_1_3_4"
+   ],
+   "standardy": [
+    "csn759010"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "U05",
+   "nazev": "Obecní tůň, mokřad, obnova návesní nádrže",
+   "popis": null,
+   "misto": [
+    "U",
+    "T"
+   ],
+   "rozhoduje": [
+    "O"
+   ],
+   "pracnost": 3,
+   "ucinky": {
+    "primarni": [
+     "R",
+     "CH",
+     "B"
+    ],
+    "vedlejsi": [
+     "I"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Objem = plocha × průměrná hloubka 0,8-1,0 m; 500 m² ~ 400 m³",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_m3 = A_m2 * (0.8..1.0)",
+     "zdroj": [
+      "sppk_b02_001"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "misto_typ": [
+     "zamokřené plochy",
+     "niva"
+    ]
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "T01",
+     "T02"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 2,
+   "povoleni_pozn": "nad 300 m² ohlášení (§ 15b); s hrází vodní dílo",
+   "ceny": [
+    {
+     "polozka": "tůň strojně, materiál v lokalitě",
+     "hodnota": 330,
+     "rozsah": null,
+     "jednotka": "Kč/m² hladiny",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": "+15 000 Kč/lokalitu; odvoz do 2 km 410, nad 2 km 480"
+    },
+    {
+     "polozka": "odbahnění",
+     "hodnota": 430,
+     "rozsah": null,
+     "jednotka": "Kč/m³",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "realizace Tůně Grenzteich 1250 m²",
+     "hodnota": 98875,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": 2024,
+     "zdroj": "aopk_grenzteich",
+     "pozn": "🤔 79 Kč/m²"
+    },
+    {
+     "polozka": "realizace mokřad Malá Vrbka, 3 tůně",
+     "hodnota": 610473,
+     "rozsah": null,
+     "jednotka": "Kč vč. DPH",
+     "rok": 2024,
+     "zdroj": "spu_malavrbka",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "aopk_zmv",
+    "ppk_b",
+    "opzp_1_3_1"
+   ],
+   "standardy": [
+    "sppk_b02_001",
+    "vz_15b"
+   ],
+   "nedohledano": [
+    "cena poldru a hráze (dřívější údaj se v ÚÚR 2025 nepotvrdil, vyřazen)"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "U06",
+   "nazev": "Mozaiková seč obecních ploch, květnaté louky",
+   "popis": null,
+   "misto": [
+    "U",
+    "L"
+   ],
+   "rozhoduje": [
+    "O",
+    "S"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "E",
+     "CH",
+     "B"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "B",
+     "typ": "hodnota",
+     "popis": "Nepravidelně kosené -20 % druhů, nekosené -34 %; fázovaná seč ve 3 termínech",
+     "hodnota": null,
+     "jednotka": "% druhů",
+     "rozsah": [
+      20,
+      34
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "chytra2024"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "E",
+     "typ": "kvalitativne",
+     "popis": "Vlhkost/teplota v ČR nekvantifikovány",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "vsude": true
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "seč lehkou mechanizací",
+     "hodnota": 17425,
+     "rozsah": null,
+     "jednotka": "Kč/ha",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "seč křovinořezem",
+     "hodnota": 35000,
+     "rozsah": null,
+     "jednotka": "Kč/ha",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "trávník luční",
+     "hodnota": 40,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2025,
+     "zdroj": "uur2025_zelen",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "ppk_b"
+   ],
+   "standardy": [
+    "sppk_d02_004",
+    "mhmp2019_sec"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "U07",
+   "nazev": "Školní zahrada jako ukázkový pozemek",
+   "popis": "Sada Z01-Z08 + měření M01-M06 na školním pozemku; účinky a ceny podle složek.",
+   "misto": [
+    "U",
+    "Z"
+   ],
+   "rozhoduje": [
+    "S",
+    "O"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "R",
+     "I",
+     "CH",
+     "B"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [],
+   "vhodnost": {
+    "areal_skoly": true
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "Z01",
+     "Z02",
+     "Z05",
+     "Z06",
+     "Z08",
+     "S01",
+     "S02",
+     "M01",
+     "M02",
+     "M03",
+     "M04",
+     "M05",
+     "M06"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "0-1",
+   "ceny": [],
+   "financovani": [
+    "opzp_1_3_4",
+    "participativni",
+    "vlastni"
+   ],
+   "standardy": [],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "P01",
+   "nazev": "Protierozní mez, zatravněný pás, biopás po vrstevnici",
+   "popis": null,
+   "misto": [
+    "P"
+   ],
+   "rozhoduje": [
+    "V"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "ER",
+     "Q",
+     "I"
+    ],
+    "vedlejsi": [
+     "B",
+     "E"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "ER",
+     "typ": "vzorec",
+     "popis": "Pás zkracuje délku svahu L v USLE a má C 0,01",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "A = R*K*LS(L_zkracene)*C*P",
+     "zdroj": [
+      "kalkulacka_manual",
+      "dumbrovsky2021"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "Q",
+     "typ": "hodnota",
+     "popis": "Čas do začátku odtoku (svah 11,3 %): 0 % zatravnění 102 s, 25 % 141 s, 50 % 253 s, 100 % 461 s; rychlost odtoku 5-6x nižší; retence 2 m pásu po 20 min deště vyčerpána",
+     "hodnota": null,
+     "jednotka": "s",
+     "rozsah": [
+      102,
+      461
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "tacr2025_pasy"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "sklon_min_pct": 3,
+    "erozni_ohrozenost": [
+     "SEO",
+     "MEO"
+    ],
+    "max_sirka_pasu_plodiny_m": 40,
+    "sirka_pasu_min_m": 3,
+    "sirka_pasu_dopor_m": 22
+   },
+   "vazby": {
+    "potrebuje": [
+     "N01|N02"
+    ],
+    "synergie": [
+     "P07",
+     "P02",
+     "P08"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "0-1 (změna kultury v LPIS přes uživatele DPB)",
+   "ceny": [
+    {
+     "polozka": "meze a průlehy s terénními úpravami",
+     "hodnota": 200,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "zatravnění regionální směsí",
+     "hodnota": 86600,
+     "rozsah": null,
+     "jednotka": "Kč/ha",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "ušlý výnos z pásu",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč/ha/rok",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "aopk_zmv",
+    "ppk_b",
+    "opzp_1_3_1"
+   ],
+   "standardy": [
+    "dumbrovsky2021",
+    "dzes5_2026"
+   ],
+   "nedohledano": [
+    "% snížení ztráty půdy z českého měření"
+   ],
+   "pozn_poctivost": "Úzký pás funguje na začátku deště, ne na dlouhý příval.",
+   "vahy_skaly": null
+  },
+  {
+   "id": "P02",
+   "nazev": "Zasakovací průleh na orné půdě",
+   "popis": null,
+   "misto": [
+    "P"
+   ],
+   "rozhoduje": [
+    "V"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "I",
+     "Q",
+     "ER"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Objem = délka × průřez",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_m3 = L_m * S_m2",
+     "zdroj": [
+      "csn759010",
+      "vumop_pasy2022"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "sklon_min_pct": 3,
+    "sklon_max_pct": 12,
+    "hsp": [
+     "A",
+     "B",
+     "C"
+    ]
+   },
+   "vazby": {
+    "potrebuje": [
+     "P05"
+    ],
+    "synergie": [
+     "P01"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 1,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "průlehy s terénními úpravami",
+     "hodnota": 200,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "aopk_zmv"
+   ],
+   "standardy": [
+    "csn759010",
+    "tpeo2014"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "P03",
+   "nazev": "Rozdělení lánu, pásové střídání plodin, orientace po vrstevnici",
+   "popis": null,
+   "misto": [
+    "P"
+   ],
+   "rozhoduje": [
+    "V"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "ER",
+     "Q"
+    ],
+    "vedlejsi": [
+     "I"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "ER",
+     "typ": "hodnota",
+     "popis": "USLE P: vrstevnice 0,6 (0-4°) až 1,0 (>10°); pásové střídání okopaniny+pícniny 0,30-0,45, okopaniny+ozimy 0,50-0,90; max. délka po spádnici 120/60/40 m",
+     "hodnota": null,
+     "jednotka": "P faktor",
+     "rozsah": [
+      0.3,
+      1.0
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "kalkulacka_manual",
+      "janecek2012"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "svazite_dpb": true
+   },
+   "vazby": {
+    "potrebuje": [
+     "N01"
+    ],
+    "synergie": [
+     "P01",
+     "P02"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "organizační opatření",
+     "hodnota": 0,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": 2026,
+     "zdroj": null,
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [
+    "janecek2012",
+    "dumbrovsky2021"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "P04",
+   "nazev": "Půdoochranné technologie: bezorebné setí, strip-till, meziplodiny, strniště",
+   "popis": null,
+   "misto": [
+    "P"
+   ],
+   "rozhoduje": [
+    "V"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "I",
+     "E",
+     "ER"
+    ],
+    "vedlejsi": [
+     "CH"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "I",
+     "typ": "hodnota",
+     "popis": "Polní simulátor deště: orba infiltrace 27,4 mm / odtok 9,3 mm / ztráta 6,97 t/ha; setí do ozimého žita ztráta 1,95 t/ha; strip-till do TTP infiltrace 32,2 mm / odtok 4,5 mm / ztráta 0,24 t/ha (🤔 odtok -52 %, smyv -97 %)",
+     "hodnota": null,
+     "jednotka": "t/ha ztráta půdy",
+     "rozsah": [
+      0.24,
+      6.97
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "vopravil2025"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "vsude": true,
+    "zejmena": "svahy, HSP C-D"
+   },
+   "vazby": {
+    "potrebuje": [
+     "N01"
+    ],
+    "synergie": [],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "pro vlastníka smluvní",
+     "hodnota": 0,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": 2026,
+     "zdroj": null,
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [
+    "dzes5_2026"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": "DZES 5 (2026) už na SEO zakazuje erozně nebezpečné plodiny nad 2 ha a na MEO vyžaduje POT; vlastník může ve smlouvě chtít víc.",
+   "vahy_skaly": null
+  },
+  {
+   "id": "P05",
+   "nazev": "Zatravnění údolnic a drah soustředěného odtoku",
+   "popis": null,
+   "misto": [
+    "P"
+   ],
+   "rozhoduje": [
+    "V"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "ER",
+     "Q",
+     "I"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "ER",
+     "typ": "vzorec",
+     "popis": "C 0,01 v dráze odtoku; min. šířka 20 m",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "A_udolnice_ha = 20 m * L_m / 10000",
+     "zdroj": [
+      "dumbrovsky2021",
+      "kalkulacka_manual"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "konkavni_profil_z_dmr": true,
+    "akumulace_odtoku": "vysoká"
+   },
+   "vazby": {
+    "potrebuje": [
+     "N02"
+    ],
+    "synergie": [
+     "P02"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "0-1",
+   "ceny": [
+    {
+     "polozka": "zatravnění regionální směsí",
+     "hodnota": 86600,
+     "rozsah": null,
+     "jednotka": "Kč/ha",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": "údolnice 20 × 300 m = 0,6 ha ~ 52 000 Kč"
+    }
+   ],
+   "financovani": [
+    "aopk_zmv"
+   ],
+   "standardy": [
+    "dumbrovsky2021"
+   ],
+   "nedohledano": [
+    "kvantifikovaný účinek"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "P06",
+   "nazev": "Trvalé zatravnění nebo zalesnění svažitých a erozně ohrožených pozemků",
+   "popis": null,
+   "misto": [
+    "P"
+   ],
+   "rozhoduje": [
+    "V"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "I",
+     "ER",
+     "E"
+    ],
+    "vedlejsi": [
+     "B",
+     "CH"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "ER",
+     "typ": "vzorec",
+     "popis": "C z 0,65-0,90 na 0,01 = ztráta půdy řádově 50-90x nižší",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "A_new/A_old = 0.01 / C_old",
+     "zdroj": [
+      "kalkulacka_manual"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "sklon_min_pct": 12,
+    "erozni_ohrozenost": [
+     "SEO"
+    ]
+   },
+   "vazby": {
+    "potrebuje": [
+     "N02"
+    ],
+    "synergie": [],
+    "konflikt": []
+   },
+   "povoleni": 1,
+   "povoleni_pozn": "LPIS kultura; zalesnění = souhlas orgánu ZPF 💻",
+   "ceny": [
+    {
+     "polozka": "zatravnění regionální směsí",
+     "hodnota": 86600,
+     "rozsah": null,
+     "jednotka": "Kč/ha",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "ušlý pachtovní výnos",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč/ha/rok",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "aopk_zmv"
+   ],
+   "standardy": [],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "P07",
+   "nazev": "Větrolam, liniová výsadba na hranici pozemku",
+   "popis": null,
+   "misto": [
+    "P",
+    "C"
+   ],
+   "rozhoduje": [
+    "V",
+    "O"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "E",
+     "ER",
+     "CH",
+     "B"
+    ],
+    "vedlejsi": [
+     "Q"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "E",
+     "typ": "hodnota",
+     "popis": "Za olistěným větrolamem (porozita 10 %) rychlost větru v 50 m ~40 %, ve 150 m ~70 % původní; neolistěný 80/90 %; účinný dosah max. 250 m = 10-17 H",
+     "hodnota": null,
+     "jednotka": "% původní rychlosti",
+     "rozsah": [
+      40,
+      70
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "vumop_vitr2016"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "E",
+     "typ": "vzorec",
+     "popis": "Chráněná plocha = délka × (10-17) × výška; nový větrolam šířka 7-20 m, rozestupy 350-600 m",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "A_chranena_m2 = L_m * H_m * (10..17)",
+     "zdroj": [
+      "vumop_vitr2016",
+      "mze2022_vitr"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "E",
+     "typ": "hodnota",
+     "popis": "Vlhkost půdy za větrolamem +102 % (jedno měření, j. Morava 2007) - neobecňovat",
+     "hodnota": 102,
+     "jednotka": "%",
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "dufkova2007"
+     ],
+     "znacka": "overeno_stare"
+    }
+   ],
+   "vhodnost": {
+    "orientace": "kolmo na převládající vítr",
+    "otevrene_lany": true,
+    "odstup_hranice_min_m": 3
+   },
+   "vazby": {
+    "potrebuje": [
+     "N02"
+    ],
+    "synergie": [
+     "P08",
+     "P09",
+     "Z07"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "0-1",
+   "ceny": [
+    {
+     "polozka": "realizace Písková Lhota 1408 m², 4 řady",
+     "hodnota": 198270,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": 2025,
+     "zdroj": "aopk_piskova",
+     "pozn": "🤔 141 Kč/m²"
+    },
+    {
+     "polozka": "strom s balem ok 10-12 cm",
+     "hodnota": 5900,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "strom prostokořenný do 200 cm",
+     "hodnota": 1775,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2025,
+     "zdroj": "uur2025_zelen",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "aopk_zmv",
+    "ppk_b"
+   ],
+   "standardy": [
+    "vumop_vitr2016",
+    "sppk_a02_001"
+   ],
+   "nedohledano": [
+    "snížení evapotranspirace v % (ČR)"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "P08",
+   "nazev": "Polní cesta s doprovodnou zelení a zasakovacím příkopem",
+   "popis": "Víceúčelové: cesta + větrolam + biokoridor + zpomalení odtoku. Účinky podle složek P01 + P07 + C01.",
+   "misto": [
+    "P",
+    "C"
+   ],
+   "rozhoduje": [
+    "V",
+    "O"
+   ],
+   "pracnost": 3,
+   "ucinky": {
+    "primarni": [
+     "E",
+     "Q",
+     "I",
+     "ER",
+     "B"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [],
+   "vhodnost": {
+    "po_vrstevnici_nebo_sikmo": true,
+    "hranice_vlastniku": true
+   },
+   "vazby": {
+    "potrebuje": [
+     "N02|kopu"
+    ],
+    "synergie": [
+     "P01",
+     "P07",
+     "C01"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 2,
+   "povoleni_pozn": "1-2",
+   "ceny": [
+    {
+     "polozka": "průleh/mez",
+     "hodnota": 200,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "konstrukce cesty",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč/m",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "podle konstrukce, ÚÚR 2025 kap. 8; bez konkrétní položky neuvádím"
+    }
+   ],
+   "financovani": [
+    "opzp_1_3_1",
+    "kopu"
+   ],
+   "standardy": [
+    "tpeo2014"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "P09",
+   "nazev": "Agrolesnictví: řady stromů v poli, ovocné stromy v pastvině",
+   "popis": null,
+   "misto": [
+    "P",
+    "L"
+   ],
+   "rozhoduje": [
+    "V"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "E",
+     "CH",
+     "B"
+    ],
+    "vedlejsi": [
+     "I",
+     "ER"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "CH",
+     "typ": "hodnota",
+     "popis": "V ALS průměrná teplota -0,2 až -0,8 °C/rok; v horkých dnech maxima přízemního vzduchu a povrchu půdy -4 až -5 (až 10) °C; tropické dny -1/3",
+     "hodnota": null,
+     "jednotka": "°C maxima",
+     "rozsah": [
+      4,
+      10
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "czu2026_als"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "E",
+     "typ": "hodnota",
+     "popis": "Vítr ve 4 m -50 %",
+     "hodnota": 50,
+     "jednotka": "%",
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "czu2026_als"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "I",
+     "typ": "hodnota",
+     "popis": "Záplavové pokusy Šardice 2023-2025 (72 mm/h): odtok 0 %, zasáknutí 99 % v ALS",
+     "hodnota": 99,
+     "jednotka": "% zasáknutí",
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "czu2026_als"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "lany": true,
+    "vetrne_polohy": true,
+    "min_dpb_ha": 0.5
+   },
+   "vazby": {
+    "potrebuje": [
+     "N01|N02"
+    ],
+    "synergie": [
+     "P07"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "0-1 (LPIS kultura)",
+   "ceny": [
+    {
+     "polozka": "dotace zavedení ALS (pro zemědělce)",
+     "hodnota": 105500,
+     "rozsah": null,
+     "jednotka": "Kč/ha",
+     "rok": 2026,
+     "zdroj": "agroles2026",
+     "pozn": "4 353 EUR/ha; péče 754 EUR/ha/rok 5 let"
+    }
+   ],
+   "financovani": [
+    "szp_agroles"
+   ],
+   "standardy": [
+    "sppk_c02_003",
+    "agroles2026"
+   ],
+   "nedohledano": [
+    "vlhkost půdy v ALS (ČR)"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "P10",
+   "nazev": "Regulace nebo přerušení melioračního odvodnění",
+   "popis": null,
+   "misto": [
+    "P",
+    "L"
+   ],
+   "rozhoduje": [
+    "V",
+    "O"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "R",
+     "I",
+     "B"
+    ],
+    "vedlejsi": [
+     "CH"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "hodnota",
+     "popis": "Odhad snížení odtoku: regulační opatření na drenáži 50-90 %, snížení intenzity odvodnění 50-75 %, zasakovací drén 50-100 %, lokální eliminace 25-75 %",
+     "hodnota": null,
+     "jednotka": "% odtoku z drenáže",
+     "rozsah": [
+      25,
+      100
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "zajicek2021"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "existujici_drenaz": "zjistit u SPÚ (bezplatně) / ISMS meliorace.vumop.cz / LPIS POZ",
+    "misto_typ": [
+     "zamokřené plochy"
+    ]
+   },
+   "vazby": {
+    "potrebuje": [
+     "N01|N02"
+    ],
+    "synergie": [
+     "T02"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 1,
+   "povoleni_pozn": "1-2",
+   "ceny": [
+    {
+     "polozka": "rušení odvodnění",
+     "hodnota": 1650,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "aopk_zmv",
+    "opzp_1_3_1"
+   ],
+   "standardy": [
+    "zajicek2021",
+    "spu_meliorace"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": "Podrobné odvodnění patří od 1991 vlastníkovi; 40 % vlastníků o něm neví.",
+   "vahy_skaly": null
+  },
+  {
+   "id": "P11",
+   "nazev": "Remízek, drobná plocha zeleně v cípech a na neobdělatelných místech",
+   "popis": null,
+   "misto": [
+    "P"
+   ],
+   "rozhoduje": [
+    "V",
+    "O"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "B",
+     "E",
+     "CH"
+    ],
+    "vedlejsi": [
+     "I"
+    ]
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "B",
+     "typ": "kvalitativne",
+     "popis": "Útočiště, biokoridor",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "misto_typ": [
+     "neobdělatelné cípy",
+     "mokřiny",
+     "kamenité plochy"
+    ]
+   },
+   "vazby": {
+    "potrebuje": [
+     "N02"
+    ],
+    "synergie": [
+     "P07"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "sazenice stromů",
+     "hodnota": null,
+     "rozsah": [
+      1775,
+      6100
+     ],
+     "jednotka": "Kč/ks",
+     "rok": 2025,
+     "zdroj": "uur2025_zelen",
+     "pozn": null
+    },
+    {
+     "polozka": "keř prostokořenný",
+     "hodnota": 190,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "ppk_b",
+    "aopk_zmv"
+   ],
+   "standardy": [],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "P12",
+   "nazev": "Zvyšování organické hmoty v půdě (hnůj, kompost, zelené hnojení)",
+   "popis": null,
+   "misto": [
+    "P"
+   ],
+   "rozhoduje": [
+    "V"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "I",
+     "R"
+    ],
+    "vedlejsi": [
+     "ER",
+     "E"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "hodnota",
+     "popis": "Tvrzení VÚMOP (Hladík, bez citace): 1 % organické hmoty = +35 000 l/ha retence - v aplikaci jen jako odhad",
+     "hodnota": 35000,
+     "jednotka": "l/ha na 1 % OH",
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "hladik_pot"
+     ],
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "vsude": true
+   },
+   "vazby": {
+    "potrebuje": [
+     "N01"
+    ],
+    "synergie": [
+     "P04"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "smluvní",
+     "hodnota": 0,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": 2026,
+     "zdroj": null,
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "L01",
+   "nazev": "Mozaiková nebo pozdní seč, ponechané pásy",
+   "popis": null,
+   "misto": [
+    "L"
+   ],
+   "rozhoduje": [
+    "V",
+    "O"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "E",
+     "CH",
+     "B"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "B",
+     "typ": "hodnota",
+     "popis": "Viz U06 (Chytrá a kol. 2024)",
+     "hodnota": null,
+     "jednotka": "% druhů",
+     "rozsah": [
+      20,
+      34
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "chytra2024"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "vsude": true
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "seč lehkou mechanizací",
+     "hodnota": 17425,
+     "rozsah": null,
+     "jednotka": "Kč/ha",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "ppk_b",
+    "vlastni"
+   ],
+   "standardy": [
+    "sppk_d02_004"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "L02",
+   "nazev": "Extenzivní rotační pastva, omezení přepásání a sešlapu",
+   "popis": null,
+   "misto": [
+    "L"
+   ],
+   "rozhoduje": [
+    "V"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "I",
+     "ER",
+     "B"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "I",
+     "typ": "hodnota",
+     "popis": "Citace v metodice VÚMOP (zahraniční 📄): pokles infiltrace o 40-80 % v 5-20 cm při utužení; povrchový odtok 53 % srážky na přepaseném svahu vs. 5 % na zatravněném; nepást podél toků a nad 17 % sklonu",
+     "hodnota": null,
+     "jednotka": "% odtoku",
+     "rozsah": [
+      5,
+      53
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "fucik2015_pastva"
+     ],
+     "znacka": "citace"
+    }
+   ],
+   "vhodnost": {
+    "pastviny": true,
+    "sklon_max_pct": 17,
+    "ne_podel_toku": true,
+    "zatizeni_vdj_ha": [
+     0.2,
+     1.5
+    ]
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "L03",
+     "L04"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "pevné oplocení (ohrada)",
+     "hodnota": 138,
+     "rozsah": null,
+     "jednotka": "Kč/m",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "ppk_b",
+    "vlastni"
+   ],
+   "standardy": [
+    "sppk_d02_003",
+    "fucik2015_pastva"
+   ],
+   "nedohledano": [
+    "české měření extenzivní vs. intenzivní"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "L03",
+   "nazev": "Solitérní stromy a skupiny v pastvině",
+   "popis": null,
+   "misto": [
+    "L"
+   ],
+   "rozhoduje": [
+    "V"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "CH",
+     "E",
+     "B"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "CH",
+     "typ": "hodnota",
+     "popis": "Stín -11 až -25 °C povrch (EPA)",
+     "hodnota": null,
+     "jednotka": "°C",
+     "rozsah": [
+      11,
+      25
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "epa2008_trees"
+     ],
+     "znacka": "overeno_stare"
+    }
+   ],
+   "vhodnost": {
+    "vsude": true
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "L02"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "strom prostokořenný do 200 cm",
+     "hodnota": 1775,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2025,
+     "zdroj": "uur2025_zelen",
+     "pozn": null
+    },
+    {
+     "polozka": "tubus individuální ochrana do 170 cm",
+     "hodnota": 176,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "oplocenka drátěná 160 cm",
+     "hodnota": 180,
+     "rozsah": null,
+     "jednotka": "Kč/m",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "ppk_b",
+    "aopk_zmv"
+   ],
+   "standardy": [
+    "sppk_c02_003"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": "SPPK C02 003: při pastvě povinný ochranný plášť, 3 kůly, ochrana min. 10 let.",
+   "vahy_skaly": null
+  },
+  {
+   "id": "L04",
+   "nazev": "Ochrana pramenišť a mokřin v loukách před sešlapem, obnova",
+   "popis": null,
+   "misto": [
+    "L",
+    "T"
+   ],
+   "rozhoduje": [
+    "V",
+    "O"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "R",
+     "B"
+    ],
+    "vedlejsi": [
+     "I"
+    ]
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "kvalitativne",
+     "popis": "Hydrologická role pramenišť - český zdroj nedohledán",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "pramenisete_z_dat": "akumulace odtoku + zamokření"
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "T05",
+     "L02"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "oplocenka drátěná 160 cm",
+     "hodnota": 180,
+     "rozsah": null,
+     "jednotka": "Kč/m",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "ppk_b",
+    "vlastni"
+   ],
+   "standardy": [],
+   "nedohledano": [
+    "návod k oplocení pramenišť na pastvině"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "LES01",
+   "nazev": "Lesní tůně a přehrážky v lesních stržích (dřevěné, kamenné)",
+   "popis": null,
+   "misto": [
+    "LES",
+    "C"
+   ],
+   "rozhoduje": [
+    "SP",
+    "V",
+    "O"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "Q",
+     "R",
+     "ER"
+    ],
+    "vedlejsi": [
+     "I",
+     "B"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Objem zdrže ~ plocha × výška / 2 (klín) - odhad, retence na přehrážku nedohledána",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_m3 = A_zdrze_m2 * h_m / 2",
+     "zdroj": null,
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "strze_z_dmr": true,
+    "lesni_cesty": true
+   },
+   "vazby": {
+    "potrebuje": [
+     "N06"
+    ],
+    "synergie": [
+     "C02",
+     "LES02"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 1,
+   "povoleni_pozn": "souhlas vlastníka/LČR; v korytě § 17 a § 46 vodního zákona",
+   "ceny": [
+    {
+     "polozka": "jednoduchá přehrážka",
+     "hodnota": 10000,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "složitá přehrážka (dvojitá, perodrážka)",
+     "hodnota": 38500,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "LČR Černý potok ve Strání: 800 m, 8 objektů",
+     "hodnota": 2400000,
+     "rozsah": null,
+     "jednotka": "Kč bez DPH",
+     "rok": 2025,
+     "zdroj": "lcr_strani",
+     "pozn": "🤔 ~3 000 Kč/m"
+    }
+   ],
+   "financovani": [
+    "aopk_zmv",
+    "opzp_1_3_1"
+   ],
+   "standardy": [
+    "mze2020_bystriny",
+    "vyhl239_2017"
+   ],
+   "nedohledano": [
+    "retence m³ na přehrážku"
+   ],
+   "pozn_poctivost": "MZe TD 2020: přehrážky běžně 2-5 m; drobné svépomocné prahy jsou pod úrovní normy.",
+   "vahy_skaly": null
+  },
+  {
+   "id": "LES02",
+   "nazev": "Odvodnění lesních cest a svážnic do lesa, ne do strží (svodnice, příčné prahy)",
+   "popis": null,
+   "misto": [
+    "LES",
+    "C"
+   ],
+   "rozhoduje": [
+    "SP",
+    "V"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "ER",
+     "I",
+     "Q"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "ER",
+     "typ": "kvalitativne",
+     "popis": "Svodnice povinné při podélném sklonu >6 %; min. příčný sklon 3-3,5 %; propustek min. 510 mm",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "svahove_cesty": true,
+    "sklon_min_pct": 6
+   },
+   "vazby": {
+    "potrebuje": [
+     "N06"
+    ],
+    "synergie": [
+     "LES01"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 1,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [
+    "vyhl239_2017"
+   ],
+   "nedohledano": [
+    "rozestupy svodnic (ČSN 73 6108)"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "LES03",
+   "nazev": "Druhově pestrý les, přirozená obnova, mrtvé dřevo a humus",
+   "popis": null,
+   "misto": [
+    "LES"
+   ],
+   "rozhoduje": [
+    "V",
+    "SP"
+   ],
+   "pracnost": 3,
+   "ucinky": {
+    "primarni": [
+     "B"
+    ],
+    "vedlejsi": [
+     "I",
+     "E",
+     "CH"
+    ]
+   },
+   "meritko": "uzemi",
+   "kontext": true,
+   "kvantifikace": [
+    {
+     "ucinek": "I",
+     "typ": "hodnota",
+     "popis": "Česká data (Liz, 22 let): v suchých letech smrk propouští do podloží o ~15 % více vody než buk; průměrně se půdní voda pod porosty neliší. Tvrzení 'listnatý les zadrží víc vody' se nepoužije.",
+     "hodnota": 15,
+     "jednotka": "% perkolace (smrk > buk)",
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "avcr2023_liz"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "I",
+     "typ": "hodnota",
+     "popis": "Intercepce: buk 30 %, smíšený buk-dub 21 % srážek (📄 citace)",
+     "hodnota": null,
+     "jednotka": "%",
+     "rozsah": [
+      21,
+      30
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "hemr2023"
+     ],
+     "znacka": "citace"
+    }
+   ],
+   "vhodnost": {
+    "lvs_chriby": "2. LVS 36 %, 3. LVS 60 % (PLO 36)",
+    "vrstva": "NLI OPRL Lesni_vegetacni_stupne"
+   },
+   "vazby": {
+    "potrebuje": [
+     "N06"
+    ],
+    "synergie": [
+     "LES04"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 1,
+   "povoleni_pozn": "LHP",
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni"
+   ],
+   "standardy": [
+    "avcr2023_liz",
+    "czu2011_plo36"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": "Přínos smíšeného lesa formulovat jako odolnost porostu (kůrovec, vítr), ne jako vodní bilanci.",
+   "vahy_skaly": null
+  },
+  {
+   "id": "LES04",
+   "nazev": "Lesní okraj s keřovým pláštěm (ekoton)",
+   "popis": null,
+   "misto": [
+    "LES",
+    "P"
+   ],
+   "rozhoduje": [
+    "V",
+    "O"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "E",
+     "B",
+     "CH"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "E",
+     "typ": "kvalitativne",
+     "popis": "Mikroklima lesního okraje nekvantifikováno",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "hranice_les_pole": true
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "P07"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "keř prostokořenný do 60 cm",
+     "hodnota": 190,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "ppk_b",
+    "vlastni"
+   ],
+   "standardy": [
+    "sppk_a02_003"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "T01",
+   "nazev": "Tůň v nivě (bez fólie), soustava tůní, obnova zazemněné tůně",
+   "popis": null,
+   "misto": [
+    "T"
+   ],
+   "rozhoduje": [
+    "V",
+    "O",
+    "SP"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "R",
+     "CH",
+     "B"
+    ],
+    "vedlejsi": [
+     "I",
+     "Q"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Objem = plocha × průměrná hloubka 0,8-1,0 m",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_m3 = A_m2 * (0.8..1.0)",
+     "zdroj": [
+      "sppk_b02_001"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "niva": true,
+    "hladina_pv_melko": true,
+    "hsp": [
+     "C",
+     "D"
+    ]
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "T02",
+     "T06"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 1,
+   "povoleni_pozn": "0-2 podle velikosti a vzdálenosti od toku (§ 15b, § 55)",
+   "ceny": [
+    {
+     "polozka": "tůň strojně, materiál v lokalitě",
+     "hodnota": 330,
+     "rozsah": null,
+     "jednotka": "Kč/m² hladiny",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "terénní sníženiny v nivě",
+     "hodnota": 330,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "odbahnění",
+     "hodnota": 430,
+     "rozsah": null,
+     "jednotka": "Kč/m³",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "aopk_zmv",
+    "ppk_b",
+    "opzp_1_3_1"
+   ],
+   "standardy": [
+    "sppk_b02_001",
+    "vz_15b",
+    "vz_55"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "T02",
+   "nazev": "Mokřad, zamokření nivy přerušením odvodnění",
+   "popis": null,
+   "misto": [
+    "T"
+   ],
+   "rozhoduje": [
+    "V",
+    "O"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "R",
+     "CH",
+     "B"
+    ],
+    "vedlejsi": [
+     "I",
+     "Q"
+    ]
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "hodnota",
+     "popis": "Regulace/eliminace drenáže snižuje odtok o 25-90 %",
+     "hodnota": null,
+     "jednotka": "%",
+     "rozsah": [
+      25,
+      90
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "zajicek2021"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "odvodnene_nivy": true
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "P10",
+     "T01"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 1,
+   "povoleni_pozn": "1-2",
+   "ceny": [
+    {
+     "polozka": "rušení odvodnění",
+     "hodnota": 1650,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "sníženiny v nivě",
+     "hodnota": 330,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "aopk_zmv",
+    "opzp_1_3_1"
+   ],
+   "standardy": [
+    "zajicek2021"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "T03",
+   "nazev": "Mrtvé dřevo a dřevní přehrážky v korytě drobného toku (leaky dams)",
+   "popis": null,
+   "misto": [
+    "T"
+   ],
+   "rozhoduje": [
+    "SP",
+    "V"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "Q",
+     "R",
+     "B"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "Q",
+     "typ": "hodnota",
+     "popis": "Model (1 přehrážka, povodí 2 km²): průtok -31 % při 6h dešti 1/10 let se sedimentem, -3,1 % bez; empirie 📄: kulminace 1leté povodně nižší v průměru o 10 %, velká variabilita. Zahraniční; český zdroj nedohledán.",
+     "hodnota": null,
+     "jednotka": "% průtoku",
+     "rozsah": [
+      3,
+      31
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "wolstenholme2024"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "B",
+     "typ": "kvalitativne",
+     "popis": "Říční dřevo nutné pro přírodě blízký stav (AOPK 2020)",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "aopk2020_toky"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "drobne_toky_mimo_intravilan": true,
+    "bez_ohrozeni_staveb": true
+   },
+   "vazby": {
+    "potrebuje": [
+     "N06"
+    ],
+    "synergie": [
+     "T04"
+    ],
+    "konflikt": [
+     "intravilán",
+     "mosty a propustky"
+    ]
+   },
+   "povoleni": 2,
+   "povoleni_pozn": "§ 46 zakazuje ukládat do toku předměty ohrožující odtok; § 17 souhlas vodoprávního úřadu; vždy dohoda se správcem toku - nikdy svépomoc bez ptání",
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "aopk_zmv"
+   ],
+   "standardy": [
+    "aopk2020_toky",
+    "vz_17_46_47"
+   ],
+   "nedohledano": [
+    "český kvantifikovaný zdroj"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "T04",
+   "nazev": "Revitalizace drobného toku (odstranění opevnění, rozvlnění, snížení břehů)",
+   "popis": null,
+   "misto": [
+    "T"
+   ],
+   "rozhoduje": [
+    "SP",
+    "O"
+   ],
+   "pracnost": 3,
+   "ucinky": {
+    "primarni": [
+     "Q",
+     "R",
+     "B",
+     "CH"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "uzemi",
+   "kontext": true,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "kvalitativne",
+     "popis": "Měřený efekt na vlnu v ČR nedohledán; AOPK 2020 kvalitativně. Příklad rozsahu: Zdoňovsko (předběžná studie) +697 495 m³ zádrže, +58,8 ha mokřadů, 25,7 km toků",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "aopk2020_toky",
+      "zivavoda2018"
+     ],
+     "znacka": "overeno_stare"
+    }
+   ],
+   "vhodnost": {
+    "naprimene_useky": "porovnání s II./III. vojenským mapováním"
+   },
+   "vazby": {
+    "potrebuje": [
+     "N06"
+    ],
+    "synergie": [
+     "T01",
+     "T03",
+     "T06"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 2,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "revitalizace koryta drobného toku",
+     "hodnota": 1200,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "revitalizace významného toku",
+     "hodnota": 1650,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "opzp_1_3_1",
+    "aopk_zmv"
+   ],
+   "standardy": [
+    "aopk2020_toky"
+   ],
+   "nedohledano": [
+    "SPPK kód pro revitalizace",
+    "měřený efekt (ČR)"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "T05",
+   "nazev": "Obnova prameniště, studánky, ochrana před sešlapem a splachy",
+   "popis": null,
+   "misto": [
+    "T",
+    "L",
+    "LES"
+   ],
+   "rozhoduje": [
+    "J",
+    "V",
+    "S",
+    "O"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "R",
+     "B"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "kvalitativne",
+     "popis": "Hydrologická role pramenišť - český zdroj nedohledán",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": null,
+     "znacka": "odhad"
+    }
+   ],
+   "vhodnost": {
+    "pramenisete_z_dat": true,
+    "teren": true
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "L04",
+     "M04"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "0-1; souhlas vlastníka; studánka typicky není vodní dílo (§ 55 odst. 3, 🤔 výklad)",
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "ppk_b"
+   ],
+   "standardy": [
+    "studanky2025"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": "Nezasahovat do jímek; prameniště/mokřad neupravovat na studánku; registr estudanky.eu.",
+   "vahy_skaly": null
+  },
+  {
+   "id": "T06",
+   "nazev": "Břehové porosty podél toku a kolem nádrží",
+   "popis": null,
+   "misto": [
+    "T"
+   ],
+   "rozhoduje": [
+    "V",
+    "O",
+    "SP"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "CH",
+     "E",
+     "ER",
+     "B"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "CH",
+     "typ": "hodnota",
+     "popis": "Stíněné úseky: max. teplota vody o 2,2-3,5 °C nižší; nestíněné oteplení až +3,9 °C; denní amplituda až o 4 °C nižší; doporučeno >40 % husté vegetace (Rakousko)",
+     "hodnota": null,
+     "jednotka": "°C teplota vody",
+     "rozsah": [
+      2.2,
+      3.9
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "kalny2017",
+      "trimmel2018"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "nezastinene_useky": true
+   },
+   "vazby": {
+    "potrebuje": [
+     "N06"
+    ],
+    "synergie": [
+     "T01"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "0-1; § 47 správce udržuje porosty",
+   "ceny": [
+    {
+     "polozka": "keř prostokořenný do 60 cm",
+     "hodnota": 190,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "špičák 80-125 cm",
+     "hodnota": 1055,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "strom ok 6-8 prostokořenný",
+     "hodnota": 2245,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "následná péče strom",
+     "hodnota": 725,
+     "rozsah": null,
+     "jednotka": "Kč/ks/rok",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "aopk_zmv",
+    "ppk_b"
+   ],
+   "standardy": [
+    "sppk_a02_001"
+   ],
+   "nedohledano": [
+    "SPPK kód břehové porosty",
+    "český zdroj teploty vody"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "T07",
+   "nazev": "Malá vodní nádrž, suchý poldr, rybník",
+   "popis": null,
+   "misto": [
+    "T"
+   ],
+   "rozhoduje": [
+    "O",
+    "SP"
+   ],
+   "pracnost": 3,
+   "ucinky": {
+    "primarni": [
+     "R",
+     "Q"
+    ],
+    "vedlejsi": [
+     "B",
+     "CH"
+    ]
+   },
+   "meritko": "uzemi",
+   "kontext": true,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Objem z DMR při zvolené hrázi (jádro aplikace)",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V = sum(h_hraz - z_dmr) * dx*dy pro z < h_hraz",
+     "zdroj": null,
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "profil_z_dmr": true
+   },
+   "vazby": {
+    "potrebuje": [
+     "N06"
+    ],
+    "synergie": [],
+    "konflikt": []
+   },
+   "povoleni": 2,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "opzp_1_3_1"
+   ],
+   "standardy": [
+    "tnv752415"
+   ],
+   "nedohledano": [
+    "Kč/m³ retence z realizací 2024-2026"
+   ],
+   "pozn_poctivost": "Dřívější údaj o ceně poldru/hráze se nepotvrdil a byl vyřazen.",
+   "vahy_skaly": null
+  },
+  {
+   "id": "C01",
+   "nazev": "Zasakovací příkopy a svodnice u cest, odvedení vody do průlehů místo do toku",
+   "popis": null,
+   "misto": [
+    "C"
+   ],
+   "rozhoduje": [
+    "O",
+    "V"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "I",
+     "Q",
+     "ER"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Objem = délka × průřez; příkop dno 0,3-0,6 m, hloubka 0,6-1,2 m, svahy 1:1,5-1:2; průleh svahy ≤1:5, jen do 10 % sklonu",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_m3 = L_m * S_m2",
+     "zdroj": [
+      "tpeo2014"
+     ],
+     "znacka": "overeno_stare"
+    }
+   ],
+   "vhodnost": {
+    "svahove_cesty": true,
+    "sklon_max_pct_pruleh": 10
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "U03",
+     "P08"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "0-1",
+   "ceny": [
+    {
+     "polozka": "průlehy a meze s terénními úpravami",
+     "hodnota": 200,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "příkop",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč/m",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "kopu",
+    "aopk_zmv"
+   ],
+   "standardy": [
+    "tpeo2014"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "C02",
+   "nazev": "Přehrážky v erozních rýhách a stržích (kámen, dřevo, proutí)",
+   "popis": null,
+   "misto": [
+    "C",
+    "LES"
+   ],
+   "rozhoduje": [
+    "V",
+    "O",
+    "S"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [
+     "ER",
+     "Q"
+    ],
+    "vedlejsi": [
+     "R",
+     "I"
+    ]
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "ER",
+     "typ": "kvalitativne",
+     "popis": "Efekt drobných přehrážek na sediment nedohledán; příbuzná technika silt-fence zachytí >84 % erodovaného materiálu",
+     "hodnota": 84,
+     "jednotka": "% (silt-fence)",
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "vumop2020_siltfence"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "ryhy_z_dmr_a_terenu": true,
+    "mimo_koryto_toku": true
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "LES01",
+     "M06"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "0-1 mimo koryto",
+   "ceny": [
+    {
+     "polozka": "jednoduchá přehrážka",
+     "hodnota": 10000,
+     "rozsah": null,
+     "jednotka": "Kč/ks",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "silt-fence instalace",
+     "hodnota": 8146,
+     "rozsah": null,
+     "jednotka": "Kč/100 m",
+     "rok": 2020,
+     "zdroj": "vumop2020_siltfence",
+     "pozn": null
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "aopk_zmv"
+   ],
+   "standardy": [
+    "mze2020_bystriny"
+   ],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "C03",
+   "nazev": "Zatravnění a výsadba na svazích, terasování starých úvozů",
+   "popis": null,
+   "misto": [
+    "C"
+   ],
+   "rozhoduje": [
+    "V",
+    "O"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "ER",
+     "I",
+     "E"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "lokalita",
+   "kontext": false,
+   "kvantifikace": [
+    {
+     "ucinek": "ER",
+     "typ": "vzorec",
+     "popis": "USLE C 0,01 pro travní porost; terasy stupeň max. 8 m (optimum 6 m), svah 1:1 do 1,5 m",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "A_new/A_old = 0.01 / C_old",
+     "zdroj": [
+      "kalkulacka_manual",
+      "tpeo2014"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "sklon_min_pct": 15
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "P06"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "0-1",
+   "ceny": [
+    {
+     "polozka": "trávník luční",
+     "hodnota": 40,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2025,
+     "zdroj": "uur2025_zelen",
+     "pozn": null
+    },
+    {
+     "polozka": "založení trávníku",
+     "hodnota": 33.5,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": null
+    },
+    {
+     "polozka": "založení trávníku s modelací",
+     "hodnota": 81.5,
+     "rozsah": null,
+     "jednotka": "Kč/m²",
+     "rok": 2024,
+     "zdroj": "noo2024",
+     "pozn": "příplatek svah 15-30 % +20 %, >30 % +30 %"
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "aopk_zmv"
+   ],
+   "standardy": [
+    "tpeo2014"
+   ],
+   "nedohledano": [
+    "hydroosev Kč/m² 2025"
+   ],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "M01",
+   "nazev": "Srážkoměr (jednoduchý, denní odečet)",
+   "popis": "základ pro bilanci a validaci",
+   "misto": [
+    "U",
+    "Z",
+    "L",
+    "T",
+    "C"
+   ],
+   "rozhoduje": [
+    "S",
+    "J"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [],
+   "vhodnost": {},
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "*"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "souhlas vlastníka pozemku",
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "participativni"
+   ],
+   "standardy": [],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "M02",
+   "nazev": "Hladina ve studních (měsíční odečet, síť dobrovolníků)",
+   "popis": "indikátor podzemní vody",
+   "misto": [
+    "U",
+    "Z",
+    "L",
+    "T",
+    "C"
+   ],
+   "rozhoduje": [
+    "S",
+    "J"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [],
+   "vhodnost": {},
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "souhlas vlastníka pozemku",
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "participativni"
+   ],
+   "standardy": [],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "M03",
+   "nazev": "Vlhkost půdy (jednoduché čidlo nebo gravimetricky)",
+   "popis": "validace účinku opatření",
+   "misto": [
+    "U",
+    "Z",
+    "L",
+    "T",
+    "C"
+   ],
+   "rozhoduje": [
+    "S",
+    "J"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [],
+   "vhodnost": {},
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "Z05",
+     "P04"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "souhlas vlastníka pozemku",
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "participativni"
+   ],
+   "standardy": [],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "M04",
+   "nazev": "Stav drobných toků a pramenišť (fotomonitoring, teče/neteče; registr estudanky.eu)",
+   "popis": "validace, argumentace",
+   "misto": [
+    "U",
+    "Z",
+    "L",
+    "T",
+    "C"
+   ],
+   "rozhoduje": [
+    "S",
+    "J"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [],
+   "vhodnost": {},
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "T05",
+     "L04"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "souhlas vlastníka pozemku",
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "participativni"
+   ],
+   "standardy": [],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "M05",
+   "nazev": "Teplota povrchů IR teploměrem (asfalt, tráva, tmavá vs. světlá střecha)",
+   "popis": "ukázka účinku CH",
+   "misto": [
+    "U",
+    "Z",
+    "L",
+    "T",
+    "C"
+   ],
+   "rozhoduje": [
+    "S",
+    "J"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [],
+   "vhodnost": {},
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "Z06",
+     "S04",
+     "Z04"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "souhlas vlastníka pozemku",
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "participativni"
+   ],
+   "standardy": [],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "M06",
+   "nazev": "Mapování erozních rýh po přívalu",
+   "popis": "lokalizace C02, P05",
+   "misto": [
+    "U",
+    "Z",
+    "L",
+    "T",
+    "C"
+   ],
+   "rozhoduje": [
+    "S",
+    "J"
+   ],
+   "pracnost": 1,
+   "ucinky": {
+    "primarni": [],
+    "vedlejsi": []
+   },
+   "meritko": "pozemek",
+   "kontext": false,
+   "kvantifikace": [],
+   "vhodnost": {},
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "C02",
+     "P05"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": "souhlas vlastníka pozemku",
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "participativni"
+   ],
+   "standardy": [],
+   "nedohledano": [],
+   "pozn_poctivost": null,
+   "vahy_skaly": null
+  }
+ ]
+}
