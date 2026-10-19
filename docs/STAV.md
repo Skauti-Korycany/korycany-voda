@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 19. 10. 2026 (relace 4, založení repozitáře)
+Aktualizováno: 19. 10. 2026 (relace 4, repozitář a Pages)
 
 ## Fáze: 1 hotová v podstatných částech (katalog, vrstvy, měření, datový formát, návrh rozhraní, prototyp). Hranice území čeká na DMR (fáze 2 = úzké hrdlo).
 
@@ -12,7 +12,7 @@ Aktualizováno: 19. 10. 2026 (relace 4, založení repozitáře)
 - Blok C (část 3), 18. 10.: datový formát `data/opatreni.json` v0.3 (58 opatření, 81 zdrojů, 10 programů, 6 nástrojů, konstanty jádra); zdroj pravdy `tools/build_opatreni.py`. Popis: docs/DATA-FORMAT.md.
 - Návrh rozhraní v0.1, 18. 10. -> docs/ROZHRANI.md.
 - **Drátěný prototyp, 18. 10. -> `prototyp/index.html` (= `index.html` pro GitHub Pages)**: syntetický pozemek, skutečný katalog a vzorce; mapa ČÚZK; režimy Můj pozemek, Celé území, Katalog, O modelu. Generuje `tools/build_dummy.py`.
-- **Repozitář, 19. 10.: https://github.com/Skauti-Korycany/korycany-voda** - struktura data/, tools/, prototyp/, docs/. Claude nemá propojený GitHub (push dělá uživatel).
+- **Repozitář, 19. 10.: https://github.com/Skauti-Korycany/korycany-voda** - struktura data/, tools/, prototyp/, docs/. GitHub konektor funguje, Claude pushuje přímo do main. **GitHub Pages zapnuty: prototyp běží na https://skauti-korycany.github.io/korycany-voda/** (každý push do main se propíše).
 - Inventura měření (16. 10.): hlásné profily Koryčany pod přehradou (kat. A, Povodí Moravy), Koryčany (Kyjovka) ř. km 75,69 a Koryčany (Stříbrník) kat. C město; čidlo u Kachníku (optické, epizody). CSV Kachník 10. 7. - 16. 10. 2026 analyzováno (epizody 15. 7., 23. 7., 1.-2. 8., 8. 9., 11. 9., 17. 9.; propady = výpadky optiky).
 - Srážkový normál: stanice Kroměříž 1991-2020 571,5 mm ✅; Koryčany 🤔 vlhčí.
 - Regionální kontext ✅ (18. 10.): Plán dílčího povodí Dyje 2021-2027 pro povodí VN Koryčany bez retenčních opatření nad nádrží.
@@ -30,8 +30,7 @@ Aktualizováno: 19. 10. 2026 (relace 4, založení repozitáře)
 2. Jádro (fáze 3): vyčlenit výpočty z prototypu do `jadro.js` s testy na syntetickém pozemku.
 3. Blok D: "reakce toku na déšť" léto 2026 z CSV Kachník + srážky ČHMÚ.
 4. Uživatel ověří WMS označené ❌ ve VRSTVY.md (LPIS MZe, katastr ČÚZK, CENIA vojenská mapování); napíše na data@vumop.cz (HSP, BPEJ, zamokřené půdy).
-5. GitHub Pages: zapnout v Settings -> Pages (branch main, root) - prototyp pak běží na veřejné adrese.
-6. Dotační okna: AOPK OPŽP ZMV 17. výzva **20. 10. - 3. 11. 2026**; OPŽP 105 do **17. 12. 2026**.
+5. Dotační okna: AOPK OPŽP ZMV 17. výzva **20. 10. - 3. 11. 2026**; OPŽP 105 do **17. 12. 2026**.
 
 ## Rozhodnutí
 - 19. 10. 2026 - **Repozitář** github.com/Skauti-Korycany/korycany-voda: `data/` (JSON + schéma), `tools/` (build skripty, vendor Leaflet 1.9.4 BSD-2), `prototyp/` a `index.html` (Pages), `docs/` (sumáře). Licence: kód MIT, data a texty CC BY 4.0 (návrh Claude, uživatel může změnit). Velká rastrová data (LAZ, TIF) se do repozitáře nedávají (.gitignore), jen odvozené lehké vrstvy.
