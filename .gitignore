@@ -1,0 +1,15 @@
+# velká vstupní data - nepatří do repozitáře
+*.laz
+*.las
+*.tif
+*.tiff
+*.zip
+data/raw/
+data/dmr/
+# pracovní soubory
+node_modules/
+__pycache__/
+*.png
+!docs/*.png
+.DS_Store
+Thumbs.db
