@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resilientní Koryčany - stav projektu</title>
+<meta name="description" content="Stav přípravy osvětového modelu zadržování vody v krajině pro Koryčany: území, data, co je hotovo, co chybí.">
+<link rel="stylesheet" href="tools/vendor/leaflet-1.9.4/leaflet.css">
+<style>
+  :root{--bg:#f6f4ee;--fg:#1d1c19;--muted:#5d5a52;--line:#d9d4c7;--card:#ffffff;--acc:#1f5f8b;--acc2:#b8461b;--ok:#2d7a3a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  header{background:#1d1c19;color:#f6f4ee;padding:28px 16px}
+  .wrap{max-width:980px;margin:0 auto;padding:0 16px}
+  header .wrap{padding:0 16px}
+  h1{font-size:1.7rem;margin:0 0 6px;line-height:1.2}
+  header p{margin:4px 0;color:#cfc9b8}
+  h2{font-size:1.25rem;margin:36px 0 10px;border-bottom:2px solid var(--line);padding-bottom:4px}
+  h3{font-size:1.05rem;margin:18px 0 6px}
+  p{margin:8px 0}
+  .lead{font-size:1.05rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+  .kpi b{display:block;font-size:1.5rem;color:var(--acc);line-height:1.1}
+  .kpi span{color:var(--muted);font-size:.9rem}
+  #map{height:520px;border:1px solid var(--line);border-radius:8px;background:#e9e6dd}
+  .legend{display:flex;flex-wrap:wrap;gap:12px 20px;font-size:.9rem;color:var(--muted);margin:8px 0}
+  .legend i{display:inline-block;width:22px;height:0;border-top:3px solid;vertical-align:middle;margin-right:6px}
+  .legend .fill{width:16px;height:12px;border:1px solid #555;vertical-align:middle;margin-right:6px;display:inline-block}
+  figure{margin:14px 0}
+  figure img{width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff}
+  figcaption{font-size:.9rem;color:var(--muted);margin-top:4px}
+  .figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+  table{border-collapse:collapse;width:100%;font-size:.95rem;margin:10px 0}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#efece3}
+  ul{padding-left:1.2rem}
+  li{margin:3px 0}
+  .box{background:var(--card);border-left:4px solid var(--acc);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0}
+  .warn{border-left-color:var(--acc2)}
+  .ok{color:var(--ok);font-weight:600}
+  a{color:var(--acc)}
+  footer{color:var(--muted);font-size:.85rem;margin:40px 0 24px}
+  @media (max-width:600px){#map{height:380px}h1{font-size:1.35rem}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Resilientní Koryčany - stav projektu</h1>
+  <p>Osvětový model zadržování vody v krajině pro jednu obec. Nositel: skautský oddíl Hříběcí hory, Koryčany. Nekomerční, veřejné, otevřený kód a data.</p>
+  <p>Stav k 19. 10. 2026 · <a style="color:#f6f4ee" href="https://skauti-korycany.github.io/korycany-voda/">drátěný prototyp rozhraní</a> · <a style="color:#f6f4ee" href="https://github.com/Skauti-Korycany/korycany-voda">repozitář na GitHubu</a></p>
+</div></header>
+
+<div class="wrap">
+
+<h2>Co vzniká</h2>
+<p class="lead">Jednoduchá webová aplikace, ve které obyvatelé Koryčan uvidí reálná data o své krajině (terén, odtok vody, půda, toky, budovy) a mohou si na vlastním pozemku nebo v celé obci "zkusit" opatření proti suchu, přívalům a horku: tůně, průlehy, výsadby, zasakování ze střech, změnu hospodaření. Aplikace ukáže orientační efekt v číslech a mapě a u každého opatření, kdo ho může udělat a z čeho se dá zaplatit.</p>
+<p>Cíl není projektová dokumentace. Cíl je, aby víc lidí ve městě pochopilo souvislosti a vědělo, co může udělat kdo: obec, vlastník půdy, zahrádkář, škola. Partner: ZŠ Koryčany (program Ekoškola). Vše běží bez serveru, zdrojový kód je pod licencí MIT, odvozená data a texty CC BY 4.0.</p>
+
+<h2>Území modelu</h2>
+<p>Hranici neurčuje katastr, ale rozvodnice odvozená z výškopisu DMR 5G: povodí Kyjovky k profilu těsně pod soutokem se Stříbrníkem v Koryčanech, bez povodí nad hrází vodní nádrže Koryčany (odtok z nádrže je řízený). Model řeší rozhodování jedné obce, ne mikroregionu.</p>
+<div class="grid">
+  <div class="kpi"><b>14,1 km²</b><span>území modelu</span></div>
+  <div class="kpi"><b>19,9 km²</b><span>celé povodí k profilu pod Koryčany</span></div>
+  <div class="kpi"><b>4,2 km²</b><span>povodí Stříbrníku (jižní zázemí města)</span></div>
+  <div class="kpi"><b>1 487</b><span>budov v území (půdorysy 25,4 ha)</span></div>
+  <div class="kpi"><b>9,4°</b><span>průměrný sklon; 28 % plochy nad 12°</span></div>
+  <div class="kpi"><b>5 m</b><span>rozlišení modelu (DMR 5G, 6,3 mil. bodů)</span></div>
+</div>
+<div id="map"></div>
+<div class="legend">
+  <span><i style="border-color:#b8461b"></i>hranice území modelu</span>
+  <span><i style="border-color:#b8461b;border-top-style:dashed"></i>celé povodí k profilu</span>
+  <span><span class="fill" style="background:rgba(31,95,139,.18)"></span>dílčí povodí (hlásné profily, obce)</span>
+  <span><i style="border-color:#1f5f8b"></i>vodní toky (ČÚZK)</span>
+  <span><span class="fill" style="background:#e07b00;border-color:#e07b00"></span>budovy (od přiblížení 15)</span>
+</div>
+<p class="note" style="color:var(--muted);font-size:.9rem">Podklad: Základní topografická mapa ČÚZK (WMTS, "ČÚZK - on-line"). Kliknutím na povodí nebo budovu se zobrazí údaje.</p>
+
+<h2>Co je hotovo</h2>
+<table>
+<tr><th style="width:34%">Blok</th><th>Výsledek</th></tr>
+<tr><td>Katalog opatření</td><td>58 opatření v 10 skupinách (zahrada, střecha, veřejný prostor, orná půda, louka, les, tok a niva, cesty a strže, měření, nástroje vlastníka a obce), 81 citovaných zdrojů, 10 dotačních programů. Každé opatření má: pro jaký extrém pomáhá, rozsah účinku se zdrojem, kdo ho realizuje, financování. Strojově čitelný JSON generovaný skriptem.</td></tr>
+<tr><td>Seznam datových vrstev</td><td>WMS/WMTS služby ČÚZK, VÚMOP, ČGS, VÚV TGM, AOPK, CENIA s ověřenými adresami a licencemi; co lze použít živě a co vyžaduje souhlas.</td></tr>
+<tr><td>Terén</td><td>12 listů DMR 5G (ČÚZK, CC BY 4.0) -> rastr 5 m v S-JTSK, 7,5 × 8 km, stínovaný reliéf ke kontrole.</td></tr>
+<tr><td>Odtok a rozvodnice</td><td>Vyplnění prohlubní, směr odtoku (D8), akumulace, sklon, expozice, údolnice; povodí k hlásným profilům ČHMÚ/města (Kyjovka ř. km 75,69; Stříbrník ř. km 1,07; pod přehradou ř. km 77,76) a k obcím. Hranice ověřena proti mapě a místní znalosti.</td></tr>
+<tr><td>Budovy a toky</td><td>INSPIRE Budovy ČÚZK (obec Koryčany) ořezané na území, bez čísel popisných a adres; INSPIRE hydrografická síť ČÚZK.</td></tr>
+<tr><td>Měření</td><td>Inventura hlásných profilů; vlastní optické čidlo na Stříbrníku u Kachníku (léto 2026, epizody přívalů); žádost o data Povodí Moravy v přípravě.</td></tr>
+<tr><td>Prototyp rozhraní</td><td>Drátěná verze se skutečným katalogem a vzorci nad syntetickým pozemkem: režimy Můj pozemek, Celé území, Katalog, O modelu. Běží na GitHub Pages.</td></tr>
+</table>
+
+<div class="figs">
+  <figure><img src="docs/img/dmr5g_5m_hillshade.png" alt="Stínovaný reliéf z DMR 5G" loading="lazy"><figcaption>Terén: DMR 5G převzorkovaný na 5 m, vrstevnice po 20 m.</figcaption></figure>
+  <figure><img src="docs/img/rozvodnice_nahled.png" alt="Rozvodnice a dílčí povodí" loading="lazy"><figcaption>Rozvodnice: údolnice, hlavní povodí (červeně), dílčí povodí sídel a hlásných profilů.</figcaption></figure>
+  <figure><img src="docs/img/vektory_nahled.png" alt="Budovy a toky v území modelu" loading="lazy"><figcaption>Budovy (oranžově) a toky ČÚZK (modře) v území modelu.</figcaption></figure>
+  <figure><img src="docs/img/sklon_nahled.png" alt="Sklon terénu" loading="lazy"><figcaption>Sklon terénu (Horn 3×3) s údolnicemi.</figcaption></figure>
+</div>
+
+<h2>Co připravujeme a k čemu potřebujeme půdní data</h2>
+<p>Další krok je výpočet odtoku z návrhového deště metodou SCS-CN a orientační erozní ohroženosti (USLE). Obojí stojí na půdních datech, která nelze odvodit z terénu:</p>
+<table>
+<tr><th style="width:34%">Vrstva</th><th>K čemu v modelu</th></tr>
+<tr><td>Hydrologické skupiny půd (HSP A-D)</td><td>Číslo CN pro každou buňku 5 m (HSP × využití půdy) -> objem odtoku z přívalu, účinek zasakovacích a retenčních opatření na pozemku i za obec.</td></tr>
+<tr><td>BPEJ / hlavní půdní jednotky</td><td>Faktor erodovatelnosti K (USLE), hloubka půdy a retenční vodní kapacita -> kolik vody půda udrží, kde má smysl zvyšovat organickou hmotu.</td></tr>
+<tr><td>Erozní ohroženost (vodní eroze, DSO)</td><td>Kontrola vlastního výpočtu LS × K a výběr míst pro meze, průlehy a zasakovací pásy.</td></tr>
+<tr><td>Zamokřené půdy, meliorace</td><td>Kde dávají smysl tůně a mokřady, kde naopak drenáž vodu odvádí.</td></tr>
+</table>
+<div class="box">
+<p><b>Jak budou data použita:</b> jen uvnitř výpočtu pro území 14 km² v k. ú. Koryčany, Lískovec u Koryčan, Blišice a Jestřabice. Zdrojové rastry a vektory se nebudou redistribuovat ani zveřejňovat; v aplikaci se zobrazí buď odvozené výsledky (CN, odtok, ohroženost) s uvedením zdroje, nebo oficiální WMS VÚMOP s povinným uvedením původu. Účel je nekomerční a osvětový, výstup bude zveřejněn pod hlavičkou skautského oddílu zdarma. Formát ideálně GeoTIFF nebo shapefile/GeoPackage v S-JTSK (EPSG:5514), výřez podle hranice území (GeoJSON ke stažení v repozitáři: <a href="data/povodi.geojson">data/povodi.geojson</a>, polygon typ <code>uzemi_modelu</code>).</p>
+</div>
+
+<h2>Zásady, kterých se držíme</h2>
+<ul>
+  <li>Každé číslo v aplikaci má dohledatelný původ: vstupní data se zdrojem a datem, vzorec s odkazem na metodiku (VÚMOP, VÚV TGM, ČZU, MENDELU, CzechGlobe, metodiky MŽP/AOPK).</li>
+  <li>Nejistota se ukazuje jako rozsah, ne jedno číslo. Co nemá zdroj, se nezobrazí, nebo je označeno jako odhad.</li>
+  <li>Rozlišení 5 m všude; jemnější grid by byl falešná přesnost (DMR 5G má 0,07 až 0,15 bodu na m²).</li>
+  <li>Žádné osobní údaje: do dat nejdou čísla popisná, adresy, vlastníci ani žáci.</li>
+  <li>Před použitím jakékoli vrstvy se ověří licence; WMS služby se volají živě bez redistribuce dat.</li>
+</ul>
+
+<div class="box warn">
+<p><b>Na co to nestačí:</b> model nenahrazuje projektovou dokumentaci, 2D hydraulický model povodně ani kalibrovaný srážko-odtokový model. Dokud není porovnán s měřením, nese označení "nevalidováno". Slouží k pochopení souvislostí a k prioritizaci, ne k návrhu staveb.</p>
+</div>
+
+<h2>Zdroje dat použité k dnešnímu dni</h2>
+<ul>
+  <li>ČÚZK: DMR 5G, INSPIRE Budovy (BU), INSPIRE Vodstvo (HY-NET), ZTM a ortofoto jako WMTS/WMS. Licence CC BY 4.0, síťové služby s uvedením "ČÚZK - on-line".</li>
+  <li>ČHMÚ / město Koryčany / Povodí Moravy: hlásné profily (evidenční listy na edpp.cz), normál srážek Kroměříž 1991-2020.</li>
+  <li>Plán dílčího povodí Dyje 2021-2027 (Povodí Moravy): regionální kontext.</li>
+  <li>Metodiky a studie citované v katalogu opatření: 81 položek, seznam v repozitáři (<a href="docs/KATALOG.md">docs/KATALOG.md</a>, <a href="data/opatreni.json">data/opatreni.json</a>).</li>
+</ul>
+
+<footer>Resilientní Koryčany · skautský oddíl Hříběcí hory, Koryčany · kód MIT, data a texty CC BY 4.0 · <a href="https://github.com/Skauti-Korycany/korycany-voda">github.com/Skauti-Korycany/korycany-voda</a></footer>
+</div>
+
+<script src="tools/vendor/leaflet-1.9.4/leaflet.js"></script>
+<script>
+(function(){
+  var map = L.map('map', {scrollWheelZoom:false}).setView([49.112, 17.18], 13);
+  L.tileLayer('https://ags.cuzk.gov.cz/arcgis1/rest/services/ZTM_WM/MapServer/WMTS/tile/1.0.0/ZTM_WM/default/GoogleMapsCompatible/{z}/{y}/{x}',{maxZoom:19,attribution:'ČÚZK - on-line (ZTM)'}).addTo(map);
+  function get(u, cb){ fetch(u).then(function(r){return r.json()}).then(cb).catch(function(e){console.log(u, e)}); }
+  get('data/povodi.geojson', function(gj){
+    var model = {type:'FeatureCollection', features: gj.features.filter(function(f){return f.properties.typ==='uzemi_modelu'})};
+    var hlavni = {type:'FeatureCollection', features: gj.features.filter(function(f){return f.properties.typ==='hlavni'})};
+    var sidla = {type:'FeatureCollection', features: gj.features.filter(function(f){return f.properties.typ==='sidlo'})};
+    L.geoJSON(sidla, {style:{color:'#1f5f8b',weight:1,fillColor:'#1f5f8b',fillOpacity:.14},
+      onEachFeature:function(f,l){var p=f.properties;l.bindPopup('<b>'+p.nazev+'</b><br>povodí nad bodem: '+p.plocha_celkem_km2+' km²<br>bez vnořených: '+p.plocha_vlastni_km2+' km²');}}).addTo(map);
+    L.geoJSON(hlavni, {style:{color:'#b8461b',weight:2,dashArray:'6 5',fill:false}}).addTo(map);
+    var m = L.geoJSON(model, {style:{color:'#b8461b',weight:3,fill:false},
+      onEachFeature:function(f,l){l.bindPopup('<b>Území modelu</b><br>'+f.properties.plocha_vlastni_km2+' km²');}}).addTo(map);
+    map.fitBounds(m.getBounds().pad(0.05));
+  });
+  get('data/toky_cuzk.geojson', function(gj){
+    L.geoJSON(gj, {style:function(f){return {color:'#1f5f8b',weight:f.properties.v_uzemi_modelu?2:1,opacity:f.properties.v_uzemi_modelu?.9:.45}}}).addTo(map);
+  });
+  var bud = null;
+  get('data/budovy.geojson', function(gj){
+    bud = L.geoJSON(gj, {style:{color:'#e07b00',weight:1,fillColor:'#e07b00',fillOpacity:.7},
+      onEachFeature:function(f,l){var p=f.properties;l.bindPopup(p.ucel+'<br>'+p.cast_obce+'<br>půdorys '+p.plocha_m2+' m²<br>'+p.povodi);}});
+    toggle();
+  });
+  function toggle(){ if(!bud) return; if(map.getZoom()>=15){ if(!map.hasLayer(bud)) bud.addTo(map);} else if(map.hasLayer(bud)) map.removeLayer(bud); }
+  map.on('zoomend', toggle);
+})();
+</script>
+</body>
+</html>
