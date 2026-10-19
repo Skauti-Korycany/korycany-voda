@@ -1,8 +1,8 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 19. 10. 2026 (relace 5, konec; fáze 2 - terén, rozvodnice, budovy, toky, využití půdy, tabulka CN hotovy)
+Aktualizováno: 19. 10. 2026 (relace 5, konec; **fáze 2 hotová** v náhradní verzi HSP - terén, rozvodnice, budovy, toky, využití půdy, HSP, CN, odtok)
 
-## Fáze: 1 hotová (katalog, vrstvy, měření, datový formát, návrh rozhraní, prototyp). Fáze 2 běží: terén, rozvodnice, budovy, toky a využití půdy hotovy; CN rastr čeká na HSP od VÚMOP.
+## Fáze: 1 hotová (katalog, vrstvy, měření, datový formát, návrh rozhraní, prototyp). Fáze 2 hotová (HSP zatím náhradně z BPEJ, vyměnitelné za VÚMOP). Další je fáze 3: výpočetní jádro nad skutečnými rastry.
 
 ### Hotovo
 - Instrukce projektu (docs/00-instrukce-projektu.md).
@@ -31,6 +31,9 @@ Aktualizováno: 19. 10. 2026 (relace 5, konec; fáze 2 - terén, rozvodnice, bud
 
 - **Blok B část 4b (fáze 2), 19. 10. - tabulka CN hotova.** `tools/build_cn.py` -> `data/cn_tabulka.json` (25 tříd = kódy využití půdy, 51 variant stavu, 10 odhadů), popis `docs/CN.md`. Zdroje ✅ Janeček a kol. 2012 (metodika ČZU; tab. 2.1 HSP, 2.2 HPJ->HSP, 2.3 CN pro IPS II; PDF na storm.fsv.cvut.cz) a ✅ USDA TR-55 (1986) tab. 2-2a/2-2c pro urbánní třídy. Kontrola: každý kód z vyuziti_pudy.json má řádek. Orientačně: vážené CN území modelu = 65 při HSP B, 77 při HSP C.
 
+- **Blok B část 4c (fáze 2), 19. 10. - HSP a CN hotovy (náhradní HSP).** `tools/05_hsp.py`: BPEJ z **WFS SPÚ** ✅ (`geoportal.spucr.cz/api/open-data/wfs/wfs_bpej`, WFS 1.0.0, jen GML2, EPSG:5514, Fees none / AccessConstraints none; 172 polygonů v bboxu, parsování regexem bez GDAL) -> HPJ (2.-3. číslice BPEJ) -> HSP podle Janeček 2012 tab. 2.2; plochy bez BPEJ (lesy, intravilán) doplněny HSP nejbližší bonitované plochy = **odhad 48 % území** (681 ha), označeno v `hsp_zdroj.tif`. Výsledek území modelu: A 3 ha, B 796 ha, C 144 ha, D 470 ha. HPJ v území: 40/41 (svažité, 55 polygonů), 19/20 (pelozemě/těžké, 41), 08/11/10, 24/27, 49, 58, 22, 06; 17 polygonů kód 00 (bez bonitace). Výstupy `data/dmr/hsp.tif`, `hsp_zdroj.tif`, `hpj.tif`, `data/hsp_info.json`, `data/bpej.geojson` (1,5 MB), `docs/img/hsp_nahled.png`. Přepínač `--vumop <soubor>` pro data VÚMOP (GeoTIFF 1-4 nebo GeoJSON s atributem HSP) - nahradí BPEJ, zdroj = 3.
+  `tools/06_cn.py`: `data/dmr/cn.tif` (CN = cn_tabulka výchozí × využití × HSP), `odtok_P20/40/60.tif`, `data/cn_info.json`. **Území modelu: vážené CN 72,0** (B 56 %, C 10 %, D 33 %); ilustrační déšť 40 mm -> Q 5,5 mm = 78 tis. m³, koef. 0,14; 60 mm -> 14 mm = 198 tis. m³. Dílčí: Kyjovka 75,69 CN 75,9 (Q40 = 7,1 mm), Stříbrník 65,2 (2,5 mm, les), Lískovec 79,0 (9,4 mm). Spouštěč `tools/vyrob_cn.bat` (05 + 06).
+
 ### Rozpracováno
 - **Žádost VÚMOP odeslána 19. 10. 2026** (data@vumop.cz, z adresy oddílu): vektor hydrologických skupin půd (mapa velkého měřítka, metadata ID 5cc1bdc2-de34-4eee-a439-41420a000319), správní území obce Koryčany + obal ~500 m, SHP/GPKG v EPSG:5514; dotazy na licenci pro veřejnou webovou aplikaci, zpoplatnění nekomerčního užití a HSP pro lesy mimo ZPF. Odkaz na stav.html v textu. Čeká se na odpověď. Erozní ohroženost a zamokřené půdy v žádosti nejsou - případně druhá žádost po odpovědi.
 - Chybějící podklady od uživatele: NOO 2026 (XLSX) a NOO 2025_2; seznam platných SPPK (aopk.gov.cz/platne-standardy); znění vodního zákona (e-Sbírka) § 15b, 17, 46, 47, 55; nejbližší stanice ČHMÚ; text ČSN 75 9010.
@@ -39,7 +42,9 @@ Aktualizováno: 19. 10. 2026 (relace 5, konec; fáze 2 - terén, rozvodnice, bud
 - Otevřené body rozhraní (ROZHRANI.md kap. 6).
 
 ### Další kroky (pořadí)
-1. Blok B část 4c: HSP rastr - buď od VÚMOP (žádost odeslána), nebo záloha: BPEJ ze SPÚ (zdarma, měsíční aktualizace) -> HPJ -> HSP podle J12 tab. 2.2 (tabulku HPJ->HSP přepsat z PDF do JSON); lesy mimo ZPF bez BPEJ -> HSP z půdní/geologické mapy (otevřená otázka). Pak `05_cn.py`: CN rastr 5 m = cn_tabulka × vyuziti_kod × HSP, odtok z návrhového deště (ČSN 75 9010 / Brno ASIO), součty za dílčí povodí.
+1. **Fáze 3 - jádro**: `jadro.js` s výpočty nad skutečnými daty (CN, sklon, akumulace, plochy tříd za pozemek/povodí), testy; datový balíček pro web (rastry -> PNG dlaždice nebo COG + GeoJSON vrstvy). Uživatel chce co nejdřív vizualizovat a ladit vstupy.
+2. Návrhové úhrny N-letých dešťů pro Koryčany (ČHMÚ / ČVUT metodika 2023 "Krátkodobé srážky"), přepočet IPS I/III (J12 obr. 2.2).
+3. Až přijde VÚMOP: `--vumop` v vyrob_cn.bat, přepočet, porovnat s BPEJ odhadem.
 2. Názvy toků do toky_cuzk.geojson: z INSPIRE HY-P (ČÚZK) nebo DIBAVOD A02 (NAZ_TOK) - až bude potřeba v rozhraní.
 2. Jádro (fáze 3): vyčlenit výpočty z prototypu do `jadro.js` s testy na syntetickém pozemku; napojit skutečné sklony a hranici území.
 3. Blok D: "reakce toku na déšť" léto 2026 z CSV Kachník + srážky ČHMÚ.
@@ -47,6 +52,7 @@ Aktualizováno: 19. 10. 2026 (relace 5, konec; fáze 2 - terén, rozvodnice, bud
 5. Dotační okna: AOPK OPŽP ZMV 17. výzva 20. 10. - 3. 11. 2026; OPŽP 105 do 17. 12. 2026.
 
 ## Rozhodnutí
+- 19. 10. 2026 - **HSP náhradně z BPEJ (SPÚ, otevřená data) + Janeček tab. 2.2**, lesy a intravilán doplněny nejbližší bonitovanou plochou a označeny jako odhad. Data VÚMOP, až přijdou, se vymění jedním parametrem (`--vumop`), navazující výpočty se přepočítají .bat souborem. Uživatel chce rychle do vizualizace a ladění; přesnost HSP v lesích je známá slabina, viditelně označená.
 - 19. 10. 2026 - **CN podle Janeček 2012 (IPS II, Ia = 0,2 S)**, urbánní třídy z TR-55; stáří zdroje 2012 přijato (fyzikální metoda). Výchozí stavy: orná konzervativně (obilniny Př Šp), TTP > 75 %, les střední; nepropustné 98; voda 100. Druh lesa CN nemění.
 - 19. 10. 2026 - **Využití půdy ze ZABAGED přes WFS, ne z 5,8GB GPKG ani WMS obrázku**: WFS dává vektor s atributy (druh lesa, typ zahrady/sadu, typ areálu), stahuje se jen bbox, skript to zvládne sám. Komunikace jako linie 5 m, budovy z INSPIRE BU (střed buňky, bez nadsazení plochy).
 - 19. 10. 2026 - **Rozvodnice ověřeny proti ČHP** (ZABAGED) - hranice modelu se nemění.

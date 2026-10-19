@@ -1,0 +1,52 @@
+{
+ "datum": "2026-10-19",
+ "zdroj_bpej": "SPÚ, otevřená data, WFS wfs_bpej (WFS 1.0.0, GML2, EPSG:5514), Fees none, AccessConstraints none",
+ "prirazeni_hsp": "Janeček a kol. 2012, Ochrana zemědělské půdy před erozí, tab. 2.2 (HPJ -> HSP, orientační)",
+ "metoda_doplneni": "buňky bez BPEJ (les, intravilán, voda) = HSP nejbližší bonitované plochy (euklidovsky) - ODHAD; nahradit daty VÚMOP (--vumop)",
+ "uzemi_modelu_celkem_ha": 1412.7,
+ "plochy_hsp_ha": {
+  "A": 2.9,
+  "B": 795.7,
+  "C": 143.7,
+  "D": 470.4
+ },
+ "zdroj_hsp_ha": {
+  "BPEJ primo_ha": 731.2,
+  "doplneno_nejblizsi_ha": 681.5,
+  "vumop_ha": 0.0
+ },
+ "podil_odhadu_pct": 48.2,
+ "cetnost_hpj_polygony": {
+  "00": 17,
+  "02": 1,
+  "06": 4,
+  "08": 17,
+  "10": 4,
+  "11": 9,
+  "19": 18,
+  "20": 23,
+  "22": 7,
+  "24": 8,
+  "27": 10,
+  "31": 2,
+  "37": 2,
+  "40": 34,
+  "41": 21,
+  "49": 7,
+  "58": 5,
+  "73": 1
+ },
+ "kody": {
+  "hsp": {
+   "1": "A",
+   "2": "B",
+   "3": "C",
+   "4": "D"
+  },
+  "hsp_zdroj": {
+   "1": "BPEJ přímo",
+   "2": "doplněno nejbližší BPEJ (odhad)",
+   "3": "VÚMOP"
+  }
+ }
+}
