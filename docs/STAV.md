@@ -23,7 +23,11 @@ Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice, budovy a toky hoto
 
 - **Blok B část 3 (fáze 2), 19. 10. - budovy a toky hotovy.** `tools/03_vektory.py` + `tools/vyrob_vektory.bat` (čistý Python: xml.etree, sqlite3 + ruční WKB, bez geopandas). Vstupy ✅ atom.cuzk.gov.cz (CC BY 4.0, "žádné podmínky neplatí"): INSPIRE Budovy (BU) po obcích - Koryčany [588601] `services.cuzk.gov.cz/gml/inspire/bu/epsg-5514/588601.zip` (0,5 MB GML, EPSG:5514, 1 898 budov); INSPIRE Vodstvo HY-NET `openzu.cuzk.gov.cz/opendata/HY-NET/HY-NET.zip` (194 MB, GPKG, EPSG:3045, celá ČR; vrstvy HydroNode, WatercourseLink - **bez názvů toků**). Výstupy: `data/budovy.geojson` (1 487 budov v území modelu, půdorysy 25,4 ha; Koryčany 913, Lískovec 171, Blišice 22, 381 bez části obce; 957 RD = 11,5 ha střech, 75 průmysl = 6,5 ha, 303 garáže/kůlny, 44 bytové domy, 55 zemědělské, 40 veřejné; podle dílčích povodí: Kyjovka 75,69 = 600, Stříbrník 238, Lískovec 94, 555 mimo dílčí povodí), `data/budovy_info.json` (součty), `data/toky_cuzk.geojson` (140 linií v bboxu +200 m, 44 v území), náhled `docs/img/vektory_nahled.png`. Bez č.p., adres a ID budov. Vstupy na PC: `repo\data\588601\`, `repo\data\HY-NET\` (v .gitignore).
 
+- **Veřejná stavová stránka**, 19. 10.: `stav.html` -> https://skauti-korycany.github.io/korycany-voda/stav.html (účel, území s interaktivní mapou povodí/toků/budov nad ZTM, co je hotovo, k čemu půdní data, zásady, zdroje). Určena jako odkaz do žádosti o data VÚMOP. Při změně dat ji aktualizovat (čísla jsou v HTML natvrdo).
+- VÚMOP ✅ (vumop.cz/poskytovani-dat, 19. 10.): žádosti na data@vumop.cz (tel. 257 027 265), formální náležitosti web neuvádí, ceník neuvádí; **BPEJ je volně ke stažení u SPÚ** (aktualizace měsíčně; kontakt uveden na stránce), takže od VÚMOP žádáme hlavně HSP, erozní ohroženost a zamokřené půdy.
+
 ### Rozpracováno
+- Žádost VÚMOP o data (HSP, eroze, zamokření): text e-mailu na vyžádání; odkaz na stav.html.
 - Chybějící podklady od uživatele: NOO 2026 (XLSX) a NOO 2025_2; seznam platných SPPK (aopk.gov.cz/platne-standardy); znění vodního zákona (e-Sbírka) § 15b, 17, 46, 47, 55; nejbližší stanice ČHMÚ; text ČSN 75 9010.
 - Data z měření: uživatel požádá Povodí Moravy. Text žádosti na vyžádání.
 - Zpětná vazba k prototypu (tón textů, pořadí kroků, síla "Na co to nestačí") - čeká na uživatele.
