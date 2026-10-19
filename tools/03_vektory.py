@@ -15,7 +15,8 @@ Výstupy (WGS84, do gitu):
     data/budovy.geojson           půdorysy budov v území modelu; vlastnosti: ucel, cast_obce, plocha_m2, povodi_id.
                                   ZÁMĚRNĚ BEZ č.p., adres a identifikátorů (pravidlo projektu: žádné osobní údaje).
     data/budovy_info.json         součty: počet budov a plocha střech podle části obce, účelu a dílčího povodí
-    data/toky_cuzk.geojson        linie vodních toků HY-NET v území modelu (+ 200 m), vlastnosti: nazev, typ
+    data/toky_cuzk.geojson        linie vodních toků HY-NET v území modelu (+ 200 m); HY-NET nenese názvy toků
+                                  (ty jsou v INSPIRE HY-P nebo DIBAVOD A02) - pole nazev je proto prázdné
     data/vektory_nahled.png       kontrolní náhled (do docs/img po kontrole)
 
 Metoda: čistý Python (xml.etree, sqlite3, numpy, pyproj, rasterio, matplotlib) - bez geopandas/shapely,
@@ -93,7 +94,7 @@ def gpkg_lines(path, bbox3045, layer_hint=("WatercourseLink", "Watercourse")):
     """Čte linie z GeoPackage (sqlite3 + ruční WKB), jen uvnitř bbox (přes RTree, když existuje)."""
     con = sqlite3.connect(path)
     cur = con.cursor()
-    tabs = [r for r in cur.execute("SELECT table_name, geometry_column, srs_id FROM gpkg_geometry_columns")]
+    tabs = [r for r in cur.execute("SELECT table_name, column_name, srs_id FROM gpkg_geometry_columns")]
     if not tabs:
         sys.exit("V GPKG nejsou geometrické vrstvy")
     log("   vrstvy v GPKG: " + ", ".join(t[0] for t in tabs))
@@ -102,7 +103,7 @@ def gpkg_lines(path, bbox3045, layer_hint=("WatercourseLink", "Watercourse")):
     cols = [r[1] for r in cur.execute(f'PRAGMA table_info("{tname}")')]
     name_col = next((c for c in cols if c.lower() in ("name", "geographicalname", "nazev", "geographicalname_text")), None)
     for c in cols:
-        if "name" in c.lower() and name_col is None:
+        if "name" in c.lower() and "namespace" not in c.lower() and name_col is None:
             name_col = c
     pk = next((r[1] for r in cur.execute(f'PRAGMA table_info("{tname}")') if r[5] == 1), "fid")
     xmin, ymin, xmax, ymax = bbox3045

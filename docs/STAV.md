@@ -1,8 +1,8 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice hotovy a potvrzeny, hranice modelu rozhodnuta)
+Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice, budovy a toky hotovy)
 
-## Fáze: 1 hotová (katalog, vrstvy, měření, datový formát, návrh rozhraní, prototyp). Fáze 2 běží: terén a rozvodnice hotovy, další je CN/eroze a vektory (budovy, toky DIBAVOD).
+## Fáze: 1 hotová (katalog, vrstvy, měření, datový formát, návrh rozhraní, prototyp). Fáze 2 běží: terén, rozvodnice, budovy a toky hotovy; další je CN rastr (HSP + využití půdy) a eroze.
 
 ### Hotovo
 - Instrukce projektu (docs/00-instrukce-projektu.md).
@@ -21,6 +21,8 @@ Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice hotovy a potvrzeny,
 
 - **Blok B část 2 (fáze 2), 19. 10. - rozvodnice hotovy (otestováno v Claude na skutečném dmr5g_5m.tif, 32 s).** Skript `tools/02_rozvodnice.py` + `tools/vyrob_rozvodnice.bat`: priority-flood vyplnění depresí, D8 směr, akumulace, sklon a expozice (Horn), údolnice >= 0,25 km², povodí k uzávěrovým bodům. Bez whitebox/pysheds (čistý numpy/scipy; whitebox stahuje binárku z webu, což u uživatele nemusí projít). Rastry v `repo\data\dmr\`: smer_odtoku, akumulace, sklon_deg, expozice_deg, deprese, povodi_id (.tif, mimo git). Do gitu: `data/povodi.geojson` (8 polygonů), `data/toky_dmr.geojson` (108 linií), `data/rozvodnice_body.json` (uzávěrové body, upravitelné), `data/rozvodnice_info.json`, náhledy `docs/img/rozvodnice_nahled.png`, `sklon_nahled.png`. Výsledky: hlavní povodí Kyjovka pod soutokem se Stříbrníkem **19,9 km²** (bod -559412, -1173982; nalezen automaticky po proudu od profilu Stříbrník), profil Kyjovka ř. km 75,69 = 13,7 km² (z toho pod přehradou 5,8 km² - **oříznuto východním okrajem rastru**), Stříbrník ř. km 1,07 = 4,2 km², Lískovec 0,4, Blišice 0,6, Jestřabice 0,7 km² (jen potůčky obcemi). Celý rastr odvodňuje 31,7 km² k výstupu Kyjovky na západním okraji (17.1099 E, 49.1314 N). Průměrný sklon 9,4°, 28,5 % buněk nad 12°. Souřadnice hlásných profilů ✅ edpp.cz (ORP Kroměříž): Kyjovka 75,69 = -558794,48/-1173991,39; Stříbrník 1,068 = -559180,53/-1174691,52; pod přehradou 77,76 = -556751,96/-1173879,95. Středy obcí ✅ cs.wikipedia: Lískovec 49.1236/17.1808, Blišice 49.1228/17.1656, Jestřabice 49.0919/17.1297, VN Koryčany 49.1167/17.1964.
 
+- **Blok B část 3 (fáze 2), 19. 10. - budovy a toky hotovy.** `tools/03_vektory.py` + `tools/vyrob_vektory.bat` (čistý Python: xml.etree, sqlite3 + ruční WKB, bez geopandas). Vstupy ✅ atom.cuzk.gov.cz (CC BY 4.0, "žádné podmínky neplatí"): INSPIRE Budovy (BU) po obcích - Koryčany [588601] `services.cuzk.gov.cz/gml/inspire/bu/epsg-5514/588601.zip` (0,5 MB GML, EPSG:5514, 1 898 budov); INSPIRE Vodstvo HY-NET `openzu.cuzk.gov.cz/opendata/HY-NET/HY-NET.zip` (194 MB, GPKG, EPSG:3045, celá ČR; vrstvy HydroNode, WatercourseLink - **bez názvů toků**). Výstupy: `data/budovy.geojson` (1 487 budov v území modelu, půdorysy 25,4 ha; Koryčany 913, Lískovec 171, Blišice 22, 381 bez části obce; 957 RD = 11,5 ha střech, 75 průmysl = 6,5 ha, 303 garáže/kůlny, 44 bytové domy, 55 zemědělské, 40 veřejné; podle dílčích povodí: Kyjovka 75,69 = 600, Stříbrník 238, Lískovec 94, 555 mimo dílčí povodí), `data/budovy_info.json` (součty), `data/toky_cuzk.geojson` (140 linií v bboxu +200 m, 44 v území), náhled `docs/img/vektory_nahled.png`. Bez č.p., adres a ID budov. Vstupy na PC: `repo\data\588601\`, `repo\data\HY-NET\` (v .gitignore).
+
 ### Rozpracováno
 - Chybějící podklady od uživatele: NOO 2026 (XLSX) a NOO 2025_2; seznam platných SPPK (aopk.gov.cz/platne-standardy); znění vodního zákona (e-Sbírka) § 15b, 17, 46, 47, 55; nejbližší stanice ČHMÚ; text ČSN 75 9010.
 - Data z měření: uživatel požádá Povodí Moravy. Text žádosti na vyžádání.
@@ -28,13 +30,17 @@ Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice hotovy a potvrzeny,
 - Otevřené body rozhraní (ROZHRANI.md kap. 6).
 
 ### Další kroky (pořadí)
-1. Blok B část 3: ZABAGED budovy (vektor, CC BY) a DIBAVOD toky jako GeoJSON ořezané na území modelu; CN rastr (HSP + využití půdy) a USLE vstupy (K z BPEJ/HSP, LS ze sklonu a akumulace).
+1. Blok B část 4: CN rastr (hydrologické skupiny půd VÚMOP + využití půdy) a USLE vstupy (K z BPEJ/HSP, LS ze sklonu a akumulace). Blokuje: odpověď VÚMOP (data@vumop.cz) nebo WMS HSP; využití půdy = ZABAGED polohopis (plošné třídy) - zvážit stažení ZABAGED GPKG (5,8 GB, celá ČR) vs. WMS GetMap rastr.
+2. Názvy toků do toky_cuzk.geojson: z INSPIRE HY-P (ČÚZK) nebo DIBAVOD A02 (NAZ_TOK) - až bude potřeba v rozhraní.
 2. Jádro (fáze 3): vyčlenit výpočty z prototypu do `jadro.js` s testy na syntetickém pozemku; napojit skutečné sklony a hranici území.
 3. Blok D: "reakce toku na déšť" léto 2026 z CSV Kachník + srážky ČHMÚ.
 4. Uživatel ověří WMS označené ❌ ve VRSTVY.md (LPIS MZe, katastr ČÚZK, CENIA vojenská mapování); napíše na data@vumop.cz (HSP, BPEJ, zamokřené půdy).
 5. Dotační okna: AOPK OPŽP ZMV 17. výzva 20. 10. - 3. 11. 2026; OPŽP 105 do 17. 12. 2026.
 
 ## Rozhodnutí
+- 19. 10. 2026 - **Jen Koryčany.** Model řeší rozhodování jedné obce, ne mikroregionu: budovy jen z obce Koryčany (588601), sousední obce (Střílky u SV rohu) se nestahují. Platí i pro další vrstvy.
+- 19. 10. 2026 - **Toky z ČÚZK HY-NET, ne DIBAVOD**: jasná licence CC BY 4.0 a aktuální data (10/2026); DIBAVOD A02 je z r. 2006 a bez uvedené licence. Cena: HY-NET nenese názvy toků.
+- 19. 10. 2026 - **Budovy bez identifikátorů**: do GeoJSON jde půdorys, účel (RÚIAN), část obce, plocha, podlaží, id dílčího povodí. Č.p., adresy, ID RÚIAN/ISKN se nezapisují (pravidlo projektu). Ořez = těžiště v polygonu území modelu.
 - 19. 10. 2026 - **Hranice modelu = hráz VN Koryčany nahoře, profil Kyjovky pod soutokem se Stříbrníkem dole.** Odtok z nádrže je řízený, povodí nad hrází se nemodeluje (a je navíc oříznuté rastrem). Území modelu = 19,9 - 5,8 = **14,1 km²**, polygon `typ: uzemi_modelu` v `data/povodi.geojson`; v `rozvodnice_body.json` má bod id 3 příznak `vyloucit_z_modelu`. Uživatel potvrdil 19. 10. (body 1-3: hráz jako hranice, profil pod soutokem OK, Stříbrník = potok podél ulice Lhotka kolem rybníka Kachník, ústí do Kyjovky u Petrželky). Východní listy BUCO15-18 se nestahují.
 - 19. 10. 2026 - **Hydrologie bez externích knihoven**: whitebox při prvním importu stahuje binárku z whiteboxgeo.com/GitHubu (v Claude 403, u uživatele nejisté), pysheds táhne numba. Vyplnění depresí, D8 a akumulace napsány v numpy/scipy přímo ve skriptu; na 2,4 M buněk 30 s. Nerozhodovat znovu, dokud rastr nepřesáhne ~10 M buněk.
 - 19. 10. 2026 - **Hlavní profil = Kyjovka těsně pod soutokem se Stříbrníkem** (automaticky z dat), ne hlásný profil ř. km 75,69 - ten leží nad soutokem, takže by vynechal povodí Stříbrníku (4,2 km², celé jižní zázemí města). Hlásné profily 75,69 a 1,07 jsou v datech jako dílčí povodí (id 1, 2). Změna profilu = úprava `data/rozvodnice_body.json` a nové spuštění .bat.
@@ -72,7 +78,6 @@ Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice hotovy a potvrzeny,
 - Data Povodí Moravy: po odpovědi na žádost.
 - Nejbližší srážkoměrná stanice ČHMÚ (opendata.chmi.cz z Claude blokováno).
 - Meliorace v území: žádost SPÚ (bezplatná) ✅; ISMS meliorace.vumop.cz (WMS nedohledána).
-- ZABAGED budovy jako vektor ke stažení (pro předvyplnění ploch a součty za obec) - ověřit na ČÚZK (CC BY).
 - Geokodér pro zadání adresy (ČÚZK RÚIAN 💻) - ověřit dostupnost a licenci.
 - Licence VÚMOP, NLI, MZe, ČHMÚ: zdarma bez jmenované licence; redistribuce dat vyžaduje souhlas.
 - Zapojení školy: sekce M a U07; registr estudanky.eu pro M04; úložiště měření (fáze 5).
