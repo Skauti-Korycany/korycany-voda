@@ -85,6 +85,7 @@
 <tr><td>Terén</td><td>12 listů DMR 5G (ČÚZK, CC BY 4.0) -> rastr 5 m v S-JTSK, 7,5 × 8 km, stínovaný reliéf ke kontrole.</td></tr>
 <tr><td>Odtok a rozvodnice</td><td>Vyplnění prohlubní, směr odtoku (D8), akumulace, sklon, expozice, údolnice; povodí k hlásným profilům ČHMÚ/města (Kyjovka ř. km 75,69; Stříbrník ř. km 1,07; pod přehradou ř. km 77,76) a k obcím. Hranice ověřena proti mapě a místní znalosti.</td></tr>
 <tr><td>Budovy a toky</td><td>INSPIRE Budovy ČÚZK (obec Koryčany) ořezané na území, bez čísel popisných a adres; INSPIRE hydrografická síť ČÚZK.</td></tr>
+<tr><td>Využití půdy</td><td>ZABAGED polohopis (WFS ČÚZK) vypálený do mřížky 5 m: les 705 ha (50 %, z toho listnatý 465, smíšený 144, jehličnatý 36), orná 261 ha, louky 153 ha, zahrady a sady 121 ha, zástavba a areály 95 ha, komunikace 19 ha. Hranice území ověřena proti oficiálním rozvodnicím ČHP (ZABAGED): shoda.</td></tr>
 <tr><td>Měření</td><td>Inventura hlásných profilů; vlastní optické čidlo na Stříbrníku u Kachníku (léto 2026, epizody přívalů); žádost o data Povodí Moravy v přípravě.</td></tr>
 <tr><td>Prototyp rozhraní</td><td>Drátěná verze se skutečným katalogem a vzorci nad syntetickým pozemkem: režimy Můj pozemek, Celé území, Katalog, O modelu. Běží na GitHub Pages.</td></tr>
 </table>
@@ -93,7 +94,7 @@
   <figure><img src="docs/img/dmr5g_5m_hillshade.png" alt="Stínovaný reliéf z DMR 5G" loading="lazy"><figcaption>Terén: DMR 5G převzorkovaný na 5 m, vrstevnice po 20 m.</figcaption></figure>
   <figure><img src="docs/img/rozvodnice_nahled.png" alt="Rozvodnice a dílčí povodí" loading="lazy"><figcaption>Rozvodnice: údolnice, hlavní povodí (červeně), dílčí povodí sídel a hlásných profilů.</figcaption></figure>
   <figure><img src="docs/img/vektory_nahled.png" alt="Budovy a toky v území modelu" loading="lazy"><figcaption>Budovy (oranžově) a toky ČÚZK (modře) v území modelu.</figcaption></figure>
-  <figure><img src="docs/img/sklon_nahled.png" alt="Sklon terénu" loading="lazy"><figcaption>Sklon terénu (Horn 3×3) s údolnicemi.</figcaption></figure>
+  <figure><img src="docs/img/vyuziti_nahled.png" alt="Využití půdy" loading="lazy"><figcaption>Využití půdy v území modelu (ZABAGED, 5 m).</figcaption></figure>
 </div>
 
 <h2>Co připravujeme a k čemu potřebujeme půdní data</h2>
@@ -124,7 +125,7 @@
 
 <h2>Zdroje dat použité k dnešnímu dni</h2>
 <ul>
-  <li>ČÚZK: DMR 5G, INSPIRE Budovy (BU), INSPIRE Vodstvo (HY-NET), ZTM a ortofoto jako WMTS/WMS. Licence CC BY 4.0, síťové služby s uvedením "ČÚZK - on-line".</li>
+  <li>ČÚZK: DMR 5G, INSPIRE Budovy (BU), INSPIRE Vodstvo (HY-NET), ZABAGED polohopis (WFS), ZTM a ortofoto jako WMTS/WMS. Licence CC BY 4.0, síťové služby s uvedením "ČÚZK - on-line".</li>
   <li>ČHMÚ / město Koryčany / Povodí Moravy: hlásné profily (evidenční listy na edpp.cz), normál srážek Kroměříž 1991-2020.</li>
   <li>Plán dílčího povodí Dyje 2021-2027 (Povodí Moravy): regionální kontext.</li>
   <li>Metodiky a studie citované v katalogu opatření: 81 položek, seznam v repozitáři (<a href="docs/KATALOG.md">docs/KATALOG.md</a>, <a href="data/opatreni.json">data/opatreni.json</a>).</li>

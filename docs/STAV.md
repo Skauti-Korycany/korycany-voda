@@ -1,8 +1,8 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice, budovy a toky hotovy)
+Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice, budovy, toky a využití půdy hotovy)
 
-## Fáze: 1 hotová (katalog, vrstvy, měření, datový formát, návrh rozhraní, prototyp). Fáze 2 běží: terén, rozvodnice, budovy a toky hotovy; další je CN rastr (HSP + využití půdy) a eroze.
+## Fáze: 1 hotová (katalog, vrstvy, měření, datový formát, návrh rozhraní, prototyp). Fáze 2 běží: terén, rozvodnice, budovy, toky a využití půdy hotovy; CN rastr čeká na HSP od VÚMOP.
 
 ### Hotovo
 - Instrukce projektu (docs/00-instrukce-projektu.md).
@@ -26,6 +26,9 @@ Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice, budovy a toky hoto
 - **Veřejná stavová stránka**, 19. 10.: `stav.html` -> https://skauti-korycany.github.io/korycany-voda/stav.html (účel, území s interaktivní mapou povodí/toků/budov nad ZTM, co je hotovo, k čemu půdní data, zásady, zdroje). Určena jako odkaz do žádosti o data VÚMOP. Při změně dat ji aktualizovat (čísla jsou v HTML natvrdo).
 - VÚMOP ✅ (vumop.cz/poskytovani-dat, 19. 10.): žádosti na data@vumop.cz (tel. 257 027 265), formální náležitosti web neuvádí, ceník neuvádí; **BPEJ je volně ke stažení u SPÚ** (aktualizace měsíčně; kontakt uveden na stránce), takže od VÚMOP žádáme hlavně HSP, erozní ohroženost a zamokřené půdy.
 
+- **Blok B část 4a (fáze 2), 19. 10. - využití půdy hotovo.** `tools/04_vyuziti_pudy.py` + `tools/vyrob_vyuziti.bat`: ZABAGED polohopis přes **WFS ČÚZK** ✅ (`ags.cuzk.gov.cz/arcgis/services/ZABAGED_POLOHOPIS/MapServer/WFSServer`, WFS 2.0, GeoJSON, EPSG:5514, CC BY 4.0; limit 1000 prvků na dotaz a server ignoruje startIndex -> skript dělí bbox na čtvrtiny a slučuje podle GmlID). 25 vrstev staženo do `repo\data\zabaged\` (mimo git), vypáleno do mřížky DEM: `data/dmr/vyuziti_kod.tif` (uint8, legenda v `data/vyuziti_pudy.json`), vektor `data/vyuziti_pudy.geojson`, náhled `docs/img/vyuziti_nahled.png`. Území modelu 1 412,7 ha: les listnatý 465, smíšený 144, jehličnatý 36, druh neurčen 60 (les celkem 705 ha = 50 %), orná 261, TTP 153, zahrady 84, sady 37, křoviny 29, areály účelové zástavby 48, budovy 25,5 (INSPIRE BU, střed buňky), ostatní plocha v sídle 22, zeleň 13, komunikace 19 (silnice 7,2 / ulice 7,5 / cesty zpevněné 4,2; linie šířky 5 m), voda 1,1, bažina 0, nezařazeno 0,6. Součty i po dílčích povodích. Les podle druhu z vrstvy Lesní půda kategorizovaná (druh_k J/L/S, výška porostu).
+- **Kontrola rozvodnic** ✅: vrstva ZABAGED `Rozvodnice` (povodí IV. řádu ČHP, 24 linií) -> `data/povodi_chp.geojson`. Hranice z DMR 5G se s oficiální rozvodnicí shoduje na západě, jihu i severu prakticky přesně; odchylky jen u hráze VN (naše dělení vs. ČHP). ČHP v území: 4-17-01-0680, 0690, 0710 (Kyjovka), 4-15-03-03xx (Jestřabice).
+
 ### Rozpracováno
 - **Žádost VÚMOP odeslána 19. 10. 2026** (data@vumop.cz, z adresy oddílu): vektor hydrologických skupin půd (mapa velkého měřítka, metadata ID 5cc1bdc2-de34-4eee-a439-41420a000319), správní území obce Koryčany + obal ~500 m, SHP/GPKG v EPSG:5514; dotazy na licenci pro veřejnou webovou aplikaci, zpoplatnění nekomerčního užití a HSP pro lesy mimo ZPF. Odkaz na stav.html v textu. Čeká se na odpověď. Erozní ohroženost a zamokřené půdy v žádosti nejsou - případně druhá žádost po odpovědi.
 - Chybějící podklady od uživatele: NOO 2026 (XLSX) a NOO 2025_2; seznam platných SPPK (aopk.gov.cz/platne-standardy); znění vodního zákona (e-Sbírka) § 15b, 17, 46, 47, 55; nejbližší stanice ČHMÚ; text ČSN 75 9010.
@@ -34,7 +37,7 @@ Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice, budovy a toky hoto
 - Otevřené body rozhraní (ROZHRANI.md kap. 6).
 
 ### Další kroky (pořadí)
-1. Blok B část 4: CN rastr (hydrologické skupiny půd VÚMOP + využití půdy) a USLE vstupy (K z BPEJ/HSP, LS ze sklonu a akumulace). Blokuje: odpověď VÚMOP (data@vumop.cz) nebo WMS HSP; využití půdy = ZABAGED polohopis (plošné třídy) - zvážit stažení ZABAGED GPKG (5,8 GB, celá ČR) vs. WMS GetMap rastr.
+1. Blok B část 4b: CN rastr = tabulka CN (třída využití × HSP A-D, zdroj: metodika/tabulky SCS-CN pro ČR, ověřit) × `vyuziti_kod.tif` × HSP od VÚMOP (čeká se). Mezitím lze připravit tabulku CN pro 25 tříd a BPEJ stáhnout ze SPÚ (K faktor, HPJ -> orientační HSP jako záloha, pokud VÚMOP neodpoví).
 2. Názvy toků do toky_cuzk.geojson: z INSPIRE HY-P (ČÚZK) nebo DIBAVOD A02 (NAZ_TOK) - až bude potřeba v rozhraní.
 2. Jádro (fáze 3): vyčlenit výpočty z prototypu do `jadro.js` s testy na syntetickém pozemku; napojit skutečné sklony a hranici území.
 3. Blok D: "reakce toku na déšť" léto 2026 z CSV Kachník + srážky ČHMÚ.
@@ -42,6 +45,8 @@ Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice, budovy a toky hoto
 5. Dotační okna: AOPK OPŽP ZMV 17. výzva 20. 10. - 3. 11. 2026; OPŽP 105 do 17. 12. 2026.
 
 ## Rozhodnutí
+- 19. 10. 2026 - **Využití půdy ze ZABAGED přes WFS, ne z 5,8GB GPKG ani WMS obrázku**: WFS dává vektor s atributy (druh lesa, typ zahrady/sadu, typ areálu), stahuje se jen bbox, skript to zvládne sám. Komunikace jako linie 5 m, budovy z INSPIRE BU (střed buňky, bez nadsazení plochy).
+- 19. 10. 2026 - **Rozvodnice ověřeny proti ČHP** (ZABAGED) - hranice modelu se nemění.
 - 19. 10. 2026 - **Jen Koryčany.** Model řeší rozhodování jedné obce, ne mikroregionu: budovy jen z obce Koryčany (588601), sousední obce (Střílky u SV rohu) se nestahují. Platí i pro další vrstvy.
 - 19. 10. 2026 - **Toky z ČÚZK HY-NET, ne DIBAVOD**: jasná licence CC BY 4.0 a aktuální data (10/2026); DIBAVOD A02 je z r. 2006 a bez uvedené licence. Cena: HY-NET nenese názvy toků.
 - 19. 10. 2026 - **Budovy bez identifikátorů**: do GeoJSON jde půdorys, účel (RÚIAN), část obce, plocha, podlaží, id dílčího povodí. Č.p., adresy, ID RÚIAN/ISKN se nezapisují (pravidlo projektu). Ořez = těžiště v polygonu území modelu.
