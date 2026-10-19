@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 19. 10. 2026 (relace 4, repozitář a Pages)
+Aktualizováno: 19. 10. 2026 (relace 4, start fáze 2)
 
 ## Fáze: 1 hotová v podstatných částech (katalog, vrstvy, měření, datový formát, návrh rozhraní, prototyp). Hranice území čeká na DMR (fáze 2 = úzké hrdlo).
 
@@ -19,6 +19,7 @@ Aktualizováno: 19. 10. 2026 (relace 4, repozitář a Pages)
 - Zásobník nápadů: docs/NAPADY-ROZHRANI.md (posuvníky škál; pole `vahy_skaly` v JSON).
 
 ### Rozpracováno
+- **Blok B (fáze 2) - DMR 5G, 19. 10.**: uživatel stáhl 12 listů SM5 BUCO25-28, 35-38, 45-48 (LAZ, 2-4,6 MB, celkem ~40 MB) do `korycany-voda\data` (mimo repozitář). Vzorek BUCO35 ověřen: LAZ 1.4, bez CRS (přiřazeno EPSG:5514), list 2,5 × 2 km, 347 tis. bodů, všechny třída 8, **hustota 0,07 bodu/m²**. Listy pokrývají Chřiby S a V od Koryčan (horní povodí k VD), **ne intravilány** - Koryčany leží v BUCO55; dostáhnout řádky 5-6, sloupce 3-6 + BUCO43, 44 (ověřit Lískovec). Skript `tools/01_dmr_grid.py` otestován na vzorku (9 s/list, výstup GeoTIFF 5 m EPSG:5514 + hillshade PNG + info JSON + obrys GeoJSON).
 - Chybějící podklady od uživatele: NOO 2026 (XLSX) a NOO 2025_2; seznam platných SPPK (aopk.gov.cz/platne-standardy); znění vodního zákona (e-Sbírka) § 15b, 17, 46, 47, 55; nejbližší stanice ČHMÚ; text ČSN 75 9010; souřadnice čidla Kachník.
 - Hranice území - rozhodnuto koncepčně, výpočet rozvodnice čeká na DMR 5G.
 - Data z měření: uživatel požádá Povodí Moravy. Text žádosti na vyžádání.
@@ -26,13 +27,15 @@ Aktualizováno: 19. 10. 2026 (relace 4, repozitář a Pages)
 - Otevřené body rozhraní (ROZHRANI.md kap. 6).
 
 ### Další kroky (pořadí)
-1. **Blok B (fáze 2)**: návod stažení DMR 5G (Atom/e-shop ČÚZK) pro intravilány + svahy; skripty `tools/01_dmr_grid.py` (LAZ -> 1 m / 5 m grid EPSG:5514 + PNG náhled), `tools/02_rozvodnice.py` (povodí k profilu pod Koryčany + dílčí povodí sídel, GeoJSON), dále sklon, akumulace, deprese. Souběžně ověřit stažení ZABAGED budov jako vektor (CC BY) a DIBAVOD toků.
+1. **Blok B (fáze 2)**: uživatel dostáhne chybějící listy (řádky 5-6, sl. 3-6, + 43, 44); spustí `python tools\01_dmr_grid.py ..\data` a pošle `data\dmr\dmr5g_5m_hillshade.png` + `_info.json`. Pak `tools/02_rozvodnice.py` (whitebox: vyplnění depresí, směr odtoku, akumulace, povodí k profilu pod Koryčany + dílčí povodí sídel, GeoJSON) a sklon/expozice. Souběžně ZABAGED budovy (vektor, CC BY) a DIBAVOD toky.
 2. Jádro (fáze 3): vyčlenit výpočty z prototypu do `jadro.js` s testy na syntetickém pozemku.
 3. Blok D: "reakce toku na déšť" léto 2026 z CSV Kachník + srážky ČHMÚ.
 4. Uživatel ověří WMS označené ❌ ve VRSTVY.md (LPIS MZe, katastr ČÚZK, CENIA vojenská mapování); napíše na data@vumop.cz (HSP, BPEJ, zamokřené půdy).
 5. Dotační okna: AOPK OPŽP ZMV 17. výzva **20. 10. - 3. 11. 2026**; OPŽP 105 do **17. 12. 2026**.
 
 ## Rozhodnutí
+- 19. 10. 2026 - **Rozlišení modelu 5 m všude, i v intravilánu.** DMR 5G je prořídlý TIN (0,07 bodu/m² = bod na ~14 m²); 1 m grid by byl jen interpolace a falešná přesnost. Dřívější záměr 1 m pro intravilán zrušen. Výšky = lineární interpolace TIN (Delaunay), buňky mimo obal NoData.
+- 19. 10. 2026 - **Umístění dat na PC uživatele**: `korycany-voda\data\*.laz` (vstup, mimo git), výstupy skriptů do `repo\data\dmr\` (v .gitignore). Lehké odvozené vrstvy (GeoJSON hranice, PNG náhledy pro dokumentaci) se do gitu dají až po kontrole.
 - 19. 10. 2026 - **Repozitář** github.com/Skauti-Korycany/korycany-voda: `data/` (JSON + schéma), `tools/` (build skripty, vendor Leaflet 1.9.4 BSD-2), `prototyp/` a `index.html` (Pages), `docs/` (sumáře). Licence: kód MIT, data a texty CC BY 4.0 (návrh Claude, uživatel může změnit). Velká rastrová data (LAZ, TIF) se do repozitáře nedávají (.gitignore), jen odvozené lehké vrstvy.
 - 18. 10. 2026 - **Rozhraní**: dva režimy nad jedním jádrem a jedním JSON; pořadí filtrů místo -> data -> preference; řazení "m³ na jednotku pracnosti"; povinné "Nehodí se sem" a "Na co to nestačí"; stav v URL hash; mobil první; zkouška vsaku (jáma, 30 min) jako vstup uživatele.
 - 18. 10. 2026 - **Datový formát**: JSON generovaný Python skriptem (zdroj pravdy), MD = dokumentace. "Odhad" a "kvalitativně" se nesčítají.
