@@ -27,9 +27,9 @@ Aktualizováno: 19. 10. 2026 (relace 5; fáze 2 - rozvodnice, budovy a toky hoto
 - VÚMOP ✅ (vumop.cz/poskytovani-dat, 19. 10.): žádosti na data@vumop.cz (tel. 257 027 265), formální náležitosti web neuvádí, ceník neuvádí; **BPEJ je volně ke stažení u SPÚ** (aktualizace měsíčně; kontakt uveden na stránce), takže od VÚMOP žádáme hlavně HSP, erozní ohroženost a zamokřené půdy.
 
 ### Rozpracováno
-- Žádost VÚMOP o data (HSP, eroze, zamokření): text e-mailu na vyžádání; odkaz na stav.html.
+- **Žádost VÚMOP odeslána 19. 10. 2026** (data@vumop.cz, z adresy oddílu): vektor hydrologických skupin půd (mapa velkého měřítka, metadata ID 5cc1bdc2-de34-4eee-a439-41420a000319), správní území obce Koryčany + obal ~500 m, SHP/GPKG v EPSG:5514; dotazy na licenci pro veřejnou webovou aplikaci, zpoplatnění nekomerčního užití a HSP pro lesy mimo ZPF. Odkaz na stav.html v textu. Čeká se na odpověď. Erozní ohroženost a zamokřené půdy v žádosti nejsou - případně druhá žádost po odpovědi.
 - Chybějící podklady od uživatele: NOO 2026 (XLSX) a NOO 2025_2; seznam platných SPPK (aopk.gov.cz/platne-standardy); znění vodního zákona (e-Sbírka) § 15b, 17, 46, 47, 55; nejbližší stanice ČHMÚ; text ČSN 75 9010.
-- Data z měření: uživatel požádá Povodí Moravy. Text žádosti na vyžádání.
+- Data z měření: uživatel požádá Povodí Moravy. Text žádosti na vyžádání (vzor: žádost VÚMOP z 19. 10.).
 - Zpětná vazba k prototypu (tón textů, pořadí kroků, síla "Na co to nestačí") - čeká na uživatele.
 - Otevřené body rozhraní (ROZHRANI.md kap. 6).
 
