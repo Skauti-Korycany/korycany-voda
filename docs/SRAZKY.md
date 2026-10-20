@@ -81,7 +81,7 @@ Tvary průběhu A-F (podíl v %, Koryčany) a qAPI:
 | N100 | 3,6 | 26,1 | 37,5 | 10,9 | 21,8 | 0,03 |
 | qAPI | 0,18 | 0,28 | 0,35 | 0,20 | 0,40 | 0,41 |
 
-qAPI = pravděpodobnost abnormálně vlhkého stavu před deštěm (API5). Metodika (tab. 6): qAPI < 0,2 -> počítat s CN2, qAPI > 0,8 -> CN3, mezi tím lineární váha; CN1 se pro návrh nepoužívá. Pro Koryčany to znamená váhu CN3 0-0,35 podle tvaru - místo dřívějšího záměru "přepočet IPS I/III" se v jádru použije tento vážený postup. Při N10 tvar A (9 %) spadne 36 % úhrnu (19 mm) za 15 minut; tvar C má dva vrcholy po 2 a 4 hodinách.
+qAPI = pravděpodobnost abnormálně vlhkého stavu před deštěm (API5). Metodika (tab. 6): qAPI < 0,2 -> počítat s CN2, qAPI > 0,8 -> CN3, mezi tím lineární váha; CN1 se pro návrh nepoužívá. Pro Koryčany to znamená váhu CN3 0-0,35 podle tvaru - místo dřívějšího záměru "přepočet IPS I/III" se v jádru použije tento vážený postup. Při N10 tvar A (9 %) spadne 43 % úhrnu (23 mm) za 15 minut; tvar C má dva vrcholy po 2 a 4 hodinách.
 
 Použití v modelu: výchozí návrhový déšť = N10 6h 53 mm (prototyp nabízí i N100 87 mm); SCS-CN objem = vážený průměr přes tvary (váhy = podíl tvaru) a stavy CN2/CN3 (váhy z qAPI). Krátké úhrny (15 min, 60 min) pro dimenzování vsaku zůstávají z ČSN 75 9010 (zatím příklad Brno); z tvarů A-F je lze odvodit jen orientačně.
 
