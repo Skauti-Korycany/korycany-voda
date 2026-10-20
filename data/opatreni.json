@@ -76,6 +76,17 @@
    "zdroj": "chmi_korycany",
    "znacka": "overeno"
   },
+  "navrhovy_dest_6h_korycany": {
+   "N2_mm": 32.2,
+   "N5_mm": 44.3,
+   "N10_mm": 53.2,
+   "N20_mm": 62.6,
+   "N50_mm": 76.0,
+   "N100_mm": 87.0,
+   "pozn": "6hodinové návrhové úhrny, ČVUT/ČHMÚ metodika 2023, bod střed území (rastr 1 km, v území homogenní 52,9-53,4 mm pro N10); tvary A-F a qAPI v data/navrhove_srazky.json",
+   "zdroj": "cvut_rain_2023",
+   "znacka": "overeno"
+  },
   "navrhovy_dest_denni_korycany": {
    "N2_mm": 37.3,
    "N5_mm": 49.8,
@@ -530,6 +541,15 @@
    "znacka": "overeno",
    "overeno_dne": "2026-10-20",
    "pozn": null
+  },
+  "cvut_rain_2023": {
+   "id": "cvut_rain_2023",
+   "nazev": "Kavka a kol. 2023, Krátkodobé srážky pro hydrologické modelování a navrhování drobných vodohospodářských staveb v krajině (certifikovaná metodika 2/2023/SPU/O, ISBN 978-80-01-07115-1; ČVUT, ČHMÚ, ÚFA AV ČR, Sweco) - 6h návrhové úhrny N2-N100 z WPS rain1.fsv.cvut.cz pro bod v Koryčanech, tools/build_navrhove_srazky.py",
+   "url": "https://rain.fsv.cvut.cz/data/files/metodika_N_srazky_2023_web.pdf",
+   "rok": 2023,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-20",
+   "pozn": "rastr 1 km, radar 20 let + stanice 30+ let; podmínky užití dat portál neuvádí"
   },
   "chmi_korycany": {
    "id": "chmi_korycany",

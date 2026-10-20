@@ -43,6 +43,6 @@ Výkon (node, celý rastr 2,4 M buněk): povodí Stříbrníku 4,2 km² 65 ms, p
 - Transformace vlny poldrem (zatím jen bilance objem nádrže vs. objem odtoku).
 - Roční bilance P - ET (chybí ET a scénáře), USLE (chybí R faktor), indexy horko/vítr.
 - Objekty opatření z `opatreni.json` nad reálným pozemkem (dnes jen v prototypu nad syntetickým pozemkem) - napojit `EFF` z prototypu na `statPolygon`.
-- Návrhové úhrny N-leté pro Koryčany: dočasně Gumbel z `srazky_chmi.json` (N10 denní 58 mm), správně ČHMÚ/ČSN 75 9010.
+- Návrhové úhrny: od 20. 10. k dispozici 6h N2-N100 ČVUT/ČHMÚ 2023 v `data/navrhove_srazky.json` (N10 = 53,2 mm, tvary A-F, qAPI). Do jádra zbývá: vážení přes tvary a stavy CN2/CN3 podle qAPI (nahrazuje záměr IPS I/III), viz docs/SRAZKY.md.
 - Deprese (`deprese.tif`) nejsou v balíčku - nejdřív filtr (hladina VN, zářezy).
 - Přichycení k toku: hlásný profil Stříbrník leží > 60 m od rastrového koryta; v UI použito 100 m. Pro malé toky (zahrady) je nutné okruh zmenšit nebo nabídnout „bez přichycení“.

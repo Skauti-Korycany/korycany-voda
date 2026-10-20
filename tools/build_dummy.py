@@ -192,6 +192,8 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
           <option value="20" selected>20 mm - běžný letní liják</option>
           <option value="44.2">44 mm - 24 h, 1x za 5 let (ČSN 75 9010, Brno)</option>
           <option value="26.2">26 mm - 60 min, 1x za 5 let</option>
+          <option value="53.2">53 mm - 6 hodin, 1x za 10 let (ČVUT/ČHMÚ 2023, Koryčany ✅)</option>
+          <option value="87">87 mm - 6 hodin, 1x za 100 let (ČVUT/ČHMÚ 2023, Koryčany ✅)</option>
           <option value="58.1">58 mm - den, 1x za 10 let (ČHMÚ Koryčany 1921-2025, odhad 🤔)</option>
           <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></select></label>
       </div>
@@ -647,7 +649,8 @@ renderKatalog();
 
 // ---------- o modelu
 $('konst').innerHTML = `<ul><li>Srážky: ${K.srazky_rocni_mm.hodnota} mm/rok ✅ (${K.srazky_rocni_mm.pozn}); měsíčně I-XII: ${Object.values(D.uzemi.srazky.mesicni_mm).join(', ')} mm; největší denní úhrny ${D.uzemi.srazky.max_denni.map(x=>x[1]+' mm ('+x[0]+')').join(', ')}</li>
-<li>N-leté denní úhrny Koryčany (Gumbel 1921-2025, odhad 🤔): N2 ${K.navrhovy_dest_denni_korycany.N2_mm}, N10 ${K.navrhovy_dest_denni_korycany.N10_mm}, N100 ${K.navrhovy_dest_denni_korycany.N100_mm} mm</li>
+<li>Návrhové 6hodinové úhrny Koryčany ✅ (ČVUT/ČHMÚ metodika 2023, rastr 1 km): N2 ${K.navrhovy_dest_6h_korycany.N2_mm}, N5 ${K.navrhovy_dest_6h_korycany.N5_mm}, N10 ${K.navrhovy_dest_6h_korycany.N10_mm}, N20 ${K.navrhovy_dest_6h_korycany.N20_mm}, N50 ${K.navrhovy_dest_6h_korycany.N50_mm}, N100 ${K.navrhovy_dest_6h_korycany.N100_mm} mm; nejčastější průběh C (dva vrcholy, 35 %), přívalový A jen 9 %</li>
+<li>N-leté denní úhrny Koryčany (Gumbel 1921-2025, odhad 🤔, jen pro srovnání): N2 ${K.navrhovy_dest_denni_korycany.N2_mm}, N10 ${K.navrhovy_dest_denni_korycany.N10_mm}, N100 ${K.navrhovy_dest_denni_korycany.N100_mm} mm</li>
 <li>Území modelu: ${fmt0(D.uzemi.plocha_ha)} ha, CN vážené ${D.uzemi.cn_vazene} (HSP z BPEJ, v lese a zástavbě odhad), odtok při 20/40/60 mm: ${fmt0(D.uzemi.odtok.P20mm.objem_m3)} / ${fmt0(D.uzemi.odtok.P40mm.objem_m3)} / ${fmt0(D.uzemi.odtok.P60mm.objem_m3)} m³ (SCS-CN, IPS II) ✅ 06_cn.py</li>
 <li>Terén a půda po kliku: DMR 5G ČÚZK (5 m), BPEJ SPÚ -> HSP podle Janeček 2012; jádro web/jadro.js (docs/JADRO.md)</li>
 <li>Návrhový déšť p=0,2: 15 min ${K.navrhovy_dest_p02['15min_mm']} mm, 60 min ${K.navrhovy_dest_p02['60min_mm']} mm, 24 h ${K.navrhovy_dest_p02['24h_mm']} mm ✅ (${K.navrhovy_dest_p02.pozn})</li>

@@ -54,6 +54,35 @@ Závěr: přívaly v létě 2026 byly bodové (10 mm/10 min u Nemochovic 1. 8. s
 
 ## Metoda a předpoklady
 - Úplný rok = chybí max. 5 dnů; normál = průměr měsíčních úhrnů 1991-2020 z měsíců s >= 26 dny.
-- N-leté denní úhrny: Gumbel (momentová metoda) z ročních maxim, jen úplné roky. Orientační, pro model použít až návrhové úhrny ČHMÚ / ČSN 75 9010 (krok 2 v STAV.md).
+- N-leté denní úhrny: Gumbel (momentová metoda) z ročních maxim, jen úplné roky. Orientační, jen pro srovnání; model používá 6hodinové návrhové úhrny ČVUT/ČHMÚ 2023 (níže).
 - Datum denního úhrnu = začátek klimatologického dne (ověřeno porovnáním s hodinovými daty 14.-15. 7. 2026 ✅).
 - `recent` data ČHMÚ přepisuje po kontrole; `historical` se doplňuje jednou ročně (do února).
+
+## Návrhové 6hodinové srážky (ČVUT/ČHMÚ metodika 2023) - 20. 10. 2026
+
+Zdroj ✅: Kavka a kol. 2023, *Krátkodobé srážky pro hydrologické modelování a navrhování drobných vodohospodářských staveb v krajině*, certifikovaná metodika 2/2023/SPU/O, ISBN 978-80-01-07115-1 (ČVUT v Praze, ČHMÚ, ÚFA AV ČR, Sweco Hydroprojekt), PDF rain.fsv.cvut.cz. Data z WPS `https://rain1.fsv.cvut.cz/services/wps`, proces `d-rain6h-timedist` (PyWPS/GRASS; z Claude je server blokovaný, dotaz šel přes prohlížeč v aplikaci). Metoda: regionální frekvenční analýza 6h maxim z 20 let adjustovaných radarových dat (10 min, 1 km) + 30 a více let staničních řad; výstup rastr 1 km pro ČR. Skript `tools/build_navrhove_srazky.py` -> `data/navrhove_srazky.json` (+ `data/navrhove_srazky_tvary_raw.csv` = surový výstup WPS).
+
+Bod: střed území modelu (S-JTSK -557700, -1174500). Kontrola dalších bodů (Lískovec, hráz VN, les nad Stříbrníkem): N10 52,9-53,4 mm -> území homogenní. Redukce úhrnu na plochu se dělá až nad 20 km² (území modelu 14,1 km²).
+
+| doba opakování | N2 | N5 | N10 | N20 | N50 | N100 |
+|---|---|---|---|---|---|---|
+| **6 h úhrn, Koryčany** ✅ | **32,2** | **44,3** | **53,2** | **62,6** | **76,0** | **87,0 mm** |
+| průměr ČR podle metodiky 📄 | 29 | 39 | 46 | 53 | 64 | 73 mm |
+| denní, stanice Koryčany, Gumbel 🤔 | 37 | 50 | 58 | 66 | 76 | 84 mm |
+
+Koryčany jsou o 10-20 % nad průměrem ČR (Chřiby). Denní Gumbel ze stanice je pro N2-N50 vyšší (delší trvání), u N100 nižší než 6h hodnota - momentový Gumbel podceňuje horní konec; metodika sama upozorňuje, že vysoké N mohou být lokálně nadhodnocené.
+
+Tvary průběhu A-F (podíl v %, Koryčany) a qAPI:
+
+| | A příval | B jednoduchý | C dva vrcholy | D dva vrcholy | E plochý | F trvalý |
+|---|---|---|---|---|---|---|
+| N2 | 12,8 | 15,6 | 25,3 | 13,7 | 16,8 | 15,8 |
+| N10 | 8,5 | 20,9 | 34,6 | 13,4 | 19,4 | 3,2 |
+| N100 | 3,6 | 26,1 | 37,5 | 10,9 | 21,8 | 0,03 |
+| qAPI | 0,18 | 0,28 | 0,35 | 0,20 | 0,40 | 0,41 |
+
+qAPI = pravděpodobnost abnormálně vlhkého stavu před deštěm (API5). Metodika (tab. 6): qAPI < 0,2 -> počítat s CN2, qAPI > 0,8 -> CN3, mezi tím lineární váha; CN1 se pro návrh nepoužívá. Pro Koryčany to znamená váhu CN3 0-0,35 podle tvaru - místo dřívějšího záměru "přepočet IPS I/III" se v jádru použije tento vážený postup. Při N10 tvar A (9 %) spadne 36 % úhrnu (19 mm) za 15 minut; tvar C má dva vrcholy po 2 a 4 hodinách.
+
+Použití v modelu: výchozí návrhový déšť = N10 6h 53 mm (prototyp nabízí i N100 87 mm); SCS-CN objem = vážený průměr přes tvary (váhy = podíl tvaru) a stavy CN2/CN3 (váhy z qAPI). Krátké úhrny (15 min, 60 min) pro dimenzování vsaku zůstávají z ČSN 75 9010 (zatím příklad Brno); z tvarů A-F je lze odvodit jen orientačně.
+
+Licence: podmínky užití dat portál neuvádí; služba je veřejná bez registrace. Pro zveřejnění odvozených čísel v aplikaci stačí citace; při případné redistribuci rastrů se zeptat autorů (ČVUT FSv, Ing. Petr Kavka, Ph.D.).
