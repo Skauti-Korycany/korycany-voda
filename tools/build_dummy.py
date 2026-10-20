@@ -19,6 +19,20 @@ data = {
     "programy": OP["programy"], "nastroje": OP["nastroje"],
     "opatreni": [{k: o[k] for k in ("id","nazev","popis","misto","rozhoduje","pracnost","ucinky","meritko","kontext","kvantifikace","vhodnost","vazby","povoleni","povoleni_pozn","ceny","financovani","standardy","nedohledano","pozn_poctivost")} for o in OP["opatreni"]],
 }
+# skutecna data o uzemi (faze 2): budovy, CN/odtok, povodi, srazky
+BUD = json.load(open(os.path.join(ROOT, "data", "budovy_info.json"), encoding="utf-8"))
+CNI = json.load(open(os.path.join(ROOT, "data", "cn_info.json"), encoding="utf-8"))
+SRA = json.load(open(os.path.join(ROOT, "data", "srazky_chmi.json"), encoding="utf-8"))
+kor = SRA["denni"]["0-203-0-41701068002"]
+data["uzemi"] = {
+    "zdroj": "budovy_info.json (ČÚZK INSPIRE BU), cn_info.json (06_cn.py), srazky_chmi.json (ČHMÚ Koryčany)",
+    "plocha_ha": CNI["uzemi_modelu"]["plocha_ha"], "cn_vazene": CNI["uzemi_modelu"]["cn_vazene"],
+    "odtok": CNI["uzemi_modelu"]["odtok"],
+    "rd_pocet": BUD["podle_ucelu"]["rodinný dům"]["pocet"], "rd_strechy_m2": BUD["podle_ucelu"]["rodinný dům"]["plocha_strech_m2"],
+    "budov": BUD["budov_v_uzemi_modelu"], "strechy_m2": BUD["plocha_pudorysu_v_uzemi_m2"],
+    "podle_povodi": BUD["podle_povodi"],
+    "srazky": {"normal_mm": kor["normal_1991_2020_mm"], "n_lete_denni_mm": kor["n_lete_denni_mm_gumbel"], "max_denni": [(x["max_denni_datum"], x["max_denni_mm"]) for x in sorted(kor["rocni"].values(), key=lambda x: -x["max_denni_mm"])[:3]], "mesicni_mm": kor["normal_mesicni_mm"]},
+}
 DATA_JS = json.dumps(data, ensure_ascii=False)
 
 HTML = r"""<title>Voda v Koryčanech</title>
@@ -123,7 +137,7 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
 <style>__LEAFLET_CSS__</style>
 
 <header class="top">
-  <div><h1>Voda v Koryčanech</h1><div class="tag">drátěný náhled - syntetický pozemek, skutečný katalog</div></div>
+  <div><h1>Voda v Koryčanech</h1><div class="tag">náhled v0.2 - skutečný terén, půda, budovy a srážky; katalog v0.4</div></div>
   <nav class="tabs" role="tablist">
     <button role="tab" aria-selected="true" data-tab="pozemek">Můj pozemek</button>
     <button role="tab" aria-selected="false" data-tab="uzemi">Celé území</button>
@@ -131,20 +145,21 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
     <button role="tab" aria-selected="false" data-tab="model">O modelu</button>
   </nav>
 </header>
-<div class="banner">Zjednodušený model pro osvětu, ne projekt. Nevalidováno. V tomto náhledu jsou terén, půda a plochy <b>syntetické</b> (zadáváš je ručně); katalog, vzorce, ceny a zdroje jsou skutečné (opatreni.json v0.3, 18. 10. 2026). Značky: ✅ ověřený zdroj, ✅⏳ starší než rok, 📄 citace, 🤔 odhad.</div>
+<div class="banner">Zjednodušený model pro osvětu, ne projekt. Nevalidováno. Po kliku do mapy se sklon a půda berou z dat (DMR 5G ČÚZK, BPEJ SPÚ); plochy střech a dvora zadáváš sám (katastr se nenačítá). Katalog, vzorce, ceny a zdroje: opatreni.json v0.4 (20. 10. 2026). Značky: ✅ ověřený zdroj, ✅⏳ starší než rok, 📄 citace, 🤔 odhad.</div>
 
 <main>
 <!-- ======================= MŮJ POZEMEK ======================= -->
 <section id="tab-pozemek" class="grid two">
   <div>
     <div id="map" aria-label="Mapa Koryčan"></div>
-    <p class="note" style="margin:.4rem 0 0">Podklad ČÚZK ZTM (WMTS) a ortofoto (WMS), živě ze serverů ČÚZK. Klikni do mapy = vyber místo. Co se po kliku "odvodí", je tu zatím vymyšlené; v ostré verzi to přijde z vrstev DMR, VÚMOP a LPIS.</p>
+    <p class="note" style="margin:.4rem 0 0">Podklad ČÚZK ZTM (WMTS) a ortofoto (WMS), živě ze serverů ČÚZK. Klikni do mapy = vyber místo. Sklon a půda se odvodí z dat v mřížce 5 m (DMR 5G, BPEJ); u půdy je vidět, jestli jde o bonitovanou plochu nebo odhad. Složení okolí (budovy, zpevněné, zeleň v okruhu 30 m) je jen nápověda - plochy zadej podle sebe.</p>
     <div class="panel" style="margin-top:.8rem">
       <div class="eyebrow">Krok 1 - kde</div>
       <dl class="kv" id="where">
         <dt>Místo</dt><dd id="w-pos">klikni do mapy</dd>
-        <dt>Sklon</dt><dd><span class="num" id="w-slope">4</span> % <span class="note">(syntetické; ostrá verze: DMR 5G)</span></dd>
-        <dt>Půda</dt><dd id="w-soil">skupina B, propustná <span class="note">(zástupně, data VÚMOP chybí)</span></dd>
+        <dt>Sklon</dt><dd><span class="num" id="w-slope">-</span> % <span class="note" id="w-slope-n">(po kliku z DMR 5G, průměr v okruhu 15 m)</span></dd>
+        <dt>Půda</dt><dd id="w-soil">- <span class="note">(po kliku z BPEJ; v lese a zástavbě odhad - ověř zkouškou vsaku)</span></dd>
+        <dt>Okolí 30 m</dt><dd id="w-okoli">-</dd>
         <dt>Podzemní voda</dt><dd>hlouběji než 1 m <span class="note">(zástupně)</span></dd>
         <dt>Intravilán</dt><dd>ano <span class="note">(zástupně)</span></dd>
       </dl>
@@ -173,7 +188,9 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
         <label class="f">Déšť k výpočtu (mm)<select id="in-rain">
           <option value="20" selected>20 mm - běžný letní liják</option>
           <option value="44.2">44 mm - 24 h, 1x za 5 let (ČSN 75 9010, Brno)</option>
-          <option value="26.2">26 mm - 60 min, 1x za 5 let</option></select></label>
+          <option value="26.2">26 mm - 60 min, 1x za 5 let</option>
+          <option value="58.1">58 mm - den, 1x za 10 let (ČHMÚ Koryčany 1921-2025, odhad 🤔)</option>
+          <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></select></label>
       </div>
       <p class="note" style="margin:.5rem 0 0">Zkouška vsaku: vykopej jámu 30 cm, nalij vodu, po 30 minutách změř pokles. Převod podle brožury Praha 2009 ✅⏳. Nahrazuje mapu půd, dokud nejsou data VÚMOP; i potom je přesnější než mapa.</p>
     </div>
@@ -205,12 +222,12 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
 <section id="tab-uzemi" class="hidden-tab">
   <div class="panel">
     <h2>Co to udělá, když se zapojí víc lidí</h2>
-    <p class="note">Všechna čísla o území jsou v tomto náhledu <b>syntetická</b> (počet domácností, průměrná střecha, plocha povodí). V ostré verzi přijdou ze ZABAGED (budovy) a z DMR (povodí). Vzorce a katalog jsou skutečné.</p>
+    <p class="note" id="u-zdroj"></p>
     <div class="inputs" style="margin-top:.6rem">
-      <label class="f">Domácností v území (syntetické)<input type="number" id="u-n" value="1050" min="0" step="10"></label>
-      <label class="f">Průměrná střecha (m², syntetické)<input type="number" id="u-roof" value="110" min="0" step="10"></label>
-      <label class="f">Průměrně zpevněno (m², syntetické)<input type="number" id="u-paved" value="35" min="0" step="5"></label>
-      <label class="f">Déšť (mm)<select id="u-rain"><option value="20" selected>20 mm</option><option value="44.2">44 mm (24 h, 1x za 5 let)</option></select></label>
+      <label class="f">Rodinných domů v území<input type="number" id="u-n" value="__RD__" min="0" step="10"></label>
+      <label class="f">Průměrný půdorys domu (m²)<input type="number" id="u-roof" value="__ROOF__" min="0" step="10"></label>
+      <label class="f">Průměrně zpevněno (m², odhad 🤔)<input type="number" id="u-paved" value="35" min="0" step="5"></label>
+      <label class="f">Déšť (mm)<select id="u-rain"><option value="20" selected>20 mm</option><option value="40">40 mm</option><option value="60">60 mm (~1x za 10 let)</option></select></label>
     </div>
     <label class="f" style="margin-top:.8rem">Kolik domácností se zapojí: <span class="num" id="u-pct-val">20</span> %
       <input type="range" id="u-pct" min="0" max="100" value="20"></label>
@@ -306,10 +323,34 @@ map.on('click',e=>{
   if(marker) marker.remove();
   marker = L.marker(e.latlng,{icon:L.divIcon({className:'',html:'<div class="pin"></div>',iconSize:[14,14],iconAnchor:[7,7]})}).addTo(map);
   document.getElementById('w-pos').innerHTML = '<span class="num">'+e.latlng.lat.toFixed(5)+' N, '+e.latlng.lng.toFixed(5)+' E</span> <span class="note">(ostrá verze: obrys parcely z katastru jen k zobrazení, nikam se neukládá)</span>';
-  // syntetická "odvozená" data: sklon podle polohy jen pro ukázku, že se po kliku něco změní
-  const s = Math.max(1, Math.round(2 + 20*Math.abs(Math.sin(e.latlng.lat*900))*Math.abs(Math.cos(e.latlng.lng*700))));
-  document.getElementById('in-slope').value = s; recalc();
+  odvodZMapy(e.latlng.lng, e.latlng.lat);
 });
+// ---------- jadro: sklon, puda, okoli z rastru (web/jadro.js + data/web)
+const BASE = location.pathname.includes('/prototyp/') ? '../' : '';
+let jadroStav = 'nacitam';
+const HSPN = {1:'A, velmi propustná',2:'B, propustná',3:'C, málo propustná',4:'D, jíl, nepropustná'};
+const LEG = {};
+fetch(BASE+'data/vyuziti_pudy.json').then(r=>r.json()).then(j=>Object.assign(LEG,j.legenda)).catch(()=>{});
+Jadro.nacti(BASE+'data/web/').then(()=>{ jadroStav='ok'; }).catch(err=>{ jadroStav='chyba'; console.warn('jadro', err); });
+function kruh(lon,lat,rM){ const [X,Y]=Jadro.lonLatNaXY(lon,lat); const ring=[]; for(let k=0;k<24;k++){ const a=k/24*2*Math.PI; ring.push(Jadro.xyNaLonLat(X+rM*Math.cos(a), Y+rM*Math.sin(a))); } return ring; }
+function odvodZMapy(lon,lat){
+  if(jadroStav!=='ok'){ $('w-slope-n').textContent = jadroStav==='nacitam' ? '(rastry se ještě načítají, klikni za chvíli znovu)' : '(rastry se nepodařilo načíst - zadej sklon ručně)'; return; }
+  const b = Jadro.lonLatNaBunku(lon,lat);
+  if(!b){ $('w-slope-n').textContent='(mimo území dat)'; return; }
+  const s15 = Jadro.statBunek(Jadro.bunkyPolygonu(kruh(lon,lat,15)));
+  const s30 = Jadro.statBunek(Jadro.bunkyPolygonu(kruh(lon,lat,30)));
+  const sklonPct = s15.sklon_prumer_pct!=null ? Math.round(s15.sklon_prumer_pct) : null;
+  if(sklonPct!=null){ $('in-slope').value = sklonPct; $('w-slope').textContent = sklonPct; $('w-slope-n').textContent = `(DMR 5G, průměr v okruhu 15 m; v bodě ${fmt(Jadro.sklonDeg(b.i)||0)}°)`; }
+  const h = Jadro.hsp(b.i), odhad = Jadro.p.hsp_zdroj[b.i]===2;
+  if(h){ $('in-soil').value = 'ABCD'[h-1]; $('w-soil').innerHTML = `skupina ${HSPN[h]} <span class="note">(${odhad?'odhad z nejbližší bonitované plochy - ověř zkouškou vsaku':'z BPEJ (SPÚ) + Janeček 2012'})</span>`; }
+  else $('w-soil').innerHTML = '- <span class="note">(bez dat, zadej podle zkoušky vsaku)</span>';
+  const A = s30.plocha_ha*1e4 || 1;
+  const sum = ks => ks.reduce((t,k)=>t+(s30.vyuziti_ha[k]||0),0)*1e4;
+  const bud = sum([30,31]), zpev = sum([10,14,20,21,22,11]), zel = Math.max(0, A - bud - zpev);
+  const top = Object.entries(s30.vyuziti_ha).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([k,v])=>`${LEG[k]||k} ${Math.round(100*v*1e4/A)} %`).join(', ');
+  $('w-okoli').innerHTML = `budovy ${Math.round(100*bud/A)} %, zpevněné a areály ${Math.round(100*zpev/A)} %, zeleň ${Math.round(100*zel/A)} % <span class="note">(${top}; ZABAGED, mřížka 5 m - jen nápověda)</span>`;
+  recalc();
+}
 
 // ---------- vstupy
 const $ = id=>document.getElementById(id);
@@ -391,7 +432,7 @@ function recalc(){
   const pct=(x)=> r.out>0? 100*x/r.out:0;
   $('bars').innerHTML = `<div class="bar"><span>teď</span><div class="track"><i class="away" style="width:100%"></i></div><span class="num">${fmt(r.out)} m³</span></div>
     <div class="bar"><span>s opatřeními</span><div class="track"><i class="kept" style="width:${pct(kept)}%"></i><i class="away" style="width:${100-pct(kept)}%"></i></div><span class="num">${fmt(r.out-kept)} m³</span></div>`;
-  $('year').textContent = `Za rok (${fmt0(K.srazky_rocni_mm.hodnota)} mm, stanice Kroměříž ✅ VÚKROM 2021; Koryčany 🤔 spíš vlhčí) odteče z pozemku zhruba ${fmt0(yearOut)} m³. Se zvolenými opatřeními zůstane u tebe až ${fmt0(keptYear)} m³.`;
+  $('year').textContent = `Za rok (${fmt0(K.srazky_rocni_mm.hodnota)} mm, stanice ČHMÚ Koryčany 1991-2020 ✅) odteče z pozemku zhruba ${fmt0(yearOut)} m³. Se zvolenými opatřeními zůstane u tebe až ${fmt0(keptYear)} m³.`;
   // karty
   $('cards').innerHTML = ev.fit.map(x=>{const o=x.o; const on=chosen.has(o.id); const needs=(x.needs||[]).filter(n=>!(chosen.has(n)||(n==='S02'&&i.drain==='pozemek')));
     return `<div class="card ${on?'on':''}"><header><input type="checkbox" id="c-${o.id}" data-id="${o.id}" ${on?'checked':''}><div class="t"><b>${o.nazev}</b>
@@ -412,7 +453,7 @@ function recalc(){
   $('summary').innerHTML = `<div class="box"><div class="big num">${fmt(kept)} m³</div><small>zůstane u tebe z deště ${rainmm} mm (z ${fmt(r.out)} m³)</small></div>
     <div class="box"><div class="big num">${fmt0(keptYear)} m³</div><small>za rok místo kanalizace a potoka</small></div>
     <div class="box"><div class="big num">${fmt0(kept*n)} m³</div><small>kdyby to samé udělalo ${n} domácností, na jeden déšť</small></div>`;
-  $('scale').innerHTML = `<b>Na co to nestačí:</b> ${fmt0(kept*n)} m³ od ${n} domácností je při dešti ${rainmm} mm zhruba ${fmt(100*kept*n/(20e6*i.rain),2)} % objemu, který spadne na syntetické povodí 20 km² (${fmt0(20e6*i.rain)} m³ 🤔 syntetická plocha). Na povodeň na Kyjovce drobná opatření nestačí a aplikace to neřekne. Je to ale ${fmt0(kept*n)} m³ vody v půdě a zahradách místo v kanálu, při každém lijáku, zdarma. To je rozdíl mezi "proteklo" a "zůstalo".`;
+  $('scale').innerHTML = `<b>Na co to nestačí:</b> ${fmt0(kept*n)} m³ od ${n} domácností je při dešti ${rainmm} mm zhruba ${fmt(100*kept*n/(D.uzemi.plocha_ha*1e4*i.rain),2)} % objemu, který spadne na území modelu ${fmt0(D.uzemi.plocha_ha)} ha (${fmt0(D.uzemi.plocha_ha*1e4*i.rain)} m³; plocha z rozvodnice DMR 5G ✅). Na povodeň na Kyjovce drobná opatření nestačí a aplikace to neřekne. Je to ale ${fmt0(kept*n)} m³ vody v půdě a zahradách místo v kanálu, při každém lijáku, zdarma. To je rozdíl mezi "proteklo" a "zůstalo".`;
   renderUzemi();
 }
 ['in-roof','in-paved','in-pavedtype','in-green','in-drain','in-slope','in-soil','in-rain'].forEach(id=>$(id).addEventListener('input',recalc));
@@ -432,18 +473,21 @@ function renderUzemi(){
   $('u-sum').innerHTML=`<div class="box"><div class="big num">${hh}</div><small>domácností se zapojí</small></div>
     <div class="box"><div class="big num">${fmt0(tot)} m³</div><small>zůstane v území na jeden déšť ${Math.round(rain*1000)} mm (ze ${fmt0(allOut)} m³ ze střech a dvorů všech domácností)</small></div>
     <div class="box"><div class="big num">${fmt0(totY)} m³</div><small>za rok</small></div>`;
-  // syntetické rozdělení na sídla
-  const sidla=[['Koryčany',0.78],['Jestřabice',0.10],['Blišice',0.07],['Lískovec',0.05]];
-  $('u-table').innerHTML=`<tr><th>dílčí povodí (syntetické podíly)</th><th class="num">domácností</th><th class="num">zapojí se</th><th class="num">m³ na déšť</th><th class="num">m³/rok</th></tr>`+
+  // podíly podle počtu budov v dílčích povodích (ČÚZK INSPIRE BU)
+  const U=D.uzemi; const celk=Object.values(U.podle_povodi).reduce((t,x)=>t+x.pocet,0);
+  const sidla=Object.entries(U.podle_povodi).map(([k,x])=>[k.replace('Koryčany (','').replace(')',''), x.pocet/celk]);
+  $('u-table').innerHTML=`<tr><th>dílčí povodí (podíl podle počtu budov)</th><th class="num">domácností</th><th class="num">zapojí se</th><th class="num">m³ na déšť</th><th class="num">m³/rok</th></tr>`+
     sidla.map(([s,p])=>`<tr><td>${s}</td><td class="num">${fmt0(n*p)}</td><td class="num">${fmt0(n*p*pct)}</td><td class="num">${fmt0(tot*p)}</td><td class="num">${fmt0(totY*p)}</td></tr>`).join('')+
     `<tr class="total"><td>profil na Kyjovce pod Koryčany</td><td class="num">${n}</td><td class="num">${hh}</td><td class="num">${fmt0(tot)}</td><td class="num">${fmt0(totY)}</td></tr>`;
   if(!pack.includes('S02') && (pack.includes('Z01')||pack.includes('S01'))) $('u-limit').innerHTML='<b>Pozor:</b> dešťová zahrada a nádrž bez odpojení svodů (S02) nic nezadrží - voda se k nim nedostane. Balíček to respektuje.';
-  else $('u-limit').innerHTML=`<b>Na co to nestačí:</b> ${fmt0(tot)} m³ je ${fmt(100*tot/(20e6*rain),2)} % deště na syntetickém povodí 20 km² a zlomek objemu nádrže Koryčany (objem neuvádíme, bez ověřeného zdroje). Povodňovou vlnu na Kyjovce to nezmění. Součet platí pro vodu ze střech a dvorů; pole, louky a les jsou samostatná kapitola (USLE, pásy, průlehy) a v tomto náhledu se nepočítají.`;
+  else { const key='P'+Math.round(rain*1000)+'mm', od=U.odtok[key]; const spadne=U.plocha_ha*1e4*rain;
+    $('u-limit').innerHTML=`<b>Na co to nestačí:</b> ${fmt0(tot)} m³ je ${fmt(100*tot/spadne,2)} % deště, který při ${Math.round(rain*1000)} mm spadne na území modelu (${fmt0(U.plocha_ha)} ha = ${fmt0(spadne)} m³)${od?`, a ${fmt(100*tot/od.objem_m3,1)} % povrchového odtoku z celého území (${fmt0(od.objem_m3)} m³ podle SCS-CN, CN ${U.cn_vazene}, IPS II)`:''}. Povodňovou vlnu na Kyjovce to nezmění. Součet platí pro vodu ze střech a dvorů; pole, louky a les jsou samostatná kapitola (USLE, pásy, průlehy) a v tomto náhledu se nepočítají.`; }
   $('u-plus').innerHTML=`<b>Co to ale je:</b> ${fmt0(totY)} m³ vody za rok v půdě a zahradách místo v kanálu. Pro srovnání: nákladní cisterna má 🤔 10 m³, tohle je ${fmt0(totY/10)} cisteren ročně, bez jediné stavby. A na každý liják o ${fmt0(tot)} m³ pomalejší odtok z intravilánu do potoka.`;
   // kontext
   $('u-context').innerHTML = D.opatreni.filter(o=>o.kontext).map(o=>`<div class="card"><header><div class="t"><b>${o.nazev}</b><div class="meta"><span class="chip id">${o.id}</span><span class="chip">rozhoduje: ${o.rozhoduje.map(r=>CZ.rozhoduje[r].split(' ')[0]).join(', ')}</span><span class="chip">${cenaText(o)}</span><span class="chip">povolení: ${CZ.povoleni[String(o.povoleni)]}</span></div></div></header>
     <div class="eff">${o.kvantifikace.map(k=>k.popis+' '+(ZN[k.znacka]||'')).join(' ')}</div>${o.pozn_poctivost?`<div class="note">${o.pozn_poctivost}</div>`:''}<div class="note">Financování: ${finText(o)}</div></div>`).join('');
 }
+$('u-zdroj').innerHTML=`V území modelu (${fmt0(D.uzemi.plocha_ha)} ha, povodí Kyjovky pod Koryčany bez povodí nad přehradou) je ${fmt0(D.uzemi.budov)} budov s půdorysem ${fmt0(D.uzemi.strechy_m2/1e4*10)/10} ha, z toho ${fmt0(D.uzemi.rd_pocet)} rodinných domů (${fmt0(D.uzemi.rd_strechy_m2/1e4*10)/10} ha) ✅ ČÚZK INSPIRE BU, 19. 10. 2026. Zpevněné plochy u domů nejsou v datech - odhad. Počítá se jen voda ze střech a dvorů rodinných domů; průmysl, bytové domy a veřejné budovy zatím ne.`;
 ['u-n','u-roof','u-paved','u-rain','u-pct'].forEach(id=>$(id).addEventListener('input',renderUzemi));
 document.querySelectorAll('#u-pack button').forEach(b=>b.addEventListener('click',()=>{b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');renderUzemi();}));
 
@@ -474,7 +518,10 @@ function renderKatalog(){
 renderKatalog();
 
 // ---------- o modelu
-$('konst').innerHTML = `<ul><li>Srážky: ${K.srazky_rocni_mm.hodnota} mm/rok ✅ (${K.srazky_rocni_mm.pozn})</li>
+$('konst').innerHTML = `<ul><li>Srážky: ${K.srazky_rocni_mm.hodnota} mm/rok ✅ (${K.srazky_rocni_mm.pozn}); měsíčně I-XII: ${Object.values(D.uzemi.srazky.mesicni_mm).join(', ')} mm; největší denní úhrny ${D.uzemi.srazky.max_denni.map(x=>x[1]+' mm ('+x[0]+')').join(', ')}</li>
+<li>N-leté denní úhrny Koryčany (Gumbel 1921-2025, odhad 🤔): N2 ${K.navrhovy_dest_denni_korycany.N2_mm}, N10 ${K.navrhovy_dest_denni_korycany.N10_mm}, N100 ${K.navrhovy_dest_denni_korycany.N100_mm} mm</li>
+<li>Území modelu: ${fmt0(D.uzemi.plocha_ha)} ha, CN vážené ${D.uzemi.cn_vazene} (HSP z BPEJ, v lese a zástavbě odhad), odtok při 20/40/60 mm: ${fmt0(D.uzemi.odtok.P20mm.objem_m3)} / ${fmt0(D.uzemi.odtok.P40mm.objem_m3)} / ${fmt0(D.uzemi.odtok.P60mm.objem_m3)} m³ (SCS-CN, IPS II) ✅ 06_cn.py</li>
+<li>Terén a půda po kliku: DMR 5G ČÚZK (5 m), BPEJ SPÚ -> HSP podle Janeček 2012; jádro web/jadro.js (docs/JADRO.md)</li>
 <li>Návrhový déšť p=0,2: 15 min ${K.navrhovy_dest_p02['15min_mm']} mm, 60 min ${K.navrhovy_dest_p02['60min_mm']} mm, 24 h ${K.navrhovy_dest_p02['24h_mm']} mm ✅ (${K.navrhovy_dest_p02.pozn})</li>
 <li>Součinitele odtoku C (sklon &lt;1 / 1-5 / &gt;5 %): ${Object.entries(C).filter(([k,v])=>Array.isArray(v)).map(([k,v])=>k.replaceAll('_',' ')+' '+v.join('/')).join('; ')} ✅</li>
 <li>Vsak: prázdné do ${K.vsak.vyprazdneni_max_h} h, ${K.vsak.nad_hladinou_pv_min_m} m nad podzemní vodou, ${K.vsak.odstup_budova_nehydroizolovana_m} m od budovy ✅</li>
@@ -486,7 +533,9 @@ try{const t=localStorage.getItem('kor_tab'); if(t){document.querySelector(`nav.t
 recalc();
 </script>
 """
-html = HTML.replace("__LEAFLET_CSS__", LEAFLET_CSS).replace("__LEAFLET_JS__", LEAFLET_JS).replace("__DATA__", DATA_JS)
+JADRO_JS = open(os.path.join(ROOT, "web", "jadro.js"), encoding="utf-8").read()
+html = (HTML.replace("__LEAFLET_CSS__", LEAFLET_CSS).replace("__LEAFLET_JS__", LEAFLET_JS + "\n" + JADRO_JS).replace("__DATA__", DATA_JS)
+        .replace("__RD__", str(data["uzemi"]["rd_pocet"])).replace("__ROOF__", str(round(data["uzemi"]["rd_strechy_m2"] / data["uzemi"]["rd_pocet"]))))
 pre = '<!doctype html>\n<html lang="cs">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
 i = html.index('<header class="top">')
 html = pre + html[:i] + '</head>\n<body>\n' + html[i:] + '\n</body>\n</html>\n'

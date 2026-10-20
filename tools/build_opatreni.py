@@ -8,7 +8,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "data")
 os.makedirs(OUT, exist_ok=True)
 
-DNES = "2026-10-18"
+DNES = "2026-10-20"
 
 # ---------------------------------------------------------------- zdroje
 # znacka: "overeno" (✅ otevřeno online), "overeno_stare" (✅⏳ >12 měs.), "citace" (📄), "odhad" (🤔), "pamet" (💻)
@@ -46,6 +46,7 @@ zdroj("unl_windbreak", "Univ. Nebraska-Lincoln EC1763 How Windbreaks Work (2002-
 zdroj("dufkova2007", "Dufková J. 2007, Acta Univ. Agric. Silvic. Mendel. Brun. 55(5), větrolamy jižní Morava", "https://acta.mendelu.cz/pdfs/acu/2007/05/09.pdf", 2007, "overeno_stare", "jedno měření, neobecňovat")
 zdroj("vumop_vitr2016", "VÚMOP, Doležal, Podhrázská a kol.: Řízení rizika větrné eroze, certifikovaná metodika (2016/2017)", "https://agronavigator.cz/sites/default/files/2025-04/Nmet%252B-%252BMetodika%252B%25C5%2599%25C3%25ADzen%25C3%25AD%252Bv%25C4%259Btrn%25C3%25A9%252Beroze.pdf", 2017, "overeno")
 zdroj("mze2022_vitr", "MZe, prezentace Podhrázská a kol., opatření proti větrné erozi (17. 5. 2022)", "https://mze.gov.cz/public/portal/mze/-a74770---r9wNxZdR/prezentace-podhrazska-jana-opatreni-proti-vetrne-erozi", 2022, "overeno")
+zdroj("chmi_korycany", "ČHMÚ, otevřená data (opendata.chmi.cz): stanice Koryčany 0-203-0-41701068002, denní úhrny 1920-2025; zpracování tools/07_srazky_chmi.py, docs/SRAZKY.md", "https://opendata.chmi.cz/meteorology/climate/", 2026, "overeno")
 zdroj("vukrom2021", "VÚKROM, Obilnářské listy 2/2021: srážkové normály stanice Kroměříž", "https://www.vukrom.cz/userfiles/files/obilnarske_listy/2021/2021_2/39_43.pdf", 2021, "overeno")
 zdroj("kalkulacka_manual", "VÚMOP, Protierozní kalkulačka - manuál (Novotný a kol. 2017); kalkulacka.vumop.cz", "https://kalkulacka.vumop.cz/docs/manual.pdf", 2017, "overeno")
 zdroj("janecek2012", "Janeček a kol. 2012, Ochrana zemědělské půdy před erozí (ČZU)", "https://storm.fsv.cvut.cz/data/files/p%C5%99edm%C4%9Bty/YPEO/Metodika_PEO_novelizace%20upravene%2025_1_2012.pdf", 2012, "overeno_stare")
@@ -120,7 +121,8 @@ PROGRAMY = {
 
 # ---------------------------------------------------------- společné konstanty
 KONSTANTY = {
- "srazky_rocni_mm": {"hodnota": 571.5, "pozn": "normál 1991-2020 stanice Kroměříž; Koryčany 🤔 vlhčí, bližší stanice nedohledána", "zdroj": "vukrom2021", "znacka": "overeno"},
+ "srazky_rocni_mm": {"hodnota": 632.0, "pozn": "normál 1991-2020 stanice ČHMÚ Koryčany (1,2 km od středu území, 305 m n. m.); Staré Hutě (427 m) 717 mm", "zdroj": "chmi_korycany", "znacka": "overeno"},
+ "navrhovy_dest_denni_korycany": {"N2_mm": 37.3, "N5_mm": 49.8, "N10_mm": 58.1, "N20_mm": 66.0, "N50_mm": 76.3, "N100_mm": 84.0, "pozn": "N-leté denní úhrny, Gumbel z ročních maxim 1921-2025 (88 let), stanice ČHMÚ Koryčany - orientační odhad, ne ČSN 75 9010", "zdroj": "chmi_korycany", "znacka": "odhad"},
  "navrhovy_dest_p02": {"15min_mm": 16.5, "60min_mm": 26.2, "24h_mm": 44.2, "pozn": "ČSN 75 9010 tab. A.1/A.2, periodicita 0,2 (1x za 5 let), příklad Brno; pro Koryčany ověřit v normě", "zdroj": "csn759010", "znacka": "overeno"},
  "soucinitel_odtoku": {
    "pozn": "sklon <1 % / 1-5 % / >5 %",
@@ -173,7 +175,7 @@ NEOVERENA = {"polozka": "celkem", "hodnota": None, "rozsah": None, "jednotka": "
 op("Z01", "Dešťová zahrada (zasakovací záhon)", ["Z","U"], ["J","O","S"], 1, ["I","R"], ["CH","B"], "pozemek",
    popis="Mělká prohlubeň s výsadbou, do které je svedena voda ze střechy nebo dvora; voda se do 72 h vsákne.",
    kvant=[kv("R","vzorec","Objem zadržený = plocha zahrady × hloubka vzdutí (max 0,25-0,3 m)", vzorec="V_m3 = A_zahrada_m2 * h_vzduti_m", zdroj=["mendelu2022_dz","praha2009_dv"]),
-          kv("I","vzorec","Plocha zahrady 10-20 % napojené zpevněné plochy podle propustnosti; při správném návrhu zasákne celý odtok ze střechy (rok: A_strechy × 0,57 m)", vzorec="A_zahrada_m2 = A_zpevnena_m2 * (0.10..0.20); V_rok_m3 = A_strechy_m2 * 0.5715", zdroj=["praha2009_dv","mendelu2022_dz"]),
+          kv("I","vzorec","Plocha zahrady 10-20 % napojené zpevněné plochy podle propustnosti; při správném návrhu zasákne celý odtok ze střechy (rok: A_strechy × 0,63 m)", vzorec="A_zahrada_m2 = A_zpevnena_m2 * (0.10..0.20); V_rok_m3 = A_strechy_m2 * 0.632", zdroj=["praha2009_dv","mendelu2022_dz"]),
           kv("CH","kvalitativne","Vlhké stanoviště, výsadba", znacka="odhad"), kv("B","kvalitativne","Výsadba, vlhké stanoviště", znacka="odhad")],
    vhodnost={"hsp": ["A","B","C"], "sklon_max_pct": 5, "odstup_stavba_min_m": 5, "odstup_stavba_jil_m": [6,10], "nad_hladinou_pv_min_m": 1, "vyloucit": ["niva s mělkou podzemní vodou"]},
    vazby={"potrebuje": ["S02"], "synergie": ["S01","Z05"], "konflikt": []},
@@ -241,7 +243,7 @@ op("Z09", "Zelená fasáda, popínavky, pergola se zelení", ["Z","S"], ["J","O"
 
 op("Z10", "Vsakovací objekt pro střešní vodu (štěrkové těleso, vsakovací bloky, šachta)", ["Z","U"], ["J","O"], 2, ["I","R"], [], "pozemek",
    kvant=[kv("R","vzorec","Návrh na déšť p=0,2 (24 h 44 mm): V = A_strechy × 0,044 minus vsak během deště", vzorec="V_m3 = A_strechy_m2 * 0.044 - V_vsak", zdroj=["csn759010"]),
-          kv("I","vzorec","Rok: celý odtok ze střechy zasákne", vzorec="V_rok_m3 = A_strechy_m2 * 0.5715", zdroj=["csn759010","vukrom2021"])],
+          kv("I","vzorec","Rok: celý odtok ze střechy zasákne", vzorec="V_rok_m3 = A_strechy_m2 * 0.632", zdroj=["csn759010","chmi_korycany"])],
    vhodnost={"hsp": ["A","B"], "kf_min_m_s": 1e-5, "nad_hladinou_pv_min_m": 1, "odstup_stavba_min_m": 5},
    vazby={"potrebuje": ["S02"], "synergie": [], "konflikt": []}, povoleni=0, povoleni_pozn="0-1; u větších objektů posudek vsaku 💻",
    ceny=[NEOVERENA], financovani=["vlastni"], standardy=["csn759010","tnv759011"], nedohledano=["cena bloků a výkopu 2025-2026"])
@@ -253,7 +255,7 @@ op("Z11", "Zálivka zachycenou vodou, kapková závlaha", ["Z"], ["J","S"], 1, [
 # ===== S střecha a stavba
 op("S01", "Nádrž na dešťovou vodu (sud, IBC, podzemní jímka) s využitím", ["S","Z"], ["J","O","S"], 2, ["R","W"], ["Q"], "pozemek",
    kvant=[kv("R","vzorec","Každých 10 mm deště ze 100 m² střechy = 1 m³; nádrž pojme V_nadrz, zbytek přepad", vzorec="V_zachyceno_m3 = min(V_nadrz_m3, A_strechy_m2 * P_m * 1.0)", zdroj=["tab_c"]),
-          kv("R","vzorec","Rok: potenciál A × 0,5715 m; využije se jen spotřeba mezi dešti", vzorec="V_rok_potencial_m3 = A_strechy_m2 * 0.5715", zdroj=["vukrom2021"]),
+          kv("R","vzorec","Rok: potenciál A × 0,632 m; využije se jen spotřeba mezi dešti", vzorec="V_rok_potencial_m3 = A_strechy_m2 * 0.632", zdroj=["chmi_korycany"]),
           kv("W","kvalitativne","Zálivka/WC z dešťovky; spotřeba nekvantifikována", znacka="odhad")],
    vhodnost={"kazda_strecha": True}, vazby={"potrebuje": ["S02"], "synergie": ["Z01","Z10","Z11"], "konflikt": ["přepad do kanalizace"]},
    povoleni=0, povoleni_pozn="podzemní nádrž 🤔 1",
@@ -306,7 +308,7 @@ op("U03", "Zasakovací pásy a průlehy podél komunikací, příkopy s retencí
    ceny=[cena("travnaté průlehy a meze s terénními úpravami", 200, "Kč/m²", 2024, "noo2024")], financovani=["opzp_1_3_4"], standardy=["csn759010","tsk2025"])
 
 op("U04", "Retence a zasakování vody z veřejných budov (škola, úřad)", ["U","S"], ["O","S"], 3, ["R","I","W"], [], "lokalita",
-   kvant=[kv("R","vzorec","Škola střecha 1500 m²: 20 mm = 30 m³; rok 855 m³", vzorec="V_m3 = A_strechy_m2 * P_m", zdroj=["tab_c","vukrom2021"])],
+   kvant=[kv("R","vzorec","Škola střecha 1500 m²: 20 mm = 30 m³; rok 948 m³", vzorec="V_m3 = A_strechy_m2 * P_m", zdroj=["tab_c","chmi_korycany"])],
    vhodnost={"podle_objektu": True}, vazby={"potrebuje": ["S02"], "synergie": ["S01","Z01","Z10"], "konflikt": []}, povoleni=1, povoleni_pozn="1-2",
    ceny=[cena("podzemní ŽB retenční nádrž", None, "Kč/m³", 2025, "uur2025_kanalizace", rozsah=[18500,28500]), cena("plastová nádrž 5000 l bez montáže", 50830, "Kč", 2026, "hornbach_nadrz")],
    financovani=["opzp_1_3_4"], standardy=["csn759010"])
@@ -548,7 +550,7 @@ CISELNIKY = {
 }
 
 DATA = {
- "meta": {"nazev":"Katalog opatření - Koryčany resilience","verze":"0.3","datum":DNES,"licence_dat":"CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
+ "meta": {"nazev":"Katalog opatření - Koryčany resilience","verze":"0.4","datum":DNES,"licence_dat":"CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
           "upozorneni":"Zjednodušený osvětový model, ne projektová dokumentace. Každé číslo má zdroj a značku původu. Ceny jen se zdrojem a datem; jinak 'cena neověřena'. Paragrafy vodního zákona ověřit v e-Sbírce.",
           "zdroje_md":["claude/KATALOG.md","claude/KATALOG-Z-S.md","claude/KATALOG-U-P.md","claude/KATALOG-L-LES-T-C.md"]},
  "ciselniky": CISELNIKY, "konstanty": KONSTANTY, "zdroje": Z, "programy": PROGRAMY, "nastroje": NASTROJE, "opatreni": O,

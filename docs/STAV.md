@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 19. 10. 2026 (relace 6, konec; **blok E srážky ČHMÚ** a **blok F jádro v0.1 nad skutečnými rastry** hotovy)
+Aktualizováno: 20. 10. 2026 (relace 7; **blok G: prototyp v0.2 nad skutečnými daty** - klik = sklon a půda z rastrů, území = budovy ČÚZK a odtok CN, srážky ČHMÚ Koryčany)
 
 ## Fáze: 1 a 2 hotové. Fáze 3 (jádro) rozpracovaná: v0.1 umí statistiku pozemku, SCS-CN po buňkách, povodí bodu, nádrž/poldr z DMR; chybí transformace vlny, bilance P-ET, USLE, napojení opatření.
 
@@ -38,6 +38,8 @@ Aktualizováno: 19. 10. 2026 (relace 6, konec; **blok E srážky ČHMÚ** a **bl
 
 - **Blok F (fáze 3), 19. 10. - jádro v0.1 hotovo** -> `docs/JADRO.md`. `tools/09_balicek_web.py` (+ `vyrob_balicek_web.bat`): rastry -> `data/web/` (9 PNG pásem, 5,0 MB, `rastr.json` s polynomem WGS84<->S-JTSK, chyba < 2 mm). `web/jadro.js`: převody, SCS-CN (+ IPS I/III), rasterizace polygonu, statistika buněk (plocha, CN, sklon, využití, HSP, odtok po buňkách), povodí bodu (zpětné D8, 4,2 km² za 65 ms), nádrž/poldr (zatopení pod hladinou), vykreslení masky do Leafletu. `web/test_jadro.js` (node + pngjs): 22 testů OK, shoda s 06_cn.py (území modelu CN 72,0, P40 78 248 m³; Stříbrník 4,23 km², CN 65,2). `web/test.html`: zkušební prohlížeč (klik = povodí bodu nebo hráz, podklady CN/sklon/využití/HSP/akumulace), ověřen v headless Chromiu; **živě: https://skauti-korycany.github.io/korycany-voda/web/test.html**. Balíček vygenerován v Claude z rastrů staženým z PC (data/dmr), uživatel nic nespouštěl.
 
+- **Blok G (fáze 3/4), 20. 10. - prototyp v0.2 na skutečných datech.** `tools/build_dummy.py` vkládá `web/jadro.js` a čte `budovy_info.json`, `cn_info.json`, `srazky_chmi.json`. Můj pozemek: klik -> sklon (DMR 5G, průměr v okruhu 15 m), půda A-D (BPEJ/HSP, s příznakem odhad), složení okolí 30 m (ZABAGED) jako nápověda; plochy střech/dvora zadává uživatel. Déšť navíc 58 mm (N10 Koryčany 🤔) a 94 mm (12. 6. 2012). Celé území: 957 RD, průměrný půdorys 120 m² ✅ ČÚZK BU, podíly sídel podle počtu budov v dílčích povodích, "Na co to nestačí" proti skutečnému území 1 412 ha a odtoku z CN (P20 12 876 m³). O modelu: srážky, N-leté úhrny, CN, odtok. Katalog v0.4: srážky 632 mm (zdroj `chmi_korycany`), nová konstanta `navrhovy_dest_denni_korycany` (Gumbel, značka odhad). Ověřeno v headless Chromiu (klik na TTP u Stříbrníku: sklon 1 %, HSP C z BPEJ). Jádro v0.1 opraveno 19. 10. večer: buňka hráze se nepočítá, příznak "pod rozlišením" (< 8 buněk), v test.html vidět klik i přichycený bod. **Uživatel: nádrže "nepovedené", zatím odloženo.**
+
 ### Rozpracováno
 - **Žádost VÚMOP odeslána 19. 10. 2026** (data@vumop.cz, z adresy oddílu): vektor hydrologických skupin půd (mapa velkého měřítka, metadata ID 5cc1bdc2-de34-4eee-a439-41420a000319), správní území obce Koryčany + obal ~500 m, SHP/GPKG v EPSG:5514; dotazy na licenci pro veřejnou webovou aplikaci, zpoplatnění nekomerčního užití a HSP pro lesy mimo ZPF. Odkaz na stav.html v textu. Čeká se na odpověď. Erozní ohroženost a zamokřené půdy v žádosti nejsou - případně druhá žádost po odpovědi.
 - Chybějící podklady od uživatele: NOO 2026 (XLSX) a NOO 2025_2; seznam platných SPPK (aopk.gov.cz/platne-standardy); znění vodního zákona (e-Sbírka) § 15b, 17, 46, 47, 55; nejbližší stanice ČHMÚ; text ČSN 75 9010.
@@ -47,7 +49,7 @@ Aktualizováno: 19. 10. 2026 (relace 6, konec; **blok E srážky ČHMÚ** a **bl
 
 ### Další kroky (pořadí)
 0. ~~srážková data~~ hotovo 19. 10. (blok E). Zbývá: licence otevřených dat ČHMÚ (otevřít podmínky na opendata.chmi.cz, zapsat do VRSTVY.md); srážkoměr VD Koryčany do žádosti na Povodí Moravy.
-1. **Fáze 3 pokračování**: (a) uživatel vyzkouší web/test.html a dá zpětnou vazbu (přichycení k toku, čitelnost, co chybí); (b) napojit opatření z `opatreni.json` (EFF z prototypu) na `statPolygon` reálného pozemku - základ rozhraní Můj pozemek; (c) transformace vlny poldrem (zjednodušeně), (d) N-leté úhrny do konstant (dočasně Gumbel Koryčany N10 58 mm).
+1. **Zpětná vazba k prototypu v0.2** (index.html na Pages): sedí sklon a půda po kliku? Je nápověda okolí užitečná, nebo mate? Pak: (a) nádrže v jádru - co konkrétně nesedí (uživatel řekne), (b) transformace vlny poldrem, (c) voda z polí a luk v Celém území (USLE, pásy - dnes se nepočítá), (d) průmysl/bytové domy do území.
 2. Návrhové úhrny N-letých dešťů pro Koryčany (ČHMÚ / ČVUT metodika 2023 "Krátkodobé srážky"), přepočet IPS I/III (J12 obr. 2.2).
 3. Až přijde VÚMOP: `--vumop` v vyrob_cn.bat, přepočet, porovnat s BPEJ odhadem.
 4. Názvy toků do toky_cuzk.geojson: z INSPIRE HY-P (ČÚZK) nebo DIBAVOD A02 (NAZ_TOK) - až bude potřeba v rozhraní.
@@ -56,6 +58,8 @@ Aktualizováno: 19. 10. 2026 (relace 6, konec; **blok E srážky ČHMÚ** a **bl
 7. Dotační okna: AOPK OPŽP ZMV 17. výzva 20. 10. - 3. 11. 2026; OPŽP 105 do 17. 12. 2026.
 
 ## Rozhodnutí
+- 20. 10. 2026 - **Prototyp zadává plochy střech a dvora ručně**, katastr se nenačítá (WFS ČÚZK z prohlížeče neověřeno, a hlavně: pravidlo o osobních údajích). Z rastrů jde jen sklon, půda a složení okolí jako nápověda.
+- 20. 10. 2026 - **Srážky v katalogu = ČHMÚ Koryčany 632 mm** (místo Kroměříž 571,5); vzorce "A × 0,5715" přepsány na 0,632.
 - 19. 10. 2026 - **Rastry pro web zůstávají v mřížce S-JTSK** (ne warp do Mercatoru): D8 a sousednost platí jen v původní mřížce; převod souřadnic dělá polynom 2. řádu z pyproj (v `rastr.json`), zobrazení převzorkováním v JS. Pásma jako 8/16bit PNG (bez knihoven, bezztrátově), 5 MB celkem - pro verzi 1 přijatelné; ořez na území modelu až bude třeba.
 - 19. 10. 2026 - **Odtok SCS-CN se počítá po buňkách a sčítá** (ne z průměrného CN) - vzorec je nelineární; shoda s 06_cn.py.
 - 19. 10. 2026 - **Nádrž = zatopení terénu pod hladinou** uvnitř povodí hráze, bez tvaru hráze a ztrát; viditelně označeno jako orientační.
@@ -132,6 +136,7 @@ Aktualizováno: 19. 10. 2026 (relace 6, konec; **blok E srážky ČHMÚ** a **bl
 - Depresní vrstva obsahuje hladinu VN Koryčany a umělé prohlubně (zářezy, lom) - pro "kde voda stojí" je nutné filtrovat podle sklonu a ortofota (fáze 3).
 
 ## Na co ses nezeptal a měl bys
+- Co přesně ti na nádržích nesedí - umístění (přichycení), tvar zátopy, nebo objem? Bez toho to neopravím.
 - Jak velká smí být aplikace na mobilu? 5 MB rastrů jde snížit (ořez na území modelu, hrubší akumulace) - rozhodni po vyzkoušení test.html na telefonu.
 - Má škola nebo oddíl vlastní srážkoměr u Kachníku? Bez něj epizody čidla nejde spárovat s deštěm (viz 8. 9.).
 - Stanice ČHMÚ Koryčany je manuální - víš, kde stojí a kdo ji odečítá? Pozorovatel může být partner projektu.
