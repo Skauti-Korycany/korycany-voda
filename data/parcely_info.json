@@ -1,0 +1,32 @@
+{
+ "zdroj": "ČÚZK, INSPIRE Katastrální parcely (CP), CC BY 4.0; stav podle Atom feedu v den stažení; skript tools/10_parcely.py",
+ "stazeno": "2026-10-20",
+ "ku": {
+  "Koryčany": {
+   "kod": "669661",
+   "parcel": 4093,
+   "plocha_ha": 1409.9,
+   "s_budovou": 1463,
+   "s_rd": 941
+  },
+  "Jestřabice": {
+   "kod": "659053",
+   "parcel": 6,
+   "plocha_ha": 224.6,
+   "s_budovou": 0,
+   "s_rd": 0
+  },
+  "Blišice": {
+   "kod": "669652",
+   "parcel": 433,
+   "plocha_ha": 66.3,
+   "s_budovou": 24,
+   "s_rd": 22
+  }
+ },
+ "parcel_celkem": 4532,
+ "parcel_s_rd": 963,
+ "parcela_s_rd_median_m2": 247.7685546875,
+ "strechy_na_parcele_s_rd_median_m2": 104.4,
+ "velikost_souboru_MB": 2.21
+}

@@ -776,18 +776,19 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <button role="tab" aria-selected="false" data-tab="model">O modelu</button>
   </nav>
 </header>
-<div class="banner">Zjednodušený model pro osvětu, ne projekt. Nevalidováno. Po kliku do mapy se sklon a půda berou z dat (DMR 5G ČÚZK, BPEJ SPÚ); plochy střech a dvora zadáváš sám (katastr se nenačítá). Katalog, vzorce, ceny a zdroje: opatreni.json v0.4 (20. 10. 2026). Značky: ✅ ověřený zdroj, ✅⏳ starší než rok, 📄 citace, 🤔 odhad.</div>
+<div class="banner">Zjednodušený model pro osvětu, ne projekt. Nevalidováno. Po kliku do mapy se sklon a půda berou z dat (DMR 5G ČÚZK, BPEJ SPÚ); střechy a výměry z katastru (ČÚZK) po kliknutí na parcely, zpevněné plochy zadáváš sám. Katalog, vzorce, ceny a zdroje: opatreni.json v0.4 (20. 10. 2026). Značky: ✅ ověřený zdroj, ✅⏳ starší než rok, 📄 citace, 🤔 odhad.</div>
 
 <main>
 <!-- ======================= MŮJ POZEMEK ======================= -->
 <section id="tab-pozemek" class="grid two">
   <div>
     <div id="map" aria-label="Mapa Koryčan"></div>
-    <p class="note" style="margin:.4rem 0 0">Podklad ČÚZK ZTM (WMTS) a ortofoto (WMS), živě ze serverů ČÚZK. Klikni do mapy = vyber místo. Sklon a půda se odvodí z dat v mřížce 5 m (DMR 5G, BPEJ); u půdy je vidět, jestli jde o bonitovanou plochu nebo odhad. Složení okolí (budovy, zpevněné, zeleň v okruhu 30 m) je jen nápověda - plochy zadej podle sebe.</p>
+    <p class="note" style="margin:.4rem 0 0">Podklad ČÚZK ZTM (WMTS) a ortofoto (WMS), živě ze serverů ČÚZK. Klikni do mapy = vyber místo. Klik vybere parcelu z katastru (ČÚZK, CC BY 4.0) - klikni postupně na dům, zahradu a dvůr, výměry a půdorysy budov se sečtou a předvyplní. Sklon a půda se odvodí z mřížky 5 m (DMR 5G, BPEJ). Zpevněné plochy v datech nejsou, ty zadej sám. Nic se neukládá, vlastníci se nenačítají.</p>
     <div class="panel" style="margin-top:.8rem">
       <div class="eyebrow">Krok 1 - kde</div>
       <dl class="kv" id="where">
-        <dt>Místo</dt><dd id="w-pos">klikni do mapy</dd>
+        <dt>Parcely</dt><dd id="w-parc">klikni do mapy na dům, pak na zahradu a dvůr - každá parcela zvlášť, sčítá se <span class="note">(katastr má dům a zahradu jako dvě parcely)</span></dd>
+        <dt>Místo</dt><dd id="w-pos">-</dd>
         <dt>Sklon</dt><dd><span class="num" id="w-slope">-</span> % <span class="note" id="w-slope-n">(po kliku z DMR 5G, průměr v okruhu 15 m)</span></dd>
         <dt>Půda</dt><dd id="w-soil">- <span class="note">(po kliku z BPEJ; v lese a zástavbě odhad - ověř zkouškou vsaku)</span></dd>
         <dt>Okolí 30 m</dt><dd id="w-okoli">-</dd>
@@ -1263,11 +1264,54 @@ let marker=null;
 map.on('click',e=>{
   if(marker) marker.remove();
   marker = L.marker(e.latlng,{icon:L.divIcon({className:'',html:'<div class="pin"></div>',iconSize:[14,14],iconAnchor:[7,7]})}).addTo(map);
-  document.getElementById('w-pos').innerHTML = '<span class="num">'+e.latlng.lat.toFixed(5)+' N, '+e.latlng.lng.toFixed(5)+' E</span> <span class="note">(ostrá verze: obrys parcely z katastru jen k zobrazení, nikam se neukládá)</span>';
+  document.getElementById('w-pos').innerHTML = '<span class="num">'+e.latlng.lat.toFixed(5)+' N, '+e.latlng.lng.toFixed(5)+' E</span> <span class="note">(nikam se neukládá)</span>';
+  vyberParcelu(e.latlng.lng, e.latlng.lat);
   odvodZMapy(e.latlng.lng, e.latlng.lat);
 });
-// ---------- jadro: sklon, puda, okoli z rastru (web/jadro.js + data/web)
+// ---------- parcely a budovy (CUZK INSPIRE CP + BU, CC BY 4.0) - vyber klikanim, scita se
 const BASE = location.pathname.includes('/prototyp/') ? '../' : '';
+const PARC = {feats:[], layer:null, vybrane:new Set(), zvyr:null, budovy:null};
+const vBodu = (ring, x, y) => { let inside=false; for(let i=0,j=ring.length-1;i<ring.length;j=i++){ const [xi,yi]=ring[i],[xj,yj]=ring[j]; if((yi>y)!==(yj>y) && x < (xj-xi)*(y-yi)/(yj-yi)+xi) inside=!inside; } return inside; };
+const canvasR = L.canvas({padding:0.5});
+fetch(BASE+'data/parcely.geojson').then(r=>r.json()).then(gj=>{
+  PARC.feats = gj.features.map((f,k)=>{ const ring=f.geometry.coordinates[0]; let a=[Infinity,Infinity,-Infinity,-Infinity]; for(const [x,y] of ring){ if(x<a[0])a[0]=x; if(y<a[1])a[1]=y; if(x>a[2])a[2]=x; if(y>a[3])a[3]=y; } return {k, f, ring, diry:f.geometry.coordinates.slice(1), bbox:a}; });
+  PARC.layer = L.geoJSON(gj,{renderer:canvasR, interactive:false, style:{color:'#7a5a3a',weight:0.7,fill:false,opacity:0.8}});
+  PARC.zvyr = L.layerGroup().addTo(map);
+  const ukaz=()=>{ if(map.getZoom()>=16){ if(!map.hasLayer(PARC.layer)) PARC.layer.addTo(map); } else if(map.hasLayer(PARC.layer)) map.removeLayer(PARC.layer); };
+  map.on('zoomend',ukaz); ukaz();
+}).catch(err=>{ console.warn('parcely', err); document.getElementById('w-parc').innerHTML='parcely se nenačetly - plochy zadej ručně'; });
+fetch(BASE+'data/budovy.geojson').then(r=>r.json()).then(gj=>{
+  PARC.budovy = L.geoJSON(gj,{renderer:canvasR, interactive:false, style:{color:'#5c4a3a',weight:0.5,fillColor:'#8a7a6a',fillOpacity:0.5}});
+  const ukaz=()=>{ if(map.getZoom()>=16){ if(!map.hasLayer(PARC.budovy)) PARC.budovy.addTo(map); } else if(map.hasLayer(PARC.budovy)) map.removeLayer(PARC.budovy); };
+  map.on('zoomend',ukaz); ukaz();
+}).catch(()=>{});
+function najdiParcelu(lon,lat){
+  for(const p of PARC.feats){ if(lon<p.bbox[0]||lon>p.bbox[2]||lat<p.bbox[1]||lat>p.bbox[3]) continue; if(vBodu(p.ring,lon,lat) && !p.diry.some(d=>vBodu(d,lon,lat))) return p; }
+  return null;
+}
+function vyberParcelu(lon,lat){
+  if(!PARC.feats.length) return;
+  const p = najdiParcelu(lon,lat);
+  if(!p){ $('w-parc').innerHTML = 'tady katastr parcelu nemá (mimo stažená k.ú.) - plochy zadej ručně'; return; }
+  if(PARC.vybrane.has(p.k)) PARC.vybrane.delete(p.k); else PARC.vybrane.add(p.k);
+  prekresliVyber();
+}
+function prekresliVyber(){
+  PARC.zvyr.clearLayers();
+  let A=0, roof=0, bud=0, rd=0; const popis=[];
+  for(const k of PARC.vybrane){ const p=PARC.feats[k], q=p.f.properties; A+=q.plocha_m2; roof+=q.strechy_m2; bud+=q.budov; rd+=q.rd;
+    L.geoJSON(p.f,{style:{color:'#1f6f8b',weight:2.5,fillColor:'#1f6f8b',fillOpacity:0.12}}).addTo(PARC.zvyr);
+    popis.push(`${q.cislo} (${fmt0(q.plocha_m2)} m²${q.budov?', '+q.budov+' bud. '+fmt0(q.strechy_m2)+' m²':''})`); }
+  if(!PARC.vybrane.size){ $('w-parc').innerHTML='klikni do mapy na dům, pak na zahradu a dvůr - každá parcela zvlášť, sčítá se'; return; }
+  const paved = +$('in-paved').value||0;
+  $('in-roof').value = Math.round(roof);
+  $('in-green').value = Math.max(0, Math.round(A - roof - paved));
+  $('w-parc').innerHTML = `${popis.join('; ')} <b>= ${fmt0(A)} m², střechy ${fmt0(roof)} m²</b> <span class="note">(ČÚZK katastr + budovy, CC BY 4.0; plocha půdorysů, ne šikmých střech; zpevněné plochy v datech nejsou - zadej sám, zeleň = zbytek)</span> <button type="button" id="w-parc-x" style="font:inherit;font-size:.8rem">zrušit výběr</button>`;
+  $('w-parc-x').onclick=()=>{ PARC.vybrane.clear(); prekresliVyber(); recalc(); };
+  recalc();
+}
+document.getElementById('in-paved').addEventListener('input',()=>{ if(PARC.vybrane.size){ let A=0,roof=0; for(const k of PARC.vybrane){ const q=PARC.feats[k].f.properties; A+=q.plocha_m2; roof+=q.strechy_m2; } document.getElementById('in-green').value=Math.max(0,Math.round(A-roof-(+document.getElementById('in-paved').value||0))); } });
+// ---------- jadro: sklon, puda, okoli z rastru (web/jadro.js + data/web)
 let jadroStav = 'nacitam';
 const HSPN = {1:'A, velmi propustná',2:'B, propustná',3:'C, málo propustná',4:'D, jíl, nepropustná'};
 const LEG = {};
@@ -1278,10 +1322,12 @@ function odvodZMapy(lon,lat){
   if(jadroStav!=='ok'){ $('w-slope-n').textContent = jadroStav==='nacitam' ? '(rastry se ještě načítají, klikni za chvíli znovu)' : '(rastry se nepodařilo načíst - zadej sklon ručně)'; return; }
   const b = Jadro.lonLatNaBunku(lon,lat);
   if(!b){ $('w-slope-n').textContent='(mimo území dat)'; return; }
-  const s15 = Jadro.statBunek(Jadro.bunkyPolygonu(kruh(lon,lat,15)));
+  let bunky = Jadro.bunkyPolygonu(kruh(lon,lat,15));
+  if(PARC.vybrane.size){ bunky=[]; for(const k of PARC.vybrane){ const p=PARC.feats[k]; bunky=bunky.concat(Jadro.bunkyPolygonu(p.ring,p.diry)); } if(bunky.length<4) bunky=Jadro.bunkyPolygonu(kruh(lon,lat,15)); }
+  const s15 = Jadro.statBunek(bunky);
   const s30 = Jadro.statBunek(Jadro.bunkyPolygonu(kruh(lon,lat,30)));
   const sklonPct = s15.sklon_prumer_pct!=null ? Math.round(s15.sklon_prumer_pct) : null;
-  if(sklonPct!=null){ $('in-slope').value = sklonPct; $('w-slope').textContent = sklonPct; $('w-slope-n').textContent = `(DMR 5G, průměr v okruhu 15 m; v bodě ${fmt(Jadro.sklonDeg(b.i)||0)}°)`; }
+  if(sklonPct!=null){ $('in-slope').value = sklonPct; $('w-slope').textContent = sklonPct; $('w-slope-n').textContent = PARC.vybrane.size ? `(DMR 5G, průměr vybraných parcel, ${s15.n_platnych} buněk 5 m)` : `(DMR 5G, průměr v okruhu 15 m; v bodě ${fmt(Jadro.sklonDeg(b.i)||0)}°)`; }
   const h = Jadro.hsp(b.i), odhad = Jadro.p.hsp_zdroj[b.i]===2;
   if(h){ $('in-soil').value = 'ABCD'[h-1]; $('w-soil').innerHTML = `skupina ${HSPN[h]} <span class="note">(${odhad?'odhad z nejbližší bonitované plochy - ověř zkouškou vsaku':'z BPEJ (SPÚ) + Janeček 2012'})</span>`; }
   else $('w-soil').innerHTML = '- <span class="note">(bez dat, zadej podle zkoušky vsaku)</span>';
