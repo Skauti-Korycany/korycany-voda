@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 20. 10. 2026 (relace 7; **blok G: prototyp v0.2 nad skutečnými daty** - klik = sklon a půda z rastrů, území = budovy ČÚZK a odtok CN, srážky ČHMÚ Koryčany)
+Aktualizováno: 20. 10. 2026 večer (relace 7, konec; bloky G-J hotové: prototyp v0.2 nad skutečnými daty, parcely z katastru, odtok z krajiny, velké střechy). **Relace 8 pokračuje pod jiným modelem než Fable** (rozhodnutí uživatele kvůli limitům tarifu).
 
 ## Fáze: 1 a 2 hotové. Fáze 3 (jádro) rozpracovaná: v0.1 umí statistiku pozemku, SCS-CN po buňkách, povodí bodu, nádrž/poldr z DMR; chybí transformace vlny, bilance P-ET, USLE, napojení opatření.
 
@@ -44,6 +44,8 @@ Aktualizováno: 20. 10. 2026 (relace 7; **blok G: prototyp v0.2 nad skutečnými
 
 - **Blok I, 20. 10. - odtok z krajiny v Celém území.** Panel "Pole, louky a les": histogram buněk území modelu (třída × HSP × údolnice ≥ 1 ha × svah ≥ 7°) z rastrů v prohlížeči (565 tis. buněk), odtok SCS-CN po třídách; scénáře mění CN podle `cn_tabulka.json` (Janeček 2012 tab. 2.3): P04 půdoochranné technologie, P01/P03 vrstevnicově + pásy, P06 zatravnění svažité orné (> 7°), P05 zatravnění údolnic, stav lesa, stav pastvin. Kontrola: "teď" = 12 876 / 78 248 m³ při 20 / 40 mm = přesně 06_cn.py. Příklad: 50 % orné vrstevnicově + údolnice při 40 mm = -6 442 m³ (-8 %). Třídy pod 5 ha sloučeny. Eroze, vlna a výpar se nepočítají (napsáno v textu).
 
+- **Blok J, 20. 10. - velké střechy v Celém území.** Panel "Velké střechy - kdo rozhoduje o nejvíc vodě": všech 1 487 budov podle účelu (RÚIAN), střechy ha, m³ na zvolený déšť, průměr na budovu, kdo rozhoduje, opatření z katalogu. Klíčová čísla: 75 průmyslových budov 6,5 ha střech = 56 % plochy střech 957 RD; průměrná průmyslová střecha (862 m²) = 7 domů; veřejné 40 budov 1,3 ha, zemědělské 55 budov 2,8 ha. Kam střechy odvádějí vodu, v datech není.
+
 ### Rozpracováno
 - **Žádost VÚMOP odeslána 19. 10. 2026** (data@vumop.cz, z adresy oddílu): vektor hydrologických skupin půd (mapa velkého měřítka, metadata ID 5cc1bdc2-de34-4eee-a439-41420a000319), správní území obce Koryčany + obal ~500 m, SHP/GPKG v EPSG:5514; dotazy na licenci pro veřejnou webovou aplikaci, zpoplatnění nekomerčního užití a HSP pro lesy mimo ZPF. Odkaz na stav.html v textu. Čeká se na odpověď. Erozní ohroženost a zamokřené půdy v žádosti nejsou - případně druhá žádost po odpovědi.
 - Chybějící podklady od uživatele: NOO 2026 (XLSX) a NOO 2025_2; seznam platných SPPK (aopk.gov.cz/platne-standardy); znění vodního zákona (e-Sbírka) § 15b, 17, 46, 47, 55; nejbližší stanice ČHMÚ; text ČSN 75 9010.
@@ -53,7 +55,7 @@ Aktualizováno: 20. 10. 2026 (relace 7; **blok G: prototyp v0.2 nad skutečnými
 
 ### Další kroky (pořadí)
 0. ~~srážková data~~ hotovo 19. 10. (blok E). Zbývá: licence otevřených dat ČHMÚ (otevřít podmínky na opendata.chmi.cz, zapsat do VRSTVY.md); srážkoměr VD Koryčany do žádosti na Povodí Moravy.
-1. **Další kandidáti**: (a) parcely Lískovce (uživatel doběhne `vyrob_parcely.bat`, Claude nahraje), (b) průmysl/bytové domy/veřejné budovy do Celého území (střechy 14 ha mimo RD), (c) transformace vlny poldrem, (d) nádrže v jádru (uživatel řekne, co nesedí), (e) USLE pro ornou půdu (R faktor Koryčany chybí), (f) stav.html aktualizovat (parcely, srážky, jádro).
+1. **Příští relace začíná tady.** Pořadí navržené 20. 10.: (a) **stav.html aktualizovat** (veřejná stránka pro VÚMOP/město má čísla natvrdo z 19. 10.; chybí srážky ČHMÚ, CN/odtok, jádro, parcely, prototyp v0.2) - půl hodiny, žádná nová funkce; (b) USLE pro ornou půdu - až bude R faktor Koryčany (kalkulačka VÚMOP, zjistí uživatel); (c) transformace vlny poldrem a (d) nádrže v jádru - až uživatel řekne, co konkrétně na nádržích nesedí (umístění / tvar zátopy / objem); (e) validace proti měření - až data Povodí Moravy nebo vlastní srážkoměr. Průběžně: zpětná vazba uživatele k prototypu v0.2 (parcely, sklon, půda, krajina, velké střechy). Nezapomenout: `tools/build_dummy.py` je zdroj pravdy pro index.html i prototyp/index.html (oba se generují, nikdy needitovat HTML ručně); po změně dat (`budovy_info.json`, `cn_info.json`, `srazky_chmi.json`, `cn_tabulka.json`, `opatreni.json`) znovu spustit.
 2. Návrhové úhrny N-letých dešťů pro Koryčany (ČHMÚ / ČVUT metodika 2023 "Krátkodobé srážky"), přepočet IPS I/III (J12 obr. 2.2).
 3. Až přijde VÚMOP: `--vumop` v vyrob_cn.bat, přepočet, porovnat s BPEJ odhadem.
 4. Názvy toků do toky_cuzk.geojson: z INSPIRE HY-P (ČÚZK) nebo DIBAVOD A02 (NAZ_TOK) - až bude potřeba v rozhraní.
@@ -140,6 +142,8 @@ Aktualizováno: 20. 10. 2026 (relace 7; **blok G: prototyp v0.2 nad skutečnými
 - Depresní vrstva obsahuje hladinu VN Koryčany a umělé prohlubně (zářezy, lom) - pro "kde voda stojí" je nutné filtrovat podle sklonu a ortofota (fáze 3).
 
 ## Na co ses nezeptal a měl bys
+- Kam odvádějí vodu velké střechy (průmysl, škola, úřad) - kanalizace, vsak, potok? V datech to není; otázka na město a provozovatele (souvisí s otevřenou otázkou kanalizace jednotná/oddílná).
+- Zpevněné plochy u domů (dvory, vjezdy) nejsou v žádné vrstvě - ZABAGED je má jen jako "ostatní plocha v sídle". Pasport nebo klasifikace z ortofota?
 - Co přesně ti na nádržích nesedí - umístění (přichycení), tvar zátopy, nebo objem? Bez toho to neopravím.
 - Jak velká smí být aplikace na mobilu? 5 MB rastrů jde snížit (ořez na území modelu, hrubší akumulace) - rozhodni po vyzkoušení test.html na telefonu.
 - Má škola nebo oddíl vlastní srážkoměr u Kachníku? Bez něj epizody čidla nejde spárovat s deštěm (viz 8. 9.).

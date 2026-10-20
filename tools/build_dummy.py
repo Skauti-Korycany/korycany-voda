@@ -30,7 +30,7 @@ data["uzemi"] = {
     "odtok": CNI["uzemi_modelu"]["odtok"],
     "rd_pocet": BUD["podle_ucelu"]["rodinný dům"]["pocet"], "rd_strechy_m2": BUD["podle_ucelu"]["rodinný dům"]["plocha_strech_m2"],
     "budov": BUD["budov_v_uzemi_modelu"], "strechy_m2": BUD["plocha_pudorysu_v_uzemi_m2"],
-    "podle_povodi": BUD["podle_povodi"],
+    "podle_povodi": BUD["podle_povodi"], "podle_ucelu": BUD["podle_ucelu"],
     "srazky": {"normal_mm": kor["normal_1991_2020_mm"], "n_lete_denni_mm": kor["n_lete_denni_mm_gumbel"], "max_denni": [(x["max_denni_datum"], x["max_denni_mm"]) for x in sorted(kor["rocni"].values(), key=lambda x: -x["max_denni_mm"])[:3]], "mesicni_mm": kor["normal_mesicni_mm"]},
 }
 CNT = json.load(open(os.path.join(ROOT, "data", "cn_tabulka.json"), encoding="utf-8"))
@@ -244,6 +244,12 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
     <table class="flow" id="u-table" style="margin-top:.8rem"></table>
     <div class="callout" id="u-limit"></div>
     <div class="callout ok" id="u-plus"></div>
+  </div>
+  <div class="panel" style="margin-top:1rem">
+    <h3>Velké střechy - kdo rozhoduje o nejvíc vodě</h3>
+    <p class="note">Všechny budovy v území modelu podle účelu (ČÚZK INSPIRE BU ✅, účel z RÚIAN, u části budov neuveden). Voda ze střechy při zvoleném dešti = půdorys × úhrn (C = 1,0); průměr střech je 🤔 sklonem a tvarem skutečná plocha ~1,2× půdorys, počítá se půdorys. Jedna velká střecha = desítky zahrad; rozhoduje o ní jeden člověk nebo rada.</p>
+    <table class="flow" id="s-table" style="margin-top:.6rem"></table>
+    <div class="callout" id="s-limit"></div>
   </div>
   <div class="panel" style="margin-top:1rem">
     <h3>Pole, louky a les - odtok z krajiny</h3>
@@ -594,6 +600,21 @@ function renderUzemi(){
   $('u-context').innerHTML = D.opatreni.filter(o=>o.kontext).map(o=>`<div class="card"><header><div class="t"><b>${o.nazev}</b><div class="meta"><span class="chip id">${o.id}</span><span class="chip">rozhoduje: ${o.rozhoduje.map(r=>CZ.rozhoduje[r].split(' ')[0]).join(', ')}</span><span class="chip">${cenaText(o)}</span><span class="chip">povolení: ${CZ.povoleni[String(o.povoleni)]}</span></div></div></header>
     <div class="eff">${o.kvantifikace.map(k=>k.popis+' '+(ZN[k.znacka]||'')).join(' ')}</div>${o.pozn_poctivost?`<div class="note">${o.pozn_poctivost}</div>`:''}<div class="note">Financování: ${finText(o)}</div></div>`).join('');
 }
+// ---------- velke strechy podle ucelu
+const UCEL_KDO = {'rodinný dům':['domácnosti','S02, S01, Z01, Z10 (NZÚ, vlastní)'], 'průmysl':['firmy (areály)','S02 + vsak/nádrž na areálu, S03 zelená střecha (OPŽP 1.3.4), U02 propustné plochy'],
+  'zemědělství':['zemědělské podniky','S02 + nádrž na závlahu, vsak; U02'], 'vedlejší stavba (garáž, kůlna)':['domácnosti','S01 sud/IBC u kůlny'], 'veřejná služba':['obec, škola, kraj','U04 retence z veřejných budov (OPŽP 1.3.4), U02, S03'],
+  'bytový dům':['SVJ, družstva, obec','S02 + vsak/nádrž, S03 (NZÚ bytové domy 💻 ověřit)'], 'obchod':['firmy','S02, U02'], 'kancelář':['firmy','S02, U02'], 'obchod a služby':['firmy','S02, U02'], 'bydlení':['domácnosti','S02, S01'], 'neuvedeno':['?','']};
+function renderStrechy(){
+  const rain=+$('u-rain').value/1000; const U=D.uzemi.podle_ucelu;
+  const rows=Object.entries(U).map(([u,x])=>({u,n:x.pocet,a:x.plocha_strech_m2,v:x.plocha_strech_m2*rain})).sort((a,b)=>b.a-a.a);
+  const tot=rows.reduce((t,r)=>t+r.v,0), totA=rows.reduce((t,r)=>t+r.a,0);
+  $('s-table').innerHTML=`<tr><th>účel budov</th><th class="num">budov</th><th class="num">střechy ha</th><th class="num">m³ na déšť ${Math.round(rain*1000)} mm</th><th class="num">prům. m³/budovu</th><th>kdo rozhoduje</th><th>opatření z katalogu</th></tr>`+
+    rows.map(r=>`<tr><td>${r.u}</td><td class="num">${fmt0(r.n)}</td><td class="num">${fmt(r.a/1e4)}</td><td class="num">${fmt0(r.v)}</td><td class="num">${fmt(r.v/r.n)}</td><td>${(UCEL_KDO[r.u]||['',''])[0]}</td><td>${(UCEL_KDO[r.u]||['',''])[1]}</td></tr>`).join('')+
+    `<tr class="total"><td>všechny budovy v území</td><td class="num">${fmt0(rows.reduce((t,r)=>t+r.n,0))}</td><td class="num">${fmt(totA/1e4)}</td><td class="num">${fmt0(tot)}</td><td></td><td></td><td></td></tr>`;
+  const rd=U['rodinný dům'], pr=U['průmysl'], ve=U['veřejná služba'], ze=U['zemědělství'];
+  $('s-limit').innerHTML=`<b>Co z toho plyne:</b> ${fmt0(pr.pocet)} průmyslových budov má ${fmt(pr.plocha_strech_m2/1e4)} ha střech = ${fmt0(100*pr.plocha_strech_m2/rd.plocha_strech_m2)} % plochy střech všech ${fmt0(rd.pocet)} rodinných domů; průměrná průmyslová střecha (${fmt0(pr.plocha_strech_m2/pr.pocet)} m²) dá na jeden déšť tolik vody jako ${fmt0(pr.plocha_strech_m2/pr.pocet/(rd.plocha_strech_m2/rd.pocet))} domů. Veřejné budovy (${ve.pocet}, ${fmt(ve.plocha_strech_m2/1e4)} ha) a zemědělské (${ze.pocet}, ${fmt(ze.plocha_strech_m2/1e4)} ha) jsou v rukou obce, kraje a pár podniků - tam má smysl začít jednáním, ne letákem. Kam ty střechy dnes odvádějí vodu (kanalizace / vsak / potok), v datech není - zjistit u provozovatelů (otázka pro město: kanalizace jednotná nebo oddílná?).`;
+}
+renderStrechy(); $('u-rain').addEventListener('input',renderStrechy);
 $('u-zdroj').innerHTML=`V území modelu (${fmt0(D.uzemi.plocha_ha)} ha, povodí Kyjovky pod Koryčany bez povodí nad přehradou) je ${fmt0(D.uzemi.budov)} budov s půdorysem ${fmt0(D.uzemi.strechy_m2/1e4*10)/10} ha, z toho ${fmt0(D.uzemi.rd_pocet)} rodinných domů (${fmt0(D.uzemi.rd_strechy_m2/1e4*10)/10} ha) ✅ ČÚZK INSPIRE BU, 19. 10. 2026. Zpevněné plochy u domů nejsou v datech - odhad. Počítá se jen voda ze střech a dvorů rodinných domů; průmysl, bytové domy a veřejné budovy zatím ne.`;
 ['u-n','u-roof','u-paved','u-rain','u-pct'].forEach(id=>$(id).addEventListener('input',renderUzemi));
 document.querySelectorAll('#u-pack button').forEach(b=>b.addEventListener('click',()=>{b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');renderUzemi();}));
