@@ -817,14 +817,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <option value="B" selected>kleslo 4-8 cm - B, propustná</option>
           <option value="C">kleslo 2-4 cm - C, málo propustná</option>
           <option value="D">kleslo pod 2 cm - D, jíl, nepropustná</option></select></label>
-        <label class="f">Déšť k výpočtu (mm)<select id="in-rain">
-          <option value="20" selected>20 mm - běžný letní liják</option>
-          <option value="44.2">44 mm - 24 h, 1x za 5 let (ČSN 75 9010, Brno)</option>
-          <option value="26.2">26 mm - 60 min, 1x za 5 let</option>
-          <option value="53.2">53 mm - 6 hodin, 1x za 10 let (ČVUT/ČHMÚ 2023, Koryčany ✅)</option>
-          <option value="87">87 mm - 6 hodin, 1x za 100 let (ČVUT/ČHMÚ 2023, Koryčany ✅)</option>
-          <option value="58.1">58 mm - den, 1x za 10 let (ČHMÚ Koryčany 1921-2025, odhad 🤔)</option>
-          <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></select></label>
+        <label class="f">Déšť k výpočtu<select id="in-rain">
+          <optgroup label="Návrhový déšť Koryčany, 6 hodin (ČVUT/ČHMÚ 2023 ✅)">
+            <option value="32.2">častý - 32 mm, 1x za 2 roky</option>
+            <option value="53.2" selected>vzácný - 53 mm, 1x za 10 let</option>
+            <option value="87">extrémní - 87 mm, 1x za 100 let</option></optgroup>
+          <optgroup label="Další">
+            <option value="20">20 mm - běžný letní liják</option>
+            <option value="26.2">26 mm - 60 min, 1x za 5 let (ČSN 75 9010, Brno)</option>
+            <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></optgroup></select></label>
       </div>
       <p class="note" style="margin:.5rem 0 0">Zkouška vsaku: vykopej jámu 30 cm, nalij vodu, po 30 minutách změř pokles. Převod podle brožury Praha 2009 ✅⏳. Nahrazuje mapu půd, dokud nejsou data VÚMOP; i potom je přesnější než mapa.</p>
     </div>
@@ -861,7 +862,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <label class="f">Rodinných domů v území<input type="number" id="u-n" value="957" min="0" step="10"></label>
       <label class="f">Průměrný půdorys domu (m²)<input type="number" id="u-roof" value="120" min="0" step="10"></label>
       <label class="f">Průměrně zpevněno (m², odhad 🤔)<input type="number" id="u-paved" value="35" min="0" step="5"></label>
-      <label class="f">Déšť (mm)<select id="u-rain"><option value="20" selected>20 mm</option><option value="40">40 mm</option><option value="60">60 mm (~1x za 10 let)</option></select></label>
+      <label class="f">Déšť k výpočtu<select id="u-rain">
+          <optgroup label="Návrhový déšť Koryčany, 6 hodin (ČVUT/ČHMÚ 2023 ✅)">
+            <option value="32.2">častý - 32 mm, 1x za 2 roky</option>
+            <option value="53.2" selected>vzácný - 53 mm, 1x za 10 let</option>
+            <option value="87">extrémní - 87 mm, 1x za 100 let</option></optgroup>
+          <optgroup label="Další">
+            <option value="20">20 mm - běžný letní liják</option>
+            <option value="26.2">26 mm - 60 min, 1x za 5 let (ČSN 75 9010, Brno)</option>
+            <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></optgroup></select></label>
     </div>
     <label class="f" style="margin-top:.8rem">Kolik domácností se zapojí: <span class="num" id="u-pct-val">20</span> %
       <input type="range" id="u-pct" min="0" max="100" value="20"></label>
