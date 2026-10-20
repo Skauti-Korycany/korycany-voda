@@ -33,6 +33,8 @@ data["uzemi"] = {
     "podle_povodi": BUD["podle_povodi"],
     "srazky": {"normal_mm": kor["normal_1991_2020_mm"], "n_lete_denni_mm": kor["n_lete_denni_mm_gumbel"], "max_denni": [(x["max_denni_datum"], x["max_denni_mm"]) for x in sorted(kor["rocni"].values(), key=lambda x: -x["max_denni_mm"])[:3]], "mesicni_mm": kor["normal_mesicni_mm"]},
 }
+CNT = json.load(open(os.path.join(ROOT, "data", "cn_tabulka.json"), encoding="utf-8"))
+data["cn_tabulka"] = {k: {"nazev": v["nazev"], "vychozi": v["vychozi"], "varianty": {n: x["cn"] for n, x in v["varianty"].items()}} for k, v in CNT["tridy"].items()}
 DATA_JS = json.dumps(data, ensure_ascii=False)
 
 HTML = r"""<title>Voda v Koryčanech</title>
@@ -244,6 +246,20 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
     <div class="callout ok" id="u-plus"></div>
   </div>
   <div class="panel" style="margin-top:1rem">
+    <h3>Pole, louky a les - odtok z krajiny</h3>
+    <p class="note" id="k-zdroj">Plochy a půdy ze skutečných dat (ZABAGED využití, BPEJ -> HSP, DMR 5G) v mřížce 5 m, území modelu 1 412 ha. Posuvníky mění stav hospodaření na části plochy; odtok počítá SCS-CN po buňkách. Je to tabulková změna CN, ne měření - ukazuje řád, ne přesné číslo.</p>
+    <div class="inputs" style="margin-top:.6rem">
+      <label class="f">Orná: půdoochranné technologie (P04: zbytky na povrchu, bezorebně) <span class="num" id="k-p04-v">0</span> % plochy<input type="range" id="k-p04" min="0" max="100" value="0"></label>
+      <label class="f">Orná: vrstevnicově + pásy + zbytky (P01, P03) <span class="num" id="k-p01-v">0</span> % plochy<input type="range" id="k-p01" min="0" max="100" value="0"></label>
+      <label class="f">Orná nad 7° (svažitá): zatravnit (P06) <span class="num" id="k-p06-v">0</span> %<input type="range" id="k-p06" min="0" max="100" value="0"></label>
+      <label class="f"><input type="checkbox" id="k-p05"> Zatravnit údolnice v orné půdě (P05: buňky, kam stéká ≥ 1 ha)</label>
+      <label class="f">Stav lesa (hrabanka, podrost; LES)<select id="k-les"><option value="les, dobrý stav (hrabanka, podrost)">dobrý</option><option value="les, střední stav" selected>střední (výchozí)</option><option value="les, špatný stav (pastva, sešlap, bez hrabanky)">špatný</option></select></label>
+      <label class="f">Louky a pastviny (L02)<select id="k-ttp"><option value="pastvina/louka, pokryv > 75 %" selected>pokryv > 75 % (výchozí)</option><option value="pastvina, pokryv 50-75 %">pokryv 50-75 %</option><option value="pastvina přepasená, pokryv < 50 %">přepasená < 50 %</option></select></label>
+    </div>
+    <table class="flow" id="k-table" style="margin-top:.8rem"></table>
+    <div class="callout" id="k-limit"></div>
+  </div>
+  <div class="panel" style="margin-top:1rem">
     <h3>Co musí udělat obec a správci (kontext)</h3>
     <p class="note">Velká opatření z katalogu (kontext = true). Objemy a účinky na vlnu se tu nepočítají: bez DMR a bez doloženého zdroje by to bylo tahání závěrů.</p>
     <div class="cards" id="u-context"></div>
@@ -375,7 +391,52 @@ let jadroStav = 'nacitam';
 const HSPN = {1:'A, velmi propustná',2:'B, propustná',3:'C, málo propustná',4:'D, jíl, nepropustná'};
 const LEG = {};
 fetch(BASE+'data/vyuziti_pudy.json').then(r=>r.json()).then(j=>Object.assign(LEG,j.legenda)).catch(()=>{});
-Jadro.nacti(BASE+'data/web/').then(()=>{ jadroStav='ok'; }).catch(err=>{ jadroStav='chyba'; console.warn('jadro', err); });
+Jadro.nacti(BASE+'data/web/').then(()=>{ jadroStav='ok'; return fetch(BASE+'data/povodi.geojson').then(r=>r.json()); }).then(gj=>{ krajinaHistogram(gj); renderKrajina(); }).catch(err=>{ jadroStav = jadroStav==='ok' ? jadroStav : 'chyba'; console.warn('jadro/krajina', err); $('k-zdroj').textContent='Rastry nebo povodí se nenačetly - tato část nefunguje.'; });
+// ---------- krajina: histogram bunek uzemi modelu: trida x HSP x udolnice x svah
+const KRAJ = {h:{}, n:0};
+function krajinaHistogram(gj){
+  const f = gj.features.find(x=>x.properties.typ==='uzemi_modelu'); if(!f) return;
+  const geom = f.geometry.type==='Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
+  let bunky=[]; for(const poly of geom) bunky = bunky.concat(Jadro.bunkyPolygonu(poly[0], poly.slice(1)));
+  const UD = 400; // bunek 5 m = 1 ha
+  for(const i of bunky){ const v=Jadro.vyuziti(i), h=Jadro.hsp(i); if(!v||!h) continue; const a=Jadro.p.akumulace[i], ud=(a && Math.pow(10,(a-1)/40)>=UD)?1:0; const sk=Jadro.sklonDeg(i), sv=(sk!=null&&sk>=7)?1:0; const k=v+'|'+h+'|'+ud+'|'+sv; KRAJ.h[k]=(KRAJ.h[k]||0)+1; KRAJ.n++; }
+}
+const ORNA='1', TTP='3', LES=['4','41','42','43'];
+function cnZ(trida, varianta, h){ const t=D.cn_tabulka[trida]; if(!t) return null; const v=t.varianty[varianta]||t.varianty[t.vychozi]; return v ? v['ABCD'[h-1]] : null; }
+function qmm(P, cn){ if(!cn) return 0; const S=25400/cn-254, Ia=0.2*S; return P<=Ia?0:(P-Ia)*(P-Ia)/(P-Ia+S); }
+function renderKrajina(){
+  if(!KRAJ.n) return;
+  const P = +$('u-rain').value, A=25;
+  const p04=+$('k-p04').value/100, p01=+$('k-p01').value/100, p06=+$('k-p06').value/100, p05=$('k-p05').checked, les=$('k-les').value, ttp=$('k-ttp').value;
+  ['p04','p01','p06'].forEach(k=>$('k-'+k+'-v').textContent=$('k-'+k).value);
+  const sk = {}; // trida -> {ha, q0, q1}
+  const add=(name, n, cn0, cn1)=>{ const o=sk[name]||(sk[name]={ha:0,q0:0,q1:0,cn0:0,cn1:0}); o.ha+=n*A/1e4; o.q0+=qmm(P,cn0)/1000*n*A; o.q1+=qmm(P,cn1)/1000*n*A; o.cn0+=cn0*n; o.cn1+=cn1*n; };
+  for(const [k,n] of Object.entries(KRAJ.h)){
+    const [v,hs,ud,sv]=k.split('|'); const h=+hs; const t=D.cn_tabulka[v]; if(!t) continue;
+    const cn0=cnZ(v, t.vychozi, h); let cn1=cn0, name=t.nazev;
+    if(v===ORNA){ name='orná půda';
+      const cnTTP=cnZ(TTP,'pastvina/louka, pokryv > 75 %',h), cnP04=cnZ(ORNA,'obilniny, zbytky na povrchu, dobrý stav',h), cnP01=cnZ(ORNA,'obilniny, vrstevnicově + pásy + zbytky, dobrý stav',h);
+      if(p05 && ud==='1'){ add(name,n,cn0,cnTTP); continue; }
+      // podily se skladaji: zatravneni svazite (jen sv=1) -> z ostatku vrstevnicove -> z ostatku pudoochranne -> zbytek vychozi
+      let zb=n; if(sv==='1'&&p06>0){ const m=n*p06; add(name,m,cn0,cnTTP); zb-=m; }
+      const m1=zb*p01; if(m1>0) add(name,m1,cn0,cnP01); zb-=m1;
+      const m2=zb*Math.max(0,p04-p01); if(m2>0) add(name,m2,cn0,cnP04); zb-=m2;
+      if(zb>0) add(name,zb,cn0,cn0); continue; }
+    if(LES.includes(v)){ name='les'; cn1=cnZ(v,les,h); }
+    else if(v===TTP){ name='louky a pastviny'; cn1=cnZ(v,ttp,h); }
+    add(name,n,cn0,cn1);
+  }
+  // male tridy (< 5 ha) sloucit do "ostatni"
+  const ost={ha:0,q0:0,q1:0,cn0:0,cn1:0}; for(const [nm,o] of Object.entries(sk)) if(o.ha<5){ ost.ha+=o.ha; ost.q0+=o.q0; ost.q1+=o.q1; ost.cn0+=o.cn0; ost.cn1+=o.cn1; delete sk[nm]; }
+  if(ost.ha>0) sk['ostatní (třídy pod 5 ha)']=ost;
+  const rows=Object.entries(sk).sort((a,b)=>b[1].ha-a[1].ha); let H=0,Q0=0,Q1=0; rows.forEach(([,o])=>{H+=o.ha;Q0+=o.q0;Q1+=o.q1;});
+  $('k-table').innerHTML=`<tr><th>plocha (území modelu)</th><th class="num">ha</th><th class="num">CN teď</th><th class="num">CN scénář</th><th class="num">odtok teď m³</th><th class="num">scénář m³</th><th class="num">rozdíl</th></tr>`+
+    rows.map(([nm,o])=>`<tr><td>${nm}</td><td class="num">${fmt0(o.ha)}</td><td class="num">${fmt0(o.cn0/(o.ha*1e4/A))}</td><td class="num">${fmt0(o.cn1/(o.ha*1e4/A))}</td><td class="num">${fmt0(o.q0)}</td><td class="num">${fmt0(o.q1)}</td><td class="num">${o.q0-o.q1>0.5?'-'+fmt0(o.q0-o.q1):(o.q1-o.q0>0.5?'+'+fmt0(o.q1-o.q0):'')}</td></tr>`).join('')+
+    `<tr class="total"><td>celkem při ${P} mm</td><td class="num">${fmt0(H)}</td><td></td><td></td><td class="num">${fmt0(Q0)}</td><td class="num">${fmt0(Q1)}</td><td class="num">${fmt0(Q1-Q0)}</td></tr>`;
+  const dQ=Q0-Q1;
+  $('k-limit').innerHTML = `<b>Co to znamená:</b> scénář ${dQ>=0?'sníží':'zvýší'} povrchový odtok z krajiny při dešti ${P} mm o <b>${fmt0(Math.abs(dQ))} m³</b> (${fmt(100*Math.abs(dQ)/Math.max(1,Q0),1)} % z ${fmt0(Q0)} m³). Pro srovnání: déšť ${P} mm na území spadne ${fmt0(H*1e4*P/1000)} m³ - většina se vsákne nebo zůstane na povrchu i teď. Čísla jsou změna CN podle tabulky Janeček a kol. 2012 (tab. 2.3) ✅⏳ a USDA TR-55, metoda SCS-CN, IPS II, buňky 5 m; stav pozemků "teď" je výchozí předpoklad tabulky (orná = obilniny, špatný stav; les střední), ne terénní průzkum. Zatravnění údolnic bere buňky orné půdy, kam stéká aspoň 1 ha (akumulace z DMR 5G). Eroze (USLE), zpomalení vlny a výpar se tu nepočítají.`;
+}
+['k-p04','k-p01','k-p06','k-p05','k-les','k-ttp','u-rain'].forEach(id=>document.getElementById(id).addEventListener('input',renderKrajina));
 function kruh(lon,lat,rM){ const [X,Y]=Jadro.lonLatNaXY(lon,lat); const ring=[]; for(let k=0;k<24;k++){ const a=k/24*2*Math.PI; ring.push(Jadro.xyNaLonLat(X+rM*Math.cos(a), Y+rM*Math.sin(a))); } return ring; }
 function odvodZMapy(lon,lat){
   if(jadroStav!=='ok'){ $('w-slope-n').textContent = jadroStav==='nacitam' ? '(rastry se ještě načítají, klikni za chvíli znovu)' : '(rastry se nepodařilo načíst - zadej sklon ručně)'; return; }
