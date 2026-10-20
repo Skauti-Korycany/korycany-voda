@@ -24,3 +24,4 @@ data/bpej/
 # stažená data ČHMÚ (opendata.chmi.cz) - nepatří do repozitáře
 data/chmi/
 !data/web/*.png
+data/cp/
