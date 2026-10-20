@@ -22,11 +22,18 @@
    "plocha_ha": 66.3,
    "s_budovou": 24,
    "s_rd": 22
+  },
+  "Lískovec": {
+   "kod": "684881",
+   "parcel": 2481,
+   "plocha_ha": 949.1,
+   "s_budovou": 277,
+   "s_rd": 173
   }
  },
- "parcel_celkem": 4532,
- "parcel_s_rd": 963,
- "parcela_s_rd_median_m2": 247.7685546875,
- "strechy_na_parcele_s_rd_median_m2": 104.4,
- "velikost_souboru_MB": 2.21
+ "parcel_celkem": 7013,
+ "parcel_s_rd": 1136,
+ "parcela_s_rd_median_m2": 253.23239135742188,
+ "strechy_na_parcele_s_rd_median_m2": 106.85,
+ "velikost_souboru_MB": 3.42
 }
