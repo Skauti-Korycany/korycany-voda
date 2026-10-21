@@ -53,6 +53,8 @@ Aktualizováno: 21. 10. 2026 ráno (relace 8: stav.html, blok K návrhové srá�
 
 - **Blok M, 21. 10. - Můj pozemek: zelené plochy přes SCS-CN místo součinitele.** Uživatel: součinitel C dával odtok i z lehkého deště, což je špatně postavené. Nově `greenRunoff()` v build_dummy.py: CN2 zahrady podle půdy A-D (cn_tabulka třída 7, nový výběr „hlavně trávník / trávník se záhony“), úprava na sklon Sharpley & Williams 1990 (EPIC) 💻 (vztah z paměti, online nedohledán v plném znění, v ČR neověřen; referenční sklon 5 %), Ia = 0,2 S -> déšť do Ia se vsákne celý (B trávník 4 %: 34 mm; D: 13 mm), u N2/N10/N100 vážení CN2/CN3 jako v krajině. V tabulce se ukazuje CN a práh vsaku. Roční odtok ze zeleně: už ne C × 632 mm; počítá se SCS-CN po dnech z histogramu denních úhrnů 1991-2020 - **histogram přidán do `tools/07_srazky_chmi.py` (`histogram_denni_1991_2020`), uživatel musí znovu spustit `tools\vyrob_srazky.bat`** (data jsou v cache, běh ~1 min), pak `build_dummy.py`. Sklonová úprava CN 21. 10. 9:20 zase odstraněna (viz Rozhodnutí). Hotovo 21. 10. 8:50: uživatel spustil bat, histogram pokrývá úplné roky 1991-2019 (29 let, 131 dní se srážkou/rok, součet 622 mm vs normál 632). Roční odtok SCS-CN (střed binu): trávník A 0 / B 1,4 / C 9 / D 21 mm/rok; pro srovnání CN 98 = 325 mm/rok = 51 % (součinitel střechy 1,0 dává 632 - střechy zůstávají na součiniteli). Prototyp: 300 m² trávníku B = 0 m³/rok, D = 6 m³/rok. Střechy a zpevněné plochy zůstávají na součinitelích ČSN.
 
+- **Blok D, 21. 10. - reakce Stříbrníku u Kachníku na déšť, léto 2026 hotova** -> `docs/MERENI.md`. Hladina z čidla VOX 5157 (hlásný profil C, stavidlo rybníka Kachník; export CSV bez přihlášení z hladiny-vox.pwsplus.eu, 20 min, místní čas) + hodinové srážky Nemochovice/Staré Hutě. Skript `tools/build_kachnik.py` -> `data/kachnik_2026.json`, `docs/img/kachnik_nahled.png`, `kachnik_udalosti.png`; surová hladina `data/kachnik_2026_rle.txt`. 9 epizod: max **+24 cm** (14.-15. 7., 71 cm; SPA 1 = 100 cm), bouřka 1. 8. (21 mm/h Nemochovice) +10 cm za 3,7 h a za 12 h pryč; zpoždění vrcholu 4-7 h u plošných dešťů, < 1 h u přeháněk; deště do 5 mm bez odezvy. **8. 9. vyřešeno = šum čidla**; propady kolem 16:40-17:20 = optický artefakt (slunce); 27.-28. 7. a 21.-23. 8. = manipulace stavidlem. SCS-CN dává pro 20 mm na Stříbrníku nulový odtok, potok přesto +24 cm - špičku dělá intravilán a niva (model objem nelže, hladinu nepředpoví). Čidlo pod přehradou (36897, soubory od uživatele) = řízený odtok, nepoužitelné; „PMO nad přehradou“ bez dat.
+
 ### Rozpracováno
 - **Žádost VÚMOP odeslána 19. 10. 2026** (data@vumop.cz, z adresy oddílu): vektor hydrologických skupin půd (mapa velkého měřítka, metadata ID 5cc1bdc2-de34-4eee-a439-41420a000319), správní území obce Koryčany + obal ~500 m, SHP/GPKG v EPSG:5514; dotazy na licenci pro veřejnou webovou aplikaci, zpoplatnění nekomerčního užití a HSP pro lesy mimo ZPF. Odkaz na stav.html v textu. Čeká se na odpověď. Erozní ohroženost a zamokřené půdy v žádosti nejsou - případně druhá žádost po odpovědi.
 - Chybějící podklady od uživatele: NOO 2026 (XLSX) a NOO 2025_2; seznam platných SPPK (aopk.gov.cz/platne-standardy); znění vodního zákona (e-Sbírka) § 15b, 17, 46, 47, 55; nejbližší stanice ČHMÚ; text ČSN 75 9010.
@@ -66,7 +68,7 @@ Aktualizováno: 21. 10. 2026 ráno (relace 8: stav.html, blok K návrhové srá�
 2. ~~Návrhové úhrny N-letých dešťů pro Koryčany~~ hotovo 20. 10. (blok K). Zbývá: krátké úhrny 15/60 min pro vsak (ČSN 75 9010 pro Koryčany místo příkladu Brno) - z tvarů A-F jen orientačně.
 3. Až přijde VÚMOP: `--vumop` v vyrob_cn.bat, přepočet, porovnat s BPEJ odhadem.
 4. Názvy toků do toky_cuzk.geojson: z INSPIRE HY-P (ČÚZK) nebo DIBAVOD A02 (NAZ_TOK) - až bude potřeba v rozhraní.
-5. Blok D: "reakce toku na déšť" léto 2026 z CSV Kachník + hodinová data Nemochovice/Staré Hutě (data/srazky_2026.json) - dnes už lze.
+5. ~~Blok D~~ hotovo 21. 10. Navazuje: po zimě/jaru znovu stáhnout hladinu a `recent` ČHMÚ (skript bere celé období automaticky); případně měrná křivka u stavidla (hladina -> průtok) se školou.
 6. Uživatel ověří WMS označené ❌ ve VRSTVY.md (LPIS MZe, katastr ČÚZK, CENIA vojenská mapování); napíše na data@vumop.cz (HSP, BPEJ, zamokřené půdy).
 7. Dotační okna: AOPK OPŽP ZMV 17. výzva 20. 10. - 3. 11. 2026; OPŽP 105 do 17. 12. 2026.
 
@@ -124,7 +126,7 @@ Aktualizováno: 21. 10. 2026 ráno (relace 8: stav.html, blok K návrhové srá�
 - Povodí Jestřabic (Kratinka) leží z většiny západně mimo rastr (BUCO5x); zatím jen 0,7 km² uvnitř.
 - Kanalizace Koryčany (jednotná/oddílná): nedohledáno online. Potvrdit u města (S02).
 - Data Povodí Moravy: po odpovědi na žádost.
-- ~~Nejbližší srážkoměrná stanice ČHMÚ~~ vyřešeno: Koryčany (manuální), Nemochovice a Staré Hutě (automatické). Otevřené: 8. 9. 2026 Kachník hlásil epizodu bez deště na obou stanicích - artefakt optiky, nebo bodová bouřka?
+- ~~Nejbližší srážkoměrná stanice ČHMÚ~~ vyřešeno: Koryčany (manuální), Nemochovice a Staré Hutě (automatické). Vyřešeno 21. 10.: 8. 9. = šum čidla (docs/MERENI.md).
 - Meliorace v území: žádost SPÚ (bezplatná) ✅; ISMS meliorace.vumop.cz (WMS nedohledána).
 - Geokodér pro zadání adresy (ČÚZK RÚIAN 💻) - ověřit dostupnost a licenci.
 - Licence VÚMOP, NLI, MZe, ČHMÚ: zdarma bez jmenované licence; redistribuce dat vyžaduje souhlas.
@@ -158,7 +160,9 @@ Aktualizováno: 21. 10. 2026 ráno (relace 8: stav.html, blok K návrhové srá�
 - Zpevněné plochy u domů (dvory, vjezdy) nejsou v žádné vrstvě - ZABAGED je má jen jako "ostatní plocha v sídle". Pasport nebo klasifikace z ortofota?
 - Co přesně ti na nádržích nesedí - umístění (přichycení), tvar zátopy, nebo objem? Bez toho to neopravím.
 - Jak velká smí být aplikace na mobilu? 5 MB rastrů jde snížit (ořez na území modelu, hrubší akumulace) - rozhodni po vyzkoušení test.html na telefonu.
-- Má škola nebo oddíl vlastní srážkoměr u Kachníku? Bez něj epizody čidla nejde spárovat s deštěm (viz 8. 9.).
+- Má škola nebo oddíl vlastní srážkoměr u Kachníku? Bouřka 1. 8.: Nemochovice 21 mm/h, Koryčany 5 mm/den - bez srážkoměru v povodí jsou přívaly neověřitelné.
+- Kdo manipuluje stavidlem Kachníku (27.-28. 7., 21.-23. 8.)? Pro čtení čidla je dobré vědět, kdy se rybník vypouští.
+- Smí se data VOX použít ve veřejné aplikaci (graf hladiny)? Export je bez přihlášení, ale podmínky užití web neuvádí - zeptat se na městě.
 - Stanice ČHMÚ Koryčany je manuální - víš, kde stojí a kdo ji odečítá? Pozorovatel může být partner projektu.
 - Má město pasport zeleně nebo zpevněných ploch? Ušetřilo by ruční klasifikaci z ortofota.
 - Chce oddíl nebo město využít výzvu AOPK ZMV (20. 10. - 3. 11.) nebo OPŽP 105 (do 17. 12.)?
