@@ -208,7 +208,13 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
 .pz-step{display:none}
 .pz[data-step="1"] .pz-step[data-s="1"],.pz[data-step="2"] .pz-step[data-s="2"],.pz[data-step="3"] .pz-step[data-s="3"],.pz[data-step="4"] .pz-step[data-s="4"],.pz[data-step="5"] .pz-step[data-s="5"]{display:block}
 .pz-step>h2{margin-bottom:.5rem}
-.pz-known{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.6rem .8rem;margin-bottom:.8rem}
+.pz-known{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.6rem .8rem;margin-top:.6rem}
+.pz[data-step="1"] .pz-known{display:none}
+.pz-known dl{margin:.3rem 0 0}
+.pz-known:not(.ukaz) .note,.pz-known:not(.ukaz) .pz-det{display:none}
+.pz-known .eyebrow{display:flex;gap:.6rem;align-items:baseline;justify-content:space-between}
+.pz-known .eyebrow .linkbtn{text-transform:none;letter-spacing:0;font-size:.8rem}
+details.pz-mini{margin-top:.3rem;font-size:.85rem} details.pz-mini>summary{cursor:pointer;color:var(--accent);min-height:36px;display:flex;align-items:center}
 .pz-nav{position:sticky;bottom:0;z-index:1100;display:flex;gap:.5rem;justify-content:flex-end;background:var(--bg);border-top:1px solid var(--line);margin-top:1rem;padding-top:.6rem;padding-bottom:calc(.6rem + env(safe-area-inset-bottom,0px))}
 .pz-btn{font:inherit;font-weight:600;min-height:46px;padding:.6rem 1.1rem;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--fg);cursor:pointer}
 .pz-btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
@@ -326,7 +332,7 @@ details.banner[open]>summary .more{display:none}
   <nav class="pz-prog" aria-label="Postup">
     <ol>
       <li><button type="button" data-go="1" aria-current="step"><span class="n">1</span>Kde</button></li>
-      <li><button type="button" data-go="2" disabled><span class="n">2</span>Co tu je</button></li>
+      <li><button type="button" data-go="2" disabled><span class="n">2</span>Okapy a půda</button></li>
       <li><button type="button" data-go="3" disabled><span class="n">3</span>Při dešti</button></li>
       <li><button type="button" data-go="4" disabled><span class="n">4</span>Co udělat</button></li>
       <li><button type="button" data-go="5" disabled><span class="n">5</span>Výsledek</button></li>
@@ -347,6 +353,15 @@ details.banner[open]>summary .more{display:none}
         <button type="button" class="pz-mapcover" id="pz-mapcover" data-go="1" aria-label="Změnit místo - zpět na výběr pozemku"><span>Změnit místo</span></button>
       </div>
       <div class="pz-sel" id="w-parc">Zatím nic nevybráno.</div>
+      <div class="pz-known">
+          <div class="eyebrow">Z map víme <button type="button" class="linkbtn" id="pz-known-x" aria-expanded="false">podrobnosti</button></div>
+          <dl class="kv" id="where">
+            <dt class="pz-det">Místo</dt><dd class="pz-det" id="w-pos">-</dd>
+            <dt>Sklon</dt><dd><span class="num" id="w-slope">-</span> % <span class="note" id="w-slope-n">(po kliku z DMR 5G, průměr v okruhu 15 m)</span></dd>
+            <dt>Půda</dt><dd id="w-soil">- <span class="note">(po kliku z BPEJ; v lese a zástavbě odhad - ověř zkouškou vsaku)</span></dd>
+            <dt>Okolí 30 m</dt><dd id="w-okoli">-</dd>
+          </dl>
+        </div>
       <p class="note pz-maphint">Katastr a budovy ČÚZK (CC BY 4.0), podklad ZTM a ortofoto ČÚZK. Hledání adresy dělá vyhledávací služba RÚIAN (ČÚZK): hledaný text se pošle jí, u nás se nic neukládá. Poloha telefonu zůstává v telefonu. Vlastníci se nenačítají. <button type="button" class="linkbtn" id="pz-manual">Nechci mapu, zadám plochy ručně</button></p>
     </div>
     <div class="pz-panel">
@@ -358,21 +373,10 @@ details.banner[open]>summary .more{display:none}
         <div id="pz-teaser"></div>
       </div>
       <div class="pz-step" data-s="2">
-        <h2>Co tu je</h2>
-        <p class="callout" id="pz-manual-n" hidden>Bez mapy počítám s příkladem: střecha 120 m², zahrada 300 m². Oprav to v „Upřesnit čísla“ dole.</p>
-        <div class="pz-known">
-          <div class="eyebrow">Z map víme</div>
-          <dl class="kv" id="where">
-            <dt>Místo</dt><dd id="w-pos">-</dd>
-            <dt>Sklon</dt><dd><span class="num" id="w-slope">-</span> % <span class="note" id="w-slope-n">(po kliku z DMR 5G, průměr v okruhu 15 m)</span></dd>
-            <dt>Půda</dt><dd id="w-soil">- <span class="note">(po kliku z BPEJ; v lese a zástavbě odhad - ověř zkouškou vsaku)</span></dd>
-            <dt>Okolí 30 m</dt><dd id="w-okoli">-</dd>
-          </dl>
-        </div>
+        <h2>Střechy, dlažba a půda</h2>
+        <p class="callout" id="pz-manual-n" hidden>Bez mapy počítám s příkladem: střecha 120 m², zahrada 300 m². Oprav to v „Upřesnit čísla“.</p>
         <div class="pz-q"><div class="q">Kam vedou okapy ze střechy?</div><div class="pz-chips" data-for="in-drain"></div></div>
         <div class="pz-q"><div class="q">Kolik máš dlažby, betonu a štěrku?</div><div class="pz-chips" data-for="in-paved"></div><div class="note" id="pz-paved-n"></div></div>
-        <div class="pz-q"><div class="q">Jakou máš půdu?</div><div class="pz-chips" data-for="in-soil"></div>
-          <div class="note">Předvybráno z mapy půd (BPEJ), v zástavbě je to odhad. Jistotu dá zkouška: vykopej jámu 30 cm, nalij vodu a po 30 minutách změř, o kolik klesla. Přes 8 cm velmi propustná, 4-8 cm propustná, 2-4 cm spíš těžká, pod 2 cm jíl (převod podle brožury Praha 2009 ✅⏳).</div></div>
         <details class="pz-more" id="pz-detail"><summary>Upřesnit čísla (plochy v m², sklon, dlažba, zahrada)</summary>
           <div class="inputs">
             <label class="f">Střecha (m²)<input type="number" id="in-roof" value="120" min="0" step="10"></label>
@@ -393,8 +397,11 @@ details.banner[open]>summary .more{display:none}
           <option value="C">kleslo 2-4 cm - C, málo propustná</option>
           <option value="D">kleslo pod 2 cm - D, jíl, nepropustná</option></select></label>
           </div>
-          <p class="note">Střechy jsou půdorysy budov z katastru (ne plocha šikmé střechy). Zeleň = výměra vybraných parcel minus střechy a zpevněné plochy.</p>
+          <p class="note">Střechy jsou půdorysy budov z katastru (ne plocha šikmé střechy). Zeleň = výměra vybraných parcel minus střechy a zpevněné plochy. Převod zkoušky vsaku na skupinu půdy A-D podle brožury Praha 2009 ✅⏳.</p>
         </details>
+        <div class="pz-q"><div class="q">Jakou máš půdu?</div><div class="pz-chips" data-for="in-soil"></div>
+          <div class="note">Předvybráno z mapy půd, v zástavbě je to odhad.</div>
+          <details class="pz-mini"><summary>Jak to zjistit sám</summary><p class="note">Vykopej jámu 30 cm, nalij vodu a po 30 minutách změř, o kolik klesla. Přes 8 cm velmi propustná, 4-8 cm propustná, 2-4 cm spíš těžká, pod 2 cm jíl.</p></details></div>
       </div>
       <div class="pz-step" data-s="3">
         <h2>Co se u tebe děje při dešti</h2>
@@ -437,7 +444,7 @@ details.banner[open]>summary .more{display:none}
   </div>
   <div class="pz-nav">
     <button type="button" class="pz-btn" id="pz-back">Zpět</button>
-    <button type="button" class="pz-btn pri" id="pz-next" disabled>Dál: co tu je</button>
+    <button type="button" class="pz-btn pri" id="pz-next" disabled>Dál: okapy a půda</button>
   </div>
 </section>
 
@@ -737,7 +744,7 @@ function odvodZMapy(lon,lat){
 
 // ---------- Muj pozemek: pruvodce po krocich (varianta A)
 const PZ = {step:1, manual:false};
-const PZ_NEXT = ['', 'Dál: co tu je', 'Dál: co se děje při dešti', 'Dál: co můžu udělat', 'Dál: výsledek', 'Vybrat jiný pozemek'];
+const PZ_NEXT = ['', 'Dál: okapy a půda', 'Dál: co se děje při dešti', 'Dál: co můžu udělat', 'Dál: výsledek', 'Vybrat jiný pozemek'];
 function pzReady(){ return PZ.manual || PARC.vybrane.size>0; }
 function pzGo(n){
   n = Math.max(1, Math.min(5, n));
@@ -899,6 +906,7 @@ document.getElementById('tab-pozemek').addEventListener('click', async e=>{ cons
   try{ await navigator.clipboard.writeText(url); box.textContent='Odkaz je zkopírovaný, vlož ho do zprávy. Obsahuje čísla vybraných parcel a tvoje odpovědi.'; }
   catch(err){ box.innerHTML='Zkopíruj si odkaz: <input readonly value="'+url.replace(/"/g,'&quot;')+'" aria-label="Odkaz">'; box.querySelector('input').select(); } });
 
+document.getElementById('pz-known-x').addEventListener('click', e=>{ const k=e.target.closest('.pz-known'); const on=k.classList.toggle('ukaz'); e.target.setAttribute('aria-expanded', String(on)); e.target.textContent = on ? 'skrýt' : 'podrobnosti'; });
 // ---------- vstupy
 const $ = id=>document.getElementById(id);
 function inputs(){
