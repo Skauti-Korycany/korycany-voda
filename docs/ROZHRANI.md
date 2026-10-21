@@ -44,7 +44,7 @@ Rozvržení:
 - Krok 2 - Okapy a půda (nadpis „Střechy, dlažba a půda“): pod malou mapou box „Z map víme“ (sklon, půda, okolí; zdroje a souřadnice až po „podrobnosti“); otázky s tlačítky: kam vedou okapy, kolik je dlažby (0 / 20 / 60 / 150 m²), pak „Upřesnit čísla“, nakonec půda (předvyplněno z mapy, zkouška vsaku rozbalovací). Méně textu a značek na první pohled, zdroje zůstávají v rozbalovacích částech.
 - Krok 3 - Při dešti: volba deště (častý 32 / velký 53 / extrémní 87 mm, další v „Jak se to počítá“), kolik spadne, kolik odteče a odkud nejvíc, rok. Tabulka s CN, součiniteli a vážením nasycení jen v „Jak se to počítá“.
 - Krok 4 - Co udělat: průběžný součet, 3 opatření s nejvíc vodou za nejmíň práce, „Další možnosti“, „Nehodí se sem“ s důvodem. Karta: název, pracnost, cena, povolení, efekt v m³, zdroje a financování rozbalovací.
-- Krok 5 - Výsledek: motivační box (m³ z lijáku, přirovnání, za rok, 200 domácností), pruhy teď / s opatřeními, „Na co to nestačí“, Poslat odkaz, odkazy na Celé území a Katalog.
+- Krok 5 - Výsledek (motivační, pozitivní, bez poučování): modrý box (m³ z deště, přirovnání, za rok, odkazy Co kdyby to udělali i ostatní / Celé území / Katalog, Poslat odkaz), pruhy teď / s opatřeními, zelený box „Při 200 domácnostech srovnatelné velikosti zůstane... rozdíl mezi „odteklo“ a „zůstalo“, který může měnit poušť v oázu“. Srovnání s objemem deště na celé území a povodní je v Celém území.
 
 Poctivost beze změny: značky ✅ ✅⏳ 📄 🤔 u čísel, „Nehodí se sem“, „Na co to nestačí“, upozornění „zjednodušený model, nevalidováno“ v hlavičce i ve výsledku. Bez výběru pozemku se nezobrazují žádná čísla (krok 2-5 zamčené); v ručním režimu je příklad výslovně označený.
 

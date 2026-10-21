@@ -437,7 +437,7 @@ details.banner[open]>summary .more{display:none}
         <div id="summary"></div>
         <div class="bars" id="bars"></div>
         <div class="legend"><span><b style="background:var(--bad)"></b>odteče pryč</span><span><b style="background:var(--water)"></b>zůstane u tebe (vsákne se nebo zadrží)</span></div>
-        <div class="callout" id="scale"></div>
+        <div class="callout ok" id="scale"></div>
         <p class="note">Zjednodušený model pro osvětu, nevalidováno: ukazuje řády a srovnání, ne projekt. Značky: ✅ ověřený zdroj, ✅⏳ starší než rok, 📄 citace, 🤔 odhad.</p>
       </div>
     </div>
@@ -812,7 +812,7 @@ function pzRender(i, r, kept, keptYear, n){
   $('scale').hidden = !(kept>0.05);
   setTimeout(pzStav, 0);
   $('summary').innerHTML = kept>0.05
-    ? `<div class="motiv"><div>Tvoje volba udrží doma</div><div class="big num">${fmt(kept)} m³</div><p>z každého deště ${P} mm (${rt}), to je asi ${vany(kept)} van 🤔, které neodtečou ${i.drain==='kanal'?'do kanalizace':'pryč'}. Za rok ${fmt0(keptYear)} m³.</p><p>Kdyby to samé udělalo ${n} domácností: <b>${fmt0(kept*n)} m³</b> z jednoho takového deště.</p><div class="mot-a"><a href="#" data-uz-moje="1">Co kdyby to udělali i ostatní? →</a><a href="#" data-tab-go="uzemi">Co může obec a celé území →</a><a href="#" data-tab-go="katalog">Všechna opatření →</a><a href="#" data-share="1">Poslat odkaz</a></div></div><div class="pz-shared note" id="pz-shared">Odkaz obsahuje čísla vybraných parcel a tvoje odpovědi. Nikam se neukládá, pošleš ho jen ty.</div>`
+    ? `<div class="motiv"><div>Tvoje volba udrží doma</div><div class="big num">${fmt(kept)} m³</div><p>z každého deště ${P} mm (${rt}), to je asi ${vany(kept)} van 🤔, které neodtečou ${i.drain==='kanal'?'do kanalizace':'pryč'}. Za rok ${fmt0(keptYear)} m³.</p><div class="mot-a"><a href="#" data-uz-moje="1">Co kdyby to udělali i ostatní? →</a><a href="#" data-tab-go="uzemi">Co může obec a celé území →</a><a href="#" data-tab-go="katalog">Všechna opatření →</a><a href="#" data-share="1">Poslat odkaz</a></div></div><div class="pz-shared note" id="pz-shared">Odkaz obsahuje čísla vybraných parcel a tvoje odpovědi. Nikam se neukládá, pošleš ho jen ty.</div>`
     : `<div class="callout">Zatím jsi nevybral žádné opatření, které vodu zadrží. Vrať se <button type="button" class="linkbtn" data-go="4">ke kroku 4</button>.</div>`;
 }
 
@@ -1027,7 +1027,8 @@ function recalc(){
   // krok 5
   const n=200;
   pzRender(i, r, kept, keptYear, n);
-  $('scale').innerHTML = `<b>Na co to nestačí:</b> ${fmt0(kept*n)} m³ od ${n} domácností je při dešti ${rainmm} mm zhruba ${fmt(100*kept*n/(D.uzemi.plocha_ha*1e4*i.rain),2)} % objemu, který spadne na území modelu ${fmt0(D.uzemi.plocha_ha)} ha (${fmt0(D.uzemi.plocha_ha*1e4*i.rain)} m³; plocha z rozvodnice DMR 5G ✅). Na povodeň na Kyjovce drobná opatření nestačí a aplikace to neřekne. Je to ale ${fmt0(kept*n)} m³ vody v půdě a zahradách místo v kanálu, při každém takovém dešti, zdarma. To je rozdíl mezi "proteklo" a "zůstalo".`;
+  const dest_adj={'10':'běžném dešti','20':'silném dešti','32.2':'lijáku'}[$('in-rain').value]||'dešti';
+  $('scale').innerHTML = `Při ${n} domácnostech srovnatelné velikosti zůstane při jednom ${dest_adj} (${rainmm} mm) zhruba <b>${fmt0(kept*n)} m³</b> vody v půdě a zahradách místo v kanálu. To je rozdíl mezi „odteklo“ a „zůstalo“, který může měnit poušť v oázu.`;
   renderUzemi();
 }
 ['in-roof','in-paved','in-pavedtype','in-green','in-greentype','in-drain','in-slope','in-soil','in-rain'].forEach(id=>$(id).addEventListener('input',recalc));
