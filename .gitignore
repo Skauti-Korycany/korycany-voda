@@ -26,3 +26,5 @@ data/chmi/
 !data/web/*.png
 data/cp/
 data/hladiny/
+# vzorky surovych dat pro 12/13_pocasi (stahuji Actions nebo PC, do gitu nepatri)
+data/pocasi/vzorek/
