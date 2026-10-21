@@ -101,6 +101,15 @@ for nazev, soubor, popis, zdroj in [
     velikosti[nazev] = uloz8(nazev + ".png", np.where(p != dp.nodata, p, 0))
     pasma[nazev] = {"soubor": nazev + ".png", "bity": 8, "jednotka": popis, "dekod": "hodnota primo", "nodata": 0, "zdroj": zdroj}
 
+# USLE (11_usle.py) - volitelne, kdyz rastry existuji
+if os.path.exists(os.path.join(DMR, "usle_ls.tif")):
+    ls, dls = cti("usle_ls.tif"); vyk, _ = cti("vyuziti_kod.tif"); orna = vyk == 1   # jen orna puda (mensi PNG)
+    velikosti["usle_ls"] = uloz8("usle_ls.png", np.where((ls != dls.nodata) & orna, np.clip(np.round(ls * 10), 0, 255), 0))
+    pasma["usle_ls"] = {"soubor": "usle_ls.png", "bity": 8, "jednotka": "LS faktor USLE (jen orna puda)", "dekod": "LS = hodnota / 10 (max 25,5)", "nodata": 0, "zdroj": "11_usle.py (Janecek 2012 rov. 1.6-1.8, l z akumulace D8, strop 300 m)"}
+    kk, dk = cti("usle_k.tif")
+    velikosti["usle_k"] = uloz8("usle_k.png", np.where((kk != dk.nodata) & orna, np.clip(np.round(kk * 100), 0, 255), 0))
+    pasma["usle_k"] = {"soubor": "usle_k.png", "bity": 8, "jednotka": "K faktor USLE (jen orna puda)", "dekod": "K = hodnota / 100", "nodata": 0, "zdroj": "11_usle.py (HPJ z BPEJ, Janecek 2012 tab. 1.5)"}
+
 # ---------------------------------------------------------------- polynomy WGS84 <-> S-JTSK
 t = Transformer.from_crs("EPSG:5514", "EPSG:4326", always_xy=True)
 xs, ys = np.meshgrid(np.linspace(x0, x0 + ncol * krok, 41), np.linspace(y1 - nrow * krok, y1, 41))

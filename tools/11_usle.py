@@ -14,7 +14,7 @@ L, S: Janeček 2012 rov. 1.6-1.8 (McCool): L = (l/22,13)^m, S = 10,8 sin θ + 0,
 C: scénáře osevu (opatreni.json konstanty.usle.C); P = 1 (bez opatření).
 Gp: přípustná ztráta 9 t/ha/rok (ostatní půdy) resp. 2 (mělké) od 1. 7. 2026 (vyhl. 240/2021 Sb., konstanty v opatreni.json); Janeček 2012 doporučuje 4.
 
-Výstupy: data/dmr/usle_ls.tif, usle_A_C02.tif (C = 0,2, P = 1), data/usle_info.json, docs/img/usle_nahled.png
+Výstupy: data/dmr/usle_ls.tif, usle_k.tif, usle_A_C02.tif (C = 0,2, P = 1), data/usle_info.json, docs/img/usle_nahled.png
 Spuštění: python tools/11_usle.py   (na PC: vyrob_usle.bat)
 """
 import os, json, sys, math
@@ -107,6 +107,8 @@ for lo, hi in [(0, 3), (3, 7), (7, 12), (12, 100)]:
 
 with rasterio.open(os.path.join(DMR, "usle_ls.tif"), "w", **dict(prof, dtype="float32", nodata=-9999, compress="deflate")) as d:
     d.write(np.where(platne, LS, -9999).astype(np.float32), 1)
+with rasterio.open(os.path.join(DMR, "usle_k.tif"), "w", **dict(prof, dtype="float32", nodata=-9999, compress="deflate")) as d:
+    d.write(np.where(np.isnan(K), -9999, K).astype(np.float32), 1)
 with rasterio.open(os.path.join(DMR, "usle_A_C02.tif"), "w", **dict(prof, dtype="float32", nodata=-9999, compress="deflate")) as d:
     d.write(np.where(orna, A["C02_obilniny"], -9999).astype(np.float32), 1)
 with open(os.path.join(ROOT, "data", "usle_info.json"), "w", encoding="utf-8") as f:

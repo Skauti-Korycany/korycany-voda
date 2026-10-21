@@ -11,6 +11,7 @@ Stav: 21. 10. 2026 (v0.2: vážený odtok přes tvary deště a stav nasycení).
 | akumulace | 8 bit | buněk = 10^((v-1)/40), přesnost ~6 % | 02 (D8) |
 | smer | 8 bit | kód D8 (1 V, 2 JV, 4 J, 8 JZ, 16 Z, 32 SZ, 64 S, 128 SV) | 02 |
 | cn, vyuziti, hsp, hsp_zdroj, povodi | 8 bit | hodnota přímo, 0 = nic | 04-06 |
+| usle_ls, usle_k (od 21. 10., jen orná) | 8 bit | LS = v/10, K = v/100 | 11_usle.py |
 
 Celkem 5,0 MB (akumulace 1,6, výška 1,5, sklon 1,1 MB). `rastr.json`: mřížka (x0 = -562500, y1 = -1170000, krok 5, 1500 × 1600), kódování, zdroje, licence.
 

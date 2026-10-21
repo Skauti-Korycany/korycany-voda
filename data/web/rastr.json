@@ -182,6 +182,22 @@
    "dekod": "hodnota primo",
    "nodata": 0,
    "zdroj": "02_rozvodnice.py"
+  },
+  "usle_ls": {
+   "soubor": "usle_ls.png",
+   "bity": 8,
+   "jednotka": "LS faktor USLE (jen orna puda)",
+   "dekod": "LS = hodnota / 10 (max 25,5)",
+   "nodata": 0,
+   "zdroj": "11_usle.py (Janecek 2012 rov. 1.6-1.8, l z akumulace D8, strop 300 m)"
+  },
+  "usle_k": {
+   "soubor": "usle_k.png",
+   "bity": 8,
+   "jednotka": "K faktor USLE (jen orna puda)",
+   "dekod": "K = hodnota / 100",
+   "nodata": 0,
+   "zdroj": "11_usle.py (HPJ z BPEJ, Janecek 2012 tab. 1.5)"
   }
  },
  "velikost_B": {

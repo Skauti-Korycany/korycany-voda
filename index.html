@@ -1376,13 +1376,13 @@ const LEG = {};
 fetch(BASE+'data/vyuziti_pudy.json').then(r=>r.json()).then(j=>Object.assign(LEG,j.legenda)).catch(()=>{});
 Jadro.nacti(BASE+'data/web/').then(()=>{ jadroStav='ok'; return fetch(BASE+'data/povodi.geojson').then(r=>r.json()); }).then(gj=>{ krajinaHistogram(gj); renderKrajina(); }).catch(err=>{ jadroStav = jadroStav==='ok' ? jadroStav : 'chyba'; console.warn('jadro/krajina', err); $('k-zdroj').textContent='Rastry nebo povodí se nenačetly - tato část nefunguje.'; });
 // ---------- krajina: histogram bunek uzemi modelu: trida x HSP x udolnice x svah
-const KRAJ = {h:{}, n:0};
+const KRAJ = {h:{}, e:{}, n:0};   // e = suma K*LS (USLE) orne pudy na klic
 function krajinaHistogram(gj){
   const f = gj.features.find(x=>x.properties.typ==='uzemi_modelu'); if(!f) return;
   const geom = f.geometry.type==='Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
   let bunky=[]; for(const poly of geom) bunky = bunky.concat(Jadro.bunkyPolygonu(poly[0], poly.slice(1)));
   const UD = 400; // bunek 5 m = 1 ha
-  for(const i of bunky){ const v=Jadro.vyuziti(i), h=Jadro.hsp(i); if(!v||!h) continue; const a=Jadro.p.akumulace[i], ud=(a && Math.pow(10,(a-1)/40)>=UD)?1:0; const sk=Jadro.sklonDeg(i), sv=(sk!=null&&sk>=7)?1:0; const k=v+'|'+h+'|'+ud+'|'+sv; KRAJ.h[k]=(KRAJ.h[k]||0)+1; KRAJ.n++; }
+  for(const i of bunky){ const v=Jadro.vyuziti(i), h=Jadro.hsp(i); if(!v||!h) continue; const a=Jadro.p.akumulace[i], ud=(a && Math.pow(10,(a-1)/40)>=UD)?1:0; const sk=Jadro.sklonDeg(i), sv=(sk!=null&&sk>=7)?1:0; const k=v+'|'+h+'|'+ud+'|'+sv; KRAJ.h[k]=(KRAJ.h[k]||0)+1; KRAJ.n++; if(v===1 && Jadro.p.usle_ls && Jadro.p.usle_ls[i]){ KRAJ.e[k]=(KRAJ.e[k]||0)+Jadro.p.usle_ls[i]/10*Jadro.p.usle_k[i]/100; } }
 }
 const ORNA='1', TTP='3', LES=['4','41','42','43'];
 function cnZ(trida, varianta, h){ const t=D.cn_tabulka[trida]; if(!t) return null; const v=t.varianty[varianta]||t.varianty[t.vychozi]; return v ? v['ABCD'[h-1]] : null; }
@@ -1396,31 +1396,32 @@ function renderKrajina(){
   const p04=+$('k-p04').value/100, p01=+$('k-p01').value/100, p06=+$('k-p06').value/100, p05=$('k-p05').checked, les=$('k-les').value, ttp=$('k-ttp').value;
   ['p04','p01','p06'].forEach(k=>$('k-'+k+'-v').textContent=$('k-'+k).value);
   const sk = {}; // trida -> {ha, q0, q1}
-  const add=(name, n, cn0, cn1)=>{ const o=sk[name]||(sk[name]={ha:0,q0:0,q1:0,cn0:0,cn1:0,q0s:0,q0n:0}); o.ha+=n*A/1e4; o.q0+=qv(P,cn0,W3)/1000*n*A; o.q1+=qv(P,cn1,W3)/1000*n*A; o.q0s+=qmm(P,cn0)/1000*n*A; o.q0n+=qmm(P,Jadro.cnProIPS(cn0,3))/1000*n*A; o.cn0+=cn0*n; o.cn1+=cn1*n; };
+  const RU=K.usle.R_korycany.orna_prumer, C0=0.2, HA=A/1e4;
+  const add=(name, n, cn0, cn1, kls, c1, pf)=>{ const o=sk[name]||(sk[name]={ha:0,q0:0,q1:0,cn0:0,cn1:0,q0s:0,q0n:0,e0:0,e1:0}); if(kls){ o.e0+=RU*kls*C0*HA; o.e1+=RU*kls*(c1==null?C0:c1)*(pf||1)*HA; } o.ha+=n*A/1e4; o.q0+=qv(P,cn0,W3)/1000*n*A; o.q1+=qv(P,cn1,W3)/1000*n*A; o.q0s+=qmm(P,cn0)/1000*n*A; o.q0n+=qmm(P,Jadro.cnProIPS(cn0,3))/1000*n*A; o.cn0+=cn0*n; o.cn1+=cn1*n; };
   for(const [k,n] of Object.entries(KRAJ.h)){
     const [v,hs,ud,sv]=k.split('|'); const h=+hs; const t=D.cn_tabulka[v]; if(!t) continue;
     const cn0=cnZ(v, t.vychozi, h); let cn1=cn0, name=t.nazev;
-    if(v===ORNA){ name='orná půda';
+    if(v===ORNA){ name='orná půda'; const e=KRAJ.e[k]||0, eu=e/n; const Pv = sv==='1'?0.9:0.65;  // P vrstevnicove: Janecek 0,6-0,7 do 6 st., 0,8-1,0 nad
       const cnTTP=cnZ(TTP,'pastvina/louka, pokryv > 75 %',h), cnP04=cnZ(ORNA,'obilniny, zbytky na povrchu, dobrý stav',h), cnP01=cnZ(ORNA,'obilniny, vrstevnicově + pásy + zbytky, dobrý stav',h);
-      if(p05 && ud==='1'){ add(name,n,cn0,cnTTP); continue; }
+      if(p05 && ud==='1'){ add(name,n,cn0,cnTTP,e,0.01); continue; }
       // podily se skladaji: zatravneni svazite (jen sv=1) -> z ostatku vrstevnicove -> z ostatku pudoochranne -> zbytek vychozi
-      let zb=n; if(sv==='1'&&p06>0){ const m=n*p06; add(name,m,cn0,cnTTP); zb-=m; }
-      const m1=zb*p01; if(m1>0) add(name,m1,cn0,cnP01); zb-=m1;
-      const m2=zb*Math.max(0,p04-p01); if(m2>0) add(name,m2,cn0,cnP04); zb-=m2;
-      if(zb>0) add(name,zb,cn0,cn0); continue; }
+      let zb=n; if(sv==='1'&&p06>0){ const m=n*p06; add(name,m,cn0,cnTTP,eu*m,0.01); zb-=m; }
+      const m1=zb*p01; if(m1>0) add(name,m1,cn0,cnP01,eu*m1,0.1,Pv); zb-=m1;
+      const m2=zb*Math.max(0,p04-p01); if(m2>0) add(name,m2,cn0,cnP04,eu*m2,0.1); zb-=m2;
+      if(zb>0) add(name,zb,cn0,cn0,eu*zb); continue; }
     if(LES.includes(v)){ name='les'; cn1=cnZ(v,les,h); }
     else if(v===TTP){ name='louky a pastviny'; cn1=cnZ(v,ttp,h); }
     add(name,n,cn0,cn1);
   }
   // male tridy (< 5 ha) sloucit do "ostatni"
-  const ost={ha:0,q0:0,q1:0,cn0:0,cn1:0,q0s:0,q0n:0}; for(const [nm,o] of Object.entries(sk)) if(o.ha<5){ ost.ha+=o.ha; ost.q0+=o.q0; ost.q1+=o.q1; ost.q0s+=o.q0s; ost.q0n+=o.q0n; ost.cn0+=o.cn0; ost.cn1+=o.cn1; delete sk[nm]; }
+  const ost={ha:0,q0:0,q1:0,cn0:0,cn1:0,q0s:0,q0n:0,e0:0,e1:0}; for(const [nm,o] of Object.entries(sk)) if(o.ha<5){ ost.ha+=o.ha; ost.q0+=o.q0; ost.q1+=o.q1; ost.q0s+=o.q0s; ost.q0n+=o.q0n; ost.e0+=o.e0; ost.e1+=o.e1; ost.cn0+=o.cn0; ost.cn1+=o.cn1; delete sk[nm]; }
   if(ost.ha>0) sk['ostatní (třídy pod 5 ha)']=ost;
-  const rows=Object.entries(sk).sort((a,b)=>b[1].ha-a[1].ha); let H=0,Q0=0,Q1=0,Q0s=0,Q0n=0; rows.forEach(([,o])=>{H+=o.ha;Q0+=o.q0;Q1+=o.q1;Q0s+=o.q0s;Q0n+=o.q0n;});
-  $('k-table').innerHTML=`<tr><th>plocha (území modelu)</th><th class="num">ha</th><th class="num">CN teď</th><th class="num">CN scénář</th><th class="num">odtok teď m³</th><th class="num">scénář m³</th><th class="num">rozdíl</th></tr>`+
-    rows.map(([nm,o])=>`<tr><td>${nm}</td><td class="num">${fmt0(o.ha)}</td><td class="num">${fmt0(o.cn0/(o.ha*1e4/A))}</td><td class="num">${fmt0(o.cn1/(o.ha*1e4/A))}</td><td class="num">${fmt0(o.q0)}</td><td class="num">${fmt0(o.q1)}</td><td class="num">${o.q0-o.q1>0.5?'-'+fmt0(o.q0-o.q1):(o.q1-o.q0>0.5?'+'+fmt0(o.q1-o.q0):'')}</td></tr>`).join('')+
-    `<tr class="total"><td>celkem při ${fmt0(P)} mm</td><td class="num">${fmt0(H)}</td><td></td><td></td><td class="num">${fmt0(Q0)}</td><td class="num">${fmt0(Q1)}</td><td class="num">${fmt0(Q1-Q0)}</td></tr>`;
+  const rows=Object.entries(sk).sort((a,b)=>b[1].ha-a[1].ha); let H=0,Q0=0,Q1=0,Q0s=0,Q0n=0,E0=0,E1=0,HO=0; rows.forEach(([nm,o])=>{H+=o.ha;Q0+=o.q0;Q1+=o.q1;Q0s+=o.q0s;Q0n+=o.q0n;E0+=o.e0;E1+=o.e1; if(nm==='orná půda') HO=o.ha;});
+  $('k-table').innerHTML=`<tr><th>plocha (území modelu)</th><th class="num">ha</th><th class="num">CN teď</th><th class="num">CN scénář</th><th class="num">odtok teď m³</th><th class="num">scénář m³</th><th class="num">rozdíl</th><th class="num">eroze teď t/rok</th><th class="num">scénář</th></tr>`+
+    rows.map(([nm,o])=>`<tr><td>${nm}</td><td class="num">${fmt0(o.ha)}</td><td class="num">${fmt0(o.cn0/(o.ha*1e4/A))}</td><td class="num">${fmt0(o.cn1/(o.ha*1e4/A))}</td><td class="num">${fmt0(o.q0)}</td><td class="num">${fmt0(o.q1)}</td><td class="num">${o.q0-o.q1>0.5?'-'+fmt0(o.q0-o.q1):(o.q1-o.q0>0.5?'+'+fmt0(o.q1-o.q0):'')}</td><td class="num">${o.e0?fmt0(o.e0):'-'}</td><td class="num">${o.e0?fmt0(o.e1):'-'}</td></tr>`).join('')+
+    `<tr class="total"><td>celkem při ${fmt0(P)} mm</td><td class="num">${fmt0(H)}</td><td></td><td></td><td class="num">${fmt0(Q0)}</td><td class="num">${fmt0(Q1)}</td><td class="num">${fmt0(Q1-Q0)}</td><td class="num">${fmt0(E0)}</td><td class="num">${fmt0(E1)}</td></tr>`;
   const dQ=Q0-Q1;
-  $('k-limit').innerHTML = `<b>Co to znamená:</b> scénář ${dQ>=0?'sníží':'zvýší'} povrchový odtok z krajiny při dešti ${fmt0(P)} mm o <b>${fmt0(Math.abs(dQ))} m³</b> (${fmt(100*Math.abs(dQ)/Math.max(1,Q0),1)} % z ${fmt0(Q0)} m³). Pro srovnání: déšť ${fmt0(P)} mm na území spadne ${fmt0(H*1e4*P/1000)} m³ - většina se vsákne nebo zůstane na povrchu i teď. ${NKEY?`Jak moc je půda před deštěm nasycená, nevíme - proto se počítá vážený průměr: běžně vlhká půda (CN2) by dala ${fmt0(Q0s)} m³, nasycená (CN3) ${fmt0(Q0n)} m³; váha nasyceného stavu ${fmt(100*W3,0)} % vychází z toho, jaké průběhy deště (tvary A-F) jsou v Koryčanech u deště ${NKEY.replace('N','1x za ')} let typické a jak často jim předchází mokré dny (Kavka a kol. 2023 ✅, tab. 6; data/navrhove_srazky.json). `:`U tohoto deště se počítá jen s běžně vlhkou půdou (CN2); rozpětí vlhká-nasycená ukážou návrhové deště častý / vzácný / extrémní. `}Čísla jsou změna CN podle tabulky Janeček a kol. 2012 (tab. 2.3) ✅⏳ a USDA TR-55, metoda SCS-CN, buňky 5 m; stav pozemků "teď" je výchozí předpoklad tabulky (orná = obilniny, špatný stav; les střední), ne terénní průzkum. Zatravnění údolnic bere buňky orné půdy, kam stéká aspoň 1 ha (akumulace z DMR 5G). Eroze (USLE), zpomalení vlny a výpar se tu nepočítají.`;
+  $('k-limit').innerHTML = `<b>Co to znamená:</b> scénář ${dQ>=0?'sníží':'zvýší'} povrchový odtok z krajiny při dešti ${fmt0(P)} mm o <b>${fmt0(Math.abs(dQ))} m³</b> (${fmt(100*Math.abs(dQ)/Math.max(1,Q0),1)} % z ${fmt0(Q0)} m³). Pro srovnání: déšť ${fmt0(P)} mm na území spadne ${fmt0(H*1e4*P/1000)} m³ - většina se vsákne nebo zůstane na povrchu i teď. ${NKEY?`Jak moc je půda před deštěm nasycená, nevíme - proto se počítá vážený průměr: běžně vlhká půda (CN2) by dala ${fmt0(Q0s)} m³, nasycená (CN3) ${fmt0(Q0n)} m³; váha nasyceného stavu ${fmt(100*W3,0)} % vychází z toho, jaké průběhy deště (tvary A-F) jsou v Koryčanech u deště ${NKEY.replace('N','1x za ')} let typické a jak často jim předchází mokré dny (Kavka a kol. 2023 ✅, tab. 6; data/navrhove_srazky.json). `:`U tohoto deště se počítá jen s běžně vlhkou půdou (CN2); rozpětí vlhká-nasycená ukážou návrhové deště častý / vzácný / extrémní. `}Čísla jsou změna CN podle tabulky Janeček a kol. 2012 (tab. 2.3) ✅⏳ a USDA TR-55, metoda SCS-CN, buňky 5 m; stav pozemků "teď" je výchozí předpoklad tabulky (orná = obilniny, špatný stav; les střední), ne terénní průzkum. Zatravnění údolnic bere buňky orné půdy, kam stéká aspoň 1 ha (akumulace z DMR 5G). ${E0?`<br><b>Eroze orné půdy (USLE, orientačně):</b> teď ${fmt0(E0)} t/rok z ${fmt0(HO)} ha = ${fmt(E0/Math.max(1,HO),1)} t/ha/rok při obilninách (C 0,2), scénář ${fmt0(E1)} t/rok (${fmt(E1/Math.max(1,HO),1)} t/ha). Přípustná ztráta od 1. 7. 2026 je ${K.usle.Gp_t_ha_rok['od_2026-07-01'].ostatni} t/ha/rok ✅ (mělké půdy ${K.usle.Gp_t_ha_rok['od_2026-07-01'].melke}). R faktor ${fmt0(RU)} (VÚMOP/ČHMÚ 2022 ✅), K podle HPJ a LS z DMR (Janeček 2012 ✅⏳), půdoochranné technologie C 0,1, vrstevnice P 0,65 / 0,9 (do / nad 7°), zatravnění C 0,01; délka svahu z terénu nezná meze a cesty, na dlouhých svazích nadsazuje. Závazný výpočet dělá kalkulačka VÚMOP.`:''} Zpomalení vlny a výpar se tu nepočítají.`;
 }
 ['k-p04','k-p01','k-p06','k-p05','k-les','k-ttp','u-rain'].forEach(id=>document.getElementById(id).addEventListener('input',renderKrajina));
 function kruh(lon,lat,rM){ const [X,Y]=Jadro.lonLatNaXY(lon,lat); const ring=[]; for(let k=0;k<24;k++){ const a=k/24*2*Math.PI; ring.push(Jadro.xyNaLonLat(X+rM*Math.cos(a), Y+rM*Math.sin(a))); } return ring; }
