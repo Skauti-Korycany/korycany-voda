@@ -1,14 +1,14 @@
 {
  "zdroj": "ČÚZK, INSPIRE Budovy (BU), obec Koryčany [588601], CC BY 4.0; půdorysy z RÚIAN/ISKN, přesnost ~1,5 m",
- "stazeno": "2026-10-19",
+ "stazeno": "2026-10-21",
  "pozn": "Bez č.p., adres a identifikátorů budov (pravidlo projektu). Plocha = půdorys, ne plocha střechy se sklonem. Účel podle RÚIAN, u mnoha budov 'neuvedeno'.",
  "budov_celkem_v_obci": 1898,
- "budov_v_uzemi_modelu": 1487,
- "plocha_pudorysu_v_uzemi_m2": 253940,
+ "budov_v_uzemi_modelu": 1631,
+ "plocha_pudorysu_v_uzemi_m2": 277670,
  "podle_casti_obce": {
   "Blišice": {
-   "pocet": 22,
-   "plocha_strech_m2": 3447
+   "pocet": 144,
+   "plocha_strech_m2": 24954
   },
   "Koryčany": {
    "pocet": 913,
@@ -19,34 +19,34 @@
    "plocha_strech_m2": 28110
   },
   "neuvedeno": {
-   "pocet": 381,
-   "plocha_strech_m2": 96995
+   "pocet": 403,
+   "plocha_strech_m2": 99218
   }
  },
  "podle_ucelu": {
-  "průmysl": {
-   "pocet": 75,
-   "plocha_strech_m2": 64660
-  },
   "rodinný dům": {
-   "pocet": 957,
-   "plocha_strech_m2": 114999
+   "pocet": 1075,
+   "plocha_strech_m2": 135814
   },
-  "vedlejší stavba (garáž, kůlna)": {
-   "pocet": 303,
-   "plocha_strech_m2": 20497
+  "průmysl": {
+   "pocet": 76,
+   "plocha_strech_m2": 64670
   },
   "veřejná služba": {
-   "pocet": 40,
-   "plocha_strech_m2": 12807
+   "pocet": 44,
+   "plocha_strech_m2": 13151
+  },
+  "vedlejší stavba (garáž, kůlna)": {
+   "pocet": 319,
+   "plocha_strech_m2": 21195
+  },
+  "zemědělství": {
+   "pocet": 60,
+   "plocha_strech_m2": 29991
   },
   "bytový dům": {
    "pocet": 44,
    "plocha_strech_m2": 9945
-  },
-  "zemědělství": {
-   "pocet": 55,
-   "plocha_strech_m2": 28129
   },
   "obchod": {
    "pocet": 4,
@@ -70,13 +70,17 @@
   }
  },
  "podle_povodi": {
+  "Blišice": {
+   "pocet": 111,
+   "plocha_strech_m2": 18174
+  },
+  "mimo dílčí povodí": {
+   "pocet": 588,
+   "plocha_strech_m2": 94838
+  },
   "Koryčany (Kyjovka, ř. km 75,69)": {
    "pocet": 600,
    "plocha_strech_m2": 112917
-  },
-  "mimo dílčí povodí": {
-   "pocet": 555,
-   "plocha_strech_m2": 89282
   },
   "Koryčany (Stříbrník, ř. km 1,07)": {
    "pocet": 238,

@@ -340,7 +340,7 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
   </div>
   <div class="panel" style="margin-top:1rem">
     <h3>Pole, louky a les - odtok z krajiny</h3>
-    <p class="note" id="k-zdroj">Plochy a půdy ze skutečných dat (ZABAGED využití, BPEJ -> HSP, DMR 5G) v mřížce 5 m, území modelu 1 412 ha. Posuvníky mění stav hospodaření na části plochy; odtok počítá SCS-CN po buňkách. Je to tabulková změna CN, ne měření - ukazuje řád, ne přesné číslo.</p>
+    <p class="note" id="k-zdroj">Plochy a půdy ze skutečných dat (ZABAGED využití, BPEJ -> HSP, DMR 5G) v mřížce 5 m, území modelu 1 772 ha (Kyjovka k jezu před Mouchnicemi). Posuvníky mění stav hospodaření na části plochy; odtok počítá SCS-CN po buňkách. Je to tabulková změna CN, ne měření - ukazuje řád, ne přesné číslo.</p>
     <div class="inputs" style="margin-top:.6rem">
       <label class="f">Orná: půdoochranné technologie (P04: zbytky na povrchu, bezorebně) <span class="num" id="k-p04-v">0</span> % plochy<input type="range" id="k-p04" min="0" max="100" value="0"></label>
       <label class="f">Orná: vrstevnicově + pásy + zbytky (P01, P03) <span class="num" id="k-p01-v">0</span> % plochy<input type="range" id="k-p01" min="0" max="100" value="0"></label>
@@ -788,7 +788,7 @@ function hrazSpocti(){
 }
 $('h-vyska').addEventListener('input',hrazSpocti); $('h-rain').addEventListener('input',hrazSpocti);
 
-$('u-zdroj').innerHTML=`V území modelu (${fmt0(D.uzemi.plocha_ha)} ha, povodí Kyjovky pod Koryčany bez povodí nad přehradou) je ${fmt0(D.uzemi.budov)} budov s půdorysem ${fmt0(D.uzemi.strechy_m2/1e4*10)/10} ha, z toho ${fmt0(D.uzemi.rd_pocet)} rodinných domů (${fmt0(D.uzemi.rd_strechy_m2/1e4*10)/10} ha) ✅ ČÚZK INSPIRE BU, 19. 10. 2026. Zpevněné plochy u domů nejsou v datech - odhad. Počítá se jen voda ze střech a dvorů rodinných domů; průmysl, bytové domy a veřejné budovy zatím ne.`;
+$('u-zdroj').innerHTML=`V území modelu (${fmt0(D.uzemi.plocha_ha)} ha, povodí Kyjovky k jezu před Mouchnicemi bez povodí nad přehradou) je ${fmt0(D.uzemi.budov)} budov s půdorysem ${fmt0(D.uzemi.strechy_m2/1e4*10)/10} ha, z toho ${fmt0(D.uzemi.rd_pocet)} rodinných domů (${fmt0(D.uzemi.rd_strechy_m2/1e4*10)/10} ha) ✅ ČÚZK INSPIRE BU, 19. 10. 2026. Zpevněné plochy u domů nejsou v datech - odhad. Počítá se jen voda ze střech a dvorů rodinných domů; průmysl, bytové domy a veřejné budovy zatím ne.`;
 ['u-n','u-roof','u-paved','u-rain','u-pct'].forEach(id=>$(id).addEventListener('input',renderUzemi));
 document.querySelectorAll('#u-pack button').forEach(b=>b.addEventListener('click',()=>{b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');renderUzemi();}));
 

@@ -22,7 +22,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 import numpy as np
 
-KU_NAZVY = ["Koryčany", "Jestřabice", "Blišice", "Lískovec"]   # ve feedu CUZK je k.u. Liskovce u Korycan jen "Lískovec" [684881] (overeno 20. 10. 2026); orez na uzemi modelu vyradi pripadne cizi
+KU_NAZVY = ["Koryčany", "Jestřabice", "Blišice", "Lískovec", "Mouchnice"]   # ve feedu CUZK je k.u. Liskovce u Korycan jen "Lískovec" [684881] (overeno 20. 10. 2026); orez na uzemi modelu vyradi pripadne cizi
 ATOM = "https://atom.cuzk.gov.cz/CP/CP.xml"
 GML_URL = "https://services.cuzk.gov.cz/gml/inspire/cp/epsg-5514/{kod}.zip"
 

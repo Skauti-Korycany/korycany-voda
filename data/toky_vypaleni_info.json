@@ -1,13 +1,13 @@
 {
  "pred": {
   "median_m": 0.0,
-  "p90_m": 10.0,
-  "podil_nad_15m": 0.07169033440219881
+  "p90_m": 15.811388300841898,
+  "podil_nad_15m": 0.10294386542329494
  },
  "po": {
   "median_m": 0.0,
   "p90_m": 5.0,
-  "podil_nad_15m": 0.018781493357764543
+  "podil_nad_15m": 0.02578167855183763
  },
  "profily": [
   {
@@ -41,13 +41,13 @@
    "km2_po": 0.749
   },
   {
-   "nazev": "Kyjovka pod Koryčany (pod soutokem se Stříbrníkem)",
-   "km2_pred": 19.95,
-   "km2_po": 14.707
+   "nazev": "Kyjovka nad jezem před Mouchnicemi",
+   "km2_pred": 24.071,
+   "km2_po": 25.642
   }
  ],
- "linii": 44,
- "delka_km": 21.95,
- "vypaleno_bunek": 13781,
+ "linii": 58,
+ "delka_km": 27.36,
+ "vypaleno_bunek": 14864,
  "hloubka_m": 2.0
 }

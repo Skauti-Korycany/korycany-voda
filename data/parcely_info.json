@@ -1,13 +1,13 @@
 {
  "zdroj": "ČÚZK, INSPIRE Katastrální parcely (CP), CC BY 4.0; stav podle Atom feedu v den stažení; skript tools/10_parcely.py",
- "stazeno": "2026-10-20",
+ "stazeno": "2026-10-21",
  "ku": {
   "Koryčany": {
    "kod": "669661",
-   "parcel": 4093,
-   "plocha_ha": 1409.9,
+   "parcel": 4438,
+   "plocha_ha": 1467.4,
    "s_budovou": 1463,
-   "s_rd": 941
+   "s_rd": 940
   },
   "Jestřabice": {
    "kod": "659053",
@@ -18,10 +18,10 @@
   },
   "Blišice": {
    "kod": "669652",
-   "parcel": 433,
-   "plocha_ha": 66.3,
-   "s_budovou": 24,
-   "s_rd": 22
+   "parcel": 2476,
+   "plocha_ha": 362.7,
+   "s_budovou": 179,
+   "s_rd": 146
   },
   "Lískovec": {
    "kod": "684881",
@@ -29,11 +29,18 @@
    "plocha_ha": 949.1,
    "s_budovou": 277,
    "s_rd": 173
+  },
+  "Mouchnice": {
+   "kod": "699969",
+   "parcel": 136,
+   "plocha_ha": 37.8,
+   "s_budovou": 0,
+   "s_rd": 0
   }
  },
- "parcel_celkem": 7013,
- "parcel_s_rd": 1136,
- "parcela_s_rd_median_m2": 253.23239135742188,
- "strechy_na_parcele_s_rd_median_m2": 106.85,
- "velikost_souboru_MB": 3.42
+ "parcel_celkem": 9537,
+ "parcel_s_rd": 1259,
+ "parcela_s_rd_median_m2": 265.84698486328125,
+ "strechy_na_parcele_s_rd_median_m2": 110.9,
+ "velikost_souboru_MB": 4.52
 }

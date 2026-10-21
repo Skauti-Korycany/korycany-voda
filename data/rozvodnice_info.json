@@ -164,23 +164,32 @@
   },
   {
    "id": 0,
-   "nazev": "Kyjovka pod Koryčany (pod soutokem se Stříbrníkem)",
-   "pozn": "bod se najde automaticky: od profilu Stříbrník (id 2) po proudu až k soutoku s Kyjovkou, první buňka za soutokem. Chceš-li jiný profil, nahraď 'pod_soutokem_id' klíčem 'xy5514' nebo 'lonlat'.",
+   "nazev": "Kyjovka nad jezem před Mouchnicemi",
+   "zadano_lonlat": [
+    17.140294,
+    49.112062
+   ],
+   "zadano_5514": [
+    -560508.0,
+    -1173975.0
+   ],
+   "zdroj": "ZABAGED ČÚZK, vrstva Přehradní hráz, jez (fid 28465260641910784, Kyjovka (Stupava)), stažen přes WFS 21. 10. 2026",
+   "pozn": "dolní hranice modelu od 21. 10. 2026 (rozhodnutí uživatele): zahrnuje soutok Stříbrníku s Kyjovkou (podle toků ČÚZK ~550 m nad jezem) a mokřiny v nivě. Dřív: Kyjovka těsně pod soutokem se Stříbrníkem podle D8.",
    "prichyceno_lonlat": [
-    17.155236,
-    49.112984
+    17.139835,
+    49.111964
    ],
    "prichyceno_5514": [
-    -559412.5,
+    -560542.5,
     -1173982.5
    ],
-   "posun_m": 0,
-   "plocha_km2": 19.949,
-   "vyska_m": 264.4,
+   "posun_m": 35.4,
+   "plocha_km2": 23.541,
+   "vyska_m": 254.0,
    "stav": "ok"
   }
  ],
- "uzemi_modelu_km2": 14.127,
+ "uzemi_modelu_km2": 17.719,
  "povodi_id_kody": {
   "1": "Koryčany (Kyjovka, ř. km 75,69)",
   "2": "Koryčany (Stříbrník, ř. km 1,07)",

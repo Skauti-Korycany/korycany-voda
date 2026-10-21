@@ -213,14 +213,14 @@
   "sklon": 1126658,
   "akumulace": 1681351,
   "smer": 668381,
-  "smer_v": 678514,
-  "cn": 88669,
-  "vyuziti": 112863,
-  "hsp": 21988,
-  "hsp_zdroj": 18603,
+  "smer_v": 677991,
+  "cn": 100800,
+  "vyuziti": 121575,
+  "hsp": 27153,
+  "hsp_zdroj": 20316,
   "povodi": 10780,
-  "usle_ls": 557998,
-  "usle_k": 38779
+  "usle_ls": 606769,
+  "usle_k": 48846
  },
  "licence": "data CC BY 4.0 (CUZK DMR 5G, ZABAGED, INSPIRE BU); BPEJ SPU otevrena data; odvozeno skripty tools/01-06"
 }

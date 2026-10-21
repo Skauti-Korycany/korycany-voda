@@ -35,7 +35,9 @@ ok('uzemi modelu plocha', blizko(st.plocha_ha, ref.plocha_ha, 0.01), `${st.ploch
 ok('uzemi modelu CN', Math.abs(st.cn_vazene - ref.cn_vazene) < 0.3, `${st.cn_vazene.toFixed(1)} vs ${ref.cn_vazene}`);
 ok('uzemi modelu odtok P40', blizko(st.odtok.objem_m3, ref.odtok.P40mm.objem_m3, 0.03), `${Math.round(st.odtok.objem_m3)} vs ${ref.odtok.P40mm.objem_m3} m3, Q ${st.odtok.Q_mm.toFixed(2)} mm`);
 const les = [4, 41, 42, 43].reduce((s, k) => s + (st.vyuziti_ha[k] || 0), 0);
-ok('uzemi modelu les ~50 %', blizko(les / st.plocha_ha, 0.50, 0.03), `${(100 * les / st.plocha_ha).toFixed(1)} %`);
+const VY = JSON.parse(fs.readFileSync(path.join(base, '..', 'vyuziti_pudy.json'), 'utf8'));
+const lesRef = Object.entries(VY.uzemi_modelu_ha).filter(([k]) => k.startsWith('les')).reduce((a, [, v]) => a + v, 0);
+ok('uzemi modelu les jako vyuziti_pudy.json', blizko(les, lesRef, 0.02), `${les.toFixed(0)} vs ${lesRef.toFixed(0)} ha = ${(100 * les / st.plocha_ha).toFixed(1)} %`);
 ok('uzemi modelu HSP odhad', Math.abs(100 * st.hsp_odhad_ha / st.plocha_ha - ref.podil_hsp_odhad_pct) < 1, `${(100 * st.hsp_odhad_ha / st.plocha_ha).toFixed(1)} vs ${ref.podil_hsp_odhad_pct} %`);
 console.log('   sklon prumer', st.sklon_prumer_deg.toFixed(1), 'deg; vyska', st.vyska_min, '-', st.vyska_max, 'm; tok prochazi', st.tok_prochazi);
 
@@ -73,31 +75,32 @@ const st10 = J.statBunek(bunky, NS.uhrny_6h_mm.N10, 2), v10 = J.odtokVazeny(st10
 ok('uzemi modelu N10 vazeny odtok mezi CN2 a CN3', v10.objem_m3 > st10.odtok.objem_m3 && v10.objem_m3 < st10.odtok.objem_m3_cn3, `${Math.round(st10.odtok.objem_m3)} < ${Math.round(v10.objem_m3)} < ${Math.round(st10.odtok.objem_m3_cn3)} m3 (Q ${v10.Q_mm.toFixed(1)} mm, koef ${v10.koef.toFixed(2)})`);
 
 // 5. nadrz v0.3: hraz kolmo na tok CUZK; maly tok = tun v udolnici
-const bodLinie = (id, podil) => { const l = J.toky.linie.find(t => t.id === id); const k = Math.round(podil * (l.x.length - 1)); return { ll: J.xyNaLonLat(l.x[k], l.y[k]), A: l.A_km2[k] }; };
+// body testu v S-JTSK (stabilni i kdyz se zmeni cislovani linii v toky.json)
+const bodXY = (X, Y) => { const p = J.prichytKVektoru(X, Y, 20); return { ll: J.xyNaLonLat(p.X, p.Y), l: p.linie, k: p.k }; };
 const fmt = n => n.chyba ? n.chyba : `${n.typ}, ${Math.round(n.objem_m3)} m3${n.objem_rozsah_m3 ? ' (' + n.objem_rozsah_m3.map(Math.round).join('-') + ')' : ''}, ${(n.plocha_ha * 1e4).toFixed(0)} m2, hraz ${n.delka_hraze_m.toFixed(0)} m, povodi ${n.povodi_km2.toFixed(2)} km2, dno ${n.kota_dna.toFixed(1)} m, sklon ${(100 * n.profil_odhad.sklon_dna).toFixed(1)} %, profil ${n.profil_odhad.objem_m3.map(Math.round).join('-')} m3${n.varovani.length ? ' | ' + n.varovani.join('; ') : ''}`;
 const kolmost = n => { const [a, b] = n.hraz_lonlat.map(ll => J.lonLatNaXY(...ll)); const l = J.toky.linie.find(t => t.id === n.tok_id); return { ax: b[0] - a[0], ay: b[1] - a[1], l }; };
 // Kyjovka pod prehradou (linie 22, ~6 km2), hraz 2 m
-const bK = bodLinie(22, 0.5), nK = J.nadrz(...bK.ll, 2, 60);
+const bK = bodXY(-557324.1, -1173943.6), nK = J.nadrz(...bK.ll, 2, 60);
 ok('nadrz Kyjovka: typ nadrz, objem > 0, hloubka <= 2 m', nK.typ === 'nadrz' && nK.objem_m3 > 0 && nK.hloubka_max_m <= 2.5, fmt(nK) + ', hloubka max ' + nK.hloubka_max_m.toFixed(2) + ' m (sum DMR proti dnu)');
-{ const { ax, ay, l } = kolmost(nK); const k = Math.round(0.5 * (l.x.length - 1)); const tx = l.x[k + 3] - l.x[k - 2], ty = l.y[k + 3] - l.y[k - 2];
+{ const { ax, ay } = kolmost(nK); const l = bK.l, k = bK.k; const tx = l.x[k + 3] - l.x[k - 2], ty = l.y[k + 3] - l.y[k - 2];
   const cos = Math.abs(ax * tx + ay * ty) / Math.hypot(ax, ay) / Math.hypot(tx, ty); ok('osa hraze kolmo na tok', cos < 0.05, `cos ${cos.toFixed(3)}`); }
 ok('hraz uzavira udoli Kyjovky', nK.hraz_uzavira, `${nK.delka_hraze_m.toFixed(0)} m`);
 ok('zadna zatopena bunka nad hladinou', (() => { let bad = 0; const lk = J.lonLatNaXY(...nK.bod_lonlat); for (let i = 0; i < nK.maska.length; i++) if (nK.maska[i] && J.vyska(i) > nK.hladina) bad++; return bad === 0; })());
 const nK4 = J.nadrz(...bK.ll, 4, 60);
 ok('nadrz 4 m > 2 m', nK4.objem_m3 > nK.objem_m3, fmt(nK4));
 // horni Stribrnik v lese (linie 32, ~0,5-0,8 km2), hraz 3 m
-const bS = bodLinie(32, 0.5), nS = J.nadrz(...bS.ll, 3, 60);
+const bS = bodXY(-557287.3, -1175069.3), nS = J.nadrz(...bS.ll, 3, 60);
 ok('horni Stribrnik v uzke rokli: zatopa pod 20 bunek -> odhad z profilu', nS.typ === 'tun_udolnice' && nS.objem_m3 > 0, fmt(nS));
 ok('Stribrnik: plosna zatopa a profilovy odhad ve stejnem radu (0,3x-3x)', nS.objem_m3 > 0.3 * nS.profil_odhad.objem_m3[0] && nS.objem_m3 < 3 * nS.profil_odhad.objem_m3[1], `${Math.round(nS.objem_m3)} vs ${nS.profil_odhad.objem_m3.map(Math.round).join('-')}`);
 // maly tok (linie 28, < 0,25 km2): tun v udolnici
-const bM = bodLinie(28, 0.4), nM = J.nadrz(...bM.ll, 1, 60);
+const bM = bodXY(-557438.3, -1175386.5), nM = J.nadrz(...bM.ll, 1, 60);
 ok('maly tok -> tun_udolnice s rozsahem objemu', nM.typ === 'tun_udolnice' && nM.objem_rozsah_m3[0] > 0 && nM.objem_rozsah_m3[1] / nM.objem_rozsah_m3[0] === 1.5 && nM.obrys_lonlat.length > 3, fmt(nM));
 ok('info: 2 m bez vodniho dila, 4 m vodni dilo + TBD (16 tis. m3)', !nK.vodni_dilo && nK.info.length === 0 && nK4.vodni_dilo && nK4.tbd && nK4.info.length === 2, nK4.info.join(' / '));
 // klik daleko od toku
 const nD = J.nadrz(17.135, 49.08, 2, 60);
 ok('klik daleko od toku -> chyba', nD && nD.chyba === 'daleko_od_toku', nD && `${Math.round(nD.vzdalenost_m)} m`);
 // rychlost
-{ const t0 = Date.now(); J.nadrz(...bodLinie(12, 0.5).ll, 3, 60); ok('nadrz na Kyjovce v centru do 1,5 s', Date.now() - t0 < 1500, `${Date.now() - t0} ms`); }
+{ const t0 = Date.now(); J.nadrz(...bodXY(-557944.1, -1173838.8).ll, 3, 60); ok('nadrz na Kyjovce v centru do 1,5 s', Date.now() - t0 < 1500, `${Date.now() - t0} ms`); }
 
 // 6. obrazek masky povodi
 const bbox = J.obalMasky(p2.maska, 50);

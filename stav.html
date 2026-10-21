@@ -58,17 +58,17 @@
 <p>Cíl není projektová dokumentace. Cíl je, aby víc lidí ve městě pochopilo souvislosti a vědělo, co může udělat kdo: obec, vlastník půdy, zahrádkář, škola. Partner: ZŠ Koryčany (program Ekoškola). Vše běží bez serveru, zdrojový kód je pod licencí MIT, odvozená data a texty CC BY 4.0.</p>
 
 <h2>Území modelu</h2>
-<p>Hranici neurčuje katastr, ale rozvodnice odvozená z výškopisu DMR 5G: povodí Kyjovky k profilu těsně pod soutokem se Stříbrníkem v Koryčanech, bez povodí nad hrází vodní nádrže Koryčany (odtok z nádrže je řízený). Model řeší rozhodování jedné obce, ne mikroregionu.</p>
+<p>Hranici neurčuje katastr, ale rozvodnice odvozená z výškopisu DMR 5G: povodí Kyjovky k jezu před Mouchnicemi (od 21. 10. 2026, aby v modelu byl soutok Stříbrníku s Kyjovkou a mokřiny v nivě), bez povodí nad hrází vodní nádrže Koryčany (odtok z nádrže je řízený). Model řeší rozhodování jedné obce, ne mikroregionu.</p>
 <div class="grid">
-  <div class="kpi"><b>14,1 km²</b><span>území modelu</span></div>
-  <div class="kpi"><b>19,9 km²</b><span>celé povodí k profilu pod Koryčany</span></div>
+  <div class="kpi"><b>17,7 km²</b><span>území modelu</span></div>
+  <div class="kpi"><b>23,5 km²</b><span>celé povodí k jezu před Mouchnicemi</span></div>
   <div class="kpi"><b>4,2 km²</b><span>povodí Stříbrníku (jižní zázemí města)</span></div>
-  <div class="kpi"><b>1 487</b><span>budov v území (půdorysy 25,4 ha)</span></div>
-  <div class="kpi"><b>9,4°</b><span>průměrný sklon; 28 % plochy nad 12°</span></div>
+  <div class="kpi"><b>1 631</b><span>budov v území (půdorysy 27,8 ha)</span></div>
+  <div class="kpi"><b>9,8°</b><span>průměrný sklon; 31 % plochy nad 12°</span></div>
   <div class="kpi"><b>5 m</b><span>rozlišení modelu (DMR 5G, 6,3 mil. bodů)</span></div>
   <div class="kpi"><b>632 mm</b><span>roční srážky, stanice ČHMÚ Koryčany (1991-2020)</span></div>
-  <div class="kpi"><b>CN 72</b><span>vážené číslo odtokové křivky území</span></div>
-  <div class="kpi"><b>7 013</b><span>parcel v území (katastr ČÚZK, bez vlastníků)</span></div>
+  <div class="kpi"><b>CN 72,5</b><span>vážené číslo odtokové křivky území</span></div>
+  <div class="kpi"><b>9 537</b><span>parcel v území (katastr ČÚZK, bez vlastníků)</span></div>
 </div>
 <div id="map"></div>
 <div class="legend">
@@ -89,15 +89,15 @@
 <tr><td>Terén</td><td>12 listů DMR 5G (ČÚZK, CC BY 4.0) -> rastr 5 m v S-JTSK, 7,5 × 8 km, stínovaný reliéf ke kontrole.</td></tr>
 <tr><td>Odtok a rozvodnice</td><td>Vyplnění prohlubní, směr odtoku (D8), akumulace, sklon, expozice, údolnice; povodí k hlásným profilům ČHMÚ/města (Kyjovka ř. km 75,69; Stříbrník ř. km 1,07; pod přehradou ř. km 77,76) a k obcím. Hranice ověřena proti mapě a místní znalosti.</td></tr>
 <tr><td>Budovy a toky</td><td>INSPIRE Budovy ČÚZK (obec Koryčany) ořezané na území, bez čísel popisných a adres; INSPIRE hydrografická síť ČÚZK.</td></tr>
-<tr><td>Využití půdy</td><td>ZABAGED polohopis (WFS ČÚZK) vypálený do mřížky 5 m: les 705 ha (50 %, z toho listnatý 465, smíšený 144, jehličnatý 36), orná 261 ha, louky 153 ha, zahrady a sady 121 ha, zástavba a areály 95 ha, komunikace 19 ha. Hranice území ověřena proti oficiálním rozvodnicím ČHP (ZABAGED): shoda.</td></tr>
-<tr><td>Půdy a odtok (předběžně)</td><td>Hydrologické skupiny půd z BPEJ (SPÚ, otevřená data) podle metodiky Janeček 2012: B 56 %, C 10 %, D 33 % plochy; lesy a intravilán bez BPEJ doplněny odhadem (48 % území, viditelně označeno) - zde pomohou data VÚMOP. Číslo odtokové křivky CN pro každou buňku 5 m (vážené CN území 72,0; dílčí povodí Kyjovka 75,9, Stříbrník 65,2, Lískovec 79,0). Odtok SCS-CN se počítá po buňkách: déšť 20 mm -> 13 tis. m³, 40 mm -> 78 tis. m³, 60 mm -> 198 tis. m³ z území modelu (koeficient odtoku 0,05 / 0,14 / 0,23).</td></tr>
+<tr><td>Využití půdy</td><td>ZABAGED polohopis (WFS ČÚZK) vypálený do mřížky 5 m: les 711 ha (40 %, z toho listnatý 469, smíšený 146, jehličnatý 36), orná 545 ha, louky 173 ha, zahrady a sady 147 ha, zástavba a areály 100 ha, komunikace 21 ha. Hranice území ověřena proti oficiálním rozvodnicím ČHP (ZABAGED): shoda.</td></tr>
+<tr><td>Půdy a odtok (předběžně)</td><td>Hydrologické skupiny půd z BPEJ (SPÚ, otevřená data) podle metodiky Janeček 2012: B 61 %, C 12 %, D 27 % plochy; lesy a intravilán bez BPEJ doplněny odhadem (38 % území, viditelně označeno) - zde pomohou data VÚMOP. Číslo odtokové křivky CN pro každou buňku 5 m (vážené CN území 72,5; dílčí povodí Kyjovka 75,9, Stříbrník 65,2, Lískovec 79,0, Blišice 70,5). Odtok SCS-CN se počítá po buňkách: déšť 20 mm -> 15 tis. m³, 40 mm -> 99 tis. m³, 60 mm -> 253 tis. m³ z území modelu (koeficient odtoku 0,04 / 0,14 / 0,24).</td></tr>
 <tr><td>Srážky</td><td>Otevřená data ČHMÚ: v Koryčanech je manuální srážkoměrná stanice ČHMÚ (305 m n. m., 1,2 km od středu území) s denními úhrny od roku 1920 (88 úplných let). Normál 1991-2020 je 632 mm; maximum 114 mm za den (2. 7. 1954), 93,5 mm (12. 6. 2012). Orientační N-leté denní úhrny (Gumbel, do modelu až hodnoty ČHMÚ/ČSN 75 9010): 2 roky 37 mm, 10 let 58 mm, 100 let 84 mm. Hodinová a desetiminutová data z automatických stanic Nemochovice (7,8 km) a Staré Hutě (9,4 km) pro léto 2026. Léto 2026 (VI-VIII) v Koryčanech 113 mm = polovina normálu.</td></tr>
-<tr><td>Katastrální parcely</td><td>INSPIRE Katastrální parcely ČÚZK (CC BY 4.0) pro k. ú. Koryčany, Blišice, Jestřabice a Lískovec u Koryčan, ořezané na území modelu: 7 013 parcel, z toho 1 136 se stavbou rodinného domu. Jen parcelní číslo, k. ú., výměra a půdorysy budov; vlastníci, listy vlastnictví ani adresy se nestahují.</td></tr>
-<tr><td>Výpočetní jádro</td><td>JavaScript v prohlížeči nad rastry 5 m (9 pásem jako PNG, 5 MB): odtok SCS-CN po buňkách, statistika libovolného pozemku (plocha, CN, sklon, využití, půda), povodí libovolného bodu, orientační zátopa nádrže z terénu. 22 automatických testů, shoda s výpočtem v Pythonu. Dokumentace vzorců a zdrojů v <a href="docs/JADRO.md">docs/JADRO.md</a>.</td></tr>
+<tr><td>Katastrální parcely</td><td>INSPIRE Katastrální parcely ČÚZK (CC BY 4.0) pro k. ú. Koryčany, Blišice, Jestřabice, Lískovec u Koryčan a Mouchnice (niva u jezu), ořezané na území modelu: 9 537 parcel, z toho 1 259 se stavbou rodinného domu. Jen parcelní číslo, k. ú., výměra a půdorysy budov; vlastníci, listy vlastnictví ani adresy se nestahují.</td></tr>
+<tr><td>Výpočetní jádro</td><td>JavaScript v prohlížeči nad rastry 5 m (12 pásem jako PNG, 6 MB): odtok SCS-CN po buňkách vážený přes tvary návrhového deště, statistika libovolného pozemku (plocha, CN, sklon, využití, půda), povodí libovolného bodu, hráz na potoce (osa kolmo na tok ČÚZK, zátopa z terénu, u malých potoků tůň v údolnici z příčného profilu). 37 automatických testů, shoda s výpočtem v Pythonu. Dokumentace vzorců a zdrojů v <a href=\"docs/JADRO.md\">docs/JADRO.md</a>.</td></tr>
 <tr><td>Přívalové povodně</td><td>Kritické body VÚV TGM (CC BY 4.0): v Koryčanech dva, oba lesní povodí v Chřibech - horní Stříbrník (326 ha) a údolí východně od středu města (111 ha); naše rozvodnice z DMR 5G dávají 325 a 112 ha (shoda). Povodňový plán města označuje povodí Stříbrníku jako místo ohrožené bleskovou povodní. Reakce Stříbrníku u Kachníku na déšť léto 2026 vyhodnocena z čidla hlásné služby (max +24 cm, bouřka odteče do 12 h).</td></tr>
 <tr><td>Měření</td><td>Inventura hlásných profilů; vlastní optické čidlo na Stříbrníku u Kachníku (léto 2026, 7 epizod přívalů, porovnáno s hodinovými srážkami ČHMÚ); žádost o data Povodí Moravy v přípravě. Žádost o půdní data VÚMOP odeslána 19. 10. 2026.</td></tr>
 <tr><td>Počasí „Jak bylo“</td><td>Vstupní záložka aplikace: co se v Koryčanech děje s vodou. Automatický denní sběr (GitHub Actions, 2x denně) srážek Koryčany a teplot Nemochovice z otevřených dat ČHMÚ, hodinových srážek KS Koryčany (Povodí Moravy) a Nemotice; referenční výpar ET₀ (Hargreaves-Samani, FAO-56) a bilance P-ET₀. Dlouhé řady: srážky 1921-2025 (roční úhrn se drží kolem 630 mm), teplota +0,46 °C za 10 let a tropické dny 12 -> 18 za rok (2001-2025), bilance záporná každý rok. Rok 2026: leden-září 289 mm, nejsušší v řadě od 1921. Skripty <code>tools/12_pocasi.py</code>, <code>13_normaly_pocasi.py</code>, data <code>data/pocasi/</code>, zadání <a href="docs/POCASI-ZADANI.md">docs/POCASI-ZADANI.md</a>; živě v <a href="https://skauti-korycany.github.io/korycany-voda/">aplikaci</a>.</td></tr>
-<tr><td>Prototyp rozhraní v0.2</td><td>Běží nad skutečnými daty: Můj pozemek (klik vybere parcely z katastru, sklon z DMR 5G, půda z BPEJ, okolí ze ZABAGED), Celé území (odtok z polí, luk a lesa po třídách se scénáři hospodaření podle Janeček 2012; velké střechy podle účelu budov: 75 průmyslových budov má 6,5 ha střech = 56 % plochy střech všech 957 rodinných domů), Katalog, O modelu. Nádrže a poldry, eroze, transformace vlny a výpar zatím nejsou. Běží na GitHub Pages.</td></tr>
+<tr><td>Prototyp rozhraní v0.2</td><td>Běží nad skutečnými daty: Můj pozemek (klik vybere parcely z katastru, sklon z DMR 5G, půda z BPEJ, okolí ze ZABAGED), Celé území (odtok z polí, luk a lesa po třídách se scénáři hospodaření podle Janeček 2012; velké střechy podle účelu budov: 76 průmyslových budov má 6,5 ha střech = 48 % plochy střech všech 1 075 rodinných domů; hráz na potoce s výpočtem zátopy a eroze orné půdy USLE), Katalog, O modelu. Transformace vlny a výpar zatím nejsou. Běží na GitHub Pages.</td></tr>
 </table>
 
 <div class="figs">
@@ -121,7 +121,7 @@
 <tr><td>Zamokřené půdy, meliorace</td><td>Kde dávají smysl tůně a mokřady, kde naopak drenáž vodu odvádí.</td></tr>
 </table>
 <div class="box">
-<p><b>Jak budou data použita:</b> jen uvnitř výpočtu pro území 14 km² v k. ú. Koryčany, Lískovec u Koryčan, Blišice a Jestřabice. Zdrojové rastry a vektory se nebudou redistribuovat ani zveřejňovat; v aplikaci se zobrazí buď odvozené výsledky (CN, odtok, ohroženost) s uvedením zdroje, nebo oficiální WMS VÚMOP s povinným uvedením původu. Účel je nekomerční a osvětový, výstup bude zveřejněn pod hlavičkou skautského oddílu zdarma. Formát ideálně GeoTIFF nebo shapefile/GeoPackage v S-JTSK (EPSG:5514), výřez podle hranice území (GeoJSON ke stažení v repozitáři: <a href="data/povodi.geojson">data/povodi.geojson</a>, polygon typ <code>uzemi_modelu</code>).</p>
+<p><b>Jak budou data použita:</b> jen uvnitř výpočtu pro území 18 km² v k. ú. Koryčany, Lískovec u Koryčan, Blišice, Jestřabice a Mouchnice. Zdrojové rastry a vektory se nebudou redistribuovat ani zveřejňovat; v aplikaci se zobrazí buď odvozené výsledky (CN, odtok, ohroženost) s uvedením zdroje, nebo oficiální WMS VÚMOP s povinným uvedením původu. Účel je nekomerční a osvětový, výstup bude zveřejněn pod hlavičkou skautského oddílu zdarma. Formát ideálně GeoTIFF nebo shapefile/GeoPackage v S-JTSK (EPSG:5514), výřez podle hranice území (GeoJSON ke stažení v repozitáři: <a href="data/povodi.geojson">data/povodi.geojson</a>, polygon typ <code>uzemi_modelu</code>).</p>
 </div>
 
 <h2>Zásady, kterých se držíme</h2>

@@ -47,7 +47,7 @@ Proč změna: v0.1 přichytávala hráz k buňce s největší akumulací D8 a z
 **Příprava dat** (`tools/14_toky_vypaleni.py`, spouštěč `vyrob_toky.bat`, ~1 min):
 - Toky ČÚZK INSPIRE HY-NET (`data/toky_cuzk.geojson`, CC BY 4.0) se „vypálí“ do DMR: buňky pod linií toku −2 m (stream burning, zjednodušený AGREE 💻), pak stejné vyplnění depresí, D8 a akumulace jako 02_rozvodnice.py. Vypálený terén slouží **jen pro směr odtoku**, objemy se počítají z původního DMR.
 - Kontrola (`data/toky_vypaleni_info.json`): vrcholy toků dál než 15 m od dráhy D8 (≥ 0,02 km²) 7,2 % -> 1,9 %.
-- `data/web/toky.json` (156 kB): 44 linií v území modelu, body po 5 m od pramene po proudu (orientace HY-NET ověřena proti výšce dna u všech 44), u bodu plocha povodí z vypálené akumulace a kóta dna = minimum DMR v okolí 3×3 buněk; návaznosti přítoky / pokračování.
+- `data/web/toky.json` (195 kB): 58 linií v území modelu (od 21. 10. k jezu před Mouchnicemi; dřív 44), body po 5 m od pramene po proudu (orientace HY-NET ověřena proti výšce dna u všech 44), u bodu plocha povodí z vypálené akumulace a kóta dna = minimum DMR v okolí 3×3 buněk; návaznosti přítoky / pokračování.
 - Pásmo `smer_v.png` (D8 po vypálení) v balíčku; jádro ho používá pro povodí hráze. Ostatní funkce (povodí bodu, statistiky) zůstávají na původním `smer.png`, aby seděly s `povodi.geojson` a `cn_info.json`. Prototyp `smer_v` ani `toky.json` nenačítá (`Jadro.nacti(base, {bez: ['smer_v'], toky: false})`).
 
 **Výpočet** `Jadro.nadrz(lon, lat, h, {polomerM: 60, maxDelkaHrazeM: 300})`:
@@ -68,7 +68,7 @@ Prototyp: panel „Hráz na potoce“ v Celém území; `smer_v` a `toky.json` s
 Testy (`web/test_jadro.js`, 37 OK): kolmost osy na tok (cos < 0,05), Kyjovka pod přehradou 2 m / 4 m, rokle horního Stříbrníku -> profil, malý tok -> tůň s rozsahem 1 : 1,5, klik daleko od toku, rychlost.
 
 ## Ověření proti Pythonu (06_cn.py)
-Území modelu: plocha 1 412,7 ha (Python 1 412,1 - rozdíl = rasterizace polygonu), CN 72,0 = 72,0, odtok P40 78 248 m³ = 78 248 m³, les 49,9 %, HSP odhad 48,2 % (48,3). Povodí Stříbrník z hlásného profilu: 4,23 km² = 4,23, CN 65,2 = 65,2.
+Území modelu (od 21. 10. 2026 k jezu před Mouchnicemi): plocha 1 771,9 ha (Python 1 769,9 - rozdíl = rasterizace polygonu), CN 72,5 = 72,5, odtok P40 98 939 m³ = 98 939 m³, les 711 ha = 40,1 % (= vyuziti_pudy.json), HSP odhad 38,5 % = 38,5 %. (Do 21. 10.: 1 412 ha, CN 72,0, P40 78 248 m³.)
 
 ## Co jádro zatím neumí (další kroky fáze 3)
 - Transformace vlny poldrem (zatím jen bilance objem nádrže vs. objem odtoku).
