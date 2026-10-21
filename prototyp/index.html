@@ -10,7 +10,7 @@
 /* Layout: mapa nahoře (nebo vlevo na širokém), pracovní panel pod ní; čísla v mono, nadpisy serif s charakterem. */
 :root{
   --bg:#f6f3ee; --panel:#ffffff; --fg:#1f2a2e; --muted:#5c6b70; --line:#d8d2c7;
-  --accent:#1f6f8b; --accent-ink:#ffffff; --soil:#7a5a3a; --water:#2d7fb8; --ok:#3b7a57; --warn:#b5651d; --bad:#a23b3b;
+  --accent:#1f6f8b; --accent-ink:#ffffff; --soil:#7a5a3a; --water:#2d7fb8; --ok:#3b7a57; --warn:#b5651d; --bad:#a23b3b; --dry:#b8923a;
   --chip:#e9e4da; --mark:#eef4f7;
   --f-display:"Fraunces", Georgia, "Times New Roman", serif;
   --f-body:"IBM Plex Sans", "Segoe UI", Arial, sans-serif;
@@ -18,11 +18,11 @@
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --bg:#171c1f; --panel:#1f2629; --fg:#e8e4dc; --muted:#a3adb1; --line:#36414a;
-  --accent:#5aa9c9; --accent-ink:#0f1a1f; --soil:#c49a6c; --water:#6fb3e0; --ok:#7fc39a; --warn:#e0a060; --bad:#e08080;
+  --accent:#5aa9c9; --accent-ink:#0f1a1f; --soil:#c49a6c; --water:#6fb3e0; --ok:#7fc39a; --warn:#e0a060; --bad:#e08080; --dry:#d4b26a;
   --chip:#2b353a; --mark:#1b2a31; color-scheme:dark } }
 :root[data-theme="dark"]{
   --bg:#171c1f; --panel:#1f2629; --fg:#e8e4dc; --muted:#a3adb1; --line:#36414a;
-  --accent:#5aa9c9; --accent-ink:#0f1a1f; --soil:#c49a6c; --water:#6fb3e0; --ok:#7fc39a; --warn:#e0a060; --bad:#e08080;
+  --accent:#5aa9c9; --accent-ink:#0f1a1f; --soil:#c49a6c; --water:#6fb3e0; --ok:#7fc39a; --warn:#e0a060; --bad:#e08080; --dry:#d4b26a;
   --chip:#2b353a; --mark:#1b2a31; color-scheme:dark }
 html,body{height:100%}
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.45;margin:0}
@@ -111,7 +111,7 @@ input[type=range]{width:100%}
 .jb-chart .bP{fill:var(--water)} .jb-chart .bPn{fill:var(--water);opacity:.45}
 .jb-chart .lT{fill:none;stroke:var(--warn);stroke-width:1.6}
 .jb-chart .lE{fill:none;stroke:var(--soil);stroke-width:1.4;stroke-dasharray:3 2}
-.jb-chart .rY{fill:var(--chip)} .jb-chart .rY.now{fill:var(--accent)} .jb-chart .rY.hi{fill:var(--water)} .jb-chart .rY.lo{fill:var(--bad)}
+.jb-chart .rY{fill:var(--chip)} .jb-chart .rY.now{fill:var(--accent)} .jb-chart .rY.hi{fill:var(--water)} .jb-chart .rY.lo{fill:var(--bad)} .jb-chart .rY.dry{fill:var(--dry)}
 .jb-chart .nrm{stroke:var(--fg);stroke-width:1;stroke-dasharray:4 3}
 .jb-ext{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.4rem .8rem;font-size:.9rem;margin-top:.5rem}
 .jb-ext div{display:flex;justify-content:space-between;gap:.5rem;border-bottom:1px dashed var(--line);padding:.2rem 0}
@@ -807,15 +807,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <section id="tab-jakbylo">
   <div class="panel">
     <h2>Jak bylo v Koryčanech</h2>
-    <p class="note" style="margin:.2rem 0 0">Co se tu děje s vodou: kolik naprší, kolik se vypaří a co zbyde. Nejdřív dlouhé řady, protože jeden měsíc trend neukáže. Data se stahují automaticky každý den; poslední aktualizace <span class="num" id="jb-upd"></span>.</p>
+    <p class="note" style="margin:.2rem 0 0">Co se tu děje s vodou: kolik naprší, kolik se vypaří a co zbyde. Nejdřív dlouhé řady, protože jeden měsíc trend neukáže.</p>
+    <p class="note" style="margin:.2rem 0 0">Data se stahují automaticky každý den; poslední aktualizace <span class="num" id="jb-upd"></span>.</p>
     <h3 style="margin-top:1rem">Dlouhý pohled: srážky Koryčany 1921-2025</h3>
     <p class="note" id="jb-l1-n"></p>
     <svg class="jb-chart" id="jb-l1" viewBox="0 0 720 220" role="img" aria-label="Roční srážky 1921-2025"></svg>
-    <div class="legend"><span><b style="background:var(--chip)"></b>roční úhrn</span><span><b style="background:var(--bad)"></b>pod 60 % normálu</span><span><b style="background:var(--water)"></b>nad 140 %</span><span><b style="background:var(--warn)"></b>klouzavý průměr 10 let</span><span><b style="background:var(--fg)"></b>normál 1991-2020</span></div>
+    <div class="legend"><span><b style="background:var(--chip)"></b>roční úhrn</span><span><b style="background:var(--dry)"></b>3 nejsušší roky</span><span><b style="background:var(--water)"></b>nad 140 % normálu</span><span><b style="background:var(--warn)"></b>klouzavý průměr 10 let</span><span><b style="background:var(--fg)"></b>normál 1991-2020</span></div>
     <h3 style="margin-top:1rem">Dlouhý pohled: teplota, výpar a bilance 2001-2025</h3>
     <p class="note" id="jb-l2-n"></p>
     <svg class="jb-chart" id="jb-l2" viewBox="0 0 720 220" role="img" aria-label="Bilance, výpar a teplota 2001-2025"></svg>
-    <div class="legend"><span><b style="background:var(--ok)"></b>bilance P - ET₀ (mm/rok, nahoru = přebytek)</span><span><b style="background:var(--soil)"></b>ET₀ mm/rok</span><span><b style="background:var(--warn)"></b>průměrná teplota °C</span><span><b style="background:var(--bad)"></b>tropické dny</span></div>
+    <div class="legend"><span><b style="background:var(--ok)"></b>bilance P - ET₀ přebytek</span><span><b style="background:var(--dry)"></b>bilance P - ET₀ deficit (mm/rok)</span><span><b style="background:var(--soil)"></b>ET₀ mm/rok</span><span><b style="background:var(--warn)"></b>průměrná teplota °C</span><span><b style="background:var(--bad)"></b>tropické dny</span></div>
     <div class="jb-cards" id="jb-trend"></div>
     <div class="callout" id="jb-l-call" style="margin-top:.8rem"></div>
 
@@ -2033,7 +2034,8 @@ const osy=(L,w,T,h,vmin,vmax,jedn,right)=>{let o='';[0,.5,1].forEach(f=>{const y
   const body=Object.entries(R).filter(([r,z])=>z.P!=null).map(([r,z])=>[+r,z.P]).sort((a,b)=>a[0]-b[0]);
   const norm=N.rok.P, Wd=720,Hd=220,L=36,Rr=6,T=10,B=24,w=Wd-L-Rr,h=Hd-T-B, vmax=Math.max(...body.map(b=>b[1]))*1.05, bw=w/body.length, y=v=>T+h-h*v/vmax;
   let o=osy(L,w,T,h,0,vmax,'');
-  body.forEach(([r,v],i)=>{const cls=v<norm*0.6?'lo':v>norm*1.4?'hi':'';o+=`<rect class="rY ${cls}" x="${(L+i*bw).toFixed(1)}" y="${y(v)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${T+h-y(v)}"><title>${r}: ${fmt(v,0)} mm</title></rect>`;if(r%10===0)o+=`<text x="${L+(i+.5)*bw}" y="${Hd-8}" text-anchor="middle">${r}</text>`;});
+  const nejsussi=new Set([...body].sort((a,b)=>a[1]-b[1]).slice(0,3).map(z=>z[0]));
+  body.forEach(([r,v],i)=>{const cls=nejsussi.has(r)?'dry':v>norm*1.4?'hi':'';o+=`<rect class="rY ${cls}" x="${(L+i*bw).toFixed(1)}" y="${y(v)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${T+h-y(v)}"><title>${r}: ${fmt(v,0)} mm</title></rect>`;if(r%10===0)o+=`<text x="${L+(i+.5)*bw}" y="${Hd-8}" text-anchor="middle">${r}</text>`;});
   let p='';body.forEach(([r,v],i)=>{if(i<9)return;const k=mean(body.slice(i-9,i+1).map(b=>b[1]));p+=(p?'L':'M')+(L+(i+.5)*bw).toFixed(1)+' '+y(k).toFixed(1)+' ';});
   o+=`<path class="lT" d="${p}"/><line class="nrm" x1="${L}" x2="${L+w}" y1="${y(norm)}" y2="${y(norm)}"/><text x="${L+w}" y="${y(norm)-3}" text-anchor="end">normál ${fmt(norm,0)} mm</text>`;
   $('jb-l1').innerHTML=o;
@@ -2052,7 +2054,7 @@ const osy=(L,w,T,h,vmin,vmax,jedn,right)=>{let o='';[0,.5,1].forEach(f=>{const y
   const bw=w/body.length, x=i=>L+(i+.5)*bw;
   let o=osy(L,w,T,h,bmin,bmax,'')+osy(L,w,T,h,tmin,tmax,'',true);
   o+=`<line class="ax" x1="${L}" x2="${L+w}" y1="${yL(0)}" y2="${yL(0)}" style="stroke:var(--fg)"/>`;
-  body.forEach((b,i)=>{o+=`<rect x="${(L+i*bw).toFixed(1)}" y="${Math.min(yL(0),yL(b.b))}" width="${Math.max(1,bw-1).toFixed(1)}" height="${Math.abs(yL(0)-yL(b.b))}" style="fill:var(--ok);opacity:${b.b<0?.8:.5}"><title>${b.r}: bilance ${fmt(b.b,0)} mm, ET₀ ${fmt(b.E,0)} mm, ${fmt(b.T,1)} °C, ${b.d30} tropických dní</title></rect>`;if(b.r%5===0)o+=`<text x="${x(i)}" y="${Hd-8}" text-anchor="middle">${b.r}</text>`;});
+  body.forEach((b,i)=>{o+=`<rect x="${(L+i*bw).toFixed(1)}" y="${Math.min(yL(0),yL(b.b))}" width="${Math.max(1,bw-1).toFixed(1)}" height="${Math.abs(yL(0)-yL(b.b))}" style="fill:var(${b.b<0?'--dry':'--ok'});opacity:.8"><title>${b.r}: bilance ${fmt(b.b,0)} mm, ET₀ ${fmt(b.E,0)} mm, ${fmt(b.T,1)} °C, ${b.d30} tropických dní</title></rect>`;if(b.r%5===0)o+=`<text x="${x(i)}" y="${Hd-8}" text-anchor="middle">${b.r}</text>`;});
   const path=(f,fy,cls)=>`<path class="${cls}" d="${body.map((b,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+fy(f(b)).toFixed(1)).join(' ')}"/>`;
   o+=path(b=>b.E,yL,'lE')+path(b=>b.T,yR,'lT')+`<path d="${body.map((b,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+yR(b.d30).toFixed(1)).join(' ')}" style="fill:none;stroke:var(--bad);stroke-width:1.2"/>`;
   o+=`<text x="${L}" y="${T-2}">mm</text><text x="${L+w}" y="${T-2}" text-anchor="end">°C / dny</text>`;
