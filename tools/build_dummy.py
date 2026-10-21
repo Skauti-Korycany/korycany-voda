@@ -936,7 +936,7 @@ roky.forEach(r=>SEZ.forEach(([n,a,b,off])=>{const od=`${+r+off}-${a}`, do_=`${r}
 mesice.forEach(k=>opts.push([`m:${k}`,`${MES[+k.slice(5)-1]} ${k.slice(0,4)}`]));
 roky.forEach(r=>opts.push([`y:${r}`,`rok ${r} (zatím)`]));
 opts.push(['vl','vlastní od - do']);
-sel.innerHTML=opts.map(([v,t])=>`<option value="${v}">${t}</option>`).join(''); sel.value='p42';
+sel.innerHTML=opts.map(([v,t])=>`<option value="${v}">${t}</option>`).join(''); sel.value='p90';
 inOd.min=inDo.min=DNY[0]; inOd.max=inDo.max=LAST;
 function rozsah(){const v=sel.value; if(v==='vl') return [inOd.value||DNY[0],inDo.value||LAST];
   if(v[0]==='p') return [addD(LAST,1-parseInt(v.slice(1))),LAST]; if(v==='ytd') return [ROK+'-01-01',LAST];
@@ -999,7 +999,7 @@ function grafDenni(dd){
 function rocniky(od,do_,s){
   // porovnava se soucet celych kalendarnich mesicu uvnitr obdobi se stejnymi mesici v minulosti (jedine poctive srovnani pri mesicnich historickych datech)
   const mm=[]; for(let d=od.slice(0,7);d<=do_.slice(0,7);){const y=+d.slice(0,4),m=+d.slice(5); const a=d+'-01',b=d+'-'+dim(y,m); if(a>=od&&b<=do_&&DNY.filter(x=>x>=a&&x<=b).length>=dim(y,m)) mm.push([y,m]); d=m===12?`${y+1}-01`:`${y}-${String(m+1).padStart(2,'0')}`;}
-  if(!mm.length){ $('jb-roc').innerHTML=''; $('jb-roc-h').textContent='Srovnání ročníků'; $('jb-roc-n').textContent='Období neobsahuje žádný uzavřený celý měsíc, srovnání s minulými roky tu nejde udělat (historická data ČHMÚ jsou po měsících).'; $('jb-rank').innerHTML=''; return; }
+  if(!mm.length){ $('jb-roc').innerHTML=''; $('jb-roc-h').textContent='Srovnání ročníků'; $('jb-roc-n').textContent='Období neobsahuje žádný uzavřený celý měsíc, srovnání s minulými roky tu nejde udělat (historická data ČHMÚ jsou po měsících). Pro srovnání vyber delší období, např. posledních 90 dní, od začátku roku nebo celý měsíc.'; $('jb-rank').innerHTML=''; return; }
   const rokRef=mm[mm.length-1][0], ofs=mm.map(([y,m])=>[y-rokRef,m]);
   const body=[]; Object.keys(R).map(Number).forEach(r=>{ if(r===rokRef) return; const vs=ofs.map(([o,m])=>R[r+o]?R[r+o].Pm[m-1]:null); if(vs.every(v=>v!=null)) body.push([r,vs.reduce((a,b)=>a+b,0)]);});
   const letos=mm.map(([y,m])=>stat(`${y}-${String(m).padStart(2,'0')}-01`,`${y}-${String(m).padStart(2,'0')}-${dim(y,m)}`).P).reduce((a,b)=>a+b,0);
