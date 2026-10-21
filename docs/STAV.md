@@ -102,6 +102,7 @@ Zadání: `docs/POCASI-ZADANI.md`. Výsledek: záložka **Jak bylo** je první a
 - 2026: leden-září 289 mm = nejsušší z 90 let řady (září z Nemochovic); léto VI-VIII 112 mm = 4. nejsušší z 92; max 37,4 °C 5. 8. (rekord řady 2001-2025 byl 35,6); 28 tropických dní (rekord 29 v 2024); ET₀ do 19. 10. 907 mm, bilance -613 mm.
 
 ### Rozhodnutí (relace 9)
+- 21. 10. 2026 (relace 10, uživatel): dlouhý pohled 2001+ ukazuje i letošní neúplný rok (2026*, z denních dat `denni.json`): bilance a ET₀ jako součet do posledního dne, tropické dny; průměrná teplota se za neúplný rok nekreslí. Karty trendů zůstávají z úplných let. 3 nejsušší roky a deficit bilance seschlou barvou (--dry), karta tropických dní rudý proužek.
 - ET₀ = Hargreaves-Samani (shodné s napajedlaci.cz), ne Penman-Monteith; ET₀ se prezentuje jako referenční výpar a P-ET₀ jako klimatický deficit, ne odtok.
 - Srážky „Koryčany“ v pořadí: ČHMÚ Koryčany (manuální, chodí ~6 týdnů pozadu) -> suma hodin KS Koryčany PMO za klimatologický den 06-06 UTC (jen úplných 24 h) -> Nemochovice; zdroj je u každého dne (`zdroj_P`) a v grafu (světlejší sloupec = náhradní stanice).
 - Referenční období T a ET₀ = 2001-2025 (Nemochovice měří od 12/2000), ne 30letý normál; na stránce napsáno.
