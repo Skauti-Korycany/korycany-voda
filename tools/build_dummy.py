@@ -497,7 +497,7 @@ function cnZahrada(i){ const t=D.cn_tabulka['7']; const v=t.varianty[i.greenType
 function qmmP(P, cn){ if(!cn) return 0; const S=25400/cn-254, Ia=0.2*S; return P<=Ia?0:(P-Ia)*(P-Ia)/(P-Ia+S); }
 function greenRunoff(i){ const c=cnZahrada(i); const P=i.rain*1000; const w3 = i.nkey && D.navrhove.podil_tvaru_pct[i.nkey] ? Jadro.vahaCN3(D.navrhove.podil_tvaru_pct[i.nkey], D.navrhove.qAPI) : 0;
   const q2=qmmP(P,c.cn2s), q3=qmmP(P,c.cn3s), q=q2*(1-w3)+q3*w3; const Ia=0.2*(25400/c.cn2s-254);
-  let year=null; const H=D.srazky_hist; if(H){ let mm=0; for(let k=0;k<H.bin_mm.length;k++){ mm+=H.dni_za_rok[k]*qmmP(H.bin_mm[k],c.cn2s); } year=i.green*mm/1000; }
+  let year=null; const H=D.srazky_hist; if(H){ let mm=0; for(let k=0;k<H.bin_mm.length;k++){ mm+=H.dni_za_rok[k]*qmmP(H.bin_mm[k]-0.5,c.cn2s); } year=i.green*mm/1000; }
   return {...c, w3, q_mm:q, q2_mm:q2, q3_mm:q3, Ia_mm:Ia, out:i.green*q/1000, year}; }
 function runoff(i){
   const cR=1.0, cP=coef(i.pavedType,i.slope), g=greenRunoff(i);
