@@ -48,7 +48,7 @@
 <header><div class="wrap">
   <h1>Resilientní Koryčany - stav projektu</h1>
   <p>Osvětový model zadržování vody v krajině pro jednu obec. Nositel: skautský oddíl Hříběcí hory, Koryčany. Nekomerční, veřejné, otevřený kód a data.</p>
-  <p>Stav k 20. 10. 2026 · <a style="color:#f6f4ee" href="https://skauti-korycany.github.io/korycany-voda/">prototyp rozhraní v0.2</a> · <a style="color:#f6f4ee" href="https://skauti-korycany.github.io/korycany-voda/web/test.html">zkušební prohlížeč jádra</a> · <a style="color:#f6f4ee" href="https://github.com/Skauti-Korycany/korycany-voda">repozitář na GitHubu</a></p>
+  <p>Stav k 21. 10. 2026 · <a style="color:#f6f4ee" href="https://skauti-korycany.github.io/korycany-voda/">prototyp rozhraní v0.2</a> · <a style="color:#f6f4ee" href="https://skauti-korycany.github.io/korycany-voda/web/test.html">zkušební prohlížeč jádra</a> · <a style="color:#f6f4ee" href="https://github.com/Skauti-Korycany/korycany-voda">repozitář na GitHubu</a></p>
 </div></header>
 
 <div class="wrap">
@@ -77,6 +77,7 @@
   <span><span class="fill" style="background:rgba(31,95,139,.18)"></span>dílčí povodí (hlásné profily, obce)</span>
   <span><i style="border-color:#1f5f8b"></i>vodní toky (ČÚZK)</span>
   <span><span class="fill" style="background:#e07b00;border-color:#e07b00"></span>budovy (od přiblížení 15)</span>
+  <span><span class="fill" style="background:rgba(160,40,120,.18);border-color:#a02878"></span>kritické body přívalových povodní a jejich přispívající plochy (VÚV TGM, CC BY 4.0)</span>
 </div>
 <p class="note" style="color:var(--muted);font-size:.9rem">Podklad: Základní topografická mapa ČÚZK (WMTS, "ČÚZK - on-line"). Kliknutím na povodí nebo budovu se zobrazí údaje.</p>
 
@@ -93,6 +94,7 @@
 <tr><td>Srážky</td><td>Otevřená data ČHMÚ: v Koryčanech je manuální srážkoměrná stanice ČHMÚ (305 m n. m., 1,2 km od středu území) s denními úhrny od roku 1920 (88 úplných let). Normál 1991-2020 je 632 mm; maximum 114 mm za den (2. 7. 1954), 93,5 mm (12. 6. 2012). Orientační N-leté denní úhrny (Gumbel, do modelu až hodnoty ČHMÚ/ČSN 75 9010): 2 roky 37 mm, 10 let 58 mm, 100 let 84 mm. Hodinová a desetiminutová data z automatických stanic Nemochovice (7,8 km) a Staré Hutě (9,4 km) pro léto 2026. Léto 2026 (VI-VIII) v Koryčanech 113 mm = polovina normálu.</td></tr>
 <tr><td>Katastrální parcely</td><td>INSPIRE Katastrální parcely ČÚZK (CC BY 4.0) pro k. ú. Koryčany, Blišice, Jestřabice a Lískovec u Koryčan, ořezané na území modelu: 7 013 parcel, z toho 1 136 se stavbou rodinného domu. Jen parcelní číslo, k. ú., výměra a půdorysy budov; vlastníci, listy vlastnictví ani adresy se nestahují.</td></tr>
 <tr><td>Výpočetní jádro</td><td>JavaScript v prohlížeči nad rastry 5 m (9 pásem jako PNG, 5 MB): odtok SCS-CN po buňkách, statistika libovolného pozemku (plocha, CN, sklon, využití, půda), povodí libovolného bodu, orientační zátopa nádrže z terénu. 22 automatických testů, shoda s výpočtem v Pythonu. Dokumentace vzorců a zdrojů v <a href="docs/JADRO.md">docs/JADRO.md</a>.</td></tr>
+<tr><td>Přívalové povodně</td><td>Kritické body VÚV TGM (CC BY 4.0): v Koryčanech dva, oba lesní povodí v Chřibech - horní Stříbrník (326 ha) a údolí východně od středu města (111 ha); naše rozvodnice z DMR 5G dávají 325 a 112 ha (shoda). Povodňový plán města označuje povodí Stříbrníku jako místo ohrožené bleskovou povodní. Reakce Stříbrníku u Kachníku na déšť léto 2026 vyhodnocena z čidla hlásné služby (max +24 cm, bouřka odteče do 12 h).</td></tr>
 <tr><td>Měření</td><td>Inventura hlásných profilů; vlastní optické čidlo na Stříbrníku u Kachníku (léto 2026, 7 epizod přívalů, porovnáno s hodinovými srážkami ČHMÚ); žádost o data Povodí Moravy v přípravě. Žádost o půdní data VÚMOP odeslána 19. 10. 2026.</td></tr>
 <tr><td>Prototyp rozhraní v0.2</td><td>Běží nad skutečnými daty: Můj pozemek (klik vybere parcely z katastru, sklon z DMR 5G, půda z BPEJ, okolí ze ZABAGED), Celé území (odtok z polí, luk a lesa po třídách se scénáři hospodaření podle Janeček 2012; velké střechy podle účelu budov: 75 průmyslových budov má 6,5 ha střech = 56 % plochy střech všech 957 rodinných domů), Katalog, O modelu. Nádrže a poldry, eroze, transformace vlny a výpar zatím nejsou. Běží na GitHub Pages.</td></tr>
 </table>
@@ -166,6 +168,12 @@
   });
   get('data/toky_cuzk.geojson', function(gj){
     L.geoJSON(gj, {style:function(f){return {color:'#1f5f8b',weight:f.properties.v_uzemi_modelu?2:1,opacity:f.properties.v_uzemi_modelu?.9:.45}}}).addTo(map);
+  });
+  get('data/kriticke_body.geojson', function(gj){
+    L.geoJSON(gj, {filter:function(f){return f.properties.typ==='prispivajici_plocha'}, style:{color:'#a02878',weight:1.5,dashArray:'3 3',fillColor:'#a02878',fillOpacity:.12},
+      onEachFeature:function(f,l){var p=f.properties;l.bindPopup('<b>Přispívající plocha kritického bodu '+p.id_kb+'</b><br>'+p.obec+', '+p.plocha_ha+' ha, sklon '+p.sklon_pct+' %, orná '+p.orna_pct+' %<br>VÚV TGM 2009, CC BY 4.0');}}).addTo(map);
+    L.geoJSON(gj, {filter:function(f){return f.properties.typ==='kriticky_bod'}, pointToLayer:function(f,ll){return L.circleMarker(ll,{radius:6,color:'#a02878',weight:2,fillColor:'#fff',fillOpacity:.9});},
+      onEachFeature:function(f,l){var p=f.properties;l.bindPopup('<b>Kritický bod '+p.id_kb+'</b> ('+p.obec+')<br>přispívající plocha '+p.plocha_ha+' ha, sklon '+p.sklon_pct+' %, orná '+p.orna_pct+' %<br>uzávěr na hranici intravilánu; VÚV TGM 2009, CC BY 4.0');}}).addTo(map);
   });
   var bud = null;
   get('data/budovy.geojson', function(gj){

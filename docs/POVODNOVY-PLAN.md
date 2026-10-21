@@ -29,7 +29,11 @@ Doplňková pravidla SPA v dPP: I. SPA i při dešti trvajícím přes 4 h, II. 
 ## Odtokové poměry a přívaly
 - Místo ohrožené bleskovou povodní (POVIS): **„Povodí potoka Stříbrník“** - bez souřadnic a plochy. Potvrzuje volbu Stříbrníku jako hlavního dílčího povodí modelu.
 - Místo omezující odtok: **mostek na silnici 43231** (tok a ř. km neuvedeny).
-- Kritické body přívalových povodní (metoda VÚV TGM, DMT 10 m): ID 41 202 859 (přispívající plocha 111 ha, sklon 23,1 %, orná 0 %) a ID 41 202 864 (326 ha, sklon 22,2 %, orná 0 %) - souřadnice v dPP nejsou; oba mají 0 % orné půdy, tedy lesní povodí (Chřiby). Dohledat polohu v dPP ČR (dppcr.cz) nebo v POVIS.
+- Kritické body přívalových povodní (metoda VÚV TGM, DMT ZABAGED 10 m, verze 31. 12. 2009): **dohledáno 21. 10. 2026** - data VÚV „Kritické body a jejich přispívající plochy“ ✅ heis.vuv.cz/uap/kritbody, **CC BY 4.0**, shapefile celé ČR (9 261 bodů), výřez v `data/kriticke_body.geojson` (15 bodů kolem Koryčan + 5 přispívajících ploch), zobrazeno na stav.html.
+  - **KB 41 202 864**: S-JTSK -558 448 / -1 175 285 (49.1043 N, 17.1706 E), uzávěr na jižním okraji intravilánu (ul. Lhotka) = **horní povodí Stříbrníku**, 326 ha, sklon 22 %, orná 0 %. Naše povodí bodu z DMR 5G: **325 ha**, les 311 ha, CN 65,5 - shoda.
+  - **KB 41 202 859**: S-JTSK -557 437 / -1 174 495 (49.1116 N, 17.1839 E), uzávěr na východním okraji středu města, lesní údolí z Chřibů od jihu, 111 ha, sklon 23 %, orná 0 %. Naše povodí (přichycení 30 m): **112 ha**, les 109 ha, CN 76 (HSP D z BPEJ odhadem - v lese neověřeno) - shoda plochy.
+  - Sousední body (Mouchnice 207 ha, Nemotice 55 ha - orná 99-100 %; Kožušice, Zástřizly, Osvětimany) leží mimo území modelu; zařazeny v GeoJSON pro kontext.
+  - Význam: oba koryčanské body jsou čistě lesní povodí -> opatření jsou LES (stav porostu, cesty, svodnice) a retence v údolnici nad intravilánem (poldr/tůně, katalog T/LES), ne orná půda. Odtok SCS-CN z 53 mm (N10): 19 tis. m³ (Stříbrník) a 14-16 tis. m³ (východní údolí).
 - Dráhy soustředěného odtoku: linie s přispívající plochou > 5 ha, jen mapa.
 - Záplavové území Kyjovky ř. km 70,200-84,680 (KÚ Zlínského kraje, 30. 7. 2004, č. j. KUZL 7819/2004 ŽPZE-DZ), PDF editor.dppcr.cz/pk_zuz/doc/zapluz/cz072_15.pdf.
 - Rybníky Kachník (intravilán) a Prokop (J okraj) podle dPP „bez významného vlivu na odtokové poměry“.
