@@ -134,6 +134,25 @@ zdroj("praha14_voda2022", "MČ Praha 14, leták Voda (2022): spotřeba domácnos
 zdroj("madzia2019", "Madzia M. a kol. 2019: Reduction of Treated Water Use through Application of Rainwater Tanks in Households, J. Ecol. Eng. 20(9):156-161 (Bielsko-Biała)", "https://www.jeeng.net/Reduction-of-Treated-Water-Use-through-Application-of-Rainwater-Tanks-in-Households,112495,0,2.html", 2019, "overeno", "nomogram/výpočet, ne měření; vyšší srážky než Koryčany")
 zdroj("csu2024_voda", "ČSÚ 2. 5. 2024: Domácnosti vodou nadále šetří - spotřeba 86,7 l/os/den (2023)", "https://csu.gov.cz/produkty/domacnosti-vodou-nadale-setri-v-prumyslu-jeji-spotreba-mirne-roste", 2024, "overeno")
 
+# --- blok A rešerše dobré praxe (horko v obci), 21. 10. 2026
+zdroj("tacr2021_horko", "TAČR, tisková zpráva 5. 8. 2021: CzechGlobe + UPOL, riziko teplotního stresu ve městech (program ZÉTA; měření Olomouc 24. 7. 2018, Brno, Ostrava, Plzeň)", "https://tacr.gov.cz/wp-content/uploads/2022/08/220805_riziko-teplotniho-stresu-ve-mestech.pdf", 2021, "overeno", "pocitová teplota; samotná metodika a mapy pro města nedohledány")
+zdroj("ct24_2022_horko", "ČT24 8. 8. 2022: I trávník pomůže - doporučení CzechGlobe/UPOL pro města", "https://ct24.ceskatelevize.cz/veda/3520774-i-travnik-pomuze-vedci-pripravili-doporuceni-ktera-maji-pomoci-ceskym-mestum-zvladat", 2022, "overeno")
+zdroj("zhaw2023_mlzeni", "Suter, Drossaart van Dusseldorp, Anet (ZHAW), EGU 2023: mlžení Turbinenplatz Curych, 180 trysek, měření 12. 7.-26. 9. 2022", "https://meetingorganizer.copernicus.org/EGU23/EGU23-13652.html", 2023, "overeno", "konferenční abstrakt, jedna sezóna")
+zdroj("wien_coolspot", "Wien MA 20: Coolspot / Cooling Park Esterházypark (2020, projekt Tröpferlbad 2.0)", "https://www.wien.gv.at/umwelt/energie-projekt-coolspot-im-esterhazypark", 2020, "overeno", "'až 6 °C' bez metodiky")
+zdroj("coollife2025_wien", "CoolLIFE / IEECP factsheet 9/2025: Urban Heat Action Plan Vienna (29 opatření, pítka, Coole Zonen, mlžení)", "https://ieecp.org/wp-content/uploads/2025/12/CoolLIFE_GoodPractices_AustriaHeatActionPlanVienna.pdf", 2025, "overeno", "jen počty, účinky neměřeny")
+zdroj("rivm2026_nl", "Climate-ADAPT 18. 6. 2026: Evaluating the effectiveness of the Dutch national heatwave plan (RIVM 2024-2025)", "https://climate-adapt.eea.europa.eu/en/metadata/case-studies/evaluating-the-effectiveness-of-the-dutch-national-heatwave-plan", 2026, "overeno")
+zdroj("aarau2022", "Stadt Aarau, odpověď na dotaz P. Benze 19. 9. 2022: dočasné stínící plachty", "https://www.aarau.ch/public/upload/assets/18407/2022-51%20Beantwortung%20Anfrage%20Pascal%20Benz%20%28FDP%29%2C%20Einsatz%20tempor%C3%A4rer%20Sonnensegel%20in%20Aarau.pdf", 2022, "overeno")
+zdroj("enki_stromy", "Pokorný J. (ENKI Třeboň), Ratajc U.: Jak stromy chladí, poster (bez roku; citace 2001-2013)", "https://mladimyslivci.cmmj.cz/wp-content/uploads/sites/99/2025/03/Jak_stromy_chladi.pdf", None, "overeno", "IR snímky, jednotlivá měření")
+zdroj("earthwatch_fr", "Earthwatch Europe / PANORAMA: Measuring the effects of trees on heat mitigation in Northern France (48 000 měření, 2 roky; aktualizace 11/2020)", "https://panorama.solutions/en/solution/measuring-effects-trees-heat-mitigation-northern-france", 2020, "overeno_stare")
+zdroj("ct24_2021_eth", "ČT24 25. 11. 2021: Schwaab a kol. (ETH Curych), Nature Communications 2021, DOI 10.1038/s41467-021-26768-w - povrchová teplota se stromy vs. bez, ~300 evropských měst", "https://ct24.ceskatelevize.cz/veda/3405168-stromy-vyrazne-ochlazuji-mestske-plochy-ubrat-mohou-az-12-stupnu-ukazuje-studie", 2021, "citace", "originál neotevřen; povrch, ne vzduch")
+zdroj("dach2019_lee", "Lee H. (Stuttgart), Mayer H. (Freiburg), DACH 2019: ENVI-met simulace stromů v ulicích a parcích", "https://meetingorganizer.copernicus.org/DACH2019/DACH2019-24.pdf", 2019, "overeno_stare", "model, bez čísel")
+zdroj("koeniz2025", "Grolimund + Partner / ASTRA / BFH 2025: pilot světlého asfaltu Waldeggstrasse, Köniz (faktenblatt 22. 4. 2026)", "https://www.koeniz.ch/public/upload/assets/24417/260422%20faktenblatt_auswertung_pilotprojekt_waldeggstrasse.pdf", 2026, "overeno")
+zdroj("stz2026_kornwestheim", "Stuttgarter Zeitung 7. 10. 2026: Kornwestheim, Silcherschule - 56,2 °C na školním dvoře, přestavba za 37 000 €", "https://www.stuttgarter-zeitung.de/lokales/ludwigsburg/hitze-in-kornwestheim-562-grad-auf-schulhof-gemessen-so-reagiert-die-stadt-jetzt-79527198.html", 2026, "overeno")
+zdroj("dresden_huckepack", "ReKIS / Sachsen EuK: Montessorischule Huckepack Dresden, stavební ochrana před horkem 2025-2027", "https://rekis.hydro.tu-dresden.de/wp-content/uploads/2026/07/GPB_Steckbrief_FRL-EuK_Montessori-Huckepack_Formatvorlage-Fachbeitrag.pdf", 2026, "overeno", "v běhu, bez měření")
+zdroj("adapterra2026", "businessinfo.cz 26. 8. 2026: finalisté Adapterra Awards 2026 (mj. školní zahrada Červená Voda 2 000 m²)", "https://www.businessinfo.cz/clanky/ziska-cenu-mokrad-pole-nebo-zachranarske-zakladny-o-vitezi-adapterra-awards-2026-rozhodne-i-verejnost/", 2026, "overeno")
+zdroj("adapterra2023", "businessinfo.cz 2. 11. 2023: vítězové Adapterra Awards 2023 (zvl. ocenění Obnova údolní nivy řeky Kyjovky)", "https://www.businessinfo.cz/clanky/adapterra-awards-soutez-zna-viteze-ocenila-nejlepsi-ekologicke-projekty/", 2023, "overeno")
+zdroj("pmo2009_korycany_cov", "Plán oblasti povodí Dyje 2009, list opatření DY100033 Koryčany - rekonstrukce ČOV (jednotná kanalizace s OK, 4 100 EO)", "https://avd.pmo.cz/pop/2009/Dyje/end/c-stav/listyopatreni/c4_06/2_ostatni/dy100033.pdf", 2009, "overeno_stare", "stav po rekonstrukci neověřen")
+
 # ------------------------------------------------------- dotační programy
 PROGRAMY = {
  "vlastni": {"nazev": "Vlastní prostředky", "zadatel": ["J","V","O","S","SP"], "stav": "vzdy", "pozn": None, "zdroj": None},
@@ -443,6 +462,49 @@ op("U07", "Školní zahrada jako ukázkový pozemek", ["U","Z"], ["S","O"], 1, [
    vhodnost={"areal_skoly": True}, vazby={"potrebuje": [], "synergie": ["Z01","Z02","Z05","Z06","Z08","S01","S02","M01","M02","M03","M04","M05","M06"], "konflikt": []}, povoleni=0, povoleni_pozn="0-1",
    ceny=[], financovani=["opzp_1_3_4","participativni","vlastni"])
 
+# ===== H organizační opatření obce při vedrech + U08 (blok A, 21. 10. 2026)
+op("U08", "Mlžení a kropení při letních hromadných akcích (mlžná brána, tryska na hydrantu)", ["U","H"], ["O","S"], 1, ["CH"], [], "lokalita",
+   popis="Mlžná brána nebo tryska na hydrantu na hodech, táboře, sportovním dni nebo trhu v horkém dni. Pomůže lidem, kteří stojí přímo u ní; ulici ani obec neochladí. Jako trvalý prvek nemá smysl (rozhodnutí 21. 10. 2026), jen pro akce.",
+   kvant=[kv("CH","hodnota","Vzduch v průměru -0,7 °C, max. -2,5 °C (Curych 2022, 180 trysek, jen za provozu, nejvíc při nízké vlhkosti po větru); autoři účinek označují za slabý", rozsah=[0.7,2.5], jednotka="°C vzduch", zdroj=["zhaw2023_mlzeni"], znacka="overeno"),
+          kv("CH","hodnota","Vodní prvky (trysky, mlžné brány) vzduch cca -1,2 °C jen v bezprostředním okolí; kropení ploch -1,3 až -3,1 °C pocitově na max. ~20 min; kašny na náměstí minimální účinek (CzechGlobe/UPOL)", rozsah=[1.2,3.1], jednotka="°C", zdroj=["tacr2021_horko","ct24_2022_horko"], znacka="overeno")],
+   vhodnost={"misto_typ": ["náměstí při akci","hřiště","tábořiště","školní dvůr"], "podminka": "jen v horkém dni za provozu; přístup k hydrantu nebo nádrži"},
+   vazby={"potrebuje": [], "synergie": ["H01","H02","Z06"], "konflikt": []}, povoleni=1, povoleni_pozn="souhlas provozovatele vodovodu (hydrant) 💻; hygiena vody v mlžení ověřit s KHS 💻",
+   ceny=[NEOVERENA], financovani=["vlastni"], standardy=[],
+   priklady=[pr("Curych, Turbinenplatz", "kruh 180 vysokotlakých trysek na náměstí, měření ZHAW celé léto 2022; mimo provoz nulový rozdíl", kdy="2022", kdo="město Curych, ZHAW", mereno="teplota vzduchu vs. referenční stanice", zdroj=["zhaw2023_mlzeni"]),
+             pr("Vídeň", "100 mlžných sprch 'Sommerspritzer' a 75 mobilních 'Brunnhilde' na hydrantech při výstraze; Cooling Park Esterházypark (2020) uvádí 'až 6 °C' bez metodiky", kdy="2020-2025", kdo="město Vídeň", mereno=None, zdroj=["coollife2025_wien","wien_coolspot"])],
+   prenositelnost="Pro Koryčany jen jako vybavení letních akcí (hody, tábor, sportovní den): tryska na hydrant nebo IBC s čerpadlem 🤔. Trvalé mlžení na náměstí ne - účinek do 2,5 °C jen za provozu a spotřeba pitné vody v suchu.",
+   rizika="Ochladí místo, ne obec; kašna sama nic. Spotřeba pitné vody v suchu; hygiena rozprašované vody (legionely 💻). Vídeňské 'až 6 °C' nemá metodiku, nepřebírat.",
+   nedohledano=["cena a spotřeba vody mlžné brány (l/h)","hygienické podmínky KHS pro mlžení"],
+   pozn_poctivost="Účinek je malý a jen za provozu; v aplikaci se do součtů nepočítá.")
+
+op("H01", "Chladná místa, pitná voda a varování při vlně veder (organizační plán obce)", ["H","U"], ["O","S"], 1, ["CH"], [], "uzemi", kontext=True,
+   popis="Obec před létem určí a zveřejní chladná místa (knihovna, kostel, úřad, škola), zajistí pitnou vodu (pítko, kohoutek na náměstí), při výstraze ČHMÚ rozešle varování seniorům a pečovatelům (rozhlas, SMS), posune časy akcí a prací. Nic se nestaví, jde o domluvu. Nemění teplotu v obci, snižuje riziko pro lidi.",
+   kvant=[kv("CH","hodnota","Nizozemský národní plán vedra (od 2007): odhad úmrtí z vedra v aktivačních dnech cca 4 200 (2000-2009) -> 2 400 (2010-2019); u 90+ podíl z úmrtí 2,0 -> 1,3 %; plán 'mohl přispět' (pokles začal už 2007-2011 po vlnách 2003/2006)", rozsah=[2400,4200], jednotka="úmrtí za dekádu (NL)", zdroj=["rivm2026_nl"], znacka="overeno"),
+          kv("CH","kvalitativne","Vídeň: 29 opatření, ~1 600 pítek, 22 chladných zón VI-IX, kaskáda varování nemocnicím, pečovatelům a školám; účinky neměřeny, jen počty", zdroj=["coollife2025_wien"], znacka="overeno")],
+   vhodnost={"vsude": True},
+   vazby={"potrebuje": [], "synergie": ["U08","H02","Z06","U01"], "konflikt": []}, povoleni=0, povoleni_pozn="usnesení rady/zastupitelstva, dohoda s pečovatelskou službou a školou",
+   ceny=[cena("pítko, hlášení rozhlasem, seznam míst", None, "Kč", 2026, None, pozn="cena neověřena; 🤔 řádově tisíce až desetitisíce Kč")], financovani=["vlastni"], standardy=[],
+   priklady=[pr("Nizozemsko (celá země)", "národní plán vedra: varování + rady pro seniory, pečovatele a zdravotníky; 20 aktivací 2010-2026; vyhodnoceno RIVM 2024-2025 (epidemiologie, průzkum 804 seniorů, 586 pečujících, 405 zdravotníků)", kdy="2007-2025", kdo="RIVM, ministerstvo zdravotnictví, KNMI, Červený kříž", mereno="úmrtnost z vedra po dekádách; 9 z 10 lidí si rady v létě 2025 vybavilo; 1 ze 3 seniorů si myslí, že se ho netýkají", zdroj=["rivm2026_nl"]),
+             pr("Vídeň", "Hitzeaktionsplan 2022, roční vyhodnocení po sezóně; výstraha při >= 3 dnech pocitově >= 35 °C a nocích >= 20 °C; 10 ohrožených skupin", kdy="2022-2025", kdo="město Vídeň", mereno=None, zdroj=["coollife2025_wien"])],
+   prenositelnost="Plně. Pro Koryčany: seznam chladných míst na webu a rozhlasem, pítko na náměstí, dohoda s pečovatelskou službou, škola (posun tělocviku, voda ve třídách). Práh varování převzít z výstrah ČHMÚ (SIVS), ne vídeňský 🤔.",
+   rizika="Účinek doložen jen pro celostátní systém a 'mohl přispět'; lokální efekt v obci neměřitelný. 'Chladná zóna' bez klimatizace nebo masivní stavby chladná není 🤔. Nemění mikroklima.",
+   nedohledano=["české vyhodnocení účinku výstrah ČHMÚ/MZ","vzor plánu vedra pro obec do 3 000 obyvatel"],
+   pozn_poctivost="Opatření pro lidi, ne pro krajinu; v aplikaci bez čísla v součtech.")
+
+op("H02", "Stínění veřejných míst plachtami, pergolami s popínavkami, přístřešky (zastávka, hřiště, školní dvůr)", ["U","H"], ["O","S"], 2, ["CH"], [], "lokalita",
+   popis="Tam, kde strom nevyroste dost rychle nebo nejde zasadit (sítě, dlažba, zastávka, hřiště), zastínit plachtou, pergolou s popínavkou nebo přístřeškem. Strom zůstává první volba (stín + výpar); plachta je náhrada na dobu, než strom doroste.",
+   kvant=[kv("CH","hodnota","Ve stínu (stromu) pocitová teplota o 8,3-10,9 °C nižší než na osluněné dlažbě (CzechGlobe/UPOL); pro plachty samostatné měření nedohledáno", rozsah=[8.3,10.9], jednotka="°C pocitově (stín stromu)", zdroj=["tacr2021_horko"], znacka="overeno"),
+          kv("CH","hodnota","Slunečník povrch 51,3 °C vs. koruna stromu 32,7 °C (IR snímek, ENKI): plachta se sama ohřívá a sálá", rozsah=[32.7,51.3], jednotka="°C povrch", zdroj=["enki_stromy"], znacka="overeno"),
+          kv("CH","kvalitativne","Aarau 2022: město odmítlo uvést paušální číslo; pevné plachty brání nočnímu chladnutí, stíní, ale neodpařují; preferuje zeleň", zdroj=["aarau2022"], znacka="overeno")],
+   vhodnost={"misto_typ": ["zastávka","hřiště","školní dvůr","tribuna","trh"], "vyloucit": ["místo, kde lze zasadit strom"]},
+   vazby={"potrebuje": [], "synergie": ["Z06","Z09","U07","H01"], "konflikt": []}, povoleni=1, povoleni_pozn="konstrukce: ohlášení nebo stavební povolení podle velikosti 🤔; sítě",
+   ceny=[NEOVERENA], financovani=["vlastni","opzp_1_3_4"], standardy=[],
+   priklady=[pr("Solothurn, Amtsplatz", "lanková pergola s popínavkami nad náměstím (zmíněno v odpovědi města Aarau jako vzor rostlinného stínění)", kdy=None, kdo="město Solothurn", mereno=None, zdroj=["aarau2022"], znacka="citace"),
+             pr("Kornwestheim, Silcherschule", "asfalt školního dvora 56,2 °C ve 13:30, ve stínu 29,7 °C (termokamera města, červenec 2026); řešení stromy a štěpka, ne plachty", kdy="2026", kdo="město Kornwestheim", mereno="povrch termokamerou", zdroj=["stz2026_kornwestheim"])],
+   prenositelnost="Zastávky, hřiště, školní dvůr, tribuna, trh. Pergola s popínavkou (Z09) spojuje stín a výpar a je lepší než holá plachta.",
+   rizika="Plachta se ohřívá a sálá; stíní jen pod sebou; pevná konstrukce blokuje noční vychladnutí; vítr a sníh (demontáž na zimu). Neřeší vodu.",
+   nedohledano=["měření teploty pod plachtou vs. pod stromem ve střední Evropě","cena"])
+
 # ===== P orná půda
 op("P01", "Protierozní mez, zatravněný pás, biopás po vrstevnici", ["P"], ["V"], 2, ["ER","Q","I"], ["B","E"], "lokalita",
    kvant=[kv("ER","vzorec","Pás zkracuje délku svahu L v USLE a má C 0,01", vzorec="A = R*K*LS(L_zkracene)*C*P", zdroj=["kalkulacka_manual","dumbrovsky2021"]),
@@ -650,7 +712,7 @@ NASTROJE = [
 ]
 
 CISELNIKY = {
- "misto": {"Z":"zahrada, dvůr","S":"střecha, stavba","U":"veřejný prostor obce","P":"orná půda","L":"louka, pastvina","LES":"les","T":"tok, niva, prameniště","C":"cesta, svah, strž"},
+ "misto": {"Z":"zahrada, dvůr","S":"střecha, stavba","U":"veřejný prostor obce","P":"orná půda","L":"louka, pastvina","LES":"les","T":"tok, niva, prameniště","C":"cesta, svah, strž","H":"organizační opatření obce při vedrech"},
  "rozhoduje": {"J":"jednotlivec na svém pozemku","V":"vlastník půdy (přes pacht N01 nebo vyjmutí N02)","O":"obec","SP":"správce toku/lesa (Povodí Moravy, LČR)","S":"škola","zemedelec":"uživatel DPB (jen pro SZP dotace)"},
  "pracnost": {"1":"víkend a ruce","2":"dny až týdny, malá technika","3":"projekt + firma"},
  "ucinek": {"R":"zadržení objemu","I":"infiltrace do půdy","Q":"zpomalení odtoku","E":"omezení neproduktivního výparu / větru","CH":"ochlazení mikroklimatu","ER":"protierozní","B":"biodiverzita","W":"šetření pitnou vodou"},
@@ -661,7 +723,7 @@ CISELNIKY = {
 }
 
 DATA = {
- "meta": {"nazev":"Katalog opatření - Koryčany resilience","verze":"0.5","datum":DNES,"licence_dat":"CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
+ "meta": {"nazev":"Katalog opatření - Koryčany resilience","verze":"0.6","datum":DNES,"licence_dat":"CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
           "upozorneni":"Zjednodušený osvětový model, ne projektová dokumentace. Každé číslo má zdroj a značku původu. Ceny jen se zdrojem a datem; jinak 'cena neověřena'. Paragrafy vodního zákona ověřit v e-Sbírce.",
           "zdroje_md":["claude/KATALOG.md","claude/KATALOG-Z-S.md","claude/KATALOG-U-P.md","claude/KATALOG-L-LES-T-C.md","claude/KATALOG-RESERSE.md"]},
  "ciselniky": CISELNIKY, "konstanty": KONSTANTY, "zdroje": Z, "programy": PROGRAMY, "nastroje": NASTROJE, "opatreni": O,
@@ -737,6 +799,41 @@ doplnit("Z02",
    rizika="V suchém létě je výpar z hladiny větší než srážky (vlastní data projektu, sekce Počasí): malá tůň bez přítoku na HSP C/D vyschne nebo žádá dolévání 🤔. Nepočítat ji jako zdroj zálivky.",
    nedohledano=["výpar zahradní tůně l/den (jen bazénové tabulky a diskuse)"])
 
+# --- doplňky blok A (horko v obci), 21. 10. 2026
+doplnit("Z06",
+   kvant=[kv("CH","hodnota","ČR (CzechGlobe/UPOL, Olomouc 2018): ve stínu stromu na otevřené ploše pocitová teplota -8,3 až -10,9 °C, v ulici -2,8 až -7,6 °C; vzduch -0,4 až -2,1 °C podle denní doby; v noci +0,1 až +1,3 °C", rozsah=[0.4,2.1], jednotka="°C vzduch (ČR)", zdroj=["tacr2021_horko","ct24_2022_horko"], znacka="overeno"),
+          kv("CH","hodnota","Pod stromem vs. u jižní stěny až -11,5 °C v poledne (šedý globe teploměr, 48 000 měření, 2 roky, severní Francie)", hodnota=11.5, jednotka="°C globe", zdroj=["earthwatch_fr"], znacka="overeno_stare"),
+          kv("CH","hodnota","Povrch zástavby se stromy o 8-12 °C chladnější než bez stromů (satelit, ~300 evropských měst, střední Evropa); tráva 2-4x slabší; rozdíl ve vzduchu menší", rozsah=[8,12], jednotka="°C povrch", zdroj=["ct24_2021_eth"], znacka="citace")],
+   priklady=[pr("Olomouc (a Brno, Ostrava, Plzeň)", "terénní měření pocitové teploty ve stínu stromů, v ulicích, u vodních prvků a na trávnících, 24. 7. 2018; doporučení a mapy horkých míst pro 4 města", kdy="2018-2022", kdo="CzechGlobe, UPOL (TAČR ZÉTA)", mereno="pocitová a vzduchová teplota, stín vs. osluněná dlažba", zdroj=["tacr2021_horko","ct24_2022_horko"]),
+             pr("Severní Francie", "občanská věda Earthwatch: 48 000 měření u stromů vs. u zdí a asfaltu, 2 roky", kdy="2018-2020", kdo="Earthwatch Europe", mereno="globe teplota", zdroj=["earthwatch_fr"], znacka="overeno_stare")],
+   pozn_poctivost="Tři různá čísla: povrch pod stromem 8-25 °C, pocitová teplota ve stínu 3-11 °C, vzduch 0,4-2 °C (ČR). EPA 'až 5 °C vzduch' platí pro velké skupiny stromů; pro jeden strom v Koryčanech počítat s CzechGlobe 0,4-2,1 °C.")
+
+doplnit("U01",
+   kvant=[kv("CH","hodnota","Stromy v ulici: pocitová teplota -2,8 až -7,6 °C ve dne, +0,1 až +1,3 °C v noci; vzduch -0,4 až -2,1 °C (CzechGlobe/UPOL); stromy na jižním chodníku ulice V-Z důležitější než na severním (model Lee & Mayer 2019)", rozsah=[2.8,7.6], jednotka="°C pocitově", zdroj=["tacr2021_horko","dach2019_lee"], znacka="overeno")],
+   priklady=[pr("Olomouc", "měření v ulicích, CzechGlobe/UPOL 2018", kdy="2018", kdo="CzechGlobe, UPOL", mereno="pocitová teplota v uličním kaňonu", zdroj=["tacr2021_horko"])],
+   rizika="V noci stromy mírně zadržují teplo (+0,1 až +1,3 °C pocitově). Umisťovat podle map horkých míst, ne nahodile (CzechGlobe).")
+
+doplnit("S04",
+   kvant=[kv("CH","hodnota","Světlý asfalt (albedo 0,12-0,16 vs. 0,08): povrch o 4-5,5 °C chladnější v nejteplejší fázi dne; radiační teplota pro chodce o 0,6 °C vyšší (v rámci nejistoty) - pro lidi na ulici bez zlepšení (Köniz 2025)", rozsah=[4,5.5], jednotka="°C povrch vozovky", zdroj=["koeniz2025"], znacka="overeno")],
+   priklady=[pr("Köniz (Bern), Waldeggstrasse", "pilot ASTRA: světlé kamenivo v asfaltu, měření povrchu, vzduchu a globe teploty červen-červenec 2025", kdy="2025", kdo="ASTRA, Grolimund + Partner, BFH", mereno="povrch -4 až -5,5 °C; globe +0,6 °C", zdroj=["koeniz2025"]),
+             pr("Aarau", "město světlé vozovky odmítlo z finančních a ekologických důvodů, preferuje zeleň", kdy="2022", kdo="město Aarau", mereno=None, zdroj=["aarau2022"])],
+   rizika="Na střeše ano; na chodníku a náměstí odraz vadí chodcům a povrch chladí jen sebe. Není náhrada stromů.")
+
+doplnit("U02",
+   kvant=[kv("CH","hodnota","Světlý asfalt: povrch -4 až -5,5 °C, pro chodce bez zlepšení (Köniz 2025); trávník v centru vzduch -0,9 °C proti dlažbě (CzechGlobe)", rozsah=[0.9,5.5], jednotka="°C", zdroj=["koeniz2025","tacr2021_horko"], znacka="overeno")],
+   rizika="Propustná dlažba chladí jen tehdy, když je v ní voda nebo tráva s kontaktem s podložím; suchá dlažba se chová jako asfalt 🤔.")
+
+doplnit("U06",
+   kvant=[kv("CH","hodnota","Trávník v centru: vzduch -0,9 °C proti osluněné dlažbě; zalévaný trávník povrch až o 20 °C chladnější než nezalévaný; trávník bez kontaktu s podložím má povrch jako beton (CzechGlobe/UPOL)", rozsah=[0.9,20], jednotka="°C (vzduch / povrch)", zdroj=["tacr2021_horko","ct24_2022_horko"], znacka="overeno")],
+   rizika="V suchu bez závlahy účinek trávníku na horko mizí (suchý trávník ~ dlažba 🤔 odvozeno).")
+
+doplnit("U07",
+   priklady=[pr("Kornwestheim (Bádensko-Württembersko), Silcherschule", "termokamera města: asfalt dvora 56,2 °C ve 13:30, stín 29,7 °C; odstranění asfaltu, 2 stromové mísy se štěpkou, stromy, cesty z kůry, sezení z kamene a kmenů; 37 000 € (15 000 € dotace Klimopass), městské zahradnictví 3-4 týdny", kdy="2026", kdo="město Kornwestheim", mereno="povrch termokamerou před úpravou", zdroj=["stz2026_kornwestheim"]),
+             pr("Drážďany, Montessorischule Huckepack", "fólie na okna, markýzy, noční provětrávání, odstranění asfaltu, stromy, plachty, nádrž na dešťovou vodu; 2025-2027, EFRE", kdy="2025-2027", kdo="škola + Sasko (EuK)", mereno=None, zdroj=["dresden_huckepack"]),
+             pr("Červená Voda", "školní zahrada 2 000 m² (koloběh vody, včely, energie, mikroklima), finalista Adapterra Awards 2026", kdy="2026", kdo="ZŠ Červená Voda", mereno=None, zdroj=["adapterra2026"])],
+   prenositelnost="Pro ZŠ Koryčany je prvním krokem změřit dvůr IR teploměrem v létě (M05): asfalt vs. stín vs. tráva. Pak odstranění části asfaltu, stromové mísy, štěpka.",
+   synergie=["M05","H02"])
+
 # ----------------------------------------------------------------- kontroly
 ids = [o["id"] for o in O]
 assert len(ids) == len(set(ids)), "duplicitní ID"
@@ -769,8 +866,8 @@ SCHEMA = {
   "opatreni":{"type":"array","items":{"type":"object",
     "required":["id","nazev","misto","rozhoduje","pracnost","ucinky","meritko","kontext","kvantifikace","vhodnost","vazby","povoleni","ceny","financovani"],
     "properties":{
-      "id":{"type":"string","pattern":"^(Z|S|U|P|L|LES|T|C|M)[0-9]{2}$"},
-      "misto":{"type":"array","items":{"enum":["Z","S","U","P","L","LES","T","C"]}},
+      "id":{"type":"string","pattern":"^(Z|S|U|P|L|LES|T|C|M|H)[0-9]{2}$"},
+      "misto":{"type":"array","items":{"enum":["Z","S","U","P","L","LES","T","C","H"]}},
       "rozhoduje":{"type":"array","items":{"enum":["J","V","O","SP","S"]}},
       "pracnost":{"type":"integer","minimum":1,"maximum":3},
       "ucinky":{"type":"object","properties":{"primarni":{"type":"array","items":{"enum":["R","I","Q","E","CH","ER","B","W"]}},"vedlejsi":{"type":"array","items":{"enum":["R","I","Q","E","CH","ER","B","W"]}}}},

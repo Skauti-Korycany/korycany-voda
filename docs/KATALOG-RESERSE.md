@@ -109,3 +109,81 @@ Hledáno: Německo (Bavorsko, Sasko, Braniborsko, NRW, Berlín), Rakousko, Slove
 - Nové zdroje: az1911_2021, oyas_bxl, roeschwoog2022, lwg_misch2021, byrne2020, nolde2026, csn756780, szu2022_seda, lwg_versickern2010, lfu_mulden2023, lakhi2025, hoyk2024, bratislava_com, steenbreek_sponstuin, nrw2005_belaege, bayern2003_entsiegelung, hlnug2022, tegelwippen2025, dwd_mulch, igz_heistermann, minasny2018, lwg_klimabaeume2019, blake2021, bayika2022, mall2010, sittersdorf, adapterra2022.
 - Doplněné kvantifikace: Z01 (+ LWG 1/3, podmínka "mírný déšť"), Z04 (stárnutí, odtok podle povrchu), Z05 (DWD ≥50 %; Minasny 1,16 mm/100 mm, "malý účinek na jílu"), Z09 (-6,5 až -15 °C povrch), S02 (-30 % modelováno), Z02 (pozn. poctivost).
 - Pole `priklady[]`: rozhodnout (otázka 3 ze zadání); do té doby příklady jen v tomto MD a v `pozn_poctivost`.
+
+---
+
+## Dohledávky po bloku B (21. 10. 2026 večer)
+- **Kanalizace Koryčany**: Plán oblasti povodí Dyje 2009, list opatření DY100033 „Koryčany - rekonstrukce ČOV“ ✅⏳ (https://avd.pmo.cz/pop/2009/Dyje/end/c-stav/listyopatreni/c4_06/2_ostatni/dy100033.pdf): „**jednotná kanalizační síť s OK**“ (odlehčovací komory), ČOV 4 100 EO, mechanicko-biologická, recipient Kyjovka, provozovatel tehdy VaK Hodonín, rekonstrukce plánována do 2015 za 8,5 mil. Kč. Stav po rekonstrukci (uživatel: část oddílná kvůli ČOV) z webu nedohledán - PRVKÚK Zlínského kraje karta Koryčany se nepodařilo otevřít. Pro S02/S06 platí: alespoň část města jednotná s odlehčením do Kyjovky -> odpojení svodů má smysl (méně odlehčování při dešti). Dotaz na VaK Kroměříž / město.
+- **Podíl WC na spotřebě domácnosti - primární český zdroj**: nedohledal jsem (SOVAK, ČSÚ ani MZe strukturu spotřeby podle činností nepublikují; weby prodejců a letáky bez zdroje). Ponecháno 🤔 20-30 % s citacemi Praha 14 (bez zdroje) a Madzia 2019.
+
+---
+
+## Blok A: horko v obci (rešerše 21. 10. 2026)
+
+Hledáno: Vídeň (Hitzeaktionsplan, Coole Straßen, Cooling Park), Curych, Köniz, Aarau, Kornwestheim, Drážďany, Nizozemsko (národní plán vedra), ČR (CzechGlobe + UPOL, TAČR ZÉTA 2021-2022; ČHMÚ Brno; Praha). Výsledek: **3 nová opatření (U08 mlžení a vodní prvky, H01 chladná místa a pitná voda, H02 stínění veřejných míst)** a **doplňky k Z06, U01, U02, U06, U07, S04**. Nová kategorie místa **H = organizační opatření obce při vedrech** (rozhodnutí k potvrzení).
+
+### Klíčový český zdroj pro celý blok
+CzechGlobe + UPOL, projekt TAČR ZÉTA (2,1 mil. Kč, 2 roky), měření Olomouc 24. 7. 2018 + Brno, Ostrava, Plzeň; tisková zpráva TAČR 5. 8. 2021 ✅ (https://tacr.gov.cz/wp-content/uploads/2022/08/220805_riziko-teplotniho-stresu-ve-mestech.pdf), ČT24 8. 8. 2022 ✅ (https://ct24.ceskatelevize.cz/veda/3520774-i-travnik-pomuze-vedci-pripravili-doporuceni-ktera-maji-pomoci-ceskym-mestum-zvladat), businessinfo 5. 8. 2022 ✅. Čísla (pocitová teplota = ve zdroji „pocitová“, ne výslovně PET):
+- stromy na otevřených plochách center, den, stín vs. osluněná dlažba: **-8,3 až -10,9 °C pocitově**; stromy v ulicích -2,8 až -7,6 °C; v noci stromy +0,1 až +1,3 °C; vzduch pod stromy -0,4 až -2,1 °C podle denní doby
+- kropení ploch při vlně veder: -1,3 až -3,1 °C pocitově, **max. ~20 minut**
+- vodní prvky (trysky, mlžné brány): vzduch cca -1,2 °C jen v bezprostředním okolí; **kašny na náměstích: minimální účinek**
+- trávník v centru: vzduch -0,9 °C proti osluněné dlažbě; zalévaný trávník povrch až o 20 °C chladnější než nezalévaný; trávník bez kontaktu s podložím (tramvajový pás) má povrch jako beton
+- doporučení: opatření neumisťovat nahodile, podle map horkých míst. Samotná metodika/mapy: odkaz nedohledán (jen tisková zpráva).
+
+### Nová opatření
+
+#### U08 Mlžení a vodní prvky ve veřejném prostoru (mlžná brána, trysky, kropení)
+- místo U | rozhoduje O, Š | pracnost 1-2 | účinky CH
+- **Co to je**: mlžná brána nebo trysky na hydrantu, které v horkých hodinách rozprašují vodu; nebo kropení dlažby. Pomáhá lidem, kteří stojí přímo u toho; ulici neochladí.
+- **Změřený účinek**: Curych, Turbinenplatz, 180 vysokotlakých trysek, ZHAW, EGU 2023 ✅ (https://meetingorganizer.copernicus.org/EGU23/EGU23-13652.html): vzduch **v průměru -0,7 °C, max. -2,5 °C** (12. 7.-26. 9. 2022), nejvíc při nízké vlhkosti po větru; mimo provoz nulový rozdíl; autoři účinek označují za slabý a špatně předvídatelný. CzechGlobe ✅: -1,2 °C jen v bezprostředním okolí; kropení -1,3 až -3,1 °C pocitově na 20 minut; kašny minimální účinek. Vídeň, Cooling Park Esterházypark (2020, 30 m² zastíněný kruh s mlžením, projekt Tröpferlbad 2.0) ✅ (https://www.wien.gv.at/umwelt/energie-projekt-coolspot-im-esterhazypark): město uvádí „až 6 °C“ **bez metodiky, nepřebírat jako číslo**.
+- **Příklady**: Curych 2022 ✅ (měřeno); Vídeň: 100 mlžných sprch „Sommerspritzer“ + 75 mobilních „Brunnhilde“ ✅ (CoolLIFE factsheet 9/2025, https://ieecp.org/wp-content/uploads/2025/12/CoolLIFE_GoodPractices_AustriaHeatActionPlanVienna.pdf; bez měření účinku).
+- **Přenositelnost**: náměstí, hřiště, školní dvůr, akce (hody, tábor); hydrant + tryska je pro obec levné 🤔. Voda: 💻 litry za hodinu nedohledány; v suchu vyžaduje rozmysl (pitná voda).
+- **Rizika, co z toho neplyne**: ochladí místo, ne obec; účinek do 2,5 °C a jen za provozu; kašna sama nic; spotřeba pitné vody v suchu; hygiena vody v mlžení (legionely 💻 - ověřit s KHS).
+- **Nedohledáno**: cena, spotřeba vody mlžné brány, hygienické podmínky KHS.
+
+#### H01 Chladná místa, pitná voda a varování při vlně veder (organizační opatření obce)
+- místo H (nové: organizační) | rozhoduje O, Š | pracnost 1 | účinky CH (lidé, ne mikroklima)
+- **Co to je**: obec před létem určí a zveřejní chladná místa (knihovna, kostel, úřad, škola), zajistí pitnou vodu (fontánka, kohoutek na náměstí), při vlně veder rozešle varování seniorům a pečovatelům (SMS, rozhlas), posune časy akcí a prací. Nic se nestaví, jde o domluvu.
+- **Změřený účinek**: Nizozemský národní plán vedra (od 2007, 20 aktivací), hodnocení RIVM 2024-2025, Climate-ADAPT 18. 6. 2026 ✅ (https://climate-adapt.eea.europa.eu/en/metadata/case-studies/evaluating-the-effectiveness-of-the-dutch-national-heatwave-plan): odhad úmrtí z vedra v aktivačních dnech **cca 4 200 (2000-2009) -> 2 400 (2010-2019)**; u 90+ podíl z úmrtí 2,0 -> 1,3 %; největší pokles u seniorů, žen a nízkopříjmových; **plán „mohl přispět“** - pokles začal už 2007-2011 po vlnách 2003/2006; 9 z 10 lidí si v létě 2025 vybavilo rady; 1 ze 3 seniorů si myslí, že se ho rady netýkají. Vídeň Hitzeaktionsplan 2022/2025 ✅ (29 opatření, ~1 600 pítek, 22 „Coole Zonen“ VI-IX, varování při ≥ 3 dnech pocitově ≥ 35 °C a noc ≥ 20 °C; účinky neměřeny, jen počty).
+- **Příklady**: Nizozemsko 2007-2025 ✅ (vyhodnoceno); Vídeň 2022-2025 ✅ (kaskáda e-mailů nemocnicím, pečovatelům, školám; roční vyhodnocení po sezóně).
+- **Přenositelnost**: plně; pro Koryčany = seznam chladných míst, pítko na náměstí, hlášení rozhlasem, dohoda s pečovatelskou službou, škola (posun tělocviku, voda). Práh varování převzít z ČHMÚ (výstraha SIVS), ne vídeňský 🤔.
+- **Rizika, co z toho neplyne**: nemění teplotu v obci, snižuje riziko pro lidi; efekt doložen jen pro velký systém (celá země); „chladná zóna“ bez klimatizace nebo masivní stavby není chladná 🤔.
+- **Nedohledáno**: české hodnocení účinku varování ČHMÚ/MZ; vzor plánu pro obec do 3 000 obyvatel.
+
+#### H02 Stínění veřejných míst (plachty, pergoly s popínavkami, stínící konstrukce u hřišť a zastávek)
+- místo U, H | rozhoduje O, Š | pracnost 2 | účinky CH
+- **Co to je**: tam, kde strom nevyroste dost rychle nebo nejde zasadit (sítě, dlažba, zastávka, hřiště), zastínit plachtou, pergolou s popínavkou nebo přístřeškem. Strom zůstává první volba (stín + výpar), plachta je dočasná náhrada na 10-15 let, než strom doroste 🤔.
+- **Změřený účinek**: pro plachty **nedohledal jsem** měření; Aarau 2022 ✅ (https://www.aarau.ch/public/upload/assets/18407/2022-51%20Beantwortung%20Anfrage%20Pascal%20Benz%20%28FDP%29%2C%20Einsatz%20tempor%C3%A4rer%20Sonnensegel%20in%20Aarau.pdf): město odmítlo uvést paušální číslo, pevné plachty brání nočnímu chladnutí, stíní, ale neodpařují; preferuje zeleň; Solothurn má lankovou pergolu s popínavkami na Amtsplatz 📄. Pro stín obecně: pocitová teplota ve stínu stromu -8,3 až -10,9 °C ✅ CzechGlobe (stín + výpar); poster ENKI (Pokorný, bez roku) ✅ (https://mladimyslivci.cmmj.cz/wp-content/uploads/sites/99/2025/03/Jak_stromy_chladi.pdf): slunečník povrch 51,3 °C vs. koruna stromu 32,7 °C (IR snímky, jednotlivá měření).
+- **Přenositelnost**: zastávky, hřiště, školní dvůr, tribuna, trh; popínavková pergola (Z09) spojuje stín a výpar.
+- **Rizika, co z toho neplyne**: plachta se sama ohřívá a sálá (ENKI: slunečník 51 °C); stíní jen pod sebou; pevná konstrukce blokuje noční vychladnutí; vítr a sníh (demontáž na zimu).
+- **Nedohledáno**: měření teploty pod plachtou vs. pod stromem ve střední Evropě; cena.
+
+### Doplňky k existujícím opatřením
+
+#### Z06 Výsadba stromu / U01 Uliční stromořadí
+- **Nový doklad účinku (ČR)**: CzechGlobe/UPOL ✅: stín stromu na otevřené ploše -8,3 až -10,9 °C pocitově, v ulici -2,8 až -7,6 °C, vzduch -0,4 až -2,1 °C, v noci +0,1 až +1,3 °C. Severní Francie, Earthwatch, 48 000 měření šedým globe teploměrem, 2 roky ✅ (https://panorama.solutions/en/solution/measuring-effects-trees-heat-mitigation-northern-france): pod stromem vs. u jižní stěny **až -11,5 °C v poledne**. ETH Curych, Schwaab a kol. 2021, Nature Communications (satelit, ~300 měst): povrch zástavby se stromy ve střední Evropě o **8-12 °C** chladnější než bez stromů, tráva 2-4x slabší účinek; autoři: rozdíl ve vzduchu je menší 📄 (ČT24 25. 11. 2021 ✅ https://ct24.ceskatelevize.cz/veda/3405168-stromy-vyrazne-ochlazuji-mestske-plochy-ubrat-mohou-az-12-stupnu-ukazuje-studie; originál neotevřen). Modelová studie Lee & Mayer, DACH 2019 ✅ (https://meetingorganizer.copernicus.org/DACH2019/DACH2019-24.pdf): stromy na jižním chodníku ulice V-Z důležitější než na severním; bez čísel.
+- **Pro aplikaci**: u CH rozlišit tři čísla: povrch (8-25 °C), pocitová teplota ve stínu (3-11 °C), vzduch (0,4-2 °C). Dnes Z06 uvádí „vzduch až -5 °C“ (EPA skupiny stromů) - CzechGlobe dává pro ČR 0,4-2,1 °C; **navrhuji rozsah vzduchu přepsat na 0,4-2,1 (CzechGlobe) s poznámkou, že EPA 5 °C je pro velké skupiny**.
+
+#### U02 Propustné povrchy / S04 Světlé povrchy
+- **Světlý asfalt, Köniz (Bern), pilot ASTRA, Grolimund + Partner 2025** ✅ (https://www.koeniz.ch/public/upload/assets/24417/260422%20faktenblatt_auswertung_pilotprojekt_waldeggstrasse.pdf): povrch o **4-5,5 °C chladnější** v nejteplejší fázi dne (albedo 0,12-0,16 vs. 0,08); rozdíl ve vzduchu neuveden; radiační teplota nad světlým povrchem o 0,6 °C vyšší (v rámci nejistoty) - tedy pro chodce bez zlepšení. Aarau 2022 ✅: světlé vozovky město odmítlo z finančních a ekologických důvodů. Pro Koryčany: světlé povrchy ano na střechy (S04), na chodníky a náměstí jen s vědomím, že odraz může vadit chodcům; **ne jako náhrada stromů**.
+
+#### U06 Mozaiková seč obecních ploch / Z08
+- CzechGlobe ✅: trávník v centru -0,9 °C vzduchu proti dlažbě; zalévaný trávník povrch až o 20 °C chladnější než suchý; trávník bez kontaktu s podložím má povrch jako beton. Pro aplikaci: účinek CH trávníku je malý a v suchu mizí (suchý trávník se chová jako dlažba 🤔 odvozeno z „zalévaný vs. nezalévaný 20 °C“).
+
+#### U07 Školní zahrada / školní dvůr
+- **Příklad**: Kornwestheim (Bádensko-Württembersko), Silcherschule, červenec 2026 ✅ (Stuttgarter Zeitung 7. 10. 2026, https://www.stuttgarter-zeitung.de/lokales/ludwigsburg/hitze-in-kornwestheim-562-grad-auf-schulhof-gemessen-so-reagiert-die-stadt-jetzt-79527198.html): termokamera města: **asfalt uprostřed dvora 56,2 °C ve 13:30, ve stínu 29,7 °C**; reakce: odstranění asfaltu, 2 stromové mísy se štěpkou, výsadba stromů (ambroň), cesty z kůry, sezení z kamene a kmenů; **37 000 € (15 000 € dotace Klimopass)**, práce městské zahradnictví 3-4 týdny. Drážďany, Montessori Huckepack 2025-2027 ✅ (https://rekis.hydro.tu-dresden.de/wp-content/uploads/2026/07/GPB_Steckbrief_FRL-EuK_Montessori-Huckepack_Formatvorlage-Fachbeitrag.pdf): fólie na okna, markýzy, noční provětrávání, odstranění asfaltu, stromy, plachty, nádrž na dešťovou vodu; bez měření (v běhu). Červená Voda, školní zahrada 2 000 m² (finalista Adapterra 2026) ✅ (businessinfo 26. 8. 2026). **Pro ZŠ Koryčany**: změřit dvůr IR teploměrem (M05) v létě je první krok a dobrý školní projekt.
+
+#### Poznámka pro blok D (netýká se A)
+- Adapterra Awards 2023, zvláštní ocenění **„Obnova údolní nivy řeky Kyjovky“** ✅ (businessinfo 2. 11. 2023, https://www.businessinfo.cz/clanky/adapterra-awards-soutez-zna-viteze-ocenila-nejlepsi-ekologicke-projekty/) - projekt na „naší“ řece, lokalita a realizátor v článku neuvedeny; dohledat v bloku D (T02, T04).
+
+### Co se nepodařilo dohledat (blok A)
+- Nature Communications 2021 originál (povolení k otevření vypršelo) - číslo 8-12 °C je 📄 z ČT24.
+- Měření pod stínící plachtou vs. strom; cena mlžné brány a spotřeba vody; hygienické podmínky mlžení (KHS).
+- České vyhodnocení varování před vedrem (ČHMÚ/MZ); vzor plánu vedra pro malou obec.
+- Metodika a mapy CzechGlobe/UPOL pro města (jen tisková zpráva).
+- Vídeň Coole Straßen: žádný otevřený zdroj s měřením (cityabc a derStandard neotevřeny).
+
+### Návrh zápisu (po odsouhlasení)
+- Číselník `misto` + **H: organizační opatření obce při vedrech**; schema ID `H[0-9]{2}`.
+- Nové: U08, H01, H02. Nové zdroje: tacr2021_horko, ct24_2022_horko, zhaw2023_mlzeni, wien_coolspot, coollife2025_wien, rivm2026_nl, aarau2022, enki_stromy, earthwatch_fr, ct24_2021_eth, dach2019_lee, koeniz2025, stz2026_kornwestheim, dresden_huckepack, adapterra2026, adapterra2023.
+- Doplňky: Z06 + U01 (CH tři úrovně), U02/S04 (Köniz), U06/Z08 (trávník), U07 (Kornwestheim, Drážďany, Červená Voda).

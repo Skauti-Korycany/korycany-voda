@@ -1,6 +1,8 @@
-# Katalog opatření - v0.3 (21. 10. 2026)
+# Katalog opatření - v0.4 (21. 10. 2026)
 
 Změna v0.3 (21. 10. 2026, blok B rešerše dobré praxe, `docs/KATALOG-RESERSE.md`): nová opatření **Z12 Zalévací hliněné nádoby (olla)**, **Z13 Suchomilný (stepní) záhon**, **S05 Šedá voda na zálivku a WC**, **S06 Dešťová voda na splachování WC**; doplňky (nové doklady účinku a příklady praxe) k Z01, Z02, Z04, Z05, Z06, Z09, Z11, S01, S02. Každé opatření může mít blok "Kde to funguje" (příklady se zdrojem a značkou), přenositelnost do Koryčan a rizika; v aplikaci se zobrazují v kartě. Rozhodnutí uživatele 21. 10.: podrobný popis s odkazy (styl KATALOG-RESERSE.md) se přejímá i pro web.
+
+Změna v0.4 (21. 10. 2026 večer, blok A horko v obci): nová kategorie místa **H = organizační opatření obce při vedrech**; nová opatření **U08 Mlžení a kropení při letních hromadných akcích** (jen pro akce, ne trvale - rozhodnutí uživatele), **H01 Chladná místa, pitná voda a varování**, **H02 Stínění veřejných míst**; doplňky k Z06, U01, U02, U06, U07, S04 (CzechGlobe/UPOL 2018: tři úrovně ochlazení - povrch, pocitová teplota, vzduch; Köniz 2025 světlý asfalt; Kornwestheim 2026 školní dvůr). Z06: vzduch přepsán na 0,4-2,1 °C (ČR) místo EPA „až 5 °C“.
 
 
 Stav: seznam a atributy pro filtrování odsouhlaseny 16. 10. 2026. Kvantifikace účinků, Kč a zdroje: viz KATALOG-Z-S.md, KATALOG-U-P.md, KATALOG-L-LES-T-C.md (18. 10. 2026) a data/opatreni.json. Kde je zde zdroj uveden, je 💻 (z paměti), pokud není označeno jinak; ověřené zdroje jsou v kvantifikačních souborech.
@@ -62,7 +64,13 @@ Formát položky níže: **ID Název** | místo | rozhoduje | pracnost / náklad
 - **U04 Retence a zasakování vody z veřejných budov (škola, úřad, sokolovna)** | U, S | O, Š | 2-3 / €€ | R, I, W | lokalita | podle objektu | kombinace S01+S02+Z01/Z10 ve velkém | 1 | OPŽP 1.3.4
 - **U05 Obecní tůň, mokřad, obnova návesní nádrže nebo rybníčku** | U, T | O | 3 / €€-€€€ | R, CH, B (I) | lokalita | zamokřené plochy, nivy | synergie T01, T02 | 2 | SPPK B02 001; AOPK ZMV, OPŽP
 - **U06 Mozaiková seč obecních ploch, květnaté louky, ponechané pásy** | U, L | O, Š | 1 / € | E, CH, B | lokalita | všude | žádné | 0 | SPPK D02 004
+- **U08 Mlžení a kropení při letních hromadných akcích** | U, H | O, Š | 1 / cena neověřena | CH | lokalita | jen akce v horkém dni, hydrant | synergie H01, H02 | 1 (hydrant, KHS) | ZHAW 2023 ✅ -0,7/-2,5 °C, CzechGlobe ✅
 - **U07 Školní zahrada jako ukázkový pozemek (sada Z01-Z08 + měření)** | U, Z | Š, O | 1-2 / € | všechny výše (osvěta) | pozemek | areál školy | spojuje Z a M | 0-1 | -
+
+## 4b. Organizační opatření obce při vedrech (H) - od v0.4
+
+- **H01 Chladná místa, pitná voda a varování při vlně veder** | H, U | O, Š | 1 / tisíce Kč 🤔 | CH (lidé) | území, kontext | všude | synergie U08, H02, Z06, U01 | 0 | RIVM/Climate-ADAPT 2026 ✅, Vídeň 2025 ✅
+- **H02 Stínění veřejných míst (plachty, pergoly s popínavkami, přístřešky)** | U, H | O, Š | 2 / cena neověřena | CH | lokalita | zastávka, hřiště, školní dvůr; ne tam, kde jde zasadit strom | synergie Z06, Z09, U07 | 1 | měření pro plachty nedohledáno; Aarau 2022 ✅, ENKI ✅
 
 ## 5. Orná půda (P) - rozhoduje vlastník: přes pachtovní smlouvu (N01) nebo vyjmutí z pachtu (N02)
 
