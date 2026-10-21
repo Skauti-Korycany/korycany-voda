@@ -61,7 +61,7 @@ Aktualizováno: 21. 10. 2026 11:15 (relace 8 konec). Hotovo dnes: stav.html, K n
 
 - **Kritické body VÚV dohledány, 21. 10.** (uživatel souhlasil se stažením shapefile ČR z heis.vuv.cz, CC BY 4.0 ✅): `data/kriticke_body.geojson`, popis v `docs/POVODNOVY-PLAN.md`, zobrazeno v mapě `stav.html` (+ řádek „Přívalové povodně“). KB 41 202 864 = horní Stříbrník 326 ha (naše DMR 325 ha, shoda), KB 41 202 859 = lesní údolí východně od středu města 111 ha (DMR 112 ha). Oba 0 % orné -> opatření LES + retence v údolnici nad intravilánem. Zároveň nezávislá kontrola našich rozvodnic.
 
-- **Zadání „Koryčaňáci - jak bylo“ (21. 10.)** -> `docs/POCASI-ZADANI.md`: denní automatický sběr srážek/teplot/výparu (ČHMÚ Koryčany + Nemochovice, PMO KS Koryčany, Nemotice, VOX) přes GitHub Actions a stránka `pocasi.html` ve stylu napajedlaci.cz/jak-bylo. Pokračuje v novém chatu; tady se dál řeší model.
+- **Zadání „Koryčaňáci - jak bylo“ (21. 10.)** -> `docs/POCASI-ZADANI.md`: denní automatický sběr srážek/teplot/výparu (ČHMÚ Koryčany + Nemochovice, PMO KS Koryčany, Nemotice, VOX) přes GitHub Actions jako **vstupní záložka „Jak bylo“ osvětové aplikace** (index.html), ne samostatný web - rozhodnutí uživatele. Pokračuje v novém chatu; tady se dál řeší model.
 
 ### Rozpracováno
 - **Žádost VÚMOP odeslána 19. 10. 2026** (data@vumop.cz, z adresy oddílu): vektor hydrologických skupin půd (mapa velkého měřítka, metadata ID 5cc1bdc2-de34-4eee-a439-41420a000319), správní území obce Koryčany + obal ~500 m, SHP/GPKG v EPSG:5514; dotazy na licenci pro veřejnou webovou aplikaci, zpoplatnění nekomerčního užití a HSP pro lesy mimo ZPF. Odkaz na stav.html v textu. Čeká se na odpověď. Erozní ohroženost a zamokřené půdy v žádosti nejsou - případně druhá žádost po odpovědi.
