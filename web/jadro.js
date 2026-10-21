@@ -279,9 +279,11 @@
   J.MALY_TOK_KM2 = 0.25;
   // nad touto vyskou hraze se vzdy ukaze varovani "vodni dilo na projekt" (rozhodnuti uzivatele 21. 10. 2026)
   J.HRAZ_VODNI_DILO_M = 2;
-  J.TEXT_VODNI_DILO = 'Hráz vyšší než 2 m je vodní dílo, které se smí stavět jen podle projektu a s povolením vodoprávního úřadu. ' +
-    'Špatně postavená hráz se může protrhnout a vlna ohrozí lidi a domy pod ní - nejčastěji se hráze porušují přelitím při povodni ' +
-    '(malý bezpečnostní přeliv) a vymíláním vodou, která prosakuje tělesem hráze (MZe 2016). Tady jde jen o odhad objemu pro osvětu, ne o návrh hráze.';
+  J.TEXT_VODNI_DILO = 'Hráz vyšší než 2 m je vodní dílo: staví se podle projektu a s povolením vodoprávního úřadu. ' +
+    'Projektant navrhne těleso hráze a bezpečnostní přeliv tak, aby hráz bezpečně převedla i velkou vodu.';
+  // technickobezpecnostni dohled (TBD): hraz nad 1 m a vzduti nad 1 000 m3 (MZe 2016, Male vodni nadrze - rybniky, prirucka pro TBD)
+  J.TBD_VYSKA_M = 1; J.TBD_OBJEM_M3 = 1000;
+  J.TEXT_TBD = 'Hráz vyšší než 1 m, která zadrží víc než 1 000 m³, podléhá technickobezpečnostnímu dohledu: vlastník zajistí pravidelné obchůzky a kontroly (MZe 2016).';
   J.MIN_BUNEK_ZATOPY = 20;   // mensi zatopa v DMR = sum; prejde se na odhad z profilu
 
   // vyska v bode S-JTSK, bilinearne mezi stredy bunek (null mimo data)
@@ -348,7 +350,18 @@
   };
 
   // opts: {polomerM: max. vzdalenost kliku od toku (60), maxDelkaHrazeM (300), maxBunek zatopy (400 000)}
+  // informace pro uzivatele (ne varovani): vodni dilo nad 2 m, TBD nad 1 m a 1 000 m3; objem tune = horni mez rozsahu
   J.nadrz = function (lon, lat, vyskaHrazeM, opts) {
+    const v = J._nadrz(lon, lat, vyskaHrazeM, opts);
+    if (!v || v.chyba) return v;
+    const V = v.objem_rozsah_m3 ? v.objem_rozsah_m3[1] : v.objem_m3;
+    v.tbd = vyskaHrazeM > J.TBD_VYSKA_M && V > J.TBD_OBJEM_M3;
+    v.info = [];
+    if (v.vodni_dilo) v.info.push(J.TEXT_VODNI_DILO);
+    if (v.tbd) v.info.push(J.TEXT_TBD);
+    return v;
+  };
+  J._nadrz = function (lon, lat, vyskaHrazeM, opts) {
     if (typeof opts === 'number') opts = { polomerM: opts };
     opts = opts || {};
     const maxDelka = opts.maxDelkaHrazeM || 300, maxBunek = opts.maxBunek || 400000;
@@ -425,7 +438,7 @@
       bod_lonlat: lonlat(pt.X, pt.Y), posun_m: pt.d, hraz_lonlat: konce.map(([X, Y]) => lonlat(X, Y)),
       delka_hraze_m: delkaHraze, hraz_uzavira: uzavira, kota_dna: zDno, hladina: hl, vyska_hraze_m: h,
       profil, profil_odhad: profilOdhad, varovani,
-      vodni_dilo: vodniDilo, vodni_dilo_text: vodniDilo ? J.TEXT_VODNI_DILO : null,
+      vodni_dilo: vodniDilo,
     };
 
     // ---------------- tun / poldr v udolnici (maly tok, nebo zatopa v DMR pod rozlisenim)

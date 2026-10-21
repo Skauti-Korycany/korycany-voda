@@ -358,11 +358,18 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
     <div class="inputs" style="margin-top:.6rem">
       <label class="f">Výška hráze nad dnem potoka<select id="h-vyska">
         <option value="0.5">0,5 m</option><option value="1" selected>1 m</option><option value="1.5">1,5 m</option><option value="2">2 m</option>
-        <option value="2.5">2,5 m - vodní dílo na projekt</option><option value="3">3 m - vodní dílo na projekt</option><option value="4">4 m - vodní dílo na projekt</option></select></label>
-      <label class="f">Déšť: stejný jako výše (výběr „Déšť k výpočtu“)<input type="text" id="h-dest" disabled></label>
+        <option value="2.5">2,5 m (vodní dílo)</option><option value="3">3 m (vodní dílo)</option><option value="4">4 m (vodní dílo)</option></select></label>
+      <label class="f">Déšť k výpočtu<select id="h-rain">
+          <optgroup label="Návrhový déšť Koryčany, 6 hodin (ČVUT/ČHMÚ 2023 ✅)">
+            <option value="32.2" data-n="N2">častý - 32 mm za 6 h, 1x za 2 roky</option>
+            <option value="53.2" data-n="N10" selected>vzácný - 53 mm za 6 h, 1x za 10 let</option>
+            <option value="87" data-n="N100">extrémní - 87 mm za 6 h, 1x za 100 let</option></optgroup>
+          <optgroup label="Další">
+            <option value="20">20 mm - běžný letní liják</option>
+            <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></optgroup></select></label>
     </div>
     <div id="dam-map" style="height:380px;margin-top:.6rem;border:1px solid var(--line);border-radius:6px;background:#dfe7ea" aria-label="Mapa potoků pro hráz"></div>
-    <div class="callout" id="h-vd" style="border-left-color:var(--bad);display:none"></div>
+    <div class="callout" id="h-vd" style="border-left-color:var(--accent);display:none"></div>
     <div id="h-out" style="margin-top:.6rem"><p class="note">Toky a terén se načtou po otevření mapy (asi 0,8 MB).</p></div>
     <p class="note">Každá hráz na potoce potřebuje povolení vodoprávního úřadu (ORP Kroměříž) a dohodu se správcem toku. Model nepočítá ztráty, bezpečnostní přeliv, těleso hráze ani koryto užší než 5 m. Metoda: docs/JADRO.md, kap. Nádrže.</p>
   </div>
@@ -753,19 +760,19 @@ function hrazInit(){
 let hrazPosledni=null;
 function hrazSpocti(){
   const h=+$('h-vyska').value;
-  $('h-dest').value=$('u-rain').selectedOptions[0].textContent;
   const vd=$('h-vd');
-  if(h>Jadro.HRAZ_VODNI_DILO_M){ vd.style.display=''; vd.innerHTML='<b>Pozor:</b> '+Jadro.TEXT_VODNI_DILO; } else vd.style.display='none';
-  if(!hrazPosledni || damStav!=='ok') return;
+  if(!hrazPosledni || damStav!=='ok'){ vd.style.display='none'; return; }
   if(damVrstva){ damVrstva.remove(); damVrstva=null; }
   const n=Jadro.nadrz(hrazPosledni[0],hrazPosledni[1],h,{polomerM:60});
+  vd.style.display = n && n.info && n.info.length ? '' : 'none';
+  if(n && n.info) vd.innerHTML = '<b>Pro informaci:</b> ' + n.info.join(' ');
   if(!n){ $('h-out').innerHTML='<p class="note">Mimo data modelu.</p>'; return; }
   if(n.chyba==='daleko_od_toku'){ $('h-out').innerHTML=`<p class="note">Hráz se staví jen na potoce (modré čáry). Nejbližší je ${fmt0(n.vzdalenost_m)} m od kliku - klikni blíž.</p>`; return; }
   damVrstva=L.layerGroup().addTo(damMap);
   if(n.maska){ const bb=Jadro.obalMasky(n.maska,30); if(bb){ const im=Jadro.obrazek(i=>n.maska[i]?[30,110,220,170]:null,bb,900); const c=document.createElement('canvas'); c.width=im.width; c.height=im.height; c.getContext('2d').putImageData(new ImageData(im.data,im.width,im.height),0,0); L.imageOverlay(c.toDataURL(),im.bounds,{opacity:.75,interactive:false}).addTo(damVrstva);} }
   if(n.obrys_lonlat) L.polygon(n.obrys_lonlat.map(([lo,la])=>[la,lo]),{color:'#1e6ec8',weight:1,dashArray:'4 3',fillOpacity:.35}).addTo(damVrstva);
   L.polyline(n.hraz_lonlat.map(([lo,la])=>[la,lo]),{color:'#a23b3b',weight:5}).addTo(damVrstva);
-  const P=+$('u-rain').value, W3=vahaCN3Sel($('u-rain'));
+  const P=+$('h-rain').value, W3=vahaCN3Sel($('h-rain'));
   const st=Jadro.statBunek(n.povodi_bunky,P,2).odtok;
   const odt = st ? st.objem_m3*(1-W3)+st.objem_m3_cn3*W3 : 0;
   const tun=n.typ==='tun_udolnice', V=n.objem_m3, rz=a=>`${fmt0(a[0])} - ${fmt0(a[1])}`;
@@ -778,7 +785,7 @@ function hrazSpocti(){
     `${tun?`, sklon dna ${fmt(100*n.profil_odhad.sklon_dna,1)} %, voda vystoupá ${fmt0(n.profil_odhad.delka_vzduti_m)} m proti proudu`:`; kontrola z příčného profilu ${rz(n.profil_odhad.objem_m3)} m³`}.</p>`+
     n.varovani.map(v=>`<p class="note" style="color:var(--warn)">! ${v}</p>`).join('');
 }
-$('h-vyska').addEventListener('input',hrazSpocti); $('u-rain').addEventListener('input',()=>{ if(damMap) hrazSpocti(); });
+$('h-vyska').addEventListener('input',hrazSpocti); $('h-rain').addEventListener('input',hrazSpocti);
 
 $('u-zdroj').innerHTML=`V území modelu (${fmt0(D.uzemi.plocha_ha)} ha, povodí Kyjovky pod Koryčany bez povodí nad přehradou) je ${fmt0(D.uzemi.budov)} budov s půdorysem ${fmt0(D.uzemi.strechy_m2/1e4*10)/10} ha, z toho ${fmt0(D.uzemi.rd_pocet)} rodinných domů (${fmt0(D.uzemi.rd_strechy_m2/1e4*10)/10} ha) ✅ ČÚZK INSPIRE BU, 19. 10. 2026. Zpevněné plochy u domů nejsou v datech - odhad. Počítá se jen voda ze střech a dvorů rodinných domů; průmysl, bytové domy a veřejné budovy zatím ne.`;
 ['u-n','u-roof','u-paved','u-rain','u-pct'].forEach(id=>$(id).addEventListener('input',renderUzemi));

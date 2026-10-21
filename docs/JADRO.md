@@ -61,7 +61,7 @@ Proč změna: v0.1 přichytávala hráz k buňce s největší akumulací D8 a z
 
 Omezení: objem koryta užšího než buňka chybí (DMR ho nevidí); v intravilánu (Stříbrník ve městě, Kyjovka v centru) je terén plochý, hráz často neuzavře údolí do 300 m a zátopa se rozlévá po nivě - tam je výsledek spíš ukázka, proč nádrž v městě nejde, než návrh. Bez ztrát, bez bezpečnostního přelivu, bez objemu tělesa hráze.
 
-Varování vodní dílo: u hráze nad 2 m (`J.HRAZ_VODNI_DILO_M`) vrací `vodni_dilo: true` a text `J.TEXT_VODNI_DILO` (projekt + povolení vodoprávního úřadu, riziko protržení; příčiny porušení podle MZe 2016, Malé vodní nádrže - rybníky, příručka pro TBD ✅⏳). Rozhodnutí uživatele 21. 10. 2026.
+Informace (ne varování, rozhodnutí uživatele 21. 10.): `J.nadrz` vrací `info` (pole textů), `vodni_dilo` (hráz nad `J.HRAZ_VODNI_DILO_M` = 2 m) a `tbd` (hráz nad 1 m a objem nad 1 000 m³, u tůně horní mez rozsahu; technickobezpečnostní dohled podle MZe 2016, Malé vodní nádrže - rybníky, příručka pro TBD ✅⏳).
 
 Prototyp: panel „Hráz na potoce“ v Celém území; `smer_v` a `toky.json` se dotahují až při otevření záložky (`Jadro.nactiProNadrze()`).
 
