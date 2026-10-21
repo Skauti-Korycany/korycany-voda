@@ -491,20 +491,25 @@ function inputs(){
 }
 // ---------- jádro: odtok
 // zelena plocha: SCS-CN (ne soucinitel) - mala srazka se vsakne cela (Ia = 0,2 S), vetsi odteka podle pudy (HSP A-D) a sklonu
-// CN2 podle Janecek 2012 / TR-55 (cn_tabulka, trida zahrada), sklon: Sharpley & Williams 1990 (EPIC) 💻 CN2s = (CN3-CN2)/3 (1 - 2 e^(-13,86 s)) + CN2, s v m/m, referencni sklon 5 %
-function cnZahrada(i){ const t=D.cn_tabulka['7']; const v=t.varianty[i.greenType]||t.varianty[t.vychozi]; const cn2=v[i.soil]; const cn3=Jadro.cnProIPS(cn2,3);
-  const s=Math.max(0,i.slope)/100; const cn2s=Math.min(98,(cn3-cn2)/3*(1-2*Math.exp(-13.86*s))+cn2); return {cn2, cn2s, cn3s:Jadro.cnProIPS(cn2s,3)}; }
+// CN2 podle Janecek 2012 / TR-55 (cn_tabulka, trida zahrada). Sklon do CN nevstupuje (ceske metodiky ho nemaji; zahranicni upravy
+// Sharpley & Williams 1990, Huang 2006 jsou kalibrovane jinde a v CR neoverene) - rozhodnuti 21. 10. 2026; sklon se resi jen u vhodnosti opatreni.
+function cnZahrada(i){ const t=D.cn_tabulka['7']; const v=t.varianty[i.greenType]||t.varianty[t.vychozi]; const cn2=v[i.soil]; return {cn2, cn2s:cn2, cn3s:Jadro.cnProIPS(cn2,3)}; }
 function qmmP(P, cn){ if(!cn) return 0; const S=25400/cn-254, Ia=0.2*S; return P<=Ia?0:(P-Ia)*(P-Ia)/(P-Ia+S); }
 function greenRunoff(i){ const c=cnZahrada(i); const P=i.rain*1000; const w3 = i.nkey && D.navrhove.podil_tvaru_pct[i.nkey] ? Jadro.vahaCN3(D.navrhove.podil_tvaru_pct[i.nkey], D.navrhove.qAPI) : 0;
   const q2=qmmP(P,c.cn2s), q3=qmmP(P,c.cn3s), q=q2*(1-w3)+q3*w3; const Ia=0.2*(25400/c.cn2s-254);
   let year=null; const H=D.srazky_hist; if(H){ let mm=0; for(let k=0;k<H.bin_mm.length;k++){ mm+=H.dni_za_rok[k]*qmmP(H.bin_mm[k]-0.5,c.cn2s); } year=i.green*mm/1000; }
   return {...c, w3, q_mm:q, q2_mm:q2, q3_mm:q3, Ia_mm:Ia, out:i.green*q/1000, year}; }
+// nepropustne plochy: soucinitel C (CSN 75 9010) x (P - 1 mm); 1 mm = pocatecni ztrata smacenim a prohlubnemi, odpovida Ia pri CN 98 (TR-55: 0,2 S = 1,04 mm)
+const IA_NEPROPUSTNE_MM = 1.0;
+function rocniNepropustne(){ const H=D.srazky_hist; if(!H) return RAIN_Y; let mm=0; for(let k=0;k<H.bin_mm.length;k++) mm+=H.dni_za_rok[k]*Math.max(0,H.bin_mm[k]-0.5-IA_NEPROPUSTNE_MM); return mm/1000; }
+const RAIN_Y_NEPR = rocniNepropustne(); // m/rok, co z nepropustne plochy opravdu odtece (cca 510 mm z 632)
 function runoff(i){
   const cR=1.0, cP=coef(i.pavedType,i.slope), g=greenRunoff(i);
-  const roofOut = i.roof*i.rain*cR, pavedOut=i.paved*i.rain*cP, greenOut=g.out;
+  const Pef=Math.max(0, i.rain-IA_NEPROPUSTNE_MM/1000);
+  const roofOut = i.roof*Pef*cR, pavedOut=i.paved*Pef*cP, greenOut=g.out;
   const total=(i.roof+i.paved+i.green)*i.rain;
   return {cR,cP,cG:g.q_mm/(i.rain*1000||1),g,roofOut,pavedOut,greenOut,out:roofOut+pavedOut+greenOut,total,
-          yearRoof:i.roof*RAIN_Y*cR, yearPaved:i.paved*RAIN_Y*cP, yearGreen:g.year};
+          yearRoof:i.roof*RAIN_Y_NEPR*cR, yearPaved:i.paved*RAIN_Y_NEPR*cP, yearGreen:g.year};
 }
 // ---------- jádro: účinky opatření (jen typ vzorec/hodnota; zbytek kvalitativně)
 // vrací {dV: m³ zadržené při zvoleném dešti, dYear: m³/rok, text, fit:true|string důvod nevhodnosti, needs:[]}
@@ -520,7 +525,7 @@ const EFF = {
     return {dV:r.roofOut,dYear:r.yearRoof,fit,needs:['S02'],text:`Štěrkové těleso nebo bloky na déšť 1x za 5 let: ${fmt(i.roof*0.0442)} m³ návrhový objem; zasákne celý odtok ze střechy (${fmt(r.roofOut)} m³ teď, ${fmt0(r.yearRoof)} m³/rok). Prázdné do 72 h, 1 m nad podzemní vodou, 5 m od domu ✅ ČSN 75 9010.`}; },
   S01(i,r){ const V=1.0; const dV=Math.min(V,r.roofOut); return {dV,dYear:Math.min(V*25, r.yearRoof),fit:true,needs:['S02'],
       text:`Nádrž 1 m³ (IBC 7 250 Kč ✅ Hornbach 18. 10. 2026) pojme ${fmt0(1000/Math.max(i.roof,1))} mm deště z tvé střechy; z tohoto deště zadrží ${fmt(dV)} m³. Nádrž 5 m³ (50 830 Kč bez montáže ✅) pojme ${fmt0(5000/Math.max(i.roof,1))} mm. Za rok využiješ jen to, co mezi dešti spotřebuješ (🤔 odhad ${fmt0(Math.min(V*25,r.yearRoof))} m³). Přepad veď do zahrady, ne do kanálu.`}; },
-  Z04(i,r){ const cNew=coef('zatravnovaci_tvarnice',i.slope); const dV=i.paved*i.rain*(r.cP-cNew); const dYear=i.paved*RAIN_Y*(r.cP-cNew);
+  Z04(i,r){ const cNew=coef('zatravnovaci_tvarnice',i.slope); const dV=i.paved*Math.max(0,i.rain-IA_NEPROPUSTNE_MM/1000)*(r.cP-cNew); const dYear=i.paved*RAIN_Y_NEPR*(r.cP-cNew);
     const fit = i.paved<=0 ? 'žádné zpevněné plochy' : (i.soil==='D' ? 'půda D - pod dlažbou se nevsákne' : true);
     return {dV,dYear,fit,text:`${fmt0(i.paved)} m² ${i.pavedType==='zatravnovaci_tvarnice'?'už jsou tvárnice':'-> zatravňovací tvárnice (C '+r.cP+' -> '+cNew+')'}: zasákne o ${fmt(dV)} m³ víc na tento déšť, o ${fmt0(dYear)} m³ za rok. Tráva je o 1-2 °C chladnější než dlažba ✅⏳ EPA 2008. Tvárnice 1 136 Kč/m² ✅ ÚÚR 2025.`}; },
   Z03(i,r){ const fit = i.slope<3 ? 'sklon pod 3 % - průleh nemá co zachytávat' : (i.slope>15 ? 'sklon nad 15 % - riziko eroze, raději terasa' : (i.soil==='D'?'půda D - nevsákne':true));
@@ -560,7 +565,7 @@ function recalc(){
   const rainmm=Math.round(i.rain*1000);
   // krok 3
   $('flow').innerHTML = `<tr><th>plocha</th><th class="num">m²</th><th class="num">C</th><th class="num">odteče m³</th></tr>
-    <tr><td>střecha</td><td class="num">${fmt0(i.roof)}</td><td class="num">${r.cR}</td><td class="num">${fmt(r.roofOut)}</td></tr>
+    <tr><td>střecha <span class="note">(první 1 mm zůstane na střeše)</span></td><td class="num">${fmt0(i.roof)}</td><td class="num">${r.cR}</td><td class="num">${fmt(r.roofOut)}</td></tr>
     <tr><td>zpevněné plochy</td><td class="num">${fmt0(i.paved)}</td><td class="num">${r.cP}</td><td class="num">${fmt(r.pavedOut)}</td></tr>
     <tr><td>zelené plochy <span class="note">(CN ${fmt0(r.g.cn2s)}${r.g.w3?` / nasycená ${fmt0(r.g.cn3s)}, váha ${fmt0(100*r.g.w3)} %`:''}; déšť do ${fmt0(r.g.Ia_mm)} mm se vsákne celý)</span></td><td class="num">${fmt0(i.green)}</td><td class="num">${fmt(r.cG,2)}</td><td class="num">${fmt(r.greenOut)}</td></tr>
     <tr class="total"><td>celkem pryč z pozemku při ${rainmm} mm</td><td class="num">${fmt0(i.roof+i.paved+i.green)}</td><td></td><td class="num">${fmt(r.out)} m³</td></tr>`;
@@ -572,7 +577,7 @@ function recalc(){
   const pct=(x)=> r.out>0? 100*x/r.out:0;
   $('bars').innerHTML = `<div class="bar"><span>teď</span><div class="track"><i class="away" style="width:100%"></i></div><span class="num">${fmt(r.out)} m³</span></div>
     <div class="bar"><span>s opatřeními</span><div class="track"><i class="kept" style="width:${pct(kept)}%"></i><i class="away" style="width:${100-pct(kept)}%"></i></div><span class="num">${fmt(r.out-kept)} m³</span></div>`;
-  $('year').textContent = `Za rok (${fmt0(K.srazky_rocni_mm.hodnota)} mm, stanice ČHMÚ Koryčany 1991-2020 ✅) odteče ze střechy a zpevněných ploch zhruba ${fmt0(r.yearRoof+r.yearPaved)} m³${r.yearGreen!=null?`, ze zelených ploch ${fmt0(r.yearGreen)} m³ (SCS-CN po dnech z řady denních úhrnů ČHMÚ)`:'; ze zelených ploch zatím nepočítáno (čeká na rozdělení denních úhrnů ze stanice ČHMÚ - vyrob_srazky.bat)'}. Se zvolenými opatřeními zůstane u tebe až ${fmt0(keptYear)} m³.`;
+  $('year').textContent = `Za rok (${fmt0(K.srazky_rocni_mm.hodnota)} mm, stanice ČHMÚ Koryčany 1991-2020 ✅) odteče ze střechy a zpevněných ploch zhruba ${fmt0(r.yearRoof+r.yearPaved)} m³ (po odečtení 1 mm z každého deště: ${fmt0(RAIN_Y_NEPR*1000)} mm z ${fmt0(K.srazky_rocni_mm.hodnota)})${r.yearGreen!=null?`, ze zelených ploch ${fmt0(r.yearGreen)} m³ (SCS-CN po dnech z řady denních úhrnů ČHMÚ)`:'; ze zelených ploch zatím nepočítáno (čeká na rozdělení denních úhrnů ze stanice ČHMÚ - vyrob_srazky.bat)'}. Se zvolenými opatřeními zůstane u tebe až ${fmt0(keptYear)} m³.`;
   // karty
   $('cards').innerHTML = ev.fit.map(x=>{const o=x.o; const on=chosen.has(o.id); const needs=(x.needs||[]).filter(n=>!(chosen.has(n)||(n==='S02'&&i.drain==='pozemek')));
     return `<div class="card ${on?'on':''}"><header><input type="checkbox" id="c-${o.id}" data-id="${o.id}" ${on?'checked':''}><div class="t"><b>${o.nazev}</b>
@@ -679,7 +684,7 @@ $('konst').innerHTML = `<ul><li>Srážky: ${K.srazky_rocni_mm.hodnota} mm/rok �
 <li>Území modelu: ${fmt0(D.uzemi.plocha_ha)} ha, CN vážené ${D.uzemi.cn_vazene} (HSP z BPEJ, v lese a zástavbě odhad), odtok při 20/40/60 mm: ${fmt0(D.uzemi.odtok.P20mm.objem_m3)} / ${fmt0(D.uzemi.odtok.P40mm.objem_m3)} / ${fmt0(D.uzemi.odtok.P60mm.objem_m3)} m³ (SCS-CN, IPS II) ✅ 06_cn.py</li>
 <li>Terén a půda po kliku: DMR 5G ČÚZK (5 m), BPEJ SPÚ -> HSP podle Janeček 2012; jádro web/jadro.js (docs/JADRO.md)</li>
 <li>Návrhový déšť p=0,2: 15 min ${K.navrhovy_dest_p02['15min_mm']} mm, 60 min ${K.navrhovy_dest_p02['60min_mm']} mm, 24 h ${K.navrhovy_dest_p02['24h_mm']} mm ✅ (${K.navrhovy_dest_p02.pozn})</li>
-<li>Zelené plochy pozemku: SCS-CN, CN zahrady podle půdy A-D (Janeček 2012 / TR-55 ✅⏳: trávník 39/61/74/80), úprava na sklon podle Sharpley &amp; Williams 1990 (EPIC) 💻 - vztah z paměti, v ČR neověřen; u návrhových dešťů vážení CN2/CN3 jako v krajině</li>
+<li>Zelené plochy pozemku: SCS-CN, CN zahrady podle půdy A-D (Janeček 2012 / TR-55 ✅⏳: trávník 39/61/74/80), bez úpravy na sklon (české metodiky ji nemají); u návrhových dešťů vážení CN2/CN3 jako v krajině; roční odtok po dnech z histogramu denních úhrnů ČHMÚ Koryčany 1991-2019. Střechy a zpevněné plochy: součinitel ČSN × (déšť - 1 mm), 1 mm = ztráta smáčením (Ia pro CN 98 podle TR-55 ✅⏳)</li>
 <li>Součinitele odtoku C (střechy, zpevněné; sklon &lt;1 / 1-5 / &gt;5 %): ${Object.entries(C).filter(([k,v])=>Array.isArray(v)).map(([k,v])=>k.replaceAll('_',' ')+' '+v.join('/')).join('; ')} ✅</li>
 <li>Vsak: prázdné do ${K.vsak.vyprazdneni_max_h} h, ${K.vsak.nad_hladinou_pv_min_m} m nad podzemní vodou, ${K.vsak.odstup_budova_nehydroizolovana_m} m od budovy ✅</li>
 <li>USLE: přípustná ztráta půdy od 1. 7. 2026 ${K.usle.Gp_t_ha_rok['od_2026-07-01'].melke}/${K.usle.Gp_t_ha_rok['od_2026-07-01'].ostatni} t/ha/rok ✅ (v náhledu se nepočítá)</li></ul>`;
