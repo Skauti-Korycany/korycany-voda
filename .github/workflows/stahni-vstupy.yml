@@ -1,0 +1,29 @@
+name: Stazeni vstupu ZABAGED a BPEJ
+
+# Spusti se pushem do vetve "vstupy" (nebo rucne). Stazena data commitne zpet do vetve "vstupy",
+# odkud si je vezme Claude; do main se surova data nedavaji.
+on:
+  push:
+    branches: [vstupy]
+    paths: [data/povodi.geojson, tools/stahni_vstupy.py]
+  workflow_dispatch:
+
+jobs:
+  stahni:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy pyproj
+      - run: python tools/stahni_vstupy.py --out vstupy
+      - name: Commit do vetve vstupy
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f vstupy
+          git commit -m "[bot] vstupy ZABAGED + BPEJ $(date -u +%Y-%m-%d)" || exit 0
+          git push origin HEAD:vstupy
