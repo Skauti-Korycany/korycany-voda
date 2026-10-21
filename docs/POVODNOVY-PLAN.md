@@ -18,13 +18,13 @@ Doplňková pravidla SPA v dPP: I. SPA i při dešti trvajícím přes 4 h, II. 
 
 | stanice | poloha | provozovatel | data |
 |---|---|---|---|
-| **VD Koryčany** | areál pod nádrží, 49.1175 N, 17.1902 E | Povodí Moravy | sap.pmo.cz (sekce Srážky; 21. 10. z Claude neotevřeno) |
-| **Nemotice** | zahrada OÚ č. p. 66, 49.1294 N, 17.1252 E (cca 4 km Z od Koryčan) | automatická stanice s SMS varováním (provozovatel neuveden) | hladiny.cz |
+| **VD Koryčany** | areál pod nádrží, 49.1175 N, 17.1902 E | Povodí Moravy | sap.pmo.cz Srážky -> „Kyjovka - KS Koryčany“ (id=60, oid=3) ✅: hodinové úhrny + teplota, **jen posledních 24 h**, bez archivu a exportu; „data bez záruky“ |
+| **Nemotice** | zahrada OÚ č. p. 66, 49.1294 N, 17.1252 E (cca 4 km Z od Koryčan) | obec Nemotice, technika Fiedler | hladiny.cz/hladiny/index.php?ca=196&cs=50089 („Nemotice_SR“) ✅: hodinové úhrny, **jen posledních ~10 h + graf**, přenos 3x denně, bez archivu |
 | Nemochovice | u č. p. 2 | ČHMÚ | opendata ČHMÚ (máme) |
 | Staré Hutě | plot u č. p. 19, 427 m n. m. | ČHMÚ Brno | opendata ČHMÚ (máme) |
 | Ždánice | ul. Polní, 238 m n. m. | ČHMÚ Brno | - |
 
--> Pro přívaly v povodí jsou VD Koryčany (1 km od hráze, v území) a Nemotice (4 km) lepší než Nemochovice/Staré Hutě (8-9 km). Oba zdroje zatím neotevřeny; zapsáno do úkolů.
+-> Pro přívaly v povodí jsou VD Koryčany (1 km od hráze) a Nemotice (4 km) lepší než Nemochovice/Staré Hutě (8-9 km), ale **veřejně je jen posledních 24 h**. Historie 2026 (epizody Kachníku) = žádost na Povodí Moravy (KS Koryčany) a na obec Nemotice. Do budoucna jde obě stanice denně zapisovat skriptem (24h tabulka), tím si archiv tvoříme sami.
 
 ## Odtokové poměry a přívaly
 - Místo ohrožené bleskovou povodní (POVIS): **„Povodí potoka Stříbrník“** - bez souřadnic a plochy. Potvrzuje volbu Stříbrníku jako hlavního dílčího povodí modelu.
