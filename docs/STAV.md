@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 21. 10. 2026 19:30 (relace 11 „Můj pozemek UX“ uzavřena, včetně večerních úprav: výchozí déšť 10 mm v celé aplikaci, pozemek jako východisko pro Celé území, texty kroků. **Další chat: rešerše dobré praxe do katalogu podle `docs/KATALOG-RESERSE-ZADANI.md`.** Detail: záložka přestavěna na **průvodce po krocích (varianta A)** včetně hledání adresy RÚIAN a odkazu se stavem, sekce **Můj pozemek - průvodce** níže. Předtím relace 10 „Nádrže v jádru“ uzavřena: bloky O a P hotové - **území modelu rozšířeno k jezu před Mouchnicemi, 17,7 km²**; úpravy Jak bylo a Celé území; **další chat: přestavba Můj pozemek podle `docs/POZEMEK-UX-ZADANI.md`**; předtím relace 9 „Počasí“, sekce **Počasí - Jak bylo** níže). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
+Aktualizováno: 21. 10. 2026 21:30 (relace 12 „Rešerše dobré praxe“, **blok B hotový**, sekce **Katalog - rešerše dobré praxe** níže; **další chat: bloky A, C, D podle `docs/KATALOG-RESERSE-ZADANI.md`**, pořadí A, C, D). Předtím relace 11 „Můj pozemek UX“ uzavřena, včetně večerních úprav: výchozí déšť 10 mm v celé aplikaci, pozemek jako východisko pro Celé území, texty kroků. ~~Další chat: rešerše dobré praxe do katalogu~~ blok B hotov 21. 10. Detail: záložka přestavěna na **průvodce po krocích (varianta A)** včetně hledání adresy RÚIAN a odkazu se stavem, sekce **Můj pozemek - průvodce** níže. Předtím relace 10 „Nádrže v jádru“ uzavřena: bloky O a P hotové - **území modelu rozšířeno k jezu před Mouchnicemi, 17,7 km²**; úpravy Jak bylo a Celé území; **další chat: přestavba Můj pozemek podle `docs/POZEMEK-UX-ZADANI.md`**; předtím relace 9 „Počasí“, sekce **Počasí - Jak bylo** níže). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
 
 ## Fáze: 1 a 2 hotové. Fáze 3 (jádro) rozpracovaná: v0.1 umí statistiku pozemku, SCS-CN po buňkách, povodí bodu, nádrž/poldr z DMR; chybí transformace vlny, bilance P-ET, USLE, napojení opatření.
 
@@ -9,7 +9,7 @@ Aktualizováno: 21. 10. 2026 19:30 (relace 11 „Můj pozemek UX“ uzavřena, v
 - Blok A: seznam vrstev s ověřenými WMS adresami a licencemi -> docs/VRSTVY.md.
 - Rešerše existujících platforem (16. 10.): hotový nástroj s "co kdyby" simulací pro ČR nedohledán.
 - Blok C: katalog opatření v0.2 odsouhlasen 16. 10. (docs/KATALOG.md); kvantifikace Z+S, U+P, L+LES+T+C (docs/KATALOG-*.md).
-- Blok C (část 3), 18. 10.: datový formát `data/opatreni.json` v0.3 (58 opatření, 81 zdrojů, 10 programů, 6 nástrojů, konstanty jádra); zdroj pravdy `tools/build_opatreni.py`. Popis: docs/DATA-FORMAT.md.
+- Blok C (část 3), 18. 10.: datový formát `data/opatreni.json` v0.3 (58 opatření, 81 zdrojů, 10 programů, 6 nástrojů, konstanty jádra); zdroj pravdy `tools/build_opatreni.py`. Popis: docs/DATA-FORMAT.md. **21. 10.: v0.5, 62 opatření, 115 zdrojů, příklady praxe (blok B rešerše, viz sekce Katalog - rešerše dobré praxe).**
 - Návrh rozhraní v0.1, 18. 10. -> docs/ROZHRANI.md.
 - Drátěný prototyp, 18. 10. -> `prototyp/index.html` (= `index.html` pro GitHub Pages): syntetický pozemek, skutečný katalog a vzorce; mapa ČÚZK; režimy Můj pozemek, Celé území, Katalog, O modelu. Generuje `tools/build_dummy.py`.
 - Repozitář, 19. 10.: https://github.com/Skauti-Korycany/korycany-voda - struktura data/, tools/, prototyp/, docs/. GitHub konektor funguje, Claude pushuje přímo do main. GitHub Pages: https://skauti-korycany.github.io/korycany-voda/
@@ -88,6 +88,42 @@ Aktualizováno: 21. 10. 2026 19:30 (relace 11 „Můj pozemek UX“ uzavřena, v
 5. ~~Blok D~~ hotovo 21. 10. Navazuje: po zimě/jaru znovu stáhnout hladinu a `recent` ČHMÚ (skript bere celé období automaticky); případně měrná křivka u stavidla (hladina -> průtok) se školou.
 6. Uživatel ověří WMS označené ❌ ve VRSTVY.md (LPIS MZe, katastr ČÚZK, CENIA vojenská mapování); napíše na data@vumop.cz (HSP, BPEJ, zamokřené půdy).
 7. Dotační okna: AOPK OPŽP ZMV 17. výzva 20. 10. - 3. 11. 2026; OPŽP 105 do 17. 12. 2026.
+
+## Katalog - rešerše dobré praxe (relace 12, 21. 10. 2026)
+
+### Hotovo
+- **Blok B (voda na pozemku a domě)**: rešerše v `docs/KATALOG-RESERSE.md` (Německo, Rakousko, Slovensko, Maďarsko, Nizozemsko, Belgie, Francie, Polsko; pro šedou vodu a olly i Austrálie a aridní zdroje, kde ze střední Evropy měření chybí). Odsouhlaseno uživatelem 21. 10.
+- Katalog **v0.3 / JSON 0.5**: 62 opatření (+Z12 olla, +Z13 suchomilný záhon, +S05 šedá voda, +S06 dešťová voda na WC), 115 zdrojů (+34), 105 kvantifikací, 21 příkladů dobré praxe u 10 opatření. Doplňky k Z01, Z02, Z04, Z05, Z06, Z09, Z11, S01, S02 (nové doklady účinku: osázená mulda +1/3 vody ✅⏳ LWG; propustné povrchy po 4-7 letech 90 % funkčních ✅⏳ NRW; mulč -50 % výparu ✅ DWD; organická hmota +1,16 mm/100 mm na 1 % C ✅ Minasny 2018, na jílu nejméně; popínavka -6,5 až -7 °C povrch stěny ✅ Blake 2021; svedení na zeleň -30 % odtoku ze zpevněných ploch ✅ Lakhi 2025).
+- **Nová pole** v `opatreni.json`: `priklady[]` (kde, kdy, kdo, co, mereno, zdroj, znacka), `prenositelnost`, `rizika` (DATA-FORMAT.md v0.4). Zápis doplňků funkcí `doplnit()` na konci `build_opatreni.py`.
+- **Aplikace**: v kartě opatření (Můj pozemek, Celé území - kontext, Katalog) rozbalovací blok **„Kde to funguje (n)“** s příklady, odkazy, značkami a texty přenositelnost/rizika; nové EFF texty Z12, Z13, S05, S06 (S06 počítá úsporu pitné vody 4 os × 17-26 l/den a navíc zadržený objem proti nádrži 1 m³). Zkontrolováno v Chromiu 1280 px i 375 px, bez chyb v konzoli; `node web/test_jadro.js` VŠE OK.
+- `tools/stahni_zdroje.py` + `.bat`: archiv fotek a PDF k rešerši do `..\zdroje-archiv\` (mimo git; z Claude stažení neprojde kvůli síti, spouští uživatel na PC).
+
+### Rozhodnutí (relace 12)
+- 21. 10. 2026 - **Blok B první** (uživatel): aplikace cílí hlavně na pozemek a dům. Nebránit se nápadům ze středomoří a oblastí adaptovaných na nedostatek vody, pokud dávají smysl na jižní Moravě s klimatickou změnou.
+- 21. 10. 2026 - **Příklady dobré praxe v aplikaci ANO** („Kde to funguje“); styl podrobného popisu s odkazy z KATALOG-RESERSE.md se přejímá i pro web.
+- 21. 10. 2026 - **Olla (Z12) schválena**; podklady archivovat (fotopostup Záhrada.sk) pro případ ztráty zdroje - skript pro PC, fotky mimo git (autorská práva).
+- 21. 10. 2026 - **S06 dešťová voda na WC jako samostatné opatření** (uživatel): dvojité rozvody a úspora pitné vody, odlišit od šedé vody (S05).
+- Otázka organizačních opatření při vedrech (kategorie H) odložena do bloku A.
+
+### Další kroky
+1. Uživatel: spustit `tools\stahni_zdroje.bat` (archiv podkladů), zkusit karty „Kde to funguje“ na telefonu.
+2. Blok A (horko v obci) -> C (veřejný prostor, škola) -> D (krajina). Pro D už je připraven zdroj: suché kamenné terasy Kypr EGU 2017 ✅ (C03).
+3. Po všech blocích: KATALOG-Z-S.md, KATALOG-U-P.md, KATALOG-L-LES-T-C.md doplnit o nové položky (zatím jen KATALOG.md a JSON), `vahy_skaly`.
+4. Znovu zkusit neotevřené zdroje: Salzburg Regenwassermanagement (robots), Natur im Garten NÖ (web offline 21. 10.), derStandard MA48 fasáda (paywall), HAL (bot-wall).
+
+### Na co ses nezeptal (relace 12)
+- Má se u S06 v aplikaci počítat s počtem osob v domácnosti (vstup v průvodci Můj pozemek)? Teď je napevno 4 osoby 🤔.
+- Kanalizace Koryčany (jednotná/oddílná) stále neověřena - pro S02, S06 a odlehčení kanalizace je to klíčová otázka na město.
+- Chceš do katalogu i „zimování“ a údržbu (olla, filtr šedé vody) jako samostatný text, nebo stačí v rizicích?
+- Zahrada.sk je slovenský komerční magazín (Jaga): stačí odkaz a vlastní popis, nebo chceš požádat o souhlas s použitím fotek v aplikaci? Teď fotky jen v soukromém archivu.
+- Čísla spotřeby (WC 20-30 %) jsou z letáku bez zdroje a z polského výpočtu; primární zdroj SOVAK/ČSÚ chybí - chceš, abych napsal dotaz na VaK Kroměříž (skutečná spotřeba Koryčany)?
+
+### Předpoklady (relace 12)
+- Klimatická podobnost: Bavorsko (Veitshöchheim, Würzburg), Sasko, Braniborsko, Dolní Rakousko, jižní Polsko ~ Koryčany; Austrálie (Fremantle) a Arizona jen pro mechanismus (šedá voda, olla), čísla označena jako nepřenositelná.
+- Úspora WC v S06 odvozena 🤔 z 86,7 l/os/den (ČSÚ 2023) × 20-30 %; nádrž 5 m³ a 4 osoby jako výchozí domácnost.
+- Příklady bez měření (Ořechov, Kyselov, Roeschwoog) jsou v aplikaci označené „Bez měření“; do součtů nevstupují.
+- Doplňky v `build_opatreni.py` nemění původní kvantifikace, jen přidávají; pořadí kvantifikací = původní, pak nové.
+- Dvě kvantifikace Z12 (📄 60-70 % a 📄 50-70 %) se v aplikaci zobrazují obě se značkou citace; v součtech vody se W nepočítá.
 
 ## Můj pozemek - průvodce (relace 11, 21. 10. 2026)
 

@@ -269,6 +269,71 @@
        }
       }
      },
+     "priklady": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "kde",
+        "co",
+        "zdroj",
+        "znacka"
+       ],
+       "properties": {
+        "kde": {
+         "type": "string"
+        },
+        "kdy": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "kdo": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "co": {
+         "type": "string"
+        },
+        "mereno": {
+         "type": [
+          "string",
+          "null"
+         ]
+        },
+        "zdroj": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        },
+        "znacka": {
+         "enum": [
+          "overeno",
+          "overeno_stare",
+          "citace",
+          "odhad",
+          "pamet"
+         ]
+        }
+       }
+      }
+     },
+     "prenositelnost": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "rizika": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
      "vahy_skaly": {
       "type": [
        "object",

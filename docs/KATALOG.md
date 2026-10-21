@@ -1,4 +1,7 @@
-# Katalog opatření - v0.2 (16. 10. 2026, seznam odsouhlasen)
+# Katalog opatření - v0.3 (21. 10. 2026)
+
+Změna v0.3 (21. 10. 2026, blok B rešerše dobré praxe, `docs/KATALOG-RESERSE.md`): nová opatření **Z12 Zalévací hliněné nádoby (olla)**, **Z13 Suchomilný (stepní) záhon**, **S05 Šedá voda na zálivku a WC**, **S06 Dešťová voda na splachování WC**; doplňky (nové doklady účinku a příklady praxe) k Z01, Z02, Z04, Z05, Z06, Z09, Z11, S01, S02. Každé opatření může mít blok "Kde to funguje" (příklady se zdrojem a značkou), přenositelnost do Koryčan a rizika; v aplikaci se zobrazují v kartě. Rozhodnutí uživatele 21. 10.: podrobný popis s odkazy (styl KATALOG-RESERSE.md) se přejímá i pro web.
+
 
 Stav: seznam a atributy pro filtrování odsouhlaseny 16. 10. 2026. Kvantifikace účinků, Kč a zdroje: viz KATALOG-Z-S.md, KATALOG-U-P.md, KATALOG-L-LES-T-C.md (18. 10. 2026) a data/opatreni.json. Kde je zde zdroj uveden, je 💻 (z paměti), pokud není označeno jinak; ověřené zdroje jsou v kvantifikačních souborech.
 
@@ -38,6 +41,8 @@ Formát položky níže: **ID Název** | místo | rozhoduje | pracnost / náklad
 - **Z08 Květnatá louka místo trávníku, vyšší a méně častá seč, mozaika** | Z, U, L | J, O, Š | 1 / € | E, CH, B (I) | pozemek | všude | žádné | 0 | SPPK D02 004
 - **Z09 Zelená fasáda / popínavky, pergola se zelení** | Z, S | J, O, Š | 1-2 / € | CH (E) | pozemek | jižní a západní fasády | žádné | 0 | 💻
 - **Z10 Vsakovací objekt pro střešní vodu (štěrkové těleso, vsakovací bloky, šachta)** | Z, U | J, O | 2 / €€ | I, R | pozemek | HSP A-B, hladina PV hlouběji než 1 m, odstup od stavby | potřebuje S02; alternativa k Z01 tam, kde není místo | 0-1 | ČSN 75 9010, TNV 75 9011
+- **Z12 Zalévací hliněné nádoby v záhonu (olla, oya)** | Z | J, Š | 1 / € | W, E (I) | pozemek | záhony, truhlíky; ne pod dřeviny | synergie S01, Z05, U07 | 0 | AZ1911 📄 60-70 %, Záhrada.sk fotopostup ✅
+- **Z13 Suchomilný záhon (stepní, štěrkový)** | Z, U | J, O, Š | 2 / cena neověřena | W, E, B (CH) | pozemek | slunná suchá místa; HSP C/D zlehčit substrát | synergie Z06, U06; konflikt Z08 | 0 | LWG Veitshöchheim 2021 ✅
 - **Z11 Zálivka ze zachycené vody, kapková závlaha místo postřiku** | Z | J, Š | 1 / € | W, E | pozemek | všude | potřebuje S01 | 0 | 💻
 
 ## 3. Střecha a stavba (S)
@@ -45,6 +50,8 @@ Formát položky níže: **ID Název** | místo | rozhoduje | pracnost / náklad
 - **S01 Nádrž na dešťovou vodu (sud, nadzemní IBC, podzemní jímka) s využitím** | S, Z | J, O, Š | 1-3 / €-€€ | R, W (Q) | pozemek | každá střecha; objem podle plochy střechy a spotřeby | potřebuje S02; přepad do Z01/Z10, ne do kanalizace | 0 (podzemní 1) | NZÚ 2026 (jen WC)
 - **S02 Odpojení dešťových svodů od kanalizace, svedení na pozemek** | S | J, O | 1 / € | Q, I, R | pozemek | ověřit u provozovatele kanalizace, kde je jednotná a kde oddílná (nedohledáno online) | předpoklad pro Z01, Z10, S01 | 0-1 (souhlas provozovatele 💻) | 💻
 - **S03 Zelená střecha (extenzivní) na garáži, kůlně, veřejné budově** | S | J, O, Š | 2-3 / €€-€€€ | R, CH, Q (B) | pozemek | nosnost, sklon do 30 % | žádné | 1-2 | SZÚZ 2019
+- **S05 Šedá voda ze sprchy a umyvadel na zálivku (a WC)** | S, Z | J | 3 / cena neověřena | W (R) | pozemek | rekonstrukce koupelny; ne na zeleninu | synergie Z11, S06, Z12 | 1-2 | ČSN 75 6780 ✅, SZÚ 2022 ✅, Byrne 2020 ✅
+- **S06 Dešťová voda na splachování WC** | S | J, O, Š | 3 / nádrž 50 830 Kč ✅ + technologie neověřena | W, R (Q) | pozemek | místo na nádrž; střecha vs. počet osob | potřebuje S01; synergie S02, U04, S05 | 1 | ČSN 75 6780 ✅, Madzia 2019 ✅, ČSÚ 2024 ✅
 - **S04 Světlé povrchy střech a ploch (albedo, "cool roof")** | S, U | J, O | 1-2 / €-€€ | CH | pozemek | tmavé ploché a mírně šikmé střechy, dvory, parkoviště | alternativa k S03 tam, kde nosnost nestačí | 0 | EPA; rozlišit účinek na střechu/interiér (silný) vs. okolní vzduch (slabší)
 
 ## 4. Veřejný prostor obce (U)

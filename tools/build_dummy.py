@@ -17,7 +17,7 @@ data = {
     "meta": OP["meta"], "ciselniky": OP["ciselniky"], "konstanty": OP["konstanty"],
     "zdroje": {k: {"nazev": v["nazev"], "url": v["url"], "rok": v["rok"], "znacka": v["znacka"]} for k, v in OP["zdroje"].items()},
     "programy": OP["programy"], "nastroje": OP["nastroje"],
-    "opatreni": [{k: o[k] for k in ("id","nazev","popis","misto","rozhoduje","pracnost","ucinky","meritko","kontext","kvantifikace","vhodnost","vazby","povoleni","povoleni_pozn","ceny","financovani","standardy","nedohledano","pozn_poctivost")} for o in OP["opatreni"]],
+    "opatreni": [{k: o[k] for k in ("id","nazev","popis","misto","rozhoduje","pracnost","ucinky","meritko","kontext","kvantifikace","vhodnost","vazby","povoleni","povoleni_pozn","ceny","financovani","standardy","nedohledano","pozn_poctivost","priklady","prenositelnost","rizika")} for o in OP["opatreni"]],
 }
 # skutecna data o uzemi (faze 2): budovy, CN/odtok, povodi, srazky
 BUD = json.load(open(os.path.join(ROOT, "data", "budovy_info.json"), encoding="utf-8"))
@@ -130,6 +130,9 @@ table.flow tr.total td{font-weight:600}
 .card details{margin-top:.4rem;font-size:.85rem}
 .card details summary{cursor:pointer;color:var(--accent)}
 .card details ul{margin:.3rem 0 0;padding-left:1.1rem}
+.card details.kde summary{font-weight:500}
+.card details.kde li{margin-bottom:.25rem}
+.card details.kde .note{margin-top:.35rem}
 .mark{font-size:.75rem;vertical-align:1px}
 .note{font-size:.85rem;color:var(--muted)}
 .callout{border-left:3px solid var(--warn);padding:.5rem .8rem;background:var(--mark);border-radius:0 6px 6px 0;font-size:.92rem;margin-top:.8rem}
@@ -959,11 +962,16 @@ const EFF = {
       text:`Zadrží ~75 % běžného deště, u přívalu >30 mm sníží odtok o 77-83 % ✅ Žilina 2024. Povrch o 5-7 °C chladnější než fólie. 1 000-2 500 Kč/m² ✅⏳ UJEP 2023. NZÚ 2026: 2 000 Kč/m² jen jako úvěr a jen se zateplením ✅.`}; },
   S04(i,r){ return {dV:0,dYear:0,fit:true,text:`Voda: nic. Horko: povrch střechy o 28-33 °C chladnější, uvnitř o 1,2-3,3 °C ✅⏳ EPA. Na vzduch v obci skoro bez vlivu (0,2-0,3 °C při 50 % střech) - do součtu za území se nepočítá.`}; },
   Z06(i,r){ return {dV:0,dYear:0,fit:true,text:`Voda: nic měřitelného. Horko: stín snižuje teplotu stěny o 11-25 °C ✅⏳ EPA 2008; vzduch ve skupině stromů až o 5 °C. Strom 1 775-6 100 Kč ✅ ÚÚR 2025. Pozor na sítě a odstup od plotu.`}; },
-  Z05(i,r){ return {dV:0,dYear:0,fit:true,text:`Výpar z půdy nižší o cca třetinu (17-79 % podle plodiny a materiálu ✅ Irrigation Science 2024). Do součtu vody za obec se nepočítá, na záhonech to poznáš.`}; },
+  Z05(i,r){ return {dV:0,dYear:0,fit:true,text:`Výpar z půdy nižší o cca třetinu až polovinu (17-79 % ✅ Irrigation Science 2024; slámový mulč ≥ 50 % ✅ DWD Lipsko 2012-2014, mokrý mulč nepomáhá). Organická hmota zvýší zásobu vody jen o 1,2 mm/100 mm na 1 % uhlíku ✅ metaanalýza 2018, na jílu nejméně. Do součtu vody za obec se nepočítá, na záhonech to poznáš.`}; },
   Z07(i,r){ return {dV:0,dYear:0,fit:true,text:`Vítr za plotem nižší o ~70 % do vzdálenosti 5 výšek, o 50 % do 10 výšek ✅⏳ UNL. Živý plot 2 m chrání pás 20-40 m. Výpar v mm nedohledán - ukazujeme plochu, ne litry.`}; },
   Z08(i,r){ return {dV:0,dYear:0,fit:true,text:`Vlhkost půdy nekvantifikována 🤔. Druhová pestrost: fázovaná seč ponechá 10-20 % neposečeno (SPPK D02 004 📄); nepravidelně kosené plochy o 20 % chudší ✅ Chytrá 2024. 0 Kč.`}; },
-  Z09(i,r){ return {dV:0,dYear:0,fit:true,text:`Stín na fasádě: povrch až o 11-25 °C chladnější ✅⏳ (hodnota pro stín stromů). Pro fasády samostatný zdroj nedohledán.`}; },
-  Z11(i,r){ return {dV:0,dYear:0,fit:true,needs:['S01'],text:`Šetří pitnou vodu; úspora nekvantifikována 🤔.`}; },
+  Z09(i,r){ return {dV:0,dYear:0,fit:true,text:`Voda: nic. Horko: stěna pod popínavkou o 6,5-7 °C chladnější (jih, západ) ✅ Toronto 2021, při husté zeleni až o 15 °C 📄. Ochladí zeď a pokoj, ne ulici.`}; },
+  Z11(i,r){ return {dV:0,dYear:0,fit:true,needs:['S01'],text:`Šetří pitnou vodu; úspora kapkové závlahy proti postřiku pro naše zahrady nedohledána 🤔. Olla (Z12) je podle AZ1911 zhruba rovnocenná kapce.`}; },
+  Z12(i,r){ return {dV:0,dYear:0,fit:true,text:`Voda ke kořenům pod povrchem: úspora 50-70 % proti zálivce konví 📄 (aridní pokus, výrobce); u nás neměřeno. Ze dvou květináčů a silikonu za víkend. Roeschwoog 2022, Ixelles 2023 ✅. Vsak ani odtok neřeší.`}; },
+  Z13(i,r){ return {dV:0,dYear:0,fit:(i.soil==='D'?'půda D - jen s výměnou substrátu, zvaž Z08':true),text:`Trvalky ze stepi místo zalévaného trávníku: po zapojení bez zálivky, údržba 2-6 min/m²/rok ✅ LWG Veitshöchheim 2021. Úspora v litrech nedohledána. Štěrk se v létě hřeje - stín to nenahradí.`}; },
+  S05(i,r){ return {dV:0,dYear:0,fit:true,text:`Voda ze sprchy na trvalky a stromy: úspora pitné vody na zahradu 33-59 % ✅ Austrálie 2020 (3 domy). V ČR bez závazných limitů ✅ SZÚ 2022: ne na zeleninu, ne z pračky a kuchyně. Vodu v krajině nepřidá.`}; },
+  S06(i,r){ const osoby=4, V=5.0, rok=osoby*0.022*365; const dV=Math.max(0,Math.min(V,r.roofOut)-1.0); const dYear=Math.min(rok,r.yearRoof);
+    return {dV,dYear,fit:(i.roof<40?'střecha pod 40 m² - nádrž na WC se nenaplní':true),needs:['S01','S02'],text:`Nádrž 5 m³ na WC bere vodu každý den (🤔 4 osoby × 17-26 l = ${fmt0(osoby*0.017*365)}-${fmt0(osoby*0.026*365)} m³/rok; WC je 20-30 % spotřeby ✅ Praha 14, Bielsko-Biała 2019). Proti nádrži 1 m³ zadrží navíc ${fmt(dV)} m³ z tohoto deště, za rok nahradí až ${fmt0(dYear)} m³ pitné vody. V suchém létě dojde za 1-3 týdny 🤔.`}; },
 };
 const ORDER_FALLBACK = 99;
 function evalMeasures(i,r){
@@ -980,6 +988,11 @@ function cenaText(o){
   const c = o.ceny.filter(c=>c.hodnota!=null||c.rozsah); if(!c.length) return 'cena neověřena';
   const x=c[0]; const v = x.rozsah? `${fmt0(x.rozsah[0])}-${fmt0(x.rozsah[1])}` : fmt0(x.hodnota);
   const z = x.zdroj && D.zdroje[x.zdroj]; return `${v} ${x.jednotka}${x.rok?' ('+x.rok+(z?', '+ZN[z.znacka]:'')+')':''}`;
+}
+function kdeText(o){
+  const pr=(o.priklady||[]); if(!pr.length && !o.prenositelnost && !o.rizika) return '';
+  const li=pr.map(p=>`<li><b>${p.kde}</b>${p.kdy?' ('+p.kdy+')':''}: ${p.co}${p.mereno?`. <span class="note">Měřeno: ${p.mereno}.</span>`:'. <span class="note">Bez měření.</span>'} ${ZN[p.znacka]||''}${(p.zdroj||[]).map(z=>D.zdroje[z]?` <a class="src" href="${D.zdroje[z].url||'#'}" target="_blank" rel="noopener">[${D.zdroje[z].nazev.split(',')[0].split(':')[0].slice(0,50)}]</a>`:'').join('')}</li>`).join('');
+  return `<details class="kde"><summary>${pr.length?'Kde to funguje ('+pr.length+')':'Přenositelnost a rizika'}</summary>${li?`<ul>${li}</ul>`:''}${o.prenositelnost?`<div class="note"><b>Přenositelnost do Koryčan:</b> ${o.prenositelnost}</div>`:''}${o.rizika?`<div class="note"><b>Rizika, co z toho neplyne:</b> ${o.rizika}</div>`:''}</details>`;
 }
 function finText(o){ return o.financovani.map(f=>{const p=D.programy[f]; return p? (p.stav==='otevreno'&&f!=='vlastni'?'● ':'')+p.nazev.split(' - ')[0].split(' (')[0] : f}).join('; '); }
 function povText(o){ return (CZ.povoleni[String(o.povoleni)]||'?')+(o.povoleni_pozn?' ('+o.povoleni_pozn+')':''); }
@@ -1012,6 +1025,7 @@ function recalc(){
       <div class="meta"><span class="chip">${CZ.pracnost[String(o.pracnost)]}</span><span class="chip">${cenaText(o)}</span><span class="chip">povolení: ${CZ.povoleni[String(o.povoleni)]}</span>${x.enabler?'<span class="chip">předpoklad pro další</span>':(x.dV>0?`<span class="chip num">+${fmt(x.dV)} m³ teď</span>`:'')}</div></div></header>
       <div class="eff">${x.text}</div>
       ${needs.length?`<div class="note">Nejdřív je potřeba: ${needs.map(n=>byId[n]?byId[n].nazev:n).join(', ')}</div>`:''}
+      ${kdeText(o)}
       <details><summary>zdroje, financování, co chybí</summary><ul>
         <li>Financování: ${finText(o)}</li>
         <li>Povolení: ${povText(o)}</li>
@@ -1068,7 +1082,7 @@ function renderUzemi(){
   $('u-plus').innerHTML=`<b>Co to ale je:</b> ${fmt0(totY)} m³ vody za rok v půdě a zahradách místo v kanálu. Pro srovnání: nákladní cisterna má 🤔 10 m³, tohle je ${fmt0(totY/10)} cisteren ročně, bez jediné stavby. A na každý liják o ${fmt0(tot)} m³ pomalejší odtok z intravilánu do potoka.`;
   // kontext
   $('u-context').innerHTML = D.opatreni.filter(o=>o.kontext).map(o=>`<div class="card"><header><div class="t"><b>${o.nazev}</b><div class="meta"><span class="chip id">${o.id}</span><span class="chip">rozhoduje: ${o.rozhoduje.map(r=>CZ.rozhoduje[r].split(' ')[0]).join(', ')}</span><span class="chip">${cenaText(o)}</span><span class="chip">povolení: ${CZ.povoleni[String(o.povoleni)]}</span></div></div></header>
-    <div class="eff">${o.kvantifikace.map(k=>k.popis+' '+(ZN[k.znacka]||'')).join(' ')}</div>${o.pozn_poctivost?`<div class="note">${o.pozn_poctivost}</div>`:''}<div class="note">Financování: ${finText(o)}</div></div>`).join('');
+    <div class="eff">${o.kvantifikace.map(k=>k.popis+' '+(ZN[k.znacka]||'')).join(' ')}</div>${o.pozn_poctivost?`<div class="note">${o.pozn_poctivost}</div>`:''}${kdeText(o)}<div class="note">Financování: ${finText(o)}</div></div>`).join('');
 }
 const UZ = {moje:false};
 document.getElementById('u-zaklad').addEventListener('click', e=>{ const b=e.target.closest('button[data-z]'); if(!b || b.disabled) return; UZ.moje = b.dataset.z==='moje'; renderUzemi(); });
@@ -1158,6 +1172,7 @@ function renderKatalog(){
     <div class="meta"><span class="chip id">${o.id}</span><span class="chip">${o.misto.map(m=>CZ.misto[m]).join(', ')}</span><span class="chip">rozhoduje: ${o.rozhoduje.join(', ')}</span><span class="chip">${CZ.pracnost[String(o.pracnost)]}</span><span class="chip">${cenaText(o)}</span><span class="chip">povolení ${o.povoleni??'?'}</span>${o.kontext?'<span class="chip">kontext - obec/správce</span>':''}</div>
     <div class="meta">účinky: ${o.ucinky.primarni.map(u=>'<b>'+CZ.ucinek[u]+'</b>').join(', ')}${o.ucinky.vedlejsi.length?'; vedlejší: '+o.ucinky.vedlejsi.map(u=>CZ.ucinek[u]).join(', '):''}</div></div></header>
     ${o.popis?`<div class="eff">${o.popis}</div>`:''}
+    ${kdeText(o)}
     <details><summary>účinek, zdroje, ceny, financování</summary><ul>
       ${o.kvantifikace.map(k=>`<li><b>${CZ.ucinek[k.ucinek]||k.ucinek}</b> (${k.typ}) ${ZN[k.znacka]||''}: ${k.popis}${(k.zdroj||[]).map(z=>D.zdroje[z]?` <a class="src" href="${D.zdroje[z].url||'#'}" target="_blank" rel="noopener">[${D.zdroje[z].nazev.split(',')[0].slice(0,50)}]</a>`:'').join('')}</li>`).join('')}
       ${o.ceny.map(c=>`<li>Cena: ${c.polozka} - ${c.hodnota!=null?fmt0(c.hodnota):(c.rozsah?fmt0(c.rozsah[0])+'-'+fmt0(c.rozsah[1]):'cena neověřena')} ${c.jednotka}${c.rok?' ('+c.rok+')':''}${c.pozn?' - '+c.pozn:''}</li>`).join('')}
