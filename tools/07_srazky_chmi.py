@@ -189,6 +189,18 @@ for s in serazene[:MAX_STANIC_DENNI]:
         nlete = {f"N{T}": round(mu - beta * math.log(-math.log(1 - 1 / T)), 1) for T in (2, 5, 10, 20, 50, 100)}
     prahy = {f"dni_nad_{p}mm_za_rok": round(sum(1 for dt, v in denni.items() if v >= p and int(dt[:4]) in uplne_roky) / max(1, len(uplne_roky)), 2)
              for p in (10, 20, 30, 50)}
+    # histogram dennich uhrnu 1991-2020 (prumerny pocet dni za rok v 1mm binech) - pro rocni bilanci SCS-CN v aplikaci
+    hist_roky = [r for r in uplne_roky if 1991 <= r <= 2020]
+    histogram = None
+    if hist_roky:
+        biny = defaultdict(float)
+        for dt, v in denni.items():
+            if int(dt[:4]) in hist_roky and v >= 0.1:
+                biny[int(math.ceil(v))] += 1
+        kl = sorted(biny)
+        histogram = {"obdobi": [hist_roky[0], hist_roky[-1]], "roku": len(hist_roky),
+                     "pozn": "bin = horni mez 1mm intervalu (1 = 0,1-1,0 mm); dni_za_rok = prumer za uplne roky 1991-2020; dny < 0,1 mm vynechany",
+                     "bin_mm": kl, "dni_za_rok": [round(biny[k] / len(hist_roky), 3) for k in kl]}
     posledni = max(denni)
     vysledky[wsi] = {
         "nazev": s["nazev"], "km_od_stredu": s["km_od_stredu"], "vyska_m": s["vyska_m"],
@@ -198,6 +210,7 @@ for s in serazene[:MAX_STANIC_DENNI]:
         "prumer_uplnych_roku_mm": round(sum(rocni[r]["uhrn_mm"] for r in uplne_roky) / len(uplne_roky), 1) if uplne_roky else None,
         "rocni": {str(r): rocni[r] for r in sorted(rocni)},
         "n_lete_denni_mm_gumbel": nlete, "pocet_rocnich_maxim": len(maxima),
+        "histogram_denni_1991_2020": histogram,
         **prahy,
         # den epizody i den po ni: denni uhrn CHMU je k 06 UTC a muze patrit k predchozimu dni (overit v meta3/popisu)
         "epizody_2026_denni_mm": {d: denni.get(d) for d in sorted(set(EPIZODY + [(date.fromisoformat(d) + timedelta(days=1)).isoformat() for d in EPIZODY]))},
