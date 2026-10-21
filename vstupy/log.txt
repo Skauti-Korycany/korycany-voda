@@ -1,0 +1,36 @@
+Orná_půda_a_ostatní_dále_nespecifikované_plochy 41
+Trvalý_travní_porost 79
+Lesní_půda_se_stromy 32
+Lesní_půda_se_stromy_kategorizovaná__plocha_ 2078
+Lesní_půda_s_křovinatým_porostem 44
+Ovocný_sad__zahrada 148
+Vinice 0
+Udržovaná_zeleň 15
+Ostatní_plocha_v_sídlech 3
+Areál_účelové_zástavby 37
+Hřbitov 2
+Skládka 1
+Povrchová_těžba__lom 0
+Parkoviště__odpočívka 3
+Kolejiště 1
+Areál_železniční_stanice__zastávky 0
+Bažina__močál 3
+Vodní_plocha 18
+Cesta 707
+Ulice 346
+Silnice__dálnice 18
+Kůlna__skleník__fóliovník__přístřešek 92
+Rozvodnice 24
+12:18:15    chyba HTTP Error 403: Forbidden, zkouším znovu
+12:18:18    chyba HTTP Error 403: Forbidden, zkouším znovu
+CHYBA BPEJ <HTTPError 403: 'Forbidden'>
+chyb: 1
+bbox zabaged (-560745, -1177740, -554800, -1170795) bpej (-560845, -1177840, -554700, -1170695)
+12:26:47 území 'území modelu (hlavní povodí bez povodí nad hrází VN Koryčany)' 17.719 km², bbox -560545..-555000 / -1177540..-1170995
+12:26:47 budovy: soubor neexistuje.xml chybí, přeskakuji
+12:26:47 toky: čtu /home/runner/work/korycany-voda/korycany-voda/data/HY-NET/HY-NET/HY-NET.gpkg ...
+12:26:47    vrstvy v GPKG: HydroNode, WatercourseLink
+12:26:47    vrstva WatercourseLink, srs 3045, linií v bboxu 183
+12:26:47    zapsáno data/toky_cuzk.geojson (150 linií); názvy: 
+12:26:48 zapsáno /home/runner/work/korycany-voda/korycany-voda/data/vektory_nahled.png
+12:26:48 hotovo.
