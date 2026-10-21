@@ -108,6 +108,7 @@ Zadání: `docs/POZEMEK-UX-ZADANI.md`. Výsledek: záložka Můj pozemek je prů
 - 21. 10. 2026 - Výchozí zpevněné plochy 0 m² (Claude; mění výchozí vstup, ne výpočet). Kategorie 20 / 60 / 150 m² jsou orientační 🤔.
 - 21. 10. 2026 - Výpočty v Můj pozemek beze změny; měnilo se jen uspořádání a texty.
 
+- 21. 10. 2026 18:30 - **Výsledek Můj pozemek jako východisko pro Celé území** (uživatel). Celé území má přepínač „Jedna domácnost: průměrná v obci / jako můj pozemek“ (druhý jde zapnout až po výběru pozemku); krok 5 má tlačítko „Co kdyby to udělali i ostatní?“, které přepne a předá i zvolený déšť. V režimu „jako můj pozemek“ se pro každou zapojenou domácnost počítá s plochami, půdou, okapy a všemi zaškrtnutými opatřeními z Můj pozemek (stejná funkce `zadrzeni()` jako v kroku 5, vytažená z `recalc`), počet domů a podíl zapojených zůstávají z Celého území; text výslovně říká, že jde o „co kdyby“, ne odhad pro obec. Průměrný režim beze změny. Výpočty beze změny.
 ### Další kroky
 - Uživatel: vyzkoušet na svém telefonu (hledání adresy, Jsem tady, posun mapy prstem, Poslat odkaz) a dát zpětnou vazbu k textům.
 - Na úzkém telefonu padá tlačítko „Jsem tady“ na druhý řádek (mapa o ~50 px níž) - doladit podle zpětné vazby.

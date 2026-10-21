@@ -50,6 +50,8 @@ Poctivost beze změny: značky ✅ ✅⏳ 📄 🤔 u čísel, „Nehodí se sem
 
 Stav v odkazu: `#pozemek?k=krok&p=kod_ku:cislo,...&o=okapy&z=dlažba_m2&s=A-D&d=déšť_mm&m=opatření.oddělená.tečkou` (ruční režim navíc `r` střecha, `g` zeleň). Nic se neukládá; odkaz obsahuje čísla parcel a odpovědi a posílá ho jen uživatel.
 
+Návaznost na Celé území: v kroku 5 tlačítko „Co kdyby to udělali i ostatní?“ otevře Celé území v režimu „Jedna domácnost: jako můj pozemek“ (plochy, půda, okapy a opatření z průvodce, déšť se předá); přepínač vrací „průměrná v obci“.
+
 Výpočet (jádro, součinitele, SCS-CN, katalog) se přestavbou nezměnil.
 
 ### 2.4 Celé území (režim občan i obec)
