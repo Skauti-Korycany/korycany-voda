@@ -438,7 +438,6 @@ details.banner[open]>summary .more{display:none}
         <div class="bars" id="bars"></div>
         <div class="legend"><span><b style="background:var(--bad)"></b>odteče pryč</span><span><b style="background:var(--water)"></b>zůstane u tebe (vsákne se nebo zadrží)</span></div>
         <div class="callout ok" id="scale"></div>
-        <p class="note">Zjednodušený model pro osvětu, nevalidováno: ukazuje řády a srovnání, ne projekt. Značky: ✅ ověřený zdroj, ✅⏳ starší než rok, 📄 citace, 🤔 odhad.</p>
       </div>
     </div>
   </div>
