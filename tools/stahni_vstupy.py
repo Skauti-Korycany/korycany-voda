@@ -29,10 +29,25 @@ def main():
     bb = lambda b: (round(xmin - b), round(ymin - b), round(xmax + b), round(ymax + b))
     os.makedirs(os.path.join(a.out, "zabaged"), exist_ok=True); os.makedirs(os.path.join(a.out, "bpej"), exist_ok=True)
     vrstvy = [v[0] for v in v04.VRSTVY] + [l[0] for l in v04.LINIE] + ["Kůlna__skleník__fóliovník__přístřešek"] + v04.EXTRA
+<<<<<<< Updated upstream
     for L in vrstvy:
         n = v04.wfs_fetch(L, bb(200), os.path.join(a.out, "zabaged", L + ".geojson"))
         print(L, n, flush=True)
     v05.fetch_bpej(bb(300), os.path.join(a.out, "bpej", "bpej_wfs.gml"))
+=======
+    chyby = 0
+    for L in vrstvy:
+        try:
+            n = v04.wfs_fetch(L, bb(200), os.path.join(a.out, "zabaged", L + ".geojson"))
+            print(L, n, flush=True)
+        except BaseException as e:      # sys.exit z wfs_get je BaseException
+            chyby += 1; print("CHYBA", L, repr(e)[:500], flush=True)
+    try:
+        v05.fetch_bpej(bb(300), os.path.join(a.out, "bpej", "bpej_wfs.gml")); print("BPEJ ok", flush=True)
+    except BaseException as e:
+        chyby += 1; print("CHYBA BPEJ", repr(e)[:500], flush=True)
+    print("chyb:", chyby)
+>>>>>>> Stashed changes
     print("bbox zabaged", bb(200), "bpej", bb(300))
 
 

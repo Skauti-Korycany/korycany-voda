@@ -1,10 +1,15 @@
 {
  "pozn": "Bod má buď 'lonlat' (WGS84 [lon, lat]) nebo 'xy5514' (S-JTSK [X, Y]). Přichytí se ke korytu (buňka s největší akumulací) v okruhu polomer_m. Uprav a spusť skript znovu.",
  "hlavni": {
-  "nazev": "Kyjovka pod Koryčany (pod soutokem se Stříbrníkem)",
-  "pod_soutokem_id": 2,
-  "min_km2": 15,
-  "pozn": "bod se najde automaticky: od profilu Stříbrník (id 2) po proudu až k soutoku s Kyjovkou, první buňka za soutokem. Chceš-li jiný profil, nahraď 'pod_soutokem_id' klíčem 'xy5514' nebo 'lonlat'."
+  "nazev": "Kyjovka nad jezem před Mouchnicemi",
+  "xy5514": [
+   -560508.0,
+   -1173975.0
+  ],
+  "polomer_m": 40,
+  "min_km2": 20,
+  "zdroj": "ZABAGED ČÚZK, vrstva Přehradní hráz, jez (fid 28465260641910784, Kyjovka (Stupava)), stažen přes WFS 21. 10. 2026",
+  "pozn": "dolní hranice modelu od 21. 10. 2026 (rozhodnutí uživatele): zahrnuje soutok Stříbrníku s Kyjovkou (podle toků ČÚZK ~550 m nad jezem) a mokřiny v nivě. Dřív: Kyjovka těsně pod soutokem se Stříbrníkem podle D8."
  },
  "sidla": [
   {
