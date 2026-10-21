@@ -220,6 +220,18 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
   .pz[data-step]:not([data-step="1"]) #map{height:260px}
 }
 @media (prefers-reduced-motion: reduce){.pz #map{transition:none}}
+.pz-search{display:flex;gap:.4rem;margin-bottom:.4rem;flex-wrap:wrap}
+.pz-search input{flex:1 1 12rem;min-width:0;font:inherit;font-size:1rem;min-height:46px;padding:.5rem .7rem;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--fg)}
+.pz-search .pz-btn{padding:.5rem .8rem}
+.pz-sug{display:grid;gap:2px;margin:-.2rem 0 .4rem;border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden}
+.pz-sug button{font:inherit;text-align:left;min-height:44px;padding:.45rem .7rem;border:0;background:none;color:var(--fg);cursor:pointer}
+.pz-sug button:hover,.pz-sug button:focus-visible{background:var(--mark)}
+.pz-sug small{color:var(--muted)}
+.pz-search-n:empty{display:none}
+.pz-search-n{margin:0 0 .4rem}
+.pz[data-step]:not([data-step="1"]) .pz-search,.pz[data-step]:not([data-step="1"]) .pz-sug,.pz[data-step]:not([data-step="1"]) .pz-search-n{display:none}
+.pz-shared{margin-top:.6rem;font-size:.85rem}
+.pz-shared input{width:100%;font:inherit;font-size:.8rem;padding:.4rem;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--fg)}
 .pz-q{margin:.9rem 0}
 .pz-q .q{font-weight:600;margin-bottom:.4rem}
 .pz-q .note{margin-top:.35rem}
@@ -318,12 +330,19 @@ details.banner[open]>summary .more{display:none}
   <div class="pz-grid">
     <div class="pz-mapcol">
       <div class="pz-ask" id="pz-ask"><b>Najdi svůj dům a klepni na něj.</b> Pak klepni i na zahradu a dvůr - každá parcela zvlášť, sečte se.</div>
+      <form class="pz-search" id="pz-search" role="search" autocomplete="off">
+        <input type="search" id="pz-adr" placeholder="Ulice a číslo domu, nebo číslo parcely" aria-label="Hledat adresu nebo parcelu" enterkeyhint="search">
+        <button type="submit" class="pz-btn">Najít</button>
+        <button type="button" class="pz-btn" id="pz-gps" title="Najít mě podle polohy telefonu">◎ Jsem tady</button>
+      </form>
+      <div class="pz-sug" id="pz-sug" hidden></div>
+      <div class="note pz-search-n" id="pz-search-n" aria-live="polite"></div>
       <div class="pz-mapwrap">
         <div id="map" aria-label="Mapa Koryčan - klepni na svůj dům"></div>
         <button type="button" class="pz-mapcover" id="pz-mapcover" data-go="1" aria-label="Změnit místo - zpět na výběr pozemku"><span>Změnit místo</span></button>
       </div>
       <div class="pz-sel" id="w-parc">Zatím nic nevybráno.</div>
-      <p class="note pz-maphint">Katastr a budovy ČÚZK (CC BY 4.0), podklad ZTM a ortofoto ČÚZK. Nic se neukládá, vlastníci se nenačítají. <button type="button" class="linkbtn" id="pz-manual">Nechci mapu, zadám plochy ručně</button></p>
+      <p class="note pz-maphint">Katastr a budovy ČÚZK (CC BY 4.0), podklad ZTM a ortofoto ČÚZK. Hledání adresy dělá vyhledávací služba RÚIAN (ČÚZK): hledaný text se pošle jí, u nás se nic neukládá. Poloha telefonu zůstává v telefonu. Vlastníci se nenačítají. <button type="button" class="linkbtn" id="pz-manual">Nechci mapu, zadám plochy ručně</button></p>
     </div>
     <div class="pz-panel">
       <div class="pz-step" data-s="1">
@@ -581,7 +600,7 @@ const canvasR = L.canvas({padding:0.5});
 fetch(BASE+'data/parcely.geojson').then(r=>r.json()).then(gj=>{
   PARC.feats = gj.features.map((f,k)=>{ const ring=f.geometry.coordinates[0]; let a=[Infinity,Infinity,-Infinity,-Infinity]; for(const [x,y] of ring){ if(x<a[0])a[0]=x; if(y<a[1])a[1]=y; if(x>a[2])a[2]=x; if(y>a[3])a[3]=y; } return {k, f, ring, diry:f.geometry.coordinates.slice(1), bbox:a}; });
   PARC.layer = L.geoJSON(gj,{renderer:canvasR, interactive:false, style:{color:'#7a5a3a',weight:0.7,fill:false,opacity:0.8}});
-  PARC.zvyr = L.layerGroup().addTo(map);
+  PARC.zvyr = L.featureGroup().addTo(map);
   const ukaz=()=>{ if(map.getZoom()>=16){ if(!map.hasLayer(PARC.layer)) PARC.layer.addTo(map); } else if(map.hasLayer(PARC.layer)) map.removeLayer(PARC.layer); };
   map.on('zoomend',ukaz); ukaz();
 }).catch(err=>{ console.warn('parcely', err); document.getElementById('w-parc').innerHTML='parcely se nenačetly - plochy zadej ručně'; });
@@ -703,7 +722,7 @@ function pzGo(n){
   n = Math.max(1, Math.min(5, n));
   if(n>1 && !pzReady()) return;
   const sec = document.getElementById('tab-pozemek'); const prev = PZ.step; PZ.step = n; sec.dataset.step = n;
-  pzUI();
+  pzUI(); pzStav();
   setTimeout(()=>{ map.invalidateSize(); if(PARC.vybrane.size && PARC.zvyr){ try{ map.fitBounds(PARC.zvyr.getBounds(), {padding:[20,20], maxZoom:19}); }catch(e){} } }, 230);
   if(prev!==n){ const top = sec.getBoundingClientRect().top + scrollY - 8; if(scrollY>top) window.scrollTo({top, behavior:'auto'}); }
 }
@@ -760,10 +779,100 @@ function pzRender(i, r, kept, keptYear, n){
   $('pz-chosen').innerHTML = kept>0.05 ? `Zaškrtnutá opatření udrží <b>${fmt(kept)} m³</b> z ${fmt(r.out)} m³, které teď při tomto dešti odtečou.` : `Zatím nic, co by vodu zadrželo. Teď při tomto dešti odteče ${fmt(r.out)} m³.`;
   // krok 5: motivacni vysledek
   $('scale').hidden = !(kept>0.05);
+  setTimeout(pzStav, 0);
   $('summary').innerHTML = kept>0.05
-    ? `<div class="motiv"><div>Tvoje volba udrží doma</div><div class="big num">${fmt(kept)} m³</div><p>z každého lijáku ${P} mm, to je asi ${vany(kept)} van 🤔, které neodtečou ${i.drain==='kanal'?'do kanalizace':'pryč'}. Za rok ${fmt0(keptYear)} m³.</p><p>Kdyby to samé udělalo ${n} domácností: <b>${fmt0(kept*n)} m³</b> na jeden liják.</p><div class="mot-a"><a href="#" data-tab-go="uzemi">Co může obec a celé území →</a><a href="#" data-tab-go="katalog">Všechna opatření →</a></div></div>`
+    ? `<div class="motiv"><div>Tvoje volba udrží doma</div><div class="big num">${fmt(kept)} m³</div><p>z každého lijáku ${P} mm, to je asi ${vany(kept)} van 🤔, které neodtečou ${i.drain==='kanal'?'do kanalizace':'pryč'}. Za rok ${fmt0(keptYear)} m³.</p><p>Kdyby to samé udělalo ${n} domácností: <b>${fmt0(kept*n)} m³</b> na jeden liják.</p><div class="mot-a"><a href="#" data-tab-go="uzemi">Co může obec a celé území →</a><a href="#" data-tab-go="katalog">Všechna opatření →</a><a href="#" data-share="1">Poslat odkaz</a></div></div><div class="pz-shared note" id="pz-shared">Odkaz obsahuje čísla vybraných parcel a tvoje odpovědi. Nikam se neukládá, pošleš ho jen ty.</div>`
     : `<div class="callout">Zatím jsi nevybral žádné opatření, které vodu zadrží. Vrať se <button type="button" class="linkbtn" data-go="4">ke kroku 4</button>.</div>`;
 }
+
+// ---------- hledani adresy nebo parcely: vyhledavaci sluzba RUIAN (CUZK, GeocodeSOE; overeno 21. 10. 2026)
+const RUIAN = 'https://ags.cuzk.gov.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE';
+const MISTNI = ['Koryčany','Blišice','Jestřabice','Lískovec','Mouchnice'];
+const pzMsg = t => { document.getElementById('pz-search-n').textContent = t; };
+let pzSugT = null, pzSugN = 0, pzSugList = [];
+async function pzHledej(q){
+  const qs = [q]; if(!MISTNI.some(m=>q.toLowerCase().includes(m.toLowerCase().slice(0,4)))) qs.push(q+' Koryčany');
+  const out = [];
+  for(const t of qs){
+    const j = await (await fetch(RUIAN+'/suggest?text='+encodeURIComponent(t)+'&f=json')).json();
+    (j.suggestions||[]).forEach(x=>{
+      if(!['AdresniMisto','ParcelaDefinicniBod','Ulice'].includes(x.type)) return;
+      if(!MISTNI.some(m=>x.text.includes(m))) return;
+      if(x.type==='AdresniMisto' && !/76805|68333/.test(x.text)) return;   // PSC Korycan a Mouchnic (jine Liskovce pryc)
+      if(!out.some(y=>y.magicKey===x.magicKey)) out.push(x);
+    });
+  }
+  return out.slice(0,6);
+}
+function pzSugRender(list){
+  pzSugList = list; const box = document.getElementById('pz-sug');
+  const typ = {AdresniMisto:'adresa', ParcelaDefinicniBod:'parcela (k. ú. a číslo)', Ulice:'ulice'};
+  box.innerHTML = list.map((x,k)=>`<button type="button" data-sug="${k}">${x.text} <small>${typ[x.type]||''}</small></button>`).join('');
+  box.hidden = !list.length;
+}
+document.getElementById('pz-adr').addEventListener('input', e=>{
+  const q = e.target.value.trim(); clearTimeout(pzSugT);
+  if(q.length<3){ pzSugRender([]); pzMsg(''); return; }
+  pzSugT = setTimeout(async()=>{ const n=++pzSugN; try{ const l=await pzHledej(q); if(n!==pzSugN) return; pzSugRender(l); pzMsg(l.length?'':'Nic nenalezeno v Koryčanech a okolí. Zkus ulici a číslo domu, nebo najdi dům v mapě.'); }catch(err){ pzMsg('Vyhledávání ČÚZK teď neodpovídá. Najdi dům přímo v mapě.'); } }, 350);
+});
+async function pzNajdi(x){
+  pzSugRender([]); document.getElementById('pz-adr').value = x.text;
+  try{
+    const j = await (await fetch(RUIAN+'/findAddressCandidates?SingleLine='+encodeURIComponent(x.text)+'&magicKey='+encodeURIComponent(x.magicKey)+'&outSR=4326&maxLocations=1&f=json')).json();
+    const c = (j.candidates||[])[0]; if(!c){ pzMsg('Místo se nepodařilo najít. Najdi dům v mapě.'); return; }
+    const lat=c.location.y, lon=c.location.x;
+    if(x.type==='Ulice'){ map.setView([lat,lon],18); pzMsg('Ulice nalezena. Klepni v mapě na svůj dům.'); return; }
+    const p = najdiParcelu(lon,lat);
+    if(!p){ map.setView([lat,lon],17); pzMsg('Tohle místo je mimo území modelu (povodí Kyjovky a Stříbrníku v Koryčanech po jez před Mouchnicemi).'); return; }
+    map.setView([lat,lon],19);
+    if(!PARC.vybrane.has(p.k)) map.fire('click',{latlng:L.latLng(lat,lon)});
+    pzMsg(PARC.vybrane.size===1 ? 'Našel jsem to. Má zahrada vlastní parcelu? Klepni i na ni.' : '');
+  }catch(err){ pzMsg('Vyhledávání ČÚZK teď neodpovídá. Najdi dům přímo v mapě.'); }
+}
+document.getElementById('pz-sug').addEventListener('click', e=>{ const b=e.target.closest('[data-sug]'); if(b) pzNajdi(pzSugList[+b.dataset.sug]); });
+document.getElementById('pz-search').addEventListener('submit', async e=>{ e.preventDefault(); const q=document.getElementById('pz-adr').value.trim(); if(q.length<3) return;
+  try{ const l = pzSugList.length ? pzSugList : await pzHledej(q); if(l.length) pzNajdi(l[0]); else pzMsg('Nic nenalezeno v Koryčanech a okolí. Najdi dům v mapě.'); }catch(err){ pzMsg('Vyhledávání ČÚZK teď neodpovídá. Najdi dům přímo v mapě.'); } });
+// ---------- Jsem tady: poloha telefonu, jen pro posun mapy (nikam se neposila)
+let pzGpsKruh = null;
+document.getElementById('pz-gps').addEventListener('click', ()=>{
+  if(!navigator.geolocation){ pzMsg('Tenhle prohlížeč polohu neumí. Najdi dům v mapě.'); return; }
+  pzMsg('Zjišťuji polohu...');
+  navigator.geolocation.getCurrentPosition(pos=>{
+    const {latitude:lat, longitude:lon, accuracy:acc} = pos.coords;
+    if(pzGpsKruh) pzGpsKruh.remove(); pzGpsKruh = L.circle([lat,lon],{radius:Math.max(acc,5),color:'#2d7fb8',weight:1,fillOpacity:.1,interactive:false}).addTo(map);
+    map.setView([lat,lon],19);
+    pzMsg(najdiParcelu(lon,lat) ? `Jsi tady zhruba (přesnost ±${Math.round(acc)} m). Klepni na svůj dům.` : 'Podle polohy jsi mimo území modelu. Najdi dům v mapě nebo podle adresy.');
+  }, ()=>pzMsg('Polohu se nepodařilo zjistit (prohlížeč ji nepovolil nebo nemá signál). Najdi dům v mapě nebo podle adresy.'), {enableHighAccuracy:true, timeout:12000, maximumAge:60000});
+});
+// ---------- stav v odkazu (#pozemek?...): parcely (k. u. + cislo), odpovedi, opatreni, krok. Nic se neuklada.
+function pzStav(){
+  if(PZ.restoring || document.getElementById('tab-pozemek').classList.contains('hidden-tab')) return;
+  const $=id=>document.getElementById(id), q=new URLSearchParams();
+  q.set('k', PZ.step);
+  const p=[...PARC.vybrane].map(k=>{ const x=PARC.feats[k].f.properties; return x.ku_kod+':'+x.cislo; });
+  if(p.length) q.set('p', p.join(',')); else if(PZ.manual){ q.set('r',$('in-roof').value); q.set('g',$('in-green').value); }
+  q.set('o',$('in-drain').value); q.set('z',$('in-paved').value); q.set('s',$('in-soil').value); q.set('d',$('in-rain').value); q.set('m',[...chosen].join('.'));
+  try{ history.replaceState(null,'','#pozemek?'+q.toString()); }catch(e){}
+}
+async function pzObnov(){
+  const h = location.hash; if(!h.startsWith('#pozemek')) return;
+  document.querySelector('nav.tabs button[data-tab="pozemek"]').click();
+  const q = new URLSearchParams(h.split('?')[1]||''); if(![...q.keys()].length) return;
+  const $=id=>document.getElementById(id); PZ.restoring = true;
+  for(let t=0; t<150 && (!PARC.feats.length || jadroStav==='nacitam'); t++) await new Promise(r=>setTimeout(r,100));
+  (q.get('p')||'').split(',').filter(Boolean).forEach(id=>{ const i=id.indexOf(':'), ku=id.slice(0,i), c=id.slice(i+1); const p=PARC.feats.find(p=>p.f.properties.ku_kod===ku && p.f.properties.cislo===c); if(p) PARC.vybrane.add(p.k); });
+  if(PARC.vybrane.size){ prekresliVyber(); const c=PARC.zvyr.getBounds().getCenter(); odvodZMapy(c.lng,c.lat); $('w-pos').innerHTML='<span class="note">podle vybraných parcel</span>'; }
+  else if(q.get('r')!=null){ PZ.manual=true; $('in-roof').value=q.get('r'); $('in-green').value=q.get('g')||0; }
+  if(q.get('o')) $('in-drain').value=q.get('o'); if(q.get('s')) $('in-soil').value=q.get('s'); if(q.get('d')) $('in-rain').value=q.get('d');
+  if(q.get('z')!=null){ $('in-paved').value=q.get('z'); $('in-paved').dispatchEvent(new Event('input')); }
+  if(q.has('m')) chosen = new Set(q.get('m').split('.').filter(Boolean));
+  PZ.restoring = false; recalc(); pzGo(+q.get('k')||1);
+}
+document.querySelectorAll('nav.tabs button').forEach(b=>b.addEventListener('click',()=>{ if(b.dataset.tab!=='pozemek' && location.hash.startsWith('#pozemek')){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} } }));
+document.getElementById('tab-pozemek').addEventListener('click', async e=>{ const a=e.target.closest('[data-share]'); if(!a) return; e.preventDefault(); pzStav(); const url=location.href, box=document.getElementById('pz-shared');
+  try{ if(navigator.share){ await navigator.share({title:'Voda na mém pozemku - Koryčany', url}); return; } }catch(err){ if(err && err.name==='AbortError') return; }
+  try{ await navigator.clipboard.writeText(url); box.textContent='Odkaz je zkopírovaný, vlož ho do zprávy. Obsahuje čísla vybraných parcel a tvoje odpovědi.'; }
+  catch(err){ box.innerHTML='Zkopíruj si odkaz: <input readonly value="'+url.replace(/"/g,'&quot;')+'" aria-label="Odkaz">'; box.querySelector('input').select(); } });
 
 // ---------- vstupy
 const $ = id=>document.getElementById(id);
@@ -1204,6 +1313,7 @@ window.TEST_HOOK = async ()=>{ for(let t=0;t<40 && !PARC.feats.length;t++) await
 // start
 try{const t=localStorage.getItem('kor_tab'); if(t){document.querySelector(`nav.tabs button[data-tab="${t}"]`)?.click();}}catch(e){}
 recalc();
+pzObnov();
 </script>
 """
 JADRO_JS = open(os.path.join(ROOT, "web", "jadro.js"), encoding="utf-8").read()
