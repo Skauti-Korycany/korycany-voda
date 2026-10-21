@@ -47,6 +47,7 @@ zdroj("dufkova2007", "Dufková J. 2007, Acta Univ. Agric. Silvic. Mendel. Brun. 
 zdroj("vumop_vitr2016", "VÚMOP, Doležal, Podhrázská a kol.: Řízení rizika větrné eroze, certifikovaná metodika (2016/2017)", "https://agronavigator.cz/sites/default/files/2025-04/Nmet%252B-%252BMetodika%252B%25C5%2599%25C3%25ADzen%25C3%25AD%252Bv%25C4%259Btrn%25C3%25A9%252Beroze.pdf", 2017, "overeno")
 zdroj("mze2022_vitr", "MZe, prezentace Podhrázská a kol., opatření proti větrné erozi (17. 5. 2022)", "https://mze.gov.cz/public/portal/mze/-a74770---r9wNxZdR/prezentace-podhrazska-jana-opatreni-proti-vetrne-erozi", 2022, "overeno")
 zdroj("cvut_rain_2023", "Kavka a kol. 2023, Krátkodobé srážky pro hydrologické modelování a navrhování drobných vodohospodářských staveb v krajině (certifikovaná metodika 2/2023/SPU/O, ISBN 978-80-01-07115-1; ČVUT, ČHMÚ, ÚFA AV ČR, Sweco) - 6h návrhové úhrny N2-N100 z WPS rain1.fsv.cvut.cz pro bod v Koryčanech, tools/build_navrhove_srazky.py", "https://rain.fsv.cvut.cz/data/files/metodika_N_srazky_2023_web.pdf", 2023, "overeno", "rastr 1 km, radar 20 let + stanice 30+ let; podmínky užití dat portál neuvádí")
+zdroj("vumop_r2022", "VÚMOP / ČHMÚ / MŽP 2022-2023: Regionalizovaný faktor erozní účinnosti přívalového deště (R faktor), rastr 5 m po okresech, podmínky užití žádné (metadata.vumop.cz, záznam 65379397-1a6c-4f19-b153-50fe0a000319); okres Kroměříž stažen 21. 10. 2026", "https://metadata.vumop.cz/record/basic/65379397-1a6c-4f19-b153-50fe0a000319", 2023, "overeno")
 zdroj("chmi_korycany", "ČHMÚ, otevřená data (opendata.chmi.cz): stanice Koryčany 0-203-0-41701068002, denní úhrny 1920-2025; zpracování tools/07_srazky_chmi.py, docs/SRAZKY.md", "https://opendata.chmi.cz/meteorology/climate/", 2026, "overeno")
 zdroj("vukrom2021", "VÚKROM, Obilnářské listy 2/2021: srážkové normály stanice Kroměříž", "https://www.vukrom.cz/userfiles/files/obilnarske_listy/2021/2021_2/39_43.pdf", 2021, "overeno")
 zdroj("kalkulacka_manual", "VÚMOP, Protierozní kalkulačka - manuál (Novotný a kol. 2017); kalkulacka.vumop.cz", "https://kalkulacka.vumop.cz/docs/manual.pdf", 2017, "overeno")
@@ -140,7 +141,9 @@ KONSTANTY = {
    "C": {"kukurice_zrno_orba": [0.70,0.90,0.70,0.35,0.70,0.40], "obilniny_olejniny_po_obilninach": [0.65,0.70,0.45,0.08,0.25,0.04], "cukrovka_brambory": [0.65,0.80,0.65,0.30,0.70], "travni_porost": 0.01, "vicelete_picniny": 0.015},
    "P_vrstevnice_podle_sklonu_stupne": {"0-4": 0.6, "4-6": 0.7, "6-8": 0.8, "8-10": 0.9, ">10": 1.0},
    "P_pasove_stridani_sklon_pct": {"okopaniny+picniny": {"2-7": 0.30, "7-12": 0.35, "12-18": 0.40, "18-24": 0.45}, "okopaniny+ozimy": {"2-7": 0.50, "7-12": 0.60, "12-18": 0.75, "18-24": 0.90}, "max_sirka_pasu_m": {"2-7": 40, "7-12": 30, "12-18": 20, "18-24": 20}},
-   "zdroj": ["kalkulacka_manual","janecek2012"], "znacka": "overeno", "pozn": "R faktor převzít z kalkulačky pro Koryčany"},
+   "R_korycany": {"prumer": 66.0, "rozsah": [62.4, 71.4], "orna_prumer": 65.9, "jednotka": "MJ/ha·cm/h", "pozn": "regionalizovaný R faktor 2022 (VÚMOP/ČHMÚ), rastr 5 m, území modelu; Janeček 2012 doporučoval paušálně 40", "zdroj": "vumop_r2022", "znacka": "overeno"},
+   "K_hpj": {"zdroj": "janecek2012", "pozn": "tab. 1.5, hodnoty v tools/11_usle.py"},
+   "zdroj": ["kalkulacka_manual","janecek2012","vumop_r2022"], "znacka": "overeno", "pozn": "výpočet pro ornou půdu území modelu: tools/11_usle.py -> data/usle_info.json"},
  "regulovany_odtok_l_s_ha": {"hodnota": 3, "zdroj": ["brno2024","tsk2025"], "pozn": "praxe Brno/Praha, pro Koryčany nezávazné"},
 }
 

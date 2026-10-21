@@ -255,12 +255,29 @@
      "18-24": 20
     }
    },
+   "R_korycany": {
+    "prumer": 66.0,
+    "rozsah": [
+     62.4,
+     71.4
+    ],
+    "orna_prumer": 65.9,
+    "jednotka": "MJ/ha·cm/h",
+    "pozn": "regionalizovaný R faktor 2022 (VÚMOP/ČHMÚ), rastr 5 m, území modelu; Janeček 2012 doporučoval paušálně 40",
+    "zdroj": "vumop_r2022",
+    "znacka": "overeno"
+   },
+   "K_hpj": {
+    "zdroj": "janecek2012",
+    "pozn": "tab. 1.5, hodnoty v tools/11_usle.py"
+   },
    "zdroj": [
     "kalkulacka_manual",
-    "janecek2012"
+    "janecek2012",
+    "vumop_r2022"
    ],
    "znacka": "overeno",
-   "pozn": "R faktor převzít z kalkulačky pro Koryčany"
+   "pozn": "výpočet pro ornou půdu území modelu: tools/11_usle.py -> data/usle_info.json"
   },
   "regulovany_odtok_l_s_ha": {
    "hodnota": 3,
@@ -550,6 +567,15 @@
    "znacka": "overeno",
    "overeno_dne": "2026-10-20",
    "pozn": "rastr 1 km, radar 20 let + stanice 30+ let; podmínky užití dat portál neuvádí"
+  },
+  "vumop_r2022": {
+   "id": "vumop_r2022",
+   "nazev": "VÚMOP / ČHMÚ / MŽP 2022-2023: Regionalizovaný faktor erozní účinnosti přívalového deště (R faktor), rastr 5 m po okresech, podmínky užití žádné (metadata.vumop.cz, záznam 65379397-1a6c-4f19-b153-50fe0a000319); okres Kroměříž stažen 21. 10. 2026",
+   "url": "https://metadata.vumop.cz/record/basic/65379397-1a6c-4f19-b153-50fe0a000319",
+   "rok": 2023,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-20",
+   "pozn": null
   },
   "chmi_korycany": {
    "id": "chmi_korycany",

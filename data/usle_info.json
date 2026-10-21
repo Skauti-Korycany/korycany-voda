@@ -1,0 +1,381 @@
+{
+ "zdroje": {
+  "R": "VÚMOP/ČHMÚ R faktor 2022, okres Kroměříž (CZ0721), 5 m; podmínky užití žádné; NoData v území doplněno nejbližší hodnotou",
+  "K": "Janeček a kol. 2012 tab. 1.5 podle HPJ z BPEJ (SPÚ)",
+  "LS": "Janeček 2012 rov. 1.6-1.8 (McCool), l z akumulace D8 omezená na 300 m, m podle Wischmeier & Smith",
+  "C": "opatreni.json konstanty.usle.C (manuál kalkulačky VÚMOP 2017, Janeček 2012); scénář = průměrný roční C, ne osevní postup konkrétního pozemku",
+  "P": 1
+ },
+ "pozn": "orientační model pro osvětu; délka svahu z DMR neuvažuje přerušení cestami a mezemi, proto A spíš nadsazuje na dlouhých svazích; kalkulačka VÚMOP (USLE2D, LPIS) je přesnější a závazná",
+ "R_uzemi": {
+  "min": 62.4,
+  "max": 71.4,
+  "prumer": 66.0,
+  "doplneno_nodata_ha_v_uzemi": 46.0
+ },
+ "orna_uzemi_modelu": {
+  "plocha_ha": 260.5,
+  "R_prumer": 65.9,
+  "K_prumer": 0.349,
+  "LS_prumer": 2.45,
+  "sklon_prumer_pct": 10.4,
+  "scenare": {
+   "C02_obilniny": {
+    "C": 0.2,
+    "A_prumer_t_ha_rok": 10.56,
+    "A_median": 7.98,
+    "podil_nad_Gp9_pct": 45.7,
+    "podil_nad_Gp4_pct": 71.8,
+    "podil_nad_Gp2_pct": 86.6,
+    "ztrata_celkem_t_rok": 2752.0
+   },
+   "C01_zlepsene": {
+    "C": 0.1,
+    "A_prumer_t_ha_rok": 5.28,
+    "A_median": 3.99,
+    "podil_nad_Gp9_pct": 18.0,
+    "podil_nad_Gp4_pct": 49.9,
+    "podil_nad_Gp2_pct": 71.8,
+    "ztrata_celkem_t_rok": 1376.0
+   },
+   "C03_okopaniny": {
+    "C": 0.3,
+    "A_prumer_t_ha_rok": 15.84,
+    "A_median": 11.97,
+    "podil_nad_Gp9_pct": 59.9,
+    "podil_nad_Gp4_pct": 81.2,
+    "podil_nad_Gp2_pct": 92.3,
+    "ztrata_celkem_t_rok": 4128.0
+   },
+   "TTP": {
+    "C": 0.01,
+    "A_prumer_t_ha_rok": 0.53,
+    "A_median": 0.4,
+    "podil_nad_Gp9_pct": 0.0,
+    "podil_nad_Gp4_pct": 0.0,
+    "podil_nad_Gp2_pct": 1.2,
+    "ztrata_celkem_t_rok": 138.0
+   }
+  }
+ },
+ "orna_bez_bpej_ha": 0.7,
+ "orna_podle_povodi": {
+  "1": {
+   "plocha_ha": 223.7,
+   "R_prumer": 66.0,
+   "K_prumer": 0.331,
+   "LS_prumer": 2.47,
+   "sklon_prumer_pct": 10.6,
+   "scenare": {
+    "C02_obilniny": {
+     "C": 0.2,
+     "A_prumer_t_ha_rok": 10.19,
+     "A_median": 7.97,
+     "podil_nad_Gp9_pct": 45.5,
+     "podil_nad_Gp4_pct": 71.8,
+     "podil_nad_Gp2_pct": 85.7,
+     "ztrata_celkem_t_rok": 2279.0
+    },
+    "C01_zlepsene": {
+     "C": 0.1,
+     "A_prumer_t_ha_rok": 5.09,
+     "A_median": 3.98,
+     "podil_nad_Gp9_pct": 17.0,
+     "podil_nad_Gp4_pct": 49.8,
+     "podil_nad_Gp2_pct": 71.8,
+     "ztrata_celkem_t_rok": 1140.0
+    },
+    "C03_okopaniny": {
+     "C": 0.3,
+     "A_prumer_t_ha_rok": 15.28,
+     "A_median": 11.95,
+     "podil_nad_Gp9_pct": 60.0,
+     "podil_nad_Gp4_pct": 80.6,
+     "podil_nad_Gp2_pct": 91.4,
+     "ztrata_celkem_t_rok": 3419.0
+    },
+    "TTP": {
+     "C": 0.01,
+     "A_prumer_t_ha_rok": 0.51,
+     "A_median": 0.4,
+     "podil_nad_Gp9_pct": 0.0,
+     "podil_nad_Gp4_pct": 0.0,
+     "podil_nad_Gp2_pct": 0.6,
+     "ztrata_celkem_t_rok": 114.0
+    }
+   }
+  },
+  "2": {
+   "plocha_ha": 0.1,
+   "R_prumer": 66.7,
+   "K_prumer": 0.33,
+   "LS_prumer": 3.96,
+   "sklon_prumer_pct": 14.0,
+   "scenare": {
+    "C02_obilniny": {
+     "C": 0.2,
+     "A_prumer_t_ha_rok": 17.45,
+     "A_median": 13.12,
+     "podil_nad_Gp9_pct": 100.0,
+     "podil_nad_Gp4_pct": 100.0,
+     "podil_nad_Gp2_pct": 100.0,
+     "ztrata_celkem_t_rok": 2.0
+    },
+    "C01_zlepsene": {
+     "C": 0.1,
+     "A_prumer_t_ha_rok": 8.73,
+     "A_median": 6.56,
+     "podil_nad_Gp9_pct": 31.0,
+     "podil_nad_Gp4_pct": 100.0,
+     "podil_nad_Gp2_pct": 100.0,
+     "ztrata_celkem_t_rok": 1.0
+    },
+    "C03_okopaniny": {
+     "C": 0.3,
+     "A_prumer_t_ha_rok": 26.18,
+     "A_median": 19.68,
+     "podil_nad_Gp9_pct": 100.0,
+     "podil_nad_Gp4_pct": 100.0,
+     "podil_nad_Gp2_pct": 100.0,
+     "ztrata_celkem_t_rok": 3.0
+    },
+    "TTP": {
+     "C": 0.01,
+     "A_prumer_t_ha_rok": 0.87,
+     "A_median": 0.66,
+     "podil_nad_Gp9_pct": 0.0,
+     "podil_nad_Gp4_pct": 0.0,
+     "podil_nad_Gp2_pct": 0.0,
+     "ztrata_celkem_t_rok": 0.0
+    }
+   }
+  },
+  "4": {
+   "plocha_ha": 0.9,
+   "R_prumer": 67.5,
+   "K_prumer": 0.345,
+   "LS_prumer": 4.56,
+   "sklon_prumer_pct": 14.7,
+   "scenare": {
+    "C02_obilniny": {
+     "C": 0.2,
+     "A_prumer_t_ha_rok": 21.56,
+     "A_median": 24.86,
+     "podil_nad_Gp9_pct": 74.4,
+     "podil_nad_Gp4_pct": 80.7,
+     "podil_nad_Gp2_pct": 91.2,
+     "ztrata_celkem_t_rok": 20.0
+    },
+    "C01_zlepsene": {
+     "C": 0.1,
+     "A_prumer_t_ha_rok": 10.78,
+     "A_median": 12.43,
+     "podil_nad_Gp9_pct": 65.8,
+     "podil_nad_Gp4_pct": 74.4,
+     "podil_nad_Gp2_pct": 80.7,
+     "ztrata_celkem_t_rok": 10.0
+    },
+    "C03_okopaniny": {
+     "C": 0.3,
+     "A_prumer_t_ha_rok": 32.34,
+     "A_median": 37.29,
+     "podil_nad_Gp9_pct": 76.0,
+     "podil_nad_Gp4_pct": 86.5,
+     "podil_nad_Gp2_pct": 96.4,
+     "ztrata_celkem_t_rok": 29.0
+    },
+    "TTP": {
+     "C": 0.01,
+     "A_prumer_t_ha_rok": 1.08,
+     "A_median": 1.24,
+     "podil_nad_Gp9_pct": 0.0,
+     "podil_nad_Gp4_pct": 0.0,
+     "podil_nad_Gp2_pct": 8.8,
+     "ztrata_celkem_t_rok": 1.0
+    }
+   }
+  }
+ },
+ "orna_podle_sklonu": {
+  "0-3 %": {
+   "plocha_ha": 27.7,
+   "R_prumer": 65.8,
+   "K_prumer": 0.396,
+   "LS_prumer": 0.25,
+   "sklon_prumer_pct": 1.7,
+   "scenare": {
+    "C02_obilniny": {
+     "C": 0.2,
+     "A_prumer_t_ha_rok": 1.28,
+     "A_median": 1.1,
+     "podil_nad_Gp9_pct": 0.0,
+     "podil_nad_Gp4_pct": 0.7,
+     "podil_nad_Gp2_pct": 15.8,
+     "ztrata_celkem_t_rok": 35.0
+    },
+    "C01_zlepsene": {
+     "C": 0.1,
+     "A_prumer_t_ha_rok": 0.64,
+     "A_median": 0.55,
+     "podil_nad_Gp9_pct": 0.0,
+     "podil_nad_Gp4_pct": 0.0,
+     "podil_nad_Gp2_pct": 0.7,
+     "ztrata_celkem_t_rok": 18.0
+    },
+    "C03_okopaniny": {
+     "C": 0.3,
+     "A_prumer_t_ha_rok": 1.92,
+     "A_median": 1.65,
+     "podil_nad_Gp9_pct": 0.0,
+     "podil_nad_Gp4_pct": 7.0,
+     "podil_nad_Gp2_pct": 36.8,
+     "ztrata_celkem_t_rok": 53.0
+    },
+    "TTP": {
+     "C": 0.01,
+     "A_prumer_t_ha_rok": 0.06,
+     "A_median": 0.05,
+     "podil_nad_Gp9_pct": 0.0,
+     "podil_nad_Gp4_pct": 0.0,
+     "podil_nad_Gp2_pct": 0.0,
+     "ztrata_celkem_t_rok": 2.0
+    }
+   }
+  },
+  "3-7 %": {
+   "plocha_ha": 56.3,
+   "R_prumer": 65.6,
+   "K_prumer": 0.378,
+   "LS_prumer": 0.89,
+   "sklon_prumer_pct": 5.0,
+   "scenare": {
+    "C02_obilniny": {
+     "C": 0.2,
+     "A_prumer_t_ha_rok": 4.33,
+     "A_median": 3.33,
+     "podil_nad_Gp9_pct": 8.9,
+     "podil_nad_Gp4_pct": 40.5,
+     "podil_nad_Gp2_pct": 80.7,
+     "ztrata_celkem_t_rok": 244.0
+    },
+    "C01_zlepsene": {
+     "C": 0.1,
+     "A_prumer_t_ha_rok": 2.16,
+     "A_median": 1.67,
+     "podil_nad_Gp9_pct": 0.2,
+     "podil_nad_Gp4_pct": 11.4,
+     "podil_nad_Gp2_pct": 40.5,
+     "ztrata_celkem_t_rok": 122.0
+    },
+    "C03_okopaniny": {
+     "C": 0.3,
+     "A_prumer_t_ha_rok": 6.49,
+     "A_median": 5.0,
+     "podil_nad_Gp9_pct": 21.1,
+     "podil_nad_Gp4_pct": 64.1,
+     "podil_nad_Gp2_pct": 95.6,
+     "ztrata_celkem_t_rok": 365.0
+    },
+    "TTP": {
+     "C": 0.01,
+     "A_prumer_t_ha_rok": 0.22,
+     "A_median": 0.17,
+     "podil_nad_Gp9_pct": 0.0,
+     "podil_nad_Gp4_pct": 0.0,
+     "podil_nad_Gp2_pct": 0.0,
+     "ztrata_celkem_t_rok": 12.0
+    }
+   }
+  },
+  "7-12 %": {
+   "plocha_ha": 71.0,
+   "R_prumer": 65.9,
+   "K_prumer": 0.357,
+   "LS_prumer": 1.99,
+   "sklon_prumer_pct": 9.5,
+   "scenare": {
+    "C02_obilniny": {
+     "C": 0.2,
+     "A_prumer_t_ha_rok": 9.34,
+     "A_median": 7.69,
+     "podil_nad_Gp9_pct": 41.4,
+     "podil_nad_Gp4_pct": 83.6,
+     "podil_nad_Gp2_pct": 98.9,
+     "ztrata_celkem_t_rok": 663.0
+    },
+    "C01_zlepsene": {
+     "C": 0.1,
+     "A_prumer_t_ha_rok": 4.67,
+     "A_median": 3.85,
+     "podil_nad_Gp9_pct": 9.6,
+     "podil_nad_Gp4_pct": 47.9,
+     "podil_nad_Gp2_pct": 83.6,
+     "ztrata_celkem_t_rok": 331.0
+    },
+    "C03_okopaniny": {
+     "C": 0.3,
+     "A_prumer_t_ha_rok": 14.01,
+     "A_median": 11.54,
+     "podil_nad_Gp9_pct": 63.6,
+     "podil_nad_Gp4_pct": 95.7,
+     "podil_nad_Gp2_pct": 99.8,
+     "ztrata_celkem_t_rok": 994.0
+    },
+    "TTP": {
+     "C": 0.01,
+     "A_prumer_t_ha_rok": 0.47,
+     "A_median": 0.38,
+     "podil_nad_Gp9_pct": 0.0,
+     "podil_nad_Gp4_pct": 0.0,
+     "podil_nad_Gp2_pct": 0.0,
+     "ztrata_celkem_t_rok": 33.0
+    }
+   }
+  },
+  "12-100 %": {
+   "plocha_ha": 105.6,
+   "R_prumer": 66.1,
+   "K_prumer": 0.315,
+   "LS_prumer": 4.16,
+   "sklon_prumer_pct": 16.2,
+   "scenare": {
+    "C02_obilniny": {
+     "C": 0.2,
+     "A_prumer_t_ha_rok": 17.13,
+     "A_median": 15.12,
+     "podil_nad_Gp9_pct": 80.2,
+     "podil_nad_Gp4_pct": 99.2,
+     "podil_nad_Gp2_pct": 100.0,
+     "ztrata_celkem_t_rok": 1810.0
+    },
+    "C01_zlepsene": {
+     "C": 0.1,
+     "A_prumer_t_ha_rok": 8.57,
+     "A_median": 7.56,
+     "podil_nad_Gp9_pct": 38.0,
+     "podil_nad_Gp4_pct": 84.8,
+     "podil_nad_Gp2_pct": 99.2,
+     "ztrata_celkem_t_rok": 905.0
+    },
+    "C03_okopaniny": {
+     "C": 0.3,
+     "A_prumer_t_ha_rok": 25.7,
+     "A_median": 22.68,
+     "podil_nad_Gp9_pct": 93.8,
+     "podil_nad_Gp4_pct": 100.0,
+     "podil_nad_Gp2_pct": 100.0,
+     "ztrata_celkem_t_rok": 2715.0
+    },
+    "TTP": {
+     "C": 0.01,
+     "A_prumer_t_ha_rok": 0.86,
+     "A_median": 0.76,
+     "podil_nad_Gp9_pct": 0.0,
+     "podil_nad_Gp4_pct": 0.1,
+     "podil_nad_Gp2_pct": 3.0,
+     "ztrata_celkem_t_rok": 90.0
+    }
+   }
+  }
+ }
+}
