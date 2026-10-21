@@ -31,34 +31,40 @@
   };
 
   // prohlizec: PNG -> typovana pole pres canvas
+  // jedno pasmo PNG -> typovane pole (canvas)
+  J._nactiPng = async function (base, p) {
+    const img = new Image();
+    img.src = base + p.soubor;
+    await img.decode();
+    const c = document.createElement('canvas');
+    c.width = img.width; c.height = img.height;
+    const ctx = c.getContext('2d', { willReadFrequently: true });
+    ctx.drawImage(img, 0, 0);
+    const d = ctx.getImageData(0, 0, img.width, img.height).data;
+    const n = img.width * img.height;
+    if (p.bity === 16) { const out = new Uint16Array(n); for (let i = 0; i < n; i++) out[i] = (d[i * 4] << 8) | d[i * 4 + 1]; return out; }
+    const out = new Uint8Array(n); for (let i = 0; i < n; i++) out[i] = d[i * 4]; return out;
+  };
   // opts.bez = pole pasem, ktera se nenactou (napr. ['smer_v'] kdyz se nepocitaji nadrze); opts.toky = false -> bez toky.json
   J.nacti = async function (base, opts) {
     opts = opts || {};
     const info = await (await fetch(base + 'rastr.json')).json();
     const pasma = {};
-    await Promise.all(Object.entries(info.pasma).filter(([nazev]) => !(opts.bez || []).includes(nazev)).map(async ([nazev, p]) => {
-      const img = new Image();
-      img.src = base + p.soubor;
-      await img.decode();
-      const c = document.createElement('canvas');
-      c.width = img.width; c.height = img.height;
-      const ctx = c.getContext('2d', { willReadFrequently: true });
-      ctx.drawImage(img, 0, 0);
-      const d = ctx.getImageData(0, 0, img.width, img.height).data;
-      const n = img.width * img.height;
-      if (p.bity === 16) {
-        const out = new Uint16Array(n);
-        for (let i = 0; i < n; i++) out[i] = (d[i * 4] << 8) | d[i * 4 + 1];
-        pasma[nazev] = out;
-      } else {
-        const out = new Uint8Array(n);
-        for (let i = 0; i < n; i++) out[i] = d[i * 4];
-        pasma[nazev] = out;
-      }
-    }));
+    await Promise.all(Object.entries(info.pasma).filter(([nazev]) => !(opts.bez || []).includes(nazev))
+      .map(async ([nazev, p]) => { pasma[nazev] = await J._nactiPng(base, p); }));
     let toky = null;
     if (opts.toky !== false) try { const r = await fetch(base + 'toky.json'); if (r.ok) toky = await r.json(); } catch (e) { toky = null; }
+    J._base = base;
     return J.nactiZPoli(info, pasma, toky);
+  };
+  // dodatecne nacteni toho, co potrebuji nadrze (pasmo smer_v a toky.json), kdyz se pri J.nacti vynechalo
+  J.nactiProNadrze = async function (base) {
+    base = base || J._base;
+    const ulohy = [];
+    if (!J.p.smer_v && J.info.pasma.smer_v) ulohy.push(J._nactiPng(base, J.info.pasma.smer_v).then(a => { J.p.smer_v = a; }));
+    if (!J.toky) ulohy.push(fetch(base + 'toky.json').then(r => r.json()).then(t => { J.toky = t; }));
+    await Promise.all(ulohy);
+    return J;
   };
 
   // ---------------------------------------------------------------- souradnice
@@ -271,6 +277,11 @@
   // Mensi tok: DMR 5 m jeho udoli nerozlisi -> jen "tun / poldr v udolnici": objem z pricneho profilu v ose hraze
   // a podelneho sklonu dna jako rozsah V = A*L/3 (udoli tvaru V) az A*L/2 (udoli s plochym dnem), L = h / sklon.
   J.MALY_TOK_KM2 = 0.25;
+  // nad touto vyskou hraze se vzdy ukaze varovani "vodni dilo na projekt" (rozhodnuti uzivatele 21. 10. 2026)
+  J.HRAZ_VODNI_DILO_M = 2;
+  J.TEXT_VODNI_DILO = 'Hráz vyšší než 2 m je vodní dílo, které se smí stavět jen podle projektu a s povolením vodoprávního úřadu. ' +
+    'Špatně postavená hráz se může protrhnout a vlna ohrozí lidi a domy pod ní - nejčastěji se hráze porušují přelitím při povodni ' +
+    '(malý bezpečnostní přeliv) a vymíláním vodou, která prosakuje tělesem hráze (MZe 2016). Tady jde jen o odhad objemu pro osvětu, ne o návrh hráze.';
   J.MIN_BUNEK_ZATOPY = 20;   // mensi zatopa v DMR = sum; prejde se na odhad z profilu
 
   // vyska v bode S-JTSK, bilinearne mezi stredy bunek (null mimo data)
@@ -345,6 +356,7 @@
     if (!J.toky) return { chyba: 'chybi data toku (data/web/toky.json)' };
     const [Xk, Yk] = J.lonLatNaXY(lon, lat);
     const pt = J.prichytKVektoru(Xk, Yk, opts.polomerM == null ? 60 : opts.polomerM);
+    const vodniDilo = h > J.HRAZ_VODNI_DILO_M;
     if (!pt) return null;
     if (pt.daleko) return { chyba: 'daleko_od_toku', vzdalenost_m: pt.d };
     const l = pt.linie, k = pt.k, varovani = [];
@@ -413,6 +425,7 @@
       bod_lonlat: lonlat(pt.X, pt.Y), posun_m: pt.d, hraz_lonlat: konce.map(([X, Y]) => lonlat(X, Y)),
       delka_hraze_m: delkaHraze, hraz_uzavira: uzavira, kota_dna: zDno, hladina: hl, vyska_hraze_m: h,
       profil, profil_odhad: profilOdhad, varovani,
+      vodni_dilo: vodniDilo, vodni_dilo_text: vodniDilo ? J.TEXT_VODNI_DILO : null,
     };
 
     // ---------------- tun / poldr v udolnici (maly tok, nebo zatopa v DMR pod rozlisenim)

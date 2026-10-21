@@ -92,6 +92,7 @@ ok('Stribrnik: plosna zatopa a profilovy odhad ve stejnem radu (0,3x-3x)', nS.ob
 // maly tok (linie 28, < 0,25 km2): tun v udolnici
 const bM = bodLinie(28, 0.4), nM = J.nadrz(...bM.ll, 1, 60);
 ok('maly tok -> tun_udolnice s rozsahem objemu', nM.typ === 'tun_udolnice' && nM.objem_rozsah_m3[0] > 0 && nM.objem_rozsah_m3[1] / nM.objem_rozsah_m3[0] === 1.5 && nM.obrys_lonlat.length > 3, fmt(nM));
+ok('hraz 2 m bez varovani vodni dilo, 4 m s varovanim', !nK.vodni_dilo && nK4.vodni_dilo && /projektu/.test(nK4.vodni_dilo_text));
 // klik daleko od toku
 const nD = J.nadrz(17.135, 49.08, 2, 60);
 ok('klik daleko od toku -> chyba', nD && nD.chyba === 'daleko_od_toku', nD && `${Math.round(nD.vzdalenost_m)} m`);

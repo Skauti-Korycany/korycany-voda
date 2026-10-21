@@ -61,7 +61,11 @@ Proč změna: v0.1 přichytávala hráz k buňce s největší akumulací D8 a z
 
 Omezení: objem koryta užšího než buňka chybí (DMR ho nevidí); v intravilánu (Stříbrník ve městě, Kyjovka v centru) je terén plochý, hráz často neuzavře údolí do 300 m a zátopa se rozlévá po nivě - tam je výsledek spíš ukázka, proč nádrž v městě nejde, než návrh. Bez ztrát, bez bezpečnostního přelivu, bez objemu tělesa hráze.
 
-Testy (`web/test_jadro.js`, 36 OK): kolmost osy na tok (cos < 0,05), Kyjovka pod přehradou 2 m / 4 m, rokle horního Stříbrníku -> profil, malý tok -> tůň s rozsahem 1 : 1,5, klik daleko od toku, rychlost.
+Varování vodní dílo: u hráze nad 2 m (`J.HRAZ_VODNI_DILO_M`) vrací `vodni_dilo: true` a text `J.TEXT_VODNI_DILO` (projekt + povolení vodoprávního úřadu, riziko protržení; příčiny porušení podle MZe 2016, Malé vodní nádrže - rybníky, příručka pro TBD ✅⏳). Rozhodnutí uživatele 21. 10. 2026.
+
+Prototyp: panel „Hráz na potoce“ v Celém území; `smer_v` a `toky.json` se dotahují až při otevření záložky (`Jadro.nactiProNadrze()`).
+
+Testy (`web/test_jadro.js`, 37 OK): kolmost osy na tok (cos < 0,05), Kyjovka pod přehradou 2 m / 4 m, rokle horního Stříbrníku -> profil, malý tok -> tůň s rozsahem 1 : 1,5, klik daleko od toku, rychlost.
 
 ## Ověření proti Pythonu (06_cn.py)
 Území modelu: plocha 1 412,7 ha (Python 1 412,1 - rozdíl = rasterizace polygonu), CN 72,0 = 72,0, odtok P40 78 248 m³ = 78 248 m³, les 49,9 %, HSP odhad 48,2 % (48,3). Povodí Stříbrník z hlásného profilu: 4,23 km² = 4,23, CN 65,2 = 65,2.

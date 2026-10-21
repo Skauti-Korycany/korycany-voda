@@ -109,6 +109,7 @@ Jadro.nacti('../data/web/').then(() => {
         `hráz ${f0(n.delka_hraze_m)} m kolmo na tok${n.hraz_uzavira ? '' : ' <span class=warn>(neuzavírá údolí)</span>'}, dno ${f1(n.kota_dna)} m, hladina ${f1(n.hladina)} m\n` +
         (tun ? `<b>objem ${rz(n.objem_rozsah_m3)} m³, hladina ${rz(n.plocha_rozsah_m2)} m²</b>\n(příčný profil v ose hráze ${f1(po.prurez_m2)} m², šířka ${f0(po.sirka_m)} m, sklon dna ${f1(100 * po.sklon_dna)} %, vzdutí ${f0(po.delka_vzduti_m)} m; rozsah = údolí tvaru V až ploché dno)\n`
              : `<b>objem ${f0(n.objem_m3)} m³, plocha ${f0(n.plocha_ha * 1e4)} m² (${n.n_bunek} buněk)</b>, hloubka max ${f1(n.hloubka_max_m)} m, průměr ${f1(n.hloubka_prumer_m)} m\nkontrola z příčného profilu: ${rz(po.objem_m3)} m³\nzatopeno: ${vyuzitiText(n.zatopene_vyuziti_ha, n.plocha_ha || 1)}\n`) +
+        (n.vodni_dilo ? `<span class=warn><b>! ${n.vodni_dilo_text}</b></span>\n` : '') +
         n.varovani.map(v => `<span class=warn>! ${v}</span>\n`).join('') +
         `odtok z povodí při ${P} mm: ${f0(odt)} m³ -> nádrž pojme ${f0(100 * Math.min(1, n.objem_m3 / Math.max(1, odt)))} % (bez ztrát a přelivu 🤔)\n` +
         `(${f0(performance.now() - t0)} ms)`;
