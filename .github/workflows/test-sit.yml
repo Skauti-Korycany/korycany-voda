@@ -6,13 +6,20 @@ on:
     paths:
       - ".github/workflows/test-sit.yml"
 
+permissions:
+  contents: write
+
 jobs:
   curl:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Dosah na datove servery
         run: |
           set +e
+          mkdir -p data/pocasi
+          exec > >(tee data/pocasi/test-sit.txt) 2>&1
+          echo "Test $(date -u +%Y-%m-%dT%H:%MZ) z GitHub Actions"
           echo "== opendata.chmi.cz (ČHMÚ recent JSON, Koryčany, aktuální měsíc)"
           curl -sS -o /tmp/chmi.json -w "HTTP %{http_code}, %{size_download} B, %{time_total}s\n" \
             "https://opendata.chmi.cz/meteorology/climate/recent/data/daily/dly-0-203-0-41701068002-$(date -u +%Y%m).json"
@@ -31,3 +38,11 @@ jobs:
           curl -sS -o /tmp/vox.csv -w "HTTP %{http_code}, %{size_download} B, %{time_total}s\n" \
             "http://hladiny-vox.pwsplus.eu/Senzors/DownloadRecordsCsv?PeriodModel.CityID=588601&PeriodModel.Address=5&PeriodModel.FromDStr=$(date -u -d yesterday +%d.%m.%Y)&PeriodModel.FromTStr=00:00&PeriodModel.ToDStr=$(date -u +%d.%m.%Y)&PeriodModel.ToTStr=23:59"
           head -3 /tmp/vox.csv
+      - name: Zapis vysledku do repozitare
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/pocasi/test-sit.txt
+          git commit -m "[bot] test site $(date -u +%Y-%m-%d)" || exit 0
+          git pull --rebase -q origin main
+          git push origin HEAD:main
