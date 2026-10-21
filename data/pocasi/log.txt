@@ -1,28 +1,38 @@
-12_pocasi.py 2026-10-21 09:25 UTC (vzorek /home/claude/korycany-voda/data/pocasi/vzorek)
+12_pocasi.py 2026-10-21 09:42 UTC
 1) CHMU Korycany (srazky)
   0-203-0-41701068002 2026-10: 120 zaznamu
-  0-203-0-41701068002 2026-09: soubor neni (404)
-  vzorek chybi: dly-0-203-0-41701068002-202608.json
-  vzorek chybi: dly-0-203-0-41701068002-202608.json
-  0-203-0-41701068002 2026-08: soubor neni (404)
+  0-203-0-41701068002 2026-09: 180 zaznamu
+  0-203-0-41701068002 2026-08: 186 zaznamu
+  0-203-0-41701068002 2026-07: 186 zaznamu
+  0-203-0-41701068002 2026-06: 180 zaznamu
+  0-203-0-41701068002 2026-05: 186 zaznamu
+  0-203-0-41701068002 2026-04: 180 zaznamu
+  0-203-0-41701068002 2026-03: 186 zaznamu
+  0-203-0-41701068002 2026-02: 168 zaznamu
+  0-203-0-41701068002 2026-01: 186 zaznamu
 2) CHMU Nemochovice
   0-203-0-41503035001 2026-10: 640 zaznamu
-  0-203-0-41503035001 2026-09: soubor neni (404)
-  vzorek chybi: dly-0-203-0-41503035001-202608.json
-  vzorek chybi: dly-0-203-0-41503035001-202608.json
-  0-203-0-41503035001 2026-08: soubor neni (404)
-  Nemochovice P: 19 dni (2026-10-01..2026-10-19)
-  Nemochovice T: 19 dni (2026-10-01..2026-10-19)
-  Nemochovice Tmax: 19 dni (2026-10-01..2026-10-19)
-  Nemochovice Tmin: 19 dni (2026-10-01..2026-10-19)
-  Nemochovice H: 19 dni (2026-10-01..2026-10-19)
-  Nemochovice F: 19 dni (2026-10-01..2026-10-19)
-  Korycany P: 0 dni s hodnotou
+  0-203-0-41503035001 2026-09: 960 zaznamu
+  0-203-0-41503035001 2026-08: 992 zaznamu
+  0-203-0-41503035001 2026-07: 992 zaznamu
+  0-203-0-41503035001 2026-06: 960 zaznamu
+  0-203-0-41503035001 2026-05: 992 zaznamu
+  0-203-0-41503035001 2026-04: 960 zaznamu
+  0-203-0-41503035001 2026-03: 992 zaznamu
+  0-203-0-41503035001 2026-02: 896 zaznamu
+  0-203-0-41503035001 2026-01: 992 zaznamu
+  Nemochovice P: 292 dni (2026-01-01..2026-10-19)
+  Nemochovice T: 292 dni (2026-01-01..2026-10-19)
+  Nemochovice Tmax: 292 dni (2026-01-01..2026-10-19)
+  Nemochovice Tmin: 292 dni (2026-01-01..2026-10-19)
+  Nemochovice H: 292 dni (2026-01-01..2026-10-19)
+  Nemochovice F: 292 dni (2026-01-01..2026-10-19)
+  Korycany P: 243 dni s hodnotou
 3) Povodi Moravy KS Korycany
-  23 hodinovych radku (20.10. 12:00 - 21.10. 10:00)
-  archiv pmo_korycany.csv: 23 radku
+  24 hodinovych radku (20.10. 12:00 - 21.10. 11:00)
+  archiv pmo_korycany.csv: 24 radku
 4) hladiny.cz Nemotice_SR
   10 hodinovych radku (20.10. 19:00 - 21.10. 04:00)
   archiv nemotice.csv: 10 radku
 5) denni.json
-  dni celkem 19, s ET0 19, s P 19
+  dni celkem 292, s ET0 292, s P 292
