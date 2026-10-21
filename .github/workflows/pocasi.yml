@@ -1,0 +1,34 @@
+name: Pocasi - denni sber
+
+on:
+  schedule:
+    - cron: "17 5 * * *"      # 05:17 UTC = 07:17 CEST / 06:17 CET, po 06:00 UTC konci klimatologicky den
+    - cron: "17 17 * * *"     # 17:17 UTC druhy beh: PMO a Nemotice drzi online jen 24 h / ~10 h, dva behy = bez der
+  workflow_dispatch:
+    inputs:
+      mesicu:
+        description: "kolik mesicu CHMU recent stahnout (vychozi 3)"
+        default: "3"
+
+jobs:
+  sber:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Stazeni a vypocet
+        run: python tools/12_pocasi.py --mesicu "${{ github.event.inputs.mesicu || '3' }}"
+      - name: Pregenerovat index.html
+        run: python tools/build_dummy.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/pocasi index.html
+          git commit -m "[bot] počasí $(date -u +%Y-%m-%d)" || { echo "nic noveho"; exit 0; }
+          git pull --rebase -q origin main
+          git push origin HEAD:main
