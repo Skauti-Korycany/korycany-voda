@@ -198,7 +198,7 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
 .pz-mapcover span{background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:.3rem .7rem;font-size:.85rem;box-shadow:0 1px 4px rgba(0,0,0,.15)}
 .pz-mapcover:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .pz[data-step]:not([data-step="1"]) #map{height:120px}
-.pz[data-step]:not([data-step="1"]) .pz-ask,.pz[data-step]:not([data-step="1"]) .pz-maphint{display:none}
+.pz[data-step]:not([data-step="1"]) .leaflet-control-container,.pz[data-step]:not([data-step="1"]) #w-parc-x,.pz[data-step]:not([data-step="1"]) .pz-only1,.pz[data-step]:not([data-step="1"]) .pz-ask,.pz[data-step]:not([data-step="1"]) .pz-maphint{display:none}
 .pz-sel{font-size:.9rem;margin-top:.45rem}
 .pz-maphint{margin:.35rem 0 0}
 .linkbtn{font:inherit;background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;cursor:pointer}
@@ -220,6 +220,24 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
   .pz[data-step]:not([data-step="1"]) #map{height:260px}
 }
 @media (prefers-reduced-motion: reduce){.pz #map{transition:none}}
+.pz-q{margin:.9rem 0}
+.pz-q .q{font-weight:600;margin-bottom:.4rem}
+.pz-q .note{margin-top:.35rem}
+.pz-chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.pz-chip{font:inherit;font-size:.92rem;min-height:44px;padding:.5rem .8rem;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--fg);cursor:pointer;text-align:left}
+.pz-chip[aria-pressed="true"]{border-color:var(--accent);background:var(--mark);box-shadow:inset 0 0 0 1px var(--accent);font-weight:600}
+details.pz-more{margin-top:.8rem;border-top:1px solid var(--line);padding-top:.4rem}
+details.pz-more>summary{cursor:pointer;color:var(--accent);min-height:40px;display:flex;align-items:center;font-weight:500}
+details.pz-more .inputs{margin-top:.5rem}
+.pz-teaser{margin-top:1rem;border-top:2px solid var(--water);padding-top:.6rem}
+.pz-big{display:grid;gap:.35rem;margin-top:.4rem}
+.pz-big p{margin:0}
+.pz-track{height:18px;background:var(--chip);border-radius:4px;overflow:hidden;display:flex}
+.pz-track i{display:block;height:100%} .pz-track .away{background:var(--bad)} .pz-track .kept{background:var(--water)}
+.pz-chosen{font-size:1rem;margin:.2rem 0 .4rem}
+.unfit details>summary{cursor:pointer;min-height:40px;display:flex;align-items:center;gap:.4rem}
+#summary .motiv{margin-top:0}
+#summary .motiv .big{color:inherit;font-size:2.4rem}
 /* hlavicka a upozorneni na telefonu na jeden radek */
 details.banner>summary{cursor:pointer;list-style:none}
 details.banner>summary::-webkit-details-marker{display:none}
@@ -315,6 +333,7 @@ details.banner[open]>summary .more{display:none}
       </div>
       <div class="pz-step" data-s="2">
         <h2>Co tu je</h2>
+        <p class="callout" id="pz-manual-n" hidden>Bez mapy počítám s příkladem: střecha 120 m², zahrada 300 m². Oprav to v „Upřesnit čísla“ dole.</p>
         <div class="pz-known">
           <div class="eyebrow">Z map víme</div>
           <dl class="kv" id="where">
@@ -324,25 +343,40 @@ details.banner[open]>summary .more{display:none}
             <dt>Okolí 30 m</dt><dd id="w-okoli">-</dd>
           </dl>
         </div>
-        <div class="inputs" style="margin-top:.5rem">
-        <label class="f">Střecha (m²)<input type="number" id="in-roof" value="120" min="0" step="10"></label>
-        <label class="f">Zpevněné plochy (m²)<input type="number" id="in-paved" value="40" min="0" step="5"></label>
-        <label class="f">Typ zpevnění<select id="in-pavedtype">
+        <div class="pz-q"><div class="q">Kam vedou okapy ze střechy?</div><div class="pz-chips" data-for="in-drain"></div></div>
+        <div class="pz-q"><div class="q">Kolik máš dlažby, betonu a štěrku?</div><div class="pz-chips" data-for="in-paved"></div><div class="note" id="pz-paved-n"></div></div>
+        <div class="pz-q"><div class="q">Jakou máš půdu?</div><div class="pz-chips" data-for="in-soil"></div>
+          <div class="note">Předvybráno z mapy půd (BPEJ), v zástavbě je to odhad. Jistotu dá zkouška: vykopej jámu 30 cm, nalij vodu a po 30 minutách změř, o kolik klesla. Přes 8 cm velmi propustná, 4-8 cm propustná, 2-4 cm spíš těžká, pod 2 cm jíl (převod podle brožury Praha 2009 ✅⏳).</div></div>
+        <details class="pz-more" id="pz-detail"><summary>Upřesnit čísla (plochy v m², sklon, dlažba, zahrada)</summary>
+          <div class="inputs">
+            <label class="f">Střecha (m²)<input type="number" id="in-roof" value="120" min="0" step="10"></label>
+            <label class="f">Zpevněné plochy (m²)<input type="number" id="in-paved" value="0" min="0" step="5"></label>
+            <label class="f">Typ zpevnění<select id="in-pavedtype">
           <option value="asfalt_beton_zalita_dlazba">asfalt / beton / zalitá dlažba</option>
           <option value="dlazba_piskove_spary" selected>dlažba s pískovými spárami</option>
           <option value="sterk_upraveny">štěrk</option>
           <option value="zatravnovaci_tvarnice">zatravňovací tvárnice</option></select></label>
-        <label class="f">Zelené plochy (m²)<input type="number" id="in-green" value="300" min="0" step="10"></label>
-        <label class="f">Co na nich je<select id="in-greentype"><option value="zahrada, trávník > 75 %" selected>hlavně trávník (přes 3/4)</option><option value="zahrada, trávník 50-75 % (záhony, cesty)">trávník s záhony a cestami (1/2 až 3/4)</option></select></label>
-        <label class="f">Svody ze střechy<select id="in-drain">
+            <label class="f">Zelené plochy (m²)<input type="number" id="in-green" value="300" min="0" step="10"></label>
+            <label class="f">Co na nich je<select id="in-greentype"><option value="zahrada, trávník > 75 %" selected>hlavně trávník (přes 3/4)</option><option value="zahrada, trávník 50-75 % (záhony, cesty)">trávník s záhony a cestami (1/2 až 3/4)</option></select></label>
+            <label class="f">Sklon pozemku (%)<input type="number" id="in-slope" value="4" min="0" max="40" step="1"></label>
+            <label class="f">Svody ze střechy<select id="in-drain">
           <option value="kanal" selected>do kanalizace</option><option value="pozemek">na pozemek</option><option value="nevim">nevím</option></select></label>
-        <label class="f">Sklon pozemku (%)<input type="number" id="in-slope" value="4" min="0" max="40" step="1"></label>
-        <label class="f">Půda (zkouška vsaku, 30 min)<select id="in-soil">
+            <label class="f">Půda (zkouška vsaku, 30 min)<select id="in-soil">
           <option value="A">kleslo přes 8 cm - A, velmi propustná</option>
           <option value="B" selected>kleslo 4-8 cm - B, propustná</option>
           <option value="C">kleslo 2-4 cm - C, málo propustná</option>
           <option value="D">kleslo pod 2 cm - D, jíl, nepropustná</option></select></label>
-        <label class="f">Déšť k výpočtu<select id="in-rain">
+          </div>
+          <p class="note">Střechy jsou půdorysy budov z katastru (ne plocha šikmé střechy). Zeleň = výměra vybraných parcel minus střechy a zpevněné plochy.</p>
+        </details>
+      </div>
+      <div class="pz-step" data-s="3">
+        <h2>Co se u tebe děje při dešti</h2>
+        <div class="pz-q"><div class="q">Jaký déšť?</div><div class="pz-chips" data-for="in-rain"></div></div>
+        <div id="pz-rain-big"></div>
+        <p id="pz-year"></p>
+        <details class="pz-more"><summary>Jak se to počítá</summary>
+          <div class="inputs" style="margin-top:.5rem"><label class="f">Jiný déšť<select id="in-rain">
           <optgroup label="Návrhový déšť Koryčany, 6 hodin (ČVUT/ČHMÚ 2023 ✅)">
             <option value="32.2" data-n="N2">častý - 32 mm, 1x za 2 roky</option>
             <option value="53.2" data-n="N10" selected>vzácný - 53 mm, 1x za 10 let</option>
@@ -350,29 +384,26 @@ details.banner[open]>summary .more{display:none}
           <optgroup label="Další">
             <option value="20">20 mm - běžný letní liják</option>
             <option value="26.2">26 mm - 60 min, 1x za 5 let (ČSN 75 9010, Brno)</option>
-            <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></optgroup></select></label>
-      </div>
-      <p class="note" style="margin:.5rem 0 0">Zkouška vsaku: vykopej jámu 30 cm, nalij vodu, po 30 minutách změř pokles. Převod podle brožury Praha 2009 ✅⏳. Nahrazuje mapu půd, dokud nejsou data VÚMOP; i potom je přesnější než mapa.</p>
-    </div>
-
-      </div>
-      <div class="pz-step" data-s="3">
-        <h2>Co se u tebe děje při dešti</h2>
-        <table class="flow" id="flow"></table>
-      <div class="bars" id="bars"></div>
-      <div class="legend"><span><b style="background:var(--bad)"></b>odteče pryč</span><span><b style="background:var(--water)"></b>zůstane u tebe (zasákne nebo zadrženo)</span></div>
-      <p class="note" id="year"></p>
+            <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></optgroup></select></label></div>
+          <table class="flow" id="flow"></table>
+          <p class="note" id="year"></p>
+          <p class="note">Střechy a dlažba: součinitele odtoku ČSN 75 9010, první 1 mm deště zůstane na povrchu. Zahrada: metoda SCS-CN (Janeček a kol. 2012) podle půdy; u velkých dešťů vážený průměr běžně vlhké a nasycené půdy (Kavka a kol. 2023). Srážky: návrhové 6hodinové úhrny pro Koryčany (ČVUT a ČHMÚ 2023 ✅). Víc v záložce O modelu.</p>
+        </details>
       </div>
       <div class="pz-step" data-s="4">
         <h2>Co můžeš udělat</h2>
-        <p class="note">Seřazeno: nejvíc vody za nejmíň práce. Čísla u opatření platí pro tvoje plochy a zvolený déšť.</p>
-      <div class="cards" id="cards"></div>
-      <div class="unfit" id="unfit"></div>
+        <p class="pz-chosen" id="pz-chosen"></p>
+        <p class="note">Seřazeno: nejvíc vody za nejmíň práce. Zaškrtni, co by u tebe šlo. Čísla platí pro tvoje plochy a zvolený déšť.</p>
+        <div class="cards" id="cards"></div>
+        <div class="unfit" id="unfit"></div>
       </div>
       <div class="pz-step" data-s="5">
         <h2>Výsledek</h2>
-        <div class="sum" id="summary"></div>
-      <div class="callout" id="scale"></div>
+        <div id="summary"></div>
+        <div class="bars" id="bars"></div>
+        <div class="legend"><span><b style="background:var(--bad)"></b>odteče pryč</span><span><b style="background:var(--water)"></b>zůstane u tebe (vsákne se nebo zadrží)</span></div>
+        <div class="callout" id="scale"></div>
+        <p class="note">Zjednodušený model pro osvětu, nevalidováno: ukazuje řády a srovnání, ne projekt. Značky: ✅ ověřený zdroj, ✅⏳ starší než rok, 📄 citace, 🤔 odhad.</p>
       </div>
     </div>
   </div>
@@ -581,7 +612,7 @@ function prekresliVyber(){
   const paved = +$('in-paved').value||0;
   $('in-roof').value = Math.round(roof);
   $('in-green').value = Math.max(0, Math.round(A - roof - paved));
-  $('w-parc').innerHTML = `${popis.join('; ')} <b>= ${fmt0(A)} m², střechy ${fmt0(roof)} m²</b> <span class="note">(ČÚZK katastr + budovy, CC BY 4.0; plocha půdorysů, ne šikmých střech; zpevněné plochy v datech nejsou - zadej sám, zeleň = zbytek)</span> <button type="button" id="w-parc-x" style="font:inherit;font-size:.8rem">zrušit výběr</button>`;
+  $('w-parc').innerHTML = `<b>Vybráno: ${fmt0(A)} m², z toho střechy ${fmt0(roof)} m²</b> <span class="note">(parc. č. ${popis.join('; ')})</span> <button type="button" id="w-parc-x" class="linkbtn">zrušit výběr</button>${PARC.vybrane.size===1?'<div class="note pz-only1">Má zahrada vlastní parcelu? Klepni i na ni.</div>':''}`;
   $('w-parc-x').onclick=()=>{ PARC.vybrane.clear(); prekresliVyber(); recalc(); };
   recalc();
 }
@@ -684,7 +715,55 @@ function pzUI(){
 document.getElementById('tab-pozemek').addEventListener('click', e=>{ const g=e.target.closest('[data-go]'); if(g && !g.disabled) pzGo(+g.dataset.go); });
 document.getElementById('pz-next').addEventListener('click', ()=>{ if(PZ.step===5){ PARC.vybrane.clear(); prekresliVyber(); PZ.manual=false; pzGo(1); } else pzGo(PZ.step+1); });
 document.getElementById('pz-back').addEventListener('click', ()=>pzGo(PZ.step-1));
-document.getElementById('pz-manual').addEventListener('click', ()=>{ PZ.manual=true; pzGo(2); });
+document.getElementById('pz-manual').addEventListener('click', ()=>{ PZ.manual=true; document.getElementById('pz-detail').open=true; pzGo(2); recalc(); });
+
+
+// ---------- Muj pozemek: otazky s tlacitky (nastavuji puvodni vstupy, vypocet beze zmeny)
+const PZ_CHIPS = {
+  'in-drain':[['kanal','do kanalizace'],['pozemek','na zahradu'],['nevim','nevím']],
+  'in-paved':[['0','skoro nic'],['20','cesta, malý dvůr (~20 m²)'],['60','dvůr a příjezd (~60 m²)'],['150','velký dvůr (~150 m²)']],
+  'in-soil':[['A','velmi propustná, písek'],['B','propustná'],['C','spíš těžká'],['D','jíl, voda stojí']],
+  'in-rain':[['32.2','častý, 32 mm'],['53.2','velký, 53 mm'],['87','extrémní, 87 mm']],
+};
+document.querySelectorAll('.pz-chips').forEach(box=>{ const id=box.dataset.for;
+  box.innerHTML = PZ_CHIPS[id].map(([v,l])=>`<button type="button" class="pz-chip" data-v="${v}" aria-pressed="false">${l}</button>`).join('');
+  box.addEventListener('click', e=>{ const b=e.target.closest('.pz-chip'); if(!b) return; const el=document.getElementById(id); el.value=b.dataset.v; el.dispatchEvent(new Event('input',{bubbles:true})); });
+});
+function pzChipsSync(){ document.querySelectorAll('.pz-chips').forEach(box=>{ const v=String(document.getElementById(box.dataset.for).value); box.querySelectorAll('.pz-chip').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.v===v || (+b.dataset.v===+v && v!=='')))); }); }
+document.getElementById('tab-pozemek').addEventListener('click', e=>{ const t=e.target.closest('[data-tab-go]'); if(!t) return; e.preventDefault(); document.querySelector(`nav.tabs button[data-tab="${t.dataset.tabGo}"]`).click(); window.scrollTo({top:0}); });
+const VANA_L = 150; // plna vana ~150 l - odhad pro predstavu
+const vany = m3 => fmt0(m3*1000/VANA_L);
+const RAIN_TXT = {'32.2':'častý liják, jednou za 2 roky','53.2':'velký liják, jednou za 10 let','87':'extrémní liják, jednou za 100 let','20':'běžný letní liják','26.2':'krátká bouřka, jednou za 5 let','93.5':'jako 12. 6. 2012 v Koryčanech'};
+function pzRender(i, r, kept, keptYear, n){
+  const $=id=>document.getElementById(id);
+  pzChipsSync();
+  const P = Math.round(i.rain*1000), rt = RAIN_TXT[$('in-rain').value] || '';
+  // krok 1: prvni cislo hned po vyberu
+  $('pz-teaser').innerHTML = !PARC.vybrane.size ? '' : (i.roof>0
+    ? `<div class="pz-teaser"><div class="note">Při lijáku ${P} mm (${rt}) odteče ze střech na vybraných parcelách (${fmt0(i.roof)} m²)</div><div class="big num">${fmt(r.roofOut)} m³</div><div class="note">to je asi ${vany(r.roofOut)} plných van 🤔. Co se děje se zbytkem pozemku a co s tím jde udělat, ukážou další kroky.</div></div>`
+    : `<div class="pz-teaser note">Na vybraných parcelách nejsou budovy. Klepni i na svůj dům, nebo pokračuj se zahradou.</div>`);
+  // krok 2
+  $('pz-manual-n').hidden = !(PZ.manual && !PARC.vybrane.size);
+  $('pz-paved-n').textContent = `Zpevněné plochy v mapách nejsou, odhadni je. Teď počítám s ${fmt0(i.paved)} m², přesně v „Upřesnit čísla“.`;
+  // krok 3: kolik spadne, kolik odtece, odkud
+  const fall = r.total, pct = fall>0 ? Math.round(100*r.out/fall) : 0;
+  const src = [['ze střechy',r.roofOut],['z dlažby a betonu',r.pavedOut],['ze zahrady',r.greenOut]].sort((a,b)=>b[1]-a[1])[0];
+  const dest = i.drain==='kanal' ? 'Voda z okapů teče do kanalizace a dál do potoka.' : i.drain==='pozemek' ? 'Okapy už vedou na zahradu, to je dobrý začátek - v kroku 4 uvidíš, jak tu vodu udržet.' : 'Kam vedou okapy, poznáš u paty svodu: když mizí v trubce v zemi, většinou je to kanalizace 🤔.';
+  $('pz-rain-big').innerHTML = `<div class="pz-big"><div class="note">Při dešti ${P} mm (${rt}) spadne na tvůj pozemek (${fmt0(i.roof+i.paved+i.green)} m²)</div>
+    <div><span class="big num">${fmt(fall)} m³</span> <span class="note">= asi ${vany(fall)} van 🤔</span></div>
+    <p>Z toho <b>${fmt(r.out)} m³ odteče</b> (${pct} %), zbytek se vsákne do zahrady.</p>
+    <div class="pz-track" role="img" aria-label="odteče ${pct} %"><i class="away" style="width:${pct}%"></i><i class="kept" style="width:${100-pct}%"></i></div>
+    <div class="legend"><span><b style="background:var(--bad)"></b>odteče</span><span><b style="background:var(--water)"></b>vsákne se</span></div>
+    <p>${src[1]>0.05?`Nejvíc odteče ${src[0]} (${fmt(src[1])} m³). `:''}${dest} ${i.green>0?`Trávník při dešti do ${fmt0(r.g.Ia_mm)} mm vsákne všechno.`:''}</p></div>`;
+  $('pz-year').innerHTML = `Za celý rok (průměrně ${fmt0(K.srazky_rocni_mm.hodnota)} mm, ČHMÚ Koryčany ✅) odteče ze střech a dlažby asi <b>${fmt0(r.yearRoof+r.yearPaved)} m³</b>${r.yearGreen!=null?`, ze zahrady ${fmt0(r.yearGreen)} m³`:''}.`;
+  // krok 4: prubezny soucet
+  $('pz-chosen').innerHTML = kept>0.05 ? `Zaškrtnutá opatření udrží <b>${fmt(kept)} m³</b> z ${fmt(r.out)} m³, které teď při tomto dešti odtečou.` : `Zatím nic, co by vodu zadrželo. Teď při tomto dešti odteče ${fmt(r.out)} m³.`;
+  // krok 5: motivacni vysledek
+  $('scale').hidden = !(kept>0.05);
+  $('summary').innerHTML = kept>0.05
+    ? `<div class="motiv"><div>Tvoje volba udrží doma</div><div class="big num">${fmt(kept)} m³</div><p>z každého lijáku ${P} mm, to je asi ${vany(kept)} van 🤔, které neodtečou ${i.drain==='kanal'?'do kanalizace':'pryč'}. Za rok ${fmt0(keptYear)} m³.</p><p>Kdyby to samé udělalo ${n} domácností: <b>${fmt0(kept*n)} m³</b> na jeden liják.</p><div class="mot-a"><a href="#" data-tab-go="uzemi">Co může obec a celé území →</a><a href="#" data-tab-go="katalog">Všechna opatření →</a></div></div>`
+    : `<div class="callout">Zatím jsi nevybral žádné opatření, které vodu zadrží. Vrať se <button type="button" class="linkbtn" data-go="4">ke kroku 4</button>.</div>`;
+}
 
 // ---------- vstupy
 const $ = id=>document.getElementById(id);
@@ -782,25 +861,25 @@ function recalc(){
     <div class="bar"><span>s opatřeními</span><div class="track"><i class="kept" style="width:${pct(kept)}%"></i><i class="away" style="width:${100-pct(kept)}%"></i></div><span class="num">${fmt(r.out-kept)} m³</span></div>`;
   $('year').textContent = `Za rok (${fmt0(K.srazky_rocni_mm.hodnota)} mm, stanice ČHMÚ Koryčany 1991-2020 ✅) odteče ze střechy a zpevněných ploch zhruba ${fmt0(r.yearRoof+r.yearPaved)} m³ (po odečtení 1 mm z každého deště: ${fmt0(RAIN_Y_NEPR*1000)} mm z ${fmt0(K.srazky_rocni_mm.hodnota)})${r.yearGreen!=null?`, ze zelených ploch ${fmt0(r.yearGreen)} m³ (SCS-CN po dnech z řady denních úhrnů ČHMÚ)`:'; ze zelených ploch zatím nepočítáno (čeká na rozdělení denních úhrnů ze stanice ČHMÚ - vyrob_srazky.bat)'}. Se zvolenými opatřeními zůstane u tebe až ${fmt0(keptYear)} m³.`;
   // karty
-  $('cards').innerHTML = ev.fit.map(x=>{const o=x.o; const on=chosen.has(o.id); const needs=(x.needs||[]).filter(n=>!(chosen.has(n)||(n==='S02'&&i.drain==='pozemek')));
+  const cardHTML = x=>{const o=x.o; const on=chosen.has(o.id); const needs=(x.needs||[]).filter(n=>!(chosen.has(n)||(n==='S02'&&i.drain==='pozemek')));
     return `<div class="card ${on?'on':''}"><header><input type="checkbox" id="c-${o.id}" data-id="${o.id}" ${on?'checked':''}><div class="t"><b>${o.nazev}</b>
-      <div class="meta"><span class="chip id">${o.id}</span><span class="chip">${CZ.pracnost[String(o.pracnost)]}</span><span class="chip">${cenaText(o)}</span><span class="chip">povolení: ${CZ.povoleni[String(o.povoleni)]}</span>${x.enabler?'<span class="chip">předpoklad pro další</span>':(x.dV>0?`<span class="chip num">+${fmt(x.dV)} m³ teď</span>`:'')}</div></div></header>
+      <div class="meta"><span class="chip">${CZ.pracnost[String(o.pracnost)]}</span><span class="chip">${cenaText(o)}</span><span class="chip">povolení: ${CZ.povoleni[String(o.povoleni)]}</span>${x.enabler?'<span class="chip">předpoklad pro další</span>':(x.dV>0?`<span class="chip num">+${fmt(x.dV)} m³ teď</span>`:'')}</div></div></header>
       <div class="eff">${x.text}</div>
-      ${needs.length?`<div class="note">Doporučujeme nejdřív: ${needs.join(', ')}</div>`:''}
+      ${needs.length?`<div class="note">Nejdřív je potřeba: ${needs.map(n=>byId[n]?byId[n].nazev:n).join(', ')}</div>`:''}
       <details><summary>zdroje, financování, co chybí</summary><ul>
         <li>Financování: ${finText(o)}</li>
         <li>Povolení: ${povText(o)}</li>
         ${o.kvantifikace.map(k=>`<li>${CZ.ucinek[k.ucinek]||k.ucinek}: ${k.popis} ${ZN[k.znacka]||''}${(k.zdroj||[]).map(z=>D.zdroje[z]?` <a class="src" href="${D.zdroje[z].url||'#'}" target="_blank" rel="noopener">${D.zdroje[z].nazev.split(':')[0].slice(0,60)}</a>`:'').join(';')}</li>`).join('')}
         ${o.nedohledano&&o.nedohledano.length?`<li>Nedohledáno: ${o.nedohledano.join('; ')}</li>`:''}
         ${o.pozn_poctivost?`<li>${o.pozn_poctivost}</li>`:''}
-      </ul></details></div>`;}).join('');
+      </ul></details></div>`;};
+  const top3=ev.fit.slice(0,3), dalsi=ev.fit.slice(3);
+  $('cards').innerHTML = top3.map(cardHTML).join('') + (dalsi.length?`<details class="pz-more"><summary>Další možnosti (${dalsi.length})</summary><div class="cards">${dalsi.map(cardHTML).join('')}</div></details>`:'');
   $('cards').querySelectorAll('input[type=checkbox]').forEach(cb=>cb.addEventListener('change',()=>{ if(cb.checked) chosen.add(cb.dataset.id); else chosen.delete(cb.dataset.id); recalc(); }));
-  $('unfit').innerHTML = ev.unfit.length? `<b>Nehodí se sem:</b><ul>${ev.unfit.map(x=>`<li>${x.o.nazev} (${x.o.id}) - ${x.fit}</li>`).join('')}</ul>` : '';
+  $('unfit').innerHTML = ev.unfit.length? `<details><summary><b>Nehodí se sem (${ev.unfit.length})</b> <span class="note">- proč</span></summary><ul>${ev.unfit.map(x=>`<li>${x.o.nazev} (${x.o.id}) - ${x.fit}</li>`).join('')}</ul></details>` : '';
   // krok 5
   const n=200;
-  $('summary').innerHTML = `<div class="box"><div class="big num">${fmt(kept)} m³</div><small>zůstane u tebe z deště ${rainmm} mm (z ${fmt(r.out)} m³)</small></div>
-    <div class="box"><div class="big num">${fmt0(keptYear)} m³</div><small>za rok místo kanalizace a potoka</small></div>
-    <div class="box"><div class="big num">${fmt0(kept*n)} m³</div><small>kdyby to samé udělalo ${n} domácností, na jeden déšť</small></div>`;
+  pzRender(i, r, kept, keptYear, n);
   $('scale').innerHTML = `<b>Na co to nestačí:</b> ${fmt0(kept*n)} m³ od ${n} domácností je při dešti ${rainmm} mm zhruba ${fmt(100*kept*n/(D.uzemi.plocha_ha*1e4*i.rain),2)} % objemu, který spadne na území modelu ${fmt0(D.uzemi.plocha_ha)} ha (${fmt0(D.uzemi.plocha_ha*1e4*i.rain)} m³; plocha z rozvodnice DMR 5G ✅). Na povodeň na Kyjovce drobná opatření nestačí a aplikace to neřekne. Je to ale ${fmt0(kept*n)} m³ vody v půdě a zahradách místo v kanálu, při každém lijáku, zdarma. To je rozdíl mezi "proteklo" a "zůstalo".`;
   renderUzemi();
 }
