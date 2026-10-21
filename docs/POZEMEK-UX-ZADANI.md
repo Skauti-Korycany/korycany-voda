@@ -1,5 +1,7 @@
 # Zadání: přestavba záložky „Můj pozemek“ (UX), 21. 10. 2026
 
+**Stav: hotovo 21. 10. 2026 (relace 11), varianta A - průvodce po krocích. Popis v `docs/ROZHRANI.md` kap. 2.3 (v0.2), průběh v `docs/STAV.md`.**
+
 Navazuje na: `docs/ROZHRANI.md` (návrh v0.1, 18. 10.), `docs/STAV.md`, `docs/JADRO.md`, `docs/KATALOG.md`, `data/opatreni.json`. Zdroj pravdy pro HTML je `tools/build_dummy.py` (generuje `index.html` i `prototyp/index.html`; HTML nikdy needitovat ručně).
 
 ## Proč

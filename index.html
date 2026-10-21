@@ -2027,6 +2027,7 @@ function pzStav(){
   q.set('k', PZ.step);
   const p=[...PARC.vybrane].map(k=>{ const x=PARC.feats[k].f.properties; return x.ku_kod+':'+x.cislo; });
   if(p.length) q.set('p', p.join(',')); else if(PZ.manual){ q.set('r',$('in-roof').value); q.set('g',$('in-green').value); }
+  else { if(location.hash.startsWith('#pozemek?')) try{ history.replaceState(null,'','#pozemek'); }catch(e){} return; }
   q.set('o',$('in-drain').value); q.set('z',$('in-paved').value); q.set('s',$('in-soil').value); q.set('d',$('in-rain').value); q.set('m',[...chosen].join('.'));
   try{ history.replaceState(null,'','#pozemek?'+q.toString()); }catch(e){}
 }

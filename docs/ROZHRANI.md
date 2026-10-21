@@ -1,4 +1,6 @@
-# Návrh rozhraní aplikace (v0.1, 18. 10. 2026)
+# Návrh rozhraní aplikace (v0.2, 21. 10. 2026; v0.1 18. 10. 2026)
+
+Změny v0.2: záložka Můj pozemek je průvodce po krocích (kap. 2.3, přestavba podle `POZEMEK-UX-ZADANI.md`, varianta A); upozornění aplikace je jeden rozbalovací řádek; hledání adresy RÚIAN; stav v odkazu. Zdroj pravdy HTML: `tools/build_dummy.py`.
 
 Vychází z: 00-instrukce-projektu.md (kap. 3, 5), KATALOG.md kap. 12 (dva režimy), data/opatreni.json v0.3, NAPADY-ROZHRANI.md (posuvníky, zatím ne). Drátěný náhled: `prototyp/index.html` (syntetický pozemek, skutečný katalog).
 
@@ -32,17 +34,23 @@ Vychází z: 00-instrukce-projektu.md (kap. 3, 5), KATALOG.md kap. 12 (dva reži
   - expert navíc: hydrogeologie ČGS (4326), OPRL LVS, ZABAGED polohopis
 - Klik do mapy = výběr místa pro režim Můj pozemek (bod + automaticky odvozená "plocha vlivu": parcela z katastru WMS, pokud jede; jinak kruh / ručně nakreslený polygon).
 
-### 2.3 Můj pozemek (režim občan)
-Krok 1 - Kde: klik v mapě nebo zadání adresy (💻 geokodér ČÚZK, ověřit) nebo "jsem tady" (GPS). Aplikace odvodí: sklon, směr odtoku, HSP (nebo "zástupně"), vzdálenost k toku, zda je v intravilánu, kultura LPIS, SEO/MEO.
-Krok 2 - Co tu je (uživatel upřesní, aplikace předvyplní z dat):
-- typ místa: zahrada/dvůr | střecha | pole (vlastním) | louka | les | u potoka | cesta/svah
-- plochy: střecha m², zpevněné plochy m² a typ (asfalt, dlažba, štěrk), zelené plochy m² (předvyplnit odhadem ze ZABAGED budov; uživatel opraví)
-- svody: do kanalizace / na pozemek / nevím
-- u pole: vlastním a pachtuji / hospodařím sám
-- jednoduchá zkouška vsaku (volitelně): "vykopej jámu 30 cm, nalij, počkej 30 min, kolik kleslo?" -> převod na HSP třídu (Praha 2009 ✅⏳). Tohle je klíčové, dokud nemáme VÚMOP.
-Krok 3 - Co se u tebe děje: tabulka odtoku pro déšť 20 mm, návrhový 24 h (44 mm) a rok. Jeden graf: sloupce "odteče / zasákne / zůstane" před a po.
-Krok 4 - Co můžeš udělat: seznam opatření seřazený podle m³ za jednotku pracnosti; každá karta = název, pracnost, cena (se zdrojem nebo "neověřena"), povolení, 1-2 věty účinku s čísly a značkami, "doporučujeme nejdřív", "hodí se k". Zaškrtnutím opatření se přepočítá krok 3 ("po"). Sekce "Nehodí se sem" s důvodem.
-Krok 5 - Shrnutí: "tvoje volba zadrží X m³ při lijáku, Y m³ za rok; co to udělá, když to udělá 200 domácností" + odkaz do Celé území; tlačítko "poslat odkaz" (URL hash) a "vytisknout" (čistý výpis karet s zdroji).
+### 2.3 Můj pozemek (režim občan) - průvodce po krocích (v0.2, 21. 10. 2026)
+Cíl: prvonávštěvník z letáku nebo webu města do 5 sekund ví, co dělat, a do minuty vidí, kolik vody mu při lijáku uteče a co s tím. Mobil první (člověk stojí na zahradě s telefonem). Přímý odkaz: `#pozemek`.
+
+Rozvržení:
+- Nahoře pruh průběhu 1 Kde - 2 Co tu je - 3 Při dešti - 4 Co udělat - 5 Výsledek (kroky klikací po výběru pozemku). Dole přilepené Zpět / Dál (popisek říká, kam vede).
+- Mapa velká jen v kroku 1 (mobil přes šířku a skoro výšku okna, desktop 7/11 šířky vedle úvodního textu). Od kroku 2 se zmenší na náhled vybraného pozemku (mobil 120 px nad obsahem, desktop 260 px přilepená vlevo); klepnutí na ni = Změnit místo.
+- Krok 1 - Kde: pokyn „Najdi svůj dům a klepni na něj. Pak klepni i na zahradu a dvůr“; hledání adresy nebo parcely (vyhledávací služba RÚIAN ČÚZK, našeptávač omezený na Koryčany a místní části); „Jsem tady“ (poloha telefonu, jen posun mapy); odkaz „Nechci mapu, zadám plochy ručně“. Po výběru hned první číslo: kolik odteče ze střech při velkém lijáku.
+- Krok 2 - Co tu je: „Z map víme“ (sklon DMR 5G, půda BPEJ, okolí ZABAGED) a tři otázky s velkými tlačítky: kam vedou okapy, kolik je dlažby (0 / 20 / 60 / 150 m²), jaká je půda (předvyplněno z mapy, návod na zkoušku vsaku). Přesná čísla v „Upřesnit čísla“.
+- Krok 3 - Při dešti: volba deště (častý 32 / velký 53 / extrémní 87 mm, další v „Jak se to počítá“), kolik spadne, kolik odteče a odkud nejvíc, rok. Tabulka s CN, součiniteli a vážením nasycení jen v „Jak se to počítá“.
+- Krok 4 - Co udělat: průběžný součet, 3 opatření s nejvíc vodou za nejmíň práce, „Další možnosti“, „Nehodí se sem“ s důvodem. Karta: název, pracnost, cena, povolení, efekt v m³, zdroje a financování rozbalovací.
+- Krok 5 - Výsledek: motivační box (m³ z lijáku, přirovnání, za rok, 200 domácností), pruhy teď / s opatřeními, „Na co to nestačí“, Poslat odkaz, odkazy na Celé území a Katalog.
+
+Poctivost beze změny: značky ✅ ✅⏳ 📄 🤔 u čísel, „Nehodí se sem“, „Na co to nestačí“, upozornění „zjednodušený model, nevalidováno“ v hlavičce i ve výsledku. Bez výběru pozemku se nezobrazují žádná čísla (krok 2-5 zamčené); v ručním režimu je příklad výslovně označený.
+
+Stav v odkazu: `#pozemek?k=krok&p=kod_ku:cislo,...&o=okapy&z=dlažba_m2&s=A-D&d=déšť_mm&m=opatření.oddělená.tečkou` (ruční režim navíc `r` střecha, `g` zeleň). Nic se neukládá; odkaz obsahuje čísla parcel a odpovědi a posílá ho jen uživatel.
+
+Výpočet (jádro, součinitele, SCS-CN, katalog) se přestavbou nezměnil.
 
 ### 2.4 Celé území (režim občan i obec)
 - Mapa s dílčími povodími sídel (Koryčany, Jestřabice, Blišice, Lískovec) a profilem na Kyjovce pod městem.
@@ -94,7 +102,7 @@ Mimo verzi 1: transformace vlny, roční bilance P-ET podle scénářů (čeká 
 - že je model validovaný, dokud nebude porovnání s měřením.
 
 ## 6. Otevřené body k rozhodnutí
-- Výběr místa: stačí klik + kruh, nebo chceme obrys parcely z katastrální WMS? Návrh: obrys jen pro zobrazení, nikam se neukládá.
+- ~~Výběr místa~~ vyřešeno 20.-21. 10.: parcely z katastru ČÚZK (INSPIRE CP), výběr klepnutím nebo hledáním adresy RÚIAN; nic se neukládá.
 - Předvyplnění ploch střech ze ZABAGED: ano, pokud jde stáhnout budovy jako vektor (CC BY). Jinak uživatel zadává ručně.
 - Zkouška vsaku jako náhrada HSP: ano i po získání dat VÚMOP (lokální realita vs. mapa 1:5000).
 - Režim obec: samostatná záložka, nebo součást Celé území? Návrh: součást, s filtrem rozhoduje=O.

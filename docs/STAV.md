@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 21. 10. 2026 15:20 (relace 10 „Nádrže v jádru“ uzavřena: bloky O a P hotové - **území modelu rozšířeno k jezu před Mouchnicemi, 17,7 km²**; úpravy Jak bylo a Celé území; **další chat: přestavba Můj pozemek podle `docs/POZEMEK-UX-ZADANI.md`**; předtím relace 9 „Počasí“, sekce **Počasí - Jak bylo** níže). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
+Aktualizováno: 21. 10. 2026 15:50 (relace 11 „Můj pozemek UX“ uzavřena: záložka přestavěna na **průvodce po krocích (varianta A)** včetně hledání adresy RÚIAN a odkazu se stavem, sekce **Můj pozemek - průvodce** níže. Předtím relace 10 „Nádrže v jádru“ uzavřena: bloky O a P hotové - **území modelu rozšířeno k jezu před Mouchnicemi, 17,7 km²**; úpravy Jak bylo a Celé území; **další chat: přestavba Můj pozemek podle `docs/POZEMEK-UX-ZADANI.md`**; předtím relace 9 „Počasí“, sekce **Počasí - Jak bylo** níže). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
 
 ## Fáze: 1 a 2 hotové. Fáze 3 (jádro) rozpracovaná: v0.1 umí statistiku pozemku, SCS-CN po buňkách, povodí bodu, nádrž/poldr z DMR; chybí transformace vlny, bilance P-ET, USLE, napojení opatření.
 
@@ -68,7 +68,7 @@ Aktualizováno: 21. 10. 2026 15:20 (relace 10 „Nádrže v jádru“ uzavřena:
 - **Zadání „Koryčaňáci - jak bylo“ (21. 10.)** -> `docs/POCASI-ZADANI.md`: denní automatický sběr srážek/teplot/výparu (ČHMÚ Koryčany + Nemochovice, PMO KS Koryčany, Nemotice, VOX) přes GitHub Actions jako **vstupní záložka „Jak bylo“ osvětové aplikace** (index.html), ne samostatný web - rozhodnutí uživatele. Pokračuje v novém chatu; tady se dál řeší model.
 
 ### Rozpracováno
-- **Můj pozemek - UX přestavba (další chat, priorita)**: uživatel 21. 10.: mapa malá, prvonávštěvník neví co dělat, kroky rozházené, Krok 1 pod mapou. Zadání a současný stav: `docs/POZEMEK-UX-ZADANI.md`. Postup: rozbor v prohlížeči (desktop + mobil) -> 2-3 varianty k výběru -> přestavba v `build_dummy.py` po blocích.
+- ~~Můj pozemek - UX přestavba~~ hotovo 21. 10. (relace 11, sekce níže). Čeká na zkoušku uživatele na telefonu.
 - **Drobnosti relace 10 (hotové, 21. 10. odpoledne)**: Celé území - panel „Hráz na potoce“ (výška 0,5-4 m, vlastní výběr deště, informace o vodním díle nad 2 m a TBD nad 1 m a 1 000 m³, zelená poznámka o bobrovi), výchozí déšť 20 mm, Velké střechy sloučené skupiny „domácnosti“ (RD + bydlení) a „obchody a služby“ (obchod + kancelář + obchod a služby), řazení podle plochy. Jak bylo - aktualizace na samostatném řádku, letošní neúplný rok 2026* v obou dlouhých grafech (srážky do 19. 10. 294 mm = 55 % normálu za stejné období; bilance -613 mm, horší než celý 2018), 3 nejsušší (seschlá barva --dry) a 3 nejdeštivější roky, deficit bilance seschle, karta tropických dní rudě, výrazný modrý box „Co z toho plyne pro pozemek“ s prokliky na Můj pozemek a Katalog, výchozí období detailu 90 dní + nápověda u prázdného srovnání ročníků.
 - **Žádost VÚMOP odeslána 19. 10. 2026** (data@vumop.cz, z adresy oddílu): vektor hydrologických skupin půd (mapa velkého měřítka, metadata ID 5cc1bdc2-de34-4eee-a439-41420a000319), správní území obce Koryčany + obal ~500 m, SHP/GPKG v EPSG:5514; dotazy na licenci pro veřejnou webovou aplikaci, zpoplatnění nekomerčního užití a HSP pro lesy mimo ZPF. Odkaz na stav.html v textu. Čeká se na odpověď. Erozní ohroženost a zamokřené půdy v žádosti nejsou - případně druhá žádost po odpovědi.
 - **Nádrže v0.3 - čeká na vyzkoušení uživatelem**: v aplikaci záložka Celé území -> panel „Hráz na potoce“ (od 21. 10. odpoledne; výška 0,5-4 m, nad 2 m červené varování vodní dílo), technicky i v https://skauti-korycany.github.io/korycany-voda/web/test.html. Opraveno podle zpětné vazby 21. 10. (tvar zátopy, malé toky, horní Stříbrník) - blok O.
@@ -81,13 +81,47 @@ Aktualizováno: 21. 10. 2026 15:20 (relace 10 „Nádrže v jádru“ uzavřena:
 
 ### Další kroky (pořadí)
 0. ~~srážková data~~ hotovo 19. 10. (blok E). Zbývá: licence otevřených dat ČHMÚ (otevřít podmínky na opendata.chmi.cz, zapsat do VRSTVY.md); srážkoměr VD Koryčany do žádosti na Povodí Moravy.
-1. **Příští relace: Můj pozemek UX (`docs/POZEMEK-UX-ZADANI.md`).** Pak model: Volné bloky: (d) nádrže - oprava podle zpětné vazby (viz níže); žádost Povodí Moravy (text: srážkoměr KS Koryčany 2026, přítok/odtok VD, měrná křivka, parametry nádrže); napojení opatření katalogu na skutečný pozemek (EFF -> statPolygon); mapa eroze v prototypu; stav.html průběžně.  ~~(a) stav.html~~ ~~(a2) vážený odtok v jádru~~ hotovo. ~~(a3) zeleň SCS-CN~~ hotovo 21. 10. (blok M vč. roční bilance). ~~(b) USLE~~ hotovo 21. 10. vč. prototypu (mapa eroze v prototypu zatím ne - jen čísla); (c) transformace vlny poldrem; ~~(d) nádrže v jádru~~ hotovo 21. 10. (blok O) - navazuje: zpětná vazba uživatele v test.html, pak nádrž/tůň do prototypu (Celé území nebo Můj pozemek u potoka); (e) validace proti měření - až data Povodí Moravy nebo vlastní srážkoměr. Průběžně: zpětná vazba uživatele k prototypu v0.2 (parcely, sklon, půda, krajina, velké střechy). Nezapomenout: `tools/build_dummy.py` je zdroj pravdy pro index.html i prototyp/index.html (oba se generují, nikdy needitovat HTML ručně); po změně dat (`budovy_info.json`, `cn_info.json`, `srazky_chmi.json`, `cn_tabulka.json`, `opatreni.json`) znovu spustit.
+1. ~~Můj pozemek UX~~ hotovo 21. 10. (relace 11). Teď: zkouška uživatele na telefonu, pak model: Volné bloky: (d) nádrže - oprava podle zpětné vazby (viz níže); žádost Povodí Moravy (text: srážkoměr KS Koryčany 2026, přítok/odtok VD, měrná křivka, parametry nádrže); napojení opatření katalogu na skutečný pozemek (EFF -> statPolygon); mapa eroze v prototypu; stav.html průběžně.  ~~(a) stav.html~~ ~~(a2) vážený odtok v jádru~~ hotovo. ~~(a3) zeleň SCS-CN~~ hotovo 21. 10. (blok M vč. roční bilance). ~~(b) USLE~~ hotovo 21. 10. vč. prototypu (mapa eroze v prototypu zatím ne - jen čísla); (c) transformace vlny poldrem; ~~(d) nádrže v jádru~~ hotovo 21. 10. (blok O) - navazuje: zpětná vazba uživatele v test.html, pak nádrž/tůň do prototypu (Celé území nebo Můj pozemek u potoka); (e) validace proti měření - až data Povodí Moravy nebo vlastní srážkoměr. Průběžně: zpětná vazba uživatele k prototypu v0.2 (parcely, sklon, půda, krajina, velké střechy). Nezapomenout: `tools/build_dummy.py` je zdroj pravdy pro index.html i prototyp/index.html (oba se generují, nikdy needitovat HTML ručně); po změně dat (`budovy_info.json`, `cn_info.json`, `srazky_chmi.json`, `cn_tabulka.json`, `opatreni.json`) znovu spustit.
 2. ~~Návrhové úhrny N-letých dešťů pro Koryčany~~ hotovo 20. 10. (blok K). Zbývá: krátké úhrny 15/60 min pro vsak (ČSN 75 9010 pro Koryčany místo příkladu Brno) - z tvarů A-F jen orientačně.
 3. Až přijde VÚMOP: `--vumop` v vyrob_cn.bat, přepočet, porovnat s BPEJ odhadem.
 4. Názvy toků do toky_cuzk.geojson: z INSPIRE HY-P (ČÚZK) nebo DIBAVOD A02 (NAZ_TOK) - až bude potřeba v rozhraní.
 5. ~~Blok D~~ hotovo 21. 10. Navazuje: po zimě/jaru znovu stáhnout hladinu a `recent` ČHMÚ (skript bere celé období automaticky); případně měrná křivka u stavidla (hladina -> průtok) se školou.
 6. Uživatel ověří WMS označené ❌ ve VRSTVY.md (LPIS MZe, katastr ČÚZK, CENIA vojenská mapování); napíše na data@vumop.cz (HSP, BPEJ, zamokřené půdy).
 7. Dotační okna: AOPK OPŽP ZMV 17. výzva 20. 10. - 3. 11. 2026; OPŽP 105 do 17. 12. 2026.
+
+## Můj pozemek - průvodce (relace 11, 21. 10. 2026)
+
+Zadání: `docs/POZEMEK-UX-ZADANI.md`. Výsledek: záložka Můj pozemek je průvodce po krocích 1-5 (varianta A). Odkaz pro leták nebo QR kód rovnou do záložky: https://skauti-korycany.github.io/korycany-voda/#pozemek
+
+### Hotovo
+- **UX rozbor** živé verze (1300 a 390 px, světlý i tmavý): výsledek (Krok 5) až 3 300 px (desktop) / 6 000 px (mobil) od začátku, mezi tím 13 karet; výchozí smyšlená čísla před výběrem (střecha 120, dlažba 40, zeleň 300 m²); mapa startovala na zoomu 15, parcely se kreslí až od 16; pokyn „klikni na dům“ v drobném textu pod mapou; 9 polí v Kroku 2; CN, C, váha nasycení ve výsledku; hlavička a upozornění na mobilu 297 px. Tři klikací náčrty (A průvodce, B mapa s vysouvacím panelem, C nejdřív odpověď) v artefaktu na claude.ai; **uživatel vybral A**.
+- **Blok 1** (commit 7fb2251) - kostra: pruh průběhu 1-5 (kroky klikací po výběru pozemku), Zpět/Dál přilepené dole; krok 1 mapa velká (mobil celá šířka a výška okna minus 330 px, min. 320 px; desktop 7/11 šířky), od kroku 2 mapa 120 px (mobil) / 260 px přilepená vlevo (desktop), bez ovládacích prvků, klepnutí = Změnit místo; start zoom 16 na střed města; hlavička na telefonu jeden řádek záložek; upozornění „Zjednodušený model pro osvětu, ne projekt. Nevalidováno. Nic se neukládá.“ jako jeden rozbalovací řádek (celá aplikace). Odstraněny řádky „Podzemní voda / Intravilán (zástupně)“ - nebyly z dat.
+- **Blok 2** (62fb7aa) - obsah: krok 1 po výběru hned první číslo (odtok ze střech + přirovnání k vanám 🤔); krok 2 tři otázky s tlačítky (okapy; zpevněné plochy 0 / ~20 / ~60 / ~150 m²; půda A-D předvyplněná z BPEJ + návod na zkoušku vsaku) a „Upřesnit čísla“ (původní pole); krok 3 kolik spadne, kolik odteče, odkud nejvíc, rok - tabulka s CN a součiniteli schovaná v „Jak se to počítá“; krok 4 průběžný součet, 3 nejlepší opatření, „Další možnosti (n)“, „Nehodí se sem (n)“ s důvody; krok 5 modrý motivační box (m³, vany, rok, 200 domácností, odkazy na Celé území a Katalog), pruhy teď / s opatřeními, „Na co to nestačí“ (jen když je co srovnávat), upozornění nevalidováno a značky. **Výchozí zpevněné plochy 0 m² místo 40** (dřív se 40 m² tiše odečítalo od zeleně, u parcely jen s domem vycházelo „0,0 m³ zůstane u tebe“).
+- **Blok 3** (fe6fbb7 + oprava) - hledání adresy a parcely přes **vyhledávací službu RÚIAN ČÚZK** (`ags.cuzk.gov.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE`, `suggest` + `findAddressCandidates` s `magicKey`, `outSR=4326`) ✅ ověřeno živě z GitHub Pages (Masarykova 445 -> parcela 1020); filtr na Koryčany, Blišice, Jestřabice, Lískovec, Mouchnice a PSČ 76805 / 68333; mimo území hláška. „Jsem tady“ = poloha prohlížeče, jen posun mapy a kruh přesnosti, parcelu nevybírá. Stav v odkazu `#pozemek?k=krok&p=kod_ku:cislo,...&o=okapy&z=dlažba&s=půda&d=déšť&m=opatření` (ruční režim `r`, `g`), tlačítko Poslat odkaz (sdílení telefonu / schránka / pole ke zkopírování). Oprava: výběr parcel ve `L.featureGroup` (přiblížení na výběr předtím tiše selhávalo).
+- Kontrola po každém bloku: `node web/test_jadro.js` VŠE OK; headless Chromium desktop 1300 + mobil 390, světlý i tmavý, průchod kroky 1-5, bez chyb JS, bez vodorovného posouvání; obnovení stavu z odkazu dává stejný výsledek. `window.TEST_HOOK` v aplikaci = pomocník pro automatickou kontrolu (vybere parcelu s RD), aplikace ho sama nevolá.
+
+### Rozhodnutí (relace 11)
+- 21. 10. 2026 - Můj pozemek = varianta A, průvodce po krocích (uživatel). Z varianty C převzato první číslo hned po výběru domu.
+- 21. 10. 2026 - Hledání adresy přes vyhledávací službu RÚIAN ČÚZK. Síťové služby ZÚ jsou zdarma, při nepřiměřeném zatížení může ZÚ uživatele zablokovat ✅ (Zásady užívání dat a služeb ZÚ, 23. 3. 2026); otevřená data ČÚZK CC BY 4.0 ✅; výslovnou licenci samotné vyhledávací služby jsem nedohledal. Hledaný text jde na server ČÚZK - napsáno pod mapou.
+- 21. 10. 2026 - Výchozí zpevněné plochy 0 m² (Claude; mění výchozí vstup, ne výpočet). Kategorie 20 / 60 / 150 m² jsou orientační 🤔.
+- 21. 10. 2026 - Výpočty v Můj pozemek beze změny; měnilo se jen uspořádání a texty.
+
+### Další kroky
+- Uživatel: vyzkoušet na svém telefonu (hledání adresy, Jsem tady, posun mapy prstem, Poslat odkaz) a dát zpětnou vazbu k textům.
+- Na úzkém telefonu padá tlačítko „Jsem tady“ na druhý řádek (mapa o ~50 px níž) - doladit podle zpětné vazby.
+- Napojit opatření katalogu na skutečný pozemek (sklon a půda z vybraných parcel už jsou) a tůň/průleh u potoka - model.
+
+### Na co ses nezeptal (relace 11)
+- Sdílený odkaz obsahuje čísla parcel. Vlastník je v katastru veřejně dohledatelný, takže kdo odkaz dostane, může zjistit, čí je pozemek. Aplikace nic neukládá, odkaz posílá jen sám uživatel. Stačí upozornění u tlačítka, nebo mají být parcely v odkazu vynechané (pak by se obnovily jen odpovědi)?
+- Má odkaz pro leták vést rovnou na Můj pozemek (`#pozemek`), nebo na Jak bylo? Obojí funguje.
+- Přirovnání „plných van po 150 l“ je odhad 🤔. Chceš jiné (sud 200 l, konev 10 l, cisterna 10 m³)?
+- Mobilní data: Můj pozemek stahuje parcely (4,5 MB) a rastry (~5 MB). Na zahradě se slabým signálem to může trvat. Zmenšit (ořez parcel na intravilán, hrubší rastry)?
+
+### Předpoklady (relace 11)
+- „Nevím“ u okapů se počítá stejně jako dřív (výpočet ho nerozlišuje), v textu je jen nápověda, jak to zjistit.
+- Déšť N10 53 mm je v tlačítkách „velký“ (v rozbalovacím seznamu zůstává „vzácný“).
+- Poloha telefonu parcelu automaticky nevybírá (přesnost GPS v zástavbě bývá 5-20 m 🤔, vybrala by se sousedova).
+- Testy na skutečném dotykovém telefonu jsem neudělal; ověřeno v emulaci 390 px a v prohlížeči v aplikaci.
 
 ## Počasí - „Jak bylo“ (relace 9, 21. 10. 2026)
 
@@ -184,7 +218,7 @@ Zadání: `docs/POCASI-ZADANI.md`. Výsledek: záložka **Jak bylo** je první a
 - Data Povodí Moravy: po odpovědi na žádost.
 - ~~Nejbližší srážkoměrná stanice ČHMÚ~~ vyřešeno: Koryčany (manuální), Nemochovice a Staré Hutě (automatické). Vyřešeno 21. 10.: 8. 9. = šum čidla (docs/MERENI.md).
 - Meliorace v území: žádost SPÚ (bezplatná) ✅; ISMS meliorace.vumop.cz (WMS nedohledána).
-- Geokodér pro zadání adresy (ČÚZK RÚIAN 💻) - ověřit dostupnost a licenci.
+- ~~Geokodér pro zadání adresy~~ vyřešeno 21. 10.: vyhledávací služba RÚIAN ČÚZK funguje z GitHub Pages ✅; síťové služby ZÚ zdarma ✅; výslovná licence samotné služby nedohledána.
 - Licence VÚMOP, NLI, MZe, ČHMÚ: zdarma bez jmenované licence; redistribuce dat vyžaduje souhlas.
 - Zapojení školy: sekce M a U07; registr estudanky.eu pro M04; úložiště měření (fáze 5).
 - Zdroj klimatických scénářů 2050/2090 s licencí - nedohledán (roční bilance P-ET mimo verzi 1).
