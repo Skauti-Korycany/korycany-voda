@@ -1,0 +1,33 @@
+name: Test site (jednorazove)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/test-sit.yml"
+
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dosah na datove servery
+        run: |
+          set +e
+          echo "== opendata.chmi.cz (ČHMÚ recent JSON, Koryčany, aktuální měsíc)"
+          curl -sS -o /tmp/chmi.json -w "HTTP %{http_code}, %{size_download} B, %{time_total}s\n" \
+            "https://opendata.chmi.cz/meteorology/climate/recent/data/daily/dly-0-203-0-41701068002-$(date -u +%Y%m).json"
+          head -c 300 /tmp/chmi.json; echo
+          echo "== sap.pmo.cz (Povodí Moravy, KS Koryčany)"
+          curl -sS -o /tmp/pmo.html -w "HTTP %{http_code}, %{size_download} B, %{time_total}s\n" \
+            -A "Mozilla/5.0 (korycany-voda; skauti)" \
+            "https://sap.pmo.cz/portal/Srazky/cz/pc/Mereni.aspx?id=60&oid=3"
+          grep -o -i "Posledn[^<]*24[^<]*" /tmp/pmo.html | head -1
+          echo "== hladiny.cz (Nemotice_SR)"
+          curl -sS -o /tmp/hl.html -w "HTTP %{http_code}, %{size_download} B, %{time_total}s\n" \
+            -A "Mozilla/5.0 (korycany-voda; skauti)" \
+            "https://www.hladiny.cz/hladiny/index.php?ca=196&cs=50089"
+          grep -o -i "Nemotice[^<]*" /tmp/hl.html | head -1
+          echo "== hladiny-vox.pwsplus.eu (Kachník, CSV)"
+          curl -sS -o /tmp/vox.csv -w "HTTP %{http_code}, %{size_download} B, %{time_total}s\n" \
+            "http://hladiny-vox.pwsplus.eu/Senzors/DownloadRecordsCsv?PeriodModel.CityID=588601&PeriodModel.Address=5&PeriodModel.FromDStr=$(date -u -d yesterday +%d.%m.%Y)&PeriodModel.FromTStr=00:00&PeriodModel.ToDStr=$(date -u +%d.%m.%Y)&PeriodModel.ToTStr=23:59"
+          head -3 /tmp/vox.csv
