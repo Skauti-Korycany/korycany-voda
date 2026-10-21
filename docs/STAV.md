@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 21. 10. 2026 11:15 (relace 8 konec). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
+Aktualizováno: 21. 10. 2026 13:00 (relace 9 „Počasí“, kroky 1-6 zadání hotové; sekce **Počasí - Jak bylo** níže). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
 
 ## Fáze: 1 a 2 hotové. Fáze 3 (jádro) rozpracovaná: v0.1 umí statistiku pozemku, SCS-CN po buňkách, povodí bodu, nádrž/poldr z DMR; chybí transformace vlny, bilance P-ET, USLE, napojení opatření.
 
@@ -81,6 +81,40 @@ Aktualizováno: 21. 10. 2026 11:15 (relace 8 konec). Hotovo dnes: stav.html, K n
 5. ~~Blok D~~ hotovo 21. 10. Navazuje: po zimě/jaru znovu stáhnout hladinu a `recent` ČHMÚ (skript bere celé období automaticky); případně měrná křivka u stavidla (hladina -> průtok) se školou.
 6. Uživatel ověří WMS označené ❌ ve VRSTVY.md (LPIS MZe, katastr ČÚZK, CENIA vojenská mapování); napíše na data@vumop.cz (HSP, BPEJ, zamokřené půdy).
 7. Dotační okna: AOPK OPŽP ZMV 17. výzva 20. 10. - 3. 11. 2026; OPŽP 105 do 17. 12. 2026.
+
+## Počasí - „Jak bylo“ (relace 9, 21. 10. 2026)
+
+Zadání: `docs/POCASI-ZADANI.md`. Výsledek: záložka **Jak bylo** je první a výchozí v `index.html`, data se sbírají sama.
+
+### Hotovo
+- **Automatika**: `.github/workflows/pocasi.yml` běží 2x denně (05:17 a 17:17 UTC), spouští `tools/12_pocasi.py --mesicu 3`, pak `tools/build_dummy.py`, commit `[bot] počasí YYYY-MM-DD`. Ověřeno 21. 10.: GitHub Actions dosáhnou na opendata.chmi.cz, sap.pmo.cz, hladiny.cz i hladiny-vox.pwsplus.eu (z prostředí Claude ne) a umí pushovat do main. Ruční spuštění: záložka Actions -> „Pocasi - denni sber“ -> Run workflow (vstup `mesicu`, např. 10 = doplnit od ledna).
+- **`tools/12_pocasi.py`**: ČHMÚ recent daily JSON pro Koryčany (0-203-0-41701068002, jen srážky) a Nemochovice (0-203-0-41503035001: T AVG, TMA/TMI 20:00, H, F, SRA), vyřazuje QUALITY >= 4; scrape tabulek KS Koryčany (Povodí Moravy, 24 h) a Nemotice_SR (hladiny.cz, ~10 h) -> přírůstkové CSV archivy `data/pocasi/pmo_korycany.csv`, `nemotice.csv` (místní čas); ET₀ Hargreaves-Samani FAO-56 rov. 52, Ra rov. 21-24 pro 49,11 N; výstup `data/pocasi/denni.json` (den -> P_kor, P_pmo, P_nem, T, Tmin, Tmax, H, F, ET0, bil, zdroj_P), slučuje se s předchozím stavem. Test v režimu `--vzorek`.
+- **`tools/13_normaly_pocasi.py`** (jednorázově) -> `data/pocasi/normaly.json`: měsíční normály (P Koryčany 1991-2020 = 632 mm; T/Tmin/Tmax/ET₀/bilance Nemochovice 2001-2025), denní křivka T a ET₀ (okno 15 dní), ročníky (P po měsících 1921-2025, 88 úplných let; T/ET₀/bil/tropické/mrazové dny 2001-2025), rekordy po měsících. Vstup = historical_csv ČHMÚ (daily/precipitation, temperature, humidity, wind), stahuje se přes Actions nebo PC do `data/pocasi/vzorek/` (gitignore).
+- **Záložka Jak bylo** (`build_dummy.py`, data v balíčku `D.pocasi`, grafy vlastní SVG): 1) dlouhý pohled - roční srážky 1921-2025 s 10letým průměrem a normálem; 2) 2001-2025 bilance/ET₀/teplota/tropické dny + 4 karty s průměrem 2016-2025 vs 2001-2010 a lineárním trendem na dekádu; 3) detail období (posledních 30/42/90 dní, od začátku roku, roční období, měsíce, rok, vlastní od-do): karty srážky / teplota / ET₀ / bilance proti normálu přepočtenému na stejné dny, denní graf, extrémy, srovnání ročníků (uzavřené měsíce uvnitř období proti stejným měsícům 1921-2025), callout „Jak to číst“ (ET₀ = referenční výpar, P-ET₀ = klimatický deficit), zdroje.
+
+### Co data říkají (stav 21. 10. 2026, předběžná data ČHMÚ)
+- Roční srážky neklesají: průměr 2016-2025 624 mm, normál 632, 1961-1990 608. Teplota Nemochovice +0,46 °C / 10 let (2001-2025), ET₀ +14 mm / 10 let, tropické dny 12 -> 18 za rok (+3,5 / 10 let), bilance P-ET₀ záporná ve všech úplných letech, nejhůř 2018 (-426 mm).
+- 2026: leden-září 289 mm = nejsušší z 90 let řady (září z Nemochovic); léto VI-VIII 112 mm = 4. nejsušší z 92; max 37,4 °C 5. 8. (rekord řady 2001-2025 byl 35,6); 28 tropických dní (rekord 29 v 2024); ET₀ do 19. 10. 907 mm, bilance -613 mm.
+
+### Rozhodnutí (relace 9)
+- ET₀ = Hargreaves-Samani (shodné s napajedlaci.cz), ne Penman-Monteith; ET₀ se prezentuje jako referenční výpar a P-ET₀ jako klimatický deficit, ne odtok.
+- Srážky „Koryčany“ v pořadí: ČHMÚ Koryčany (manuální, chodí ~6 týdnů pozadu) -> suma hodin KS Koryčany PMO za klimatologický den 06-06 UTC (jen úplných 24 h) -> Nemochovice; zdroj je u každého dne (`zdroj_P`) a v grafu (světlejší sloupec = náhradní stanice).
+- Referenční období T a ET₀ = 2001-2025 (Nemochovice měří od 12/2000), ne 30letý normál; na stránce napsáno.
+- Trend = lineární regrese přes 25 let bez testu významnosti; u T a tropických dní jasný, u ET₀ a bilance slabý.
+- Datum denního úhrnu ČHMÚ = začátek klimatologického dne (DT 06:00 UTC), stejně jako v docs/SRAZKY.md.
+
+### Další kroky
+- Uživatel: zkontrolovat záložku na mobilu a v tmavém režimu; detaily doladit nakonec.
+- Odkaz na hladinu Kachníku (MERENI.md) a hodinová data KS Koryčany / Nemotice do detailu, až se archiv naplní (po týdnech).
+- Kontrola ET₀ proti měřenému výparu Nemochovice (prvek E, historical_csv `evaporation/`, od 2000) - do validace (fáze 6).
+- Delší teplotní řada (Kroměříž nebo Brno-Tuřany od 60. let) pro silnější trend - doplněk.
+- Licence: podmínky otevřených dat ČHMÚ (opendata.chmi.cz) zapsat do VRSTVY.md; Povodí Moravy a hladiny.cz podmínky neuvedeny -> zobrazovat jen agregace, zeptat se.
+- Historical_csv ČHMÚ se doplňuje do února: v březnu 2027 znovu spustit `13_normaly_pocasi.py` (ročník 2026 do řad).
+
+### Na co ses nezeptal (relace 9)
+- Co se stane, když stanice změní formát nebo adresu: workflow skončí chybou a data se přestanou doplňovat tiše. Chceš e-mail z GitHubu při neúspěšném běhu (Settings -> Notifications -> Actions)?
+- „Jak bylo“ ukazuje jen Koryčany; Jestřabice, Blišice a Lískovec mají stejná čísla (jedna stanice). Stačí to říct v textu?
+- Má se denní graf dát i do `stav.html` (pro město), nebo jen odkaz?
 
 ## Rozhodnutí
 - 21. 10. 2026 - **Střechy a zpevněné plochy zůstávají na součiniteli ČSN (konzervativně), ale s počáteční ztrátou 1 mm** na každý déšť (smáčení, prohlubně; = Ia pro CN 98 podle TR-55 ✅⏳). Roční odtok z nepropustných ploch tím je 510 mm místo 632 (histogram denních úhrnů 1991-2019). Rozhodnutí uživatele: zadržení malých úhrnů na střeše zachovat.
