@@ -131,6 +131,59 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
 .leaflet-control-layers-toggle::after{content:"vrstvy"}
 .pin{width:14px;height:14px;border-radius:50%;background:var(--water);border:2px solid #fff;box-shadow:0 0 0 2px var(--water)}
 @media (prefers-reduced-motion: no-preference){.card{transition:background .15s,border-color .15s}}
+
+/* ---- Muj pozemek: pruvodce po krocich (varianta A, 21. 10. 2026) ---- */
+.pz-prog ol{list-style:none;margin:0 0 .8rem;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.pz-prog button{width:100%;font:inherit;font-size:.78rem;color:var(--muted);background:none;border:0;border-top:5px solid var(--chip);padding:.35rem .1rem 0;text-align:left;cursor:pointer;display:flex;gap:.3rem;align-items:baseline;min-height:40px;line-height:1.2}
+.pz-prog button .n{font-family:var(--f-mono);font-weight:500}
+.pz-prog button.done{border-top-color:var(--accent);color:var(--fg)}
+.pz-prog button[aria-current="step"]{border-top-color:var(--water);color:var(--fg);font-weight:600}
+.pz-prog button:disabled{cursor:default;opacity:.7}
+.pz-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+.pz-grid>*{min-width:0}
+.pz-ask{background:var(--mark);border-left:3px solid var(--water);border-radius:0 6px 6px 0;padding:.5rem .7rem;margin-bottom:.5rem;font-size:.95rem}
+.pz-mapwrap{position:relative}
+.pz #map{height:max(320px,calc(100svh - 330px));transition:height .2s}
+.pz-mapcover{display:none;position:absolute;inset:0;z-index:900;width:100%;background:transparent;border:0;cursor:pointer;font:inherit;font-weight:600;color:var(--fg)}
+.pz[data-step]:not([data-step="1"]) .pz-mapcover{display:flex;align-items:flex-start;justify-content:flex-end;padding:.5rem}
+.pz-mapcover span{background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:.3rem .7rem;font-size:.85rem;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.pz-mapcover:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.pz[data-step]:not([data-step="1"]) #map{height:120px}
+.pz[data-step]:not([data-step="1"]) .pz-ask,.pz[data-step]:not([data-step="1"]) .pz-maphint{display:none}
+.pz-sel{font-size:.9rem;margin-top:.45rem}
+.pz-maphint{margin:.35rem 0 0}
+.linkbtn{font:inherit;background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;cursor:pointer}
+.pz-step{display:none}
+.pz[data-step="1"] .pz-step[data-s="1"],.pz[data-step="2"] .pz-step[data-s="2"],.pz[data-step="3"] .pz-step[data-s="3"],.pz[data-step="4"] .pz-step[data-s="4"],.pz[data-step="5"] .pz-step[data-s="5"]{display:block}
+.pz-step>h2{margin-bottom:.5rem}
+.pz-known{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.6rem .8rem;margin-bottom:.8rem}
+.pz-nav{position:sticky;bottom:0;z-index:1100;display:flex;gap:.5rem;justify-content:flex-end;background:var(--bg);border-top:1px solid var(--line);margin-top:1rem;padding-top:.6rem;padding-bottom:calc(.6rem + env(safe-area-inset-bottom,0px))}
+.pz-btn{font:inherit;font-weight:600;min-height:46px;padding:.6rem 1.1rem;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--fg);cursor:pointer}
+.pz-btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.pz-btn:disabled{opacity:.45;cursor:not-allowed}
+.pz[data-step="1"] #pz-back{visibility:hidden}
+@media(max-width:899px){.pz-btn.pri{flex:1}}
+@media(min-width:900px){
+  .pz[data-step="1"] .pz-grid{grid-template-columns:minmax(0,7fr) minmax(0,4fr)}
+  .pz[data-step="1"] #map{height:max(440px,calc(100vh - 310px))}
+  .pz[data-step]:not([data-step="1"]) .pz-grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr)}
+  .pz[data-step]:not([data-step="1"]) .pz-mapcol{position:sticky;top:.5rem;align-self:start}
+  .pz[data-step]:not([data-step="1"]) #map{height:260px}
+}
+@media (prefers-reduced-motion: reduce){.pz #map{transition:none}}
+/* hlavicka a upozorneni na telefonu na jeden radek */
+details.banner>summary{cursor:pointer;list-style:none}
+details.banner>summary::-webkit-details-marker{display:none}
+details.banner>summary b{font-weight:600;color:var(--fg)}
+details.banner>summary .more{color:var(--accent);text-decoration:underline}
+details.banner[open]>summary .more{display:none}
+@media(max-width:600px){
+  header.top{padding-block:.45rem;gap:.3rem}
+  header.top h1{font-size:1.2rem}
+  header.top .tag{display:none}
+  nav.tabs{flex-wrap:nowrap;overflow-x:auto;margin-left:0;width:100%;scrollbar-width:none}
+  nav.tabs button{white-space:nowrap;padding:.3rem .6rem;font-size:.85rem}
+}
 </style>
 <style>/* required styles */
 
@@ -807,7 +860,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <button role="tab" aria-selected="false" data-tab="model">O modelu</button>
   </nav>
 </header>
-<div class="banner">Zjednodušený model pro osvětu, ne projekt. Nevalidováno. Po kliku do mapy se sklon a půda berou z dat (DMR 5G ČÚZK, BPEJ SPÚ); střechy a výměry z katastru (ČÚZK) po kliknutí na parcely, zpevněné plochy zadáváš sám. Katalog, vzorce, ceny a zdroje: opatreni.json v0.4 (20. 10. 2026). Značky: ✅ ověřený zdroj, ✅⏳ starší než rok, 📄 citace, 🤔 odhad.</div>
+<details class="banner"><summary><b>Zjednodušený model pro osvětu, ne projekt. Nevalidováno.</b> Nic se neukládá. <span class="more">víc</span></summary>Po kliku do mapy se sklon a půda berou z dat (DMR 5G ČÚZK, BPEJ SPÚ); střechy a výměry z katastru (ČÚZK) po kliknutí na parcely, zpevněné plochy zadáváš sám. Katalog, vzorce, ceny a zdroje: opatreni.json v0.4 (20. 10. 2026). Značky: ✅ ověřený zdroj, ✅⏳ starší než rok, 📄 citace, 🤔 odhad.</details>
 
 <main>
 <!-- ======================= JAK BYLO ======================= -->
@@ -848,27 +901,44 @@ svg.leaflet-image-layer.leaflet-interactive path {
 </section>
 
 <!-- ======================= MŮJ POZEMEK ======================= -->
-<section id="tab-pozemek" class="grid two hidden-tab">
-  <div>
-    <div id="map" aria-label="Mapa Koryčan"></div>
-    <p class="note" style="margin:.4rem 0 0">Podklad ČÚZK ZTM (WMTS) a ortofoto (WMS), živě ze serverů ČÚZK. Klikni do mapy = vyber místo. Klik vybere parcelu z katastru (ČÚZK, CC BY 4.0) - klikni postupně na dům, zahradu a dvůr, výměry a půdorysy budov se sečtou a předvyplní. Sklon a půda se odvodí z mřížky 5 m (DMR 5G, BPEJ). Zpevněné plochy v datech nejsou, ty zadej sám. Nic se neukládá, vlastníci se nenačítají.</p>
-    <div class="panel" style="margin-top:.8rem">
-      <div class="eyebrow">Krok 1 - kde</div>
-      <dl class="kv" id="where">
-        <dt>Parcely</dt><dd id="w-parc">klikni do mapy na dům, pak na zahradu a dvůr - každá parcela zvlášť, sčítá se <span class="note">(katastr má dům a zahradu jako dvě parcely)</span></dd>
-        <dt>Místo</dt><dd id="w-pos">-</dd>
-        <dt>Sklon</dt><dd><span class="num" id="w-slope">-</span> % <span class="note" id="w-slope-n">(po kliku z DMR 5G, průměr v okruhu 15 m)</span></dd>
-        <dt>Půda</dt><dd id="w-soil">- <span class="note">(po kliku z BPEJ; v lese a zástavbě odhad - ověř zkouškou vsaku)</span></dd>
-        <dt>Okolí 30 m</dt><dd id="w-okoli">-</dd>
-        <dt>Podzemní voda</dt><dd>hlouběji než 1 m <span class="note">(zástupně)</span></dd>
-        <dt>Intravilán</dt><dd>ano <span class="note">(zástupně)</span></dd>
-      </dl>
+<section id="tab-pozemek" class="hidden-tab pz" data-step="1">
+  <nav class="pz-prog" aria-label="Postup">
+    <ol>
+      <li><button type="button" data-go="1" aria-current="step"><span class="n">1</span>Kde</button></li>
+      <li><button type="button" data-go="2" disabled><span class="n">2</span>Co tu je</button></li>
+      <li><button type="button" data-go="3" disabled><span class="n">3</span>Při dešti</button></li>
+      <li><button type="button" data-go="4" disabled><span class="n">4</span>Co udělat</button></li>
+      <li><button type="button" data-go="5" disabled><span class="n">5</span>Výsledek</button></li>
+    </ol>
+  </nav>
+  <div class="pz-grid">
+    <div class="pz-mapcol">
+      <div class="pz-ask" id="pz-ask"><b>Najdi svůj dům a klepni na něj.</b> Pak klepni i na zahradu a dvůr - každá parcela zvlášť, sečte se.</div>
+      <div class="pz-mapwrap">
+        <div id="map" aria-label="Mapa Koryčan - klepni na svůj dům"></div>
+        <button type="button" class="pz-mapcover" id="pz-mapcover" data-go="1" aria-label="Změnit místo - zpět na výběr pozemku"><span>Změnit místo</span></button>
+      </div>
+      <div class="pz-sel" id="w-parc">Zatím nic nevybráno.</div>
+      <p class="note pz-maphint">Katastr a budovy ČÚZK (CC BY 4.0), podklad ZTM a ortofoto ČÚZK. Nic se neukládá, vlastníci se nenačítají. <button type="button" class="linkbtn" id="pz-manual">Nechci mapu, zadám plochy ručně</button></p>
     </div>
-  </div>
-  <div>
-    <div class="panel">
-      <div class="eyebrow">Krok 2 - co tu je (uprav podle sebe)</div>
-      <div class="inputs" style="margin-top:.5rem">
+    <div class="pz-panel">
+      <div class="pz-step" data-s="1">
+        <h2>Co se děje s vodou na tvém pozemku?</h2>
+        <p>Vyber v mapě svůj pozemek. Aplikace z map spočítá střechy, sklon a půdu, ty doplníš pár odpovědí a uvidíš, kolik vody ti při lijáku uteče a co s tím jde udělat.</p>
+        <div id="pz-teaser"></div>
+      </div>
+      <div class="pz-step" data-s="2">
+        <h2>Co tu je</h2>
+        <div class="pz-known">
+          <div class="eyebrow">Z map víme</div>
+          <dl class="kv" id="where">
+            <dt>Místo</dt><dd id="w-pos">-</dd>
+            <dt>Sklon</dt><dd><span class="num" id="w-slope">-</span> % <span class="note" id="w-slope-n">(po kliku z DMR 5G, průměr v okruhu 15 m)</span></dd>
+            <dt>Půda</dt><dd id="w-soil">- <span class="note">(po kliku z BPEJ; v lese a zástavbě odhad - ověř zkouškou vsaku)</span></dd>
+            <dt>Okolí 30 m</dt><dd id="w-okoli">-</dd>
+          </dl>
+        </div>
+        <div class="inputs" style="margin-top:.5rem">
         <label class="f">Střecha (m²)<input type="number" id="in-roof" value="120" min="0" step="10"></label>
         <label class="f">Zpevněné plochy (m²)<input type="number" id="in-paved" value="40" min="0" step="5"></label>
         <label class="f">Typ zpevnění<select id="in-pavedtype">
@@ -899,26 +969,30 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <p class="note" style="margin:.5rem 0 0">Zkouška vsaku: vykopej jámu 30 cm, nalij vodu, po 30 minutách změř pokles. Převod podle brožury Praha 2009 ✅⏳. Nahrazuje mapu půd, dokud nejsou data VÚMOP; i potom je přesnější než mapa.</p>
     </div>
 
-    <div class="panel step">
-      <div class="eyebrow">Krok 3 - co se u tebe děje při dešti</div>
-      <table class="flow" id="flow"></table>
+      </div>
+      <div class="pz-step" data-s="3">
+        <h2>Co se u tebe děje při dešti</h2>
+        <table class="flow" id="flow"></table>
       <div class="bars" id="bars"></div>
       <div class="legend"><span><b style="background:var(--bad)"></b>odteče pryč</span><span><b style="background:var(--water)"></b>zůstane u tebe (zasákne nebo zadrženo)</span></div>
       <p class="note" id="year"></p>
-    </div>
-
-    <div class="panel step">
-      <div class="eyebrow">Krok 4 - co můžeš udělat (zaškrtni, přepočítá se)</div>
-      <p class="note">Seřazeno: nejvíc vody za nejmíň práce. Čísla u opatření platí pro tvoje plochy a zvolený déšť.</p>
+      </div>
+      <div class="pz-step" data-s="4">
+        <h2>Co můžeš udělat</h2>
+        <p class="note">Seřazeno: nejvíc vody za nejmíň práce. Čísla u opatření platí pro tvoje plochy a zvolený déšť.</p>
       <div class="cards" id="cards"></div>
       <div class="unfit" id="unfit"></div>
-    </div>
-
-    <div class="panel step">
-      <div class="eyebrow">Krok 5 - shrnutí</div>
-      <div class="sum" id="summary"></div>
+      </div>
+      <div class="pz-step" data-s="5">
+        <h2>Výsledek</h2>
+        <div class="sum" id="summary"></div>
       <div class="callout" id="scale"></div>
+      </div>
     </div>
+  </div>
+  <div class="pz-nav">
+    <button type="button" class="pz-btn" id="pz-back">Zpět</button>
+    <button type="button" class="pz-btn pri" id="pz-next" disabled>Dál: co tu je</button>
   </div>
 </section>
 
@@ -1629,7 +1703,7 @@ document.querySelectorAll('nav.tabs button').forEach(b=>b.addEventListener('clic
 }));
 
 // ---------- mapa
-const map = L.map('map',{zoomControl:true}).setView([49.106,17.165],15);
+const map = L.map('map',{zoomControl:true}).setView([49.1066,17.1650],16);
 const ztm = L.tileLayer('https://ags.cuzk.gov.cz/arcgis1/rest/services/ZTM_WM/MapServer/WMTS/tile/1.0.0/ZTM_WM/default/GoogleMapsCompatible/{z}/{y}/{x}',{maxZoom:19,attribution:'ČÚZK - on-line (ZTM)'}).addTo(map);
 const orto = L.tileLayer.wms('https://ags.cuzk.gov.cz/arcgis1/services/ORTOFOTO/MapServer/WMSServer',{layers:'0',format:'image/jpeg',maxZoom:19,attribution:'ČÚZK - on-line (Ortofoto)'});
 L.control.layers({'ZTM (ČÚZK)':ztm,'Ortofoto (ČÚZK)':orto},null,{collapsed:true}).addTo(map);
@@ -1637,6 +1711,7 @@ let tilesOk=false; ztm.on('load',()=>{tilesOk=true});
 setTimeout(()=>{ if(!tilesOk){ const d=document.createElement('div'); d.className='note'; d.style.cssText='position:absolute;inset:auto 8px 8px 8px;background:var(--panel);padding:.4rem .6rem;border-radius:4px;z-index:800'; d.textContent='Podklad ČÚZK se nenačetl (prohlížeč bez sítě, nebo náhled v omezeném prostředí). Mapa je jen kulisa, výpočty fungují.'; document.getElementById('map').appendChild(d);} },6000);
 let marker=null;
 map.on('click',e=>{
+  if(typeof PZ!=='undefined' && PZ.step!==1) return;
   if(marker) marker.remove();
   marker = L.marker(e.latlng,{icon:L.divIcon({className:'',html:'<div class="pin"></div>',iconSize:[14,14],iconAnchor:[7,7]})}).addTo(map);
   document.getElementById('w-pos').innerHTML = '<span class="num">'+e.latlng.lat.toFixed(5)+' N, '+e.latlng.lng.toFixed(5)+' E</span> <span class="note">(nikam se neukládá)</span>';
@@ -1677,7 +1752,8 @@ function prekresliVyber(){
   for(const k of PARC.vybrane){ const p=PARC.feats[k], q=p.f.properties; A+=q.plocha_m2; roof+=q.strechy_m2; bud+=q.budov; rd+=q.rd;
     L.geoJSON(p.f,{style:{color:'#1f6f8b',weight:2.5,fillColor:'#1f6f8b',fillOpacity:0.12}}).addTo(PARC.zvyr);
     popis.push(`${q.cislo} (${fmt0(q.plocha_m2)} m²${q.budov?', '+q.budov+' bud. '+fmt0(q.strechy_m2)+' m²':''})`); }
-  if(!PARC.vybrane.size){ $('w-parc').innerHTML='klikni do mapy na dům, pak na zahradu a dvůr - každá parcela zvlášť, sčítá se'; return; }
+  if(typeof pzUI==='function') pzUI();
+  if(!PARC.vybrane.size){ $('w-parc').innerHTML='Zatím nic nevybráno.'; return; }
   const paved = +$('in-paved').value||0;
   $('in-roof').value = Math.round(roof);
   $('in-green').value = Math.max(0, Math.round(A - roof - paved));
@@ -1762,6 +1838,29 @@ function odvodZMapy(lon,lat){
   $('w-okoli').innerHTML = `budovy ${Math.round(100*bud/A)} %, zpevněné a areály ${Math.round(100*zpev/A)} %, zeleň ${Math.round(100*zel/A)} % <span class="note">(${top}; ZABAGED, mřížka 5 m - jen nápověda)</span>`;
   recalc();
 }
+
+
+// ---------- Muj pozemek: pruvodce po krocich (varianta A)
+const PZ = {step:1, manual:false};
+const PZ_NEXT = ['', 'Dál: co tu je', 'Dál: co se děje při dešti', 'Dál: co můžu udělat', 'Dál: výsledek', 'Vybrat jiný pozemek'];
+function pzReady(){ return PZ.manual || PARC.vybrane.size>0; }
+function pzGo(n){
+  n = Math.max(1, Math.min(5, n));
+  if(n>1 && !pzReady()) return;
+  const sec = document.getElementById('tab-pozemek'); const prev = PZ.step; PZ.step = n; sec.dataset.step = n;
+  pzUI();
+  setTimeout(()=>{ map.invalidateSize(); if(PARC.vybrane.size && PARC.zvyr){ try{ map.fitBounds(PARC.zvyr.getBounds(), {padding:[20,20], maxZoom:19}); }catch(e){} } }, 230);
+  if(prev!==n){ const top = sec.getBoundingClientRect().top + scrollY - 8; if(scrollY>top) window.scrollTo({top, behavior:'auto'}); }
+}
+function pzUI(){
+  const ok = pzReady();
+  document.querySelectorAll('.pz-prog button').forEach(b=>{ const k=+b.dataset.go; b.disabled = k>1 && !ok; b.classList.toggle('done', k<PZ.step); if(k===PZ.step) b.setAttribute('aria-current','step'); else b.removeAttribute('aria-current'); });
+  const nx = document.getElementById('pz-next'); nx.textContent = PZ_NEXT[PZ.step]; nx.disabled = PZ.step===1 && !ok;
+}
+document.getElementById('tab-pozemek').addEventListener('click', e=>{ const g=e.target.closest('[data-go]'); if(g && !g.disabled) pzGo(+g.dataset.go); });
+document.getElementById('pz-next').addEventListener('click', ()=>{ if(PZ.step===5){ PARC.vybrane.clear(); prekresliVyber(); PZ.manual=false; pzGo(1); } else pzGo(PZ.step+1); });
+document.getElementById('pz-back').addEventListener('click', ()=>pzGo(PZ.step-1));
+document.getElementById('pz-manual').addEventListener('click', ()=>{ PZ.manual=true; pzGo(2); });
 
 // ---------- vstupy
 const $ = id=>document.getElementById(id);
@@ -2197,6 +2296,8 @@ function rocniky(od,do_,s){
 sel.addEventListener('change',render); inOd.addEventListener('change',render); inDo.addEventListener('change',render); render();
 })();
 
+// hacek pro automaticke testy (tools: headless kontrola); v aplikaci se nevola
+window.TEST_HOOK = async ()=>{ for(let t=0;t<40 && !PARC.feats.length;t++) await new Promise(r=>setTimeout(r,100)); const p=PARC.feats.find(p=>p.f.properties.rd>0 && p.f.properties.plocha_m2>150); if(!p) return {hook:'bez parcel'}; let x=0,y=0; p.ring.forEach(([a,b])=>{x+=a;y+=b}); x/=p.ring.length; y/=p.ring.length; map.setView([y,x],18); map.fire('click',{latlng:L.latLng(y,x)}); await new Promise(r=>setTimeout(r,600)); return {hook:'ok', parc:p.f.properties.cislo}; };
 // start
 try{const t=localStorage.getItem('kor_tab'); if(t){document.querySelector(`nav.tabs button[data-tab="${t}"]`)?.click();}}catch(e){}
 recalc();
