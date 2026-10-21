@@ -82,6 +82,13 @@ table.flow tr.total td{font-weight:600}
 .note{font-size:.85rem;color:var(--muted)}
 .callout{border-left:3px solid var(--warn);padding:.5rem .8rem;background:var(--mark);border-radius:0 6px 6px 0;font-size:.92rem;margin-top:.8rem}
 .callout.ok{border-left-color:var(--ok)}
+.motiv{margin-top:1rem;padding:1rem 1.1rem;border-radius:8px;background:var(--water);color:#fff;font-size:1rem}
+.motiv p{margin:.35rem 0}
+.motiv .mot-h{font-family:var(--f-display);font-size:1.25rem;font-weight:700}
+.motiv .mot-a{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
+.motiv .mot-a a{background:#fff;color:var(--water);font-weight:600;text-decoration:none;padding:.4rem .8rem;border-radius:999px}
+.motiv .mot-a a:hover,.motiv .mot-a a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .motiv{color:#0f1a1f} :root:not([data-theme="light"]) .motiv .mot-a a{background:#0f1a1f}}
 .unfit{margin-top:.8rem;font-size:.88rem}
 .unfit li{margin:.15rem 0}
 .big{font-family:var(--f-display);font-size:2rem;font-weight:700;line-height:1.1}
@@ -809,16 +816,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <h2>Jak bylo v Koryčanech</h2>
     <p class="note" style="margin:.2rem 0 0">Co se tu děje s vodou: kolik naprší, kolik se vypaří a co zbyde. Nejdřív dlouhé řady, protože jeden měsíc trend neukáže.</p>
     <p class="note" style="margin:.2rem 0 0">Data se stahují automaticky každý den; poslední aktualizace <span class="num" id="jb-upd"></span>.</p>
-    <h3 style="margin-top:1rem">Dlouhý pohled: srážky Koryčany 1921-2025</h3>
+    <h3 style="margin-top:1rem">Dlouhý pohled: srážky Koryčany od roku 1921</h3>
     <p class="note" id="jb-l1-n"></p>
     <svg class="jb-chart" id="jb-l1" viewBox="0 0 720 220" role="img" aria-label="Roční srážky 1921-2025"></svg>
-    <div class="legend"><span><b style="background:var(--chip)"></b>roční úhrn</span><span><b style="background:var(--dry)"></b>3 nejsušší roky</span><span><b style="background:var(--water)"></b>nad 140 % normálu</span><span><b style="background:var(--warn)"></b>klouzavý průměr 10 let</span><span><b style="background:var(--fg)"></b>normál 1991-2020</span></div>
+    <div class="legend"><span><b style="background:var(--chip)"></b>roční úhrn</span><span><b style="background:var(--dry)"></b>3 nejsušší roky</span><span><b style="background:var(--water)"></b>3 nejdeštivější roky</span><span><b style="background:var(--dry);opacity:.45"></b>letošek do dneška</span><span><b style="background:var(--warn)"></b>klouzavý průměr 10 let</span><span><b style="background:var(--fg)"></b>normál 1991-2020</span></div>
     <h3 style="margin-top:1rem">Dlouhý pohled: teplota, výpar a bilance od roku 2001</h3>
     <p class="note" id="jb-l2-n"></p>
     <svg class="jb-chart" id="jb-l2" viewBox="0 0 720 220" role="img" aria-label="Bilance, výpar a teplota 2001-2025"></svg>
     <div class="legend"><span><b style="background:var(--ok)"></b>bilance P - ET₀ přebytek</span><span><b style="background:var(--dry)"></b>bilance P - ET₀ deficit (mm/rok)</span><span><b style="background:var(--soil)"></b>ET₀ mm/rok</span><span><b style="background:var(--warn)"></b>průměrná teplota °C</span><span><b style="background:var(--bad)"></b>tropické dny</span></div>
     <div class="jb-cards" id="jb-trend"></div>
-    <div class="callout" id="jb-l-call" style="margin-top:.8rem"></div>
+    <div class="motiv" id="jb-l-call"></div>
 
     <div class="jb-head" style="margin-top:1.4rem">
       <div><h3>Detail: vybrané období</h3><p class="note" style="margin:.2rem 0 0">Denní data jsou od 1. 1. 2026 (ČHMÚ je zveřejňuje jen pro běžící rok); starší roky jsou v řadách nahoře.</p></div>
@@ -2029,19 +2036,29 @@ const mean=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
 function lin(xs,ys){const n=xs.length,mx=mean(xs),my=mean(ys);let sxy=0,sxx=0;for(let i=0;i<n;i++){sxy+=(xs[i]-mx)*(ys[i]-my);sxx+=(xs[i]-mx)**2;}return sxx?sxy/sxx:0;}
 const osy=(L,w,T,h,vmin,vmax,jedn,right)=>{let o='';[0,.5,1].forEach(f=>{const y=T+h-h*f;o+=`<line class="ax" x1="${L}" x2="${L+w}" y1="${y}" y2="${y}"/>`+(right?`<text x="${L+w+4}" y="${y+3}">${Math.round(vmin+(vmax-vmin)*f)}${jedn}</text>`:`<text x="${L-4}" y="${y+3}" text-anchor="end">${Math.round(vmin+(vmax-vmin)*f)}${jedn}</text>`);});return o;};
 
-// ---------- dlouhy pohled 1: rocni srazky 1921-2025
+// ---------- dlouhy pohled 1: rocni srazky 1921-2025 + letosni necely rok
 (function(){
   const body=Object.entries(R).filter(([r,z])=>z.P!=null).map(([r,z])=>[+r,z.P]).sort((a,b)=>a[0]-b[0]);
-  const norm=N.rok.P, Wd=720,Hd=220,L=36,Rr=6,T=10,B=24,w=Wd-L-Rr,h=Hd-T-B, vmax=Math.max(...body.map(b=>b[1]))*1.05, bw=w/body.length, y=v=>T+h-h*v/vmax;
+  // letošní neúplný rok: součet denních srážek (zdroj podle zdroj_P) a normál za stejné dny (měsíční normál poměrně)
+  let cur=null;
+  if(!R[ROK]){ const dd=DNY.filter(d=>d.startsWith(ROK+'-')); let P=0,nP=0,Pn=0; dd.forEach(d=>{const p=W.dny[d][0], m=+d.slice(5,7); Pn+=N.mesic[m].P/dim(ROK,m); if(p!=null){P+=p;nP++;}});
+    if(nP>60) cur={r:ROK,P,Pn,do:dd[dd.length-1],n:nP,dni:dd.length}; }
+  const norm=N.rok.P, Wd=720,Hd=220,L=36,Rr=6,T=10,B=24,w=Wd-L-Rr,h=Hd-T-B, vmax=Math.max(...body.map(b=>b[1]))*1.05, bw=w/(body.length+(cur?1:0)), y=v=>T+h-h*v/vmax;
   let o=osy(L,w,T,h,0,vmax,'');
-  const nejsussi=new Set([...body].sort((a,b)=>a[1]-b[1]).slice(0,3).map(z=>z[0]));
-  body.forEach(([r,v],i)=>{const cls=nejsussi.has(r)?'dry':v>norm*1.4?'hi':'';o+=`<rect class="rY ${cls}" x="${(L+i*bw).toFixed(1)}" y="${y(v)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${T+h-y(v)}"><title>${r}: ${fmt(v,0)} mm</title></rect>`;if(r%10===0)o+=`<text x="${L+(i+.5)*bw}" y="${Hd-8}" text-anchor="middle">${r}</text>`;});
+  const srt=[...body].sort((a,b)=>a[1]-b[1]), nejsussi=new Set(srt.slice(0,3).map(z=>z[0])), nejmokrejsi=new Set(srt.slice(-3).map(z=>z[0]));
+  body.forEach(([r,v],i)=>{const cls=nejsussi.has(r)?'dry':nejmokrejsi.has(r)?'hi':'';o+=`<rect class="rY ${cls}" x="${(L+i*bw).toFixed(1)}" y="${y(v)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${T+h-y(v)}"><title>${r}: ${fmt(v,0)} mm</title></rect>`;if(r%10===0&&!(cur&&i>=body.length-3))o+=`<text x="${L+(i+.5)*bw}" y="${Hd-8}" text-anchor="middle">${r}</text>`;});
   let p='';body.forEach(([r,v],i)=>{if(i<9)return;const k=mean(body.slice(i-9,i+1).map(b=>b[1]));p+=(p?'L':'M')+(L+(i+.5)*bw).toFixed(1)+' '+y(k).toFixed(1)+' ';});
+  const dt=cur?cur.do.slice(8,10).replace(/^0/,'')+'. '+cur.do.slice(5,7).replace(/^0/,'')+'.':'';
+  if(cur){ const i=body.length, xx=L+i*bw;
+    o+=`<rect x="${xx.toFixed(1)}" y="${y(cur.P)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${T+h-y(cur.P)}" style="fill:var(--dry);opacity:.45;stroke:var(--dry);stroke-dasharray:2 2"><title>${cur.r} do ${dt}: ${fmt(cur.P,0)} mm (normál za stejné období ${fmt(cur.Pn,0)} mm)</title></rect>`+
+      `<line x1="${xx.toFixed(1)}" x2="${(xx+bw).toFixed(1)}" y1="${y(cur.Pn)}" y2="${y(cur.Pn)}" style="stroke:var(--fg);stroke-width:1.5"><title>normál do ${dt}: ${fmt(cur.Pn,0)} mm</title></line>`+
+      `<text x="${L+(i+.5)*bw}" y="${Hd-8}" text-anchor="end">${cur.r}*</text>`; }
   o+=`<path class="lT" d="${p}"/><line class="nrm" x1="${L}" x2="${L+w}" y1="${y(norm)}" y2="${y(norm)}"/><text x="${L+w}" y="${y(norm)-3}" text-anchor="end">normál ${fmt(norm,0)} mm</text>`;
   $('jb-l1').innerHTML=o;
   const p10=mean(body.filter(b=>b[0]>=ROK-10).map(b=>b[1])), p30=mean(body.filter(b=>b[0]>=1961&&b[0]<=1990).map(b=>b[1]));
   const sucha=body.filter(b=>b[1]<norm*0.75).map(b=>b[0]);
-  $('jb-l1-n').innerHTML=`${body.length} úplných let, ČHMÚ Koryčany ✅. Průměr ${ROK-10}-${ROK-1}: <b class="num">${fmt(p10,0)} mm</b>, normál 1991-2020 ${fmt(norm,0)} mm, 1961-1990 ${fmt(p30,0)} mm. Roční úhrn se dlouhodobě drží; roky pod 75 % normálu: ${sucha.join(', ')}.`;
+  $('jb-l1-n').innerHTML=`${body.length} úplných let, ČHMÚ Koryčany ✅. Průměr ${ROK-10}-${ROK-1}: <b class="num">${fmt(p10,0)} mm</b>, normál 1991-2020 ${fmt(norm,0)} mm, 1961-1990 ${fmt(p30,0)} mm. Roční úhrn se dlouhodobě drží; roky pod 75 % normálu: ${sucha.join(', ')}.`+
+    (cur?` <b>${cur.r}*</b> = neúplný rok do ${dt} (předběžná data, dny bez stanice Koryčany doplněny z KS Koryčany a Nemochovic): <b class="num">${fmt(cur.P,0)} mm</b>, normál za stejné období ${fmt(cur.Pn,0)} mm (černá čárka u sloupce) = ${fmt(100*cur.P/cur.Pn,0)} %.`:'');
 })();
 
 // ---------- dlouhy pohled 2: T, ET0, bilance, tropicke dny 2001-2025
@@ -2081,7 +2098,8 @@ const osy=(L,w,T,h,vmin,vmax,jedn,right)=>{let o='';[0,.5,1].forEach(f=>{const y
   const nejh=body.reduce((a,b)=>b.b<a.b?b:a);
   $('jb-l2-n').innerHTML=`Nemochovice 2001-2025 (25 let, ČHMÚ ✅), ET₀ Hargreaves-Samani 📄. Bilance byla záporná ve všech ${w10} úplných letech; nejhůř ${nejh.r} (${fmt(nejh.b,0)} mm).`+
     (cur?` <b>${cur.r}*</b> = neúplný rok do ${cur.do.slice(8,10).replace(/^0/,'')}. ${cur.do.slice(5,7).replace(/^0/,'')}. (předběžná data): bilance už teď ${fmt(cur.b,0)} mm${cur.b<nejh.b?' - horší než celý rok '+nejh.r:''}, ET₀ ${fmt(cur.E,0)} mm (kroužek), ${cur.d30} tropických dní; průměrná teplota se za neúplný rok nekreslí, chybí jí zima.`:'');
-  $('jb-l-call').innerHTML=`<b>Co z toho plyne pro pozemek.</b> Déšť přijde v epizodách a mezi nimi je krajina v deficitu - srážky ročně zhruba stejné, výpar roste. Co z deště nezůstane na pozemku, odteče během hodin. Proto má smysl zadržet vodu tam, kde spadne: viz Můj pozemek a Katalog.`;
+  $('jb-l-call').innerHTML=`<div class="mot-h">Co z toho plyne pro pozemek</div><p>Déšť přijde v epizodách a mezi nimi je krajina v deficitu - srážky ročně zhruba stejné, výpar roste. Co z deště nezůstane na pozemku, odteče během hodin.</p><p><b>Proto má smysl zadržet vodu tam, kde spadne.</b></p><div class="mot-a"><a href="#" data-go="pozemek">Spočítej to na svém pozemku →</a><a href="#" data-go="katalog">Co se dá udělat (katalog) →</a></div>`;
+  $('jb-l-call').querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault(); document.querySelector(`nav.tabs button[data-tab="${a.dataset.go}"]`).click(); window.scrollTo({top:0,behavior:'smooth'});}));
 })();
 
 // ---------- detail: obdobi
