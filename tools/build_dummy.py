@@ -731,16 +731,20 @@ function renderUzemi(){
 // ---------- velke strechy podle ucelu
 const UCEL_KDO = {'rodinný dům':['domácnosti','S02, S01, Z01, Z10 (NZÚ, vlastní)'], 'průmysl':['firmy (areály)','S02 + vsak/nádrž na areálu, S03 zelená střecha (OPŽP 1.3.4), U02 propustné plochy'],
   'zemědělství':['zemědělské podniky','S02 + nádrž na závlahu, vsak; U02'], 'vedlejší stavba (garáž, kůlna)':['domácnosti','S01 sud/IBC u kůlny'], 'veřejná služba':['obec, škola, kraj','U04 retence z veřejných budov (OPŽP 1.3.4), U02, S03'],
-  'bytový dům':['SVJ, družstva, obec','S02 + vsak/nádrž, S03 (NZÚ bytové domy 💻 ověřit)'], 'obchod':['firmy','S02, U02'], 'kancelář':['firmy','S02, U02'], 'obchod a služby':['firmy','S02, U02'], 'bydlení':['domácnosti','S02, S01'], 'neuvedeno':['?','']};
+  'bytový dům':['SVJ, družstva, obec','S02 + vsak/nádrž, S03 (NZÚ bytové domy 💻 ověřit)'], 'obchod':['firmy','S02, U02'], 'kancelář':['firmy','S02, U02'], 'obchod a služby':['firmy','S02, U02'], 'bydlení':['domácnosti','S02, S01'], 'neuvedeno':['?',''],
+  'domácnosti':['domácnosti','S02, S01, Z01, Z10 (NZÚ, vlastní)'], 'obchody a služby':['firmy','S02, U02']};
+// sloučení účelů RÚIAN do skupin pro tabulku (rozhodnutí uživatele 21. 10. 2026)
+const UCEL_SKUPINA = {'rodinný dům':'domácnosti', 'bydlení':'domácnosti', 'kancelář':'obchody a služby', 'obchod':'obchody a služby', 'obchod a služby':'obchody a služby'};
 function renderStrechy(){
-  const rain=+$('u-rain').value/1000; const U=D.uzemi.podle_ucelu;
+  const rain=+$('u-rain').value/1000; const U={};
+  for(const [u,x] of Object.entries(D.uzemi.podle_ucelu)){ const g=UCEL_SKUPINA[u]||u; U[g]=U[g]||{pocet:0,plocha_strech_m2:0}; U[g].pocet+=x.pocet; U[g].plocha_strech_m2+=x.plocha_strech_m2; }
   const rows=Object.entries(U).map(([u,x])=>({u,n:x.pocet,a:x.plocha_strech_m2,v:x.plocha_strech_m2*rain})).sort((a,b)=>b.a-a.a);
   const tot=rows.reduce((t,r)=>t+r.v,0), totA=rows.reduce((t,r)=>t+r.a,0);
   $('s-table').innerHTML=`<tr><th>účel budov</th><th class="num">budov</th><th class="num">střechy ha</th><th class="num">m³ na déšť ${Math.round(rain*1000)} mm</th><th class="num">prům. m³/budovu</th><th>kdo rozhoduje</th><th>opatření z katalogu</th></tr>`+
     rows.map(r=>`<tr><td>${r.u}</td><td class="num">${fmt0(r.n)}</td><td class="num">${fmt(r.a/1e4)}</td><td class="num">${fmt0(r.v)}</td><td class="num">${fmt(r.v/r.n)}</td><td>${(UCEL_KDO[r.u]||['',''])[0]}</td><td>${(UCEL_KDO[r.u]||['',''])[1]}</td></tr>`).join('')+
     `<tr class="total"><td>všechny budovy v území</td><td class="num">${fmt0(rows.reduce((t,r)=>t+r.n,0))}</td><td class="num">${fmt(totA/1e4)}</td><td class="num">${fmt0(tot)}</td><td></td><td></td><td></td></tr>`;
-  const rd=U['rodinný dům'], pr=U['průmysl'], ve=U['veřejná služba'], ze=U['zemědělství'];
-  $('s-limit').innerHTML=`<b>Co z toho plyne:</b> ${fmt0(pr.pocet)} průmyslových budov má ${fmt(pr.plocha_strech_m2/1e4)} ha střech = ${fmt0(100*pr.plocha_strech_m2/rd.plocha_strech_m2)} % plochy střech všech ${fmt0(rd.pocet)} rodinných domů; průměrná průmyslová střecha (${fmt0(pr.plocha_strech_m2/pr.pocet)} m²) dá na jeden déšť tolik vody jako ${fmt0(pr.plocha_strech_m2/pr.pocet/(rd.plocha_strech_m2/rd.pocet))} domů. Veřejné budovy (${ve.pocet}, ${fmt(ve.plocha_strech_m2/1e4)} ha) a zemědělské (${ze.pocet}, ${fmt(ze.plocha_strech_m2/1e4)} ha) jsou v rukou obce, kraje a pár podniků - tam má smysl začít jednáním, ne letákem. Kam ty střechy dnes odvádějí vodu (kanalizace / vsak / potok), v datech není - zjistit u provozovatelů (otázka pro město: kanalizace jednotná nebo oddílná?).`;
+  const rd=U['domácnosti'], pr=U['průmysl'], ve=U['veřejná služba'], ze=U['zemědělství'];
+  $('s-limit').innerHTML=`<b>Co z toho plyne:</b> ${fmt0(pr.pocet)} průmyslových budov má ${fmt(pr.plocha_strech_m2/1e4)} ha střech = ${fmt0(100*pr.plocha_strech_m2/rd.plocha_strech_m2)} % plochy střech všech ${fmt0(rd.pocet)} domů domácností; průměrná průmyslová střecha (${fmt0(pr.plocha_strech_m2/pr.pocet)} m²) dá na jeden déšť tolik vody jako ${fmt0(pr.plocha_strech_m2/pr.pocet/(rd.plocha_strech_m2/rd.pocet))} domů. Veřejné budovy (${ve.pocet}, ${fmt(ve.plocha_strech_m2/1e4)} ha) a zemědělské (${ze.pocet}, ${fmt(ze.plocha_strech_m2/1e4)} ha) jsou v rukou obce, kraje a pár podniků - tam má smysl začít jednáním, ne letákem. Kam ty střechy dnes odvádějí vodu (kanalizace / vsak / potok), v datech není - zjistit u provozovatelů (otázka pro město: kanalizace jednotná nebo oddílná?).`;
 }
 renderStrechy(); $('u-rain').addEventListener('input',renderStrechy);
 // ---------- hraz na potoce (jadro.js nadrz v0.3; toky.json a smer_v se dotahuji az tady)
