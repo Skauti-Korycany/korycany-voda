@@ -334,7 +334,7 @@ details.banner[open]>summary .more{display:none}
   </nav>
   <div class="pz-grid">
     <div class="pz-mapcol">
-      <div class="pz-ask" id="pz-ask"><b>Najdi svůj dům a klepni na něj.</b> Pak klepni i na zahradu a dvůr - každá parcela zvlášť, sečte se.</div>
+      <div class="pz-ask" id="pz-ask"><b>Najdi svůj dům a klepni na něj.</b> Označ parcely, které chceš řešit (sčítají se).</div>
       <form class="pz-search" id="pz-search" role="search" autocomplete="off">
         <input type="search" id="pz-adr" placeholder="Ulice a číslo domu, nebo číslo parcely" aria-label="Hledat adresu nebo parcelu" enterkeyhint="search">
         <button type="submit" class="pz-btn">Najít</button>
@@ -352,7 +352,9 @@ details.banner[open]>summary .more{display:none}
     <div class="pz-panel">
       <div class="pz-step" data-s="1">
         <h2>Co se děje s vodou na tvém pozemku?</h2>
-        <p>Vyber v mapě svůj pozemek. Aplikace z map spočítá střechy, sklon a půdu, ty doplníš pár odpovědí a uvidíš, kolik vody ti při běžném dešti uteče a co s tím jde udělat.</p>
+        <p>Vyber v mapě svůj pozemek.</p>
+        <p>Aplikace z map spočítá střechy, sklon a půdu, ty můžeš data upřesnit.</p>
+        <p>Ihned uvidíš, kolik vody ti při dešti uteče a co s tím jde udělat.</p>
         <div id="pz-teaser"></div>
       </div>
       <div class="pz-step" data-s="2">
