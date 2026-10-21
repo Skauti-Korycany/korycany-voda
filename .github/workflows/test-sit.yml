@@ -23,6 +23,7 @@ jobs:
           W=0-203-0-41503035001
           curl -sS -A "$UA" -o $V/listing_daily.html -w "listing HTTP %{http_code}\n" "$B/data/daily/"
           curl -sS -A "$UA" -o $V/meta2.csv -w "meta2 HTTP %{http_code}\n" "$B/metadata/meta2.csv"
+          curl -sS -A "$UA" -o $V/dly-0-203-0-41701068002-SRA.csv -w "Korycany SRA HTTP %{http_code}\n" "$B/data/daily/precipitation/dly-0-203-0-41701068002-SRA.csv"
           for E in T TMA TMI H F; do
             for D in temperature air_temperature humidity wind; do
               U="$B/data/daily/$D/dly-$W-$E.csv"
