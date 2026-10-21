@@ -312,10 +312,10 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
       <label class="f">Déšť k výpočtu<select id="u-rain">
           <optgroup label="Návrhový déšť Koryčany, 6 hodin (ČVUT/ČHMÚ 2023 ✅)">
             <option value="32.2" data-n="N2">častý - 32 mm, 1x za 2 roky</option>
-            <option value="53.2" data-n="N10" selected>vzácný - 53 mm, 1x za 10 let</option>
+            <option value="53.2" data-n="N10">vzácný - 53 mm, 1x za 10 let</option>
             <option value="87" data-n="N100">extrémní - 87 mm, 1x za 100 let</option></optgroup>
           <optgroup label="Další">
-            <option value="20">20 mm - běžný letní liják</option>
+            <option value="20" selected>20 mm - běžný letní liják</option>
             <option value="26.2">26 mm - 60 min, 1x za 5 let (ČSN 75 9010, Brno)</option>
             <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></optgroup></select></label>
     </div>
@@ -362,10 +362,10 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
       <label class="f">Déšť k výpočtu<select id="h-rain">
           <optgroup label="Návrhový déšť Koryčany, 6 hodin (ČVUT/ČHMÚ 2023 ✅)">
             <option value="32.2" data-n="N2">častý - 32 mm za 6 h, 1x za 2 roky</option>
-            <option value="53.2" data-n="N10" selected>vzácný - 53 mm za 6 h, 1x za 10 let</option>
+            <option value="53.2" data-n="N10">vzácný - 53 mm za 6 h, 1x za 10 let</option>
             <option value="87" data-n="N100">extrémní - 87 mm za 6 h, 1x za 100 let</option></optgroup>
           <optgroup label="Další">
-            <option value="20">20 mm - běžný letní liják</option>
+            <option value="20" selected>20 mm - běžný letní liják</option>
             <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></optgroup></select></label>
     </div>
     <div id="dam-map" style="height:380px;margin-top:.6rem;border:1px solid var(--line);border-radius:6px;background:#dfe7ea" aria-label="Mapa potoků pro hráz"></div>
