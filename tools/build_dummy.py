@@ -484,7 +484,7 @@ let jadroStav = 'nacitam';
 const HSPN = {1:'A, velmi propustná',2:'B, propustná',3:'C, málo propustná',4:'D, jíl, nepropustná'};
 const LEG = {};
 fetch(BASE+'data/vyuziti_pudy.json').then(r=>r.json()).then(j=>Object.assign(LEG,j.legenda)).catch(()=>{});
-Jadro.nacti(BASE+'data/web/').then(()=>{ jadroStav='ok'; return fetch(BASE+'data/povodi.geojson').then(r=>r.json()); }).then(gj=>{ krajinaHistogram(gj); renderKrajina(); }).catch(err=>{ jadroStav = jadroStav==='ok' ? jadroStav : 'chyba'; console.warn('jadro/krajina', err); $('k-zdroj').textContent='Rastry nebo povodí se nenačetly - tato část nefunguje.'; });
+Jadro.nacti(BASE+'data/web/', {bez:['smer_v'], toky:false}).then(()=>{ jadroStav='ok'; return fetch(BASE+'data/povodi.geojson').then(r=>r.json()); }).then(gj=>{ krajinaHistogram(gj); renderKrajina(); }).catch(err=>{ jadroStav = jadroStav==='ok' ? jadroStav : 'chyba'; console.warn('jadro/krajina', err); $('k-zdroj').textContent='Rastry nebo povodí se nenačetly - tato část nefunguje.'; });
 // ---------- krajina: histogram bunek uzemi modelu: trida x HSP x udolnice x svah
 const KRAJ = {h:{}, e:{}, n:0};   // e = suma K*LS (USLE) orne pudy na klic
 function krajinaHistogram(gj){

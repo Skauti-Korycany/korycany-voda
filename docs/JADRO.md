@@ -1,4 +1,4 @@
-# Jádro (fáze 3) - `web/jadro.js` v0.2
+# Jádro (fáze 3) - `web/jadro.js` v0.3
 
 Stav: 21. 10. 2026 (v0.2: vážený odtok přes tvary deště a stav nasycení). Výpočetní jádro nad skutečnými rastry (5 m, S-JTSK), bez knihoven, běží v prohlížeči i v node. Testy `web/test_jadro.js` (node, 30 testů, vše OK proti `cn_info.json` a `povodi.geojson`). Zkušební prohlížeč `web/test.html` (Leaflet + ZTM ČÚZK).
 
@@ -35,10 +35,33 @@ Poznámka: CN a využití pokrývají jen bbox stahovaný v 04 (81,6 % rastru, c
 | `statPolygon(ring, P, ips)` | totéž pro polygon v lon/lat | |
 | `prichytKToku(i, r)` | buňka s max akumulací v okruhu r m | jako 02 |
 | `povodiBunky(i0)` / `povodiBodu(lon, lat, r, P, ips)` | zpětné sledování D8 (BFS), maska + statistika; příznak `orez_okrajem` | - |
-| `nadrz(lon, lat, h, r)` | hráz přichycená k toku, hladina = dno + h; zatopí buňky souvislé (4-okolí) s hrází, pod hladinou a uvnitř povodí hráze; objem = Σ (hladina - z) × 25 m²; plocha, hloubky, zatopené využití, povodí k hrázi | zjednodušení; bez objemu hráze, bez ztrát, bez tvaru koruny |
+| `nadrz(lon, lat, h, opts)` | v0.3, viz kap. Nádrže níže: hráz jen na toku ČÚZK, osa kolmo na tok; povodí ≥ 0,25 km² = zatopení DMR, menší = tůň v údolnici z profilu | orientační; bez ztrát, přelivu a objemu koryta užšího než buňka |
 | `obrazek(barva(i), bbox, šířka)` / `obalMasky(maska)` | ImageData pro `L.imageOverlay` | - |
 
 Výkon (node, celý rastr 2,4 M buněk): povodí Stříbrníku 4,2 km² 65 ms, povodí celého rastru 31,7 km² 420 ms, obrázek 512 × 705 px 32 ms.
+
+## Nádrže v0.3 (21. 10. 2026)
+
+Proč změna: v0.1 přichytávala hráz k buňce s největší akumulací D8 a zatopila vše pod hladinou uvnitř povodí jedné buňky. Hráz neměla tvar, zátopa se nedržela malých potoků (koryta jsou užší než 5 m buňka a v TIN DMR 5G zahlazená) a v horním Stříbrníku dávala nesmysly (zpětná vazba uživatele 21. 10.).
+
+**Příprava dat** (`tools/14_toky_vypaleni.py`, spouštěč `vyrob_toky.bat`, ~1 min):
+- Toky ČÚZK INSPIRE HY-NET (`data/toky_cuzk.geojson`, CC BY 4.0) se „vypálí“ do DMR: buňky pod linií toku −2 m (stream burning, zjednodušený AGREE 💻), pak stejné vyplnění depresí, D8 a akumulace jako 02_rozvodnice.py. Vypálený terén slouží **jen pro směr odtoku**, objemy se počítají z původního DMR.
+- Kontrola (`data/toky_vypaleni_info.json`): vrcholy toků dál než 15 m od dráhy D8 (≥ 0,02 km²) 7,2 % -> 1,9 %.
+- `data/web/toky.json` (156 kB): 44 linií v území modelu, body po 5 m od pramene po proudu (orientace HY-NET ověřena proti výšce dna u všech 44), u bodu plocha povodí z vypálené akumulace a kóta dna = minimum DMR v okolí 3×3 buněk; návaznosti přítoky / pokračování.
+- Pásmo `smer_v.png` (D8 po vypálení) v balíčku; jádro ho používá pro povodí hráze. Ostatní funkce (povodí bodu, statistiky) zůstávají na původním `smer.png`, aby seděly s `povodi.geojson` a `cn_info.json`. Prototyp `smer_v` ani `toky.json` nenačítá (`Jadro.nacti(base, {bez: ['smer_v'], toky: false})`).
+
+**Výpočet** `Jadro.nadrz(lon, lat, h, {polomerM: 60, maxDelkaHrazeM: 300})`:
+1. Klik se přichytí k nejbližšímu bodu toku ČÚZK; dál než 60 m -> `{chyba: 'daleko_od_toku'}`.
+2. Dno = nejnižší kóta dna toku do 10 m; hladina (koruna) = dno + h.
+3. Osa hráze kolmo na směr toku (průměr ±15 m), na každou stranu po 2,5 m, dokud terén (bilineárně) nedosáhne koruny; max 300 m celkem, jinak varování „neuzavírá údolí“. Hráz = buňky osy + řada po proudu (2 buňky, zátopa neprosákne diagonálně).
+4. Příčný profil v ose: plocha průřezu A pod hladinou a šířka W. Podélný sklon dna i = regrese kóty dna proti proudu přes 100 m (min. 0,5 %). Délka vzdutí L = h / i (omezená délkou toku v datech).
+5. **Povodí k hrázi < 0,25 km²** (stejný práh jako údolnice v 02_rozvodnice.py) -> `typ: 'tun_udolnice'`: objem V = A·L/3 až A·L/2, plocha hladiny W·L/2 až W·L (dolní mez = údolí tvaru V, kde průřez roste s hloubkou², horní = ploché dno, průřez úměrný hloubce; geometrická úvaha 🤔, ne metodika). Obrys = klín podél toku proti proudu, viditelně „orientačně“.
+6. **Povodí ≥ 0,25 km²** -> `typ: 'nadrz'`: zatopení buněk DMR pod hladinou souvislých (4-okolí) se semínkem 7,5-40 m proti proudu, uvnitř povodí hráze (D8 po vypálení). Varování: přeliv přes sedlo do vedlejšího údolí (zátopa narazí na buňku mimo povodí pod hladinou dál než 15 m od osy), zastavení nad 400 tis. buněk. Když zátopa vyjde pod 20 buněk (rokle užší než rastr), použije se odhad z profilu jako v bodě 5.
+7. Vždy se vrací i `profil_odhad` (kontrola plošné zátopy proti profilu). Na 338 hrázích po všech tocích (h 2 a 4 m) je poměr zátopa DMR / střed profilu medián 0,68, 10-90 % 0,30-1,42.
+
+Omezení: objem koryta užšího než buňka chybí (DMR ho nevidí); v intravilánu (Stříbrník ve městě, Kyjovka v centru) je terén plochý, hráz často neuzavře údolí do 300 m a zátopa se rozlévá po nivě - tam je výsledek spíš ukázka, proč nádrž v městě nejde, než návrh. Bez ztrát, bez bezpečnostního přelivu, bez objemu tělesa hráze.
+
+Testy (`web/test_jadro.js`, 36 OK): kolmost osy na tok (cos < 0,05), Kyjovka pod přehradou 2 m / 4 m, rokle horního Stříbrníku -> profil, malý tok -> tůň s rozsahem 1 : 1,5, klik daleko od toku, rychlost.
 
 ## Ověření proti Pythonu (06_cn.py)
 Území modelu: plocha 1 412,7 ha (Python 1 412,1 - rozdíl = rasterizace polygonu), CN 72,0 = 72,0, odtok P40 78 248 m³ = 78 248 m³, les 49,9 %, HSP odhad 48,2 % (48,3). Povodí Stříbrník z hlásného profilu: 4,23 km² = 4,23, CN 65,2 = 65,2.

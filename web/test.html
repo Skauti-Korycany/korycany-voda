@@ -18,15 +18,15 @@
 <body>
 <div id="map"></div>
 <div id="panel">
-  <h1>Jádro v0.1 - zkouška nad skutečnými daty</h1>
+  <h1>Jádro v0.3 - zkouška nad skutečnými daty</h1>
   <label><input type="radio" name="rezim" value="povodi" checked> klik = povodí bodu (co steče k místu)</label>
-  <label><input type="radio" name="rezim" value="nadrz"> klik = hráz, výška <input id="h" type="number" value="3" min="0.5" max="15" step="0.5" style="width:4em"> m</label>
+  <label><input type="radio" name="rezim" value="nadrz"> klik na modrý tok = hráz, výška <input id="h" type="number" value="3" min="0.5" max="15" step="0.5" style="width:4em"> m</label>
   <label>návrhový déšť <input id="P" type="number" value="40" min="5" max="150" step="5" style="width:4em"> mm, IPS
     <select id="ips"><option value="1">I suchá</option><option value="2" selected>II</option><option value="3">III mokrá</option></select></label>
   <label>přichytit k toku do <select id="r"><option value="0">0 m (přesně klik)</option><option value="30">30 m</option><option value="60" selected>60 m</option><option value="100">100 m</option><option value="200">200 m</option></select></label>
   <label>podklad: <select id="vrstva"><option value="">nic</option><option value="cn">CN</option><option value="sklon">sklon</option><option value="vyuziti">využití</option><option value="hsp">HSP (A-D)</option><option value="akumulace">akumulace</option></select></label>
-  <div id="out">Načítám rastry (5 MB)...</div>
-  <p style="font-size:11px;color:#555;margin:8px 0 0">Zjednodušený model pro osvětu, nevalidováno. Data ČÚZK (CC BY 4.0), SPÚ, skripty tools/01-09.</p>
+  <div id="out">Načítám rastry (6 MB)...</div>
+  <p style="font-size:11px;color:#555;margin:8px 0 0">Zjednodušený model pro osvětu, nevalidováno. Data ČÚZK (CC BY 4.0), SPÚ, skripty tools/01-14. Nádrže: hráz kolmo na tok ČÚZK; toky pod 0,25 km² jen jako tůň v údolnici.</p>
 </div>
 <script src="../tools/vendor/leaflet-1.9.4/leaflet.js"></script>
 <script src="jadro.js"></script>
@@ -63,6 +63,7 @@ function vyuzitiText(ha, celkem) {
 }
 Jadro.nacti('../data/web/').then(() => {
   $('out').textContent = 'Rastry načteny. Klikni do mapy.';
+  if (Jadro.toky) L.layerGroup(Jadro.toky.linie.map(l => L.polyline(l.x.map((X, k) => Jadro.xyNaLonLat(X, l.y[k]).reverse()), { color: '#1a7fd6', weight: 2, opacity: 0.8, interactive: false }))).addTo(map);
   map.on('click', e => {
     if (vysl) { map.removeLayer(vysl); vysl = null; }
     if (znacka) { map.removeLayer(znacka); znacka = null; }
@@ -91,15 +92,25 @@ Jadro.nacti('../data/web/').then(() => {
         `(${f0(performance.now() - t0)} ms)`;
     } else {
       const h = +$('h').value;
-      const n = Jadro.nadrz(e.latlng.lng, e.latlng.lat, h, R);
+      const n = Jadro.nadrz(e.latlng.lng, e.latlng.lat, h, { polomerM: Math.max(R, 30) });
       if (!n) { $('out').textContent = 'Mimo rastr.'; return; }
-      vysl = overlayZObrazku(Jadro.obrazek(i => n.maska[i] ? [20, 60, 200, 170] : null, Jadro.obalMasky(n.maska, 30), 1024)).addTo(map);
-      znacka = L.circleMarker([n.hraz_lonlat[1], n.hraz_lonlat[0]], { radius: 6, color: '#c00' }).addTo(map);
-      $('out').innerHTML = `<b>Nádrž / poldr</b>, hráz ${h} m${ukazPosun(n.hraz_lonlat, n.posun_m)}\n` +
-        `dno ${f1(n.kota_dna)} m, hladina ${f1(n.hladina)} m\n<b>objem ${f0(n.objem_m3)} m³, plocha ${f0(n.plocha_ha * 1e4)} m² (${n.n_bunek} buněk)</b>, hloubka max ${f1(n.hloubka_max_m)} m, průměr ${f1(n.hloubka_prumer_m)} m\n` +
-        (n.pod_rozlisenim ? `<span class=warn>POD ROZLIŠENÍM MODELU: méně než 8 buněk po 25 m². DMR 5G (5 m, 0,1 bodu/m²) potůček v zahradě nevidí; tohle číslo je šum, ne odhad.</span>\n` : '') +
-        `povodí k hrázi ${f1(n.povodi_km2)} km²\nzatopeno: ${vyuzitiText(n.zatopene_vyuziti_ha, n.plocha_ha || 1)}\n` +
-        `odtok z povodí při ${P} mm: ${f0(Jadro.statBunek(Jadro.povodiBunky(n.hraz).bunky, P, ips).odtok.objem_m3)} m³ -> nádrž pojme ${f0(100 * Math.min(1, n.objem_m3 / Math.max(1, Jadro.statBunek(Jadro.povodiBunky(n.hraz).bunky, P, ips).odtok.objem_m3)))} % (bez ztrát, bez tvaru hráze 🤔)\n` +
+      if (n.chyba === 'daleko_od_toku') { $('out').innerHTML = `<span class=warn>Hráz se staví jen na vodním toku z mapy ČÚZK (modré čáry). Nejbližší tok je ${f0(n.vzdalenost_m)} m od kliku.</span>`; return; }
+      if (n.chyba) { $('out').textContent = 'Chyba: ' + n.chyba; return; }
+      const tun = n.typ === 'tun_udolnice';
+      vysl = L.layerGroup().addTo(map);
+      if (n.maska) overlayZObrazku(Jadro.obrazek(i => n.maska[i] ? [20, 60, 200, 170] : null, Jadro.obalMasky(n.maska, 30) || [n.bod_lonlat[0] - 0.001, n.bod_lonlat[1] - 0.001, n.bod_lonlat[0] + 0.001, n.bod_lonlat[1] + 0.001], 1024)).addTo(vysl);
+      if (n.obrys_lonlat) L.polygon(n.obrys_lonlat.map(([lo, la]) => [la, lo]), { color: '#14c', weight: 1, dashArray: '4 3', fillOpacity: 0.35 }).addTo(vysl);
+      L.polyline(n.hraz_lonlat.map(([lo, la]) => [la, lo]), { color: '#c00', weight: 4 }).addTo(vysl);
+      znacka = L.circleMarker([n.bod_lonlat[1], n.bod_lonlat[0]], { radius: 4, color: '#c00' }).addTo(map);
+      const odt = Jadro.statBunek(n.povodi_bunky, P, ips).odtok.objem_m3;
+      const po = n.profil_odhad, rz = a => `${f0(a[0])}-${f0(a[1])}`;
+      $('out').innerHTML = `<b>${tun ? 'Tůň / poldr v údolnici (orientačně)' : 'Nádrž / poldr'}</b>, hráz ${h} m${ukazPosun(n.bod_lonlat, n.posun_m)}\n` +
+        `tok ČÚZK č. ${n.tok_id}, povodí k hrázi ${f1(n.povodi_km2)} km²\n` +
+        `hráz ${f0(n.delka_hraze_m)} m kolmo na tok${n.hraz_uzavira ? '' : ' <span class=warn>(neuzavírá údolí)</span>'}, dno ${f1(n.kota_dna)} m, hladina ${f1(n.hladina)} m\n` +
+        (tun ? `<b>objem ${rz(n.objem_rozsah_m3)} m³, hladina ${rz(n.plocha_rozsah_m2)} m²</b>\n(příčný profil v ose hráze ${f1(po.prurez_m2)} m², šířka ${f0(po.sirka_m)} m, sklon dna ${f1(100 * po.sklon_dna)} %, vzdutí ${f0(po.delka_vzduti_m)} m; rozsah = údolí tvaru V až ploché dno)\n`
+             : `<b>objem ${f0(n.objem_m3)} m³, plocha ${f0(n.plocha_ha * 1e4)} m² (${n.n_bunek} buněk)</b>, hloubka max ${f1(n.hloubka_max_m)} m, průměr ${f1(n.hloubka_prumer_m)} m\nkontrola z příčného profilu: ${rz(po.objem_m3)} m³\nzatopeno: ${vyuzitiText(n.zatopene_vyuziti_ha, n.plocha_ha || 1)}\n`) +
+        n.varovani.map(v => `<span class=warn>! ${v}</span>\n`).join('') +
+        `odtok z povodí při ${P} mm: ${f0(odt)} m³ -> nádrž pojme ${f0(100 * Math.min(1, n.objem_m3 / Math.max(1, odt)))} % (bez ztrát a přelivu 🤔)\n` +
         `(${f0(performance.now() - t0)} ms)`;
     }
   });

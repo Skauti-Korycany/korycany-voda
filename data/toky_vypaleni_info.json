@@ -1,0 +1,53 @@
+{
+ "pred": {
+  "median_m": 0.0,
+  "p90_m": 10.0,
+  "podil_nad_15m": 0.07169033440219881
+ },
+ "po": {
+  "median_m": 0.0,
+  "p90_m": 5.0,
+  "podil_nad_15m": 0.018781493357764543
+ },
+ "profily": [
+  {
+   "nazev": "Koryčany (Kyjovka, ř. km 75,69)",
+   "km2_pred": 13.716,
+   "km2_po": 13.504
+  },
+  {
+   "nazev": "Koryčany (Stříbrník, ř. km 1,07)",
+   "km2_pred": 4.233,
+   "km2_po": 0.016
+  },
+  {
+   "nazev": "VN Koryčany (Kyjovka pod přehradou, ř. km 77,76)",
+   "km2_pred": 5.914,
+   "km2_po": 5.844
+  },
+  {
+   "nazev": "Lískovec",
+   "km2_pred": 0.434,
+   "km2_po": 0.434
+  },
+  {
+   "nazev": "Blišice",
+   "km2_pred": 0.584,
+   "km2_po": 0.582
+  },
+  {
+   "nazev": "Jestřabice",
+   "km2_pred": 0.749,
+   "km2_po": 0.749
+  },
+  {
+   "nazev": "Kyjovka pod Koryčany (pod soutokem se Stříbrníkem)",
+   "km2_pred": 19.95,
+   "km2_po": 14.707
+  }
+ ],
+ "linii": 44,
+ "delka_km": 21.95,
+ "vypaleno_bunek": 13781,
+ "hloubka_m": 2.0
+}

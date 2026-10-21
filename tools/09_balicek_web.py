@@ -90,6 +90,13 @@ velikosti["smer"] = uloz8("smer.png", np.where(d8 != dd.nodata, d8, 255))
 pasma["smer"] = {"soubor": "smer.png", "bity": 8, "jednotka": "kod D8", "dekod": "1=V, 2=JV, 4=J, 8=JZ, 16=Z, 32=SZ, 64=S, 128=SV, 0=bez odtoku (deprese/okraj)",
                  "nodata": 255, "zdroj": "02_rozvodnice.py"}
 
+# smer odtoku po vypaleni toku CUZK (14_toky_vypaleni.py) - volitelne; jadro ho pouziva pro povodi hraze nadrze
+if os.path.exists(os.path.join(DMR, "smer_vypaleny.tif")):
+    d8v, ddv = cti("smer_vypaleny.tif")
+    velikosti["smer_v"] = uloz8("smer_v.png", np.where(z != nd, d8v, 255))
+    pasma["smer_v"] = {"soubor": "smer_v.png", "bity": 8, "jednotka": "kod D8 po vypaleni toku CUZK", "dekod": "jako smer",
+                       "nodata": 255, "zdroj": "14_toky_vypaleni.py (HY-NET snizen o 2 m, priority-flood, D8)"}
+
 for nazev, soubor, popis, zdroj in [
     ("cn", "cn.tif", "CN (IPS II), 0 = mimo", "06_cn.py, Janecek 2012 + TR-55"),
     ("vyuziti", "vyuziti_kod.tif", "kod vyuziti pudy, legenda data/vyuziti_pudy.json", "04_vyuziti_pudy.py (ZABAGED, INSPIRE BU)"),
