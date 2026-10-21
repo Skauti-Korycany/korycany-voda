@@ -347,7 +347,7 @@ details.banner[open]>summary .more{display:none}
     <div class="pz-panel">
       <div class="pz-step" data-s="1">
         <h2>Co se děje s vodou na tvém pozemku?</h2>
-        <p>Vyber v mapě svůj pozemek. Aplikace z map spočítá střechy, sklon a půdu, ty doplníš pár odpovědí a uvidíš, kolik vody ti při lijáku uteče a co s tím jde udělat.</p>
+        <p>Vyber v mapě svůj pozemek. Aplikace z map spočítá střechy, sklon a půdu, ty doplníš pár odpovědí a uvidíš, kolik vody ti při běžném dešti uteče a co s tím jde udělat.</p>
         <div id="pz-teaser"></div>
       </div>
       <div class="pz-step" data-s="2">
@@ -391,17 +391,19 @@ details.banner[open]>summary .more{display:none}
       </div>
       <div class="pz-step" data-s="3">
         <h2>Co se u tebe děje při dešti</h2>
-        <div class="pz-q"><div class="q">Jaký déšť?</div><div class="pz-chips" data-for="in-rain"></div></div>
+        <div class="pz-q"><div class="q">Jaký déšť?</div><div class="pz-chips" data-for="in-rain"></div><div class="note">Vzácné přívalové deště (53, 87 a 94 mm) najdeš v „Jak se to počítá“.</div></div>
         <div id="pz-rain-big"></div>
         <p id="pz-year"></p>
         <details class="pz-more"><summary>Jak se to počítá</summary>
           <div class="inputs" style="margin-top:.5rem"><label class="f">Jiný déšť<select id="in-rain">
+          <optgroup label="Běžné deště (denní úhrny ČHMÚ Koryčany 1991-2019 ✅)">
+            <option value="10" selected>10 mm - běžný déšť, asi 17x za rok</option>
+            <option value="20">20 mm - silný déšť, asi 5x za rok</option></optgroup>
           <optgroup label="Návrhový déšť Koryčany, 6 hodin (ČVUT/ČHMÚ 2023 ✅)">
             <option value="32.2" data-n="N2">častý - 32 mm, 1x za 2 roky</option>
-            <option value="53.2" data-n="N10" selected>vzácný - 53 mm, 1x za 10 let</option>
+            <option value="53.2" data-n="N10">vzácný - 53 mm, 1x za 10 let</option>
             <option value="87" data-n="N100">extrémní - 87 mm, 1x za 100 let</option></optgroup>
           <optgroup label="Další">
-            <option value="20">20 mm - běžný letní liják</option>
             <option value="26.2">26 mm - 60 min, 1x za 5 let (ČSN 75 9010, Brno)</option>
             <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></optgroup></select></label></div>
           <table class="flow" id="flow"></table>
@@ -447,7 +449,7 @@ details.banner[open]>summary .more{display:none}
             <option value="53.2" data-n="N10">vzácný - 53 mm, 1x za 10 let</option>
             <option value="87" data-n="N100">extrémní - 87 mm, 1x za 100 let</option></optgroup>
           <optgroup label="Další">
-            <option value="20" selected>20 mm - běžný letní liják</option>
+            <option value="20" selected>20 mm - silný déšť, asi 5x za rok</option>
             <option value="26.2">26 mm - 60 min, 1x za 5 let (ČSN 75 9010, Brno)</option>
             <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></optgroup></select></label>
     </div>
@@ -497,7 +499,7 @@ details.banner[open]>summary .more{display:none}
             <option value="53.2" data-n="N10">vzácný - 53 mm za 6 h, 1x za 10 let</option>
             <option value="87" data-n="N100">extrémní - 87 mm za 6 h, 1x za 100 let</option></optgroup>
           <optgroup label="Další">
-            <option value="20" selected>20 mm - běžný letní liják</option>
+            <option value="20" selected>20 mm - silný déšť, asi 5x za rok</option>
             <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></optgroup></select></label>
     </div>
     <div id="dam-map" style="height:380px;margin-top:.6rem;border:1px solid var(--line);border-radius:6px;background:#dfe7ea" aria-label="Mapa potoků pro hráz"></div>
@@ -742,7 +744,7 @@ const PZ_CHIPS = {
   'in-drain':[['kanal','do kanalizace'],['pozemek','na zahradu'],['nevim','nevím']],
   'in-paved':[['0','skoro nic'],['20','cesta, malý dvůr (~20 m²)'],['60','dvůr a příjezd (~60 m²)'],['150','velký dvůr (~150 m²)']],
   'in-soil':[['A','velmi propustná, písek'],['B','propustná'],['C','spíš těžká'],['D','jíl, voda stojí']],
-  'in-rain':[['32.2','častý, 32 mm'],['53.2','velký, 53 mm'],['87','extrémní, 87 mm']],
+  'in-rain':[['10','běžný, 10 mm'],['20','silný, 20 mm'],['32.2','liják, 32 mm']],
 };
 document.querySelectorAll('.pz-chips').forEach(box=>{ const id=box.dataset.for;
   box.innerHTML = PZ_CHIPS[id].map(([v,l])=>`<button type="button" class="pz-chip" data-v="${v}" aria-pressed="false">${l}</button>`).join('');
@@ -752,14 +754,16 @@ function pzChipsSync(){ document.querySelectorAll('.pz-chips').forEach(box=>{ co
 document.getElementById('tab-pozemek').addEventListener('click', e=>{ const t=e.target.closest('[data-tab-go]'); if(!t) return; e.preventDefault(); document.querySelector(`nav.tabs button[data-tab="${t.dataset.tabGo}"]`).click(); window.scrollTo({top:0}); });
 const VANA_L = 150; // plna vana ~150 l - odhad pro predstavu
 const vany = m3 => fmt0(m3*1000/VANA_L);
-const RAIN_TXT = {'32.2':'častý liják, jednou za 2 roky','53.2':'velký liják, jednou za 10 let','87':'extrémní liják, jednou za 100 let','20':'běžný letní liják','26.2':'krátká bouřka, jednou za 5 let','93.5':'jako 12. 6. 2012 v Koryčanech'};
+// cetnost: kolik dni za rok ma vic nez P mm (histogram dennich uhrnu CHMU Korycany 1991-2019)
+const cetnost = P => { const H=D.srazky_hist; if(!H) return null; let n=0; for(let k=0;k<H.bin_mm.length;k++) if(H.bin_mm[k]-1>=P) n+=H.dni_za_rok[k]; return n; };
+const RAIN_TXT = {'10':'běžný déšť, asi '+fmt0(cetnost(10)||17)+'x za rok','20':'silný déšť, asi '+fmt0(cetnost(20)||5)+'x za rok','32.2':'liják, jednou za 2 roky','53.2':'vzácný liják, jednou za 10 let','87':'extrémní liják, jednou za 100 let','26.2':'krátká bouřka, jednou za 5 let','93.5':'jako 12. 6. 2012 v Koryčanech'};
 function pzRender(i, r, kept, keptYear, n){
   const $=id=>document.getElementById(id);
   pzChipsSync();
   const P = Math.round(i.rain*1000), rt = RAIN_TXT[$('in-rain').value] || '';
   // krok 1: prvni cislo hned po vyberu
   $('pz-teaser').innerHTML = !PARC.vybrane.size ? '' : (i.roof>0
-    ? `<div class="pz-teaser"><div class="note">Při lijáku ${P} mm (${rt}) odteče ze střech na vybraných parcelách (${fmt0(i.roof)} m²)</div><div class="big num">${fmt(r.roofOut)} m³</div><div class="note">to je asi ${vany(r.roofOut)} plných van 🤔. Co se děje se zbytkem pozemku a co s tím jde udělat, ukážou další kroky.</div></div>`
+    ? `<div class="pz-teaser"><div class="note">Při dešti ${P} mm (${rt}) odteče ze střech na vybraných parcelách (${fmt0(i.roof)} m²)</div><div class="big num">${fmt(r.roofOut)} m³</div><div class="note">to je asi ${vany(r.roofOut)} plných van 🤔. Co se děje se zbytkem pozemku a co s tím jde udělat, ukážou další kroky.</div></div>`
     : `<div class="pz-teaser note">Na vybraných parcelách nejsou budovy. Klepni i na svůj dům, nebo pokračuj se zahradou.</div>`);
   // krok 2
   $('pz-manual-n').hidden = !(PZ.manual && !PARC.vybrane.size);
@@ -781,7 +785,7 @@ function pzRender(i, r, kept, keptYear, n){
   $('scale').hidden = !(kept>0.05);
   setTimeout(pzStav, 0);
   $('summary').innerHTML = kept>0.05
-    ? `<div class="motiv"><div>Tvoje volba udrží doma</div><div class="big num">${fmt(kept)} m³</div><p>z každého lijáku ${P} mm, to je asi ${vany(kept)} van 🤔, které neodtečou ${i.drain==='kanal'?'do kanalizace':'pryč'}. Za rok ${fmt0(keptYear)} m³.</p><p>Kdyby to samé udělalo ${n} domácností: <b>${fmt0(kept*n)} m³</b> na jeden liják.</p><div class="mot-a"><a href="#" data-tab-go="uzemi">Co může obec a celé území →</a><a href="#" data-tab-go="katalog">Všechna opatření →</a><a href="#" data-share="1">Poslat odkaz</a></div></div><div class="pz-shared note" id="pz-shared">Odkaz obsahuje čísla vybraných parcel a tvoje odpovědi. Nikam se neukládá, pošleš ho jen ty.</div>`
+    ? `<div class="motiv"><div>Tvoje volba udrží doma</div><div class="big num">${fmt(kept)} m³</div><p>z každého deště ${P} mm (${rt}), to je asi ${vany(kept)} van 🤔, které neodtečou ${i.drain==='kanal'?'do kanalizace':'pryč'}. Za rok ${fmt0(keptYear)} m³.</p><p>Kdyby to samé udělalo ${n} domácností: <b>${fmt0(kept*n)} m³</b> z jednoho takového deště.</p><div class="mot-a"><a href="#" data-tab-go="uzemi">Co může obec a celé území →</a><a href="#" data-tab-go="katalog">Všechna opatření →</a><a href="#" data-share="1">Poslat odkaz</a></div></div><div class="pz-shared note" id="pz-shared">Odkaz obsahuje čísla vybraných parcel a tvoje odpovědi. Nikam se neukládá, pošleš ho jen ty.</div>`
     : `<div class="callout">Zatím jsi nevybral žádné opatření, které vodu zadrží. Vrať se <button type="button" class="linkbtn" data-go="4">ke kroku 4</button>.</div>`;
 }
 
@@ -990,7 +994,7 @@ function recalc(){
   // krok 5
   const n=200;
   pzRender(i, r, kept, keptYear, n);
-  $('scale').innerHTML = `<b>Na co to nestačí:</b> ${fmt0(kept*n)} m³ od ${n} domácností je při dešti ${rainmm} mm zhruba ${fmt(100*kept*n/(D.uzemi.plocha_ha*1e4*i.rain),2)} % objemu, který spadne na území modelu ${fmt0(D.uzemi.plocha_ha)} ha (${fmt0(D.uzemi.plocha_ha*1e4*i.rain)} m³; plocha z rozvodnice DMR 5G ✅). Na povodeň na Kyjovce drobná opatření nestačí a aplikace to neřekne. Je to ale ${fmt0(kept*n)} m³ vody v půdě a zahradách místo v kanálu, při každém lijáku, zdarma. To je rozdíl mezi "proteklo" a "zůstalo".`;
+  $('scale').innerHTML = `<b>Na co to nestačí:</b> ${fmt0(kept*n)} m³ od ${n} domácností je při dešti ${rainmm} mm zhruba ${fmt(100*kept*n/(D.uzemi.plocha_ha*1e4*i.rain),2)} % objemu, který spadne na území modelu ${fmt0(D.uzemi.plocha_ha)} ha (${fmt0(D.uzemi.plocha_ha*1e4*i.rain)} m³; plocha z rozvodnice DMR 5G ✅). Na povodeň na Kyjovce drobná opatření nestačí a aplikace to neřekne. Je to ale ${fmt0(kept*n)} m³ vody v půdě a zahradách místo v kanálu, při každém takovém dešti, zdarma. To je rozdíl mezi "proteklo" a "zůstalo".`;
   renderUzemi();
 }
 ['in-roof','in-paved','in-pavedtype','in-green','in-greentype','in-drain','in-slope','in-soil','in-rain'].forEach(id=>$(id).addEventListener('input',recalc));
