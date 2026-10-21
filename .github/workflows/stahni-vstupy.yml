@@ -19,11 +19,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install numpy pyproj
-<<<<<<< Updated upstream
-      - run: python tools/stahni_vstupy.py --out vstupy
-=======
       - run: mkdir -p vstupy && python tools/stahni_vstupy.py --out vstupy 2>&1 | tee vstupy/log.txt
->>>>>>> Stashed changes
       - name: Commit do vetve vstupy
         run: |
           git config user.name "github-actions[bot]"
