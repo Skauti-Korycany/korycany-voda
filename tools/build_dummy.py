@@ -105,6 +105,9 @@ table.flow{width:100%;border-collapse:collapse;font-size:.92rem;margin-top:.5rem
 table.flow th,table.flow td{text-align:left;padding:.3rem .4rem;border-bottom:1px solid var(--line)}
 table.flow td.num,table.flow th.num{text-align:right}
 table.flow tr.total td{font-weight:600}
+#tab-uzemi table.flow{display:block;overflow-x:auto;max-width:100%}
+.cards>*{min-width:0} .card{overflow-wrap:anywhere}
+.card .meta .chip{max-width:100%;white-space:normal;min-width:0}
 .bars{display:grid;gap:.35rem;margin-top:.6rem}
 .bar{display:grid;grid-template-columns:7.5rem 1fr 4.5rem;align-items:center;gap:.5rem;font-size:.85rem}
 .bar .track{height:14px;background:var(--chip);border-radius:3px;overflow:hidden;display:flex}
@@ -444,12 +447,14 @@ details.banner[open]>summary .more{display:none}
       <label class="f">Průměrný půdorys domu (m²)<input type="number" id="u-roof" value="__ROOF__" min="0" step="10"></label>
       <label class="f">Průměrně zpevněno (m², odhad 🤔)<input type="number" id="u-paved" value="35" min="0" step="5"></label>
       <label class="f">Déšť k výpočtu<select id="u-rain">
+          <optgroup label="Běžné deště (denní úhrny ČHMÚ Koryčany 1991-2019 ✅)">
+            <option value="10" selected>10 mm - běžný déšť, asi 17x za rok</option>
+            <option value="20">20 mm - silný déšť, asi 5x za rok</option></optgroup>
           <optgroup label="Návrhový déšť Koryčany, 6 hodin (ČVUT/ČHMÚ 2023 ✅)">
             <option value="32.2" data-n="N2">častý - 32 mm, 1x za 2 roky</option>
             <option value="53.2" data-n="N10">vzácný - 53 mm, 1x za 10 let</option>
             <option value="87" data-n="N100">extrémní - 87 mm, 1x za 100 let</option></optgroup>
           <optgroup label="Další">
-            <option value="20" selected>20 mm - silný déšť, asi 5x za rok</option>
             <option value="26.2">26 mm - 60 min, 1x za 5 let (ČSN 75 9010, Brno)</option>
             <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></optgroup></select></label>
     </div>
@@ -494,12 +499,14 @@ details.banner[open]>summary .more{display:none}
         <option value="0.5">0,5 m</option><option value="1" selected>1 m</option><option value="1.5">1,5 m</option><option value="2">2 m</option>
         <option value="2.5">2,5 m (vodní dílo)</option><option value="3">3 m (vodní dílo)</option><option value="4">4 m (vodní dílo)</option></select></label>
       <label class="f">Déšť k výpočtu<select id="h-rain">
+          <optgroup label="Běžné deště (denní úhrny ČHMÚ Koryčany 1991-2019 ✅)">
+            <option value="10" selected>10 mm - běžný déšť, asi 17x za rok</option>
+            <option value="20">20 mm - silný déšť, asi 5x za rok</option></optgroup>
           <optgroup label="Návrhový déšť Koryčany, 6 hodin (ČVUT/ČHMÚ 2023 ✅)">
             <option value="32.2" data-n="N2">častý - 32 mm za 6 h, 1x za 2 roky</option>
             <option value="53.2" data-n="N10">vzácný - 53 mm za 6 h, 1x za 10 let</option>
             <option value="87" data-n="N100">extrémní - 87 mm za 6 h, 1x za 100 let</option></optgroup>
           <optgroup label="Další">
-            <option value="20" selected>20 mm - silný déšť, asi 5x za rok</option>
             <option value="93.5">94 mm - den 12. 6. 2012, 2. největší za 105 let (ČHMÚ Koryčany)</option></optgroup></select></label>
     </div>
     <div id="dam-map" style="height:380px;margin-top:.6rem;border:1px solid var(--line);border-radius:6px;background:#dfe7ea" aria-label="Mapa potoků pro hráz"></div>
@@ -690,7 +697,9 @@ function renderKrajina(){
     rows.map(([nm,o])=>`<tr><td>${nm}</td><td class="num">${fmt0(o.ha)}</td><td class="num">${fmt0(o.cn0/(o.ha*1e4/A))}</td><td class="num">${fmt0(o.cn1/(o.ha*1e4/A))}</td><td class="num">${fmt0(o.q0)}</td><td class="num">${fmt0(o.q1)}</td><td class="num">${o.q0-o.q1>0.5?'-'+fmt0(o.q0-o.q1):(o.q1-o.q0>0.5?'+'+fmt0(o.q1-o.q0):'')}</td><td class="num">${o.e0?fmt0(o.e0):'-'}</td><td class="num">${o.e0?fmt0(o.e1):'-'}</td></tr>`).join('')+
     `<tr class="total"><td>celkem při ${fmt0(P)} mm</td><td class="num">${fmt0(H)}</td><td></td><td></td><td class="num">${fmt0(Q0)}</td><td class="num">${fmt0(Q1)}</td><td class="num">${fmt0(Q1-Q0)}</td><td class="num">${fmt0(E0)}</td><td class="num">${fmt0(E1)}</td></tr>`;
   const dQ=Q0-Q1;
-  $('k-limit').innerHTML = `<b>Co to znamená:</b> scénář ${dQ>=0?'sníží':'zvýší'} povrchový odtok z krajiny při dešti ${fmt0(P)} mm o <b>${fmt0(Math.abs(dQ))} m³</b> (${fmt(100*Math.abs(dQ)/Math.max(1,Q0),1)} % z ${fmt0(Q0)} m³). Pro srovnání: déšť ${fmt0(P)} mm na území spadne ${fmt0(H*1e4*P/1000)} m³ - většina se vsákne nebo zůstane na povrchu i teď. ${NKEY?`Jak moc je půda před deštěm nasycená, nevíme - proto se počítá vážený průměr: běžně vlhká půda (CN2) by dala ${fmt0(Q0s)} m³, nasycená (CN3) ${fmt0(Q0n)} m³; váha nasyceného stavu ${fmt(100*W3,0)} % vychází z toho, jaké průběhy deště (tvary A-F) jsou v Koryčanech u deště ${NKEY.replace('N','1x za ')} let typické a jak často jim předchází mokré dny (Kavka a kol. 2023 ✅, tab. 6; data/navrhove_srazky.json). `:`U tohoto deště se počítá jen s běžně vlhkou půdou (CN2); rozpětí vlhká-nasycená ukážou návrhové deště častý / vzácný / extrémní. `}Čísla jsou změna CN podle tabulky Janeček a kol. 2012 (tab. 2.3) ✅⏳ a USDA TR-55, metoda SCS-CN, buňky 5 m; stav pozemků "teď" je výchozí předpoklad tabulky (orná = obilniny, špatný stav; les střední), ne terénní průzkum. Zatravnění údolnic bere buňky orné půdy, kam stéká aspoň 1 ha (akumulace z DMR 5G). ${E0?`<br><b>Eroze orné půdy (USLE, orientačně):</b> teď ${fmt0(E0)} t/rok z ${fmt0(HO)} ha = ${fmt(E0/Math.max(1,HO),1)} t/ha/rok při obilninách (C 0,2), scénář ${fmt0(E1)} t/rok (${fmt(E1/Math.max(1,HO),1)} t/ha). Přípustná ztráta od 1. 7. 2026 je ${K.usle.Gp_t_ha_rok['od_2026-07-01'].ostatni} t/ha/rok ✅ (mělké půdy ${K.usle.Gp_t_ha_rok['od_2026-07-01'].melke}). R faktor ${fmt0(RU)} (VÚMOP/ČHMÚ 2022 ✅), K podle HPJ a LS z DMR (Janeček 2012 ✅⏳), půdoochranné technologie C 0,1, vrstevnice P 0,65 / 0,9 (do / nad 7°), zatravnění C 0,01; délka svahu z terénu nezná meze a cesty, na dlouhých svazích nadsazuje. Závazný výpočet dělá kalkulačka VÚMOP.`:''} Zpomalení vlny a výpar se tu nepočítají.`;
+  const IA_UZ = 0.2*(25400/D.uzemi.cn_vazene-254);
+  const malo = Q0 < 0.005*H*1e4*P/1000 ? `<b>Při ${fmt0(P)} mm se v krajině skoro všechno vsákne</b> nebo zůstane na rostlinách a v prohlubních: povrchový odtok podle SCS-CN začíná u průměrné půdy v území (CN ${D.uzemi.cn_vazene}) až nad zhruba ${fmt0(IA_UZ)} mm. Opatření na polích a loukách se projeví u silnějších dešťů - vyber 20 mm nebo liják. ` : '';
+  $('k-limit').innerHTML = malo + `<b>Co to znamená:</b> scénář ${dQ>=0?'sníží':'zvýší'} povrchový odtok z krajiny při dešti ${fmt0(P)} mm o <b>${fmt0(Math.abs(dQ))} m³</b> (${fmt(100*Math.abs(dQ)/Math.max(1,Q0),1)} % z ${fmt0(Q0)} m³). Pro srovnání: déšť ${fmt0(P)} mm na území spadne ${fmt0(H*1e4*P/1000)} m³ - většina se vsákne nebo zůstane na povrchu i teď. ${NKEY?`Jak moc je půda před deštěm nasycená, nevíme - proto se počítá vážený průměr: běžně vlhká půda (CN2) by dala ${fmt0(Q0s)} m³, nasycená (CN3) ${fmt0(Q0n)} m³; váha nasyceného stavu ${fmt(100*W3,0)} % vychází z toho, jaké průběhy deště (tvary A-F) jsou v Koryčanech u deště ${NKEY.replace('N','1x za ')} let typické a jak často jim předchází mokré dny (Kavka a kol. 2023 ✅, tab. 6; data/navrhove_srazky.json). `:`U tohoto deště se počítá jen s běžně vlhkou půdou (CN2); rozpětí vlhká-nasycená ukážou návrhové deště častý / vzácný / extrémní. `}Čísla jsou změna CN podle tabulky Janeček a kol. 2012 (tab. 2.3) ✅⏳ a USDA TR-55, metoda SCS-CN, buňky 5 m; stav pozemků "teď" je výchozí předpoklad tabulky (orná = obilniny, špatný stav; les střední), ne terénní průzkum. Zatravnění údolnic bere buňky orné půdy, kam stéká aspoň 1 ha (akumulace z DMR 5G). ${E0?`<br><b>Eroze orné půdy (USLE, orientačně):</b> teď ${fmt0(E0)} t/rok z ${fmt0(HO)} ha = ${fmt(E0/Math.max(1,HO),1)} t/ha/rok při obilninách (C 0,2), scénář ${fmt0(E1)} t/rok (${fmt(E1/Math.max(1,HO),1)} t/ha). Přípustná ztráta od 1. 7. 2026 je ${K.usle.Gp_t_ha_rok['od_2026-07-01'].ostatni} t/ha/rok ✅ (mělké půdy ${K.usle.Gp_t_ha_rok['od_2026-07-01'].melke}). R faktor ${fmt0(RU)} (VÚMOP/ČHMÚ 2022 ✅), K podle HPJ a LS z DMR (Janeček 2012 ✅⏳), půdoochranné technologie C 0,1, vrstevnice P 0,65 / 0,9 (do / nad 7°), zatravnění C 0,01; délka svahu z terénu nezná meze a cesty, na dlouhých svazích nadsazuje. Závazný výpočet dělá kalkulačka VÚMOP.`:''} Zpomalení vlny a výpar se tu nepočítají.`;
 }
 ['k-p04','k-p01','k-p06','k-p05','k-les','k-ttp','u-rain'].forEach(id=>document.getElementById(id).addEventListener('input',renderKrajina));
 function kruh(lon,lat,rM){ const [X,Y]=Jadro.lonLatNaXY(lon,lat); const ring=[]; for(let k=0;k<24;k++){ const a=k/24*2*Math.PI; ring.push(Jadro.xyNaLonLat(X+rM*Math.cos(a), Y+rM*Math.sin(a))); } return ring; }
@@ -1088,6 +1097,7 @@ function hrazSpocti(){
     `<div><div class="eyebrow">nádrž pojme</div><div class="num" style="font-size:1.4rem">${pod<1?"pod 1":fmt0(pod)} %</div><div class="note">prázdná nádrž, bez ztrát</div></div></div>`+
     `<p class="note">Hráz ${fmt0(n.delka_hraze_m)} m dlouhá kolmo na tok${n.hraz_uzavira?'':' - <b>údolí neuzavře</b>'}, dno ${fmt(n.kota_dna,1)} m n. m., hladina ${fmt(n.hladina,1)} m n. m.`+
     `${tun?`, sklon dna ${fmt(100*n.profil_odhad.sklon_dna,1)} %, voda vystoupá ${fmt0(n.profil_odhad.delka_vzduti_m)} m proti proudu`:`; kontrola z příčného profilu ${rz(n.profil_odhad.objem_m3)} m³`}.</p>`+
+    (odt<1?`<p class="note">Při dešti ${fmt0(P)} mm z povodí po povrchu skoro nic neodteče, vsákne se. Nádrž plní hlavně silnější deště a průtok v potoce (ten model nepočítá) - pro posouzení hráze vyber silnější déšť.</p>`:'')+
     n.varovani.map(v=>`<p class="note" style="color:var(--warn)">! ${v}</p>`).join('');
 }
 $('h-vyska').addEventListener('input',hrazSpocti); $('h-rain').addEventListener('input',hrazSpocti);
