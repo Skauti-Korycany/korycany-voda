@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 20. 10. 2026 pozdě večer (relace 8: stav.html aktualizován, blok K návrhové 6h srážky ČVUT/ČHMÚ hotov).
+Aktualizováno: 21. 10. 2026 ráno (relace 8: stav.html, blok K návrhové srážky, blok L jádro v0.2 vážený odtok).
 
 ## Fáze: 1 a 2 hotové. Fáze 3 (jádro) rozpracovaná: v0.1 umí statistiku pozemku, SCS-CN po buňkách, povodí bodu, nádrž/poldr z DMR; chybí transformace vlny, bilance P-ET, USLE, napojení opatření.
 
@@ -49,6 +49,8 @@ Aktualizováno: 20. 10. 2026 pozdě večer (relace 8: stav.html aktualizován, b
 - **stav.html aktualizován 20. 10. večer** (relace 8): srážky ČHMÚ, CN/odtok s čísly, jádro, parcely, prototyp v0.2, žádost VÚMOP jako odeslaná; nové KPI 632 mm, CN 72, 7 013 parcel; náhledy srážek a parcel. Mapa beze změny.
 - **Blok K, 20. 10. - návrhové 6hodinové srážky N2-N100 pro Koryčany hotovy** -> `docs/SRAZKY.md` (nová sekce). Zdroj ✅ Kavka a kol. 2023 (certifikovaná metodika 2/2023/SPU/O, ČVUT+ČHMÚ+ÚFA+Sweco), data z WPS `rain1.fsv.cvut.cz/services/wps` (proces d-rain6h-timedist; z Claude blokováno, dotaz šel přes prohlížeč v aplikaci; GML2 v EPSG:5514, jeden N na dotaz, jinak 502). **Koryčany 6h: N2 32,2 / N5 44,3 / N10 53,2 / N20 62,6 / N50 76,0 / N100 87,0 mm** (ČR průměr 29/39/46/53/64/73); území homogenní (N10 52,9-53,4 mm). Tvary A-F (podíl pro N10: C 35 %, B 21, E 19, D 13, A 9, F 3), qAPI 0,18-0,41, průběhy 5 min. Skript `tools/build_navrhove_srazky.py` (WPS nebo `--offline`), `data/navrhove_srazky.json`, `data/navrhove_srazky_tvary_raw.csv`. Katalog v0.4: zdroj `cvut_rain_2023`, konstanta `navrhovy_dest_6h_korycany` (ověřeno); Gumbel denní zůstává jako odhad pro srovnání. Prototyp: **přepínač deště častý / vzácný / extrémní = N2 32 / N10 53 / N100 87 mm (6 h)** v Můj pozemek i Celé území, výchozí N10 (rozhodnutí uživatele 20. 10.); "Další": 20 mm liják, 26 mm/60 min ČSN, 94 mm 12. 6. 2012. Ad hoc 40/60 mm a Gumbel 58 mm z nabídky vyřazeny (kontrola proti 06_cn.py zůstává v testech). Licence dat portál neuvádí.
 
+- **Blok L, 21. 10. - jádro v0.2: odtok vážený přes tvary deště a stav nasycení.** `web/jadro.js`: `vahyCN(qAPI)` (Kavka 2023 tab. 6, hranice intervalů „do včetně“), `vahaCN3(podil, qAPI)`, `odtokVazeny(...)`; `statBunek` počítá i CN3 (`Q_mm_cn3`, `objem_m3_cn3`). Testy 30 OK, vč. reprodukce příkladu Stašov z metodiky (V_CN2 1 232, V_CN3 2 127, V_výsl 1 333,8 m³ na 0,6 m³) - tím ověřen i Hawkinsův vztah CN3 (81 -> 90,7). Území modelu N10 53 mm: CN2 152 / CN3 332 / **vážené 189 tis. m³** (koef. 0,25); váha CN3 Koryčany N2/N10/N100 = 0,25/0,20/0,21. Prototyp: panel „Pole, louky a les“ počítá vážený odtok u N2/N10/N100 a v textu ukazuje rozpětí vlhká-nasycená; u ostatních dešťů jen CN2. Kontrola 20 mm = 12 876 m³ = 06_cn.py. Docs: JADRO.md.
+
 ### Rozpracováno
 - **Žádost VÚMOP odeslána 19. 10. 2026** (data@vumop.cz, z adresy oddílu): vektor hydrologických skupin půd (mapa velkého měřítka, metadata ID 5cc1bdc2-de34-4eee-a439-41420a000319), správní území obce Koryčany + obal ~500 m, SHP/GPKG v EPSG:5514; dotazy na licenci pro veřejnou webovou aplikaci, zpoplatnění nekomerčního užití a HSP pro lesy mimo ZPF. Odkaz na stav.html v textu. Čeká se na odpověď. Erozní ohroženost a zamokřené půdy v žádosti nejsou - případně druhá žádost po odpovědi.
 - Chybějící podklady od uživatele: NOO 2026 (XLSX) a NOO 2025_2; seznam platných SPPK (aopk.gov.cz/platne-standardy); znění vodního zákona (e-Sbírka) § 15b, 17, 46, 47, 55; nejbližší stanice ČHMÚ; text ČSN 75 9010.
@@ -58,7 +60,7 @@ Aktualizováno: 20. 10. 2026 pozdě večer (relace 8: stav.html aktualizován, b
 
 ### Další kroky (pořadí)
 0. ~~srážková data~~ hotovo 19. 10. (blok E). Zbývá: licence otevřených dat ČHMÚ (otevřít podmínky na opendata.chmi.cz, zapsat do VRSTVY.md); srážkoměr VD Koryčany do žádosti na Povodí Moravy.
-1. **Příští relace začíná tady.** ~~(a) stav.html~~ hotovo 20. 10. (a2) **Jádro: vážený odtok SCS-CN přes tvary A-F a stavy CN2/CN3 podle qAPI** (metodika 2023 tab. 6) místo IPS I/III - vstup `navrhove_srazky.json`, výstup rozsah (min tvar/max tvar) + vážený průměr; napojit do prototypu (Můj pozemek i Celé území). (b) USLE pro ornou půdu - až bude R faktor Koryčany (kalkulačka VÚMOP, zjistí uživatel); (c) transformace vlny poldrem a (d) nádrže v jádru - až uživatel řekne, co konkrétně na nádržích nesedí (umístění / tvar zátopy / objem); (e) validace proti měření - až data Povodí Moravy nebo vlastní srážkoměr. Průběžně: zpětná vazba uživatele k prototypu v0.2 (parcely, sklon, půda, krajina, velké střechy). Nezapomenout: `tools/build_dummy.py` je zdroj pravdy pro index.html i prototyp/index.html (oba se generují, nikdy needitovat HTML ručně); po změně dat (`budovy_info.json`, `cn_info.json`, `srazky_chmi.json`, `cn_tabulka.json`, `opatreni.json`) znovu spustit.
+1. **Příští relace začíná tady.** ~~(a) stav.html~~ ~~(a2) vážený odtok v jádru~~ hotovo. (a3) Můj pozemek zatím počítá odtok ze střech/dvora součiniteli (ne SCS-CN) - vážení se ho netýká; zvážit SCS-CN pro zelenou část parcely přes `statBunek` + `odtokVazeny`. (b) USLE pro ornou půdu - až bude R faktor Koryčany (kalkulačka VÚMOP, zjistí uživatel); (c) transformace vlny poldrem a (d) nádrže v jádru - až uživatel řekne, co konkrétně na nádržích nesedí (umístění / tvar zátopy / objem); (e) validace proti měření - až data Povodí Moravy nebo vlastní srážkoměr. Průběžně: zpětná vazba uživatele k prototypu v0.2 (parcely, sklon, půda, krajina, velké střechy). Nezapomenout: `tools/build_dummy.py` je zdroj pravdy pro index.html i prototyp/index.html (oba se generují, nikdy needitovat HTML ručně); po změně dat (`budovy_info.json`, `cn_info.json`, `srazky_chmi.json`, `cn_tabulka.json`, `opatreni.json`) znovu spustit.
 2. ~~Návrhové úhrny N-letých dešťů pro Koryčany~~ hotovo 20. 10. (blok K). Zbývá: krátké úhrny 15/60 min pro vsak (ČSN 75 9010 pro Koryčany místo příkladu Brno) - z tvarů A-F jen orientačně.
 3. Až přijde VÚMOP: `--vumop` v vyrob_cn.bat, přepočet, porovnat s BPEJ odhadem.
 4. Názvy toků do toky_cuzk.geojson: z INSPIRE HY-P (ČÚZK) nebo DIBAVOD A02 (NAZ_TOK) - až bude potřeba v rozhraní.
@@ -129,7 +131,7 @@ Aktualizováno: 20. 10. 2026 pozdě večer (relace 8: stav.html aktualizován, b
 - Licence repozitáře: MIT (kód) + CC BY 4.0 (data, texty) - potvrzení uživatele.
 
 ## Zvolené předpoklady
-- Převod CN na IPS I/III: standardní vztahy SCS (NEH-4/Hawkins) 💻; Janeček 2012 má jen graf (obr. 2.2) - ověřit, že čísla sedí.
+- Převod CN na CN3: standardní vztah SCS (Hawkins) - ověřeno 21. 10. proti příkladu v Kavka 2023 ✅ (81 -> 90,7). Hranice intervalů qAPI v tab. 6 bereme „do včetně“ (D 0,20 a E 0,40 leží přesně na hranici -> nižší váha CN3); metodika to neupřesňuje.
 - Polynom WGS84<->S-JTSK platí jen uvnitř rastru (extrapolace mimo něj neověřena).
 - Metadatové záznamy Micka institucí beru jako oficiální zdroj adres a licencí.
 - DMR 5G: CRS přiřazeno EPSG:5514 natvrdo (LAZ ČÚZK CRS nenese); třída 8 = body modelu terénu; výškový systém Bpv 💻.
