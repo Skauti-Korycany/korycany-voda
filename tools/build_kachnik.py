@@ -85,7 +85,7 @@ UDALOSTI = [
 ARTEFAKTY = {
     "8. 9. 17:59-19:59": "hodnoty 50/56 střídané 45/46 po 20 min, bez deště na obou stanicích - šum čidla, ne voda (dřív otevřená otázka)",
     "propady pod 30 cm kolem 16:40-17:20": "15. 7., 23. 7. (17:59), 11. 9., 17. 9., 24. 9. - vždy pozdní odpoledne, návrat do 1 h: optický artefakt (pravděpodobně slunce)",
-    "27.-28. 7. a 21.-23. 8.": "pokles na 4-16 cm a pomalý návrat 1 cm za 20-40 min přes 15 h = manipulace stavidlem (vypuštění a opětovné plnění), ne déšť; 23. 8. 09:39 znovu",
+    "27.-28. 7. a 21.-23. 8.": "pokles na 4-16 cm a pomalý návrat 1 cm za 20-40 min přes 15 h bez deště; příčina nedohledána (čidlo je u vpusti do rybníka, ne u stavidla) - vyřazeno; 23. 8. 09:39 znovu",
 }
 
 def okno(h, a, b): return {t: v for t, v in h.items() if a < t <= b}
@@ -132,7 +132,7 @@ for n, h in H.items():
             bez_odezvy.append({"stanice": n, "od": e["start"].strftime("%d.%m. %H:%M"), "do": e["end"].strftime("%d.%m. %H:%M"), "uhrn_mm": round(e["sum"], 1), "max_1h_mm": e["max"], "hladina_zmena_cm": max(w) - b})
 
 out = {
-    "zdroj_hladina": "VOX varovné systémy, čidlo 5157 'Čid5 Koryčany ul. U Rybníka, stavidlo' (pomocný hlásný profil C, Stříbrník u rybníka Kachník), SPA 100/120/140 cm; export CSV z hladiny-vox.pwsplus.eu 21. 10. 2026; optické měření, krok 20 min, místní čas (ověřeno shodou s hodinovými srážkami); podmínky užití neuvedeny",
+    "zdroj_hladina": "VOX varovné systémy, čidlo 5157 'Čid5 Koryčany ul. U Rybníka, stavidlo' (pomocný hlásný profil C, Stříbrník u vpusti do rybníka Kachník), SPA 100/120/140 cm; export CSV z hladiny-vox.pwsplus.eu 21. 10. 2026; optické měření, krok 20 min, místní čas (ověřeno shodou s hodinovými srážkami); podmínky užití neuvedeny",
     "zdroj_srazky": "ČHMÚ otevřená data, recent 1h (SRA1H) Nemochovice 7,8 km a Staré Hutě 9,4 km, denní Koryčany; předběžná data",
     "obdobi": [ser[0][0].isoformat(timespec="minutes"), ser[-1][0].isoformat(timespec="minutes")],
     "pocet_bodu": len(ser), "vypadky": gaps,
@@ -140,7 +140,7 @@ out = {
     "spa_cm": {"SPA1": 100, "SPA2": 120, "SPA3": 140},
     "max_leto_cm": max(v for _, v in ser if v < 90),
     "udalosti": vys, "dest_bez_odezvy": bez_odezvy, "artefakty": ARTEFAKTY,
-    "pozn": "Hladina je u stavidla rybníka, takže reaguje i na manipulaci stavidlem; vzestupy do +24 cm = 1/4 cesty k SPA1. Čidlo neměří průtok - objem odtoku z něj nejde spočítat bez měrné křivky.",
+    "pozn": "Čidlo je u vpusti do rybníka Kachník (ne u stavidla); do Stříbrníku nad ním ústí střešní svody z ul. Lhotka, které dělají rychlou špičku. Vzestupy do +24 cm = 1/4 cesty k SPA1. Čidlo neměří průtok - objem odtoku z něj nejde spočítat bez měrné křivky.",
 }
 with open(os.path.join(ROOT, "data", "kachnik_2026.json"), "w", encoding="utf-8") as f:
     json.dump(out, f, ensure_ascii=False, indent=1)
@@ -157,7 +157,7 @@ try:
         ts = sorted(h); axes[0].bar(ts, [h[t] for t in ts], width=1 / 24, label=n, alpha=.7)
     axes[0].set_ylabel("mm / h"); axes[0].legend(loc="upper right"); axes[0].set_title("Srážky (ČHMÚ, hodinové, místní čas) a hladina Stříbrníku u Kachníku (VOX, 20 min), léto 2026")
     T = [t for t, _ in ser]; V = [v for _, v in ser]
-    axes[1].plot(T, V, lw=.8, color="#1f5f8b"); axes[1].set_ylabel("hladina u stavidla [cm]")
+    axes[1].plot(T, V, lw=.8, color="#1f5f8b"); axes[1].set_ylabel("hladina u vpusti do Kachníku [cm]")
     axes[1].axhline(100, color="green", lw=1, ls="--"); axes[1].text(T[0], 101, "SPA 1 = 100 cm", color="green", fontsize=8)
     for u in vys:
         t = dt.datetime.strptime("2026 " + u["vrchol"], "%Y %d.%m. %H:%M"); axes[1].annotate(f"+{u['vzestup_cm']}", (t, u["vrchol_cm"]), textcoords="offset points", xytext=(0, 5), ha="center", fontsize=8)

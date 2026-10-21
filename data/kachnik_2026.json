@@ -1,5 +1,5 @@
 {
- "zdroj_hladina": "VOX varovné systémy, čidlo 5157 'Čid5 Koryčany ul. U Rybníka, stavidlo' (pomocný hlásný profil C, Stříbrník u rybníka Kachník), SPA 100/120/140 cm; export CSV z hladiny-vox.pwsplus.eu 21. 10. 2026; optické měření, krok 20 min, místní čas (ověřeno shodou s hodinovými srážkami); podmínky užití neuvedeny",
+ "zdroj_hladina": "VOX varovné systémy, čidlo 5157 'Čid5 Koryčany ul. U Rybníka, stavidlo' (pomocný hlásný profil C, Stříbrník u vpusti do rybníka Kachník), SPA 100/120/140 cm; export CSV z hladiny-vox.pwsplus.eu 21. 10. 2026; optické měření, krok 20 min, místní čas (ověřeno shodou s hodinovými srážkami); podmínky užití neuvedeny",
  "zdroj_srazky": "ČHMÚ otevřená data, recent 1h (SRA1H) Nemochovice 7,8 km a Staré Hutě 9,4 km, denní Koryčany; předběžná data",
  "obdobi": [
   "2026-07-10T00:19",
@@ -382,7 +382,7 @@
  "artefakty": {
   "8. 9. 17:59-19:59": "hodnoty 50/56 střídané 45/46 po 20 min, bez deště na obou stanicích - šum čidla, ne voda (dřív otevřená otázka)",
   "propady pod 30 cm kolem 16:40-17:20": "15. 7., 23. 7. (17:59), 11. 9., 17. 9., 24. 9. - vždy pozdní odpoledne, návrat do 1 h: optický artefakt (pravděpodobně slunce)",
-  "27.-28. 7. a 21.-23. 8.": "pokles na 4-16 cm a pomalý návrat 1 cm za 20-40 min přes 15 h = manipulace stavidlem (vypuštění a opětovné plnění), ne déšť; 23. 8. 09:39 znovu"
+  "27.-28. 7. a 21.-23. 8.": "pokles na 4-16 cm a pomalý návrat 1 cm za 20-40 min přes 15 h bez deště; příčina nedohledána (čidlo je u vpusti do rybníka, ne u stavidla) - vyřazeno; 23. 8. 09:39 znovu"
  },
- "pozn": "Hladina je u stavidla rybníka, takže reaguje i na manipulaci stavidlem; vzestupy do +24 cm = 1/4 cesty k SPA1. Čidlo neměří průtok - objem odtoku z něj nejde spočítat bez měrné křivky."
+ "pozn": "Čidlo je u vpusti do rybníka Kachník (ne u stavidla); do Stříbrníku nad ním ústí střešní svody z ul. Lhotka, které dělají rychlou špičku. Vzestupy do +24 cm = 1/4 cesty k SPA1. Čidlo neměří průtok - objem odtoku z něj nejde spočítat bez měrné křivky."
 }
