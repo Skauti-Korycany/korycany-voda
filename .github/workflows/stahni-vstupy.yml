@@ -26,10 +26,13 @@ jobs:
           mkdir -p data/HY-NET && unzip -q -o hynet.zip -d data/HY-NET
           python tools/03_vektory.py --budovy neexistuje.xml 2>&1 | tee -a vstupy/log.txt || true
           cp data/toky_cuzk.geojson vstupy/ || true
+      - name: Katastr Mouchnice (CP INSPIRE) - cast nivy u jezu lezi v k.u. Mouchnice
+        run: mkdir -p vstupy/cp && curl -sSL -o vstupy/cp/699969.zip https://services.cuzk.gov.cz/gml/inspire/cp/epsg-5514/699969.zip || true
       - name: Commit do vetve vstupy
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -f vstupy
           git commit -m "[bot] vstupy ZABAGED + BPEJ $(date -u +%Y-%m-%d)" || exit 0
+          git pull --rebase -X theirs -q origin vstupy || true
           git push origin HEAD:vstupy
