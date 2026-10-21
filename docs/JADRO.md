@@ -1,6 +1,6 @@
-# Jádro (fáze 3) - `web/jadro.js` v0.1
+# Jádro (fáze 3) - `web/jadro.js` v0.2
 
-Stav: 19. 10. 2026. Výpočetní jádro nad skutečnými rastry (5 m, S-JTSK), bez knihoven, běží v prohlížeči i v node. Testy `web/test_jadro.js` (node, 22 testů, vše OK proti `cn_info.json` a `povodi.geojson`). Zkušební prohlížeč `web/test.html` (Leaflet + ZTM ČÚZK).
+Stav: 21. 10. 2026 (v0.2: vážený odtok přes tvary deště a stav nasycení). Výpočetní jádro nad skutečnými rastry (5 m, S-JTSK), bez knihoven, běží v prohlížeči i v node. Testy `web/test_jadro.js` (node, 30 testů, vše OK proti `cn_info.json` a `povodi.geojson`). Zkušební prohlížeč `web/test.html` (Leaflet + ZTM ČÚZK).
 
 ## Datový balíček `data/web/` (`tools/09_balicek_web.py`, spouštěč `vyrob_balicek_web.bat`)
 
@@ -25,9 +25,12 @@ Poznámka: CN a využití pokrývají jen bbox stahovaný v 04 (81,6 % rastru, c
 | `nacti(base)` / `nactiZPoli(info, pasma)` | PNG -> typovaná pole (canvas) | - |
 | `lonLatNaXY`, `xyNaLonLat`, `lonLatNaBunku` | převody | polynom z 09 |
 | `scsCN(P, CN, ia=0,2)` | Q = (P-Ia)²/(P-Ia+S), S = 25400/CN - 254 | Janeček a kol. 2012 kap. 2 ✅⏳; USDA TR-55 ✅⏳ |
-| `cnProIPS(CN, 1\|2\|3)` | CN1 = 4,2 CN/(10-0,058 CN), CN3 = 23 CN/(10+0,13 CN) | standardní vztahy SCS (NEH-4 / Hawkins) 💻 - J12 obr. 2.2 je graf, číselný vztah tam není; ověřit, že sedí |
+| `cnProIPS(CN, 1\|2\|3)` | CN1 = 4,2 CN/(10-0,058 CN), CN3 = 23 CN/(10+0,13 CN) | standardní vztahy SCS (NEH-4 / Hawkins) 💻; **ověřeno 21. 10.** proti příkladu Stašov v Kavka a kol. 2023 ✅ (CN2 81 -> CN3 90,7, tab. 7) |
+| `vahyCN(qAPI)` | váha CN2/CN3 podle qAPI: <= 0,2 -> 1/0; <= 0,4 -> 0,75/0,25; <= 0,6 -> 0,5/0,5; <= 0,8 -> 0,25/0,75; > 0,8 -> 0/1 (hranice bereme „do včetně“ - metodika to neříká) | Kavka a kol. 2023 ✅ kap. 2.5, tab. 6 |
+| `vahaCN3(podil_pct, qAPI)` | Σ p_i · w3_i přes tvary A-F; Koryčany N2 / N10 / N100 = 0,25 / 0,20 / 0,21 | tamtéž, kap. 2.6 (příklad Stašov: 1 333,8 m³ reprodukováno na 0,6 m³) |
+| `odtokVazeny(st.odtok, podil, qAPI)` | V = (1-w3) · V_CN2 + w3 · V_CN3; vrací Q_mm, objem, rozsah [V_CN2, V_CN3], váhu | tamtéž; objem SCS-CN na průběhu deště nezávisí, tvary vstupují jen přes qAPI |
 | `bunkyPolygonu(ring, díry)` | scanline rasterizace (střed buňky uvnitř, even-odd) | - |
-| `statBunek(bunky, P, ips)` | plocha, vážené CN, sklon, výšky, využití (ha), HSP (ha) + podíl odhadu, max akumulace, „tok prochází“ (>= 0,25 km²), odtok **po buňkách** (Σ Q_i, ne Q z průměrného CN) | SCS-CN |
+| `statBunek(bunky, P, ips)` | plocha, vážené CN, sklon, výšky, využití (ha), HSP (ha) + podíl odhadu, max akumulace, „tok prochází“ (>= 0,25 km²), odtok **po buňkách** (Σ Q_i, ne Q z průměrného CN); od v0.2 i `Q_mm_cn3` / `objem_m3_cn3` (nasycený stav) | SCS-CN |
 | `statPolygon(ring, P, ips)` | totéž pro polygon v lon/lat | |
 | `prichytKToku(i, r)` | buňka s max akumulací v okruhu r m | jako 02 |
 | `povodiBunky(i0)` / `povodiBodu(lon, lat, r, P, ips)` | zpětné sledování D8 (BFS), maska + statistika; příznak `orez_okrajem` | - |
@@ -43,6 +46,6 @@ Výkon (node, celý rastr 2,4 M buněk): povodí Stříbrníku 4,2 km² 65 ms, p
 - Transformace vlny poldrem (zatím jen bilance objem nádrže vs. objem odtoku).
 - Roční bilance P - ET (chybí ET a scénáře), USLE (chybí R faktor), indexy horko/vítr.
 - Objekty opatření z `opatreni.json` nad reálným pozemkem (dnes jen v prototypu nad syntetickým pozemkem) - napojit `EFF` z prototypu na `statPolygon`.
-- Návrhové úhrny: od 20. 10. k dispozici 6h N2-N100 ČVUT/ČHMÚ 2023 v `data/navrhove_srazky.json` (N10 = 53,2 mm, tvary A-F, qAPI). Do jádra zbývá: vážení přes tvary a stavy CN2/CN3 podle qAPI (nahrazuje záměr IPS I/III), viz docs/SRAZKY.md.
+- ~~Vážení přes tvary a qAPI~~ hotovo 21. 10. (v0.2). Území modelu N10 53 mm: CN2 152 tis. m³, CN3 332 tis., vážené **189 tis. m³** (Q 13,4 mm, koef. 0,25). V prototypu zapojeno v panelu „Pole, louky a les“; u dešťů mimo N2/N10/N100 (20 mm, 26 mm, 94 mm) se počítá jen CN2.
 - Deprese (`deprese.tif`) nejsou v balíčku - nejdřív filtr (hladina VN, zářezy).
 - Přichycení k toku: hlásný profil Stříbrník leží > 60 m od rastrového koryta; v UI použito 100 m. Pro malé toky (zahrady) je nutné okruh zmenšit nebo nabídnout „bez přichycení“.

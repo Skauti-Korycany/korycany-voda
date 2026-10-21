@@ -33,6 +33,8 @@ data["uzemi"] = {
     "podle_povodi": BUD["podle_povodi"], "podle_ucelu": BUD["podle_ucelu"],
     "srazky": {"normal_mm": kor["normal_1991_2020_mm"], "n_lete_denni_mm": kor["n_lete_denni_mm_gumbel"], "max_denni": [(x["max_denni_datum"], x["max_denni_mm"]) for x in sorted(kor["rocni"].values(), key=lambda x: -x["max_denni_mm"])[:3]], "mesicni_mm": kor["normal_mesicni_mm"]},
 }
+NS = json.load(open(os.path.join(ROOT, "data", "navrhove_srazky.json"), encoding="utf-8"))
+data["navrhove"] = {"uhrny_6h_mm": NS["uhrny_6h_mm"], "podil_tvaru_pct": NS["podil_tvaru_pct"], "qAPI": NS["qAPI"], "tvary_popis": NS["tvary_popis"]}
 CNT = json.load(open(os.path.join(ROOT, "data", "cn_tabulka.json"), encoding="utf-8"))
 data["cn_tabulka"] = {k: {"nazev": v["nazev"], "vychozi": v["vychozi"], "varianty": {n: x["cn"] for n, x in v["varianty"].items()}} for k, v in CNT["tridy"].items()}
 DATA_JS = json.dumps(data, ensure_ascii=False)
@@ -190,9 +192,9 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
           <option value="D">kleslo pod 2 cm - D, jíl, nepropustná</option></select></label>
         <label class="f">Déšť k výpočtu<select id="in-rain">
           <optgroup label="Návrhový déšť Koryčany, 6 hodin (ČVUT/ČHMÚ 2023 ✅)">
-            <option value="32.2">častý - 32 mm, 1x za 2 roky</option>
-            <option value="53.2" selected>vzácný - 53 mm, 1x za 10 let</option>
-            <option value="87">extrémní - 87 mm, 1x za 100 let</option></optgroup>
+            <option value="32.2" data-n="N2">častý - 32 mm, 1x za 2 roky</option>
+            <option value="53.2" data-n="N10" selected>vzácný - 53 mm, 1x za 10 let</option>
+            <option value="87" data-n="N100">extrémní - 87 mm, 1x za 100 let</option></optgroup>
           <optgroup label="Další">
             <option value="20">20 mm - běžný letní liják</option>
             <option value="26.2">26 mm - 60 min, 1x za 5 let (ČSN 75 9010, Brno)</option>
@@ -235,9 +237,9 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
       <label class="f">Průměrně zpevněno (m², odhad 🤔)<input type="number" id="u-paved" value="35" min="0" step="5"></label>
       <label class="f">Déšť k výpočtu<select id="u-rain">
           <optgroup label="Návrhový déšť Koryčany, 6 hodin (ČVUT/ČHMÚ 2023 ✅)">
-            <option value="32.2">častý - 32 mm, 1x za 2 roky</option>
-            <option value="53.2" selected>vzácný - 53 mm, 1x za 10 let</option>
-            <option value="87">extrémní - 87 mm, 1x za 100 let</option></optgroup>
+            <option value="32.2" data-n="N2">častý - 32 mm, 1x za 2 roky</option>
+            <option value="53.2" data-n="N10" selected>vzácný - 53 mm, 1x za 10 let</option>
+            <option value="87" data-n="N100">extrémní - 87 mm, 1x za 100 let</option></optgroup>
           <optgroup label="Další">
             <option value="20">20 mm - běžný letní liják</option>
             <option value="26.2">26 mm - 60 min, 1x za 5 let (ČSN 75 9010, Brno)</option>
@@ -421,13 +423,16 @@ function krajinaHistogram(gj){
 const ORNA='1', TTP='3', LES=['4','41','42','43'];
 function cnZ(trida, varianta, h){ const t=D.cn_tabulka[trida]; if(!t) return null; const v=t.varianty[varianta]||t.varianty[t.vychozi]; return v ? v['ABCD'[h-1]] : null; }
 function qmm(P, cn){ if(!cn) return 0; const S=25400/cn-254, Ia=0.2*S; return P<=Ia?0:(P-Ia)*(P-Ia)/(P-Ia+S); }
+// vazeni pres tvary deste a stav nasyceni (Kavka a kol. 2023 tab. 6) - jen pro navrhove deste N2/N10/N100; jinak CN2
+function vahaCN3Sel(sel){ const n=sel.selectedOptions[0]?.dataset.n; return n && D.navrhove.podil_tvaru_pct[n] ? Jadro.vahaCN3(D.navrhove.podil_tvaru_pct[n], D.navrhove.qAPI) : 0; }
+function qv(P, cn, w3){ return qmm(P,cn)*(1-w3) + qmm(P, Jadro.cnProIPS(cn,3))*w3; }
 function renderKrajina(){
   if(!KRAJ.n) return;
-  const P = +$('u-rain').value, A=25;
+  const P = +$('u-rain').value, A=25, W3=vahaCN3Sel($('u-rain')), NKEY=$('u-rain').selectedOptions[0]?.dataset.n;
   const p04=+$('k-p04').value/100, p01=+$('k-p01').value/100, p06=+$('k-p06').value/100, p05=$('k-p05').checked, les=$('k-les').value, ttp=$('k-ttp').value;
   ['p04','p01','p06'].forEach(k=>$('k-'+k+'-v').textContent=$('k-'+k).value);
   const sk = {}; // trida -> {ha, q0, q1}
-  const add=(name, n, cn0, cn1)=>{ const o=sk[name]||(sk[name]={ha:0,q0:0,q1:0,cn0:0,cn1:0}); o.ha+=n*A/1e4; o.q0+=qmm(P,cn0)/1000*n*A; o.q1+=qmm(P,cn1)/1000*n*A; o.cn0+=cn0*n; o.cn1+=cn1*n; };
+  const add=(name, n, cn0, cn1)=>{ const o=sk[name]||(sk[name]={ha:0,q0:0,q1:0,cn0:0,cn1:0,q0s:0,q0n:0}); o.ha+=n*A/1e4; o.q0+=qv(P,cn0,W3)/1000*n*A; o.q1+=qv(P,cn1,W3)/1000*n*A; o.q0s+=qmm(P,cn0)/1000*n*A; o.q0n+=qmm(P,Jadro.cnProIPS(cn0,3))/1000*n*A; o.cn0+=cn0*n; o.cn1+=cn1*n; };
   for(const [k,n] of Object.entries(KRAJ.h)){
     const [v,hs,ud,sv]=k.split('|'); const h=+hs; const t=D.cn_tabulka[v]; if(!t) continue;
     const cn0=cnZ(v, t.vychozi, h); let cn1=cn0, name=t.nazev;
@@ -444,14 +449,14 @@ function renderKrajina(){
     add(name,n,cn0,cn1);
   }
   // male tridy (< 5 ha) sloucit do "ostatni"
-  const ost={ha:0,q0:0,q1:0,cn0:0,cn1:0}; for(const [nm,o] of Object.entries(sk)) if(o.ha<5){ ost.ha+=o.ha; ost.q0+=o.q0; ost.q1+=o.q1; ost.cn0+=o.cn0; ost.cn1+=o.cn1; delete sk[nm]; }
+  const ost={ha:0,q0:0,q1:0,cn0:0,cn1:0,q0s:0,q0n:0}; for(const [nm,o] of Object.entries(sk)) if(o.ha<5){ ost.ha+=o.ha; ost.q0+=o.q0; ost.q1+=o.q1; ost.q0s+=o.q0s; ost.q0n+=o.q0n; ost.cn0+=o.cn0; ost.cn1+=o.cn1; delete sk[nm]; }
   if(ost.ha>0) sk['ostatní (třídy pod 5 ha)']=ost;
-  const rows=Object.entries(sk).sort((a,b)=>b[1].ha-a[1].ha); let H=0,Q0=0,Q1=0; rows.forEach(([,o])=>{H+=o.ha;Q0+=o.q0;Q1+=o.q1;});
+  const rows=Object.entries(sk).sort((a,b)=>b[1].ha-a[1].ha); let H=0,Q0=0,Q1=0,Q0s=0,Q0n=0; rows.forEach(([,o])=>{H+=o.ha;Q0+=o.q0;Q1+=o.q1;Q0s+=o.q0s;Q0n+=o.q0n;});
   $('k-table').innerHTML=`<tr><th>plocha (území modelu)</th><th class="num">ha</th><th class="num">CN teď</th><th class="num">CN scénář</th><th class="num">odtok teď m³</th><th class="num">scénář m³</th><th class="num">rozdíl</th></tr>`+
     rows.map(([nm,o])=>`<tr><td>${nm}</td><td class="num">${fmt0(o.ha)}</td><td class="num">${fmt0(o.cn0/(o.ha*1e4/A))}</td><td class="num">${fmt0(o.cn1/(o.ha*1e4/A))}</td><td class="num">${fmt0(o.q0)}</td><td class="num">${fmt0(o.q1)}</td><td class="num">${o.q0-o.q1>0.5?'-'+fmt0(o.q0-o.q1):(o.q1-o.q0>0.5?'+'+fmt0(o.q1-o.q0):'')}</td></tr>`).join('')+
-    `<tr class="total"><td>celkem při ${P} mm</td><td class="num">${fmt0(H)}</td><td></td><td></td><td class="num">${fmt0(Q0)}</td><td class="num">${fmt0(Q1)}</td><td class="num">${fmt0(Q1-Q0)}</td></tr>`;
+    `<tr class="total"><td>celkem při ${fmt0(P)} mm</td><td class="num">${fmt0(H)}</td><td></td><td></td><td class="num">${fmt0(Q0)}</td><td class="num">${fmt0(Q1)}</td><td class="num">${fmt0(Q1-Q0)}</td></tr>`;
   const dQ=Q0-Q1;
-  $('k-limit').innerHTML = `<b>Co to znamená:</b> scénář ${dQ>=0?'sníží':'zvýší'} povrchový odtok z krajiny při dešti ${P} mm o <b>${fmt0(Math.abs(dQ))} m³</b> (${fmt(100*Math.abs(dQ)/Math.max(1,Q0),1)} % z ${fmt0(Q0)} m³). Pro srovnání: déšť ${P} mm na území spadne ${fmt0(H*1e4*P/1000)} m³ - většina se vsákne nebo zůstane na povrchu i teď. Čísla jsou změna CN podle tabulky Janeček a kol. 2012 (tab. 2.3) ✅⏳ a USDA TR-55, metoda SCS-CN, IPS II, buňky 5 m; stav pozemků "teď" je výchozí předpoklad tabulky (orná = obilniny, špatný stav; les střední), ne terénní průzkum. Zatravnění údolnic bere buňky orné půdy, kam stéká aspoň 1 ha (akumulace z DMR 5G). Eroze (USLE), zpomalení vlny a výpar se tu nepočítají.`;
+  $('k-limit').innerHTML = `<b>Co to znamená:</b> scénář ${dQ>=0?'sníží':'zvýší'} povrchový odtok z krajiny při dešti ${fmt0(P)} mm o <b>${fmt0(Math.abs(dQ))} m³</b> (${fmt(100*Math.abs(dQ)/Math.max(1,Q0),1)} % z ${fmt0(Q0)} m³). Pro srovnání: déšť ${fmt0(P)} mm na území spadne ${fmt0(H*1e4*P/1000)} m³ - většina se vsákne nebo zůstane na povrchu i teď. ${NKEY?`Jak moc je půda před deštěm nasycená, nevíme - proto se počítá vážený průměr: běžně vlhká půda (CN2) by dala ${fmt0(Q0s)} m³, nasycená (CN3) ${fmt0(Q0n)} m³; váha nasyceného stavu ${fmt(100*W3,0)} % vychází z toho, jaké průběhy deště (tvary A-F) jsou v Koryčanech u deště ${NKEY.replace('N','1x za ')} let typické a jak často jim předchází mokré dny (Kavka a kol. 2023 ✅, tab. 6; data/navrhove_srazky.json). `:`U tohoto deště se počítá jen s běžně vlhkou půdou (CN2); rozpětí vlhká-nasycená ukážou návrhové deště častý / vzácný / extrémní. `}Čísla jsou změna CN podle tabulky Janeček a kol. 2012 (tab. 2.3) ✅⏳ a USDA TR-55, metoda SCS-CN, buňky 5 m; stav pozemků "teď" je výchozí předpoklad tabulky (orná = obilniny, špatný stav; les střední), ne terénní průzkum. Zatravnění údolnic bere buňky orné půdy, kam stéká aspoň 1 ha (akumulace z DMR 5G). Eroze (USLE), zpomalení vlny a výpar se tu nepočítají.`;
 }
 ['k-p04','k-p01','k-p06','k-p05','k-les','k-ttp','u-rain'].forEach(id=>document.getElementById(id).addEventListener('input',renderKrajina));
 function kruh(lon,lat,rM){ const [X,Y]=Jadro.lonLatNaXY(lon,lat); const ring=[]; for(let k=0;k<24;k++){ const a=k/24*2*Math.PI; ring.push(Jadro.xyNaLonLat(X+rM*Math.cos(a), Y+rM*Math.sin(a))); } return ring; }

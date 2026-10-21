@@ -56,6 +56,22 @@ ok('SCS-CN vzorec', Math.abs(J.scsCN(40, 72) - 3.43) < 0.02, J.scsCN(40, 72).toF
 ok('SCS-CN pod Ia = 0', J.scsCN(10, 72) === 0);
 ok('CN IPS III > IPS II > IPS I', J.cnProIPS(72, 3) > 72 && J.cnProIPS(72, 1) < 72, `${J.cnProIPS(72, 1).toFixed(1)} / 72 / ${J.cnProIPS(72, 3).toFixed(1)}`);
 
+// 4b. vazeni pres tvary - priklad Stasov z metodiky CVUT 2023 (kap. 2.6, tab. 7): CN2 81, CN3 90,7, P100 60,2 mm, 5,7 ha
+ok('CN3 jako metodika 2023 (Stasov 81 -> 90,7)', Math.abs(J.cnProIPS(81, 3) - 90.7) < 0.05, J.cnProIPS(81, 3).toFixed(2));
+const V2 = J.scsCN(60.2, 81) / 1000 * 57000, V3 = J.scsCN(60.2, J.cnProIPS(81, 3)) / 1000 * 57000;
+ok('Stasov V_CN2 = 1232 m3', Math.abs(V2 - 1232) < 3, V2.toFixed(0));
+ok('Stasov V_CN3 = 2127 m3 (metodika pocita s CN3 zaokrouhlenym na 90,7)', Math.abs(V3 - 2127) < 8, V3.toFixed(0));
+// tab. 7: A, B jen CN2; C, D, E 75/25; F 50/50 -> qAPI volime tak, aby to tab. 6 dalo
+const stasovPodil = { A: 21.4, B: 33.5, C: 15.4, D: 20.2, E: 9.1, F: 0.4 }, stasovQ = { A: 0.1, B: 0.1, C: 0.3, D: 0.3, E: 0.3, F: 0.5 };
+const Vv = J.odtokVazeny({ P_mm: 60.2, Q_mm: J.scsCN(60.2, 81), objem_m3: V2, Q_mm_cn3: J.scsCN(60.2, 90.7), objem_m3_cn3: V3 }, stasovPodil, stasovQ);
+ok('Stasov V_vysl = 1333,8 m3', Math.abs(Vv.objem_m3 - 1333.8) < 3, `${Vv.objem_m3.toFixed(1)} m3, vaha CN3 ${Vv.vaha_cn3.toFixed(3)}`);
+// Korycany N10: podily a qAPI z data/navrhove_srazky.json
+const NS = JSON.parse(fs.readFileSync(path.join(base, '..', 'navrhove_srazky.json'), 'utf8'));
+const w3k = J.vahaCN3(NS.podil_tvaru_pct.N10, NS.qAPI);
+ok('Korycany N10 vaha CN3 = 0,203 (D 0,20 a E 0,40 lezi na hranici intervalu, bereme nizsi vahu)', Math.abs(w3k - 0.203) < 0.002, w3k.toFixed(3));
+const st10 = J.statBunek(bunky, NS.uhrny_6h_mm.N10, 2), v10 = J.odtokVazeny(st10.odtok, NS.podil_tvaru_pct.N10, NS.qAPI);
+ok('uzemi modelu N10 vazeny odtok mezi CN2 a CN3', v10.objem_m3 > st10.odtok.objem_m3 && v10.objem_m3 < st10.odtok.objem_m3_cn3, `${Math.round(st10.odtok.objem_m3)} < ${Math.round(v10.objem_m3)} < ${Math.round(st10.odtok.objem_m3_cn3)} m3 (Q ${v10.Q_mm.toFixed(1)} mm, koef ${v10.koef.toFixed(2)})`);
+
 // 5. nadrz: hraz 3 m na Stribrniku ~ 600 m nad profilem
 const [X2, Y2] = s2.xy5514;
 const n1 = J.nadrz(...J.xyNaLonLat(X2 + 100, Y2 - 500), 3, 60);

@@ -1,4 +1,4 @@
-/* jadro.js - vypocetni jadro aplikace Korycany voda (faze 3), v0.1, 19. 10. 2026
+/* jadro.js - vypocetni jadro aplikace Korycany voda (faze 3), v0.2, 21. 10. 2026
  *
  * Pracuje nad rastry z data/web/ (09_balicek_web.py): mrizka S-JTSK 5 m, pasma v PNG.
  * Bez knihoven. V prohlizeci: Jadro.nacti('data/web/') -> Promise. V node: Jadro.nactiZPoli(info, {pasmo: Uint8Array|Uint16Array}).
@@ -6,6 +6,9 @@
  * Metody (zdroje viz docs/JADRO.md):
  *  - SCS-CN: Q = (P - Ia)^2 / (P - Ia + S), S = 25400/CN - 254 [mm], Ia = 0,2 S (Janecek a kol. 2012, kap. 2; USDA TR-55)
  *  - prevod CN na IPS I / III: standardni vztahy SCS (Hawkins; NEH-4): CN1 = 4,2 CN / (10 - 0,058 CN), CN3 = 23 CN / (10 + 0,13 CN)
+ *    (metodika CVUT 2023 pouziva tytez hodnoty: Stasov CN2 81 -> CN3 90,7)
+ *  - odtok vazeny pres tvary deste A-F a stav nasyceni CN2/CN3 (Kavka a kol. 2023, kap. 2.5, tab. 6; data/navrhove_srazky.json):
+ *    V = sum_i p_i * (w2_i * V_CN2 + w3_i * V_CN3), vahy w podle qAPI tvaru i (<=0,2: 1/0; <=0,4: 0,75/0,25; <=0,6: 0,5/0,5; <=0,8: 0,25/0,75; >0,8: 0/1)
  *  - povodi bodu: zpetne sledovani D8 (smer.png)
  *  - nadrz: zatopeni bunek pod zvolenou hladinou, souvisle s hrazi a jen uvnitr povodi bodu (zjednoduseni, bez tvaru hraze)
  * Vsechny vysledky jsou orientacni (model pro osvetu), viz docs/00-instrukce-projektu.md.
@@ -13,7 +16,7 @@
 (function (global) {
   'use strict';
 
-  const J = { info: null, p: {}, verze: '0.1' };
+  const J = { info: null, p: {}, verze: '0.2' };
 
   // ---------------------------------------------------------------- nacteni
   J.nactiZPoli = function (info, pasma) {
@@ -103,6 +106,27 @@
     return (P - Ia) * (P - Ia) / (P - Ia + S);
   };
 
+  // vahy stavu nasyceni podle qAPI (Kavka a kol. 2023, tab. 6); hranice intervalu bereme jako "do vcetne"
+  J.vahyCN = function (qapi) {
+    const w3 = qapi <= 0.2 ? 0 : qapi <= 0.4 ? 0.25 : qapi <= 0.6 ? 0.5 : qapi <= 0.8 ? 0.75 : 1;
+    return { cn2: 1 - w3, cn3: w3 };
+  };
+  // celkova vaha CN3 pro lokalitu: podil_pct = {A: %, ...} (zastoupeni tvaru), qapi = {A: 0..1, ...}
+  J.vahaCN3 = function (podilPct, qapi) {
+    let w = 0, ps = 0;
+    for (const t of Object.keys(podilPct)) { const p = podilPct[t] / 100; ps += p; w += p * J.vahyCN(qapi[t]).cn3; }
+    return ps > 0 ? w / ps : 0;
+  };
+  // odtok z objektu st.odtok (ma Q_mm = CN2 a Q_mm_cn3) vazeny pres tvary: vraci {Q_mm, objem_m3, rozsah_m3, vaha_cn3}
+  J.odtokVazeny = function (odtok, podilPct, qapi) {
+    if (!odtok || odtok.Q_mm_cn3 == null) return null;
+    const w3 = J.vahaCN3(podilPct, qapi);
+    const Q = odtok.Q_mm * (1 - w3) + odtok.Q_mm_cn3 * w3;
+    const V = odtok.objem_m3 * (1 - w3) + odtok.objem_m3_cn3 * w3;
+    return { Q_mm: Q, objem_m3: V, koef: Q / odtok.P_mm, rozsah_m3: [odtok.objem_m3, odtok.objem_m3_cn3], vaha_cn3: w3,
+      pozn: 'SCS-CN po bunkach, vazeno pres tvary deste A-F a stav nasyceni CN2/CN3 podle qAPI (Kavka a kol. 2023, tab. 6)' };
+  };
+
   // ---------------------------------------------------------------- rasterizace polygonu
   // ring = [[lon,lat],...] (prvni = posledni nepovinne); vraci pole indexu bunek, jejichz stred lezi uvnitr (even-odd)
   J.bunkyPolygonu = function (ring, diry) {
@@ -140,7 +164,7 @@
     const st = { n: 0, n_platnych: 0, plocha_ha: 0, cn_vazene: null, sklon_prumer_deg: null, sklon_prumer_pct: null,
       vyska_min: null, vyska_max: null, vyuziti_ha: {}, hsp_ha: { A: 0, B: 0, C: 0, D: 0 }, hsp_odhad_ha: 0,
       akumulace_max: 0, bunka_akumulace_max: null, tok_prochazi: false, odtok: null };
-    let cnS = 0, cnN = 0, skS = 0, skN = 0, Qsum = 0, Qn = 0;
+    let cnS = 0, cnN = 0, skS = 0, skN = 0, Qsum = 0, Qn = 0, Q3sum = 0;
     const hspK = ['A', 'B', 'C', 'D'];
     for (const i of bunky) {
       st.n++;
@@ -152,7 +176,7 @@
       const v = J.vyuziti(i); if (v) st.vyuziti_ha[v] = (st.vyuziti_ha[v] || 0) + J.plochaB / 1e4;
       const h = J.hsp(i); if (h) { st.hsp_ha[hspK[h - 1]] += J.plochaB / 1e4; if (J.p.hsp_zdroj[i] === 2) st.hsp_odhad_ha += J.plochaB / 1e4; }
       const a = J.akumulace(i); if (a != null && a > st.akumulace_max) { st.akumulace_max = a; st.bunka_akumulace_max = i; }
-      if (P != null && cn) { Qsum += J.scsCN(P, J.cnProIPS(cn, ips || 2)); Qn++; }
+      if (P != null && cn) { Qsum += J.scsCN(P, J.cnProIPS(cn, ips || 2)); Q3sum += J.scsCN(P, J.cnProIPS(cn, 3)); Qn++; }
     }
     st.plocha_ha = st.n_platnych * J.plochaB / 1e4;
     st.cn_vazene = cnN ? cnS / cnN : null;
@@ -161,7 +185,9 @@
     st.tok_prochazi = st.akumulace_max * J.plochaB >= 0.25e6;   // udolnice >= 0,25 km2 (jako 02_rozvodnice.py)
     if (P != null && Qn) {
       const Q_mm = Qsum / Qn;
-      st.odtok = { P_mm: P, ips: ips || 2, Q_mm, objem_m3: Q_mm / 1000 * Qn * J.plochaB, koef: Q_mm / P, pozn: 'SCS-CN po bunkach, Ia = 0,2 S' };
+      const Q3 = Q3sum / Qn;
+      st.odtok = { P_mm: P, ips: ips || 2, Q_mm, objem_m3: Q_mm / 1000 * Qn * J.plochaB, koef: Q_mm / P,
+        Q_mm_cn3: Q3, objem_m3_cn3: Q3 / 1000 * Qn * J.plochaB, pozn: 'SCS-CN po bunkach, Ia = 0,2 S; Q_mm = stav podle ips, Q_mm_cn3 = nasycene (CN3)' };
     }
     return st;
   };
