@@ -5,7 +5,7 @@ name: Stazeni vstupu ZABAGED a BPEJ
 on:
   push:
     branches: [vstupy]
-    paths: [data/povodi.geojson, tools/stahni_vstupy.py]
+    paths: [data/povodi.geojson, tools/stahni_vstupy.py, .github/workflows/stahni-vstupy.yml]
   workflow_dispatch:
 
 jobs:
@@ -18,8 +18,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install numpy pyproj
+      - run: pip install numpy pyproj rasterio matplotlib
       - run: mkdir -p vstupy && python tools/stahni_vstupy.py --out vstupy 2>&1 | tee vstupy/log.txt
+      - name: Toky HY-NET (CUZK) pro nove uzemi
+        run: |
+          curl -sSL -o hynet.zip https://openzu.cuzk.gov.cz/opendata/HY-NET/HY-NET.zip
+          mkdir -p data/HY-NET && unzip -q -o hynet.zip -d data/HY-NET
+          python tools/03_vektory.py --budovy neexistuje.xml 2>&1 | tee -a vstupy/log.txt || true
+          cp data/toky_cuzk.geojson vstupy/ || true
       - name: Commit do vetve vstupy
         run: |
           git config user.name "github-actions[bot]"
