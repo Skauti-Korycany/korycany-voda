@@ -246,6 +246,7 @@ def op(id, nazev, misto, rozhoduje, pracnost, ucinky_prim, ucinky_ved, meritko, 
         "standardy": standardy or [],
         "nedohledano": nedohledano or [],
         "pozn_poctivost": pozn_poctivost,
+        "hlavni_cislo": None,                # {text, znacka}: jedna věta s číslem pro první pohled (doplňuje se na konci)
         "priklady": priklady or [],          # "Kde to funguje": [{kde, kdy, kdo, co, mereno, zdroj, znacka}]
         "prenositelnost": prenositelnost,    # text: kdy to v Koryčanech dává smysl a kdy ne
         "rizika": rizika,                    # text: rizika a co z opatření neplyne
@@ -813,7 +814,7 @@ CISELNIKY = {
 }
 
 DATA = {
- "meta": {"nazev":"Katalog opatření - Koryčany resilience","verze":"0.8","datum":DNES,"licence_dat":"CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
+ "meta": {"nazev":"Katalog opatření - Koryčany resilience","verze":"0.9","datum":DNES,"licence_dat":"CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
           "upozorneni":"Zjednodušený osvětový model, ne projektová dokumentace. Každé číslo má zdroj a značku původu. Ceny jen se zdrojem a datem; jinak 'cena neověřena'. Paragrafy vodního zákona ověřit v e-Sbírce.",
           "zdroje_md":["claude/KATALOG.md","claude/KATALOG-Z-S.md","claude/KATALOG-U-P.md","claude/KATALOG-L-LES-T-C.md","claude/KATALOG-RESERSE.md"]},
  "ciselniky": CISELNIKY, "konstanty": KONSTANTY, "zdroje": Z, "programy": PROGRAMY, "nastroje": NASTROJE, "opatreni": O,
@@ -1000,6 +1001,79 @@ doplnit("C03",
 
 doplnit("T01", standardy=["vuv2018_monitoring"], rizika="Vyhodnocení účinku vyžaduje měření před/po s kontrolním profilem 3-5 let (VÚV 2018); jeden rok nestačí.")
 
+# --- hlavní věta s číslem pro první pohled v aplikaci (OPATRENI-UX-ZADANI.md, 22. 10. 2026); None u značky = bez doloženého čísla
+HLAVNI_CISLO = {
+ "Z01": ("za rok zasákne celý odtok ze střechy; při mírném dešti o třetinu víc vody do podloží než trávník", "overeno_stare"),
+ "Z02": ("tůň 2×1 m zadrží 1 m³; hlavní přínos je život v zahradě", "overeno"),
+ "Z03": ("zachytí odtok z vlastního svahu nad průlehem; vliv na vlhkost půdy bez čísla", "overeno"),
+ "Z04": ("zasákne o 30-60 % víc deště než asfalt; tráva o 1-2 °C chladnější vzduch", "overeno_stare"),
+ "Z05": ("výpar z půdy nižší o 17-79 %, slámový mulč nejméně o 50 %", "overeno"),
+ "Z06": ("ve stínu stromu o 8-11 °C chladněji (pocitově), vzduch o 0,4-2 °C", "overeno"),
+ "Z07": ("vítr za živým plotem slabší o 25-70 % do vzdálenosti 20 výšek", "overeno_stare"),
+ "Z08": ("méně výparu a chladnější půda (bez čísla); správně sečená louka o 20 % víc druhů", "overeno"),
+ "Z09": ("stěna pod popínavkou o 6,5-15 °C chladnější", "overeno"),
+ "Z10": ("zasákne celý odtok ze střechy, i návrhový déšť 1x za 5 let", "overeno"),
+ "Z11": ("šetří pitnou vodu; úspora v litrech nedohledána", None),
+ "Z12": ("úspora vody na zálivku 50-70 % proti konvi (aridní pokus, výrobce)", "citace"),
+ "Z13": ("po zapojení bez zálivky; údržba 2-6 minut na m² za rok", "overeno"),
+ "S01": ("každých 10 mm deště ze 100 m² střechy = 1 m³ do nádrže", "overeno"),
+ "S02": ("voda ze střechy (100 m² × 10 mm = 1 m³) zůstane na pozemku místo v kanalizaci", "overeno"),
+ "S03": ("zadrží cca 75 % běžného deště; povrch o 5-7 °C chladnější než fólie", "overeno"),
+ "S04": ("povrch střechy o 28-33 °C chladnější, místnosti pod ní o 1-3 °C", "overeno_stare"),
+ "S05": ("úspora pitné vody na zálivku 33-59 % (3 domy, Austrálie)", "overeno"),
+ "S06": ("splachování = 20-30 % spotřeby domácnosti; dešťovka nahradí až 80 % této vody", "overeno"),
+ "U01": ("v ulici se stromy pocitově o 3-8 °C chladněji; voda z chodníků zalévá strom", "overeno"),
+ "U02": ("déšť zasákne místo odtoku; světlý povrch o 4-5,5 °C chladnější, pro chodce bez zlepšení", "overeno"),
+ "U03": ("regulovaný odtok 3 l/s/ha; funkční i po 25-30 letech (Sasko)", "overeno"),
+ "U04": ("střecha školy 1 500 m²: 20 mm deště = 30 m³, za rok cca 950 m³", "overeno"),
+ "U05": ("zadrží objem nádrže; na vzduch v obci skoro bez vlivu, hlavně život", "overeno"),
+ "U06": ("vzduch nad trávníkem o 0,9 °C chladnější než nad dlažbou; v suchu účinek mizí", "overeno"),
+ "U07": ("asfaltový dvůr má v létě přes 55 °C, stín pod 30 °C", "overeno"),
+ "U08": ("vzduch u mlžení o 0,7-2,5 °C chladnější, jen za provozu", "overeno"),
+ "U09": ("bez plánu opatření po letech chátrají (Sasko: selhává údržba, ne princip)", "overeno"),
+ "H01": ("snižuje riziko pro lidi, ne teplotu; v Nizozemsku úmrtí z vedra zhruba na polovinu", "overeno"),
+ "H02": ("stín snižuje pocitovou teplotu o 8-11 °C; plachta se ale sama ohřívá", "overeno"),
+ "P01": ("zastaví splach půdy z pole; voda se v pásu zpomalí o 100-460 s", "overeno"),
+ "P02": ("zachytí odtok z pole nad průlehem a nechá ho vsáknout", "overeno"),
+ "P03": ("eroze nižší o 30-70 % (P faktor 0,3-0,7)", "overeno"),
+ "P04": ("ztráta půdy 0,2-7 t/ha místo desítek t/ha při orbě", "overeno"),
+ "P05": ("v zatravněné údolnici se při přívalu netvoří rýhy", "overeno"),
+ "P06": ("trvalý porost: eroze zlomek orné půdy, voda vsákne", "overeno"),
+ "P07": ("vítr za větrolamem slabší o 40-70 %, menší výpar z polí", "overeno"),
+  "P08": ("stromy a příkop podél cesty: závětří, vsak a zadržení splachu (bez čísla)", None),
+ "P09": ("pod stromy o 4-10 °C nižší teplotní maxima", "overeno"),
+ "P10": ("zadrží 25-100 % odtoku z drenáží", "overeno"),
+ "P11": ("závětří, úkryt a vláha v cípu pole (bez čísla)", None),
+ "P12": ("organická hmota zvedne zásobu vody jen o 1,2 mm na 100 mm půdy za 1 % uhlíku", "overeno"),
+ "L01": ("méně výparu (bez čísla); správně sečená louka o 20 % víc druhů", "overeno"),
+ "L02": ("vsak na pastvině 7 mm/min, na louce 13, bez sešlapu 35 mm/min", "overeno_stare"),
+ "L03": ("ve stínu stromu o 8-11 °C chladněji (pocitově)", "overeno"),
+ "L04": ("prameniště bez sešlapu zůstává zdrojem vody i v suchu (bez čísla)", None),
+ "LES01": ("zadrží objem tůně a splaveniny ještě v lese; na potůčcích 1. řádu i nižší špička", "overeno"),
+ "LES02": ("voda z cesty vsákne po svahu místo soustředění ve strži (čísla do 2027)", "overeno"),
+ "LES03": ("listnatý les propustí o cca 15 % víc vody do půdy než smrk", "overeno"),
+ "LES04": ("závětří a stín na okraji lesa (bez čísla)", None),
+ "T01": ("zadrží objem tůně; život a chlad u potoka", "overeno"),
+ "T02": ("po odstranění drenáží o 11 500 m³ vody víc na 6 ha (Český ráj)", "overeno"),
+ "T03": ("na lesních potůčcích špička nižší až o 50 % (model); na větších tocích může škodit", "overeno"),
+ "T04": ("voda se rozlévá do nivy místo rychlého odtoku (bez čísla pro Koryčany)", None),
+ "T05": ("studánka chráněná před sešlapem a splachy (bez čísla)", None),
+ "T06": ("voda v zastíněném potoce o 2-4 °C chladnější", "overeno"),
+ "T07": ("zadrží retenční objem nádrže nebo poldru (počítá jádro)", "overeno"),
+ "C01": ("voda z cesty do průlehu místo do potoka (počítá se z ploch)", "overeno"),
+ "C02": ("zastaví prohlubování strže a zadrží splaveniny (bez čísla)", None),
+ "C03": ("udržované terasy: eroze nižší o 87-98 %", "overeno_stare"),
+ "M01": ("měření, ne opatření: denní srážka pro model", None),
+ "M02": ("měření: hladina ve studni jednou měsíčně", None),
+ "M03": ("měření: vlhkost půdy", None),
+ "M04": ("měření: teče / neteče, foto", None),
+ "M05": ("měření: teplota asfaltu, trávy, střechy IR teploměrem", None),
+ "M06": ("měření: kde se po přívalu tvoří rýhy", None)
+}
+for _o in O:
+    _h = HLAVNI_CISLO.get(_o['id'])
+    _o['hlavni_cislo'] = {'text': _h[0], 'znacka': _h[1]} if _h else None
+
 # ----------------------------------------------------------------- kontroly
 ids = [o["id"] for o in O]
 assert len(ids) == len(set(ids)), "duplicitní ID"
@@ -1042,6 +1116,7 @@ SCHEMA = {
       "povoleni":{"type":["integer","null"],"minimum":0,"maximum":2},
       "ceny":{"type":"array","items":{"type":"object","required":["polozka","jednotka"],"properties":{"hodnota":{"type":["number","null"]},"rozsah":{"type":["array","null"]},"rok":{"type":["integer","null"]},"zdroj":{"type":["string","null"]}}}},
       "priklady":{"type":"array","items":{"type":"object","required":["kde","co","zdroj","znacka"],"properties":{"kde":{"type":"string"},"kdy":{"type":["string","null"]},"kdo":{"type":["string","null"]},"co":{"type":"string"},"mereno":{"type":["string","null"]},"zdroj":{"type":"array","items":{"type":"string"}},"znacka":{"enum":["overeno","overeno_stare","citace","odhad","pamet"]}}}},
+      "hlavni_cislo":{"type":["object","null"],"properties":{"text":{"type":"string"},"znacka":{"type":["string","null"]}}},
       "prenositelnost":{"type":["string","null"]},
       "rizika":{"type":["string","null"]},
       "vahy_skaly":{"type":["object","null"],"description":"rezervováno: sucho, prival, vedro, vitr_mraz, biodiverzita 0-3 (NAPADY-ROZHRANI.md)"}

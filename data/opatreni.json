@@ -1,7 +1,7 @@
 {
  "meta": {
   "nazev": "Katalog opatření - Koryčany resilience",
-  "verze": "0.8",
+  "verze": "0.9",
   "datum": "2026-10-22",
   "licence_dat": "CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
   "upozorneni": "Zjednodušený osvětový model, ne projektová dokumentace. Každé číslo má zdroj a značku původu. Ceny jen se zdrojem a datem; jinak 'cena neověřena'. Paragrafy vodního zákona ověřit v e-Sbírce.",
@@ -2103,6 +2103,10 @@
     "cena 2025-2026"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "za rok zasákne celý odtok ze střechy; při mírném dešti o třetinu víc vody do podloží než trávník",
+    "znacka": "overeno_stare"
+   },
    "priklady": [
     {
      "kde": "Mnichov (Bavorsko)",
@@ -2262,6 +2266,10 @@
     "výpar zahradní tůně l/den (jen bazénové tabulky a diskuse)"
    ],
    "pozn_poctivost": "SPPK B02 001: průměrná hloubka 0,8-1,0 m, max 1,5 m, mělčiny do 50 cm min. polovina plochy, břehy max 1:3.",
+   "hlavni_cislo": {
+    "text": "tůň 2×1 m zadrží 1 m³; hlavní přínos je život v zahradě",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": "V suchém létě je výpar z hladiny větší než srážky (vlastní data projektu, sekce Počasí): malá tůň bez přítoku na HSP C/D vyschne nebo žádá dolévání 🤔. Nepočítat ji jako zdroj zálivky.",
@@ -2374,6 +2382,10 @@
     "cena"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "zachytí odtok z vlastního svahu nad průlehem; vliv na vlhkost půdy bez čísla",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -2525,6 +2537,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "zasákne o 30-60 % víc deště než asfalt; tráva o 1-2 °C chladnější vzduch",
+    "znacka": "overeno_stare"
+   },
    "priklady": [
     {
      "kde": "Severní Porýní-Vestfálsko",
@@ -2686,6 +2702,10 @@
     "retence půdy podle organické hmoty - český zdroj (zahraniční metaanalýza doplněna)"
    ],
    "pozn_poctivost": "Organická hmota zvyšuje retenci jen málo (1,16 mm/100 mm na 1 % C, na jílu nejméně); hlavní účinek mulče je výpar, ne zásoba vody.",
+   "hlavni_cislo": {
+    "text": "výpar z půdy nižší o 17-79 %, slámový mulč nejméně o 50 %",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Lipsko (DWD Agrarmeteorologie)",
@@ -2904,6 +2924,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": "Do zahrad přednostně ovocné a domácí druhy (SPPK); cizí 'klimastromy' spíš do ulic a na výsušná místa 🤔. Tři různá čísla: povrch pod stromem 8-25 °C, pocitová teplota ve stínu 3-11 °C, vzduch 0,4-2 °C (ČR). EPA 'až 5 °C vzduch' platí pro velké skupiny stromů; pro jeden strom v Koryčanech počítat s CzechGlobe 0,4-2,1 °C.",
+   "hlavni_cislo": {
+    "text": "ve stínu stromu o 8-11 °C chladněji (pocitově), vzduch o 0,4-2 °C",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Würzburg, Kempten, Hof (Bavorsko)",
@@ -3031,6 +3055,10 @@
     "snížení evapotranspirace v %"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "vítr za živým plotem slabší o 25-70 % do vzdálenosti 20 výšek",
+    "znacka": "overeno_stare"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -3132,6 +3160,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": "SPPK D02 004: 10-20 % plochy ponechat neposečené; Praha 2019: výška 10-15 cm, neseče se nad 26 °C.",
+   "hlavni_cislo": {
+    "text": "méně výparu a chladnější půda (bez čísla); správně sečená louka o 20 % víc druhů",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -3240,6 +3272,10 @@
     "cena"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "stěna pod popínavkou o 6,5-15 °C chladnější",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Toronto (Kanada)",
@@ -3348,6 +3384,10 @@
     "cena bloků a výkopu 2025-2026"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "zasákne celý odtok ze střechy, i návrhový déšť 1x za 5 let",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -3420,6 +3460,10 @@
     "měření úspory kapkové závlahy proti postřiku v zahradách střední Evropy"
    ],
    "pozn_poctivost": "Olla (Z12) je podle AZ1911 zhruba rovnocenná kapkové závlaze.",
+   "hlavni_cislo": {
+    "text": "šetří pitnou vodu; úspora v litrech nedohledána",
+    "znacka": null
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -3542,6 +3586,10 @@
     "trvanlivost přes zimu"
    ],
    "pozn_poctivost": "Čísla úspory jsou z aridního pokusu a od výrobce; v našem klimatu neměřeno. Zobrazovat jako citaci, ne jako jistotu.",
+   "hlavni_cislo": {
+    "text": "úspora vody na zálivku 50-70 % proti konvi (aridní pokus, výrobce)",
+    "znacka": "citace"
+   },
    "priklady": [
     {
      "kde": "Roeschwoog, Alsasko (Francie)",
@@ -3698,6 +3746,10 @@
     "cena založení 2025-2026"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "po zapojení bez zálivky; údržba 2-6 minut na m² za rok",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Veitshöchheim, Bavorsko (LWG)",
@@ -3836,6 +3888,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": "NZÚ 2026 podporuje jen nádrž pro WC (min. 2 m³) a jen s A/C; nádrž pouze na zálivku ne.",
+   "hlavni_cislo": {
+    "text": "každých 10 mm deště ze 100 m² střechy = 1 m³ do nádrže",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Kyselov u Vyššího Brodu (Český soběstačný dům)",
@@ -3951,6 +4007,10 @@
     "cena"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "voda ze střechy (100 m² × 10 mm = 1 m³) zůstane na pozemku místo v kanalizaci",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": "Na jílu (HSP D) se voda u domu hromadí; dodržet odstupy z ČSN 75 9010 a vést vodu do Z01/Z10.",
@@ -4071,6 +4131,10 @@
     "C extenzivní vs. intenzivní z normy"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "zadrží cca 75 % běžného deště; povrch o 5-7 °C chladnější než fólie",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -4202,6 +4266,10 @@
     "cena reflexního nátěru 2025-2026"
    ],
    "pozn_poctivost": "Rozlišovat účinek na budovu (silný) vs. na mikroklima obce (slabý).",
+   "hlavni_cislo": {
+    "text": "povrch střechy o 28-33 °C chladnější, místnosti pod ní o 1-3 °C",
+    "znacka": "overeno_stare"
+   },
    "priklady": [
     {
      "kde": "Köniz (Bern), Waldeggstrasse",
@@ -4329,6 +4397,10 @@
     "cena technologie pro RD 2026"
    ],
    "pozn_poctivost": "Austrálie má středomořské klima a jinou cenu vody; čísla brát jako rozsah, ne jako předpověď pro Koryčany.",
+   "hlavni_cislo": {
+    "text": "úspora pitné vody na zálivku 33-59 % (3 domy, Austrálie)",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Fremantle, Západní Austrálie",
@@ -4509,6 +4581,10 @@
     "cena technologie 2026"
    ],
    "pozn_poctivost": "Podíl WC 20-30 % je z letáku bez uvedeného zdroje a z polského výpočtu; 80 % náhrady platí pro vlhčí Beskydy, pro Koryčany spíš méně 🤔.",
+   "hlavni_cislo": {
+    "text": "splachování = 20-30 % spotřeby domácnosti; dešťovka nahradí až 80 % této vody",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Kyselov u Vyššího Brodu (Český soběstačný dům)",
@@ -4714,6 +4790,10 @@
     "metodika MZI MŽP"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "v ulici se stromy pocitově o 3-8 °C chladněji; voda z chodníků zalévá strom",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Olomouc",
@@ -4881,6 +4961,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "déšť zasákne místo odtoku; světlý povrch o 4-5,5 °C chladnější, pro chodce bez zlepšení",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": "Propustná dlažba chladí jen tehdy, když je v ní voda nebo tráva s kontaktem s podložím; suchá dlažba se chová jako asfalt 🤔.",
@@ -5018,6 +5102,10 @@
     "cena průlehu v ČR 2025-2026 kromě NOO"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "regulovaný odtok 3 l/s/ha; funkční i po 25-30 letech (Sasko)",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Taucha (Sasko)",
@@ -5132,6 +5220,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "střecha školy 1 500 m²: 20 mm deště = 30 m³, za rok cca 950 m³",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Trebišov (SK), střední odborná škola",
@@ -5267,6 +5359,10 @@
     "mikroklima návesní nádrže"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "zadrží objem nádrže; na vzduch v obci skoro bez vlivu, hlavně život",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Wiesenena (Sasko, obec Wiedemar)",
@@ -5436,6 +5532,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "vzduch nad trávníkem o 0,9 °C chladnější než nad dlažbou; v suchu účinek mizí",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": "V suchu bez závlahy účinek trávníku na horko mizí (suchý trávník ~ dlažba 🤔 odvozeno).",
@@ -5501,6 +5601,10 @@
    "standardy": [],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "asfaltový dvůr má v létě přes 55 °C, stín pod 30 °C",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Kornwestheim (Bádensko-Württembersko), Silcherschule",
@@ -5630,6 +5734,10 @@
     "NÖ Regenwasserpläne (web offline)"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "bez plánu opatření po letech chátrají (Sasko: selhává údržba, ne princip)",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Taucha (Sasko)",
@@ -5766,6 +5874,10 @@
     "hygienické podmínky KHS pro mlžení"
    ],
    "pozn_poctivost": "Účinek je malý a jen za provozu; v aplikaci se do součtů nepočítá.",
+   "hlavni_cislo": {
+    "text": "vzduch u mlžení o 0,7-2,5 °C chladnější, jen za provozu",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Curych, Turbinenplatz",
@@ -5882,6 +5994,10 @@
     "vzor plánu vedra pro obec do 3 000 obyvatel"
    ],
    "pozn_poctivost": "Opatření pro lidi, ne pro krajinu; v aplikaci bez čísla v součtech.",
+   "hlavni_cislo": {
+    "text": "snižuje riziko pro lidi, ne teplotu; v Nizozemsku úmrtí z vedra zhruba na polovinu",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Nizozemsko (celá země)",
@@ -6023,6 +6139,10 @@
     "cena"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "stín snižuje pocitovou teplotu o 8-11 °C; plachta se ale sama ohřívá",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Solothurn, Amtsplatz",
@@ -6172,6 +6292,10 @@
     "% snížení ztráty půdy z českého měření"
    ],
    "pozn_poctivost": "Úzký pás funguje na začátku deště, ne na dlouhý příval.",
+   "hlavni_cislo": {
+    "text": "zastaví splach půdy z pole; voda se v pásu zpomalí o 100-460 s",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -6254,6 +6378,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "zachytí odtok z pole nad průlehem a nechá ho vsáknout",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -6335,6 +6463,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "eroze nižší o 30-70 % (P faktor 0,3-0,7)",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -6413,6 +6545,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": "DZES 5 (2026) už na SEO zakazuje erozně nebezpečné plodiny nad 2 ha a na MEO vyžaduje POT; vlastník může ve smlouvě chtít víc.",
+   "hlavni_cislo": {
+    "text": "ztráta půdy 0,2-7 t/ha místo desítek t/ha při orbě",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -6491,6 +6627,10 @@
     "kvantifikovaný účinek"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "v zatravněné údolnici se při přívalu netvoří rýhy",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -6577,6 +6717,10 @@
    "standardy": [],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "trvalý porost: eroze zlomek orné půdy, voda vsákne",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -6712,6 +6856,10 @@
     "snížení evapotranspirace v % (ČR)"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "vítr za větrolamem slabší o 40-70 %, menší výpar z polí",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -6789,6 +6937,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "stromy a příkop podél cesty: závětří, vsak a zadržení splachu (bez čísla)",
+    "znacka": null
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -6901,6 +7053,10 @@
     "vlhkost půdy v ALS (ČR)"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "pod stromy o 4-10 °C nižší teplotní maxima",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -6987,6 +7143,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": "Podrobné odvodnění patří od 1991 vlastníkovi; 40 % vlastníků o něm neví.",
+   "hlavni_cislo": {
+    "text": "zadrží 25-100 % odtoku z drenáží",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -7077,6 +7237,10 @@
    "standardy": [],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "závětří, úkryt a vláha v cípu pole (bez čísla)",
+    "znacka": null
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -7151,6 +7315,10 @@
    "standardy": [],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "organická hmota zvedne zásobu vody jen o 1,2 mm na 100 mm půdy za 1 % uhlíku",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -7226,6 +7394,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "méně výparu (bez čísla); správně sečená louka o 20 % víc druhů",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -7328,6 +7500,10 @@
     "české měření extenzivní vs. intenzivní"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "vsak na pastvině 7 mm/min, na louce 13, bez sešlapu 35 mm/min",
+    "znacka": "overeno_stare"
+   },
    "priklady": [
     {
      "kde": "MENDELU Brno (pokusná plocha)",
@@ -7434,6 +7610,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": "SPPK C02 003: při pastvě povinný ochranný plášť, 3 kůly, ochrana min. 10 let.",
+   "hlavni_cislo": {
+    "text": "ve stínu stromu o 8-11 °C chladněji (pocitově)",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -7509,6 +7689,10 @@
     "návod k oplocení pramenišť na pastvině"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "prameniště bez sešlapu zůstává zdrojem vody i v suchu (bez čísla)",
+    "znacka": null
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -7611,6 +7795,10 @@
     "retence m³ na přehrážku"
    ],
    "pozn_poctivost": "MZe TD 2020: přehrážky běžně 2-5 m; drobné svépomocné prahy jsou pod úrovní normy.",
+   "hlavni_cislo": {
+    "text": "zadrží objem tůně a splaveniny ještě v lese; na potůčcích 1. řádu i nižší špička",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -7702,6 +7890,10 @@
     "rozestupy svodnic (ČSN 73 6108)"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "voda z cesty vsákne po svahu místo soustředění ve strži (čísla do 2027)",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Bádensko-Württembersko, 27 pilotních lesů",
@@ -7809,6 +8001,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": "Přínos smíšeného lesa formulovat jako odolnost porostu (kůrovec, vítr), ne jako vodní bilanci.",
+   "hlavni_cislo": {
+    "text": "listnatý les propustí o cca 15 % víc vody do půdy než smrk",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -7882,6 +8078,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "závětří a stín na okraji lesa (bez čísla)",
+    "znacka": null
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -7988,6 +8188,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "zadrží objem tůně; život a chlad u potoka",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": "Vyhodnocení účinku vyžaduje měření před/po s kontrolním profilem 3-5 let (VÚV 2018); jeden rok nestačí.",
@@ -8105,6 +8309,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "po odstranění drenáží o 11 500 m³ vody víc na 6 ha (Český ráj)",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Sedmihorské mokřady, Libuňka (Český ráj)",
@@ -8256,6 +8464,10 @@
     "český kvantifikovaný zdroj"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "na lesních potůčcích špička nižší až o 50 % (model); na větších tocích může škodit",
+    "znacka": "overeno"
+   },
    "priklady": [
     {
      "kde": "Pickering (Yorkshire, UK)",
@@ -8360,6 +8572,10 @@
     "měřený efekt (ČR)"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "voda se rozlévá do nivy místo rychlého odtoku (bez čísla pro Koryčany)",
+    "znacka": null
+   },
    "priklady": [
     {
      "kde": "Kyjovka u Moravské Nové Vsi",
@@ -8449,6 +8665,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": "Nezasahovat do jímek; prameniště/mokřad neupravovat na studánku; registr estudanky.eu.",
+   "hlavni_cislo": {
+    "text": "studánka chráněná před sešlapem a splachy (bez čísla)",
+    "znacka": null
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -8561,6 +8781,10 @@
     "český zdroj teploty vody"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "voda v zastíněném potoce o 2-4 °C chladnější",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -8636,6 +8860,10 @@
     "Kč/m³ retence z realizací 2024-2026"
    ],
    "pozn_poctivost": "Dřívější údaj o ceně poldru/hráze se nepotvrdil a byl vyřazen.",
+   "hlavni_cislo": {
+    "text": "zadrží retenční objem nádrže nebo poldru (počítá jádro)",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -8721,6 +8949,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "voda z cesty do průlehu místo do potoka (počítá se z ploch)",
+    "znacka": "overeno"
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -8810,6 +9042,10 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "zastaví prohlubování strže a zadrží splaveniny (bez čísla)",
+    "znacka": null
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -8921,6 +9157,10 @@
     "hydroosev Kč/m² 2025"
    ],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "udržované terasy: eroze nižší o 87-98 %",
+    "znacka": "overeno_stare"
+   },
    "priklady": [
     {
      "kde": "Troodos (Kypr)",
@@ -8989,6 +9229,10 @@
    "standardy": [],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "měření, ne opatření: denní srážka pro model",
+    "znacka": null
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -9043,6 +9287,10 @@
    "standardy": [],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "měření: hladina ve studni jednou měsíčně",
+    "znacka": null
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -9100,6 +9348,10 @@
    "standardy": [],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "měření: vlhkost půdy",
+    "znacka": null
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -9157,6 +9409,10 @@
    "standardy": [],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "měření: teče / neteče, foto",
+    "znacka": null
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -9215,6 +9471,10 @@
    "standardy": [],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "měření: teplota asfaltu, trávy, střechy IR teploměrem",
+    "znacka": null
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,
@@ -9272,6 +9532,10 @@
    "standardy": [],
    "nedohledano": [],
    "pozn_poctivost": null,
+   "hlavni_cislo": {
+    "text": "měření: kde se po přívalu tvoří rýhy",
+    "znacka": null
+   },
    "priklady": [],
    "prenositelnost": null,
    "rizika": null,

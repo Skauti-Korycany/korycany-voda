@@ -155,10 +155,11 @@ Aktualizováno: 22. 10. 2026 08:45 (relace 12 „Rešerše dobré praxe“ **uza
 - Mapování oblastí z účinků (`CO`): sucho = I, R, W, E; příval = Q, R, I, ER; horko = CH, E; život = B + vše s místem T/L/LES. Mapování KDE z místa (`KDE`). Vše v `build_dummy.py`, JSON beze změny.
 - `popis` doplněn u 48 opatření (teď 66/66).
 - Hlavička: verze katalogu z `meta.verze`.
+- **Oprava podle zpětné vazby 22. 10. 09:15** (uživatel): automatické „jedno číslo“ z kvantifikací nestačilo („17-79 %“ bez slovesa, „ochlazení o 2 400 úmrtí“). Nově pole **`hlavni_cislo`** v JSON (v0.9) - ručně napsaná věta pro všech 66 opatření („výpar z půdy nižší o 17-79 %“, „ve stínu stromu o 8-11 °C chladněji“); spočtené číslo z jádra má přednost jen když vyjde víc než nula (nikdy „0 m³“). Pracnost = tečky ●○○ / ●●○ / ●●● s legendou místo slov; ID opatření schováno do podrobností; čísla bez zbytečných desetin.
 - Kontrola Chromium 1280/375 px bez chyb; test VŠE OK.
 
 ### Na co ses nezeptal (UX)
-- Katalog ukazuje číslo pro vzor jen u Z/S opatření s EFF (9 položek); u U/P/L/T bere první doloženou hodnotu - u některých je to nepřehledné (např. k_f v m/s u U03). Chceš u těchto ručně vybrat „hlavní číslo“ (pole `hlavni_cislo` v JSON)?
+- Věty v `hlavni_cislo` jsem napsal sám z kvantifikací; projdi je v katalogu, které chceš přeformulovat (je to jeden slovník v build_opatreni.py).
 - Oblast „Život“ zahrnuje automaticky všechna T/L/LES opatření - souhlasíš, nebo jen ta s účinkem B?
 - Krok 4 na pozemku má řazení „nejvíc vody za nejmíň práce“ i při filtru Horko - tam by dávalo smysl řadit podle CH. Zatím ne.
 

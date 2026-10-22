@@ -139,7 +139,7 @@ Verze 18. 10. 2026. Doplňuje KATALOG.md (seznam a atributy). Zdroje ověřeny o
 <!-- RESERSE-START (generováno tools/build_katalog_md.py, needitovat ručně) -->
 ## Doplnění z rešerše dobré praxe (bloky B, A, C, D, 21.-22. 10. 2026)
 
-Generováno z `data/opatreni.json` v0.8 (2026-10-22); podrobný rozbor a odkazy: `docs/KATALOG-RESERSE.md`. Uvedeny jen nové položky a kvantifikace, příklady, přenositelnost a rizika doplněné rešerší; původní text výše platí dál. Značky: ✅ ověřeno online, ✅⏳ zdroj starší 12 měsíců, 📄 citace, 🤔 odhad.
+Generováno z `data/opatreni.json` v0.9 (2026-10-22); podrobný rozbor a odkazy: `docs/KATALOG-RESERSE.md`. Uvedeny jen nové položky a kvantifikace, příklady, přenositelnost a rizika doplněné rešerší; původní text výše platí dál. Značky: ✅ ověřeno online, ✅⏳ zdroj starší 12 měsíců, 📄 citace, 🤔 odhad.
 
 ### Z01 Dešťová zahrada (zasakovací záhon) (doplněno)
 - Účinek infiltrace do půdy (hodnota) ✅⏳: Osázená mulda při vytrvalém dešti pojala a předala do podloží až o třetinu více vody než trávník (LWG); návrh: nádrž max. 30 cm, vyprázdnění do 24 h, k_f >= 1e-5 m/s [33 % více vody než trávník]. Zdroj: [LWG Veitshöchheim, Mit Pflanzen versickern, 2. vyd. 2010 (Schwarz, Epp](https://www.lwg.bayern.de/mam/cms06/landespflege/dateien/merkblatt_mit_pflanzen_versickern.pdf)

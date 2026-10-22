@@ -125,7 +125,7 @@ Upozornění k právu: paragrafy vodního zákona byly ověřeny na nestátním 
 <!-- RESERSE-START (generováno tools/build_katalog_md.py, needitovat ručně) -->
 ## Doplnění z rešerše dobré praxe (bloky B, A, C, D, 21.-22. 10. 2026)
 
-Generováno z `data/opatreni.json` v0.8 (2026-10-22); podrobný rozbor a odkazy: `docs/KATALOG-RESERSE.md`. Uvedeny jen nové položky a kvantifikace, příklady, přenositelnost a rizika doplněné rešerší; původní text výše platí dál. Značky: ✅ ověřeno online, ✅⏳ zdroj starší 12 měsíců, 📄 citace, 🤔 odhad.
+Generováno z `data/opatreni.json` v0.9 (2026-10-22); podrobný rozbor a odkazy: `docs/KATALOG-RESERSE.md`. Uvedeny jen nové položky a kvantifikace, příklady, přenositelnost a rizika doplněné rešerší; původní text výše platí dál. Značky: ✅ ověřeno online, ✅⏳ zdroj starší 12 měsíců, 📄 citace, 🤔 odhad.
 
 ### L02 Extenzivní rotační pastva, omezení přepásání a sešlapu (doplněno)
 - Účinek infiltrace do půdy (hodnota) ✅⏳: MENDELU 2011-2013: vsak v 1. minutě neobhospodařovaný trávník 34,5, sečená louka 12,6, pastvina skotu 7,0 mm/min; objemová hmotnost 1,17 / 1,42 / 1,57 g/cm³; pastva i sklizňová technika vsak významně snižují [7-34.5 mm/min (1. minuta)]. Zdroj: [Sochorec, Jandák, Raus, Kvasnovský, Hejduk, Knot (MENDELU) 2015](https://agrojournal.org/21/03-15.html)

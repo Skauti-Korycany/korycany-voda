@@ -323,6 +323,23 @@
        }
       }
      },
+     "hlavni_cislo": {
+      "type": [
+       "object",
+       "null"
+      ],
+      "properties": {
+       "text": {
+        "type": "string"
+       },
+       "znacka": {
+        "type": [
+         "string",
+         "null"
+        ]
+       }
+      }
+     },
      "prenositelnost": {
       "type": [
        "string",

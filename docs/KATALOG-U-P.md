@@ -155,7 +155,7 @@ Verze 18. 10. 2026 (oprava U05 večer 18. 10.). Doplňuje KATALOG.md a KATALOG-Z
 <!-- RESERSE-START (generováno tools/build_katalog_md.py, needitovat ručně) -->
 ## Doplnění z rešerše dobré praxe (bloky B, A, C, D, 21.-22. 10. 2026)
 
-Generováno z `data/opatreni.json` v0.8 (2026-10-22); podrobný rozbor a odkazy: `docs/KATALOG-RESERSE.md`. Uvedeny jen nové položky a kvantifikace, příklady, přenositelnost a rizika doplněné rešerší; původní text výše platí dál. Značky: ✅ ověřeno online, ✅⏳ zdroj starší 12 měsíců, 📄 citace, 🤔 odhad.
+Generováno z `data/opatreni.json` v0.9 (2026-10-22); podrobný rozbor a odkazy: `docs/KATALOG-RESERSE.md`. Uvedeny jen nové položky a kvantifikace, příklady, přenositelnost a rizika doplněné rešerší; původní text výše platí dál. Značky: ✅ ověřeno online, ✅⏳ zdroj starší 12 měsíců, 📄 citace, 🤔 odhad.
 
 ### U01 Uliční stromořadí s vsakovacími rabátky (doplněno)
 - Účinek ochlazení mikroklimatu (hodnota) ✅: Stromy v ulici: pocitová teplota -2,8 až -7,6 °C ve dne, +0,1 až +1,3 °C v noci; vzduch -0,4 až -2,1 °C (CzechGlobe/UPOL); stromy na jižním chodníku ulice V-Z důležitější než na severním (model Lee & Mayer 2019) [2.8-7.6 °C pocitově]. Zdroj: [TAČR, tisková zpráva 5. 8. 2021](https://tacr.gov.cz/wp-content/uploads/2022/08/220805_riziko-teplotniho-stresu-ve-mestech.pdf); [Lee H. (Stuttgart), Mayer H. (Freiburg), DACH 2019](https://meetingorganizer.copernicus.org/DACH2019/DACH2019-24.pdf)

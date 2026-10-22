@@ -17,7 +17,7 @@ data = {
     "meta": OP["meta"], "ciselniky": OP["ciselniky"], "konstanty": OP["konstanty"],
     "zdroje": {k: {"nazev": v["nazev"], "url": v["url"], "rok": v["rok"], "znacka": v["znacka"]} for k, v in OP["zdroje"].items()},
     "programy": OP["programy"], "nastroje": OP["nastroje"],
-    "opatreni": [{k: o[k] for k in ("id","nazev","popis","misto","rozhoduje","pracnost","ucinky","meritko","kontext","kvantifikace","vhodnost","vazby","povoleni","povoleni_pozn","ceny","financovani","standardy","nedohledano","pozn_poctivost","priklady","prenositelnost","rizika")} for o in OP["opatreni"]],
+    "opatreni": [{k: o[k] for k in ("id","nazev","popis","misto","rozhoduje","pracnost","ucinky","meritko","kontext","kvantifikace","vhodnost","vazby","povoleni","povoleni_pozn","ceny","financovani","standardy","nedohledano","pozn_poctivost","priklady","prenositelnost","rizika","hlavni_cislo")} for o in OP["opatreni"]],
 }
 # skutecna data o uzemi (faze 2): budovy, CN/odtok, povodi, srazky
 BUD = json.load(open(os.path.join(ROOT, "data", "budovy_info.json"), encoding="utf-8"))
@@ -160,7 +160,7 @@ input[type=range]{width:100%}
 .co button{font:inherit;font-size:.9rem;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:999px;padding:.35rem .8rem;cursor:pointer;min-height:40px}
 .co button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .card .one{font-size:.95rem;margin-top:.35rem}.card .one b{font-weight:600}
-.card .prac{font-size:.78rem;color:var(--muted);margin-left:.4rem;white-space:nowrap}
+.card .pr{font-size:.7rem;color:var(--muted);margin-left:.5rem;letter-spacing:.1em;vertical-align:middle;cursor:help}
 .card .zivot{font-size:.8rem;color:var(--ok);margin-top:.25rem}
 .filters button{font:inherit;font-size:.82rem;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:999px;padding:.2rem .6rem;cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
@@ -556,7 +556,7 @@ details.banner[open]>summary .more{display:none}
 <section id="tab-katalog" class="hidden-tab">
   <div class="panel">
     <h2>Katalog opatření</h2>
-    <p class="note">Vyber, kde jsi a co tě trápí. Čísla jsou pro vzorový případ (100 m² střechy, 50 m² dvora, běžný déšť 10 mm); přesná čísla pro svůj dům dostaneš v záložce Můj pozemek. Každé číslo má zdroj a značku.</p>
+    <p class="note">Vyber, kde jsi a co tě trápí. Čísla jsou pro vzorový případ (100 m² střechy, 50 m² dvora, běžný déšť 10 mm); přesná čísla pro svůj dům dostaneš v záložce Můj pozemek. Každé číslo má zdroj a značku. Tečky u názvu = pracnost: ●○○ ruce a víkend, ●●○ dny a malá technika, ●●● projekt a firma.</p>
     <div class="kde" id="k-kde"></div>
     <div class="co" id="k-co"></div>
     <p class="note"><span class="num" id="k-count"></span> opatření</p>
@@ -1019,17 +1019,19 @@ const oblastiOp = o=>{const u=new Set([...o.ucinky.primarni,...o.ucinky.vedlejsi
 const kdeOp = o=> Object.keys(KDE).filter(k=>o.misto.some(m=>KDE[k].m.includes(m)));
 // vzorový pozemek pro katalog: 100 m² střecha, 50 m² dvůr, 250 m² zahrada, HSP B, 10 mm, svody do kanálu
 const VZOR = {roof:100,paved:50,pavedType:'dlazba_piskove_spary',green:250,drain:'kanal',slope:3,soil:'B',rain:0.010,greenType:'zahrada',nkey:null};
+const fmtN = x=> Number.isInteger(+x) ? (+x).toLocaleString("cs-CZ") : (+x).toLocaleString("cs-CZ",{maximumFractionDigits:1});
+const SLOVO = {E:'snížení výparu o', CH:'ochlazení o', W:'úspora pitné vody', ER:'méně eroze o', I:'vsak', R:'zadrží', Q:'zpomalení odtoku', B:''};
 function jednoCislo(o, co, i, r){
-  // 1) spočtené z EFF (pozemek nebo vzor)
-  if(EFF[o.id] && i){ const e=EFF[o.id](i,r); if(e.dV>0||e.dYear>0){ if(co==='sucho'&&e.dYear) return `<b>za rok u tebe zůstane až ${fmt0(e.dYear)} m³</b> vody`; if(e.dV>0) return `<b>z tohoto deště zadrží ${fmt(e.dV)} m³</b>`; } }
-  // 2) doložená hodnota z katalogu pro zvolenou oblast
-  const want = co? CO[co].u : null;
-  const kv = o.kvantifikace.filter(k=>k.typ==='hodnota' && (k.rozsah||k.hodnota!=null) && k.znacka!=='odhad' && (!want||want.includes(k.ucinek)));
-  if(kv.length){ const k=kv[0]; const v=k.rozsah?`${fmt(k.rozsah[0])}-${fmt(k.rozsah[1])}`:fmt(k.hodnota); return `<b>${v} ${k.jednotka||''}</b> ${ZN[k.znacka]||''} <span class="note">${k.popis.split(';')[0].split('(')[0].slice(0,80)}</span>`; }
-  const kq = o.kvantifikace.find(k=>(!want||want.includes(k.ucinek)));
-  if(kq && kq.typ==='vzorec') return `<b>počítá se z tvých ploch</b> <span class="note">(záložka Můj pozemek)</span>`;
-  return `<span class="note">účinek doložen slovně, bez čísla</span>`;
+  // 1) spočtené z EFF (pozemek nebo vzor) - jen když vyjde víc než nula
+  if(EFF[o.id] && i){ const e=EFF[o.id](i,r); const y=e.dYear||0, v=e.dV||0;
+    if(co==='sucho' && Math.round(y)>=1) return {t:`<b>za rok zůstane až ${fmt0(y)} m³</b> vody`, vzor:true};
+    if(v>=0.05) return {t:`<b>z tohoto deště zadrží ${fmt(v)} m³</b>`, vzor:true};
+    if(Math.round(y)>=1) return {t:`<b>za rok zůstane až ${fmt0(y)} m³</b> vody`, vzor:true}; }
+  // 2) ručně napsaná hlavní věta z katalogu (build_opatreni.py HLAVNI_CISLO)
+  const h=o.hlavni_cislo; if(h) return {t:(h.znacka?`<b>${h.text}</b> ${ZN[h.znacka]||''}`:`<span class="note">${h.text}</span>`), vzor:false};
+  return {t:`<span class="note">účinek doložen slovně, bez čísla</span>`, vzor:false};
 }
+const PRAC_IK = {1:'<span class="pr" title="ruce a víkend">●○○</span>',2:'<span class="pr" title="dny, malá technika">●●○</span>',3:'<span class="pr" title="projekt a firma">●●●</span>'};
 function kdeButtons(id, state, cb){ $(id).innerHTML=Object.entries(KDE).map(([k,v])=>`<button aria-pressed="${state.has(k)}" data-k="${k}"><b>${v.n}</b><span>${v.d}</span></button>`).join('');
   $(id).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?state.add(b.dataset.k):state.delete(b.dataset.k); cb();})); }
 function coButtons(id, state, cb){ $(id).innerHTML=Object.entries(CO).map(([k,v])=>`<button aria-pressed="${state.has(k)}" data-k="${k}">${v.n}</button>`).join('');
@@ -1064,7 +1066,7 @@ function recalc(){
   // karty
   if(!$('pz-co').children.length) coButtons('pz-co', PZCO, recalc);
   const cardHTML = x=>{const o=x.o; const on=chosen.has(o.id); const needs=(x.needs||[]).filter(n=>!(chosen.has(n)||(n==='S02'&&i.drain==='pozemek')));
-    return `<div class="card ${on?'on':''}"><header><input type="checkbox" id="c-${o.id}" data-id="${o.id}" ${on?'checked':''}><div class="t"><b>${o.nazev}</b><span class="prac">${PRAC[o.pracnost]}</span>${x.enabler?'<span class="chip">předpoklad pro další</span>':(x.dV>0?`<span class="chip num">+${fmt(x.dV)} m³ teď</span>`:'')}</div></header>
+    return `<div class="card ${on?'on':''}"><header><input type="checkbox" id="c-${o.id}" data-id="${o.id}" ${on?'checked':''}><div class="t"><b>${o.nazev}</b>${PRAC_IK[o.pracnost]||''}${x.enabler?'<span class="chip">předpoklad pro další</span>':(x.dV>0?`<span class="chip num">+${fmt(x.dV)} m³ teď</span>`:'')}</div></header>
       ${o.popis?`<div class="eff">${o.popis}</div>`:''}
       <div class="one">${x.text}</div>
       ${oblastiOp(o).has('zivot')&&o.ucinky.primarni.includes('B')?'<div class="zivot">+ život v zahradě</div>':''}
@@ -1216,13 +1218,13 @@ function renderKatalog(){
   $('k-count').textContent=list.length+' / '+D.opatreni.length;
   const co1=[...KF.co][0]||null; const jeVzor=o=>o.misto.some(m=>['Z','S'].includes(m));
   list.sort((a,b)=>(a.pracnost-b.pracnost)||(a.kontext-b.kontext));
-  $('k-cards').innerHTML=list.map(o=>`<div class="card"><header><div class="t"><b>${o.nazev}</b><span class="prac">${PRAC[o.pracnost]||''}</span>${o.kontext?'<span class="chip">obec / správce</span>':''}<span class="chip id">${o.id}</span></div></header>
+  $('k-cards').innerHTML=list.map(o=>`<div class="card"><header><div class="t"><b>${o.nazev}</b>${PRAC_IK[o.pracnost]||''}${o.kontext?'<span class="chip">obec / správce</span>':''}</div></header>
     ${o.popis?`<div class="eff">${o.popis}</div>`:''}
-    <div class="one">${jednoCislo(o, co1, jeVzor(o)?VZOR:null, VZOR_R)}${jeVzor(o)&&EFF[o.id]?' <span class="note">(vzor: 100 m² střechy, 50 m² dvora, 10 mm)</span>':''}</div>
+    <div class="one">${(()=>{const j=jednoCislo(o, co1, jeVzor(o)?VZOR:null, VZOR_R); return j.t+(j.vzor?' <span class="note">(vzor: 100 m² střechy, 10 mm)</span>':'');})()}</div>
     ${o.ucinky.primarni.includes('B')?'<div class="zivot">+ život a pestrost</div>':''}
     ${kdeText(o)}
     <details><summary>účinek, zdroje, ceny, financování</summary><ul>
-      <li>Kde: ${o.misto.map(m=>CZ.misto[m]).join(', ')}; rozhoduje: ${o.rozhoduje.map(r=>CZ.rozhoduje[r]?CZ.rozhoduje[r].split(' (')[0]:r).join(', ')}; účinky: ${o.ucinky.primarni.map(u=>CZ.ucinek[u]).join(', ')}${o.ucinky.vedlejsi.length?' (vedlejší: '+o.ucinky.vedlejsi.map(u=>CZ.ucinek[u]).join(', ')+')':''}</li>
+      <li>${o.id} - kde: ${o.misto.map(m=>CZ.misto[m]).join(', ')}; rozhoduje: ${o.rozhoduje.map(r=>CZ.rozhoduje[r]?CZ.rozhoduje[r].split(' (')[0]:r).join(', ')}; účinky: ${o.ucinky.primarni.map(u=>CZ.ucinek[u]).join(', ')}${o.ucinky.vedlejsi.length?' (vedlejší: '+o.ucinky.vedlejsi.map(u=>CZ.ucinek[u]).join(', ')+')':''}</li>
       ${o.kvantifikace.map(k=>`<li><b>${CZ.ucinek[k.ucinek]||k.ucinek}</b> (${k.typ}) ${ZN[k.znacka]||''}: ${k.popis}${(k.zdroj||[]).map(z=>D.zdroje[z]?` <a class="src" href="${D.zdroje[z].url||'#'}" target="_blank" rel="noopener">[${D.zdroje[z].nazev.split(',')[0].slice(0,50)}]</a>`:'').join('')}</li>`).join('')}
       ${o.ceny.map(c=>`<li>Cena: ${c.polozka} - ${c.hodnota!=null?fmt0(c.hodnota):(c.rozsah?fmt0(c.rozsah[0])+'-'+fmt0(c.rozsah[1]):'cena neověřena')} ${c.jednotka}${c.rok?' ('+c.rok+')':''}${c.pozn?' - '+c.pozn:''}</li>`).join('')}
       <li>Financování: ${finText(o)}</li><li>Povolení: ${povText(o)}</li>

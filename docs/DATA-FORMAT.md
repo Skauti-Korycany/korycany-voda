@@ -1,6 +1,6 @@
 # Datový formát katalogu opatření (data/opatreni.json)
 
-Verze 0.4, 21. 10. 2026 (JSON meta.verze 0.8).
+Verze 0.4, 21. 10. 2026 (JSON meta.verze 0.9).
 
 **Zdroj pravdy je `tools/build_opatreni.py`** (Python, generuje `data/opatreni.json` a `data/opatreni.schema.json`, kontroluje odkazy mezi položkami, zdroji a programy). MD soubory `docs/KATALOG*.md` jsou dokumentace a odůvodnění, ne data. Změna katalogu = úprava skriptu + `python tools/build_opatreni.py`.
 
@@ -36,6 +36,7 @@ opatreni[]    66 položek Z/S/U/P/L/LES/T/C/M/H
 | standardy[] | id zdrojů (SPPK, normy, metodiky) |
 | nedohledano[] | co chybí (fáze 6) |
 | pozn_poctivost | upozornění pro text v aplikaci |
+| hlavni_cislo | {text, znacka} - jedna ručně napsaná věta s hlavním číslem pro první pohled v aplikaci (slovník HLAVNI_CISLO na konci build_opatreni.py); znacka null = bez doloženého čísla (zobrazí se šedě); v aplikaci má přednost spočtené číslo z jádra, když vyjde víc než nula |
 | priklady[] | "Kde to funguje" (od 21. 10. 2026): {kde, kdy, kdo, co, mereno (co bylo změřeno; null = bez měření), zdroj[], znacka}; aplikace zobrazuje v kartě opatření jako rozbalovací blok s odkazy a značkami |
 | prenositelnost | text: kdy to v Koryčanech dává smysl a kdy ne (klima, HSP, sklon, měřítko) |
 | rizika | text: rizika a co z opatření neplyne (např. "ochladí stěnu, ne ulici") |
