@@ -30,7 +30,7 @@ jobs:
           curl -fsS --retry 3 -o $V/dly-0-203-0-41503035001-H.csv $B/humidity/dly-0-203-0-41503035001-H.csv
           curl -fsS --retry 3 -o $V/dly-0-203-0-41503035001-F.csv $B/wind/dly-0-203-0-41503035001-F.csv
           # okolni stanice pro doplneni mezer (kdyz soubor neexistuje, skript stanici preskoci)
-          for W in 0-203-0-11757 0-203-0-11753 0-203-0-41503035001 0-203-0-11752; do curl -fsS --retry 3 -o $V/dly-$W-SRA.csv $B/precipitation/dly-$W-SRA.csv || echo "chybi srazky $W"; done
+          for W in 0-203-0-11757 0-203-0-11753 0-203-0-41503035001 0-203-0-11752 0-203-0-41503035002 0-203-0-41503047001 0-203-0-41701013001 0-203-0-41701074001 0-203-0-41302020001 0-203-0-41202031001; do curl -fsS --retry 3 -o $V/dly-$W-SRA.csv $B/precipitation/dly-$W-SRA.csv || echo "chybi srazky $W"; done
           for W in 0-203-0-11754 0-203-0-11751 0-20000-0-11774 0-20000-0-11723; do for E in T TMA TMI; do curl -fsS --retry 3 -o $V/dly-$W-$E.csv $B/temperature/dly-$W-$E.csv || echo "chybi $E $W"; done; done
           ls -l $V
       - name: Vypocet normalu

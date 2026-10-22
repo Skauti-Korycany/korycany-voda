@@ -20,7 +20,7 @@ Vystup: data/pocasi/normaly.json
     supertropicky den (neoficialni nazev) Tmax >= 35 °C, tropicka noc Tmin >= 20,0 °C.
 
   - doplneni mezer (od 22. 10. 2026): chybejici dny se doplni z okolnich stanic a v rocnicich se oznaci (dopl):
-    srazky Korycany z nejblizsi stanice, ktera ten den merila (Brankovice, Strilky, Nemochovice, Bukovany),
+    srazky Korycany z nejblizsi stanice, ktera ten den merila (Brankovice, Strilky, Nemochovice, Bukovany, dal 10-15 km),
     prepocet pomerem dlouhodobych uhrnu na spolecnych dnech; teplota Nemochovice (T, TMA, TMI) ze stanice
     s nejmensi odchylkou po mesicnim posunu (kandidati Stare Mesto, Kromeriz, Holesov, Brno-Turany).
     Denni rekordy a nejteplejsi / nejchladnejsi den roku se pocitaji jen z mereni na stanici, ne z doplnku.
@@ -45,7 +45,11 @@ WSI_KOR, WSI_NEM = "0-203-0-41701068002", "0-203-0-41503035001"
 P_OBDOBI = (1991, 2020)
 # sousedni stanice pro doplneni mezer (WSI, nazev, km od Korycan); poradi = priorita
 P_SOUSEDE = [("0-203-0-11757", "Brankovice", 4.8), ("0-203-0-11753", "Střílky", 4.9),
-             ("0-203-0-41503035001", "Nemochovice", 7.8), ("0-203-0-11752", "Bukovany", 9.0)]
+             ("0-203-0-41503035001", "Nemochovice", 7.8), ("0-203-0-11752", "Bukovany", 9.0),
+             # vzdalenejsi stanice s dlouhou radou (1945-1954 a 1981 blizsi stanice nemeri)
+             ("0-203-0-41503035002", "Litenčice", 10.6), ("0-203-0-41503047001", "Bučovice", 11.1),
+             ("0-203-0-41701013001", "Ždánice", 11.1), ("0-203-0-41701074001", "Kyjov", 11.3),
+             ("0-203-0-41302020001", "Buchlovice", 12.7), ("0-203-0-41202031001", "Morkovice-Slížany", 15.1)]
 T_SOUSEDE = [("0-203-0-11754", "Staré Město", 19.1), ("0-203-0-11751", "Kroměříž", 24.6),
              ("0-20000-0-11774", "Holešov", 33.0), ("0-20000-0-11723", "Brno-Tuřany", 34.5)]
 T_OBDOBI = (2001, 2025)
