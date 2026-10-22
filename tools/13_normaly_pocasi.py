@@ -14,8 +14,14 @@ Vystup: data/pocasi/normaly.json
   - den_v_roce: 366 hodnot klouzaveho prumeru (okno 15 dni) T a ET0 pro "proti prumeru" v prubehu mesice
   - rocniky: {rok: {P (mesice 1-12 + rok, Korycany 1921-2025), T, ET0, bil (Nemochovice 2001-2025)}}
   - rekordy: nejvyssi / nejnizsi mesicni P, T a nejvyssi denni P pro kazdy mesic
+  - horko (od 22. 10. 2026): v rocnicich T.dni_nad_35 (supertropicke dny, Tmax >= 35), T.tropicke_noci (Tmin >= 20),
+    leto = prumer dennich maxim a minim cervna-srpna (jen s >= 89 z 92 dni); leto_normal = prumer 2001-2025.
+    Prahy podle CHMU, Tiskova informace Klimatologicke leto 2025 (2. 9. 2025): tropicky den Tmax >= 30 °C,
+    supertropicky den (neoficialni nazev) Tmax >= 35 °C, tropicka noc Tmin >= 20,0 °C.
 
 Spusteni: python tools/13_normaly_pocasi.py [adresar s CSV, vychozi data/pocasi/vzorek]
+  Na GitHubu: workflow .github/workflows/normaly.yml (stahne CSV, spusti skript, pregeneruje index.html, commitne);
+  spousti se sam po zmene tohoto skriptu nebo rucne Actions -> "Normaly pocasi" -> Run workflow (napr. v breznu 2027).
 """
 import csv
 import json
@@ -117,6 +123,12 @@ for rok in sorted(set(P_m) | set(T_m)):
             z["T"]["min_den"] = min((v, d.isoformat()) for d, v in TMI.items() if d.year == rok)[::-1]
             z["T"]["dni_nad_30"] = sum(1 for d, v in TMA.items() if d.year == rok and v >= 30)
             z["T"]["dni_pod_0"] = sum(1 for d, v in TMI.items() if d.year == rok and v < 0)
+            z["T"]["dni_nad_35"] = sum(1 for d, v in TMA.items() if d.year == rok and v >= 35)
+            z["T"]["tropicke_noci"] = sum(1 for d, v in TMI.items() if d.year == rok and v >= 20)
+    lx = [v for d, v in TMA.items() if d.year == rok and 6 <= d.month <= 8]
+    ln = [v for d, v in TMI.items() if d.year == rok and 6 <= d.month <= 8]
+    if len(lx) >= 89 and len(ln) >= 89:
+        z["leto"] = {"Tmax": r1(prumer(lx)), "Tmin": r1(prumer(ln)), "dni": len(lx)}
     if em:
         z["ET0"] = {str(k): em[k] for k in sorted(em)}
         if len(em) == 12:
@@ -183,6 +195,10 @@ out = {
     "den_v_roce": {"pozn": "index 0 = 1. leden (rok 2000, 366 dní), klouzavý průměr 15 dní, období T_ET0",
                    "T": den_v_roce(T, T_OBDOBI), "ET0": den_v_roce(ET0, T_OBDOBI)},
     "rocniky": rocniky,
+    "leto_normal": {"obdobi": list(T_OBDOBI),
+                    "Tmax": r1(prumer([z["leto"]["Tmax"] for r, z in rocniky.items() if "leto" in z and T_OBDOBI[0] <= int(r) <= T_OBDOBI[1]])),
+                    "Tmin": r1(prumer([z["leto"]["Tmin"] for r, z in rocniky.items() if "leto" in z and T_OBDOBI[0] <= int(r) <= T_OBDOBI[1]])),
+                    "roku": sum(1 for r, z in rocniky.items() if "leto" in z and T_OBDOBI[0] <= int(r) <= T_OBDOBI[1])},
     "rekordy": rekordy,
     "pocty": {"P_dni": len(P), "T_dni": len(T), "ET0_dni": len(ET0), "rocniky_P_uplne": sum(1 for z in rocniky.values() if "rok" in z.get("P", {})),
               "rocniky_T_uplne": sum(1 for z in rocniky.values() if "rok" in z.get("T", {}))},
@@ -191,4 +207,5 @@ with open(OUT, "w", encoding="utf-8") as f:
     json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
 print(f"rok: P {P_rok} mm, ET0 {ET0_rok} mm, bil {out['rok']['bil']} mm, T {out['rok']['T']} C")
 print("mesic:", {k: (v["P"], v["T"], v["ET0"]) for k, v in mesic.items()})
+print("leto (prumer dennich maxim VI-VIII):", {r: z["leto"]["Tmax"] for r, z in rocniky.items() if "leto" in z}, "normal", out["leto_normal"])
 print("uplnych rocniku P:", out["pocty"]["rocniky_P_uplne"], "T:", out["pocty"]["rocniky_T_uplne"], "->", OUT, os.path.getsize(OUT), "B")

@@ -1,0 +1,44 @@
+name: Normaly pocasi
+
+# Prepocita dlouhe rady pro zalozku "Jak bylo" (data/pocasi/normaly.json) z historickych dat CHMU.
+# Spusti se samo po zmene tools/13_normaly_pocasi.py, jinak rucne: Actions -> "Normaly pocasi" -> Run workflow.
+# Historicka data CHMU se za uplynuly rok doplnuji do unora: v breznu 2027 spustit rucne (rocnik 2026 do rad).
+on:
+  push:
+    branches: [main]
+    paths: [tools/13_normaly_pocasi.py, .github/workflows/normaly.yml]
+  workflow_dispatch:
+
+jobs:
+  normaly:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Stazeni historickych CSV CHMU
+        run: |
+          set -e
+          B=https://opendata.chmi.cz/meteorology/climate/historical_csv/data/daily
+          V=data/pocasi/vzorek
+          mkdir -p $V
+          curl -fsS --retry 3 -o $V/dly-0-203-0-41701068002-SRA.csv $B/precipitation/dly-0-203-0-41701068002-SRA.csv
+          for E in T TMA TMI; do curl -fsS --retry 3 -o $V/dly-0-203-0-41503035001-$E.csv $B/temperature/dly-0-203-0-41503035001-$E.csv; done
+          curl -fsS --retry 3 -o $V/dly-0-203-0-41503035001-H.csv $B/humidity/dly-0-203-0-41503035001-H.csv
+          curl -fsS --retry 3 -o $V/dly-0-203-0-41503035001-F.csv $B/wind/dly-0-203-0-41503035001-F.csv
+          ls -l $V
+      - name: Vypocet normalu
+        run: python tools/13_normaly_pocasi.py data/pocasi/vzorek
+      - name: Pregenerovat index.html
+        run: python tools/build_dummy.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/pocasi/normaly.json index.html prototyp/index.html
+          git commit -m "[bot] normály počasí $(date -u +%Y-%m-%d)" || { echo "nic noveho"; exit 0; }
+          git pull --rebase -q origin main
+          git push origin HEAD:main
