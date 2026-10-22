@@ -2270,7 +2270,7 @@
   {
    "id": "Z03",
    "nazev": "Zasakovací průleh / rýha po vrstevnici (svejl) v zahradě nebo sadu",
-   "popis": null,
+   "popis": "Mělká rýha nebo val po vrstevnici ve svažité zahradě či sadu, který zastaví vodu stékající po svahu a nechá ji vsáknout tam, kde spadla.",
    "misto": [
     "Z",
     "L"
@@ -2382,7 +2382,7 @@
   {
    "id": "Z04",
    "nazev": "Náhrada zpevněných ploch propustnými (zatravňovací dlažba, štěrk, propustná dlažba)",
-   "popis": null,
+   "popis": "Místo asfaltu nebo betonu na dvoře a vjezdu zatravňovací dlažba, štěrkový trávník nebo propustná dlažba, aby déšť zůstal na pozemku a povrch se v létě tolik nerozpaloval.",
    "misto": [
     "Z",
     "U"
@@ -2556,7 +2556,7 @@
   {
    "id": "Z05",
    "nazev": "Trvalý pokryv půdy: mulč, kompost, organická hmota",
-   "popis": null,
+   "popis": "Půda na záhonech a pod stromy nikdy holá: mulč, kompost, pokryvné rostliny; půda se v létě méně vysušuje a lépe přijímá déšť.",
    "misto": [
     "Z",
     "L",
@@ -2706,7 +2706,7 @@
   {
    "id": "Z06",
    "nazev": "Výsadba stromu (stín, vzrostlý strom, ovocný strom)",
-   "popis": null,
+   "popis": "Jeden vzrostlý nebo ovocný strom na správném místě: stín na dům a dvůr v létě, zpomalení větru, voda zadržená v koruně a kořenech.",
    "misto": [
     "Z",
     "U",
@@ -2947,7 +2947,7 @@
   {
    "id": "Z07",
    "nazev": "Živý plot / keřový pás místo plotu nebo zdi",
-   "popis": null,
+   "popis": "Živý plot nebo pás keřů místo plotu či zdi: brzdí vítr, stíní, zadržuje vláhu a dává život zahradě.",
    "misto": [
     "Z",
     "U"
@@ -3039,7 +3039,7 @@
   {
    "id": "Z08",
    "nazev": "Květnatá louka místo trávníku, vyšší a méně častá seč, mozaika",
-   "popis": null,
+   "popis": "Část trávníku nechat vyrůst do květnaté louky a sekat jen 2x ročně nebo po částech: méně výparu, chladnější půda, hmyz.",
    "misto": [
     "Z",
     "U",
@@ -3140,7 +3140,7 @@
   {
    "id": "Z09",
    "nazev": "Zelená fasáda, popínavky, pergola se zelení",
-   "popis": null,
+   "popis": "Popínavka nebo pergola se zelení na jižní a západní stěně: stíní zeď a okna, dům se v létě méně ohřívá.",
    "misto": [
     "Z",
     "S"
@@ -3260,7 +3260,7 @@
   {
    "id": "Z10",
    "nazev": "Vsakovací objekt pro střešní vodu (štěrkové těleso, vsakovací bloky, šachta)",
-   "popis": null,
+   "popis": "Štěrkové těleso, vsakovací bloky nebo šachta pod trávníkem, kam jde voda ze střechy, když nádrž přeteče; na propustné půdě zasákne celý déšť.",
    "misto": [
     "Z",
     "U"
@@ -3356,7 +3356,7 @@
   {
    "id": "Z11",
    "nazev": "Zálivka zachycenou vodou, kapková závlaha",
-   "popis": null,
+   "popis": "Zalévat jen tam, kde je potřeba, a vodou z nádrže: kapková hadice ke kořenům místo postřiku, večer místo poledne.",
    "misto": [
     "Z"
    ],
@@ -3718,7 +3718,7 @@
   {
    "id": "S01",
    "nazev": "Nádrž na dešťovou vodu (sud, IBC, podzemní jímka) s využitím",
-   "popis": null,
+   "popis": "Sud, IBC kontejner nebo podzemní nádrž pod okapem: déšť ze střechy na zálivku místo pitné vody z kohoutku.",
    "misto": [
     "S",
     "Z"
@@ -3867,7 +3867,7 @@
   {
    "id": "S02",
    "nazev": "Odpojení dešťových svodů od kanalizace, svedení na pozemek",
-   "popis": null,
+   "popis": "Odpojit okapový svod od kanalizace a vést vodu na pozemek (do nádrže, záhonu, vsaku): první krok, bez něj ostatní opatření u domu nic nezadrží.",
    "misto": [
     "S"
    ],
@@ -3959,7 +3959,7 @@
   {
    "id": "S03",
    "nazev": "Zelená střecha (extenzivní)",
-   "popis": null,
+   "popis": "Nízká vegetační střecha na garáži, kůlně nebo plochém domě: zadrží většinu běžného deště a v létě je o desítky stupňů chladnější než fólie.",
    "misto": [
     "S"
    ],
@@ -4079,7 +4079,7 @@
   {
    "id": "S04",
    "nazev": "Světlá střecha a plochy (albedo, cool roof)",
-   "popis": null,
+   "popis": "Světlý nátěr nebo krytina na tmavé ploché střeše a dvoře: střecha a místnosti pod ní se v létě méně rozpálí; vzduch v obci to nezmění.",
    "misto": [
     "S",
     "U"
@@ -4551,7 +4551,7 @@
   {
    "id": "U01",
    "nazev": "Uliční stromořadí s vsakovacími rabátky",
-   "popis": null,
+   "popis": "Stromy v ulici a na náměstí vysazené do velkých prokořenitelných rabátek, kam teče voda z chodníků a střech: stín pro lidi, voda pro strom.",
    "misto": [
     "U"
    ],
@@ -4767,7 +4767,7 @@
   {
    "id": "U02",
    "nazev": "Propustné povrchy parkovišť, chodníků, dvorů veřejných budov",
-   "popis": null,
+   "popis": "Parkoviště, chodníky a dvory veřejných budov z propustných povrchů místo asfaltu: déšť zasákne a plocha se v létě méně rozpálí.",
    "misto": [
     "U"
    ],
@@ -4889,7 +4889,7 @@
   {
    "id": "U03",
    "nazev": "Zasakovací pásy a průlehy podél komunikací, příkopy s retencí",
-   "popis": null,
+   "popis": "Travnaté průlehy a příkopy s retencí podél silnic a cest, kam se svede voda z vozovky, aby zasákla místo odtoku do potoka.",
    "misto": [
     "U",
     "C"
@@ -5049,7 +5049,7 @@
   {
    "id": "U04",
    "nazev": "Retence a zasakování vody z veřejných budov (škola, úřad)",
-   "popis": null,
+   "popis": "Voda ze střech školy, úřadu a dalších veřejných budov do nádrží na zálivku a splachování a do vsaku, místo do kanalizace.",
    "misto": [
     "U",
     "S"
@@ -5163,7 +5163,7 @@
   {
    "id": "U05",
    "nazev": "Obecní tůň, mokřad, obnova návesní nádrže",
-   "popis": null,
+   "popis": "Obecní tůň, mokřad nebo obnovená návesní nádrž: místo pro vodu, život a trochu chladu uprostřed obce.",
    "misto": [
     "U",
     "T"
@@ -5321,7 +5321,7 @@
   {
    "id": "U06",
    "nazev": "Mozaiková seč obecních ploch, květnaté louky",
-   "popis": null,
+   "popis": "Obecní trávníky sekat mozaikově a méně často, část nechat kvést: méně výparu, méně práce, víc hmyzu.",
    "misto": [
     "U",
     "L"
@@ -6054,7 +6054,7 @@
   {
    "id": "P01",
    "nazev": "Protierozní mez, zatravněný pás, biopás po vrstevnici",
-   "popis": null,
+   "popis": "Travnatý pás, mez nebo biopás po vrstevnici napříč svahem pole: zastaví splach půdy a zpomalí vodu při přívalu.",
    "misto": [
     "P"
    ],
@@ -6180,7 +6180,7 @@
   {
    "id": "P02",
    "nazev": "Zasakovací průleh na orné půdě",
-   "popis": null,
+   "popis": "Mělký zasakovací průleh po vrstevnici na orné půdě: zachytí vodu z pole, nechá ji vsáknout a zadrží splavenou zeminu.",
    "misto": [
     "P"
    ],
@@ -6262,7 +6262,7 @@
   {
    "id": "P03",
    "nazev": "Rozdělení lánu, pásové střídání plodin, orientace po vrstevnici",
-   "popis": null,
+   "popis": "Velký lán rozdělit na pásy plodin po vrstevnici a obdělávat napříč svahem, ne po spádnici.",
    "misto": [
     "P"
    ],
@@ -6343,7 +6343,7 @@
   {
    "id": "P04",
    "nazev": "Půdoochranné technologie: bezorebné setí, strip-till, meziplodiny, strniště",
-   "popis": null,
+   "popis": "Setí bez orby, strip-till, meziplodiny a strniště přes zimu: půda je pořád krytá a drží víc vody.",
    "misto": [
     "P"
    ],
@@ -6421,7 +6421,7 @@
   {
    "id": "P05",
    "nazev": "Zatravnění údolnic a drah soustředěného odtoku",
-   "popis": null,
+   "popis": "Údolnice a dráhy soustředěného odtoku v poli trvale zatravnit, aby se v nich při přívalu netvořily rýhy.",
    "misto": [
     "P"
    ],
@@ -6499,7 +6499,7 @@
   {
    "id": "P06",
    "nazev": "Trvalé zatravnění nebo zalesnění svažitých a erozně ohrožených pozemků",
-   "popis": null,
+   "popis": "Nejstrmější a nejohroženější části pole převést na trvalý travní porost nebo les.",
    "misto": [
     "P"
    ],
@@ -6585,7 +6585,7 @@
   {
    "id": "P07",
    "nazev": "Větrolam, liniová výsadba na hranici pozemku",
-   "popis": null,
+   "popis": "Řada stromů a keřů na hranici pozemku napříč převládajícímu větru: brzdí vítr, snižuje výpar a větrnou erozi.",
    "misto": [
     "P",
     "C"
@@ -6797,7 +6797,7 @@
   {
    "id": "P09",
    "nazev": "Agrolesnictví: řady stromů v poli, ovocné stromy v pastvině",
-   "popis": null,
+   "popis": "Řady stromů v poli nebo ovocné stromy v pastvině (agrolesnictví): stín, závětří, hlubší kořeny, úroda ze stromů.",
    "misto": [
     "P",
     "L"
@@ -6909,7 +6909,7 @@
   {
    "id": "P10",
    "nazev": "Regulace nebo přerušení melioračního odvodnění",
-   "popis": null,
+   "popis": "Staré meliorační trubky a příkopy přerušit nebo regulovat, aby voda z pozemku neodtékala zbytečně rychle.",
    "misto": [
     "P",
     "L"
@@ -6995,7 +6995,7 @@
   {
    "id": "P11",
    "nazev": "Remízek, drobná plocha zeleně v cípech a na neobdělatelných místech",
-   "popis": null,
+   "popis": "Remízek nebo drobná plocha zeleně v cípu pole, na mezi nebo neobdělatelném místě: úkryt pro zvěř, závětří, zadržení vody.",
    "misto": [
     "P"
    ],
@@ -7085,7 +7085,7 @@
   {
    "id": "P12",
    "nazev": "Zvyšování organické hmoty v půdě (hnůj, kompost, zelené hnojení)",
-   "popis": null,
+   "popis": "Hnůj, kompost, zelené hnojení a zbytky plodin zpět do půdy: víc organické hmoty, lepší struktura a vsak.",
    "misto": [
     "P"
    ],
@@ -7159,7 +7159,7 @@
   {
    "id": "L01",
    "nazev": "Mozaiková nebo pozdní seč, ponechané pásy",
-   "popis": null,
+   "popis": "Louku sekat mozaikově nebo později a část ponechat nepokosenou: chladnější půda, méně výparu, víc hmyzu.",
    "misto": [
     "L"
    ],
@@ -7234,7 +7234,7 @@
   {
    "id": "L02",
    "nazev": "Extenzivní rotační pastva, omezení přepásání a sešlapu",
-   "popis": null,
+   "popis": "Pastvu rozdělit do oplůtků a nechat plochy odpočinout, nepřepásat: méně udusaná půda vsákne víc vody.",
    "misto": [
     "L"
    ],
@@ -7348,7 +7348,7 @@
   {
    "id": "L03",
    "nazev": "Solitérní stromy a skupiny v pastvině",
-   "popis": null,
+   "popis": "Solitérní stromy a skupiny v pastvině: stín pro zvířata, závětří, voda v půdě pod korunou.",
    "misto": [
     "L"
    ],
@@ -7442,7 +7442,7 @@
   {
    "id": "L04",
    "nazev": "Ochrana pramenišť a mokřin v loukách před sešlapem, obnova",
-   "popis": null,
+   "popis": "Mokřiny a prameniště v loukách oplotit před dobytkem a neodvodňovat: zůstávají zdrojem vody i v suchu.",
    "misto": [
     "L",
     "T"
@@ -7517,7 +7517,7 @@
   {
    "id": "LES01",
    "nazev": "Lesní tůně a přehrážky v lesních stržích (dřevěné, kamenné)",
-   "popis": null,
+   "popis": "Malé tůně a přehrážky z kamene nebo dřeva v lesních stržích: zpomalí přívalovou vodu a zadrží splaveniny ještě v lese.",
    "misto": [
     "LES",
     "C"
@@ -7619,7 +7619,7 @@
   {
    "id": "LES02",
    "nazev": "Odvodnění lesních cest a svážnic do lesa, ne do strží (svodnice, příčné prahy)",
-   "popis": null,
+   "popis": "Vodu z lesních cest a svážnic svádět příčnými prahy a svodnicemi do lesa, ne do strže nebo rovnou do potoka.",
    "misto": [
     "LES",
     "C"
@@ -7722,7 +7722,7 @@
   {
    "id": "LES03",
    "nazev": "Druhově pestrý les, přirozená obnova, mrtvé dřevo a humus",
-   "popis": null,
+   "popis": "Smíšený, druhově pestrý les s přirozenou obnovou, ponechaným mrtvým dřevem a humusem: zadrží víc vody než smrková monokultura.",
    "misto": [
     "LES"
    ],
@@ -7817,7 +7817,7 @@
   {
    "id": "LES04",
    "nazev": "Lesní okraj s keřovým pláštěm (ekoton)",
-   "popis": null,
+   "popis": "Okraj lesa s keřovým pláštěm místo ostré hrany: brzdí vítr, stíní, zadržuje vláhu na přechodu les-pole.",
    "misto": [
     "LES",
     "P"
@@ -7890,7 +7890,7 @@
   {
    "id": "T01",
    "nazev": "Tůň v nivě (bez fólie), soustava tůní, obnova zazemněné tůně",
-   "popis": null,
+   "popis": "Tůň v nivě bez fólie, soustava tůní nebo obnova zazemněné tůně: voda v krajině, chlad a život kolem potoka.",
    "misto": [
     "T"
    ],
@@ -7996,7 +7996,7 @@
   {
    "id": "T02",
    "nazev": "Mokřad, zamokření nivy přerušením odvodnění",
-   "popis": null,
+   "popis": "Zamokření nivy přerušením odvodnění a obnova mokřadu: nejvíc vody zadržené na hektar ze všech opatření v krajině.",
    "misto": [
     "T"
    ],
@@ -8136,7 +8136,7 @@
   {
    "id": "T03",
    "nazev": "Mrtvé dřevo a dřevní přehrážky v korytě drobného toku (leaky dams)",
-   "popis": null,
+   "popis": "Padlé kmeny a dřevní přehrážky ponechané nebo vložené do koryta drobného lesního potoka: zpomalí vodu a zvednou hladinu v nivě.",
    "misto": [
     "T"
    ],
@@ -8276,7 +8276,7 @@
   {
    "id": "T04",
    "nazev": "Revitalizace drobného toku (odstranění opevnění, rozvlnění, snížení břehů)",
-   "popis": null,
+   "popis": "Napřímený a opevněný potok vrátit do přírodě blízkého koryta: rozvlnit, snížit břehy, nechat vodu rozlévat do nivy.",
    "misto": [
     "T"
    ],
@@ -8380,7 +8380,7 @@
   {
    "id": "T05",
    "nazev": "Obnova prameniště, studánky, ochrana před sešlapem a splachy",
-   "popis": null,
+   "popis": "Studánku nebo prameniště vyčistit, zastínit, oplotit před dobytkem a chránit před splachy z cest a polí.",
    "misto": [
     "T",
     "L",
@@ -8457,7 +8457,7 @@
   {
    "id": "T06",
    "nazev": "Břehové porosty podél toku a kolem nádrží",
-   "popis": null,
+   "popis": "Stromy a keře podél potoka a kolem nádrží: stíní vodu, drží břehy, chladí údolí.",
    "misto": [
     "T"
    ],
@@ -8569,7 +8569,7 @@
   {
    "id": "T07",
    "nazev": "Malá vodní nádrž, suchý poldr, rybník",
-   "popis": null,
+   "popis": "Malá vodní nádrž, rybník nebo suchý poldr na toku: zadrží přívalovou vlnu a část vody pro sucho; velký projekt obce nebo správce.",
    "misto": [
     "T"
    ],
@@ -8644,7 +8644,7 @@
   {
    "id": "C01",
    "nazev": "Zasakovací příkopy a svodnice u cest, odvedení vody do průlehů místo do toku",
-   "popis": null,
+   "popis": "Příkopy a svodnice u polních a lesních cest vést do zasakovacích průlehů, ne přímo do potoka.",
    "misto": [
     "C"
    ],
@@ -8729,7 +8729,7 @@
   {
    "id": "C02",
    "nazev": "Přehrážky v erozních rýhách a stržích (kámen, dřevo, proutí)",
-   "popis": null,
+   "popis": "Přehrážky z kamene, dřeva nebo proutí v erozních rýhách a stržích: zastaví prohlubování a zadrží splaveniny.",
    "misto": [
     "C",
     "LES"
@@ -8818,7 +8818,7 @@
   {
    "id": "C03",
    "nazev": "Zatravnění a výsadba na svazích, terasování starých úvozů",
-   "popis": null,
+   "popis": "Svahy, staré úvozy a terasy zatravnit nebo osázet a udržovat zídky: půda zůstane na místě a voda vsákne.",
    "misto": [
     "C"
    ],

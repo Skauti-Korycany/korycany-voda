@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 22. 10. 2026 08:45 (relace 12 „Rešerše dobré praxe“ **uzavřena: bloky B, A, C, D hotové**, katalog v0.6 / JSON 0.8; sekce **Katalog - rešerše dobré praxe** níže. **Další krok (uživatel 22. 10.)**: UX - jak se opatření zobrazují, zjednodušený a přehledný výběr na pozemku, podrobnosti až při zájmu.) Předtím relace 11 „Můj pozemek UX“ uzavřena, včetně večerních úprav: výchozí déšť 10 mm v celé aplikaci, pozemek jako východisko pro Celé území, texty kroků. ~~Další chat: rešerše dobré praxe do katalogu~~ blok B hotov 21. 10. Detail: záložka přestavěna na **průvodce po krocích (varianta A)** včetně hledání adresy RÚIAN a odkazu se stavem, sekce **Můj pozemek - průvodce** níže. Předtím relace 10 „Nádrže v jádru“ uzavřena: bloky O a P hotové - **území modelu rozšířeno k jezu před Mouchnicemi, 17,7 km²**; úpravy Jak bylo a Celé území; **další chat: přestavba Můj pozemek podle `docs/POZEMEK-UX-ZADANI.md`**; předtím relace 9 „Počasí“, sekce **Počasí - Jak bylo** níže). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
+Aktualizováno: 22. 10. 2026 08:45 (relace 12 „Rešerše dobré praxe“ **uzavřena: bloky B, A, C, D hotové**, katalog v0.6 / JSON 0.8; sekce **Katalog - rešerše dobré praxe** níže. UX opatření hotovo 22. 10. (sekce **Opatření - UX výběru** níže). **Další chat**: rešerše zdrojů k biodiverzitě a krajině (oblast „Život a voda v krajině“) - uživatel chce doplnit; pak napojení EFF na skutečný pozemek.) Předtím relace 11 „Můj pozemek UX“ uzavřena, včetně večerních úprav: výchozí déšť 10 mm v celé aplikaci, pozemek jako východisko pro Celé území, texty kroků. ~~Další chat: rešerše dobré praxe do katalogu~~ blok B hotov 21. 10. Detail: záložka přestavěna na **průvodce po krocích (varianta A)** včetně hledání adresy RÚIAN a odkazu se stavem, sekce **Můj pozemek - průvodce** níže. Předtím relace 10 „Nádrže v jádru“ uzavřena: bloky O a P hotové - **území modelu rozšířeno k jezu před Mouchnicemi, 17,7 km²**; úpravy Jak bylo a Celé území; **další chat: přestavba Můj pozemek podle `docs/POZEMEK-UX-ZADANI.md`**; předtím relace 9 „Počasí“, sekce **Počasí - Jak bylo** níže). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
 
 ## Fáze: 1 a 2 hotové. Fáze 3 (jádro) rozpracovaná: v0.1 umí statistiku pozemku, SCS-CN po buňkách, povodí bodu, nádrž/poldr z DMR; chybí transformace vlny, bilance P-ET, USLE, napojení opatření.
 
@@ -145,6 +145,26 @@ Aktualizováno: 22. 10. 2026 08:45 (relace 12 „Rešerše dobré praxe“ **uza
 - Příklady bez měření (Ořechov, Kyselov, Roeschwoog) jsou v aplikaci označené „Bez měření“; do součtů nevstupují.
 - Doplňky v `build_opatreni.py` nemění původní kvantifikace, jen přidávají; pořadí kvantifikací = původní, pak nové.
 - Dvě kvantifikace Z12 (📄 60-70 % a 📄 50-70 %) se v aplikaci zobrazují obě se značkou citace; v součtech vody se W nepočítá.
+
+## Opatření - UX výběru (relace 12, 22. 10. 2026)
+
+### Hotovo
+- Zadání `docs/OPATRENI-UX-ZADANI.md`; rozhodnutí uživatele: výběr občanem podle oblastí, zjednodušená karta, katalog bez technických štítků, čtvrtá oblast **Život a voda v krajině** (chce), vzorový příklad v katalogu, Krajina v hlavním výběru.
+- Aplikace (`build_dummy.py`): **Katalog** = dlaždice KDE (Zahrada / Dům a střecha / Obec a škola / Krajina / Měř s námi) + přepínače CO ŘEŠÍM (Sucho / Příval a voda do kanálu / Horko / Život a voda v krajině); staré filtry pod „Podrobné filtry (pro školu a úřad)“. Karta: název + pracnost slovy + jedna věta (`popis`) + **jedno číslo** (`jednoCislo()`: z EFF pro vzorový pozemek 100 m² střechy / 50 m² dvora / 250 m² zahrady / HSP B / 10 mm, jinak první doložená hodnota pro zvolenou oblast, jinak „bez čísla“) + „+ život a pestrost“ u B; podrobnosti (Kde to funguje, zdroje, cena, povolení, financování) rozbalovací. Řazení: pracnost, pak kontextová.
+- **Můj pozemek**, krok 4: stejné přepínače CO ŘEŠÍM filtrují karty (`PZCO`); hlavička karty zjednodušena (chipy cena/povolení přesunuty do rozbalení).
+- Mapování oblastí z účinků (`CO`): sucho = I, R, W, E; příval = Q, R, I, ER; horko = CH, E; život = B + vše s místem T/L/LES. Mapování KDE z místa (`KDE`). Vše v `build_dummy.py`, JSON beze změny.
+- `popis` doplněn u 48 opatření (teď 66/66).
+- Hlavička: verze katalogu z `meta.verze`.
+- Kontrola Chromium 1280/375 px bez chyb; test VŠE OK.
+
+### Na co ses nezeptal (UX)
+- Katalog ukazuje číslo pro vzor jen u Z/S opatření s EFF (9 položek); u U/P/L/T bere první doloženou hodnotu - u některých je to nepřehledné (např. k_f v m/s u U03). Chceš u těchto ručně vybrat „hlavní číslo“ (pole `hlavni_cislo` v JSON)?
+- Oblast „Život“ zahrnuje automaticky všechna T/L/LES opatření - souhlasíš, nebo jen ta s účinkem B?
+- Krok 4 na pozemku má řazení „nejvíc vody za nejmíň práce“ i při filtru Horko - tam by dávalo smysl řadit podle CH. Zatím ne.
+
+### Předpoklady (UX)
+- Vzorový pozemek: 100 m² střechy, 50 m² dvora (dlažba s pískovými spárami), 250 m² zahrady, HSP B, sklon 3 %, svody do kanálu, déšť 10 mm.
+- „Jedno číslo“ upřednostňuje spočtené EFF před katalogovou hodnotou; odhady (🤔) se jako hlavní číslo nezobrazují.
 
 ## Můj pozemek - průvodce (relace 11, 21. 10. 2026)
 

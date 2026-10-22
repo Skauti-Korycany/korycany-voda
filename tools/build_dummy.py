@@ -152,6 +152,16 @@ table.flow tr.total td{font-weight:600}
 .sum .box small{display:block;color:var(--muted);font-size:.78rem}
 input[type=range]{width:100%}
 .filters{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0}
+.kde{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.5rem;margin:.6rem 0}
+.kde button{font:inherit;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:10px;padding:.6rem .5rem;cursor:pointer;min-height:56px;line-height:1.2}
+.kde button b{display:block;font-size:1rem}.kde button span{font-size:.78rem;color:var(--muted)}
+.kde button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}.kde button[aria-pressed="true"] span{color:var(--accent-ink);opacity:.85}
+.co{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0 .6rem}
+.co button{font:inherit;font-size:.9rem;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:999px;padding:.35rem .8rem;cursor:pointer;min-height:40px}
+.co button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.card .one{font-size:.95rem;margin-top:.35rem}.card .one b{font-weight:600}
+.card .prac{font-size:.78rem;color:var(--muted);margin-left:.4rem;white-space:nowrap}
+.card .zivot{font-size:.8rem;color:var(--ok);margin-top:.25rem}
 .filters button{font:inherit;font-size:.82rem;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:999px;padding:.2rem .6rem;cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .src{font-size:.8rem;color:var(--muted)} .src a{color:var(--accent)}
@@ -281,7 +291,7 @@ details.banner[open]>summary .more{display:none}
 <style>__LEAFLET_CSS__</style>
 
 <header class="top">
-  <div><h1>Voda v Koryčanech</h1><div class="tag">náhled v0.2 - skutečný terén, půda, budovy a srážky; katalog v0.4</div></div>
+  <div><h1>Voda v Koryčanech</h1><div class="tag">náhled v0.2 - skutečný terén, půda, budovy a srážky; katalog v0.8</div></div>
   <nav class="tabs" role="tablist">
     <button role="tab" aria-selected="true" data-tab="jakbylo">Jak bylo</button>
     <button role="tab" aria-selected="false" data-tab="pozemek">Můj pozemek</button>
@@ -431,7 +441,8 @@ details.banner[open]>summary .more{display:none}
       <div class="pz-step" data-s="4">
         <h2>Co můžeš udělat</h2>
         <p class="pz-chosen" id="pz-chosen"></p>
-        <p class="note">Seřazeno: nejvíc vody za nejmíň práce. Zaškrtni, co by u tebe šlo. Čísla platí pro tvoje plochy a zvolený déšť.</p>
+        <div class="co" id="pz-co"></div>
+        <p class="note">Seřazeno: nejvíc vody za nejmíň práce. Zaškrtni, co by u tebe šlo. Čísla platí pro tvoje plochy a zvolený déšť. Podrobnosti (zdroje, kde to funguje, ceny) jsou pod každou kartou.</p>
         <div class="cards" id="cards"></div>
         <div class="unfit" id="unfit"></div>
       </div>
@@ -545,11 +556,16 @@ details.banner[open]>summary .more{display:none}
 <section id="tab-katalog" class="hidden-tab">
   <div class="panel">
     <h2>Katalog opatření</h2>
-    <p class="note"><span class="num" id="k-count"></span> položek z opatreni.json. Filtry se sčítají. Každé číslo má zdroj a značku.</p>
+    <p class="note">Vyber, kde jsi a co tě trápí. Čísla jsou pro vzorový případ (100 m² střechy, 50 m² dvora, běžný déšť 10 mm); přesná čísla pro svůj dům dostaneš v záložce Můj pozemek. Každé číslo má zdroj a značku.</p>
+    <div class="kde" id="k-kde"></div>
+    <div class="co" id="k-co"></div>
+    <p class="note"><span class="num" id="k-count"></span> opatření</p>
+    <details class="pz-more"><summary>Podrobné filtry (pro školu a úřad)</summary>
     <div class="filters" id="k-misto"></div>
     <div class="filters" id="k-rozhoduje"></div>
     <div class="filters" id="k-ucinek"></div>
     <div class="filters" id="k-fin"><button aria-pressed="false" data-f="otevreno">jen s otevřenou dotací (k 18. 10. 2026)</button><button aria-pressed="false" data-f="svepomoc">jen svépomoc (pracnost 1, povolení 0)</button></div>
+    </details>
     <div class="cards" id="k-cards"></div>
   </div>
 </section>
@@ -994,6 +1010,32 @@ function kdeText(o){
   const li=pr.map(p=>`<li><b>${p.kde}</b>${p.kdy?' ('+p.kdy+')':''}: ${p.co}${p.mereno?`. <span class="note">Měřeno: ${p.mereno}.</span>`:'. <span class="note">Bez měření.</span>'} ${ZN[p.znacka]||''}${(p.zdroj||[]).map(z=>D.zdroje[z]?` <a class="src" href="${D.zdroje[z].url||'#'}" target="_blank" rel="noopener">[${D.zdroje[z].nazev.split(',')[0].split(':')[0].slice(0,50)}]</a>`:'').join('')}</li>`).join('');
   return `<details class="kde"><summary>${pr.length?'Kde to funguje ('+pr.length+')':'Přenositelnost a rizika'}</summary>${li?`<ul>${li}</ul>`:''}${o.prenositelnost?`<div class="note"><b>Přenositelnost do Koryčan:</b> ${o.prenositelnost}</div>`:''}${o.rizika?`<div class="note"><b>Rizika, co z toho neplyne:</b> ${o.rizika}</div>`:''}</details>`;
 }
+
+// ---------- výběr podle oblastí (OPATRENI-UX-ZADANI.md, 22. 10. 2026)
+const KDE = {zahrada:{n:'Zahrada',d:'záhon, dvůr, sad',m:['Z']}, dum:{n:'Dům a střecha',d:'okapy, nádrž, fasáda',m:['S']}, obec:{n:'Obec a škola',d:'náměstí, ulice, veřejné budovy',m:['U','H']}, krajina:{n:'Krajina',d:'pole, louky, les, potok',m:['P','L','LES','T','C']}, mereni:{n:'Měř s námi',d:'škola, dobrovolníci',m:['M']}};
+const CO = {sucho:{n:'Sucho',u:['I','R','W','E']}, prival:{n:'Příval a voda do kanálu',u:['Q','R','I','ER']}, horko:{n:'Horko',u:['CH','E']}, zivot:{n:'Život a voda v krajině',u:['B']}};
+const PRAC = {1:'ruce a víkend',2:'dny, malá technika',3:'projekt a firma'};
+const oblastiOp = o=>{const u=new Set([...o.ucinky.primarni,...o.ucinky.vedlejsi]); const r=new Set(); Object.entries(CO).forEach(([k,c])=>{if(c.u.some(x=>u.has(x))) r.add(k);}); if(o.misto.some(m=>['T','L','LES'].includes(m))) r.add('zivot'); return r;};
+const kdeOp = o=> Object.keys(KDE).filter(k=>o.misto.some(m=>KDE[k].m.includes(m)));
+// vzorový pozemek pro katalog: 100 m² střecha, 50 m² dvůr, 250 m² zahrada, HSP B, 10 mm, svody do kanálu
+const VZOR = {roof:100,paved:50,pavedType:'dlazba_piskove_spary',green:250,drain:'kanal',slope:3,soil:'B',rain:0.010,greenType:'zahrada',nkey:null};
+function jednoCislo(o, co, i, r){
+  // 1) spočtené z EFF (pozemek nebo vzor)
+  if(EFF[o.id] && i){ const e=EFF[o.id](i,r); if(e.dV>0||e.dYear>0){ if(co==='sucho'&&e.dYear) return `<b>za rok u tebe zůstane až ${fmt0(e.dYear)} m³</b> vody`; if(e.dV>0) return `<b>z tohoto deště zadrží ${fmt(e.dV)} m³</b>`; } }
+  // 2) doložená hodnota z katalogu pro zvolenou oblast
+  const want = co? CO[co].u : null;
+  const kv = o.kvantifikace.filter(k=>k.typ==='hodnota' && (k.rozsah||k.hodnota!=null) && k.znacka!=='odhad' && (!want||want.includes(k.ucinek)));
+  if(kv.length){ const k=kv[0]; const v=k.rozsah?`${fmt(k.rozsah[0])}-${fmt(k.rozsah[1])}`:fmt(k.hodnota); return `<b>${v} ${k.jednotka||''}</b> ${ZN[k.znacka]||''} <span class="note">${k.popis.split(';')[0].split('(')[0].slice(0,80)}</span>`; }
+  const kq = o.kvantifikace.find(k=>(!want||want.includes(k.ucinek)));
+  if(kq && kq.typ==='vzorec') return `<b>počítá se z tvých ploch</b> <span class="note">(záložka Můj pozemek)</span>`;
+  return `<span class="note">účinek doložen slovně, bez čísla</span>`;
+}
+function kdeButtons(id, state, cb){ $(id).innerHTML=Object.entries(KDE).map(([k,v])=>`<button aria-pressed="${state.has(k)}" data-k="${k}"><b>${v.n}</b><span>${v.d}</span></button>`).join('');
+  $(id).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?state.add(b.dataset.k):state.delete(b.dataset.k); cb();})); }
+function coButtons(id, state, cb){ $(id).innerHTML=Object.entries(CO).map(([k,v])=>`<button aria-pressed="${state.has(k)}" data-k="${k}">${v.n}</button>`).join('');
+  $(id).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?state.add(b.dataset.k):state.delete(b.dataset.k); cb();})); }
+const PZCO = new Set();
+function coMatch(o, state){ if(!state.size) return true; const ob=oblastiOp(o); return [...state].some(k=>ob.has(k)); }
 function finText(o){ return o.financovani.map(f=>{const p=D.programy[f]; return p? (p.stav==='otevreno'&&f!=='vlastni'?'● ':'')+p.nazev.split(' - ')[0].split(' (')[0] : f}).join('; '); }
 function povText(o){ return (CZ.povoleni[String(o.povoleni)]||'?')+(o.povoleni_pozn?' ('+o.povoleni_pozn+')':''); }
 // zadrzeni vody na jednom pozemku pri zvolenych opatrenich (pouziva Muj pozemek i Cele uzemi v rezimu "jako muj pozemek")
@@ -1020,20 +1062,22 @@ function recalc(){
     <div class="bar"><span>s opatřeními</span><div class="track"><i class="kept" style="width:${pct(kept)}%"></i><i class="away" style="width:${100-pct(kept)}%"></i></div><span class="num">${fmt(r.out-kept)} m³</span></div>`;
   $('year').textContent = `Za rok (${fmt0(K.srazky_rocni_mm.hodnota)} mm, stanice ČHMÚ Koryčany 1991-2020 ✅) odteče ze střechy a zpevněných ploch zhruba ${fmt0(r.yearRoof+r.yearPaved)} m³ (po odečtení 1 mm z každého deště: ${fmt0(RAIN_Y_NEPR*1000)} mm z ${fmt0(K.srazky_rocni_mm.hodnota)})${r.yearGreen!=null?`, ze zelených ploch ${fmt0(r.yearGreen)} m³ (SCS-CN po dnech z řady denních úhrnů ČHMÚ)`:'; ze zelených ploch zatím nepočítáno (čeká na rozdělení denních úhrnů ze stanice ČHMÚ - vyrob_srazky.bat)'}. Se zvolenými opatřeními zůstane u tebe až ${fmt0(keptYear)} m³.`;
   // karty
+  if(!$('pz-co').children.length) coButtons('pz-co', PZCO, recalc);
   const cardHTML = x=>{const o=x.o; const on=chosen.has(o.id); const needs=(x.needs||[]).filter(n=>!(chosen.has(n)||(n==='S02'&&i.drain==='pozemek')));
-    return `<div class="card ${on?'on':''}"><header><input type="checkbox" id="c-${o.id}" data-id="${o.id}" ${on?'checked':''}><div class="t"><b>${o.nazev}</b>
-      <div class="meta"><span class="chip">${CZ.pracnost[String(o.pracnost)]}</span><span class="chip">${cenaText(o)}</span><span class="chip">povolení: ${CZ.povoleni[String(o.povoleni)]}</span>${x.enabler?'<span class="chip">předpoklad pro další</span>':(x.dV>0?`<span class="chip num">+${fmt(x.dV)} m³ teď</span>`:'')}</div></div></header>
-      <div class="eff">${x.text}</div>
+    return `<div class="card ${on?'on':''}"><header><input type="checkbox" id="c-${o.id}" data-id="${o.id}" ${on?'checked':''}><div class="t"><b>${o.nazev}</b><span class="prac">${PRAC[o.pracnost]}</span>${x.enabler?'<span class="chip">předpoklad pro další</span>':(x.dV>0?`<span class="chip num">+${fmt(x.dV)} m³ teď</span>`:'')}</div></header>
+      ${o.popis?`<div class="eff">${o.popis}</div>`:''}
+      <div class="one">${x.text}</div>
+      ${oblastiOp(o).has('zivot')&&o.ucinky.primarni.includes('B')?'<div class="zivot">+ život v zahradě</div>':''}
       ${needs.length?`<div class="note">Nejdřív je potřeba: ${needs.map(n=>byId[n]?byId[n].nazev:n).join(', ')}</div>`:''}
       ${kdeText(o)}
-      <details><summary>zdroje, financování, co chybí</summary><ul>
-        <li>Financování: ${finText(o)}</li>
+      <details><summary>zdroje, cena, povolení, financování</summary><ul>
+        <li>Cena: ${cenaText(o)}</li><li>Financování: ${finText(o)}</li>
         <li>Povolení: ${povText(o)}</li>
         ${o.kvantifikace.map(k=>`<li>${CZ.ucinek[k.ucinek]||k.ucinek}: ${k.popis} ${ZN[k.znacka]||''}${(k.zdroj||[]).map(z=>D.zdroje[z]?` <a class="src" href="${D.zdroje[z].url||'#'}" target="_blank" rel="noopener">${D.zdroje[z].nazev.split(':')[0].slice(0,60)}</a>`:'').join(';')}</li>`).join('')}
         ${o.nedohledano&&o.nedohledano.length?`<li>Nedohledáno: ${o.nedohledano.join('; ')}</li>`:''}
         ${o.pozn_poctivost?`<li>${o.pozn_poctivost}</li>`:''}
       </ul></details></div>`;};
-  const top3=ev.fit.slice(0,3), dalsi=ev.fit.slice(3);
+  const fitCo=ev.fit.filter(x=>coMatch(x.o,PZCO)); const top3=fitCo.slice(0,3), dalsi=fitCo.slice(3);
   $('cards').innerHTML = top3.map(cardHTML).join('') + (dalsi.length?`<details class="pz-more"><summary>Další možnosti (${dalsi.length})</summary><div class="cards">${dalsi.map(cardHTML).join('')}</div></details>`:'');
   $('cards').querySelectorAll('input[type=checkbox]').forEach(cb=>cb.addEventListener('change',()=>{ if(cb.checked) chosen.add(cb.dataset.id); else chosen.delete(cb.dataset.id); recalc(); }));
   $('unfit').innerHTML = ev.unfit.length? `<details><summary><b>Nehodí se sem (${ev.unfit.length})</b> <span class="note">- proč</span></summary><ul>${ev.unfit.map(x=>`<li>${x.o.nazev} (${x.o.id}) - ${x.fit}</li>`).join('')}</ul></details>` : '';
@@ -1157,23 +1201,28 @@ $('u-zdroj').innerHTML=`V území modelu (${fmt0(D.uzemi.plocha_ha)} ha, povodí
 document.querySelectorAll('#u-pack button').forEach(b=>b.addEventListener('click',()=>{b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true');renderUzemi();}));
 
 // ---------- katalog
-const KF={misto:new Set(),rozhoduje:new Set(),ucinek:new Set(),fin:new Set()};
+const KF={misto:new Set(),rozhoduje:new Set(),ucinek:new Set(),fin:new Set(),kde:new Set(),co:new Set()};
+kdeButtons('k-kde',KF.kde,()=>renderKatalog()); coButtons('k-co',KF.co,()=>renderKatalog());
+const VZOR_R = runoff(VZOR);
 function chips(id,obj,key){ $(id).innerHTML=Object.entries(obj).map(([k,v])=>`<button aria-pressed="false" data-k="${k}">${k} ${v.split(' (')[0]}</button>`).join('');
   $(id).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?KF[key].add(b.dataset.k):KF[key].delete(b.dataset.k); renderKatalog();})); }
 chips('k-misto',CZ.misto,'misto'); chips('k-rozhoduje',Object.fromEntries(Object.entries(CZ.rozhoduje).filter(([k])=>k!=='zemedelec')),'rozhoduje'); chips('k-ucinek',CZ.ucinek,'ucinek');
 $('k-fin').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?KF.fin.add(b.dataset.f):KF.fin.delete(b.dataset.f); renderKatalog();}));
 function renderKatalog(){
-  const list=D.opatreni.filter(o=> (!KF.misto.size||o.misto.some(m=>KF.misto.has(m))) && (!KF.rozhoduje.size||o.rozhoduje.some(m=>KF.rozhoduje.has(m)))
+  const list=D.opatreni.filter(o=> (!KF.kde.size||kdeOp(o).some(k=>KF.kde.has(k))) && coMatch(o,KF.co) && (!KF.misto.size||o.misto.some(m=>KF.misto.has(m))) && (!KF.rozhoduje.size||o.rozhoduje.some(m=>KF.rozhoduje.has(m)))
     && (!KF.ucinek.size||[...o.ucinky.primarni,...o.ucinky.vedlejsi].some(u=>KF.ucinek.has(u)))
     && (!KF.fin.has('otevreno')||o.financovani.some(f=>D.programy[f]&&D.programy[f].stav==='otevreno'&&f!=='vlastni'))
     && (!KF.fin.has('svepomoc')||(o.pracnost===1&&o.povoleni===0)));
   $('k-count').textContent=list.length+' / '+D.opatreni.length;
-  $('k-cards').innerHTML=list.map(o=>`<div class="card"><header><div class="t"><b>${o.nazev}</b>
-    <div class="meta"><span class="chip id">${o.id}</span><span class="chip">${o.misto.map(m=>CZ.misto[m]).join(', ')}</span><span class="chip">rozhoduje: ${o.rozhoduje.join(', ')}</span><span class="chip">${CZ.pracnost[String(o.pracnost)]}</span><span class="chip">${cenaText(o)}</span><span class="chip">povolení ${o.povoleni??'?'}</span>${o.kontext?'<span class="chip">kontext - obec/správce</span>':''}</div>
-    <div class="meta">účinky: ${o.ucinky.primarni.map(u=>'<b>'+CZ.ucinek[u]+'</b>').join(', ')}${o.ucinky.vedlejsi.length?'; vedlejší: '+o.ucinky.vedlejsi.map(u=>CZ.ucinek[u]).join(', '):''}</div></div></header>
+  const co1=[...KF.co][0]||null; const jeVzor=o=>o.misto.some(m=>['Z','S'].includes(m));
+  list.sort((a,b)=>(a.pracnost-b.pracnost)||(a.kontext-b.kontext));
+  $('k-cards').innerHTML=list.map(o=>`<div class="card"><header><div class="t"><b>${o.nazev}</b><span class="prac">${PRAC[o.pracnost]||''}</span>${o.kontext?'<span class="chip">obec / správce</span>':''}<span class="chip id">${o.id}</span></div></header>
     ${o.popis?`<div class="eff">${o.popis}</div>`:''}
+    <div class="one">${jednoCislo(o, co1, jeVzor(o)?VZOR:null, VZOR_R)}${jeVzor(o)&&EFF[o.id]?' <span class="note">(vzor: 100 m² střechy, 50 m² dvora, 10 mm)</span>':''}</div>
+    ${o.ucinky.primarni.includes('B')?'<div class="zivot">+ život a pestrost</div>':''}
     ${kdeText(o)}
     <details><summary>účinek, zdroje, ceny, financování</summary><ul>
+      <li>Kde: ${o.misto.map(m=>CZ.misto[m]).join(', ')}; rozhoduje: ${o.rozhoduje.map(r=>CZ.rozhoduje[r]?CZ.rozhoduje[r].split(' (')[0]:r).join(', ')}; účinky: ${o.ucinky.primarni.map(u=>CZ.ucinek[u]).join(', ')}${o.ucinky.vedlejsi.length?' (vedlejší: '+o.ucinky.vedlejsi.map(u=>CZ.ucinek[u]).join(', ')+')':''}</li>
       ${o.kvantifikace.map(k=>`<li><b>${CZ.ucinek[k.ucinek]||k.ucinek}</b> (${k.typ}) ${ZN[k.znacka]||''}: ${k.popis}${(k.zdroj||[]).map(z=>D.zdroje[z]?` <a class="src" href="${D.zdroje[z].url||'#'}" target="_blank" rel="noopener">[${D.zdroje[z].nazev.split(',')[0].slice(0,50)}]</a>`:'').join('')}</li>`).join('')}
       ${o.ceny.map(c=>`<li>Cena: ${c.polozka} - ${c.hodnota!=null?fmt0(c.hodnota):(c.rozsah?fmt0(c.rozsah[0])+'-'+fmt0(c.rozsah[1]):'cena neověřena')} ${c.jednotka}${c.rok?' ('+c.rok+')':''}${c.pozn?' - '+c.pozn:''}</li>`).join('')}
       <li>Financování: ${finText(o)}</li><li>Povolení: ${povText(o)}</li>

@@ -288,6 +288,7 @@ op("Z02", "Zahradní tůň bez fólie (hliněná, jílem těsněná)", ["Z"], ["
    pozn_poctivost="SPPK B02 001: průměrná hloubka 0,8-1,0 m, max 1,5 m, mělčiny do 50 cm min. polovina plochy, břehy max 1:3.")
 
 op("Z03", "Zasakovací průleh / rýha po vrstevnici (svejl) v zahradě nebo sadu", ["Z","L"], ["J"], 1, ["I","Q","ER"], ["R"], "pozemek",
+   popis="Mělká rýha nebo val po vrstevnici ve svažité zahradě či sadu, který zastaví vodu stékající po svahu a nechá ji vsáknout tam, kde spadla.",
    kvant=[kv("R","vzorec","Objem = délka × průřez", vzorec="V_m3 = L_m * S_m2", zdroj=["csn759010"]),
           kv("Q","vzorec","Zachytí povrchový odtok z vlastní plochy nad průlehem: V = A_nad × srážka × C", vzorec="V_odtok_m3 = A_nad_m2 * P_m * C", zdroj=["tab_c"]),
           kv("I","kvalitativne","Vliv na vlhkost půdy nekvantifikován", znacka="odhad")],
@@ -296,6 +297,7 @@ op("Z03", "Zasakovací průleh / rýha po vrstevnici (svejl) v zahradě nebo sad
    povoleni=0, ceny=[NEOVERENA], financovani=["vlastni"], standardy=["csn759010"], nedohledano=["kvantifikace účinku na vlhkost půdy","cena"])
 
 op("Z04", "Náhrada zpevněných ploch propustnými (zatravňovací dlažba, štěrk, propustná dlažba)", ["Z","U"], ["J","O"], 2, ["I","CH"], ["R"], "pozemek",
+   popis="Místo asfaltu nebo betonu na dvoře a vjezdu zatravňovací dlažba, štěrkový trávník nebo propustná dlažba, aby déšť zůstal na pozemku a povrch se v létě tolik nerozpaloval.",
    kvant=[kv("I","vzorec","Zisk = plocha × srážka × (C_puvodni - C_nove); asfalt 0,8 -> tvárnice 0,3", vzorec="dV_m3 = A_m2 * P_m * (C_old - C_new)", zdroj=["tab_c","izomat"]),
           kv("CH","hodnota","Trávník: vzduch o 1-2 °C chladnější než zpevněné plochy (EPA); povrch - citace 📄", rozsah=[1,2], jednotka="°C", zdroj=["epa2008_trees"], znacka="overeno_stare")],
    vhodnost={"hsp": ["A","B","C"], "sklon_max_pct": 3, "nad_hladinou_pv_min_m": 1},
@@ -304,12 +306,14 @@ op("Z04", "Náhrada zpevněných ploch propustnými (zatravňovací dlažba, št
    financovani=["vlastni","opzp_1_3_4"], standardy=["csn759010"])
 
 op("Z05", "Trvalý pokryv půdy: mulč, kompost, organická hmota", ["Z","L","P"], ["J","V"], 1, ["I","E","CH"], ["ER"], "pozemek",
+   popis="Půda na záhonech a pod stromy nikdy holá: mulč, kompost, pokryvné rostliny; půda se v létě méně vysušuje a lépe přijímá déšť.",
    kvant=[kv("E","hodnota","Mulč snižuje výpar z půdy o 17-79 % za sezónu proti holé půdě, typicky 33-40 %; slámový mulč 30-35 %", rozsah=[17,79], hodnota=35, jednotka="%", zdroj=["mulc2024"]),
           kv("I","kvalitativne","Organická hmota zvyšuje retenci půdy; kvantifikace nedohledána", znacka="odhad")],
    vhodnost={"vsude": True}, vazby={"potrebuje": [], "synergie": ["Z01","Z02","Z03"], "konflikt": []}, povoleni=0,
    ceny=[cena("vlastní kompost, štěpka", 0, "Kč", 2026, None, pozn="🤔 nula až stovky Kč")], financovani=["vlastni"], nedohledano=["retence půdy podle organické hmoty (český zdroj)"])
 
 op("Z06", "Výsadba stromu (stín, vzrostlý strom, ovocný strom)", ["Z","U","L"], ["J","O","S"], 1, ["CH","E"], ["I","B"], "pozemek",
+   popis="Jeden vzrostlý nebo ovocný strom na správném místě: stín na dům a dvůr v létě, zpomalení větru, voda zadržená v koruně a kořenech.",
    kvant=[kv("CH","hodnota","Stín snižuje povrchovou teplotu stěn a střech o 11-25 °C", rozsah=[11,25], jednotka="°C", zdroj=["epa2008_trees"], znacka="overeno_stare"),
           kv("CH","hodnota","Vzduch ve skupinách stromů až o 5 °C nižší (vrchol dne); předměstí se stromy o 2-3 °C; městská zeleň průměr -1,6 °C (Knight 2021, 308 studií)", rozsah=[1.6,5], jednotka="°C", zdroj=["epa2008_trees","epa_trees_benefits"], znacka="overeno_stare"),
           kv("E","kvalitativne","Zástin půdy, zpomalení větru", znacka="odhad")],
@@ -319,12 +323,14 @@ op("Z06", "Výsadba stromu (stín, vzrostlý strom, ovocný strom)", ["Z","U","L
    financovani=["vlastni","ppk_b","aopk_zmv"], standardy=["sppk_a02_001","sppk_c02_003"])
 
 op("Z07", "Živý plot / keřový pás místo plotu nebo zdi", ["Z","U"], ["J","O"], 1, ["E","CH","B"], [], "pozemek",
+   popis="Živý plot nebo pás keřů místo plotu či zdi: brzdí vítr, stíní, zadržuje vláhu a dává život zahradě.",
    kvant=[kv("E","hodnota","Za překážkou s propustností 40-60 % rychlost větru nižší o ~70 % v 5 H, 50 % v 10 H, 25 % v 20 H; RH v závětří +2-4 %", rozsah=[25,70], jednotka="% rychlosti větru", zdroj=["unl_windbreak"], znacka="overeno_stare"),
           kv("E","vzorec","Chráněná plocha = délka × (10-20) × výška", vzorec="A_chranena_m2 = L_m * H_m * (10..20)", zdroj=["unl_windbreak"], znacka="overeno_stare")],
    vhodnost={"strana": "návětrná (Z/JZ 🤔, ověřit z dat ČHMÚ)"}, vazby={"potrebuje": [], "synergie": ["Z06"], "konflikt": []}, povoleni=0,
    ceny=[cena("listnatý keř prostokořenný do 60 cm", 190, "Kč/ks", 2024, "noo2024")], financovani=["vlastni"], standardy=["sppk_a02_003"], nedohledano=["snížení evapotranspirace v %"])
 
 op("Z08", "Květnatá louka místo trávníku, vyšší a méně častá seč, mozaika", ["Z","U","L"], ["J","O","S"], 1, ["E","CH","B"], ["I"], "pozemek",
+   popis="Část trávníku nechat vyrůst do květnaté louky a sekat jen 2x ročně nebo po částech: méně výparu, chladnější půda, hmyz.",
    kvant=[kv("E","kvalitativne","Vyšší porost stíní půdu; kvantifikace vlhkosti nedohledána", znacka="odhad"),
           kv("B","hodnota","Nepravidelně kosené plochy o 20 % druhově chudší než pravidelně fázovaně kosené; nekosené -34 % (jižní Morava)", rozsah=[20,34], jednotka="% druhů", zdroj=["chytra2024"])],
    vhodnost={"vsude": True}, vazby={"potrebuje": [], "synergie": [], "konflikt": []}, povoleni=0,
@@ -332,10 +338,12 @@ op("Z08", "Květnatá louka místo trávníku, vyšší a méně častá seč, m
    financovani=["vlastni","ppk_b"], standardy=["sppk_d02_004","mhmp2019_sec"], pozn_poctivost="SPPK D02 004: 10-20 % plochy ponechat neposečené; Praha 2019: výška 10-15 cm, neseče se nad 26 °C.")
 
 op("Z09", "Zelená fasáda, popínavky, pergola se zelení", ["Z","S"], ["J","O","S"], 1, ["CH"], ["E"], "pozemek",
+   popis="Popínavka nebo pergola se zelení na jižní a západní stěně: stíní zeď a okna, dům se v létě méně ohřívá.",
    kvant=[kv("CH","hodnota","Stín na fasádě: povrch o 11-25 °C chladnější (obecná hodnota pro stín stromů, EPA)", rozsah=[11,25], jednotka="°C", zdroj=["epa2008_trees"], znacka="overeno_stare")],
    vhodnost={"strana_budovy": ["J","Z"]}, vazby={"potrebuje": [], "synergie": [], "konflikt": []}, povoleni=0, ceny=[NEOVERENA], financovani=["vlastni"], nedohledano=["kvantifikace pro zelené fasády","cena"])
 
 op("Z10", "Vsakovací objekt pro střešní vodu (štěrkové těleso, vsakovací bloky, šachta)", ["Z","U"], ["J","O"], 2, ["I","R"], [], "pozemek",
+   popis="Štěrkové těleso, vsakovací bloky nebo šachta pod trávníkem, kam jde voda ze střechy, když nádrž přeteče; na propustné půdě zasákne celý déšť.",
    kvant=[kv("R","vzorec","Návrh na déšť p=0,2 (24 h 44 mm): V = A_strechy × 0,044 minus vsak během deště", vzorec="V_m3 = A_strechy_m2 * 0.044 - V_vsak", zdroj=["csn759010"]),
           kv("I","vzorec","Rok: celý odtok ze střechy zasákne", vzorec="V_rok_m3 = A_strechy_m2 * 0.632", zdroj=["csn759010","chmi_korycany"])],
    vhodnost={"hsp": ["A","B"], "kf_min_m_s": 1e-5, "nad_hladinou_pv_min_m": 1, "odstup_stavba_min_m": 5},
@@ -343,6 +351,7 @@ op("Z10", "Vsakovací objekt pro střešní vodu (štěrkové těleso, vsakovac�
    ceny=[NEOVERENA], financovani=["vlastni"], standardy=["csn759010","tnv759011"], nedohledano=["cena bloků a výkopu 2025-2026"])
 
 op("Z11", "Zálivka zachycenou vodou, kapková závlaha", ["Z"], ["J","S"], 1, ["W","E"], [], "pozemek",
+   popis="Zalévat jen tam, kde je potřeba, a vodou z nádrže: kapková hadice ke kořenům místo postřiku, večer místo poledne.",
    kvant=[kv("W","kvalitativne","Šetří pitnou vodu; úspora nekvantifikována (český zdroj nedohledán)", znacka="odhad")],
    vhodnost={"vsude": True}, vazby={"potrebuje": ["S01"], "synergie": [], "konflikt": []}, povoleni=0, ceny=[NEOVERENA], financovani=["vlastni"])
 
@@ -378,6 +387,7 @@ op("Z13", "Suchomilný záhon (stepní, štěrkový): trvalky místo zalévanéh
 
 # ===== S střecha a stavba
 op("S01", "Nádrž na dešťovou vodu (sud, IBC, podzemní jímka) s využitím", ["S","Z"], ["J","O","S"], 2, ["R","W"], ["Q"], "pozemek",
+   popis="Sud, IBC kontejner nebo podzemní nádrž pod okapem: déšť ze střechy na zálivku místo pitné vody z kohoutku.",
    kvant=[kv("R","vzorec","Každých 10 mm deště ze 100 m² střechy = 1 m³; nádrž pojme V_nadrz, zbytek přepad", vzorec="V_zachyceno_m3 = min(V_nadrz_m3, A_strechy_m2 * P_m * 1.0)", zdroj=["tab_c"]),
           kv("R","vzorec","Rok: potenciál A × 0,632 m; využije se jen spotřeba mezi dešti", vzorec="V_rok_potencial_m3 = A_strechy_m2 * 0.632", zdroj=["chmi_korycany"]),
           kv("W","kvalitativne","Zálivka/WC z dešťovky; spotřeba nekvantifikována", znacka="odhad")],
@@ -387,12 +397,14 @@ op("S01", "Nádrž na dešťovou vodu (sud, IBC, podzemní jímka) s využitím"
    financovani=["vlastni","nzu_rd_2026"], standardy=["csn759010"], pozn_poctivost="NZÚ 2026 podporuje jen nádrž pro WC (min. 2 m³) a jen s A/C; nádrž pouze na zálivku ne.")
 
 op("S02", "Odpojení dešťových svodů od kanalizace, svedení na pozemek", ["S"], ["J","O"], 1, ["Q","I","R"], [], "pozemek",
+   popis="Odpojit okapový svod od kanalizace a vést vodu na pozemek (do nádrže, záhonu, vsaku): první krok, bez něj ostatní opatření u domu nic nezadrží.",
    kvant=[kv("Q","vzorec","Objem, který nejde do kanalizace: A_strechy × srážka × 1,0", vzorec="V_m3 = A_strechy_m2 * P_m", zdroj=["tab_c"])],
    vhodnost={"podminka": "svody vedou do jednotné kanalizace - v Koryčanech neověřeno (podle uživatele místy oddílná kvůli ČOV)"},
    vazby={"potrebuje": [], "synergie": ["Z01","Z10","S01"], "konflikt": []}, povoleni=0, povoleni_pozn="0-1; souhlas provozovatele kanalizace 💻",
    ceny=[NEOVERENA], financovani=["vlastni"], standardy=["csn759010","tnv759011"], nedohledano=["typ kanalizace v Koryčanech","cena"])
 
 op("S03", "Zelená střecha (extenzivní)", ["S"], ["J","O","S"], 3, ["R","CH","Q"], ["B"], "pozemek",
+   popis="Nízká vegetační střecha na garáži, kůlně nebo plochém domě: zadrží většinu běžného deště a v létě je o desítky stupňů chladnější než fólie.",
    kvant=[kv("R","hodnota","Zadrží ~75 % běžného deště; u přívalu >30 mm odtok nižší o 77-83 %", rozsah=[75,83], jednotka="%", zdroj=["zilina2024"]),
           kv("Q","vzorec","Návrhově C 0,3-0,5 (souvrství >100 mm 0,5; SZÚZ příklad 0,3)", vzorec="V_odtok_m3 = A_m2 * P_m * (0.3..0.5)", zdroj=["tab_c","szuz2019"]),
           kv("CH","hodnota","Povrch vegetace o 5-7 °C chladnější než holá fólie (fólie téměř 60 °C)", rozsah=[5,7], jednotka="°C", zdroj=["zilina2024"])],
@@ -402,6 +414,7 @@ op("S03", "Zelená střecha (extenzivní)", ["S"], ["J","O","S"], 3, ["R","CH","
    financovani=["vlastni","nzu_rd_2026","opzp_1_3_4"], standardy=["szuz2019"], nedohledano=["cena 2025-2026", "C extenzivní vs. intenzivní z normy"])
 
 op("S04", "Světlá střecha a plochy (albedo, cool roof)", ["S","U"], ["J","O"], 1, ["CH"], [], "pozemek",
+   popis="Světlý nátěr nebo krytina na tmavé ploché střeše a dvoře: střecha a místnosti pod ní se v létě méně rozpálí; vzduch v obci to nezmění.",
    kvant=[kv("CH","hodnota","Povrch chladné střechy o 28-33 °C nižší než tmavé (tmavé 66-85 °C, chladné 43-46 °C)", rozsah=[28,33], jednotka="°C povrch", zdroj=["epa2008_coolroof"], znacka="overeno_stare"),
           kv("CH","hodnota","Vnitřní maximum o 1,2-3,3 °C nižší; špičková potřeba chlazení -11 až -27 %", rozsah=[1.2,3.3], jednotka="°C interiér", zdroj=["epa2025_coolroof"]),
           kv("CH","hodnota","Vzduch ve městě při 50 % pokrytí střech jen o 0,2-0,3 °C (simulace NYC) - v součtu za území ukazovat jen plochu ochlazených střech, ne °C vzduchu", rozsah=[0.2,0.3], jednotka="°C vzduch", zdroj=["epa2008_coolroof"], znacka="overeno_stare")],
@@ -446,6 +459,7 @@ op("S06", "Dešťová voda na splachování WC (nepitný rozvod v domě nebo šk
 
 # ===== U veřejný prostor obce
 op("U01", "Uliční stromořadí s vsakovacími rabátky", ["U"], ["O"], 3, ["CH","I","Q"], ["B"], "lokalita",
+   popis="Stromy v ulici a na náměstí vysazené do velkých prokořenitelných rabátek, kam teče voda z chodníků a střech: stín pro lidi, voda pro strom.",
    kvant=[kv("CH","hodnota","Stín -11 až -25 °C povrch; vzduch v zeleni až -5 °C v horku", rozsah=[11,25], jednotka="°C povrch", zdroj=["epa2008_trees"], znacka="overeno_stare"),
           kv("I","vzorec","Rabátko: min. 6 m² propustné plochy, prokořenitelný prostor min. 16 m² × 0,8 m; retence 🤔 1-3 m³ na strom (bez českého zdroje)", vzorec="V_m3 = A_rabatko_m2 * h_m * porovitost", rozsah=[1,3], jednotka="m³/strom", zdroj=["ipr_manual"], znacka="odhad"),
           kv("Q","vzorec","Odvodnění ulice do rabátka: C 0,1 místo 0,8", vzorec="dV_m3 = A_ulice_m2 * P_m * (0.8 - 0.1)", zdroj=["tab_c"])],
@@ -455,24 +469,28 @@ op("U01", "Uliční stromořadí s vsakovacími rabátky", ["U"], ["O"], 3, ["CH
    financovani=["opzp_1_3_4","aopk_zmv"], standardy=["ipr_manual","brno2024","sppk_a02_001"], nedohledano=["cena rabátka","metodika MZI MŽP"])
 
 op("U02", "Propustné povrchy parkovišť, chodníků, dvorů veřejných budov", ["U"], ["O"], 3, ["I","CH"], ["R"], "lokalita",
+   popis="Parkoviště, chodníky a dvory veřejných budov z propustných povrchů místo asfaltu: déšť zasákne a plocha se v létě méně rozpálí.",
    kvant=[kv("I","vzorec","Zisk = A × P × (C_old - C_new); parkoviště 1000 m², 20 mm: 16 -> 6 m³ s tvárnicemi; rok 456 -> 171 m³", vzorec="dV_m3 = A_m2 * P_m * (C_old - C_new)", zdroj=["tab_c","izomat"])],
    vhodnost={"hsp": ["A","B","C"]}, vazby={"potrebuje": [], "synergie": ["U01"], "konflikt": []}, povoleni=2, povoleni_pozn="1-2",
    ceny=[cena("zatravňovací tvárnice", 1136, "Kč/m²", 2025, "uur2025_komunikace"), cena("zámková dlažba 8 cm vč. podkladu", 2240, "Kč/m²", 2025, "uur2025_komunikace"), cena("vsakovací boxy pod parkovištěm 500 m²", 157040, "Kč", 2025, "uur2025_kanalizace"), cena("vsakovací boxy pod parkovištěm 1000 m²", 266330, "Kč", 2025, "uur2025_kanalizace")],
    financovani=["opzp_1_3_4"], standardy=["csn759010"])
 
 op("U03", "Zasakovací pásy a průlehy podél komunikací, příkopy s retencí", ["U","C"], ["O"], 2, ["I","Q","R"], [], "lokalita",
+   popis="Travnaté průlehy a příkopy s retencí podél silnic a cest, kam se svede voda z vozovky, aby zasákla místo odtoku do potoka.",
    kvant=[kv("R","vzorec","Objem = délka × průřez; 100 m × 1 m² = 100 m³ = 20 mm z 0,5 ha", vzorec="V_m3 = L_m * S_m2", zdroj=["tsk2025"]),
           kv("Q","hodnota","Regulovaný odtok praxe 3 l/s/ha", hodnota=3, jednotka="l/s/ha", zdroj=["brno2024","tsk2025"])],
    vhodnost={"sklon": "podle TSK svahy 1:3", "hsp": ["A","B","C"]}, vazby={"potrebuje": [], "synergie": ["C01"], "konflikt": []}, povoleni=2, povoleni_pozn="1-2",
    ceny=[cena("travnaté průlehy a meze s terénními úpravami", 200, "Kč/m²", 2024, "noo2024")], financovani=["opzp_1_3_4"], standardy=["csn759010","tsk2025"])
 
 op("U04", "Retence a zasakování vody z veřejných budov (škola, úřad)", ["U","S"], ["O","S"], 3, ["R","I","W"], [], "lokalita",
+   popis="Voda ze střech školy, úřadu a dalších veřejných budov do nádrží na zálivku a splachování a do vsaku, místo do kanalizace.",
    kvant=[kv("R","vzorec","Škola střecha 1500 m²: 20 mm = 30 m³; rok 948 m³", vzorec="V_m3 = A_strechy_m2 * P_m", zdroj=["tab_c","chmi_korycany"])],
    vhodnost={"podle_objektu": True}, vazby={"potrebuje": ["S02"], "synergie": ["S01","Z01","Z10"], "konflikt": []}, povoleni=1, povoleni_pozn="1-2",
    ceny=[cena("podzemní ŽB retenční nádrž", None, "Kč/m³", 2025, "uur2025_kanalizace", rozsah=[18500,28500]), cena("plastová nádrž 5000 l bez montáže", 50830, "Kč", 2026, "hornbach_nadrz")],
    financovani=["opzp_1_3_4"], standardy=["csn759010"])
 
 op("U05", "Obecní tůň, mokřad, obnova návesní nádrže", ["U","T"], ["O"], 3, ["R","CH","B"], ["I"], "lokalita",
+   popis="Obecní tůň, mokřad nebo obnovená návesní nádrž: místo pro vodu, život a trochu chladu uprostřed obce.",
    kvant=[kv("R","vzorec","Objem = plocha × průměrná hloubka 0,8-1,0 m; 500 m² ~ 400 m³", vzorec="V_m3 = A_m2 * (0.8..1.0)", zdroj=["sppk_b02_001"])],
    vhodnost={"misto_typ": ["zamokřené plochy","niva"]}, vazby={"potrebuje": [], "synergie": ["T01","T02"], "konflikt": []}, povoleni=2, povoleni_pozn="nad 300 m² ohlášení (§ 15b); s hrází vodní dílo",
    ceny=[cena("tůň strojně, materiál v lokalitě", 330, "Kč/m² hladiny", 2024, "noo2024", pozn="+15 000 Kč/lokalitu; odvoz do 2 km 410, nad 2 km 480"), cena("odbahnění", 430, "Kč/m³", 2024, "noo2024"),
@@ -480,6 +498,7 @@ op("U05", "Obecní tůň, mokřad, obnova návesní nádrže", ["U","T"], ["O"],
    financovani=["aopk_zmv","ppk_b","opzp_1_3_1"], standardy=["sppk_b02_001","vz_15b"], nedohledano=["cena poldru a hráze (dřívější údaj se v ÚÚR 2025 nepotvrdil, vyřazen)"])
 
 op("U06", "Mozaiková seč obecních ploch, květnaté louky", ["U","L"], ["O","S"], 1, ["E","CH","B"], [], "lokalita",
+   popis="Obecní trávníky sekat mozaikově a méně často, část nechat kvést: méně výparu, méně práce, víc hmyzu.",
    kvant=[kv("B","hodnota","Nepravidelně kosené -20 % druhů, nekosené -34 %; fázovaná seč ve 3 termínech", rozsah=[20,34], jednotka="% druhů", zdroj=["chytra2024"]),
           kv("E","kvalitativne","Vlhkost/teplota v ČR nekvantifikovány", znacka="odhad")],
    vhodnost={"vsude": True}, vazby={"potrebuje": [], "synergie": [], "konflikt": []}, povoleni=0,
@@ -549,6 +568,7 @@ op("H02", "Stínění veřejných míst plachtami, pergolami s popínavkami, př
 
 # ===== P orná půda
 op("P01", "Protierozní mez, zatravněný pás, biopás po vrstevnici", ["P"], ["V"], 2, ["ER","Q","I"], ["B","E"], "lokalita",
+   popis="Travnatý pás, mez nebo biopás po vrstevnici napříč svahem pole: zastaví splach půdy a zpomalí vodu při přívalu.",
    kvant=[kv("ER","vzorec","Pás zkracuje délku svahu L v USLE a má C 0,01", vzorec="A = R*K*LS(L_zkracene)*C*P", zdroj=["kalkulacka_manual","dumbrovsky2021"]),
           kv("Q","hodnota","Čas do začátku odtoku (svah 11,3 %): 0 % zatravnění 102 s, 25 % 141 s, 50 % 253 s, 100 % 461 s; rychlost odtoku 5-6x nižší; retence 2 m pásu po 20 min deště vyčerpána", rozsah=[102,461], jednotka="s", zdroj=["tacr2025_pasy"])],
    vhodnost={"sklon_min_pct": 3, "erozni_ohrozenost": ["SEO","MEO"], "max_sirka_pasu_plodiny_m": 40, "sirka_pasu_min_m": 3, "sirka_pasu_dopor_m": 22},
@@ -558,33 +578,39 @@ op("P01", "Protierozní mez, zatravněný pás, biopás po vrstevnici", ["P"], [
    pozn_poctivost="Úzký pás funguje na začátku deště, ne na dlouhý příval.")
 
 op("P02", "Zasakovací průleh na orné půdě", ["P"], ["V"], 2, ["I","Q","ER"], [], "lokalita",
+   popis="Mělký zasakovací průleh po vrstevnici na orné půdě: zachytí vodu z pole, nechá ji vsáknout a zadrží splavenou zeminu.",
    kvant=[kv("R","vzorec","Objem = délka × průřez", vzorec="V_m3 = L_m * S_m2", zdroj=["csn759010","vumop_pasy2022"])],
    vhodnost={"sklon_min_pct": 3, "sklon_max_pct": 12, "hsp": ["A","B","C"]}, vazby={"potrebuje": ["P05"], "synergie": ["P01"], "konflikt": []}, povoleni=1,
    ceny=[cena("průlehy s terénními úpravami", 200, "Kč/m²", 2024, "noo2024")], financovani=["aopk_zmv"], standardy=["csn759010","tpeo2014"])
 
 op("P03", "Rozdělení lánu, pásové střídání plodin, orientace po vrstevnici", ["P"], ["V"], 1, ["ER","Q"], ["I"], "lokalita",
+   popis="Velký lán rozdělit na pásy plodin po vrstevnici a obdělávat napříč svahem, ne po spádnici.",
    kvant=[kv("ER","hodnota","USLE P: vrstevnice 0,6 (0-4°) až 1,0 (>10°); pásové střídání okopaniny+pícniny 0,30-0,45, okopaniny+ozimy 0,50-0,90; max. délka po spádnici 120/60/40 m", rozsah=[0.3,1.0], jednotka="P faktor", zdroj=["kalkulacka_manual","janecek2012"])],
    vhodnost={"svazite_dpb": True}, vazby={"potrebuje": ["N01"], "synergie": ["P01","P02"], "konflikt": []}, povoleni=0,
    ceny=[cena("organizační opatření", 0, "Kč", 2026, None)], financovani=["vlastni"], standardy=["janecek2012","dumbrovsky2021"])
 
 op("P04", "Půdoochranné technologie: bezorebné setí, strip-till, meziplodiny, strniště", ["P"], ["V"], 1, ["I","E","ER"], ["CH"], "lokalita",
+   popis="Setí bez orby, strip-till, meziplodiny a strniště přes zimu: půda je pořád krytá a drží víc vody.",
    kvant=[kv("I","hodnota","Polní simulátor deště: orba infiltrace 27,4 mm / odtok 9,3 mm / ztráta 6,97 t/ha; setí do ozimého žita ztráta 1,95 t/ha; strip-till do TTP infiltrace 32,2 mm / odtok 4,5 mm / ztráta 0,24 t/ha (🤔 odtok -52 %, smyv -97 %)", rozsah=[0.24,6.97], jednotka="t/ha ztráta půdy", zdroj=["vopravil2025"])],
    vhodnost={"vsude": True, "zejmena": "svahy, HSP C-D"}, vazby={"potrebuje": ["N01"], "synergie": [], "konflikt": []}, povoleni=0,
    ceny=[cena("pro vlastníka smluvní", 0, "Kč", 2026, None)], financovani=["vlastni"], standardy=["dzes5_2026"],
    pozn_poctivost="DZES 5 (2026) už na SEO zakazuje erozně nebezpečné plodiny nad 2 ha a na MEO vyžaduje POT; vlastník může ve smlouvě chtít víc.")
 
 op("P05", "Zatravnění údolnic a drah soustředěného odtoku", ["P"], ["V"], 2, ["ER","Q","I"], [], "lokalita",
+   popis="Údolnice a dráhy soustředěného odtoku v poli trvale zatravnit, aby se v nich při přívalu netvořily rýhy.",
    kvant=[kv("ER","vzorec","C 0,01 v dráze odtoku; min. šířka 20 m", vzorec="A_udolnice_ha = 20 m * L_m / 10000", zdroj=["dumbrovsky2021","kalkulacka_manual"])],
    vhodnost={"konkavni_profil_z_dmr": True, "akumulace_odtoku": "vysoká"}, vazby={"potrebuje": ["N02"], "synergie": ["P02"], "konflikt": []}, povoleni=0, povoleni_pozn="0-1",
    ceny=[cena("zatravnění regionální směsí", 86600, "Kč/ha", 2024, "noo2024", pozn="údolnice 20 × 300 m = 0,6 ha ~ 52 000 Kč")], financovani=["aopk_zmv"], standardy=["dumbrovsky2021"], nedohledano=["kvantifikovaný účinek"])
 
 op("P06", "Trvalé zatravnění nebo zalesnění svažitých a erozně ohrožených pozemků", ["P"], ["V"], 2, ["I","ER","E"], ["B","CH"], "lokalita",
+   popis="Nejstrmější a nejohroženější části pole převést na trvalý travní porost nebo les.",
    kvant=[kv("ER","vzorec","C z 0,65-0,90 na 0,01 = ztráta půdy řádově 50-90x nižší", vzorec="A_new/A_old = 0.01 / C_old", zdroj=["kalkulacka_manual"])],
    vhodnost={"sklon_min_pct": 12, "erozni_ohrozenost": ["SEO"]}, vazby={"potrebuje": ["N02"], "synergie": [], "konflikt": []}, povoleni=1, povoleni_pozn="LPIS kultura; zalesnění = souhlas orgánu ZPF 💻",
    ceny=[cena("zatravnění regionální směsí", 86600, "Kč/ha", 2024, "noo2024"), {"polozka": "ušlý pachtovní výnos", "hodnota": None, "rozsah": None, "jednotka": "Kč/ha/rok", "rok": None, "zdroj": None, "pozn": "cena neověřena"}],
    financovani=["vlastni","aopk_zmv"])
 
 op("P07", "Větrolam, liniová výsadba na hranici pozemku", ["P","C"], ["V","O"], 2, ["E","ER","CH","B"], ["Q"], "lokalita",
+   popis="Řada stromů a keřů na hranici pozemku napříč převládajícímu větru: brzdí vítr, snižuje výpar a větrnou erozi.",
    kvant=[kv("E","hodnota","Za olistěným větrolamem (porozita 10 %) rychlost větru v 50 m ~40 %, ve 150 m ~70 % původní; neolistěný 80/90 %; účinný dosah max. 250 m = 10-17 H", rozsah=[40,70], jednotka="% původní rychlosti", zdroj=["vumop_vitr2016"]),
           kv("E","vzorec","Chráněná plocha = délka × (10-17) × výška; nový větrolam šířka 7-20 m, rozestupy 350-600 m", vzorec="A_chranena_m2 = L_m * H_m * (10..17)", zdroj=["vumop_vitr2016","mze2022_vitr"]),
           kv("E","hodnota","Vlhkost půdy za větrolamem +102 % (jedno měření, j. Morava 2007) - neobecňovat", hodnota=102, jednotka="%", zdroj=["dufkova2007"], znacka="overeno_stare")],
@@ -600,6 +626,7 @@ op("P08", "Polní cesta s doprovodnou zelení a zasakovacím příkopem", ["P","
    financovani=["opzp_1_3_1","kopu"], standardy=["tpeo2014"])
 
 op("P09", "Agrolesnictví: řady stromů v poli, ovocné stromy v pastvině", ["P","L"], ["V"], 2, ["E","CH","B"], ["I","ER"], "lokalita",
+   popis="Řady stromů v poli nebo ovocné stromy v pastvině (agrolesnictví): stín, závětří, hlubší kořeny, úroda ze stromů.",
    kvant=[kv("CH","hodnota","V ALS průměrná teplota -0,2 až -0,8 °C/rok; v horkých dnech maxima přízemního vzduchu a povrchu půdy -4 až -5 (až 10) °C; tropické dny -1/3", rozsah=[4,10], jednotka="°C maxima", zdroj=["czu2026_als"]),
           kv("E","hodnota","Vítr ve 4 m -50 %", hodnota=50, jednotka="%", zdroj=["czu2026_als"]),
           kv("I","hodnota","Záplavové pokusy Šardice 2023-2025 (72 mm/h): odtok 0 %, zasáknutí 99 % v ALS", hodnota=99, jednotka="% zasáknutí", zdroj=["czu2026_als"])],
@@ -608,6 +635,7 @@ op("P09", "Agrolesnictví: řady stromů v poli, ovocné stromy v pastvině", ["
    financovani=["szp_agroles"], standardy=["sppk_c02_003","agroles2026"], nedohledano=["vlhkost půdy v ALS (ČR)"])
 
 op("P10", "Regulace nebo přerušení melioračního odvodnění", ["P","L"], ["V","O"], 2, ["R","I","B"], ["CH"], "lokalita",
+   popis="Staré meliorační trubky a příkopy přerušit nebo regulovat, aby voda z pozemku neodtékala zbytečně rychle.",
    kvant=[kv("R","hodnota","Odhad snížení odtoku: regulační opatření na drenáži 50-90 %, snížení intenzity odvodnění 50-75 %, zasakovací drén 50-100 %, lokální eliminace 25-75 %", rozsah=[25,100], jednotka="% odtoku z drenáže", zdroj=["zajicek2021"])],
    vhodnost={"existujici_drenaz": "zjistit u SPÚ (bezplatně) / ISMS meliorace.vumop.cz / LPIS POZ", "misto_typ": ["zamokřené plochy"]},
    vazby={"potrebuje": ["N01|N02"], "synergie": ["T02"], "konflikt": []}, povoleni=1, povoleni_pozn="1-2",
@@ -615,38 +643,45 @@ op("P10", "Regulace nebo přerušení melioračního odvodnění", ["P","L"], ["
    pozn_poctivost="Podrobné odvodnění patří od 1991 vlastníkovi; 40 % vlastníků o něm neví.")
 
 op("P11", "Remízek, drobná plocha zeleně v cípech a na neobdělatelných místech", ["P"], ["V","O"], 1, ["B","E","CH"], ["I"], "pozemek",
+   popis="Remízek nebo drobná plocha zeleně v cípu pole, na mezi nebo neobdělatelném místě: úkryt pro zvěř, závětří, zadržení vody.",
    kvant=[kv("B","kvalitativne","Útočiště, biokoridor", znacka="odhad")],
    vhodnost={"misto_typ": ["neobdělatelné cípy","mokřiny","kamenité plochy"]}, vazby={"potrebuje": ["N02"], "synergie": ["P07"], "konflikt": []}, povoleni=0,
    ceny=[cena("sazenice stromů", None, "Kč/ks", 2025, "uur2025_zelen", rozsah=[1775,6100]), cena("keř prostokořenný", 190, "Kč/ks", 2024, "noo2024")], financovani=["ppk_b","aopk_zmv"])
 
 op("P12", "Zvyšování organické hmoty v půdě (hnůj, kompost, zelené hnojení)", ["P"], ["V"], 1, ["I","R"], ["ER","E"], "lokalita",
+   popis="Hnůj, kompost, zelené hnojení a zbytky plodin zpět do půdy: víc organické hmoty, lepší struktura a vsak.",
    kvant=[kv("R","hodnota","Tvrzení VÚMOP (Hladík, bez citace): 1 % organické hmoty = +35 000 l/ha retence - v aplikaci jen jako odhad", hodnota=35000, jednotka="l/ha na 1 % OH", zdroj=["hladik_pot"], znacka="odhad")],
    vhodnost={"vsude": True}, vazby={"potrebuje": ["N01"], "synergie": ["P04"], "konflikt": []}, povoleni=0, ceny=[cena("smluvní", 0, "Kč", 2026, None)], financovani=["vlastni"])
 
 # ===== L louka a pastvina
 op("L01", "Mozaiková nebo pozdní seč, ponechané pásy", ["L"], ["V","O"], 1, ["E","CH","B"], [], "lokalita",
+   popis="Louku sekat mozaikově nebo později a část ponechat nepokosenou: chladnější půda, méně výparu, víc hmyzu.",
    kvant=[kv("B","hodnota","Viz U06 (Chytrá a kol. 2024)", rozsah=[20,34], jednotka="% druhů", zdroj=["chytra2024"])],
    vhodnost={"vsude": True}, vazby={"potrebuje": [], "synergie": [], "konflikt": []}, povoleni=0,
    ceny=[cena("seč lehkou mechanizací", 17425, "Kč/ha", 2024, "noo2024")], financovani=["ppk_b","vlastni"], standardy=["sppk_d02_004"])
 
 op("L02", "Extenzivní rotační pastva, omezení přepásání a sešlapu", ["L"], ["V"], 1, ["I","ER","B"], [], "lokalita",
+   popis="Pastvu rozdělit do oplůtků a nechat plochy odpočinout, nepřepásat: méně udusaná půda vsákne víc vody.",
    kvant=[kv("I","hodnota","Citace v metodice VÚMOP (zahraniční 📄): pokles infiltrace o 40-80 % v 5-20 cm při utužení; povrchový odtok 53 % srážky na přepaseném svahu vs. 5 % na zatravněném; nepást podél toků a nad 17 % sklonu", rozsah=[5,53], jednotka="% odtoku", zdroj=["fucik2015_pastva"], znacka="citace")],
    vhodnost={"pastviny": True, "sklon_max_pct": 17, "ne_podel_toku": True, "zatizeni_vdj_ha": [0.2,1.5]}, vazby={"potrebuje": [], "synergie": ["L03","L04"], "konflikt": []}, povoleni=0,
    ceny=[cena("pevné oplocení (ohrada)", 138, "Kč/m", 2024, "noo2024")], financovani=["ppk_b","vlastni"], standardy=["sppk_d02_003","fucik2015_pastva"], nedohledano=["české měření extenzivní vs. intenzivní"])
 
 op("L03", "Solitérní stromy a skupiny v pastvině", ["L"], ["V"], 1, ["CH","E","B"], [], "pozemek",
+   popis="Solitérní stromy a skupiny v pastvině: stín pro zvířata, závětří, voda v půdě pod korunou.",
    kvant=[kv("CH","hodnota","Stín -11 až -25 °C povrch (EPA)", rozsah=[11,25], jednotka="°C", zdroj=["epa2008_trees"], znacka="overeno_stare")],
    vhodnost={"vsude": True}, vazby={"potrebuje": [], "synergie": ["L02"], "konflikt": []}, povoleni=0,
    ceny=[cena("strom prostokořenný do 200 cm", 1775, "Kč/ks", 2025, "uur2025_zelen"), cena("tubus individuální ochrana do 170 cm", 176, "Kč/ks", 2024, "noo2024"), cena("oplocenka drátěná 160 cm", 180, "Kč/m", 2024, "noo2024")],
    financovani=["ppk_b","aopk_zmv"], standardy=["sppk_c02_003"], pozn_poctivost="SPPK C02 003: při pastvě povinný ochranný plášť, 3 kůly, ochrana min. 10 let.")
 
 op("L04", "Ochrana pramenišť a mokřin v loukách před sešlapem, obnova", ["L","T"], ["V","O"], 1, ["R","B"], ["I"], "pozemek",
+   popis="Mokřiny a prameniště v loukách oplotit před dobytkem a neodvodňovat: zůstávají zdrojem vody i v suchu.",
    kvant=[kv("R","kvalitativne","Hydrologická role pramenišť - český zdroj nedohledán", znacka="odhad")],
    vhodnost={"pramenisete_z_dat": "akumulace odtoku + zamokření"}, vazby={"potrebuje": [], "synergie": ["T05","L02"], "konflikt": []}, povoleni=0,
    ceny=[cena("oplocenka drátěná 160 cm", 180, "Kč/m", 2024, "noo2024")], financovani=["ppk_b","vlastni"], nedohledano=["návod k oplocení pramenišť na pastvině"])
 
 # ===== LES
 op("LES01", "Lesní tůně a přehrážky v lesních stržích (dřevěné, kamenné)", ["LES","C"], ["SP","V","O"], 2, ["Q","R","ER"], ["I","B"], "lokalita",
+   popis="Malé tůně a přehrážky z kamene nebo dřeva v lesních stržích: zpomalí přívalovou vodu a zadrží splaveniny ještě v lese.",
    kvant=[kv("R","vzorec","Objem zdrže ~ plocha × výška / 2 (klín) - odhad, retence na přehrážku nedohledána", vzorec="V_m3 = A_zdrze_m2 * h_m / 2", znacka="odhad")],
    vhodnost={"strze_z_dmr": True, "lesni_cesty": True}, vazby={"potrebuje": ["N06"], "synergie": ["C02","LES02"], "konflikt": []}, povoleni=1, povoleni_pozn="souhlas vlastníka/LČR; v korytě § 17 a § 46 vodního zákona",
    ceny=[cena("jednoduchá přehrážka", 10000, "Kč/ks", 2024, "noo2024"), cena("složitá přehrážka (dvojitá, perodrážka)", 38500, "Kč/ks", 2024, "noo2024"), cena("LČR Černý potok ve Strání: 800 m, 8 objektů", 2400000, "Kč bez DPH", 2025, "lcr_strani", pozn="🤔 ~3 000 Kč/m")],
@@ -654,34 +689,40 @@ op("LES01", "Lesní tůně a přehrážky v lesních stržích (dřevěné, kame
    pozn_poctivost="MZe TD 2020: přehrážky běžně 2-5 m; drobné svépomocné prahy jsou pod úrovní normy.")
 
 op("LES02", "Odvodnění lesních cest a svážnic do lesa, ne do strží (svodnice, příčné prahy)", ["LES","C"], ["SP","V"], 1, ["ER","I","Q"], [], "lokalita",
+   popis="Vodu z lesních cest a svážnic svádět příčnými prahy a svodnicemi do lesa, ne do strže nebo rovnou do potoka.",
    kvant=[kv("ER","kvalitativne","Svodnice povinné při podélném sklonu >6 %; min. příčný sklon 3-3,5 %; propustek min. 510 mm", znacka="overeno")],
    vhodnost={"svahove_cesty": True, "sklon_min_pct": 6}, vazby={"potrebuje": ["N06"], "synergie": ["LES01"], "konflikt": []}, povoleni=1,
    ceny=[NEOVERENA], financovani=["vlastni"], standardy=["vyhl239_2017"], nedohledano=["rozestupy svodnic (ČSN 73 6108)"])
 
 op("LES03", "Druhově pestrý les, přirozená obnova, mrtvé dřevo a humus", ["LES"], ["V","SP"], 3, ["B"], ["I","E","CH"], "uzemi", kontext=True,
+   popis="Smíšený, druhově pestrý les s přirozenou obnovou, ponechaným mrtvým dřevem a humusem: zadrží víc vody než smrková monokultura.",
    kvant=[kv("I","hodnota","Česká data (Liz, 22 let): v suchých letech smrk propouští do podloží o ~15 % více vody než buk; průměrně se půdní voda pod porosty neliší. Tvrzení 'listnatý les zadrží víc vody' se nepoužije.", hodnota=15, jednotka="% perkolace (smrk > buk)", zdroj=["avcr2023_liz"]),
           kv("I","hodnota","Intercepce: buk 30 %, smíšený buk-dub 21 % srážek (📄 citace)", rozsah=[21,30], jednotka="%", zdroj=["hemr2023"], znacka="citace")],
    vhodnost={"lvs_chriby": "2. LVS 36 %, 3. LVS 60 % (PLO 36)", "vrstva": "NLI OPRL Lesni_vegetacni_stupne"}, vazby={"potrebuje": ["N06"], "synergie": ["LES04"], "konflikt": []}, povoleni=1, povoleni_pozn="LHP",
    ceny=[NEOVERENA], financovani=["vlastni"], standardy=["avcr2023_liz","czu2011_plo36"], pozn_poctivost="Přínos smíšeného lesa formulovat jako odolnost porostu (kůrovec, vítr), ne jako vodní bilanci.")
 
 op("LES04", "Lesní okraj s keřovým pláštěm (ekoton)", ["LES","P"], ["V","O"], 1, ["E","B","CH"], [], "lokalita",
+   popis="Okraj lesa s keřovým pláštěm místo ostré hrany: brzdí vítr, stíní, zadržuje vláhu na přechodu les-pole.",
    kvant=[kv("E","kvalitativne","Mikroklima lesního okraje nekvantifikováno", znacka="odhad")],
    vhodnost={"hranice_les_pole": True}, vazby={"potrebuje": [], "synergie": ["P07"], "konflikt": []}, povoleni=0,
    ceny=[cena("keř prostokořenný do 60 cm", 190, "Kč/ks", 2024, "noo2024")], financovani=["ppk_b","vlastni"], standardy=["sppk_a02_003"])
 
 # ===== T tok, niva, prameniště
 op("T01", "Tůň v nivě (bez fólie), soustava tůní, obnova zazemněné tůně", ["T"], ["V","O","SP"], 2, ["R","CH","B"], ["I","Q"], "lokalita",
+   popis="Tůň v nivě bez fólie, soustava tůní nebo obnova zazemněné tůně: voda v krajině, chlad a život kolem potoka.",
    kvant=[kv("R","vzorec","Objem = plocha × průměrná hloubka 0,8-1,0 m", vzorec="V_m3 = A_m2 * (0.8..1.0)", zdroj=["sppk_b02_001"])],
    vhodnost={"niva": True, "hladina_pv_melko": True, "hsp": ["C","D"]}, vazby={"potrebuje": [], "synergie": ["T02","T06"], "konflikt": []}, povoleni=1, povoleni_pozn="0-2 podle velikosti a vzdálenosti od toku (§ 15b, § 55)",
    ceny=[cena("tůň strojně, materiál v lokalitě", 330, "Kč/m² hladiny", 2024, "noo2024"), cena("terénní sníženiny v nivě", 330, "Kč/m²", 2024, "noo2024"), cena("odbahnění", 430, "Kč/m³", 2024, "noo2024")],
    financovani=["aopk_zmv","ppk_b","opzp_1_3_1"], standardy=["sppk_b02_001","vz_15b","vz_55"])
 
 op("T02", "Mokřad, zamokření nivy přerušením odvodnění", ["T"], ["V","O"], 2, ["R","CH","B"], ["I","Q"], "lokalita",
+   popis="Zamokření nivy přerušením odvodnění a obnova mokřadu: nejvíc vody zadržené na hektar ze všech opatření v krajině.",
    kvant=[kv("R","hodnota","Regulace/eliminace drenáže snižuje odtok o 25-90 %", rozsah=[25,90], jednotka="%", zdroj=["zajicek2021"])],
    vhodnost={"odvodnene_nivy": True}, vazby={"potrebuje": [], "synergie": ["P10","T01"], "konflikt": []}, povoleni=1, povoleni_pozn="1-2",
    ceny=[cena("rušení odvodnění", 1650, "Kč/m²", 2024, "noo2024"), cena("sníženiny v nivě", 330, "Kč/m²", 2024, "noo2024")], financovani=["aopk_zmv","opzp_1_3_1"], standardy=["zajicek2021"])
 
 op("T03", "Mrtvé dřevo a dřevní přehrážky v korytě drobného toku (leaky dams)", ["T"], ["SP","V"], 1, ["Q","R","B"], [], "lokalita",
+   popis="Padlé kmeny a dřevní přehrážky ponechané nebo vložené do koryta drobného lesního potoka: zpomalí vodu a zvednou hladinu v nivě.",
    kvant=[kv("Q","hodnota","Model (1 přehrážka, povodí 2 km²): průtok -31 % při 6h dešti 1/10 let se sedimentem, -3,1 % bez; empirie 📄: kulminace 1leté povodně nižší v průměru o 10 %, velká variabilita. Zahraniční; český zdroj nedohledán.", rozsah=[3,31], jednotka="% průtoku", zdroj=["wolstenholme2024"]),
           kv("B","kvalitativne","Říční dřevo nutné pro přírodě blízký stav (AOPK 2020)", zdroj=["aopk2020_toky"])],
    vhodnost={"drobne_toky_mimo_intravilan": True, "bez_ohrozeni_staveb": True}, vazby={"potrebuje": ["N06"], "synergie": ["T04"], "konflikt": ["intravilán","mosty a propustky"]},
@@ -689,40 +730,47 @@ op("T03", "Mrtvé dřevo a dřevní přehrážky v korytě drobného toku (leaky
    ceny=[NEOVERENA], financovani=["vlastni","aopk_zmv"], standardy=["aopk2020_toky","vz_17_46_47"], nedohledano=["český kvantifikovaný zdroj"])
 
 op("T04", "Revitalizace drobného toku (odstranění opevnění, rozvlnění, snížení břehů)", ["T"], ["SP","O"], 3, ["Q","R","B","CH"], [], "uzemi", kontext=True,
+   popis="Napřímený a opevněný potok vrátit do přírodě blízkého koryta: rozvlnit, snížit břehy, nechat vodu rozlévat do nivy.",
    kvant=[kv("R","kvalitativne","Měřený efekt na vlnu v ČR nedohledán; AOPK 2020 kvalitativně. Příklad rozsahu: Zdoňovsko (předběžná studie) +697 495 m³ zádrže, +58,8 ha mokřadů, 25,7 km toků", zdroj=["aopk2020_toky","zivavoda2018"], znacka="overeno_stare")],
    vhodnost={"naprimene_useky": "porovnání s II./III. vojenským mapováním"}, vazby={"potrebuje": ["N06"], "synergie": ["T01","T03","T06"], "konflikt": []}, povoleni=2,
    ceny=[cena("revitalizace koryta drobného toku", 1200, "Kč/m²", 2024, "noo2024"), cena("revitalizace významného toku", 1650, "Kč/m²", 2024, "noo2024")],
    financovani=["opzp_1_3_1","aopk_zmv"], standardy=["aopk2020_toky"], nedohledano=["SPPK kód pro revitalizace","měřený efekt (ČR)"])
 
 op("T05", "Obnova prameniště, studánky, ochrana před sešlapem a splachy", ["T","L","LES"], ["J","V","S","O"], 1, ["R","B"], [], "pozemek",
+   popis="Studánku nebo prameniště vyčistit, zastínit, oplotit před dobytkem a chránit před splachy z cest a polí.",
    kvant=[kv("R","kvalitativne","Hydrologická role pramenišť - český zdroj nedohledán", znacka="odhad")],
    vhodnost={"pramenisete_z_dat": True, "teren": True}, vazby={"potrebuje": [], "synergie": ["L04","M04"], "konflikt": []}, povoleni=0, povoleni_pozn="0-1; souhlas vlastníka; studánka typicky není vodní dílo (§ 55 odst. 3, 🤔 výklad)",
    ceny=[NEOVERENA], financovani=["vlastni","ppk_b"], standardy=["studanky2025"], pozn_poctivost="Nezasahovat do jímek; prameniště/mokřad neupravovat na studánku; registr estudanky.eu.")
 
 op("T06", "Břehové porosty podél toku a kolem nádrží", ["T"], ["V","O","SP"], 1, ["CH","E","ER","B"], [], "lokalita",
+   popis="Stromy a keře podél potoka a kolem nádrží: stíní vodu, drží břehy, chladí údolí.",
    kvant=[kv("CH","hodnota","Stíněné úseky: max. teplota vody o 2,2-3,5 °C nižší; nestíněné oteplení až +3,9 °C; denní amplituda až o 4 °C nižší; doporučeno >40 % husté vegetace (Rakousko)", rozsah=[2.2,3.9], jednotka="°C teplota vody", zdroj=["kalny2017","trimmel2018"])],
    vhodnost={"nezastinene_useky": True}, vazby={"potrebuje": ["N06"], "synergie": ["T01"], "konflikt": []}, povoleni=0, povoleni_pozn="0-1; § 47 správce udržuje porosty",
    ceny=[cena("keř prostokořenný do 60 cm", 190, "Kč/ks", 2024, "noo2024"), cena("špičák 80-125 cm", 1055, "Kč/ks", 2024, "noo2024"), cena("strom ok 6-8 prostokořenný", 2245, "Kč/ks", 2024, "noo2024"), cena("následná péče strom", 725, "Kč/ks/rok", 2024, "noo2024")],
    financovani=["aopk_zmv","ppk_b"], standardy=["sppk_a02_001"], nedohledano=["SPPK kód břehové porosty","český zdroj teploty vody"])
 
 op("T07", "Malá vodní nádrž, suchý poldr, rybník", ["T"], ["O","SP"], 3, ["R","Q"], ["B","CH"], "uzemi", kontext=True,
+   popis="Malá vodní nádrž, rybník nebo suchý poldr na toku: zadrží přívalovou vlnu a část vody pro sucho; velký projekt obce nebo správce.",
    kvant=[kv("R","vzorec","Objem z DMR při zvolené hrázi (jádro aplikace)", vzorec="V = sum(h_hraz - z_dmr) * dx*dy pro z < h_hraz")],
    vhodnost={"profil_z_dmr": True}, vazby={"potrebuje": ["N06"], "synergie": [], "konflikt": []}, povoleni=2,
    ceny=[NEOVERENA], financovani=["opzp_1_3_1"], standardy=["tnv752415"], nedohledano=["Kč/m³ retence z realizací 2024-2026"], pozn_poctivost="Dřívější údaj o ceně poldru/hráze se nepotvrdil a byl vyřazen.")
 
 # ===== C cesta, svah, strž
 op("C01", "Zasakovací příkopy a svodnice u cest, odvedení vody do průlehů místo do toku", ["C"], ["O","V"], 1, ["I","Q","ER"], [], "lokalita",
+   popis="Příkopy a svodnice u polních a lesních cest vést do zasakovacích průlehů, ne přímo do potoka.",
    kvant=[kv("R","vzorec","Objem = délka × průřez; příkop dno 0,3-0,6 m, hloubka 0,6-1,2 m, svahy 1:1,5-1:2; průleh svahy ≤1:5, jen do 10 % sklonu", vzorec="V_m3 = L_m * S_m2", zdroj=["tpeo2014"], znacka="overeno_stare")],
    vhodnost={"svahove_cesty": True, "sklon_max_pct_pruleh": 10}, vazby={"potrebuje": [], "synergie": ["U03","P08"], "konflikt": []}, povoleni=0, povoleni_pozn="0-1",
    ceny=[cena("průlehy a meze s terénními úpravami", 200, "Kč/m²", 2024, "noo2024"), {"polozka": "příkop", "hodnota": None, "rozsah": None, "jednotka": "Kč/m", "rok": None, "zdroj": None, "pozn": "cena neověřena"}],
    financovani=["kopu","aopk_zmv"], standardy=["tpeo2014"])
 
 op("C02", "Přehrážky v erozních rýhách a stržích (kámen, dřevo, proutí)", ["C","LES"], ["V","O","S"], 1, ["ER","Q"], ["R","I"], "pozemek",
+   popis="Přehrážky z kamene, dřeva nebo proutí v erozních rýhách a stržích: zastaví prohlubování a zadrží splaveniny.",
    kvant=[kv("ER","kvalitativne","Efekt drobných přehrážek na sediment nedohledán; příbuzná technika silt-fence zachytí >84 % erodovaného materiálu", hodnota=84, jednotka="% (silt-fence)", zdroj=["vumop2020_siltfence"])],
    vhodnost={"ryhy_z_dmr_a_terenu": True, "mimo_koryto_toku": True}, vazby={"potrebuje": [], "synergie": ["LES01","M06"], "konflikt": []}, povoleni=0, povoleni_pozn="0-1 mimo koryto",
    ceny=[cena("jednoduchá přehrážka", 10000, "Kč/ks", 2024, "noo2024"), cena("silt-fence instalace", 8146, "Kč/100 m", 2020, "vumop2020_siltfence")], financovani=["vlastni","aopk_zmv"], standardy=["mze2020_bystriny"])
 
 op("C03", "Zatravnění a výsadba na svazích, terasování starých úvozů", ["C"], ["V","O"], 2, ["ER","I","E"], [], "lokalita",
+   popis="Svahy, staré úvozy a terasy zatravnit nebo osázet a udržovat zídky: půda zůstane na místě a voda vsákne.",
    kvant=[kv("ER","vzorec","USLE C 0,01 pro travní porost; terasy stupeň max. 8 m (optimum 6 m), svah 1:1 do 1,5 m", vzorec="A_new/A_old = 0.01 / C_old", zdroj=["kalkulacka_manual","tpeo2014"])],
    vhodnost={"sklon_min_pct": 15}, vazby={"potrebuje": [], "synergie": ["P06"], "konflikt": []}, povoleni=0, povoleni_pozn="0-1",
    ceny=[cena("trávník luční", 40, "Kč/m²", 2025, "uur2025_zelen"), cena("založení trávníku", 33.5, "Kč/m²", 2024, "noo2024"), cena("založení trávníku s modelací", 81.5, "Kč/m²", 2024, "noo2024", pozn="příplatek svah 15-30 % +20 %, >30 % +30 %")],

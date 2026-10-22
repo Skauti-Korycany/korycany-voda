@@ -113,3 +113,7 @@ Mimo verzi 1: transformace vlny, roční bilance P-ET podle scénářů (čeká 
 
 ## 7. Další krok
 Fáze 2 (DMR, hranice, sklon, akumulace, budovy) je úzké hrdlo: bez ní nejde postavit krok 1 režimu Můj pozemek. Jádro (fáze 3) lze mezitím psát a testovat na syntetickém pozemku (viz prototyp).
+
+## Doplněk v0.2 (22. 10. 2026): výběr opatření podle oblastí
+
+Viz `docs/OPATRENI-UX-ZADANI.md` a STAV.md (sekce Opatření - UX výběru). Katalog: KDE (dlaždice) -> CO ŘEŠÍM (přepínače) -> zjednodušené karty s jedním číslem; podrobnosti rozbalovací. Můj pozemek krok 4: stejné přepínače CO ŘEŠÍM. Staré štítkové filtry zůstávají pod „Podrobné filtry (pro školu a úřad)“.
