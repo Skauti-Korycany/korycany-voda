@@ -280,6 +280,60 @@ details.pz-more .inputs{margin-top:.5rem}
 .pz-track{height:18px;background:var(--chip);border-radius:4px;overflow:hidden;display:flex}
 .pz-track i{display:block;height:100%} .pz-track .away{background:var(--bad)} .pz-track .kept{background:var(--water)}
 .pz-chosen{font-size:1rem;margin:.2rem 0 .4rem}
+/* krok 4: ukazatel houby, dlazdice s obrazkem (22. 10. 2026) */
+.pz-houba{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:.8rem .9rem;margin-top:.4rem}
+.pz-houba .h-top{display:flex;justify-content:space-between;align-items:flex-end;gap:.6rem}
+.pz-houba .lvl{font-family:var(--f-display);font-size:1.6rem;color:var(--water)}
+.pz-houba .pct{font-size:1.6rem;font-weight:500;color:var(--water)}
+.pz-houba .h-bar{position:relative;height:14px;background:var(--chip);border-radius:7px;overflow:hidden;margin-top:.4rem}
+.pz-houba .h-bar i{display:block;height:100%;background:var(--water);border-radius:7px}
+.pz-houba .h-bar span{position:absolute;top:0;bottom:0;width:2px;background:var(--panel)}
+.pz-houba .h-lv{position:relative;height:1.1rem;font-size:.72rem;color:var(--muted);margin-top:.15rem}
+.pz-houba .h-lv span{position:absolute;white-space:nowrap} .pz-houba .h-lv span.on{color:var(--water);font-weight:600}
+.pz-houba .h-lv span:last-child{transform:translateX(-30%)}
+.pz-houba .h-txt{margin:.5rem 0 0;font-size:.95rem}
+.pz-houba .h-next{margin:.35rem 0 0;font-size:.92rem}
+.pz-houba .h-odz{display:flex;flex-wrap:wrap;gap:.3rem .4rem;align-items:center;margin-top:.5rem;font-size:.8rem}
+.pz-houba .h-odz span:not(.note){border:1px dashed var(--line);border-radius:999px;padding:.1rem .55rem;color:var(--muted)}
+.pz-houba .h-odz span.on{border:1px solid var(--ok);color:var(--ok);font-weight:600;background:var(--mark)}
+.pz-houba .h-toast:empty{display:none} .pz-houba .h-toast{margin:.4rem 0 0;color:var(--accent)}
+.linkbtn{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
+.t-h{font-size:1rem;margin:1rem 0 .4rem}
+.tiles{display:grid;gap:.5rem;align-items:start;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.tile{border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden}
+.tile.on{border-color:var(--water);box-shadow:inset 0 0 0 1px var(--water);background:var(--mark)}
+.tile-h{all:unset;box-sizing:border-box;display:grid;grid-template-columns:52px 1fr 26px;gap:.6rem;align-items:start;width:100%;padding:.65rem .7rem;cursor:pointer}
+.tile-h:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:12px}
+.tile .ico{width:52px;height:52px;border-radius:10px;background:var(--chip);display:grid;place-items:center;color:var(--fg)}
+.tile.on .ico{background:var(--panel)}
+.tile .ico svg{width:40px;height:40px}
+.tile .tx{min-width:0;display:grid;gap:.2rem}
+.tile .tx b{font-size:1rem;font-weight:600;line-height:1.25}
+.tile .proc{font-size:.88rem;line-height:1.35}
+.tile .tags{display:flex;flex-wrap:wrap;gap:.25rem .4rem;font-size:.75rem;color:var(--muted)}
+.tile .tags span{white-space:nowrap} .tile .tags .w{color:var(--water);font-weight:600}
+.tile .tags .pr{margin:0;font-size:.65rem}
+.tile .tick{width:24px;height:24px;border-radius:50%;border:2px solid var(--line);margin-top:.1rem;display:grid;place-items:center}
+.tile.on .tick{background:var(--water);border-color:var(--water)}
+.tile.on .tick::after{content:"";width:6px;height:11px;border:solid var(--panel);border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.tile>details{padding:0 .8rem .6rem calc(52px + 1.3rem);font-size:.87rem}
+.tile>details>summary{cursor:pointer;color:var(--accent);min-height:28px}
+.tile .tile-n{padding:0 .8rem .4rem calc(52px + 1.3rem);color:var(--warn)}
+.tile .eff,.tile .one{margin-top:.35rem} .tile details details{margin-top:.4rem}
+.tile details ul{margin:.3rem 0 0;padding-left:1.1rem}
+.tile .zivot{font-size:.8rem;color:var(--ok);margin-top:.25rem}
+@media(max-width:600px){ .tile>details,.tile .tile-n{padding-left:.8rem} }
+.ico .w{fill:var(--water)} .ico .ws{stroke:var(--water)} .ico .g{stroke:var(--ok)} .ico .gf{fill:var(--ok);stroke:none} .ico .s{stroke:var(--soil)}
+.ico .dot circle{fill:var(--soil);stroke:none} .ico .sun{stroke:var(--warn)} .ico .mut{stroke:var(--muted)} .ico .sh{fill:var(--muted);stroke:none;opacity:.3}
+.ico .fl{fill:var(--warn);stroke:none} .ico .fl2{fill:var(--accent);stroke:none}
+.pz-mini-h{display:none;align-items:center;gap:.4rem;margin-right:auto;font-size:.85rem;min-width:0}
+.pz[data-step="4"] .pz-mini-h{display:flex}
+.pz-nav .pz-btn{white-space:nowrap}
+@media(max-width:430px){ .pz-mini-h .mb{display:none} }
+.pz-mini-h b{color:var(--water)} .pz-mini-h .mb{width:clamp(40px,14vw,110px);height:8px;background:var(--chip);border-radius:4px;overflow:hidden;display:block}
+.pz-mini-h .mb i{display:block;height:100%;background:var(--water)}
+.pz-30{margin-top:1rem;border-left:3px solid var(--water);padding:.2rem 0 .2rem .8rem}
+.pz-30 p{margin:.3rem 0}
 .unfit details>summary{cursor:pointer;min-height:40px;display:flex;align-items:center;gap:.4rem}
 #summary .motiv{margin-top:0}
 #summary .motiv .big{color:inherit;font-size:2.4rem}
@@ -435,6 +489,7 @@ details.banner[open]>summary .more{display:none}
         <h2>Co se u tebe děje při dešti</h2>
         <div class="pz-q"><div class="q">Jaký déšť?</div><div class="pz-chips" data-for="in-rain"></div><div class="note">Vzácné přívalové deště (53, 87 a 94 mm) najdeš v „Jak se to počítá“.</div></div>
         <div id="pz-rain-big"></div>
+        <div id="pz-30"></div>
         <p id="pz-year"></p>
         <details class="pz-more"><summary>Jak se to počítá</summary>
           <div class="inputs" style="margin-top:.5rem"><label class="f">Jiný déšť<select id="in-rain">
@@ -455,10 +510,10 @@ details.banner[open]>summary .more{display:none}
       </div>
       <div class="pz-step" data-s="4">
         <h2>Co můžeš udělat</h2>
-        <p class="pz-chosen" id="pz-chosen"></p>
+        <div class="pz-houba" id="pz-houba"></div>
+        <p class="note" style="margin:.8rem 0 .3rem">Klepni na to, co by u tebe šlo. Nahoře uvidíš, kolik deště pak udržíš doma. Čísla platí pro tvůj pozemek a zvolený déšť, podrobnosti jsou v „Proč a jak“.</p>
         <div class="co" id="pz-co"></div>
-        <p class="note">Seřazeno: nejvíc vody za nejmíň práce. Zaškrtni, co by u tebe šlo. Čísla platí pro tvoje plochy a zvolený déšť. Podrobnosti (zdroje, kde to funguje, ceny) jsou pod každou kartou.</p>
-        <div class="cards" id="cards"></div>
+        <div id="cards"></div>
         <div class="unfit" id="unfit"></div>
       </div>
       <div class="pz-step" data-s="5">
@@ -471,6 +526,7 @@ details.banner[open]>summary .more{display:none}
     </div>
   </div>
   <div class="pz-nav">
+    <div class="pz-mini-h" id="pz-mini-h" aria-hidden="true"></div>
     <button type="button" class="pz-btn" id="pz-back">Zpět</button>
     <button type="button" class="pz-btn pri" id="pz-next" disabled>Dál: okapy a půda</button>
   </div>
@@ -813,6 +869,7 @@ function pzChipsSync(){ document.querySelectorAll('.pz-chips').forEach(box=>{ co
 document.getElementById('tab-pozemek').addEventListener('click', e=>{ const u=e.target.closest('[data-uz-moje]'); if(!u) return; e.preventDefault(); UZ.moje=true; const ur=document.getElementById('u-rain'); ur.value=document.getElementById('in-rain').value; document.querySelector('nav.tabs button[data-tab="uzemi"]').click(); ur.dispatchEvent(new Event('input')); window.scrollTo({top:0}); });
 document.getElementById('tab-pozemek').addEventListener('click', e=>{ const t=e.target.closest('[data-tab-go]'); if(!t) return; e.preventDefault(); document.querySelector(`nav.tabs button[data-tab="${t.dataset.tabGo}"]`).click(); window.scrollTo({top:0}); });
 const VANA_L = 150; // plna vana ~150 l - odhad pro predstavu
+const csd30 = s=>{const [y,m,d]=s.split('-'); return `${+d}. ${+m}.`;};
 const vany = m3 => fmt0(m3*1000/VANA_L);
 // cetnost: kolik dni za rok ma vic nez P mm (histogram dennich uhrnu CHMU Korycany 1991-2019)
 const cetnost = P => { const H=D.srazky_hist; if(!H) return null; let n=0; for(let k=0;k<H.bin_mm.length;k++) if(H.bin_mm[k]-1>=P) n+=H.dni_za_rok[k]; return n; };
@@ -839,13 +896,15 @@ function pzRender(i, r, kept, keptYear, n){
     <div class="legend"><span><b style="background:var(--bad)"></b>odteče</span><span><b style="background:var(--water)"></b>vsákne se</span></div>
     <p>${src[1]>0.05?`Nejvíc odteče ${src[0]} (${fmt(src[1])} m³). `:''}${dest} ${i.green>0?`Trávník při dešti do ${fmt0(r.g.Ia_mm)} mm vsákne všechno.`:''}</p></div>`;
   $('pz-year').innerHTML = `Za celý rok (průměrně ${fmt0(K.srazky_rocni_mm.hodnota)} mm, ČHMÚ Koryčany ✅) odteče ze střech a dlažby asi <b>${fmt0(r.yearRoof+r.yearPaved)} m³</b>${r.yearGreen!=null?`, ze zahrady ${fmt0(r.yearGreen)} m³`:''}.`;
-  // krok 4: prubezny soucet
-  $('pz-chosen').innerHTML = kept>0.05 ? `Zaškrtnutá opatření udrží <b>${fmt(kept)} m³</b> z ${fmt(r.out)} m³, které teď při tomto dešti odtečou.` : `Zatím nic, co by vodu zadrželo. Teď při tomto dešti odteče ${fmt(r.out)} m³.`;
+  // krok 3: skutecny dest za poslednich 30 dni
+  const p30 = posl30(i, chosen);
+  $('pz-30').innerHTML = !p30 ? '' : (p30.n ? `<div class="pz-30"><div class="eyebrow">Skutečně u tebe, posledních 30 dní</div><p>Od ${csd30(p30.od)} do ${csd30(p30.do)} napršelo <b>${fmt0(p30.P)} mm</b>, pršelo ${p30.n} ${p30.n===1?'den':p30.n<5?'dny':'dní'} (nejvíc ${csd30(p30.max[0])}: ${fmt(p30.max[1])} mm). Z tvého pozemku při nich odteklo asi <b>${fmt(p30.out)} m³</b>${p30.roof>0.05&&i.drain==='kanal'?`, z toho ${fmt(p30.roof)} m³ ze střechy rovnou do kanálu`:''}. To je ${konvi(p30.out)} konví vody na zálivku.</p><p class="note">Srážky ČHMÚ Koryčany, dny bez ní KS Koryčany (Povodí Moravy) a Nemochovice, předběžná data (stejná jako v Jak bylo). Každý déšť počítán zvlášť stejně jako výše.</p></div>`
+    : `<div class="pz-30"><div class="eyebrow">Skutečně u tebe, posledních 30 dní</div><p>Od ${csd30(p30.od)} do ${csd30(p30.do)} nepršelo víc než 1 mm za den, nic neodteklo. Zahrada žije ze zásoby v půdě.</p></div>`);
   // krok 5: motivacni vysledek
   $('scale').hidden = !(kept>0.05);
   setTimeout(pzStav, 0);
   $('summary').innerHTML = kept>0.05
-    ? `<div class="motiv"><div>Tvoje volba udrží doma</div><div class="big num">${fmt(kept)} m³</div><p>z každého deště ${P} mm (${rt}), to je asi ${vany(kept)} van 🤔, které neodtečou ${i.drain==='kanal'?'do kanalizace':'pryč'}. Za rok ${fmt0(keptYear)} m³.</p><div class="mot-a"><a href="#" data-uz-moje="1">Co kdyby to udělali i ostatní? →</a><a href="#" data-tab-go="uzemi">Co může obec a celé území →</a><a href="#" data-tab-go="katalog">Všechna opatření →</a><a href="#" data-share="1">Poslat odkaz</a></div></div><div class="pz-shared note" id="pz-shared">Odkaz obsahuje čísla vybraných parcel a tvoje odpovědi. Nikam se neukládá, pošleš ho jen ty.</div>`
+    ? `<div class="motiv"><div>Tvoje volba udrží doma</div><div class="big num">${fmt(kept)} m³</div><p>z každého deště ${P} mm (${rt}), to je asi ${vany(kept)} van 🤔, které neodtečou ${i.drain==='kanal'?'do kanalizace':'pryč'}. Za rok ${fmt0(keptYear)} m³.${p30&&p30.n?` Za posledních 30 dní (${fmt0(p30.P)} mm skutečného deště) by zůstalo ${fmt(p30.kept)} m³ = ${konvi(p30.kept)} konví.`:''}</p><div class="mot-a"><a href="#" data-uz-moje="1">Co kdyby to udělali i ostatní? →</a><a href="#" data-tab-go="uzemi">Co může obec a celé území →</a><a href="#" data-tab-go="katalog">Všechna opatření →</a><a href="#" data-share="1">Poslat odkaz</a></div></div><div class="pz-shared note" id="pz-shared">Odkaz obsahuje čísla vybraných parcel a tvoje odpovědi. Nikam se neukládá, pošleš ho jen ty.</div>`
     : `<div class="callout">Zatím jsi nevybral žádné opatření, které vodu zadrží. Vrať se <button type="button" class="linkbtn" data-go="4">ke kroku 4</button>.</div>`;
 }
 
@@ -1014,7 +1073,7 @@ function evalMeasures(i,r){
   fit.sort((a,b)=> (b.enabler?1e9:(b.dV/ b.o.pracnost)) - (a.enabler?1e9:(a.dV/a.o.pracnost)) );
   return {fit,unfit};
 }
-let chosen = new Set(['S02','Z01']);
+let chosen = new Set();   // od 22. 10. 2026 prázdné: ukazatel začíná na Kapce, opatření volí člověk
 function cenaText(o){
   const c = o.ceny.filter(c=>c.hodnota!=null||c.rozsah); if(!c.length) return 'cena neověřena';
   const x=c[0]; const v = x.rozsah? `${fmt0(x.rozsah[0])}-${fmt0(x.rozsah[1])}` : fmt0(x.hodnota);
@@ -1063,6 +1122,136 @@ function zadrzeni(i, r, ch){
   kept=Math.min(kept,r.out); const yearOut=r.yearRoof+r.yearPaved+(r.yearGreen||0); keptYear=Math.min(keptYear,yearOut);
   return {ev, kept, keptYear};
 }
+// ---------- Muj pozemek krok 4: dlazdice s obrazkem, ukazatel "houby", skutecny dest 30 dni (22. 10. 2026, zpetna vazba z testu s obcanem)
+// ikony: vlastni jednoduche piktogramy (SVG), zadne cizi obrazky
+const IK = (() => {
+  const d = (x,y,s=1)=>`<path class="w" d="M${x} ${y-4*s}C${x+3*s} ${y} ${x+3*s} ${y+2.5*s} ${x} ${y+2.5*s}C${x-3*s} ${y+2.5*s} ${x-3*s} ${y} ${x} ${y-4*s}Z"/>`;
+  const zem = y=>`<path class="s" d="M2 ${y}h36"/>`;
+  const dum = `<path d="M9 21v14h22V21"/><path d="M6 22L20 10l14 12"/>`;
+  const S = {
+    okap: `<path d="M3 9h21v4h3"/><path d="M27 13v15q0 4 4 4h4"/>${d(35,35.5,.7)}${zem(38)}<path d="M3 9v29" opacity=".35"/>`,
+    sud: `<path d="M20 2v8"/><path d="M15 10h10"/><rect x="9" y="12" width="22" height="24" rx="3"/><rect class="w" x="10.5" y="22" width="19" height="12.5" rx="1.5" stroke="none"/><path d="M9 19h22M9 28h22" opacity=".6"/>`,
+    zahon: `<path class="s" d="M2 22h7q11 12 22 0h7"/><path class="w" d="M12 24.5q8 6 16 0z" stroke="none"/><path class="g" d="M14 23V12M14 16q-4-1-5-5M14 15q4-1 5-5M26 23V14M26 18q-3 0-4-4M26 17q3 0 4-4"/>${d(20,6,.8)}`,
+    vsak: `${zem(14)}<rect x="10" y="19" width="20" height="15" rx="1"/><g class="dot"><circle cx="14" cy="24" r="1.3"/><circle cx="20" cy="23" r="1.3"/><circle cx="26" cy="25" r="1.3"/><circle cx="16" cy="30" r="1.3"/><circle cx="23" cy="30" r="1.3"/></g><path class="ws" d="M20 2v10M16 8l4 4 4-4"/>`,
+    dlazba: `<rect x="4" y="5" width="14" height="12" rx="1"/><rect x="22" y="5" width="14" height="12" rx="1"/><rect x="4" y="22" width="14" height="12" rx="1"/><rect x="22" y="22" width="14" height="12" rx="1"/><path class="g" d="M20 3v34M2 19.5h36"/>`,
+    pruleh: `<path class="s" d="M2 8L15 19q5 5 10 0L38 30"/><path class="w" d="M16 20.5q4 4 8 0z" stroke="none"/><path class="g" d="M8 12l1-3M30 26l1-3M34 29l1-3"/>${d(10,30,.7)}`,
+    tun: `<ellipse class="w" cx="18" cy="29" rx="15" ry="6" stroke="none"/><ellipse cx="18" cy="29" rx="15" ry="6"/><path class="g" d="M31 27V9M34 28V13M28 27v-9"/><rect class="gf" x="30" y="8" width="2" height="6" rx="1"/>`,
+    zstrecha: `${dum}<path class="g" d="M4 20L20 6l16 14" stroke-width="3.5"/><path class="g" d="M11 13l-1-3M20 6.5V3M29 13l1-3"/>`,
+    svstrecha: `${dum}<circle class="sun" cx="33" cy="6" r="3.5"/><path class="sun" d="M33 0v1M39 6h-1M37 2l-1 1"/><path class="ws" d="M26 8l-4 4M22 4l-3 3" opacity=".7"/>`,
+    strom: `<circle class="gf" cx="20" cy="14" r="11" opacity=".85"/><circle class="g" cx="20" cy="14" r="11"/><path class="s" d="M20 25v10M20 30l-4-3"/><ellipse class="sh" cx="20" cy="36.5" rx="13" ry="2"/>`,
+    mulc: `${zem(31)}<path class="s" d="M5 29l3-2M10 30l3-2M24 29l3-2M30 30l3-2M16 30l2-1"/><path class="g" d="M20 30V14M20 20q-5 0-7-6M20 18q5 0 7-6"/>`,
+    plot: `<circle class="gf" cx="11" cy="25" r="7"/><circle class="gf" cx="21" cy="23" r="8"/><circle class="gf" cx="31" cy="25" r="7"/>${zem(33)}<path class="mut" d="M2 9h14M2 14h9M14 6l3 3-3 3"/>`,
+    louka: `<path class="g" d="M8 37V22M15 37V17M22 37V24M29 37V15M34 37V25"/><circle class="fl" cx="8" cy="20" r="2.6"/><circle class="fl2" cx="15" cy="15" r="2.6"/><circle class="fl" cx="22" cy="22" r="2.4"/><circle class="fl2" cx="29" cy="13" r="2.6"/><circle class="fl" cx="34" cy="23" r="2.2"/>`,
+    popinavky: `<rect x="5" y="4" width="20" height="32" rx="1"/><path d="M5 12h20M5 20h20M5 28h20M15 4v8M10 12v8M20 20v8M15 28v8" opacity=".35"/><path class="g" d="M31 37c-6-6 4-10-2-16s4-10-2-15"/><circle class="gf" cx="27" cy="27" r="2"/><circle class="gf" cx="31" cy="18" r="2"/><circle class="gf" cx="27" cy="11" r="2"/>`,
+    kapka: `<path d="M3 11h34"/><path d="M10 11v3M20 11v3M30 11v3"/>${d(10,19,.7)}${d(20,19,.7)}${d(30,19,.7)}<path class="g" d="M10 36v-9M10 30q-3 0-4-3M20 36v-9M20 30q3 0 4-3M30 36v-9M30 30q-3 0-4-3"/>`,
+    olla: `${zem(15)}<path d="M15 15v-3h10v3"/><path d="M14 15q-5 9 1 18h10q6-9 1-18"/><path class="w" d="M13.5 22q6.5 2 13 0q1 6-2 10h-9q-3-4-2-10z" stroke="none"/><path class="g" d="M6 15V7M6 10q-3 0-3-3M34 15V8M34 11q3 0 3-3"/>`,
+    step: `<ellipse class="s" cx="11" cy="31" rx="7" ry="4"/><ellipse class="s" cx="28" cy="33" rx="6" ry="3"/><path class="g" d="M20 30V18M20 22l-4-4M20 22l4-4M33 27v-7M33 23l-3-3M7 24v-6M7 21l3-3"/><circle class="sun" cx="31" cy="7" r="4"/>`,
+    sprcha: `<path d="M5 3h12v6"/><path d="M11 9h12l-2 4H13z"/>${d(13,20,.6)}${d(18,24,.6)}${d(16,30,.6)}<path class="ws" d="M22 31h8l-3-3M30 31l-3 3"/><path class="g" d="M35 37V25M35 29q-3 0-4-3M35 28q3 0 4-3"/>`,
+    wc: `<rect x="9" y="3" width="16" height="10" rx="1.5"/>${d(17,8,.6)}<path d="M7 17h22c0 7-4 11-11 11S7 24 7 17z"/><path d="M13 28v8h10v-8"/>`,
+  };
+  return k => `<svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${S[k]||S.zahon}</svg>`;
+})();
+// CO udelat (kratce, jako ukol) a obrazek; PROC je spocitane cislo nebo hlavni_cislo z katalogu
+const AKCE = {
+  S02:{t:'Odpoj okap od kanálu', i:'okap'},
+  S01:{t:'Dej pod okap sud nebo nádrž', i:'sud'},
+  Z01:{t:'Udělej dešťový záhon', i:'zahon'},
+  Z10:{t:'Zakopej vsakovací box', i:'vsak'},
+  Z04:{t:'Vyměň dlažbu za propustnou', i:'dlazba'},
+  Z03:{t:'Vykopej průleh po vrstevnici', i:'pruleh'},
+  Z02:{t:'Udělej zahradní tůň', i:'tun'},
+  S03:{t:'Zelená střecha', i:'zstrecha'},
+  S04:{t:'Světlá střecha', i:'svstrecha'},
+  Z06:{t:'Zasaď strom', i:'strom'},
+  Z05:{t:'Namulčuj záhony', i:'mulc'},
+  Z07:{t:'Živý plot místo zdi', i:'plot'},
+  Z08:{t:'Nech kus louky', i:'louka'},
+  Z09:{t:'Pusť na zeď popínavky', i:'popinavky'},
+  Z11:{t:'Zalévej dešťovkou a kapkově', i:'kapka'},
+  Z12:{t:'Zakopej do záhonu ollu', i:'olla'},
+  Z13:{t:'Suchomilný záhon místo trávníku', i:'step'},
+  S05:{t:'Voda ze sprchy na zahradu', i:'sprcha'},
+  S06:{t:'Splachuj dešťovkou', i:'wc'},
+};
+const AK = o => AKCE[o.id] || {t:o.nazev.split(' (')[0], i:'zahon'};
+const KONEV_L = 10; // konev 10 l - prevod pro predstavu
+const konvi = m3 => fmt0(m3*1000/KONEV_L);
+const PRAC_SL = {1:'za víkend', 2:'pár dní, technika', 3:'projekt s firmou'};
+function cenaKratce(o){ const c=(o.ceny||[]).find(c=>c.hodnota!=null||c.rozsah); if(!c) return ''; const v=c.rozsah?c.rozsah[0]:c.hodnota; if(!v) return 'skoro zadarmo'; return 'od '+fmt0(v)+' '+c.jednotka.replace('Kč/ks','Kč'); }
+function procText(x, i, r, P){
+  const o=x.o;
+  if(x.enabler) return i.drain==='kanal' ? `Bez toho nefunguje sud ani záhon. Teď ti při ${P} mm odteče ze střechy ${fmt(r.roofOut)} m³ do kanálu.` : 'Bez toho nefunguje sud ani záhon.';
+  if(x.dV>=0.05){
+    if(o.id==='S01'||o.id==='S06') return `Z deště ${P} mm zachytí ${fmt(x.dV)} m³ = ${konvi(x.dV)} konví na zálivku zadarmo.`;
+    return `Z deště ${P} mm udrží doma ${fmt(x.dV)} m³ (${konvi(x.dV)} konví), voda zůstane v zahradě místo v kanálu.`;
+  }
+  const h=o.hlavni_cislo; if(h&&h.text) return h.text.charAt(0).toUpperCase()+h.text.slice(1)+'.'+(h.znacka?' '+(ZN[h.znacka]||''):'');
+  return o.popis||'';
+}
+// potrebna predchozi opatreni (rekurzivne): S06 -> S01 -> S02
+function potreba(id, i, r, acc=new Set()){ const f=EFF[id]; if(!f) return acc; (f(i,r).needs||[]).forEach(n=>{ if(n==='S02'&&i.drain==='pozemek') return; if(!acc.has(n)){ acc.add(n); potreba(n,i,r,acc); } }); return acc; }
+// skutecny dest: poslednich 30 dni z balicku pocasi (stejna data jako Jak bylo)
+function posl30(i, ch){
+  const P_=D.pocasi&&D.pocasi.dny; if(!P_) return null; const dny=Object.keys(P_).sort(); if(!dny.length) return null;
+  const last=dny[dny.length-1], od=(()=>{const x=new Date(last+'T00:00:00Z'); x.setUTCDate(x.getUTCDate()-29); return x.toISOString().slice(0,10);})();
+  let P=0, n=0, out=0, kept=0, roof=0, max=null;
+  dny.filter(d=>d>=od).forEach(d=>{ const p=P_[d][0]; if(p==null) return; P+=p; if(p<1) return; n++; if(!max||p>max[1]) max=[d,p];
+    const ii=Object.assign({}, i, {rain:p/1000, nkey:null}), rr=runoff(ii); out+=rr.out; roof+=rr.roofOut; if(ch) kept+=zadrzeni(ii, rr, ch).kept; });
+  return {od, do:last, P, n, out, kept, roof, max};
+}
+const HOUBA = [[0,'Kapka','skoro všechno odteče'],[25,'Louže','něco zůstane'],[50,'Tůňka','většina zůstane'],[80,'Houba','udržíš skoro všechno']];
+function houbaLevel(pct){ let k=0; HOUBA.forEach((h,j)=>{ if(pct>=h[0]) k=j; }); return k; }
+const ODZNAKY = [['prival','přívalu'],['sucho','suchu'],['horko','horku'],['zivot','pro život']];
+function pzKrok4(i, r, ev, kept){
+  const P=Math.round(i.rain*1000), $=id=>document.getElementById(id);
+  const pct = r.out>0.01 ? Math.round(100*kept/r.out) : 100, lv=houbaLevel(pct), L=HOUBA[lv];
+  // nejlepsi dalsi krok: nevybrane opatreni s nejvetsim prirustkem vody za praci
+  let tip=null; if(lv<HOUBA.length-1 && r.out>0.01){ ev.fit.forEach(x=>{ if(chosen.has(x.o.id) || x.enabler) return; const s=new Set([...chosen, x.o.id, ...potreba(x.o.id,i,r)]); const g=zadrzeni(i,r,s).kept-kept; if(g>0.05 && (!tip || g/x.o.pracnost > tip.g/tip.x.o.pracnost)) tip={x,g}; }); }
+  const ch = ev.fit.filter(x=>chosen.has(x.o.id)), ob=new Set(); ch.forEach(x=>oblastiOp(x.o).forEach(k=>ob.add(k))); if(kept>0.05) ob.add('prival');
+  const p30 = posl30(i, chosen);
+  $('pz-houba').innerHTML = `<div class="h-top"><div><div class="eyebrow">Tvůj pozemek je</div><b class="lvl">${L[1]}</b> <span class="note">${L[2]}</span></div><div class="pct num">${pct}&nbsp;%</div></div>
+    <div class="h-bar" role="img" aria-label="udržíš ${pct} % deště"><i style="width:${pct}%"></i>${HOUBA.slice(1).map(h=>`<span style="left:${h[0]}%"></span>`).join('')}</div>
+    <div class="h-lv">${HOUBA.map((h,j)=>`<span class="${j<=lv?'on':''}" style="left:${h[0]}%">${h[1]}</span>`).join('')}</div>
+    <p class="h-txt">Z deště ${P} mm udržíš doma <b>${fmt(kept)} m³</b> z ${fmt(r.out)} m³, které by jinak odtekly.${p30&&p30.n?` Za posledních 30 dní (${fmt0(p30.P)} mm) by zůstalo <b>${fmt(p30.kept)} m³</b> z ${fmt(p30.out)} m³.`:''}</p>
+    ${tip?`<p class="h-next">Do další úrovně: zkus <button type="button" class="linkbtn" data-pick="${tip.x.o.id}">${AK(tip.x.o).t.toLowerCase()}</button> (+${fmt(tip.g)} m³).</p>`:''}
+    <div class="h-odz"><span class="note">Pomáháš proti:</span>${ODZNAKY.map(([k,n])=>`<span class="${ob.has(k)?'on':''}">${ob.has(k)?'✓ ':''}${n}</span>`).join('')}</div>
+    <p class="h-toast note" id="pz-toast" aria-live="polite">${PZ.toast||''}</p>`;
+  $('pz-mini-h').innerHTML = `<b>${L[1]}</b><span class="mb"><i style="width:${pct}%"></i></span><span class="num">${pct}&nbsp;%</span>`;
+}
+function tileHTML(x, i, r, P){
+  const o=x.o, a=AK(o), on=chosen.has(o.id), needs=[...potreba(o.id,i,r)].filter(n=>!chosen.has(n));
+  const cena=cenaKratce(o), voda = x.enabler ? 'nutné pro další' : (x.dV>=0.05 ? `+${fmt(x.dV)} m³` : '');
+  return `<div class="tile ${on?'on':''}">
+    <button type="button" class="tile-h" data-pick="${o.id}" aria-pressed="${on}">
+      <span class="ico">${IK(a.i)}</span>
+      <span class="tx"><b>${a.t}</b><span class="proc">${procText(x,i,r,P)}</span>
+        <span class="tags"><span>${PRAC_IK[o.pracnost]||''} ${PRAC_SL[o.pracnost]||''}</span>${cena?`<span>${cena}</span>`:''}${voda?`<span class="w">${voda}</span>`:''}</span></span>
+      <span class="tick" aria-hidden="true"></span>
+    </button>
+    ${on&&needs.length?`<div class="note tile-n">Aby to fungovalo, vyber i: ${needs.map(n=>byId[n]?AK(byId[n]).t.toLowerCase():n).join(', ')}.</div>`:''}
+    <details data-k="${o.id}"><summary>Proč a jak</summary>
+      <div class="eff"><b>${o.nazev}.</b> ${o.popis||''}</div>
+      <div class="one">${x.text}</div>
+      ${oblastiOp(o).has('zivot')&&o.ucinky.primarni.includes('B')?'<div class="zivot">+ život v zahradě</div>':''}
+      ${kdeText(o)}
+      <details><summary>zdroje, cena, povolení, financování</summary><ul>
+        <li>Cena: ${cenaText(o)}</li><li>Financování: ${finText(o)}</li>
+        <li>Povolení: ${povText(o)}</li>
+        ${o.kvantifikace.map(k=>`<li>${CZ.ucinek[k.ucinek]||k.ucinek}: ${k.popis} ${ZN[k.znacka]||''}${(k.zdroj||[]).map(z=>D.zdroje[z]?` <a class="src" href="${D.zdroje[z].url||'#'}" target="_blank" rel="noopener">${D.zdroje[z].nazev.split(':')[0].slice(0,60)}</a>`:'').join(';')}</li>`).join('')}
+        ${o.nedohledano&&o.nedohledano.length?`<li>Nedohledáno: ${o.nedohledano.join('; ')}</li>`:''}
+        ${o.pozn_poctivost?`<li>${o.pozn_poctivost}</li>`:''}
+      </ul></details>
+    </details></div>`;
+}
+function pzPick(id){
+  const i=inputs(), r=runoff(i); PZ.toast='';
+  if(chosen.has(id)) chosen.delete(id);
+  else { chosen.add(id); const add=[...potreba(id,i,r)].filter(n=>!chosen.has(n)); add.forEach(n=>chosen.add(n));
+    if(add.length) PZ.toast=`Přidal jsem i: ${add.map(n=>byId[n]?AK(byId[n]).t.toLowerCase():n).join(', ')} - bez toho by to nefungovalo.`; }
+  recalc(); pzStav();
+}
+document.getElementById('tab-pozemek').addEventListener('click', e=>{ const b=e.target.closest('[data-pick]'); if(!b) return; e.preventDefault(); pzPick(b.dataset.pick); });
+
 function recalc(){
   const i=inputs(), r=runoff(i);
   const rainmm=Math.round(i.rain*1000);
@@ -1080,24 +1269,17 @@ function recalc(){
   $('year').textContent = `Za rok (${fmt0(K.srazky_rocni_mm.hodnota)} mm, stanice ČHMÚ Koryčany 1991-2020 ✅) odteče ze střechy a zpevněných ploch zhruba ${fmt0(r.yearRoof+r.yearPaved)} m³ (po odečtení 1 mm z každého deště: ${fmt0(RAIN_Y_NEPR*1000)} mm z ${fmt0(K.srazky_rocni_mm.hodnota)})${r.yearGreen!=null?`, ze zelených ploch ${fmt0(r.yearGreen)} m³ (SCS-CN po dnech z řady denních úhrnů ČHMÚ)`:'; ze zelených ploch zatím nepočítáno (čeká na rozdělení denních úhrnů ze stanice ČHMÚ - vyrob_srazky.bat)'}. Se zvolenými opatřeními zůstane u tebe až ${fmt0(keptYear)} m³.`;
   // karty
   if(!$('pz-co').children.length) coButtons('pz-co', PZCO, recalc);
-  const cardHTML = x=>{const o=x.o; const on=chosen.has(o.id); const needs=(x.needs||[]).filter(n=>!(chosen.has(n)||(n==='S02'&&i.drain==='pozemek')));
-    return `<div class="card ${on?'on':''}"><header><input type="checkbox" id="c-${o.id}" data-id="${o.id}" ${on?'checked':''}><div class="t"><b>${o.nazev}</b>${PRAC_IK[o.pracnost]||''}${x.enabler?'<span class="chip">předpoklad pro další</span>':(x.dV>0?`<span class="chip num">+${fmt(x.dV)} m³ teď</span>`:'')}</div></header>
-      ${o.popis?`<div class="eff">${o.popis}</div>`:''}
-      <div class="one">${x.text}</div>
-      ${oblastiOp(o).has('zivot')&&o.ucinky.primarni.includes('B')?'<div class="zivot">+ život v zahradě</div>':''}
-      ${needs.length?`<div class="note">Nejdřív je potřeba: ${needs.map(n=>byId[n]?byId[n].nazev:n).join(', ')}</div>`:''}
-      ${kdeText(o)}
-      <details><summary>zdroje, cena, povolení, financování</summary><ul>
-        <li>Cena: ${cenaText(o)}</li><li>Financování: ${finText(o)}</li>
-        <li>Povolení: ${povText(o)}</li>
-        ${o.kvantifikace.map(k=>`<li>${CZ.ucinek[k.ucinek]||k.ucinek}: ${k.popis} ${ZN[k.znacka]||''}${(k.zdroj||[]).map(z=>D.zdroje[z]?` <a class="src" href="${D.zdroje[z].url||'#'}" target="_blank" rel="noopener">${D.zdroje[z].nazev.split(':')[0].slice(0,60)}</a>`:'').join(';')}</li>`).join('')}
-        ${o.nedohledano&&o.nedohledano.length?`<li>Nedohledáno: ${o.nedohledano.join('; ')}</li>`:''}
-        ${o.pozn_poctivost?`<li>${o.pozn_poctivost}</li>`:''}
-      </ul></details></div>`;};
-  const fitCo=ev.fit.filter(x=>coMatch(x.o,PZCO)); const top3=fitCo.slice(0,3), dalsi=fitCo.slice(3);
-  $('cards').innerHTML = top3.map(cardHTML).join('') + (dalsi.length?`<details class="pz-more"><summary>Další možnosti (${dalsi.length})</summary><div class="cards">${dalsi.map(cardHTML).join('')}</div></details>`:'');
-  $('cards').querySelectorAll('input[type=checkbox]').forEach(cb=>cb.addEventListener('change',()=>{ if(cb.checked) chosen.add(cb.dataset.id); else chosen.delete(cb.dataset.id); recalc(); }));
-  $('unfit').innerHTML = ev.unfit.length? `<details><summary><b>Nehodí se sem (${ev.unfit.length})</b> <span class="note">- proč</span></summary><ul>${ev.unfit.map(x=>`<li>${x.o.nazev} (${x.o.id}) - ${x.fit}</li>`).join('')}</ul></details>` : '';
+  const P=Math.round(i.rain*1000);
+  const fitCo=ev.fit.filter(x=>coMatch(x.o,PZCO));
+  const voda=fitCo.filter(x=>x.enabler||x.dV>=0.05||(x.dYear||0)>=1), jine=fitCo.filter(x=>!voda.includes(x));
+  // otevrene "Proc a jak" zustanou otevrene i po prepocitani (driv se po vyberu vse sbalilo)
+  const otevrene=new Set([...document.querySelectorAll('#cards details[open][data-k], #unfit details[open][data-k]')].map(d=>d.dataset.k));
+  $('cards').innerHTML = (voda.length?`<h3 class="t-h">Zadrží vodu z deště <span class="note">(${voda.length})</span></h3><div class="tiles">${voda.map(x=>tileHTML(x,i,r,P)).join('')}</div>`:'')
+    + (jine.length?`<h3 class="t-h">Proti suchu, horku a pro život <span class="note">(${jine.length})</span></h3><div class="tiles">${jine.map(x=>tileHTML(x,i,r,P)).join('')}</div>`:'')
+    + (!fitCo.length?'<p class="note">Pro zvolené oblasti tu nic není, zruš filtr nahoře.</p>':'');
+  $('unfit').innerHTML = ev.unfit.length? `<details data-k="unfit"><summary><b>Nehodí se k tvému pozemku (${ev.unfit.length})</b> <span class="note">- proč</span></summary><ul>${ev.unfit.map(x=>`<li><b>${AK(x.o).t}</b> - ${x.fit}</li>`).join('')}</ul></details>` : '';
+  document.querySelectorAll('#cards details[data-k], #unfit details[data-k]').forEach(d=>{ if(otevrene.has(d.dataset.k)) d.open=true; });
+  pzKrok4(i, r, ev, kept);
   // krok 5
   const n=200;
   pzRender(i, r, kept, keptYear, n);

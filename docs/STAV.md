@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 22. 10. 2026 11:40 (doplnění chybějících let z okolních stanic; Jak bylo: srozumitelné názvy grafů, kulaté osy, graf Horko se supertropickými dny, tropickými nocemi a letními maximy, workflow Normaly pocasi - sekce **Počasí - Jak bylo**, rozhodnutí 22. 10. relace 12 „Rešerše dobré praxe“ **uzavřena: bloky B, A, C, D hotové**, katalog v0.6 / JSON 0.8; sekce **Katalog - rešerše dobré praxe** níže. UX opatření hotovo 22. 10. (sekce **Opatření - UX výběru** níže). **Další chat**: rešerše zdrojů k biodiverzitě a krajině (oblast „Život a voda v krajině“) - uživatel chce doplnit; pak napojení EFF na skutečný pozemek.) Předtím relace 11 „Můj pozemek UX“ uzavřena, včetně večerních úprav: výchozí déšť 10 mm v celé aplikaci, pozemek jako východisko pro Celé území, texty kroků. ~~Další chat: rešerše dobré praxe do katalogu~~ blok B hotov 21. 10. Detail: záložka přestavěna na **průvodce po krocích (varianta A)** včetně hledání adresy RÚIAN a odkazu se stavem, sekce **Můj pozemek - průvodce** níže. Předtím relace 10 „Nádrže v jádru“ uzavřena: bloky O a P hotové - **území modelu rozšířeno k jezu před Mouchnicemi, 17,7 km²**; úpravy Jak bylo a Celé území; **další chat: přestavba Můj pozemek podle `docs/POZEMEK-UX-ZADANI.md`**; předtím relace 9 „Počasí“, sekce **Počasí - Jak bylo** níže). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
+Aktualizováno: 22. 10. 2026 16:30 (Můj pozemek krok 4 jako hra: dlaždice s obrázky, ukazatel Kapka-Houba, skutečný déšť 30 dní - sekce **Můj pozemek - krok 4 jako hra**; doplnění chybějících let z okolních stanic; Jak bylo: srozumitelné názvy grafů, kulaté osy, graf Horko se supertropickými dny, tropickými nocemi a letními maximy, workflow Normaly pocasi - sekce **Počasí - Jak bylo**, rozhodnutí 22. 10. relace 12 „Rešerše dobré praxe“ **uzavřena: bloky B, A, C, D hotové**, katalog v0.6 / JSON 0.8; sekce **Katalog - rešerše dobré praxe** níže. UX opatření hotovo 22. 10. (sekce **Opatření - UX výběru** níže). **Další chat**: rešerše zdrojů k biodiverzitě a krajině (oblast „Život a voda v krajině“) - uživatel chce doplnit; pak napojení EFF na skutečný pozemek.) Předtím relace 11 „Můj pozemek UX“ uzavřena, včetně večerních úprav: výchozí déšť 10 mm v celé aplikaci, pozemek jako východisko pro Celé území, texty kroků. ~~Další chat: rešerše dobré praxe do katalogu~~ blok B hotov 21. 10. Detail: záložka přestavěna na **průvodce po krocích (varianta A)** včetně hledání adresy RÚIAN a odkazu se stavem, sekce **Můj pozemek - průvodce** níže. Předtím relace 10 „Nádrže v jádru“ uzavřena: bloky O a P hotové - **území modelu rozšířeno k jezu před Mouchnicemi, 17,7 km²**; úpravy Jak bylo a Celé území; **další chat: přestavba Můj pozemek podle `docs/POZEMEK-UX-ZADANI.md`**; předtím relace 9 „Počasí“, sekce **Počasí - Jak bylo** níže). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
 
 ## Fáze: 1 a 2 hotové. Fáze 3 (jádro) rozpracovaná: v0.1 umí statistiku pozemku, SCS-CN po buňkách, povodí bodu, nádrž/poldr z DMR; chybí transformace vlny, bilance P-ET, USLE, napojení opatření.
 
@@ -166,6 +166,22 @@ Aktualizováno: 22. 10. 2026 11:40 (doplnění chybějících let z okolních st
 ### Předpoklady (UX)
 - Vzorový pozemek: 100 m² střechy, 50 m² dvora (dlažba s pískovými spárami), 250 m² zahrady, HSP B, sklon 3 %, svody do kanálu, déšť 10 mm.
 - „Jedno číslo“ upřednostňuje spočtené EFF před katalogovou hodnotou; odhady (🤔) se jako hlavní číslo nezobrazují.
+
+## Můj pozemek - krok 4 jako hra (22. 10. 2026 odpoledne)
+
+Podnět: test s občanem - opatření nebyla jasná ani vidět (jen 3 karty, žádný obrázek, po výběru z „Další možnosti“ se seznam sbalil). Uživatel chce gamifikovat, zviditelnit CO a PROČ, navázat na skutečný déšť za 30 dní.
+
+### Hotovo
+- Krok 4: **všechna vhodná opatření viditelná jako dlaždice** ve dvou skupinách („Zadrží vodu z deště“, „Proti suchu, horku a pro život“), bez sbalování. Dlaždice = vlastní piktogram (SVG, 19 kusů, `IK`), krátké CO jako úkol (`AKCE`, např. „Dej pod okap sud nebo nádrž“), PROČ jednou větou (spočtené m³ + konve 10 l, jinak `hlavni_cislo`), štítky pracnost slovy / cena od / +m³. Klepnutí kamkoli = výběr (zaškrtávací kolečko). „Proč a jak“ = původní text, kde to funguje, zdroje; otevřené zůstanou otevřené i po přepočtu.
+- **Ukazatel „Tvůj pozemek je“**: % deště, které zůstane doma při zvoleném dešti, úrovně Kapka (0) / Louže (25) / Tůňka (50) / Houba (80 %), tip „Do další úrovně: zkus X (+m³)“ (nejvíc vody za práci), odznaky „Pomáháš proti: přívalu, suchu, horku, pro život“. Mini ukazatel v dolní liště kroku 4.
+- Výběr začíná prázdný (dřív předvybráno S02 + Z01). Při výběru se automaticky přidá, co je potřeba (sud -> odpoj okap), s hláškou.
+- **Skutečný déšť za posledních 30 dní** (`posl30`, data `D.pocasi` jako Jak bylo, každý den ≥ 1 mm počítán zvlášť): krok 3 blok „Skutečně u tebe“ (mm, dny, odteklo m³, ze střechy do kanálu, konve), krok 4 v ukazateli, krok 5 ve výsledku. Nádrž se mezi dešti počítá jako prázdná 🤔.
+- Kontrola: headless Chromium 1300 / 390 px, světlý i tmavý, výběr, zachování otevřených podrobností, odkaz se stavem, ostatní záložky bez chyb; `node web/test_jadro.js` VŠE OK.
+
+### Na co ses nezeptal (krok 4)
+- U parcely jen s domem (bez zahrady) se nabízí i zahradní opatření (louka, mulč, olla). Mám je při nulové zeleni přesunout do „Nehodí se“ s nápovědou „klepni i na zahradu“?
+- Vsakovací box sám dá u malého domu hned 100 % (Houba). Fyzikálně správně, ale hra je pak za jedno klepnutí. Chceš úrovně počítat i z ročního zadržení nebo z odznaků?
+- Společné počítadlo za obec (sociální srovnání) zatím ne - potřebuje ukládání mimo GitHub Pages.
 
 ## Můj pozemek - průvodce (relace 11, 21. 10. 2026)
 
