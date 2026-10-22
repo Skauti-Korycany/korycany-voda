@@ -958,6 +958,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <h3 style="margin-top:1rem" id="jb-roc-h">Srovnání ročníků</h3>
     <p class="note" id="jb-roc-n"></p>
     <svg class="jb-chart" id="jb-roc" viewBox="0 0 720 200" role="img" aria-label="Srovnání ročníků"></svg>
+    <div class="legend"><span><b style="background:var(--chip)"></b>úhrn ve vybraných měsících</span><span><b style="background:var(--bad)"></b>pod 60 % normálu</span><span><b style="background:var(--water)"></b>nad 140 % normálu</span><span><b style="background:var(--accent)"></b>letošek</span><span><b class="ln" style="border-color:var(--fg);border-top-style:dashed"></b>normál 1991-2020</span><span><b style="background:var(--muted);border-radius:50%;width:.4rem;height:.4rem;vertical-align:1px"></b>část dní doplněna z okolní stanice</span></div>
     <div class="jb-rank" id="jb-rank"></div>
     <div class="callout" style="margin-top:1rem"><b>Jak to číst.</b> <b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, počítaná z teplot metodou Hargreaves-Samani podle FAO-56 📄). Skutečný výpar je v suchém létě menší, protože není z čeho. <b>Srážky minus výpar</b> proto ukazuje, kolik vody krajině chybí a dobírá si ji ze zásoby v půdě a pod zemí (odborně klimatická vodní bilance). Vítr a vlhkost vzduchu metoda nezná; při větru je skutečná ztráta větší. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne. Prahy podle ČHMÚ ✅: tropický den = nejvyšší teplota aspoň 30 °C, supertropický aspoň 35 °C (neoficiální název), tropická noc = teplota neklesne pod 20 °C (<a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2025/TI_Leto2025.pdf" target="_blank" rel="noopener">ČHMÚ, Klimatologické léto 2025</a>).</div>
     <p class="src" id="jb-src"></p>
@@ -2457,7 +2458,9 @@ const osy=(L,w,T,h,s,o_)=>{const {right,suf='',col}=o_||{}; let o=''; s.t.forEac
 
 // doplněné dny z okolních stanic (13_normaly_pocasi.py): rok se zesvětlí od DOPL_MIN dní, v popisku je vždy
 const DOPL_MIN=10, DMK=(cx,y)=>`<circle class="dmk" cx="${(+cx).toFixed(1)}" cy="${(+y).toFixed(1)}" r="1.8"/>`, DOPL=(r,k)=>(R[r]&&R[r].dopl&&R[r].dopl[k])?R[r].dopl[k].dni:0;
-const DOPL_T=(r,...ks)=>ks.map(k=>DOPL(r,k)?`; ${DOPL(r,k)} ${DOPL(r,k)===1?'den':DOPL(r,k)<5?'dny':'dní'} ${k==='P'?'srážek':'teploty'} doplněno ze stanice ${R[r].dopl[k].stanice.join(', ')}`:'').join('');
+const DOPL_T=(r,...ks)=>ks.map(k=>DOPL(r,k)?`; v roce doplněno ${DOPL(r,k)} ${DOPL(r,k)===1?'den':DOPL(r,k)<5?'dny':'dní'} ${k==='P'?'srážek':'teploty'} ze stanice ${R[r].dopl[k].stanice.join(', ')}`:'').join('');
+// doplněné dny srážek v konkrétních měsících (pro srovnání ročníků); [[rok, měsíc], ...] -> počet dní
+const DOPL_M=list=>list.reduce((a,[r,m])=>a+(((R[r]||{}).dopl||{}).P&&R[r].dopl.P.mesice?(R[r].dopl.P.mesice[m]||0):0),0);
 // seznam let jako rozsahy: 1945-1953, 1980, 2010
 const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1) l[1]=r; else o.push([r,r]);}); return o.map(([a,b])=>a===b?a:a+'-'+b).join(', ');};
 
@@ -2668,12 +2671,13 @@ function rocniky(od,do_,s){
   const norm=mm.reduce((a,[y,m])=>a+N.mesic[m].P,0);
   const nazev=mm.length===1?`${MES[mm[0][1]-1]}`:`${MES[mm[0][1]-1]} až ${MES[mm[mm.length-1][1]-1]}`;
   const svg=$('jb-roc'); const Wd=720,Hd=200,L=34,Rr=6,T=12,B=24,w=Wd-L-Rr,h=Hd-T-B; const sc=nice(0,Math.max(norm*1.2,...body.map(b=>b[1])),4), vmax=sc.hi;
-  const bw=w/body.length, y=v=>T+h-h*v/vmax; let o=osy(L,w,T,h,sc)+`<text x="${L}" y="${T-3}">mm</text>`;
-  body.forEach(([r,v],i)=>{const cls=r===rokRef?'now':v<norm*0.6?'lo':v>norm*1.4?'hi':''; o+=`<rect class="rY ${cls}" x="${(L+i*bw).toFixed(1)}" y="${y(v)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${T+h-y(v)}"><title>${r}: ${fmt(v,0)} mm</title></rect>`; if(r%10===0||r===rokRef) o+=`<text x="${L+(i+.5)*bw}" y="${Hd-8}" text-anchor="middle">${r}</text>`;});
+  // osa x po letech: chybějící rok = mezera, ostatní se neposouvají
+  const R0=body[0][0], bw=w/(rokRef-R0+1), X=r=>L+(r-R0)*bw, y=v=>T+h-h*v/vmax; let o=osy(L,w,T,h,sc)+`<text x="${L}" y="${T-3}">mm</text>`;
+  body.forEach(([r,v])=>{const cls=r===rokRef?'now':v<norm*0.6?'lo':v>norm*1.4?'hi':''; const dm=r===rokRef?0:DOPL_M(ofs.map(([q,m])=>[r+q,m])); if(dm>=DOPL_MIN) o+=DMK(X(r)+bw/2,T+h+4); o+=`<rect class="rY ${cls}" x="${X(r).toFixed(1)}" y="${y(v)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${T+h-y(v)}"><title>${r}: ${fmt(v,0)} mm (${fmt(100*v/norm,0)} % normálu)${r===rokRef?', předběžně':dm?`; v těchto měsících doplněno ${dm} ${dm===1?'den':dm<5?'dny':'dní'} z okolní stanice`:''}</title></rect>`; if((r%10===0&&r<rokRef-5)||r===rokRef) o+=`<text x="${X(r)+bw/2}" y="${Hd-8}" text-anchor="middle">${r}</text>`;});
   o+=`<line class="nrm" x1="${L}" x2="${L+w}" y1="${y(norm)}" y2="${y(norm)}"/><text x="${L+w}" y="${y(norm)-3}" text-anchor="end">normál ${fmt(norm,0)} mm</text>`;
   svg.innerHTML=o;
   $('jb-roc-h').textContent=`Srovnání ročníků: srážky ${nazev}`;
-  $('jb-roc-n').textContent=`Uzavřené měsíce v období (${nazev} ${rokRef}) proti stejným měsícům v letech ${body[0][0]}-${body[body.length-2][0]}; ČHMÚ Koryčany, letošek předběžně.`;
+  $('jb-roc-n').textContent=`Uzavřené měsíce v období (${nazev} ${rokRef}) proti stejným měsícům v letech ${body[0][0]}-${body[body.length-2][0]}. Měsíční úhrny z denních dat ČHMÚ Koryčany (dny bez měření doplněné z okolních stanic, tečka pod rokem), letošek předběžně (dny bez stanice Koryčany z KS Koryčany a Nemochovic).`;
   const sorted=[...body].sort((a,b)=>a[1]-b[1]); const i=sorted.findIndex(b=>b[0]===rokRef);
   let rank=`<b>${rokRef}: ${fmt(letos,0)} mm</b> je <b>${i+1}. nejsušší</b> z ${sorted.length} let. Nejsušší ${sorted[0][0]} (${fmt(sorted[0][1],0)} mm), nejvlhčí ${sorted[sorted.length-1][0]} (${fmt(sorted[sorted.length-1][1],0)} mm).`;
   if(mm.length===1){const rk=N.rekordy[mm[0][1]]; if(rk) rank+=` Rekordy měsíce: nejvíc za den ${fmt(rk.P_den_max[1],0)} mm (${csd(rk.P_den_max[0])}); teplota max ${fmt(rk.TMA_max[1],1)} °C (${csd(rk.TMA_max[0])}), min ${fmt(rk.TMI_min[1],1)} °C (${csd(rk.TMI_min[0])}) v řadě Nemochovic 2001-2025.`;}

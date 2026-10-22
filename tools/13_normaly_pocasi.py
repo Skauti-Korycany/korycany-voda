@@ -231,13 +231,13 @@ for rok in sorted(set(P_m) | set(T_m)):
     if pm and em and len(pm) == 12 and len(em) == 12:
         z["bil"] = {str(k): round(pm[k] - em[k], 1) for k in range(1, 13)}
         z["bil"]["rok"] = round(sum(pm.values()) - sum(em.values()), 1)
-    dp, dt_ = [s for d, s in dopl_P.items() if d.year == rok], [s for d, s in dopl_T.items() if d.year == rok]
-    if dp or dt_:
-        z["dopl"] = {}
-        if dp:
-            z["dopl"]["P"] = {"dni": len(dp), "stanice": sorted(set(dp))}
-        if dt_:
-            z["dopl"]["T"] = {"dni": len(dt_), "stanice": sorted(set(dt_))}
+    for k, dd in (("P", dopl_P), ("T", dopl_T)):
+        x = [(d, st) for d, st in dd.items() if d.year == rok]
+        if x:
+            mes = defaultdict(int)
+            for d, st in x:
+                mes[d.month] += 1
+            z.setdefault("dopl", {})[k] = {"dni": len(x), "stanice": sorted({st for d, st in x}), "mesice": {str(m): n for m, n in sorted(mes.items())}}
     rocniky[str(rok)] = z
 
 # ---------------------------------------------------------------- mesicni normaly
