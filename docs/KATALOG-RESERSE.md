@@ -233,3 +233,49 @@ Hledáno: Rakousko (Graz, Vídeň - Schwammstadt pro stromy), Švédsko (Stockho
 ### Návrh zápisu (po odsouhlasení)
 - Nové: U09 (kontext=True). Zdroje: taucha2024, iws2024_taucha, portico2026_jilove, vrv2020_mocovice, embren2015, mufuwu2024, dafne_schwammstadt, saluz2022, werther2005, zelenakova_trebisov, berlin_tk2023, wiesenena2009, smocr_cehnice, kujavy2026.
 - Doplňky: U01 (Stockholm, Graz, kvantifikace R vzorec), U03 (Taucha k_f, náklady, Werther pro HSP D), U04, U05, U07 (příklady).
+
+---
+
+## Blok D: krajina - louky, pole vlastníků, les, toky a niva (rešerše 22. 10. 2026)
+
+Hledáno: ČR (ČSOP Sedmihorské mokřady, MENDELU pastviny, VÚV monitoring, Povodí Moravy Kyjovka), Velká Británie (Pickering - leaky dams), Německo (FVA Bádensko-Württembersko les, Thünen Niedermoor, NW-FVA), Kypr (terasy, z bloku B), modelové studie leaky dams (Hull/Loughborough). Výsledek: **žádné nové opatření** (seznam L/LES/T/C pokrývá, co se v praxi dělá) a **doplňky k L02, LES02, T02, T03, T04, C03** s měřenými čísly. Pole (P) má katalog už z českých zdrojů VÚMOP; zahraniční měření pro pásy a vrstevnice nehledáno znovu.
+
+### Doplňky k existujícím opatřením
+
+#### T02 Mokřad, zamokření nivy přerušením odvodnění - **nejsilnější český doklad**
+- **Změřený účinek**: Sedmihorské mokřady (Libuňka, Český ráj), ČSOP + Pozemkový spolek Sedmihorské mokřady, revitalizace 2021-2022 (odstranění drenáží, soustava tůní) ✅ (Novinky 4. 8. 2026, https://www.novinky.cz/clanek/domaci-zpravy-liberecky-kraj-v-sedmihorskych-mokradech-pribyla-voda-jako-pro-pet-olympijskych-bazenu-40591088): na 6 revitalizovaných ha **o 11 543 m³ vody víc** (cca 1 900 m³/ha 🤔 přepočet), hladina v revitalizované části stabilní bez výkyvů, v tůních celoročně u povrchu; v dosud odvodněné východní části kolísá se suchem. Metoda: hladinoměry 2 roky v obou částech (podobná geologie), + starší pozorování a sonda ČHMÚ. Náklady neuvedeny.
+- Thünen (Dolní Sasko), SWAMPS 2016-2021 ✅ (https://www.thuenen.de/media/publikationen/project_brief/Project_Brief_2021_20.pdf): na intenzivním lučním slatinném stanovišti podpovrchové zavlažování zvedlo roční hladinu z -0,37 na -0,25 m (+12 cm); hrazení příkopů bez jasného efektu; emise skleníkových plynů nesníženy. **Poučení**: hrazení příkopů samo nestačí, drenáže je třeba odstranit nebo přerušit plošně.
+- VÚV TGM + ČVUT, VTEI 5/2018 ✅ (https://www.vuv.cz/wp-content/uploads/2021/09/5939-VTEI-cislo-5-18-48-53.pdf): metodika monitoringu před/po s kontrolním profilem, 3-5 (ideálně 10) let; jeden rok dat nestačí. Pro náš projekt: jak nastavit měření u Stříbrníku, pokud se mokřad obnoví.
+- **Příklady**: Sedmihorky 2021-2026 ✅ (měřeno); Adapterra 2023 zvl. ocenění „Obnova údolní nivy řeky Kyjovky“ ✅ (lokalita v článku neuvedena; 🤔 pravděpodobně revitalizace Kyjovky u Moravské Nové Vsi, viz T04).
+
+#### T04 Revitalizace drobného toku
+- **Příklad na naší řece**: Kyjovka u Moravské Nové Vsi, Povodí Moravy, zahájeno 2022 ✅ (brnodaily 28. 8. 2022, https://brnodaily.com/2022/08/28/brno/the-morava-river-basin-project-is-revitalising-the-kyjovka-river-and-its-fauna/; zpravodaj PMO 4/2022 ✅ potvrzuje zahájení): nové přírodě blízké koryto 1 730 m odbočené ze stávajícího, přelivný val pro rozliv, 3 tůně, výsadby vrb, topolů, dubů, jasanů, jilmů; cena a změřený účinek neuvedeny (dolní tok v nížině, do Koryčan přenosný princip, ne měřítko). Adapterra 2023 ✅ ocenila „Obnovu údolní nivy Kyjovky“ (🤔 totéž).
+
+#### T03 Mrtvé dřevo a dřevní přehrážky (leaky dams)
+- **Terénní doklad**: Slowing the Flow at Pickering (Yorkshire), Forest Research, závěrečná zpráva fáze II 5/2015 ✅⏳ (https://cdn.forestresearch.gov.uk/2022/02/fr_slowingtheflowphase2executivesummary.pdf): 129 dřevních přehrážek na Pickering Beck + 38 na River Seven, 187 vřesových hrázek v odvodňovacích rýhách, 29 ha břehových lesů, zemní val 120 000 m³; modelově sníženo riziko povodně v Pickeringu z 25 % na ≤ 4 % ročně; odhad dodatečného zadržení 8-9 tis. m³ (lesy) + 500 m³ (hrázky); **změřené snížení špičky zpráva neuvádí** (listopad 2012 neprůkazný), interakce opatření nemodelovány. Pozdější tvrzení „ochránilo Pickering o Vánocích 2015“ je v médiích 📄, originál neotevřen.
+- **Modelová studie**: Wolstenholme a kol., EGU 2024 ✅ (https://meetingorganizer.copernicus.org/EGU24/EGU24-8881.html; navazuje na wolstenholme2024 v katalogu): prototypové povodí 32 km², CAESAR-Lisflood, 20 let srážek: přehrážky **jen na tocích 1. řádu snížily špičku až o 50 %** a zadržely nejvíc vody; přehrážky jen na tocích 3. řádu **zvýšily špičku o >10 % ve 22 % epizod** (synchronizace); u častých malých dešťů špička rostla i s přehrážkami. **Pro Koryčany**: přehrážky do lesních potůčků a strží v Chřibech (1. řád), ne do Stříbrníku a Kyjovky pod soutokem.
+
+#### L02 Extenzivní pastva, omezení sešlapu
+- **Změřený účinek (ČR)**: Sochorec, Jandák, Raus, Kvasnovský, Hejduk, Knot (MENDELU) 2015, Bulg. J. Agric. Sci. 21(3):573-578 ✅ (https://agrojournal.org/21/03-15.html): pokus 2011-2013: vsak v 1. minutě **neobhospodařovaný trávník 34,5 mm/min, sečená louka 12,6, pastvina skotu 7,0 mm/min**; objemová hmotnost 1,17 / 1,42 / 1,57 g/cm³; pórovitost 55,6 / 45,9 / 40,2 %. Pastva i sklizňová technika vsak statisticky významně snižují. Pro katalog: rozsah vsaku 7-35 mm/min podle intenzity využití; lokalita pokusu v abstraktu neuvedena (MENDELU, 💻 jižní Morava).
+- Důsledek pro L02 a L04: vyloučit skot z mokřin a pramenišť (sešlap = nejnižší vsak); mozaiková pastva s odpočinkem ploch 🤔.
+
+#### LES02 Odvodnění lesních cest do lesa, ne do strží
+- **Doklady**: FVA Bádensko-Württembersko, „Dezentraler Wasserrückhalt im Wald“, Keller a kol., kolokvium 4. 12. 2025 ✅ (https://www.fva-bw.de/fileadmin/user_upload/Themen/Wissenstransfer/2025-26_Kolloquien/FVA-Kolloquium_20251204_Keller_web.pdf): 27 pilotních projektů v obcích (výzva 2025), opatření: svedení vody z cest, brzdné prvky v příkopech, příčné odvodnění, náhrada propustků rýhami nebo brody, změna profilu cesty z „hodinového skla“ na jednostranný sklon, přeložení potoka z vyjeté koleje zpět; **čísla zatím nepublikována** (fáze 2 do 2027). FVA leták Rigole 4/2025 ✅ (https://www.fva-bw.de/fileadmin/user_upload/Abteilungen/Boden_und_Umwelt/Wasserrueckhalt_Wald/Steckbrief_Rigole_final.pdf): propustný štěrkový práh v tělese cesty šikmo 3-5 %, výkop ≥ 2 m × 1 m, 75 cm hrubý kámen + 10 cm štěrk + 10 cm povrch, usazovací jímka 1-1,5 m³ nad vtokem, pro cesty do 6 % sklonu; voda z příkopu se vsakuje pod cestou a po svahu místo soustředění v propustku; retence nevyčíslena, cena „malá při opravě cesty“. ČSVTS, Metodický postup č. 2 (cca 2019) ✅ (https://www.csvts.cz/images/eu/MP_2_2019.pdf): zásady (příkopy po vrstevnici do 1,5 %, přerušené záchytné příkopy, stupně a hrázky ve strži jen dočasně, trvale vegetace); bez čísel.
+- **Pro Koryčany**: lesní cesty v Chřibech nad Jestřabicemi a Lískovcem; dohoda s LČR (N06); školní mapování M06 po přívalu ukáže, kde cesty vodu soustředí.
+
+#### C03 Zatravnění a výsadba na svazích, terasování starých úvozů
+- Troodos (Kypr), Camera a kol., EGU 2017 ✅ (viz poznámka v bloku B): udržované suché kamenné terasy eroze 0,05 t/ha/rok vs. rozpadlé 2,8 t/ha/rok (-87 až -98 %), stojící zídka podporuje vsak; vinice ~1 300 m n. m., zimní srážky. Do Koryčan: staré sadové a vinohradní terasy a úvozy nad městem - udržovat zídky, nerozebírat.
+
+#### LES03 (poznámka)
+- NW-FVA Sutmöller (Šlesvicko-Holštýnsko) ✅ (https://www.nw-fva.de/fileadmin/nwfva/publikationen/pdf/sutmoller_2014_grundwasserneubildung.pdf): modelová dotace podzemní vody pod bukem 280 mm/rok při 900 mm srážek; pod jehličnany v zimě významně nižší (intercepce), čísla pro smrk neuvedena; po probírce 330 mm. Jen model, jiné srážky než Koryčany - do katalogu nepřebírat, stačí stávající avcr2023_liz a hemr2023.
+
+### Co se nepodařilo dohledat (blok D)
+- Změřené snížení povodňové špičky leaky dams v terénu (Pickering má jen model; Vánoce 2015 jen z médií).
+- Výsledky Živé vody Zdoňov po realizaci (jen studie 2018 v katalogu).
+- Kvantifikace retence lesních cest (FVA zveřejní do 2027).
+- Lokalita a realizátor „Obnovy údolní nivy Kyjovky“ (Adapterra 2023): uživatel 22. 10. doplnil, že **tři tůně vznikly i v nivě Kyjovky u Bohuslavic u Kyjova vedle cyklostezky** (terénní znalost, online nedohledáno - web Kyjova ani vyhledávač nic nevrátil); Adapterra 2023 je tedy buď Moravská Nová Ves, nebo Bohuslavice 🤔 - ověřit na místě nebo u města Kyjov.
+- Mikroklimatický účinek mokřadu v nivě (ochlazení) - české měření nedohledáno.
+
+### Návrh zápisu (po odsouhlasení)
+- Bez nových ID. Zdroje: csop_sedmihorky2026, thuenen2021_swamps, vuv2018_monitoring, pmo2022_kyjovka_mnv, brnodaily2022_kyjovka, pickering2015, wolstenholme_egu2024, sochorec2015, fva2025_kolokvium, fva2025_rigole, csvts_mp2.
+- Doplňky: T02 (R hodnota 11 543 m³ / 6 ha + kvalitativně Thünen; příklady), T03 (Q: 1. řád -50 % model; riziko 3. řád; Pickering), T04 (příklad Kyjovka MNV), L02 (I hodnota 7-35 mm/min MENDELU), LES02 (rigole FVA, 27 pilotů), C03 (Kypr), T01 synergie monitoring VÚV.

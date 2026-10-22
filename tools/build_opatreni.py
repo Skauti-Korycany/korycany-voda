@@ -169,6 +169,19 @@ zdroj("wiesenena2009", "Sasko, Ländlicher Raum: Dorfteich Wiesenena (Gemeinde W
 zdroj("smocr_cehnice", "SMO ČR, příklad dobré praxe: Cehnice - retenční nádrž Třtí na Cehnickém potoce (OPŽP)", "https://www.smocr.cz/Shared/Clanky/10359/sosnova-1-retencni-nadrz-trti-na-cehnickem-potoce.pdf", None, "overeno", "rok stavby neuveden")
 zdroj("kujavy2026", "Zpravodaj obce Kujavy 2/2026: Voda pro krajinu - obnova 3 tůní (nadace Hyundai, OSF); finalista Adapterra 2026", "https://pv.svkos.cz/Zpravodaj_obce_Kujavy/Zpravodaj_obce_Kujavy_2026/Zpravodaj_obce_Kujavy_2026_2.pdf", 2026, "overeno")
 
+# --- blok D rešerše dobré praxe (krajina), 22. 10. 2026
+zdroj("csop_sedmihorky2026", "Novinky.cz 4. 8. 2026: Sedmihorské mokřady (ČSOP, Pozemkový spolek) - po revitalizaci 2021-2022 o 11 543 m³ vody víc na 6 ha; hladinoměry 2 roky + sonda ČHMÚ", "https://www.novinky.cz/clanek/domaci-zpravy-liberecky-kraj-v-sedmihorskych-mokradech-pribyla-voda-jako-pro-pet-olympijskych-bazenu-40591088", 2026, "overeno", "metodika z článku, ne z odborné zprávy")
+zdroj("thuenen2021_swamps", "Thünen-Institut, Project Brief 2021/20 (SWAMPS 2016-2021): vodní management na slatinném lučním stanovišti, Dolní Sasko", "https://www.thuenen.de/media/publikationen/project_brief/Project_Brief_2021_20.pdf", 2021, "overeno")
+zdroj("vuv2018_monitoring", "Beran, Němejcová, Straka (VÚV TGM), Krása, David (ČVUT), VTEI 5/2018: Monitoring na povodí pro vyhodnocení vlivu přírodě blízkých opatření", "https://www.vuv.cz/wp-content/uploads/2021/09/5939-VTEI-cislo-5-18-48-53.pdf", 2018, "overeno_stare")
+zdroj("brnodaily2022_kyjovka", "Brno Daily 28. 8. 2022: Povodí Moravy revitalizuje Kyjovku u Moravské Nové Vsi (1 730 m nového koryta, 3 tůně)", "https://brnodaily.com/2022/08/28/brno/the-morava-river-basin-project-is-revitalising-the-kyjovka-river-and-its-fauna/", 2022, "overeno", "cena a účinek neuvedeny; zahájení potvrzuje zpravodaj PMO 4/2022 ✅")
+zdroj("pickering2015", "Forest Research 5/2015: Slowing the Flow at Pickering, Phase II Executive Summary", "https://cdn.forestresearch.gov.uk/2022/02/fr_slowingtheflowphase2executivesummary.pdf", 2015, "overeno_stare", "modelové riziko, změřená špička neuvedena")
+zdroj("wolstenholme_egu2024", "Wolstenholme, Skinner, Milan, Thomas, Parsons, EGU 2024 (EGU24-8881): Basin-scale hydrological response to leaky wooden dam installation (CAESAR-Lisflood, prototyp 32 km²)", "https://meetingorganizer.copernicus.org/EGU24/EGU24-8881.html", 2024, "overeno", "model, ne terén")
+zdroj("sochorec2015", "Sochorec, Jandák, Raus, Kvasnovský, Hejduk, Knot (MENDELU) 2015: Influence of Different Grassland Management on Water Infiltration and Soil Physical Properties, Bulg. J. Agric. Sci. 21(3):573-578", "https://agrojournal.org/21/03-15.html", 2015, "overeno_stare", "pokus 2011-2013; lokalita v abstraktu neuvedena")
+zdroj("fva2025_kolokvium", "Keller, Puhlmann a kol. (FVA Baden-Württemberg), kolokvium 4. 12. 2025: Dezentraler Wasserrückhalt im Wald (27 pilotů, 2023-2027)", "https://www.fva-bw.de/fileadmin/user_upload/Themen/Wissenstransfer/2025-26_Kolloquien/FVA-Kolloquium_20251204_Keller_web.pdf", 2025, "overeno", "čísla zatím nepublikována")
+zdroj("fva2025_rigole", "FVA Baden-Württemberg, Info-Faltblatt 4/2025: Rigole - propustný štěrkový práh v lesní cestě", "https://www.fva-bw.de/fileadmin/user_upload/Abteilungen/Boden_und_Umwelt/Wasserrueckhalt_Wald/Steckbrief_Rigole_final.pdf", 2025, "overeno")
+zdroj("csvts_mp2", "ČSVTS, Metodický postup č. 2: erodovatelnost lesních půd, splaveniny, hodnocení rizik erozí (cca 2019)", "https://www.csvts.cz/images/eu/MP_2_2019.pdf", 2019, "overeno_stare", "bez čísel")
+zdroj("camera2017_cyprus", "Camera, Djuma, Zoumides, Eliades, Charalambous, Bruggeman (Cyprus Institute), EGU 2017: údržba suchých kamenných teras a eroze, Troodos", "https://meetingorganizer.copernicus.org/EGU2017/EGU2017-7404.pdf?pdf", 2017, "overeno_stare")
+
 # ------------------------------------------------------- dotační programy
 PROGRAMY = {
  "vlastni": {"nazev": "Vlastní prostředky", "zadatel": ["J","V","O","S","SP"], "stav": "vzdy", "pozn": None, "zdroj": None},
@@ -752,7 +765,7 @@ CISELNIKY = {
 }
 
 DATA = {
- "meta": {"nazev":"Katalog opatření - Koryčany resilience","verze":"0.7","datum":DNES,"licence_dat":"CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
+ "meta": {"nazev":"Katalog opatření - Koryčany resilience","verze":"0.8","datum":DNES,"licence_dat":"CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
           "upozorneni":"Zjednodušený osvětový model, ne projektová dokumentace. Každé číslo má zdroj a značku původu. Ceny jen se zdrojem a datem; jinak 'cena neověřena'. Paragrafy vodního zákona ověřit v e-Sbírce.",
           "zdroje_md":["claude/KATALOG.md","claude/KATALOG-Z-S.md","claude/KATALOG-U-P.md","claude/KATALOG-L-LES-T-C.md","claude/KATALOG-RESERSE.md"]},
  "ciselniky": CISELNIKY, "konstanty": KONSTANTY, "zdroje": Z, "programy": PROGRAMY, "nastroje": NASTROJE, "opatreni": O,
@@ -899,6 +912,45 @@ doplnit("U05",
 doplnit("U07",
    priklady=[pr("Trebišov (SK)", "školní atria: dešťová zahrada, nádrž, vsakovací rýhy, zelená stěna (viz U04)", kdy="2021", kdo="TU Košice", mereno=None, zdroj=["zelenakova_trebisov"])],
    synergie=["U09"])
+
+# --- doplňky blok D (krajina), 22. 10. 2026
+doplnit("T02",
+   kvant=[kv("R","hodnota","Sedmihorské mokřady (Český ráj): po odstranění drenáží a vyhloubení soustavy tůní o 11 543 m³ vody víc na 6 ha (🤔 cca 1 900 m³/ha); hladina v revitalizované části stabilní, v odvodněné kolísá se suchem; měřeno 2 roky hladinoměry v obou částech", hodnota=11543, jednotka="m³ na 6 ha", zdroj=["csop_sedmihorky2026"], znacka="overeno"),
+          kv("R","kvalitativne","Thünen (Dolní Sasko, slatinné louky): podpovrchové zavlažování zvedlo roční hladinu o 12 cm (-0,37 -> -0,25 m), pouhé hrazení příkopů bez jasného efektu - drenáže přerušit plošně, ne jen zahradit", zdroj=["thuenen2021_swamps"], znacka="overeno")],
+   priklady=[pr("Sedmihorské mokřady, Libuňka (Český ráj)", "ČSOP + Pozemkový spolek: výkup pozemků, odstranění drenáží, soustava tůní na 6 ha (2021-2022); vyhodnoceno 2026", kdy="2021-2026", kdo="ČSOP, Pozemkový spolek Sedmihorské mokřady", mereno="hladina podzemní vody 2 roky, objem zadržené vody", zdroj=["csop_sedmihorky2026"]),
+             pr("Niva Kyjovky", "Adapterra Awards 2023, zvláštní ocenění 'Obnova údolní nivy řeky Kyjovky' (lokalita v článku neuvedena); podle uživatele vznikly 3 tůně v nivě Kyjovky u Bohuslavic u Kyjova vedle cyklostezky 🤔 (online nedohledáno); další realizace Povodí Moravy u Moravské Nové Vsi (T04)", kdy="2023", kdo="neuvedeno", mereno=None, zdroj=["adapterra2023"], znacka="citace")],
+   prenositelnost="Niva Stříbrníku a Kyjovky nad jezem u Mouchnic (rozhodnutí 21. 10.): nejdřív zjistit meliorace (SPÚ, N02), pak přerušit plošně. Monitoring před/po s kontrolním profilem 3-5 let (VÚV 2018).",
+   rizika="Hrazení příkopů bez odstranění drenáží nestačí (Thünen). Jeden rok měření nestačí (VÚV). Zamokření sousedních pozemků - dohoda s vlastníky.",
+   standardy=["vuv2018_monitoring"])
+
+doplnit("T04",
+   priklady=[pr("Kyjovka u Moravské Nové Vsi", "Povodí Moravy od 2022: nové přírodě blízké koryto 1 730 m odbočené ze stávajícího, přelivný val pro rozliv, 3 tůně, výsadby vrb, topolů, dubů, jasanů, jilmů; cena a měřený účinek neuvedeny (dolní tok v nížině)", kdy="2022-", kdo="Povodí Moravy", mereno=None, zdroj=["brnodaily2022_kyjovka"])],
+   prenositelnost="Princip (odbočené koryto, rozliv, tůně) ano; měřítko ne - u Koryčan jde o drobný tok a Stříbrník. Správce Povodí Moravy (N06).")
+
+doplnit("T03",
+   kvant=[kv("Q","hodnota","Model (prototyp 32 km², 20 let srážek): přehrážky jen na tocích 1. řádu snížily špičku až o 50 % a zadržely nejvíc vody; jen na tocích 3. řádu zvýšily špičku o >10 % ve 22 % epizod (synchronizace); u častých malých dešťů špička rostla i s přehrážkami", hodnota=50, jednotka="% špičky (1. řád, model)", zdroj=["wolstenholme_egu2024"], znacka="overeno"),
+          kv("R","hodnota","Pickering (Yorkshire): 129 + 38 dřevních přehrážek, 187 vřesových hrázek, 29 ha břehových lesů, val 120 000 m³; odhad dodatečného zadržení 8-9 tis. m³ (lesy) + 500 m³ (hrázky); riziko povodně modelově z 25 % na <= 4 %/rok; změřené snížení špičky zpráva neuvádí", rozsah=[500,9000], jednotka="m³ (odhad)", zdroj=["pickering2015"], znacka="overeno_stare")],
+   priklady=[pr("Pickering (Yorkshire, UK)", "Slowing the Flow 2009-2015: dřevní přehrážky, hrázky v odvodňovacích rýhách vřesovišť, břehové lesy, zemní val; vyhodnocení fáze II 2015", kdy="2009-2015", kdo="Forest Research, Environment Agency, obec", mereno="modelové riziko; terénní epizoda 11/2012 neprůkazná", zdroj=["pickering2015"], znacka="overeno_stare")],
+   prenositelnost="Lesní potůčky a strže v Chřibech (toky 1. řádu) - ano. Stříbrník a Kyjovka pod soutokem - ne (riziko zvýšení špičky synchronizací).",
+   rizika="Na větších tocích mohou přehrážky špičku zvýšit; u častých malých dešťů nepomáhají. Terénní měření špičky chybí i v Pickeringu.")
+
+doplnit("L02",
+   kvant=[kv("I","hodnota","MENDELU 2011-2013: vsak v 1. minutě neobhospodařovaný trávník 34,5, sečená louka 12,6, pastvina skotu 7,0 mm/min; objemová hmotnost 1,17 / 1,42 / 1,57 g/cm³; pastva i sklizňová technika vsak významně snižují", rozsah=[7,34.5], jednotka="mm/min (1. minuta)", zdroj=["sochorec2015"], znacka="overeno_stare")],
+   priklady=[pr("MENDELU Brno (pokusná plocha)", "tříletý pokus louka vs. pastvina vs. neobhospodařovaný porost; lokalita v abstraktu neuvedena", kdy="2011-2013", kdo="MENDELU", mereno="infiltrace, objemová hmotnost, pórovitost", zdroj=["sochorec2015"], znacka="overeno_stare")],
+   rizika="Sešlap skotu = nejnižší vsak; vyloučit skot z mokřin a pramenišť (L04, T05). Mozaiková pastva s odpočinkem ploch 🤔.")
+
+doplnit("LES02",
+   kvant=[kv("Q","kvalitativne","FVA BW: rigole = propustný štěrkový práh v tělese cesty šikmo 3-5 %, výkop >= 2 × 1 m (75 cm hrubý kámen, 10 cm štěrk, 10 cm povrch), usazovací jímka 1-1,5 m³, pro cesty do 6 % sklonu; voda z příkopu se vsakuje pod cestou a po svahu místo soustředění v propustku; retence nevyčíslena, cena malá při opravě cesty", zdroj=["fva2025_rigole"], znacka="overeno")],
+   priklady=[pr("Bádensko-Württembersko, 27 pilotních lesů", "program Dezentraler Wasserrückhalt im Wald 2023-2027: svedení vody z cest, brzdné prvky v příkopech, rigole místo propustků, změna profilu cesty, přeložení potoka z koleje; čísla do 2027", kdy="2023-2027", kdo="FVA BW, obce", mereno="v běhu", zdroj=["fva2025_kolokvium"])],
+   prenositelnost="Lesní cesty v Chřibech nad Jestřabicemi a Lískovcem; dohoda s LČR (N06). Školní mapování M06 po přívalu ukáže, kde cesty vodu soustředí.",
+   standardy=["csvts_mp2"])
+
+doplnit("C03",
+   kvant=[kv("ER","hodnota","Udržované suché kamenné terasy eroze 0,05 t/ha/rok vs. rozpadlé 2,8 t/ha/rok (-87 až -98 %); stojící zídka podporuje vsak (Troodos, Kypr, vinice 1 300 m n. m., 2 sezóny)", rozsah=[87,98], jednotka="% snížení eroze", zdroj=["camera2017_cyprus"], znacka="overeno_stare")],
+   priklady=[pr("Troodos (Kypr)", "dvě sezóny sedimentových pastí na udržovaných a rozpadlých zídkách teras ve vinici", kdy="2015-2017", kdo="Cyprus Institute", mereno="ztráta půdy t/ha/rok", zdroj=["camera2017_cyprus"], znacka="overeno_stare")],
+   prenositelnost="Staré sadové a vinohradní terasy a úvozy nad Koryčany: zídky udržovat, nerozebírat; jiné klima (zimní srážky), princip platí.")
+
+doplnit("T01", standardy=["vuv2018_monitoring"], rizika="Vyhodnocení účinku vyžaduje měření před/po s kontrolním profilem 3-5 let (VÚV 2018); jeden rok nestačí.")
 
 # ----------------------------------------------------------------- kontroly
 ids = [o["id"] for o in O]

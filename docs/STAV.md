@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 22. 10. 2026 08:30 (relace 12 „Rešerše dobré praxe“, **bloky B, A, C hotové, D rozpracován**, sekce **Katalog - rešerše dobré praxe** níže). Předtím relace 11 „Můj pozemek UX“ uzavřena, včetně večerních úprav: výchozí déšť 10 mm v celé aplikaci, pozemek jako východisko pro Celé území, texty kroků. ~~Další chat: rešerše dobré praxe do katalogu~~ blok B hotov 21. 10. Detail: záložka přestavěna na **průvodce po krocích (varianta A)** včetně hledání adresy RÚIAN a odkazu se stavem, sekce **Můj pozemek - průvodce** níže. Předtím relace 10 „Nádrže v jádru“ uzavřena: bloky O a P hotové - **území modelu rozšířeno k jezu před Mouchnicemi, 17,7 km²**; úpravy Jak bylo a Celé území; **další chat: přestavba Můj pozemek podle `docs/POZEMEK-UX-ZADANI.md`**; předtím relace 9 „Počasí“, sekce **Počasí - Jak bylo** níže). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
+Aktualizováno: 22. 10. 2026 08:45 (relace 12 „Rešerše dobré praxe“ **uzavřena: bloky B, A, C, D hotové**, katalog v0.6 / JSON 0.8; sekce **Katalog - rešerše dobré praxe** níže. **Další chat**: viz Další kroky v té sekci - návrh: napojení katalogu na skutečný pozemek (EFF -> statPolygon) nebo KATALOG-Z-S/U-P/L-LES-T-C.md doplnit o nové položky.) Předtím relace 11 „Můj pozemek UX“ uzavřena, včetně večerních úprav: výchozí déšť 10 mm v celé aplikaci, pozemek jako východisko pro Celé území, texty kroků. ~~Další chat: rešerše dobré praxe do katalogu~~ blok B hotov 21. 10. Detail: záložka přestavěna na **průvodce po krocích (varianta A)** včetně hledání adresy RÚIAN a odkazu se stavem, sekce **Můj pozemek - průvodce** níže. Předtím relace 10 „Nádrže v jádru“ uzavřena: bloky O a P hotové - **území modelu rozšířeno k jezu před Mouchnicemi, 17,7 km²**; úpravy Jak bylo a Celé území; **další chat: přestavba Můj pozemek podle `docs/POZEMEK-UX-ZADANI.md`**; předtím relace 9 „Počasí“, sekce **Počasí - Jak bylo** níže). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
 
 ## Fáze: 1 a 2 hotové. Fáze 3 (jádro) rozpracovaná: v0.1 umí statistiku pozemku, SCS-CN po buňkách, povodí bodu, nádrž/poldr z DMR; chybí transformace vlny, bilance P-ET, USLE, napojení opatření.
 
@@ -98,6 +98,7 @@ Aktualizováno: 22. 10. 2026 08:30 (relace 12 „Rešerše dobré praxe“, **bl
 - **Aplikace**: v kartě opatření (Můj pozemek, Celé území - kontext, Katalog) rozbalovací blok **„Kde to funguje (n)“** s příklady, odkazy, značkami a texty přenositelnost/rizika; nové EFF texty Z12, Z13, S05, S06 (S06 počítá úsporu pitné vody 4 os × 17-26 l/den a navíc zadržený objem proti nádrži 1 m³). Zkontrolováno v Chromiu 1280 px i 375 px, bez chyb v konzoli; `node web/test_jadro.js` VŠE OK.
 - **Blok A (horko v obci)**, 21. 10. večer: katalog **v0.4 / JSON 0.6**, 65 opatření (+U08 mlžení jen při akcích, +H01 chladná místa a varování, +H02 stínění), nová kategorie místa **H**, 132 zdrojů, 35 příkladů u 16 opatření. Klíčový zdroj CzechGlobe/UPOL (TAČR 2021) ✅: stín stromu -8,3 až -10,9 °C pocitově, vzduch jen -0,4 až -2,1 °C, kropení -1,3 až -3,1 °C na 20 min, mlžení -1,2 °C u sebe, kašny skoro nic, trávník -0,9 °C. Z06 vzduch přepsán z EPA „až 5 °C“ na 0,4-2,1 °C (ČR). Aplikace: filtr H v katalogu, nové karty; Chromium 1280/375 px bez chyb; test VŠE OK.
 - **Blok C (veřejný prostor, škola)**, 22. 10.: katalog **v0.5 / JSON 0.7**, 66 opatření (+U09 plán HDV obce, kontextové), 146 zdrojů, 50 příkladů u 20 opatření. Měřeného málo: Taucha (Sasko) ✅ průlehy po 25-30 letech funkční, selhává údržba; náklady 35-45 €/m² napojené plochy, provoz 1-2 €/m²/rok vs. 20 €/m²/rok kanalizace; Werther ✅⏳ na hlíně (HSP D) rýhy v zimě plné -> pro Koryčany regulovaný odtok; Stockholm ✅⏳ 2 000 rabátek; Graz MUFUWU ✅ retence nevyčíslena. U03 dostal cenovou položku v EUR.
+- **Blok D (krajina)**, 22. 10.: katalog **v0.6 / JSON 0.8**, bez nových ID; 157 zdrojů, 57 příkladů u 26 opatření. Měřené: Sedmihorské mokřady ✅ +11 543 m³ na 6 ha po odstranění drenáží (T02); MENDELU ✅⏳ vsak pastvina 7 / louka 12,6 / neobhospodařovaný 34,5 mm/min (L02); leaky dams model ✅ 1. řád -50 % špičky, 3. řád +10 % v 22 % epizod -> jen do potůčků v Chřibech (T03); Pickering ✅⏳ jen model; Kyjovka u Moravské Nové Vsi ✅ 1 730 m nového koryta (T04); FVA BW rigole v lesní cestě ✅ (LES02); Kypr terasy -87 až -98 % eroze ✅⏳ (C03). **Rešerše uzavřena.**
 - Dohledávky: kanalizace Koryčany = jednotná s odlehčovacími komorami (Plán povodí Dyje 2009 ✅⏳, DY100033), stav po rekonstrukci ČOV neověřen; podíl WC na spotřebě - primární český zdroj nedohledán, zůstává 🤔 20-30 %.
 - `tools/stahni_zdroje.py` + `.bat`: archiv fotek a PDF k rešerši do `..\zdroje-archiv\` (mimo git; z Claude stažení neprojde kvůli síti, spouští uživatel na PC).
 
@@ -110,15 +111,20 @@ Aktualizováno: 22. 10. 2026 08:30 (relace 12 „Rešerše dobré praxe“, **bl
 - 21. 10. 2026 - **U08 mlžení jen pro letní hromadné akce**, ne jako trvalý prvek - jinak nemá smysl (uživatel).
 - 21. 10. 2026 - Z06 aktualizovat podle CzechGlobe (uživatel).
 - 22. 10. 2026 - U09 a doplňky bloku C schváleny bez změn (uživatel).
+- 22. 10. 2026 - Blok D schválen; uživatel doplnil terénní znalost: 3 tůně v nivě Kyjovky u Bohuslavic u Kyjova vedle cyklostezky (online nedohledáno, zapsáno jako citace 🤔).
 - 21. 10. 2026 - Olla: stačí odkaz na Záhrada.sk + místní záloha pro uživatele; S06 bez dalších vstupů (počet osob napevno 4).
 
 ### Další kroky
 1. Uživatel: spustit `tools\stahni_zdroje.bat` (archiv podkladů), zkusit karty „Kde to funguje“ na telefonu.
-2. ~~Blok A~~ ~~Blok C~~ hotovo 22. 10. Dál D (krajina). Pro D připraveno: suché kamenné terasy Kypr EGU 2017 ✅ (C03); **Adapterra 2023 zvl. ocenění „Obnova údolní nivy řeky Kyjovky“** ✅ - dohledat lokalitu a realizátora (T02/T04).
+2. ~~Bloky A, C, D~~ hotovo 22. 10. Rešerše uzavřena. Pro D připraveno: suché kamenné terasy Kypr EGU 2017 ✅ (C03); **Adapterra 2023 zvl. ocenění „Obnova údolní nivy řeky Kyjovky“** ✅ - dohledat lokalitu a realizátora (T02/T04).
 3. Po všech blocích: KATALOG-Z-S.md, KATALOG-U-P.md, KATALOG-L-LES-T-C.md doplnit o nové položky (zatím jen KATALOG.md a JSON), `vahy_skaly`.
 4. Znovu zkusit neotevřené zdroje: Salzburg Regenwassermanagement (robots), Natur im Garten NÖ (web offline 21. 10.), derStandard MA48 fasáda (paywall), HAL (bot-wall).
 
 ### Na co ses nezeptal (relace 12)
+- (celek) Kvantifikace v KATALOG-Z-S.md, KATALOG-U-P.md a KATALOG-L-LES-T-C.md nejsou o nové položky doplněny - jsou jen v JSON, KATALOG.md a KATALOG-RESERSE.md. Chceš je sjednotit (práce na 1 blok), nebo MD soubory prohlásit za archiv a zdroj pravdy je jen build_opatreni.py + KATALOG-RESERSE.md?
+- (celek) `overeno_dne` u zdrojů = datum buildu (DNES), ne skutečný den otevření; u bloků B/A je to 21. 10., u C/D 22. 10. - stačí, nebo chceš skutečná data po zdrojích?
+- (blok D) Tůně u Bohuslavic: máš fotku nebo rok? Dal bych je do příkladu T02 s tvým jménem jako zdrojem pozorování.
+- (blok D) Meliorace v nivě Stříbrníku: žádost na SPÚ (N02) je stále otevřená - bez ní nelze T02 u nás naplánovat.
 - (blok A) H01 předpokládá pečovatelskou službu a rozhlas v Koryčanech - existují? Kdo by plán vedra na úřadě držel?
 - (blok A) Pítko na náměstí: je tam přípojka vody? Cena a správce (VaK Kroměříž) nedohledány.
 - (blok A) Metodika a mapy CzechGlobe/UPOL pro města nejsou veřejně dohledatelné - chceš, abych napsal dotaz na UPOL (M. Lehnert) o podklady pro malé město?
@@ -129,6 +135,9 @@ Aktualizováno: 22. 10. 2026 08:30 (relace 12 „Rešerše dobré praxe“, **bl
 - Čísla spotřeby (WC 20-30 %) jsou z letáku bez zdroje a z polského výpočtu; primární zdroj SOVAK/ČSÚ chybí - chceš, abych napsal dotaz na VaK Kroměříž (skutečná spotřeba Koryčany)?
 
 ### Předpoklady (relace 12)
+- (blok D) Adapterra 2023 „Obnova údolní nivy Kyjovky“ = buď Moravská Nová Ves (Povodí Moravy), nebo Bohuslavice (tůně) - nerozhodnuto, obojí uvedeno.
+- (blok D) Přepočet 11 543 m³ / 6 ha ≈ 1 900 m³/ha je můj, ne z článku; platí pro niveau nivy s drenážemi, ne pro suché svahy.
+- (blok C/D) Ceny v EUR (Taucha) ponechány v EUR s rokem; nepřepočítávám na Kč.
 - (blok A) „Pocitová teplota“ z tiskové zprávy TAČR brána jako index typu PET, ve zdroji není výslovně pojmenován.
 - (blok A) H01 nese kontext=True (opatření samosprávy); účinek CH jen slovně, do součtů nevstupuje.
 - Klimatická podobnost: Bavorsko (Veitshöchheim, Würzburg), Sasko, Braniborsko, Dolní Rakousko, jižní Polsko ~ Koryčany; Austrálie (Fremantle) a Arizona jen pro mechanismus (šedá voda, olla), čísla označena jako nepřenositelná.

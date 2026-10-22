@@ -1,6 +1,8 @@
-# Katalog opatření - v0.5 (22. 10. 2026)
+# Katalog opatření - v0.6 (22. 10. 2026)
 
 Změna v0.3 (21. 10. 2026, blok B rešerše dobré praxe, `docs/KATALOG-RESERSE.md`): nová opatření **Z12 Zalévací hliněné nádoby (olla)**, **Z13 Suchomilný (stepní) záhon**, **S05 Šedá voda na zálivku a WC**, **S06 Dešťová voda na splachování WC**; doplňky (nové doklady účinku a příklady praxe) k Z01, Z02, Z04, Z05, Z06, Z09, Z11, S01, S02. Každé opatření může mít blok "Kde to funguje" (příklady se zdrojem a značkou), přenositelnost do Koryčan a rizika; v aplikaci se zobrazují v kartě. Rozhodnutí uživatele 21. 10.: podrobný popis s odkazy (styl KATALOG-RESERSE.md) se přejímá i pro web.
+
+Změna v0.6 (22. 10. 2026, blok D krajina): bez nových ID; doplňky s měřením k T02 (Sedmihorské mokřady: +11 543 m³ na 6 ha ✅), T03 (leaky dams: model 1. řád -50 %, 3. řád riziko; Pickering), T04 (Kyjovka u Moravské Nové Vsi ✅; tůně u Bohuslavic - terénní znalost uživatele), L02 (vsak pastvina 7 vs. louka 12,6 vs. neobhospodařovaný 34,5 mm/min ✅⏳ MENDELU), LES02 (rigole FVA), C03 (terasy Kypr -87 až -98 % eroze), T01 (monitoring VÚV). **Rešerše dobré praxe (bloky B, A, C, D) tím uzavřena**: 66 opatření, 157 zdrojů, 57 příkladů u 26 opatření.
 
 Změna v0.5 (22. 10. 2026, blok C veřejný prostor a škola): nové **U09 Studie a plán hospodaření s dešťovou vodou obce** (kontextové); doplňky k U01 (Stockholm, Graz MUFUWU), U03 (Taucha 25-30 let, Werther na hlíně, náklady 35-45 €/m²), U04, U05, U07 (Trebišov, Berlín, Wiesenena, Močovice, Cehnice, Kujavy). Měřených účinků je v bloku C málo - obce realizace nevyhodnocují.
 

@@ -1,7 +1,7 @@
 {
  "meta": {
   "nazev": "Katalog opatření - Koryčany resilience",
-  "verze": "0.7",
+  "verze": "0.8",
   "datum": "2026-10-22",
   "licence_dat": "CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
   "upozorneni": "Zjednodušený osvětový model, ne projektová dokumentace. Každé číslo má zdroj a značku původu. Ceny jen se zdrojem a datem; jinak 'cena neověřena'. Paragrafy vodního zákona ověřit v e-Sbírce.",
@@ -1602,6 +1602,105 @@
    "url": "https://pv.svkos.cz/Zpravodaj_obce_Kujavy/Zpravodaj_obce_Kujavy_2026/Zpravodaj_obce_Kujavy_2026_2.pdf",
    "rok": 2026,
    "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": null
+  },
+  "csop_sedmihorky2026": {
+   "id": "csop_sedmihorky2026",
+   "nazev": "Novinky.cz 4. 8. 2026: Sedmihorské mokřady (ČSOP, Pozemkový spolek) - po revitalizaci 2021-2022 o 11 543 m³ vody víc na 6 ha; hladinoměry 2 roky + sonda ČHMÚ",
+   "url": "https://www.novinky.cz/clanek/domaci-zpravy-liberecky-kraj-v-sedmihorskych-mokradech-pribyla-voda-jako-pro-pet-olympijskych-bazenu-40591088",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": "metodika z článku, ne z odborné zprávy"
+  },
+  "thuenen2021_swamps": {
+   "id": "thuenen2021_swamps",
+   "nazev": "Thünen-Institut, Project Brief 2021/20 (SWAMPS 2016-2021): vodní management na slatinném lučním stanovišti, Dolní Sasko",
+   "url": "https://www.thuenen.de/media/publikationen/project_brief/Project_Brief_2021_20.pdf",
+   "rok": 2021,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": null
+  },
+  "vuv2018_monitoring": {
+   "id": "vuv2018_monitoring",
+   "nazev": "Beran, Němejcová, Straka (VÚV TGM), Krása, David (ČVUT), VTEI 5/2018: Monitoring na povodí pro vyhodnocení vlivu přírodě blízkých opatření",
+   "url": "https://www.vuv.cz/wp-content/uploads/2021/09/5939-VTEI-cislo-5-18-48-53.pdf",
+   "rok": 2018,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-22",
+   "pozn": null
+  },
+  "brnodaily2022_kyjovka": {
+   "id": "brnodaily2022_kyjovka",
+   "nazev": "Brno Daily 28. 8. 2022: Povodí Moravy revitalizuje Kyjovku u Moravské Nové Vsi (1 730 m nového koryta, 3 tůně)",
+   "url": "https://brnodaily.com/2022/08/28/brno/the-morava-river-basin-project-is-revitalising-the-kyjovka-river-and-its-fauna/",
+   "rok": 2022,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": "cena a účinek neuvedeny; zahájení potvrzuje zpravodaj PMO 4/2022 ✅"
+  },
+  "pickering2015": {
+   "id": "pickering2015",
+   "nazev": "Forest Research 5/2015: Slowing the Flow at Pickering, Phase II Executive Summary",
+   "url": "https://cdn.forestresearch.gov.uk/2022/02/fr_slowingtheflowphase2executivesummary.pdf",
+   "rok": 2015,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-22",
+   "pozn": "modelové riziko, změřená špička neuvedena"
+  },
+  "wolstenholme_egu2024": {
+   "id": "wolstenholme_egu2024",
+   "nazev": "Wolstenholme, Skinner, Milan, Thomas, Parsons, EGU 2024 (EGU24-8881): Basin-scale hydrological response to leaky wooden dam installation (CAESAR-Lisflood, prototyp 32 km²)",
+   "url": "https://meetingorganizer.copernicus.org/EGU24/EGU24-8881.html",
+   "rok": 2024,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": "model, ne terén"
+  },
+  "sochorec2015": {
+   "id": "sochorec2015",
+   "nazev": "Sochorec, Jandák, Raus, Kvasnovský, Hejduk, Knot (MENDELU) 2015: Influence of Different Grassland Management on Water Infiltration and Soil Physical Properties, Bulg. J. Agric. Sci. 21(3):573-578",
+   "url": "https://agrojournal.org/21/03-15.html",
+   "rok": 2015,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-22",
+   "pozn": "pokus 2011-2013; lokalita v abstraktu neuvedena"
+  },
+  "fva2025_kolokvium": {
+   "id": "fva2025_kolokvium",
+   "nazev": "Keller, Puhlmann a kol. (FVA Baden-Württemberg), kolokvium 4. 12. 2025: Dezentraler Wasserrückhalt im Wald (27 pilotů, 2023-2027)",
+   "url": "https://www.fva-bw.de/fileadmin/user_upload/Themen/Wissenstransfer/2025-26_Kolloquien/FVA-Kolloquium_20251204_Keller_web.pdf",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": "čísla zatím nepublikována"
+  },
+  "fva2025_rigole": {
+   "id": "fva2025_rigole",
+   "nazev": "FVA Baden-Württemberg, Info-Faltblatt 4/2025: Rigole - propustný štěrkový práh v lesní cestě",
+   "url": "https://www.fva-bw.de/fileadmin/user_upload/Abteilungen/Boden_und_Umwelt/Wasserrueckhalt_Wald/Steckbrief_Rigole_final.pdf",
+   "rok": 2025,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": null
+  },
+  "csvts_mp2": {
+   "id": "csvts_mp2",
+   "nazev": "ČSVTS, Metodický postup č. 2: erodovatelnost lesních půd, splaveniny, hodnocení rizik erozí (cca 2019)",
+   "url": "https://www.csvts.cz/images/eu/MP_2_2019.pdf",
+   "rok": 2019,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-22",
+   "pozn": "bez čísel"
+  },
+  "camera2017_cyprus": {
+   "id": "camera2017_cyprus",
+   "nazev": "Camera, Djuma, Zoumides, Eliades, Charalambous, Bruggeman (Cyprus Institute), EGU 2017: údržba suchých kamenných teras a eroze, Troodos",
+   "url": "https://meetingorganizer.copernicus.org/EGU2017/EGU2017-7404.pdf?pdf",
+   "rok": 2017,
+   "znacka": "overeno_stare",
    "overeno_dne": "2026-10-22",
    "pozn": null
   }
@@ -7169,6 +7268,22 @@
       "fucik2015_pastva"
      ],
      "znacka": "citace"
+    },
+    {
+     "ucinek": "I",
+     "typ": "hodnota",
+     "popis": "MENDELU 2011-2013: vsak v 1. minutě neobhospodařovaný trávník 34,5, sečená louka 12,6, pastvina skotu 7,0 mm/min; objemová hmotnost 1,17 / 1,42 / 1,57 g/cm³; pastva i sklizňová technika vsak významně snižují",
+     "hodnota": null,
+     "jednotka": "mm/min (1. minuta)",
+     "rozsah": [
+      7,
+      34.5
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "sochorec2015"
+     ],
+     "znacka": "overeno_stare"
     }
    ],
    "vhodnost": {
@@ -7213,9 +7328,21 @@
     "české měření extenzivní vs. intenzivní"
    ],
    "pozn_poctivost": null,
-   "priklady": [],
+   "priklady": [
+    {
+     "kde": "MENDELU Brno (pokusná plocha)",
+     "kdy": "2011-2013",
+     "kdo": "MENDELU",
+     "co": "tříletý pokus louka vs. pastvina vs. neobhospodařovaný porost; lokalita v abstraktu neuvedena",
+     "mereno": "infiltrace, objemová hmotnost, pórovitost",
+     "zdroj": [
+      "sochorec2015"
+     ],
+     "znacka": "overeno_stare"
+    }
+   ],
    "prenositelnost": null,
-   "rizika": null,
+   "rizika": "Sešlap skotu = nejnižší vsak; vyloučit skot z mokřin a pramenišť (L04, T05). Mozaiková pastva s odpočinkem ploch 🤔.",
    "vahy_skaly": null
   },
   {
@@ -7523,6 +7650,19 @@
      "vzorec": null,
      "zdroj": null,
      "znacka": "overeno"
+    },
+    {
+     "ucinek": "Q",
+     "typ": "kvalitativne",
+     "popis": "FVA BW: rigole = propustný štěrkový práh v tělese cesty šikmo 3-5 %, výkop >= 2 × 1 m (75 cm hrubý kámen, 10 cm štěrk, 10 cm povrch), usazovací jímka 1-1,5 m³, pro cesty do 6 % sklonu; voda z příkopu se vsakuje pod cestou a po svahu místo soustředění v propustku; retence nevyčíslena, cena malá při opravě cesty",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "fva2025_rigole"
+     ],
+     "znacka": "overeno"
     }
    ],
    "vhodnost": {
@@ -7555,14 +7695,27 @@
     "vlastni"
    ],
    "standardy": [
-    "vyhl239_2017"
+    "vyhl239_2017",
+    "csvts_mp2"
    ],
    "nedohledano": [
     "rozestupy svodnic (ČSN 73 6108)"
    ],
    "pozn_poctivost": null,
-   "priklady": [],
-   "prenositelnost": null,
+   "priklady": [
+    {
+     "kde": "Bádensko-Württembersko, 27 pilotních lesů",
+     "kdy": "2023-2027",
+     "kdo": "FVA BW, obce",
+     "co": "program Dezentraler Wasserrückhalt im Wald 2023-2027: svedení vody z cest, brzdné prvky v příkopech, rigole místo propustků, změna profilu cesty, přeložení potoka z koleje; čísla do 2027",
+     "mereno": "v běhu",
+     "zdroj": [
+      "fva2025_kolokvium"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "prenositelnost": "Lesní cesty v Chřibech nad Jestřabicemi a Lískovcem; dohoda s LČR (N06). Školní mapování M06 po přívalu ukáže, kde cesty vodu soustředí.",
    "rizika": null,
    "vahy_skaly": null
   },
@@ -7830,13 +7983,14 @@
    "standardy": [
     "sppk_b02_001",
     "vz_15b",
-    "vz_55"
+    "vz_55",
+    "vuv2018_monitoring"
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
    "priklady": [],
    "prenositelnost": null,
-   "rizika": null,
+   "rizika": "Vyhodnocení účinku vyžaduje měření před/po s kontrolním profilem 3-5 let (VÚV 2018); jeden rok nestačí.",
    "vahy_skaly": null
   },
   {
@@ -7880,6 +8034,32 @@
       "zajicek2021"
      ],
      "znacka": "overeno"
+    },
+    {
+     "ucinek": "R",
+     "typ": "hodnota",
+     "popis": "Sedmihorské mokřady (Český ráj): po odstranění drenáží a vyhloubení soustavy tůní o 11 543 m³ vody víc na 6 ha (🤔 cca 1 900 m³/ha); hladina v revitalizované části stabilní, v odvodněné kolísá se suchem; měřeno 2 roky hladinoměry v obou částech",
+     "hodnota": 11543,
+     "jednotka": "m³ na 6 ha",
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "csop_sedmihorky2026"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "R",
+     "typ": "kvalitativne",
+     "popis": "Thünen (Dolní Sasko, slatinné louky): podpovrchové zavlažování zvedlo roční hladinu o 12 cm (-0,37 -> -0,25 m), pouhé hrazení příkopů bez jasného efektu - drenáže přerušit plošně, ne jen zahradit",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "thuenen2021_swamps"
+     ],
+     "znacka": "overeno"
     }
    ],
    "vhodnost": {
@@ -7920,13 +8100,37 @@
     "opzp_1_3_1"
    ],
    "standardy": [
-    "zajicek2021"
+    "zajicek2021",
+    "vuv2018_monitoring"
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
-   "priklady": [],
-   "prenositelnost": null,
-   "rizika": null,
+   "priklady": [
+    {
+     "kde": "Sedmihorské mokřady, Libuňka (Český ráj)",
+     "kdy": "2021-2026",
+     "kdo": "ČSOP, Pozemkový spolek Sedmihorské mokřady",
+     "co": "ČSOP + Pozemkový spolek: výkup pozemků, odstranění drenáží, soustava tůní na 6 ha (2021-2022); vyhodnoceno 2026",
+     "mereno": "hladina podzemní vody 2 roky, objem zadržené vody",
+     "zdroj": [
+      "csop_sedmihorky2026"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "kde": "Niva Kyjovky",
+     "kdy": "2023",
+     "kdo": "neuvedeno",
+     "co": "Adapterra Awards 2023, zvláštní ocenění 'Obnova údolní nivy řeky Kyjovky' (lokalita v článku neuvedena); podle uživatele vznikly 3 tůně v nivě Kyjovky u Bohuslavic u Kyjova vedle cyklostezky 🤔 (online nedohledáno); další realizace Povodí Moravy u Moravské Nové Vsi (T04)",
+     "mereno": null,
+     "zdroj": [
+      "adapterra2023"
+     ],
+     "znacka": "citace"
+    }
+   ],
+   "prenositelnost": "Niva Stříbrníku a Kyjovky nad jezem u Mouchnic (rozhodnutí 21. 10.): nejdřív zjistit meliorace (SPÚ, N02), pak přerušit plošně. Monitoring před/po s kontrolním profilem 3-5 let (VÚV 2018).",
+   "rizika": "Hrazení příkopů bez odstranění drenáží nestačí (Thünen). Jeden rok měření nestačí (VÚV). Zamokření sousedních pozemků - dohoda s vlastníky.",
    "vahy_skaly": null
   },
   {
@@ -7980,6 +8184,35 @@
       "aopk2020_toky"
      ],
      "znacka": "overeno"
+    },
+    {
+     "ucinek": "Q",
+     "typ": "hodnota",
+     "popis": "Model (prototyp 32 km², 20 let srážek): přehrážky jen na tocích 1. řádu snížily špičku až o 50 % a zadržely nejvíc vody; jen na tocích 3. řádu zvýšily špičku o >10 % ve 22 % epizod (synchronizace); u častých malých dešťů špička rostla i s přehrážkami",
+     "hodnota": 50,
+     "jednotka": "% špičky (1. řád, model)",
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "wolstenholme_egu2024"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "R",
+     "typ": "hodnota",
+     "popis": "Pickering (Yorkshire): 129 + 38 dřevních přehrážek, 187 vřesových hrázek, 29 ha břehových lesů, val 120 000 m³; odhad dodatečného zadržení 8-9 tis. m³ (lesy) + 500 m³ (hrázky); riziko povodně modelově z 25 % na <= 4 %/rok; změřené snížení špičky zpráva neuvádí",
+     "hodnota": null,
+     "jednotka": "m³ (odhad)",
+     "rozsah": [
+      500,
+      9000
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "pickering2015"
+     ],
+     "znacka": "overeno_stare"
     }
    ],
    "vhodnost": {
@@ -8023,9 +8256,21 @@
     "český kvantifikovaný zdroj"
    ],
    "pozn_poctivost": null,
-   "priklady": [],
-   "prenositelnost": null,
-   "rizika": null,
+   "priklady": [
+    {
+     "kde": "Pickering (Yorkshire, UK)",
+     "kdy": "2009-2015",
+     "kdo": "Forest Research, Environment Agency, obec",
+     "co": "Slowing the Flow 2009-2015: dřevní přehrážky, hrázky v odvodňovacích rýhách vřesovišť, břehové lesy, zemní val; vyhodnocení fáze II 2015",
+     "mereno": "modelové riziko; terénní epizoda 11/2012 neprůkazná",
+     "zdroj": [
+      "pickering2015"
+     ],
+     "znacka": "overeno_stare"
+    }
+   ],
+   "prenositelnost": "Lesní potůčky a strže v Chřibech (toky 1. řádu) - ano. Stříbrník a Kyjovka pod soutokem - ne (riziko zvýšení špičky synchronizací).",
+   "rizika": "Na větších tocích mohou přehrážky špičku zvýšit; u častých malých dešťů nepomáhají. Terénní měření špičky chybí i v Pickeringu.",
    "vahy_skaly": null
   },
   {
@@ -8115,8 +8360,20 @@
     "měřený efekt (ČR)"
    ],
    "pozn_poctivost": null,
-   "priklady": [],
-   "prenositelnost": null,
+   "priklady": [
+    {
+     "kde": "Kyjovka u Moravské Nové Vsi",
+     "kdy": "2022-",
+     "kdo": "Povodí Moravy",
+     "co": "Povodí Moravy od 2022: nové přírodě blízké koryto 1 730 m odbočené ze stávajícího, přelivný val pro rozliv, 3 tůně, výsadby vrb, topolů, dubů, jasanů, jilmů; cena a měřený účinek neuvedeny (dolní tok v nížině)",
+     "mereno": null,
+     "zdroj": [
+      "brnodaily2022_kyjovka"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "prenositelnost": "Princip (odbočené koryto, rozliv, tůně) ano; měřítko ne - u Koryčan jde o drobný tok a Stříbrník. Správce Povodí Moravy (N06).",
    "rizika": null,
    "vahy_skaly": null
   },
@@ -8594,6 +8851,22 @@
       "tpeo2014"
      ],
      "znacka": "overeno"
+    },
+    {
+     "ucinek": "ER",
+     "typ": "hodnota",
+     "popis": "Udržované suché kamenné terasy eroze 0,05 t/ha/rok vs. rozpadlé 2,8 t/ha/rok (-87 až -98 %); stojící zídka podporuje vsak (Troodos, Kypr, vinice 1 300 m n. m., 2 sezóny)",
+     "hodnota": null,
+     "jednotka": "% snížení eroze",
+     "rozsah": [
+      87,
+      98
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "camera2017_cyprus"
+     ],
+     "znacka": "overeno_stare"
     }
    ],
    "vhodnost": {
@@ -8648,8 +8921,20 @@
     "hydroosev Kč/m² 2025"
    ],
    "pozn_poctivost": null,
-   "priklady": [],
-   "prenositelnost": null,
+   "priklady": [
+    {
+     "kde": "Troodos (Kypr)",
+     "kdy": "2015-2017",
+     "kdo": "Cyprus Institute",
+     "co": "dvě sezóny sedimentových pastí na udržovaných a rozpadlých zídkách teras ve vinici",
+     "mereno": "ztráta půdy t/ha/rok",
+     "zdroj": [
+      "camera2017_cyprus"
+     ],
+     "znacka": "overeno_stare"
+    }
+   ],
+   "prenositelnost": "Staré sadové a vinohradní terasy a úvozy nad Koryčany: zídky udržovat, nerozebírat; jiné klima (zimní srážky), princip platí.",
    "rizika": null,
    "vahy_skaly": null
   },
