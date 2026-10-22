@@ -58,14 +58,14 @@ DATA_JS = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
 
 HTML = r"""<title>Voda v Koryčanech</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: mapa nahoře (nebo vlevo na širokém), pracovní panel pod ní; čísla v mono, nadpisy serif s charakterem. */
 :root{
   --bg:#f6f3ee; --panel:#ffffff; --fg:#1f2a2e; --muted:#5c6b70; --line:#d8d2c7;
   --accent:#1f6f8b; --accent-ink:#ffffff; --soil:#7a5a3a; --water:#2d7fb8; --ok:#3b7a57; --warn:#b5651d; --bad:#a23b3b; --dry:#b8923a; --hot:#6b1d4a;
   --chip:#e9e4da; --mark:#eef4f7;
-  --f-display:"Fraunces", Georgia, "Times New Roman", serif;
+  --f-display:"Source Serif 4", Georgia, "Times New Roman", serif;
   --f-body:"IBM Plex Sans", "Segoe UI", Arial, sans-serif;
   --f-mono:"IBM Plex Mono", Consolas, monospace;
 }
@@ -404,7 +404,7 @@ details.banner[open]>summary .more{display:none}
     <svg class="jb-chart" id="jb-roc" viewBox="0 0 720 200" role="img" aria-label="Srovnání ročníků"></svg>
     <div class="legend"><span><b style="background:var(--chip)"></b>úhrn ve vybraných měsících</span><span><b style="background:var(--bad)"></b>pod 60 % normálu</span><span><b style="background:var(--water)"></b>nad 140 % normálu</span><span><b style="background:var(--accent)"></b>letošek</span><span><b class="ln" style="border-color:var(--fg);border-top-style:dashed"></b>normál 1991-2020</span><span><b style="background:var(--muted);border-radius:50%;width:.4rem;height:.4rem;vertical-align:1px"></b>část dní doplněna z okolní stanice</span></div>
     <div class="jb-rank" id="jb-rank"></div>
-    <div class="callout" style="margin-top:1rem"><b>Jak to číst.</b> <b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, počítaná z teplot metodou Hargreaves-Samani podle FAO-56 📄). Skutečný výpar je v suchém létě menší, protože není z čeho. <b>Srážky minus výpar</b> proto ukazuje, kolik vody krajině chybí a dobírá si ji ze zásoby v půdě a pod zemí (odborně klimatická vodní bilance). Vítr a vlhkost vzduchu metoda nezná; při větru je skutečná ztráta větší. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne. Prahy podle ČHMÚ ✅: tropický den = nejvyšší teplota aspoň 30 °C, supertropický aspoň 35 °C (neoficiální název), tropická noc = teplota neklesne pod 20 °C (<a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2025/TI_Leto2025.pdf" target="_blank" rel="noopener">ČHMÚ, Klimatologické léto 2025</a>).</div>
+    <div class="callout" style="margin-top:1rem"><b>Jak to číst.</b> <b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, počítaná z teplot metodou Hargreaves-Samani podle FAO-56 📄). <b>Srážky minus výpar</b> je žízeň krajiny (odborně klimatická vodní bilance), ne voda, která někam zmizela: víc, než naprší, se vypařit nemůže. V zimě je déšť větší než žízeň a přebytek doplní půdu a podzemní vodu; od jara do září si rostliny berou ze zásoby v půdě, a když dojde, zavřou průduchy a skutečný výpar klesne až k nule (FAO-56 ✅⏳). Záporné číslo je tedy voda, kterou rostliny chtěly a nedostaly. Po suché nebo teplé zimě se zásoba nedoplní a deficit se přenáší do dalšího roku (Národní koalice pro boj se suchem 2020 ✅⏳). Vítr a vlhkost vzduchu metoda nezná; při větru je skutečná ztráta větší. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne. Prahy podle ČHMÚ ✅: tropický den = nejvyšší teplota aspoň 30 °C, supertropický aspoň 35 °C (neoficiální název), tropická noc = teplota neklesne pod 20 °C (<a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2025/TI_Leto2025.pdf" target="_blank" rel="noopener">ČHMÚ, Klimatologické léto 2025</a>).</div>
     <p class="src" id="jb-src"></p>
   </div>
 </section>
