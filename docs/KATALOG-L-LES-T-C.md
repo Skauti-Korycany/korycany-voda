@@ -119,3 +119,53 @@ Upozornění k právu: paragrafy vodního zákona byly ověřeny na nestátním 
 - Rozestupy svodnic podle sklonu (ČSN 73 6108).
 - Kč: poldr/hráz; příkop Kč/m; hydroosev Kč/m²; NOO 2025_2 a 2026 tabulky.
 - Aktuální znění vodního zákona (e-Sbírka) pro § 15b, 17, 46, 47, 55.
+
+---
+
+<!-- RESERSE-START (generováno tools/build_katalog_md.py, needitovat ručně) -->
+## Doplnění z rešerše dobré praxe (bloky B, A, C, D, 21.-22. 10. 2026)
+
+Generováno z `data/opatreni.json` v0.8 (2026-10-22); podrobný rozbor a odkazy: `docs/KATALOG-RESERSE.md`. Uvedeny jen nové položky a kvantifikace, příklady, přenositelnost a rizika doplněné rešerší; původní text výše platí dál. Značky: ✅ ověřeno online, ✅⏳ zdroj starší 12 měsíců, 📄 citace, 🤔 odhad.
+
+### L02 Extenzivní rotační pastva, omezení přepásání a sešlapu (doplněno)
+- Účinek infiltrace do půdy (hodnota) ✅⏳: MENDELU 2011-2013: vsak v 1. minutě neobhospodařovaný trávník 34,5, sečená louka 12,6, pastvina skotu 7,0 mm/min; objemová hmotnost 1,17 / 1,42 / 1,57 g/cm³; pastva i sklizňová technika vsak významně snižují [7-34.5 mm/min (1. minuta)]. Zdroj: [Sochorec, Jandák, Raus, Kvasnovský, Hejduk, Knot (MENDELU) 2015](https://agrojournal.org/21/03-15.html)
+- Kde to funguje: **MENDELU Brno (pokusná plocha)** (2011-2013): tříletý pokus louka vs. pastvina vs. neobhospodařovaný porost; lokalita v abstraktu neuvedena. Měřeno: infiltrace, objemová hmotnost, pórovitost. ✅⏳ [Sochorec, Jandák, Raus, Kvasnovský, Hejduk, Knot (MENDELU) 2015](https://agrojournal.org/21/03-15.html)
+- Rizika, co z toho neplyne: Sešlap skotu = nejnižší vsak; vyloučit skot z mokřin a pramenišť (L04, T05). Mozaiková pastva s odpočinkem ploch 🤔.
+- Nedohledáno: české měření extenzivní vs. intenzivní
+
+### LES02 Odvodnění lesních cest a svážnic do lesa, ne do strží (svodnice, příčné prahy) (doplněno)
+- Účinek zpomalení odtoku (kvalitativne) ✅: FVA BW: rigole = propustný štěrkový práh v tělese cesty šikmo 3-5 %, výkop >= 2 × 1 m (75 cm hrubý kámen, 10 cm štěrk, 10 cm povrch), usazovací jímka 1-1,5 m³, pro cesty do 6 % sklonu; voda z příkopu se vsakuje pod cestou a po svahu místo soustředění v propustku; retence nevyčíslena, cena malá při opravě cesty. Zdroj: [FVA Baden-Württemberg, Info-Faltblatt 4/2025](https://www.fva-bw.de/fileadmin/user_upload/Abteilungen/Boden_und_Umwelt/Wasserrueckhalt_Wald/Steckbrief_Rigole_final.pdf)
+- Kde to funguje: **Bádensko-Württembersko, 27 pilotních lesů** (2023-2027): program Dezentraler Wasserrückhalt im Wald 2023-2027: svedení vody z cest, brzdné prvky v příkopech, rigole místo propustků, změna profilu cesty, přeložení potoka z koleje; čísla do 2027. Měřeno: v běhu. ✅ [Keller, Puhlmann a kol. (FVA Baden-Württemberg), kolokvium 4. 12. 2025](https://www.fva-bw.de/fileadmin/user_upload/Themen/Wissenstransfer/2025-26_Kolloquien/FVA-Kolloquium_20251204_Keller_web.pdf)
+- Přenositelnost do Koryčan: Lesní cesty v Chřibech nad Jestřabicemi a Lískovcem; dohoda s LČR (N06). Školní mapování M06 po přívalu ukáže, kde cesty vodu soustředí.
+- Nedohledáno: rozestupy svodnic (ČSN 73 6108)
+
+### T01 Tůň v nivě (bez fólie), soustava tůní, obnova zazemněné tůně (doplněno)
+- Rizika, co z toho neplyne: Vyhodnocení účinku vyžaduje měření před/po s kontrolním profilem 3-5 let (VÚV 2018); jeden rok nestačí.
+
+### T02 Mokřad, zamokření nivy přerušením odvodnění (doplněno)
+- Účinek zadržení objemu (hodnota) ✅: Sedmihorské mokřady (Český ráj): po odstranění drenáží a vyhloubení soustavy tůní o 11 543 m³ vody víc na 6 ha (🤔 cca 1 900 m³/ha); hladina v revitalizované části stabilní, v odvodněné kolísá se suchem; měřeno 2 roky hladinoměry v obou částech [11543 m³ na 6 ha]. Zdroj: [Novinky.cz 4. 8. 2026](https://www.novinky.cz/clanek/domaci-zpravy-liberecky-kraj-v-sedmihorskych-mokradech-pribyla-voda-jako-pro-pet-olympijskych-bazenu-40591088)
+- Účinek zadržení objemu (kvalitativne) ✅: Thünen (Dolní Sasko, slatinné louky): podpovrchové zavlažování zvedlo roční hladinu o 12 cm (-0,37 -> -0,25 m), pouhé hrazení příkopů bez jasného efektu - drenáže přerušit plošně, ne jen zahradit. Zdroj: [Thünen-Institut, Project Brief 2021/20 (SWAMPS 2016-2021)](https://www.thuenen.de/media/publikationen/project_brief/Project_Brief_2021_20.pdf)
+- Kde to funguje: **Sedmihorské mokřady, Libuňka (Český ráj)** (2021-2026): ČSOP + Pozemkový spolek: výkup pozemků, odstranění drenáží, soustava tůní na 6 ha (2021-2022); vyhodnoceno 2026. Měřeno: hladina podzemní vody 2 roky, objem zadržené vody. ✅ [Novinky.cz 4. 8. 2026](https://www.novinky.cz/clanek/domaci-zpravy-liberecky-kraj-v-sedmihorskych-mokradech-pribyla-voda-jako-pro-pet-olympijskych-bazenu-40591088)
+- Kde to funguje: **Niva Kyjovky** (2023): Adapterra Awards 2023, zvláštní ocenění 'Obnova údolní nivy řeky Kyjovky' (lokalita v článku neuvedena); podle uživatele vznikly 3 tůně v nivě Kyjovky u Bohuslavic u Kyjova vedle cyklostezky 🤔 (online nedohledáno); další realizace Povodí Moravy u Moravské Nové Vsi (T04). Bez měření. 📄 [businessinfo.cz 2. 11. 2023](https://www.businessinfo.cz/clanky/adapterra-awards-soutez-zna-viteze-ocenila-nejlepsi-ekologicke-projekty/)
+- Přenositelnost do Koryčan: Niva Stříbrníku a Kyjovky nad jezem u Mouchnic (rozhodnutí 21. 10.): nejdřív zjistit meliorace (SPÚ, N02), pak přerušit plošně. Monitoring před/po s kontrolním profilem 3-5 let (VÚV 2018).
+- Rizika, co z toho neplyne: Hrazení příkopů bez odstranění drenáží nestačí (Thünen). Jeden rok měření nestačí (VÚV). Zamokření sousedních pozemků - dohoda s vlastníky.
+
+### T03 Mrtvé dřevo a dřevní přehrážky v korytě drobného toku (leaky dams) (doplněno)
+- Účinek zpomalení odtoku (hodnota) ✅: Model (prototyp 32 km², 20 let srážek): přehrážky jen na tocích 1. řádu snížily špičku až o 50 % a zadržely nejvíc vody; jen na tocích 3. řádu zvýšily špičku o >10 % ve 22 % epizod (synchronizace); u častých malých dešťů špička rostla i s přehrážkami [50 % špičky (1. řád, model)]. Zdroj: [Wolstenholme, Skinner, Milan, Thomas, Parsons, EGU 2024 (EGU24-8881)](https://meetingorganizer.copernicus.org/EGU24/EGU24-8881.html)
+- Účinek zadržení objemu (hodnota) ✅⏳: Pickering (Yorkshire): 129 + 38 dřevních přehrážek, 187 vřesových hrázek, 29 ha břehových lesů, val 120 000 m³; odhad dodatečného zadržení 8-9 tis. m³ (lesy) + 500 m³ (hrázky); riziko povodně modelově z 25 % na <= 4 %/rok; změřené snížení špičky zpráva neuvádí [500-9000 m³ (odhad)]. Zdroj: [Forest Research 5/2015](https://cdn.forestresearch.gov.uk/2022/02/fr_slowingtheflowphase2executivesummary.pdf)
+- Kde to funguje: **Pickering (Yorkshire, UK)** (2009-2015): Slowing the Flow 2009-2015: dřevní přehrážky, hrázky v odvodňovacích rýhách vřesovišť, břehové lesy, zemní val; vyhodnocení fáze II 2015. Měřeno: modelové riziko; terénní epizoda 11/2012 neprůkazná. ✅⏳ [Forest Research 5/2015](https://cdn.forestresearch.gov.uk/2022/02/fr_slowingtheflowphase2executivesummary.pdf)
+- Přenositelnost do Koryčan: Lesní potůčky a strže v Chřibech (toky 1. řádu) - ano. Stříbrník a Kyjovka pod soutokem - ne (riziko zvýšení špičky synchronizací).
+- Rizika, co z toho neplyne: Na větších tocích mohou přehrážky špičku zvýšit; u častých malých dešťů nepomáhají. Terénní měření špičky chybí i v Pickeringu.
+- Nedohledáno: český kvantifikovaný zdroj
+
+### T04 Revitalizace drobného toku (odstranění opevnění, rozvlnění, snížení břehů) (doplněno)
+- Kde to funguje: **Kyjovka u Moravské Nové Vsi** (2022-): Povodí Moravy od 2022: nové přírodě blízké koryto 1 730 m odbočené ze stávajícího, přelivný val pro rozliv, 3 tůně, výsadby vrb, topolů, dubů, jasanů, jilmů; cena a měřený účinek neuvedeny (dolní tok v nížině). Bez měření. ✅ [Brno Daily 28. 8. 2022](https://brnodaily.com/2022/08/28/brno/the-morava-river-basin-project-is-revitalising-the-kyjovka-river-and-its-fauna/)
+- Přenositelnost do Koryčan: Princip (odbočené koryto, rozliv, tůně) ano; měřítko ne - u Koryčan jde o drobný tok a Stříbrník. Správce Povodí Moravy (N06).
+- Nedohledáno: SPPK kód pro revitalizace; měřený efekt (ČR)
+
+### C03 Zatravnění a výsadba na svazích, terasování starých úvozů (doplněno)
+- Účinek protierozní (hodnota) ✅⏳: Udržované suché kamenné terasy eroze 0,05 t/ha/rok vs. rozpadlé 2,8 t/ha/rok (-87 až -98 %); stojící zídka podporuje vsak (Troodos, Kypr, vinice 1 300 m n. m., 2 sezóny) [87-98 % snížení eroze]. Zdroj: [Camera, Djuma, Zoumides, Eliades, Charalambous, Bruggeman (Cyprus Inst](https://meetingorganizer.copernicus.org/EGU2017/EGU2017-7404.pdf?pdf)
+- Kde to funguje: **Troodos (Kypr)** (2015-2017): dvě sezóny sedimentových pastí na udržovaných a rozpadlých zídkách teras ve vinici. Měřeno: ztráta půdy t/ha/rok. ✅⏳ [Camera, Djuma, Zoumides, Eliades, Charalambous, Bruggeman (Cyprus Inst](https://meetingorganizer.copernicus.org/EGU2017/EGU2017-7404.pdf?pdf)
+- Přenositelnost do Koryčan: Staré sadové a vinohradní terasy a úvozy nad Koryčany: zídky udržovat, nerozebírat; jiné klima (zimní srážky), princip platí.
+- Nedohledáno: hydroosev Kč/m² 2025
+<!-- RESERSE-END -->

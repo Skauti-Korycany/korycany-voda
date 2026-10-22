@@ -46,7 +46,7 @@ overeno ✅ | overeno_stare ✅⏳ | citace 📄 | odhad 🤔 | pamet 💻. Apli
 
 ## Stav k 21. 10. 2026 (blok B rešerše)
 - Blok B: 62 opatření (nové Z12 olla, Z13 suchomilný záhon, S05 šedá voda, S06 dešťová voda na WC). Blok A (večer): 65 opatření (+U08, H01, H02). Blok C (22. 10.): 66 opatření (+U09). Blok D (22. 10.): 157 zdrojů, 131 kvantifikací (32 kvalitativních), 57 příkladů dobré praxe u 26 opatření, 33 cenových položek bez zdroje.
-- Doplňky z rešerše se zapisují na konci `build_opatreni.py` funkcí `doplnit(id, ...)`, aby původní definice zůstala čitelná. Podrobný popis s odkazy: `docs/KATALOG-RESERSE.md`.
+- Doplňky z rešerše se zapisují na konci `build_opatreni.py` funkcí `doplnit(id, ...)`, aby původní definice zůstala čitelná. **Kvantifikační MD** (`KATALOG-Z-S.md`, `KATALOG-U-P.md`, `KATALOG-L-LES-T-C.md`) mají na konci sekci „Doplnění z rešerše dobré praxe“ generovanou `tools/build_katalog_md.py` z JSON (mezi značkami RESERSE-START/END, needitovat ručně); postup po změně katalogu: `build_opatreni.py` -> `build_katalog_md.py` -> `build_dummy.py`. Podrobný popis s odkazy: `docs/KATALOG-RESERSE.md`.
 - Archiv podkladů (fotky, PDF) mimo git: `tools/stahni_zdroje.py` -> `..\zdroje-archiv\`.
 
 ## Stav k 18. 10. 2026
