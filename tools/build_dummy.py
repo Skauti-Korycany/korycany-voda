@@ -51,7 +51,7 @@ data["pocasi"] = {
                                 "d30": z.get("T", {}).get("dni_nad_30"), "d0": z.get("T", {}).get("dni_pod_0"),
                                 "Tx": z.get("T", {}).get("max_den"), "d35": z.get("T", {}).get("dni_nad_35"),
                                 "tn": z.get("T", {}).get("tropicke_noci"), "lx": z.get("leto", {}).get("Tmax"), "dopl": z.get("dopl")} for r, z in NRM["rocniky"].items()},
-                "doplneni": NRM.get("doplneni"),
+                "doplneni": NRM.get("doplneni"), "top_denni": NRM.get("top_denni"),
                 "leto_normal": NRM.get("leto_normal")},
 }
 DATA_JS = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
