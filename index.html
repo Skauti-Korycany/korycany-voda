@@ -2374,7 +2374,7 @@ function posl30(i, ch){
     const ii=Object.assign({}, i, {rain:p/1000, nkey:null}), rr=runoff(ii); out+=rr.out; roof+=rr.roofOut; if(ch) kept+=zadrzeni(ii, rr, ch).kept; });
   return {od, do:last, P, n, out, kept, roof, max};
 }
-const HOUBA = [[0,'Kapka','skoro všechno odteče'],[25,'Louže','něco zůstane'],[50,'Tůňka','většina zůstane'],[80,'Houba','udržíš skoro všechno']];
+const HOUBA = [[0,'Kapka','skoro všechno odteče'],[25,'Louže','něco zůstane'],[50,'Tůňka','většina zůstane'],[80,'Oáza','udržíš skoro všechno']];
 function houbaLevel(pct){ let k=0; HOUBA.forEach((h,j)=>{ if(pct>=h[0]) k=j; }); return k; }
 const ODZNAKY = [['prival','přívalu'],['sucho','suchu'],['horko','horku'],['zivot','pro život']];
 function pzKrok4(i, r, ev, kept){
