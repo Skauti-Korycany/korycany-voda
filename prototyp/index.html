@@ -129,6 +129,22 @@ input[type=range]{width:100%}
 .jb-card .cmp.plus b{color:var(--water)} .jb-card .cmp.minus b{color:var(--bad)}
 .jb-card .src{margin-top:.35rem}
 .jb-chart{width:100%;height:auto;margin-top:.6rem;display:block;font-family:var(--f-mono);font-size:10px}
+/* zvetseni grafu do okna (22. 10. 2026) */
+.zoom-wrap{display:flex;flex-direction:column}
+.zoom-wrap>svg.jb-chart{cursor:zoom-in}
+.zoom-btn{order:-1;align-self:flex-end;margin:.4rem 0 -.3rem;font:inherit;font-size:.78rem;display:inline-flex;align-items:center;gap:.3rem;min-height:32px;padding:.2rem .55rem;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--accent);cursor:pointer;opacity:.9}
+.zoom-btn:hover,.zoom-btn:focus-visible{opacity:1;border-color:var(--accent)}
+.zoom-btn svg{width:14px;height:14px}
+dialog.zoom{width:min(96vw,1500px);max-width:none;max-height:94vh;padding:0;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--fg);overflow:hidden}
+dialog.zoom::backdrop{background:rgba(15,22,25,.6)}
+dialog.zoom .zoom-h{display:flex;justify-content:space-between;align-items:center;gap:.8rem;padding:.7rem 1rem;border-bottom:1px solid var(--line)}
+dialog.zoom .zoom-h b{font-family:var(--f-display);font-size:1.15rem}
+dialog.zoom .zoom-x{font:inherit;font-size:1rem;min-width:44px;min-height:44px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--fg);cursor:pointer}
+dialog.zoom .zoom-c{overflow:auto;max-height:calc(94vh - 66px);padding:.6rem 1rem 1rem}
+dialog.zoom .zoom-b{overflow-x:auto}
+dialog.zoom .zoom-b svg{width:100%;height:auto;min-width:860px;display:block;font-family:var(--f-mono);font-size:10px;cursor:default}
+dialog.zoom .zoom-n{display:none}
+@media(max-width:700px){ dialog.zoom .zoom-n{display:block} }
 .jb-chart .ax{stroke:var(--line);stroke-width:1}
 .jb-chart text{fill:var(--muted)}
 .jb-chart .bP{fill:var(--water)} .jb-chart .bPn{fill:var(--water);opacity:.45}
@@ -2870,6 +2886,32 @@ function rocniky(od,do_,s){
   $('jb-rank').innerHTML=rank;
 }
 sel.addEventListener('change',render); inOd.addEventListener('change',render); inDo.addEventListener('change',render); render();
+})();
+
+// ---------- zvetseni grafu do okna (22. 10. 2026, uzivatel): tlacitko Zvetsit nebo klik na graf; v okne kopie aktualniho grafu + legenda
+(function(){
+  if(typeof HTMLDialogElement==='undefined') return;
+  const dlg=document.createElement('dialog'); dlg.className='zoom'; dlg.setAttribute('aria-labelledby','zoom-t');
+  dlg.innerHTML='<div class="zoom-h"><b id="zoom-t"></b><button type="button" class="zoom-x" aria-label="Zavřít">✕</button></div><div class="zoom-c"><p class="note zoom-n">Graf jde posouvat do stran, nebo otoč telefon na šířku.</p><div class="zoom-b" id="zoom-b"></div><div id="zoom-l"></div></div>';
+  document.body.appendChild(dlg);
+  const zav=()=>dlg.close();
+  dlg.querySelector('.zoom-x').addEventListener('click',zav);
+  dlg.addEventListener('click',e=>{ if(e.target===dlg) zav(); });
+  const IKO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
+  function nadpis(wrap){ for(let el=wrap.previousElementSibling; el; el=el.previousElementSibling){ if(el.matches('h2,h3')) return el.textContent.trim(); const h=el.querySelector&&el.querySelector('h3'); if(h) return h.textContent.trim(); } return 'Graf'; }
+  function otevri(svg){
+    const wrap=svg.parentNode, c=svg.cloneNode(true); c.removeAttribute('id'); c.querySelectorAll('[id]').forEach(x=>x.removeAttribute('id'));
+    document.getElementById('zoom-t').textContent=nadpis(wrap);
+    const b=document.getElementById('zoom-b'); b.innerHTML=''; b.appendChild(c);
+    const leg=wrap.nextElementSibling, l=document.getElementById('zoom-l'); l.innerHTML='';
+    if(leg && leg.classList.contains('legend')){ const lc=leg.cloneNode(true); lc.removeAttribute('id'); l.appendChild(lc); }
+    dlg.showModal(); b.scrollLeft=b.scrollWidth;   // na telefonu zacit u nejnovejsich let
+  }
+  document.querySelectorAll('svg.jb-chart').forEach(svg=>{
+    const wrap=document.createElement('div'); wrap.className='zoom-wrap'; svg.parentNode.insertBefore(wrap,svg); wrap.appendChild(svg);
+    const btn=document.createElement('button'); btn.type='button'; btn.className='zoom-btn'; btn.innerHTML=IKO+'Zvětšit'; btn.setAttribute('aria-label','Zvětšit graf');
+    wrap.appendChild(btn); btn.addEventListener('click',()=>otevri(svg)); svg.addEventListener('click',()=>otevri(svg));
+  });
 })();
 
 // hacek pro automaticke testy (tools: headless kontrola); v aplikaci se nevola
