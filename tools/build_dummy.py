@@ -48,7 +48,8 @@ data["pocasi"] = {
     "normaly": {"obdobi": NRM["obdobi"], "rok": NRM["rok"], "mesic": NRM["mesic"], "rekordy": NRM["rekordy"],
                 "rocniky": {r: {"P": z.get("P", {}).get("rok"), "Pm": [z.get("P", {}).get(str(m)) for m in range(1, 13)],
                                 "T": z.get("T", {}).get("rok"), "ET0": z.get("ET0", {}).get("rok"), "bil": z.get("bil", {}).get("rok"),
-                                "d30": z.get("T", {}).get("dni_nad_30"), "d0": z.get("T", {}).get("dni_pod_0")} for r, z in NRM["rocniky"].items()}},
+                                "d30": z.get("T", {}).get("dni_nad_30"), "d0": z.get("T", {}).get("dni_pod_0"),
+                                "Tx": z.get("T", {}).get("max_den")} for r, z in NRM["rocniky"].items()}},
 }
 DATA_JS = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
 
@@ -183,6 +184,7 @@ input[type=range]{width:100%}
 .jb-chart .bP{fill:var(--water)} .jb-chart .bPn{fill:var(--water);opacity:.45}
 .jb-chart .lT{fill:none;stroke:var(--warn);stroke-width:1.6}
 .jb-chart .lE{fill:none;stroke:var(--soil);stroke-width:1.4;stroke-dasharray:3 2}
+.jb-chart .lX{fill:none;stroke:var(--bad);stroke-width:1.2}
 .jb-chart .rY{fill:var(--chip)} .jb-chart .rY.now{fill:var(--accent)} .jb-chart .rY.hi{fill:var(--water)} .jb-chart .rY.lo{fill:var(--bad)} .jb-chart .rY.dry{fill:var(--dry)}
 .jb-chart .nrm{stroke:var(--fg);stroke-width:1;stroke-dasharray:4 3}
 .jb-ext{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.4rem .8rem;font-size:.9rem;margin-top:.5rem}
@@ -313,10 +315,14 @@ details.banner[open]>summary .more{display:none}
     <p class="note" id="jb-l1-n"></p>
     <svg class="jb-chart" id="jb-l1" viewBox="0 0 720 220" role="img" aria-label="Roční srážky 1921-2025"></svg>
     <div class="legend"><span><b style="background:var(--chip)"></b>roční úhrn</span><span><b style="background:var(--dry)"></b>3 nejsušší roky</span><span><b style="background:var(--water)"></b>3 nejdeštivější roky</span><span><b style="background:var(--dry);opacity:.45"></b>letošek do dneška</span><span><b style="background:var(--warn)"></b>klouzavý průměr 10 let</span><span><b style="background:var(--fg)"></b>normál 1991-2020</span></div>
-    <h3 style="margin-top:1rem">Dlouhý pohled: teplota, výpar a bilance od roku 2001</h3>
+    <h3 style="margin-top:1rem">Dlouhý pohled: kolik vody zbyde po výparu (od roku 2001)</h3>
     <p class="note" id="jb-l2-n"></p>
-    <svg class="jb-chart" id="jb-l2" viewBox="0 0 720 220" role="img" aria-label="Bilance, výpar a teplota 2001-2025"></svg>
-    <div class="legend"><span><b style="background:var(--ok)"></b>bilance P - ET₀ přebytek</span><span><b style="background:var(--dry)"></b>bilance P - ET₀ deficit (mm/rok)</span><span><b style="background:var(--soil)"></b>ET₀ mm/rok</span><span><b style="background:var(--warn)"></b>průměrná teplota °C</span><span><b style="background:var(--bad)"></b>tropické dny</span></div>
+    <svg class="jb-chart" id="jb-l2" viewBox="0 0 720 220" role="img" aria-label="Srážky minus výpar a možný výpar 2001-2025"></svg>
+    <div class="legend"><span><b style="background:var(--ok)"></b>srážky minus výpar: voda zbyla</span><span><b style="background:var(--dry)"></b>srážky minus výpar: voda chyběla</span><span><b style="background:var(--soil)"></b>možný výpar za rok</span></div>
+    <h3 style="margin-top:1rem">Dlouhý pohled: teplota a horko (od roku 2001)</h3>
+    <p class="note" id="jb-l3-n"></p>
+    <svg class="jb-chart" id="jb-l3" viewBox="0 0 720 200" role="img" aria-label="Tropické dny a průměrná roční teplota 2001-2025"></svg>
+    <div class="legend"><span><b style="background:var(--bad);border-radius:50%"></b>tropické dny za rok (nejvyšší teplota dne aspoň 30 °C), levá osa</span><span><b style="background:var(--bad);opacity:.5"></b>trend tropických dní</span><span><b style="background:var(--warn)"></b>průměrná roční teplota (průměr dne i noci), pravá osa</span></div>
     <div class="jb-cards" id="jb-trend"></div>
     <div class="motiv" id="jb-l-call"></div>
 
@@ -328,14 +334,14 @@ details.banner[open]>summary .more{display:none}
     </div>
     <div class="jb-cards" id="jb-cards"></div>
     <svg class="jb-chart" id="jb-graf" viewBox="0 0 720 230" role="img" aria-label="Denní průběh srážek, teploty a výparu"></svg>
-    <div class="legend" id="jb-leg"><span><b style="background:var(--water)"></b>srážky mm/den (světlejší = náhradní stanice)</span><span><b style="background:var(--warn)"></b>průměrná teplota °C</span><span><b style="background:var(--soil)"></b>výpar ET₀ mm/den</span></div>
+    <div class="legend" id="jb-leg"><span><b style="background:var(--water)"></b>srážky mm/den (světlejší = náhradní stanice)</span><span><b style="background:var(--bad)"></b>nejvyšší teplota dne °C</span><span><b style="background:var(--warn)"></b>průměrná teplota dne (průměr za 24 h) °C</span><span><b style="background:var(--soil)"></b>možný výpar mm/den</span><span><b style="background:var(--bad);opacity:.5"></b>30 °C = tropický den</span></div>
     <h3 style="margin-top:1rem">Extrémy období</h3>
     <div class="jb-ext" id="jb-ext"></div>
     <h3 style="margin-top:1rem" id="jb-roc-h">Srovnání ročníků</h3>
     <p class="note" id="jb-roc-n"></p>
     <svg class="jb-chart" id="jb-roc" viewBox="0 0 720 200" role="img" aria-label="Srovnání ročníků"></svg>
     <div class="jb-rank" id="jb-rank"></div>
-    <div class="callout" style="margin-top:1rem"><b>Jak to číst.</b> ET₀ je referenční výpar (kolik by se vypařilo z dobře zavlažené trávy, Hargreaves-Samani podle FAO-56 📄). Skutečný výpar z krajiny je v suchém létě menší, protože není z čeho. Rozdíl srážky - ET₀ je proto <b>klimatický deficit</b>: kolik vody krajině chybí a dobírá si ji ze zásoby v půdě a pod zemí. Vítr a vlhkost vzduchu metoda nezná; při větru je skutečná ztráta větší.</div>
+    <div class="callout" style="margin-top:1rem"><b>Jak to číst.</b> <b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, počítaná z teplot metodou Hargreaves-Samani podle FAO-56 📄). Skutečný výpar je v suchém létě menší, protože není z čeho. <b>Srážky minus výpar</b> proto ukazuje, kolik vody krajině chybí a dobírá si ji ze zásoby v půdě a pod zemí (odborně klimatická vodní bilance). Vítr a vlhkost vzduchu metoda nezná; při větru je skutečná ztráta větší. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne a počet tropických dní (aspoň 30 °C).</div>
     <p class="src" id="jb-src"></p>
   </div>
 </section>
@@ -1262,7 +1268,12 @@ const R=N.rocniky, LAST=DNY[DNY.length-1], ROK=+LAST.slice(0,4);
 $('jb-upd').textContent=W.vytvoreno.replace('T',' ').replace('Z',' UTC');
 const mean=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
 function lin(xs,ys){const n=xs.length,mx=mean(xs),my=mean(ys);let sxy=0,sxx=0;for(let i=0;i<n;i++){sxy+=(xs[i]-mx)*(ys[i]-my);sxx+=(xs[i]-mx)**2;}return sxx?sxy/sxx:0;}
-const osy=(L,w,T,h,vmin,vmax,jedn,right)=>{let o='';[0,.5,1].forEach(f=>{const y=T+h-h*f;o+=`<line class="ax" x1="${L}" x2="${L+w}" y1="${y}" y2="${y}"/>`+(right?`<text x="${L+w+4}" y="${y+3}">${Math.round(vmin+(vmax-vmin)*f)}${jedn}</text>`:`<text x="${L-4}" y="${y+3}" text-anchor="end">${Math.round(vmin+(vmax-vmin)*f)}${jedn}</text>`);});return o;};
+// osy s kulatými hodnotami (0, 250, 500...): dílek 1/2/2,5/5 x 10^k, aby čáry nevypadaly jako konkrétní hodnota
+function nice(lo,hi,n){const raw=((hi-lo)||1)/n, p=10**Math.floor(Math.log10(raw)), st=[1,2,2.5,5,10].map(k=>k*p).find(s=>s>=raw-1e-9);
+  const a=Math.floor(lo/st+1e-9)*st, b=Math.ceil(hi/st-1e-9)*st, t=[]; for(let v=a;v<=b+st/2;v+=st) t.push(+v.toFixed(6)); return {lo:a,hi:b,t};}
+const osy=(L,w,T,h,s,o_)=>{const {right,suf='',col}=o_||{}; let o=''; s.t.forEach(v=>{const y=(T+h-h*(v-s.lo)/(s.hi-s.lo)).toFixed(1);
+  if(!right) o+=`<line class="ax" x1="${L}" x2="${L+w}" y1="${y}" y2="${y}"/>`;
+  o+=`<text x="${right?L+w+4:L-4}" y="${+y+3}"${right?'':' text-anchor="end"'}${col?` style="fill:var(${col})"`:''}>${fmtN(v)}${suf}</text>`;}); return o;};
 
 // ---------- dlouhy pohled 1: rocni srazky 1921-2025 + letosni necely rok
 (function(){
@@ -1271,8 +1282,8 @@ const osy=(L,w,T,h,vmin,vmax,jedn,right)=>{let o='';[0,.5,1].forEach(f=>{const y
   let cur=null;
   if(!R[ROK]){ const dd=DNY.filter(d=>d.startsWith(ROK+'-')); let P=0,nP=0,Pn=0; dd.forEach(d=>{const p=W.dny[d][0], m=+d.slice(5,7); Pn+=N.mesic[m].P/dim(ROK,m); if(p!=null){P+=p;nP++;}});
     if(nP>60) cur={r:ROK,P,Pn,do:dd[dd.length-1],n:nP,dni:dd.length}; }
-  const norm=N.rok.P, Wd=720,Hd=220,L=36,Rr=6,T=10,B=24,w=Wd-L-Rr,h=Hd-T-B, vmax=Math.max(...body.map(b=>b[1]))*1.05, bw=w/(body.length+(cur?1:0)), y=v=>T+h-h*v/vmax;
-  let o=osy(L,w,T,h,0,vmax,'');
+  const norm=N.rok.P, Wd=720,Hd=220,L=40,Rr=6,T=12,B=24,w=Wd-L-Rr,h=Hd-T-B, sc=nice(0,Math.max(...body.map(b=>b[1])),4), vmax=sc.hi, bw=w/(body.length+(cur?1:0)), y=v=>T+h-h*v/vmax;
+  let o=osy(L,w,T,h,sc)+`<text x="${L}" y="${T-3}">mm za rok</text>`;
   const srt=[...body].sort((a,b)=>a[1]-b[1]), nejsussi=new Set(srt.slice(0,3).map(z=>z[0])), nejmokrejsi=new Set(srt.slice(-3).map(z=>z[0]));
   body.forEach(([r,v],i)=>{const cls=nejsussi.has(r)?'dry':nejmokrejsi.has(r)?'hi':'';o+=`<rect class="rY ${cls}" x="${(L+i*bw).toFixed(1)}" y="${y(v)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${T+h-y(v)}"><title>${r}: ${fmt(v,0)} mm</title></rect>`;if(r%10===0&&!(cur&&i>=body.length-3))o+=`<text x="${L+(i+.5)*bw}" y="${Hd-8}" text-anchor="middle">${r}</text>`;});
   let p='';body.forEach(([r,v],i)=>{if(i<9)return;const k=mean(body.slice(i-9,i+1).map(b=>b[1]));p+=(p?'L':'M')+(L+(i+.5)*bw).toFixed(1)+' '+y(k).toFixed(1)+' ';});
@@ -1289,43 +1300,56 @@ const osy=(L,w,T,h,vmin,vmax,jedn,right)=>{let o='';[0,.5,1].forEach(f=>{const y
     (cur?` <b>${cur.r}*</b> = neúplný rok do ${dt} (předběžná data, dny bez stanice Koryčany doplněny z KS Koryčany a Nemochovic): <b class="num">${fmt(cur.P,0)} mm</b>, normál za stejné období ${fmt(cur.Pn,0)} mm (černá čárka u sloupce) = ${fmt(100*cur.P/cur.Pn,0)} %.`:'');
 })();
 
-// ---------- dlouhy pohled 2: T, ET0, bilance, tropicke dny 2001-2025
+// ---------- dlouhy pohled 2: srazky minus vypar a mozny vypar; 3: tropicke dny a prumerna teplota 2001-2025
 (function(){
-  const body=Object.entries(R).filter(([r,z])=>z.T!=null&&z.bil!=null).map(([r,z])=>({r:+r,T:z.T,E:z.ET0,b:z.bil,d30:z.d30||0})).sort((a,b)=>a.r-b.r);
+  const body=Object.entries(R).filter(([r,z])=>z.T!=null&&z.bil!=null).map(([r,z])=>({r:+r,T:z.T,E:z.ET0,b:z.bil,d30:z.d30||0,Tx:z.Tx})).sort((a,b)=>a.r-b.r);
   if(!body.length) return;
-  // letošní neúplný rok z denních dat (1. 1. až poslední den): bilance a ET0 jako součet do data, tropické dny; průměrná teplota se nekreslí (chybí zima)
+  // letošní neúplný rok z denních dat (1. 1. až poslední den): srážky minus výpar a výpar jako součet do data, tropické dny; průměrná teplota se nekreslí (chybí zima)
   let cur=null;
-  if(!R[ROK]){ const dd=DNY.filter(d=>d.startsWith(ROK+'-')); let P=0,E=0,nb=0,d30=0; dd.forEach(d=>{const [p,z,T_,Tn,Tx,e]=W.dny[d]; if(p!=null&&e!=null){P+=p;E+=e;nb++;} if(Tx!=null&&Tx>=30)d30++;});
-    if(nb>60) cur={r:ROK,b:P-E,E,d30,do:dd[dd.length-1],n:nb}; }
-  const Wd=720,Hd=220,L=40,Rr=40,T=10,B=24,w=Wd-L-Rr,h=Hd-T-B;
-  const bmin=Math.min(0,...body.map(b=>b.b),cur?cur.b:0)*1.1, bmax=Math.max(...body.map(b=>b.E))*1.05;
-  const yL=v=>T+h-h*(v-bmin)/(bmax-bmin), tmin=Math.min(0,...body.map(b=>b.T))-1, tmax=Math.max(...body.map(b=>b.T),...body.map(b=>b.d30),cur?cur.d30:0)+2, yR=v=>T+h-h*(v-tmin)/(tmax-tmin);
-  const bw=w/(body.length+(cur?1:0)), x=i=>L+(i+.5)*bw;
-  let o=osy(L,w,T,h,bmin,bmax,'')+osy(L,w,T,h,tmin,tmax,'',true);
-  o+=`<line class="ax" x1="${L}" x2="${L+w}" y1="${yL(0)}" y2="${yL(0)}" style="stroke:var(--fg)"/>`;
-  body.forEach((b,i)=>{o+=`<rect x="${(L+i*bw).toFixed(1)}" y="${Math.min(yL(0),yL(b.b))}" width="${Math.max(1,bw-1).toFixed(1)}" height="${Math.abs(yL(0)-yL(b.b))}" style="fill:var(${b.b<0?'--dry':'--ok'});opacity:.8"><title>${b.r}: bilance ${fmt(b.b,0)} mm, ET₀ ${fmt(b.E,0)} mm, ${fmt(b.T,1)} °C, ${b.d30} tropických dní</title></rect>`;if(b.r%5===0&&!(cur&&i>=body.length-2))o+=`<text x="${x(i)}" y="${Hd-8}" text-anchor="middle">${b.r}</text>`;});
-  const path=(f,fy,cls)=>`<path class="${cls}" d="${body.map((b,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+fy(f(b)).toFixed(1)).join(' ')}"/>`;
-  const d30s=body.map(b=>b.d30).concat(cur?[cur.d30]:[]);
-  o+=path(b=>b.E,yL,'lE')+path(b=>b.T,yR,'lT')+`<path d="${d30s.map((v,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+yR(v).toFixed(1)).join(' ')}" style="fill:none;stroke:var(--bad);stroke-width:1.2"/>`;
-  if(cur){ const i=body.length, dt=cur.do.slice(8,10).replace(/^0/,'')+'. '+cur.do.slice(5,7).replace(/^0/,'')+'.';
-    o+=`<rect x="${(L+i*bw).toFixed(1)}" y="${Math.min(yL(0),yL(cur.b))}" width="${Math.max(1,bw-1).toFixed(1)}" height="${Math.abs(yL(0)-yL(cur.b))}" style="fill:var(--dry);opacity:.45;stroke:var(--dry);stroke-dasharray:2 2"><title>${cur.r} do ${dt}: bilance ${fmt(cur.b,0)} mm, ET₀ ${fmt(cur.E,0)} mm, ${cur.d30} tropických dní (neúplný rok)</title></rect>`+
-      `<circle cx="${x(i)}" cy="${yL(cur.E)}" r="3" style="fill:none;stroke:var(--soil);stroke-width:1.4"><title>ET₀ ${cur.r} do ${dt}: ${fmt(cur.E,0)} mm</title></circle>`+
-      `<circle cx="${x(i)}" cy="${yR(cur.d30)}" r="2.5" style="fill:var(--bad)"></circle>`+
-      `<text x="${x(i)}" y="${Hd-8}" text-anchor="middle">${cur.r}*</text>`; }
-  o+=`<text x="${L}" y="${T-2}">mm</text><text x="${L+w}" y="${T-2}" text-anchor="end">°C / dny</text>`;
-  $('jb-l2').innerHTML=o;
+  if(!R[ROK]){ const dd=DNY.filter(d=>d.startsWith(ROK+'-')); let P=0,E=0,nb=0,d30=0,tx=null; dd.forEach(d=>{const [p,z,T_,Tn,Tx,e]=W.dny[d]; if(p!=null&&e!=null){P+=p;E+=e;nb++;} if(Tx!=null){if(Tx>=30)d30++; if(!tx||Tx>tx[1])tx=[d,Tx];}});
+    if(nb>60) cur={r:ROK,b:P-E,E,d30,Tx:tx,do:dd[dd.length-1],n:nb}; }
+  const dt=cur?cur.do.slice(8,10).replace(/^0/,'')+'. '+cur.do.slice(5,7).replace(/^0/,'')+'.':'';
+  const n=body.length+(cur?1:0), Wd=720, L=40, Rr=40, w=Wd-L-Rr, bw=w/n, x=i=>L+(i+.5)*bw;
+  const roky=(Hd)=>body.map((b,i)=>b.r%5===0&&!(cur&&i>=body.length-2)?`<text x="${x(i)}" y="${Hd-8}" text-anchor="middle">${b.r}</text>`:'').join('')+(cur?`<text x="${x(body.length)}" y="${Hd-8}" text-anchor="middle">${cur.r}*</text>`:'');
+  const txt=t=>t?`, nejteplejší den ${csd(t[0])} ${fmt(t[1],1)} °C`:'';
+  // --- voda: sloupce srážky minus výpar, čára možný výpar
+  { const Hd=220,T=12,B=24,h=Hd-T-B;
+    const sc=nice(Math.min(0,...body.map(b=>b.b),cur?cur.b:0), Math.max(...body.map(b=>b.E),cur?cur.E:0), 7), y=v=>T+h-h*(v-sc.lo)/(sc.hi-sc.lo);
+    let o=osy(L,w,T,h,sc)+`<line class="ax" x1="${L}" x2="${L+w}" y1="${y(0)}" y2="${y(0)}" style="stroke:var(--fg)"/>`;
+    body.forEach((b,i)=>{o+=`<rect x="${(L+i*bw).toFixed(1)}" y="${Math.min(y(0),y(b.b))}" width="${Math.max(1,bw-1).toFixed(1)}" height="${Math.abs(y(0)-y(b.b))}" style="fill:var(${b.b<0?'--dry':'--ok'});opacity:.8"><title>${b.r}: ${b.b<0?'chybělo':'zbylo'} ${fmt(Math.abs(b.b),0)} mm (možný výpar ${fmt(b.E,0)} mm)</title></rect>`;});
+    o+=`<path class="lE" d="${body.map((b,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+y(b.E).toFixed(1)).join(' ')}"/>`;
+    if(cur){ const i=body.length;
+      o+=`<rect x="${(L+i*bw).toFixed(1)}" y="${Math.min(y(0),y(cur.b))}" width="${Math.max(1,bw-1).toFixed(1)}" height="${Math.abs(y(0)-y(cur.b))}" style="fill:var(--dry);opacity:.45;stroke:var(--dry);stroke-dasharray:2 2"><title>${cur.r} do ${dt}: chybí ${fmt(-cur.b,0)} mm, možný výpar ${fmt(cur.E,0)} mm (neúplný rok)</title></rect>`+
+        `<circle cx="${x(i)}" cy="${y(cur.E)}" r="3" style="fill:none;stroke:var(--soil);stroke-width:1.4"><title>možný výpar ${cur.r} do ${dt}: ${fmt(cur.E,0)} mm</title></circle>`; }
+    $('jb-l2').innerHTML=o+roky(Hd)+`<text x="${L}" y="${T-3}">mm za rok</text>`;
+  }
+  // --- horko: tropické dny jako body (levá osa), průměrná roční teplota jako čára (pravá osa)
+  { const Hd=200,T=12,B=24,h=Hd-T-B;
+    const sd=nice(0,Math.max(...body.map(b=>b.d30),cur?cur.d30:0),4), yd=v=>T+h-h*v/sd.hi;
+    const st=nice(Math.min(...body.map(b=>b.T)),Math.max(...body.map(b=>b.T)),4), yt=v=>T+h-h*(v-st.lo)/(st.hi-st.lo);
+    let o=osy(L,w,T,h,sd,{col:'--bad'})+osy(L,w,T,h,st,{right:true,col:'--warn'});
+    const k=lin(body.map(b=>b.r),body.map(b=>b.d30)), q=mean(body.map(b=>b.d30))-k*mean(body.map(b=>b.r));
+    o+=`<line x1="${x(0)}" x2="${x(body.length-1)}" y1="${yd(q+k*body[0].r)}" y2="${yd(q+k*body[body.length-1].r)}" style="stroke:var(--bad);stroke-width:1.2;stroke-dasharray:5 3;opacity:.5"><title>trend ${k>0?'+':''}${fmt(k*10,1)} tropického dne za 10 let</title></line>`;
+    o+=`<path class="lT" d="${body.map((b,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+yt(b.T).toFixed(1)).join(' ')}"/>`;
+    body.forEach((b,i)=>{o+=`<circle cx="${x(i)}" cy="${yd(b.d30)}" r="3.5" style="fill:var(--bad)"><title>${b.r}: ${b.d30} tropických dní${txt(b.Tx)}; průměrná teplota ${fmt(b.T,1)} °C</title></circle>`;});
+    if(cur) o+=`<circle cx="${x(body.length)}" cy="${yd(cur.d30)}" r="3.5" style="fill:var(--bad);opacity:.5"><title>${cur.r} do ${dt}: ${cur.d30} tropických dní${txt(cur.Tx)} (neúplný rok)</title></circle>`;
+    $('jb-l3').innerHTML=o+roky(Hd)+`<text x="${L}" y="${T-3}" style="fill:var(--bad)">tropických dní</text><text x="${L+w}" y="${T-3}" text-anchor="end" style="fill:var(--warn)">°C</text>`;
+  }
   const xs=body.map(b=>b.r), tr=k=>lin(xs,body.map(b=>b[k]))*10;
   const prv=body.filter(b=>b.r<=2010), pos=body.filter(b=>b.r>=ROK-10);
   const kar=(cls,n,a,b,j,d)=>`<div class="jb-card ${cls}"><div class="eyebrow">${n}</div><div class="big num">${a}<small style="font-size:.9rem;font-weight:400"> ${j}</small></div><div class="cmp">${b}</div><div class="src">${d}</div></div>`;
+  const nejt=body.filter(b=>b.Tx).reduce((a,b)=>b.Tx[1]>a.Tx[1]?b:a);
   $('jb-trend').innerHTML=
-    kar('t','Teplota',fmt(mean(pos.map(b=>b.T)),1),`2001-2010: ${fmt(mean(prv.map(b=>b.T)),1)} °C; trend <b>${tr('T')>0?'+':''}${fmt(tr('T'),2)} °C za 10 let</b>`,'°C',`průměr ${ROK-10}-${ROK-1}`)+
-    kar('e','Výpar ET₀',fmt(mean(pos.map(b=>b.E)),0),`2001-2010: ${fmt(mean(prv.map(b=>b.E)),0)} mm; trend <b>${tr('E')>0?'+':''}${fmt(tr('E'),0)} mm za 10 let</b>`,'mm/rok',`průměr ${ROK-10}-${ROK-1}`)+
-    kar('b','Bilance P - ET₀',fmt(mean(pos.map(b=>b.b)),0),`2001-2010: ${fmt(mean(prv.map(b=>b.b)),0)} mm; trend <b>${tr('b')>0?'+':''}${fmt(tr('b'),0)} mm za 10 let</b>`,'mm/rok',`průměr ${ROK-10}-${ROK-1}`)+
-    kar('p','Tropické dny',fmt(mean(pos.map(b=>b.d30)),0),`2001-2010: ${fmt(mean(prv.map(b=>b.d30)),0)} za rok; trend <b>${tr('d30')>0?'+':''}${fmt(tr('d30'),1)} dní za 10 let</b>`,'za rok',`max ${body.reduce((a,b)=>b.d30>a.d30?b:a).r} (${body.reduce((a,b)=>b.d30>a.d30?b:a).d30})`);
+    kar('t','Průměrná teplota',fmt(mean(pos.map(b=>b.T)),1),`2001-2010: ${fmt(mean(prv.map(b=>b.T)),1)} °C; trend <b>${tr('T')>0?'+':''}${fmt(tr('T'),2)} °C za 10 let</b>`,'°C',`průměr dne i noci, roky ${ROK-10}-${ROK-1}`)+
+    kar('e','Možný výpar',fmt(mean(pos.map(b=>b.E)),0),`2001-2010: ${fmt(mean(prv.map(b=>b.E)),0)} mm; trend <b>${tr('E')>0?'+':''}${fmt(tr('E'),0)} mm za 10 let</b>`,'mm/rok',`průměr ${ROK-10}-${ROK-1}`)+
+    kar('b','Srážky minus výpar',fmt(mean(pos.map(b=>b.b)),0),`2001-2010: ${fmt(mean(prv.map(b=>b.b)),0)} mm; trend <b>${tr('b')>0?'+':''}${fmt(tr('b'),0)} mm za 10 let</b>`,'mm/rok',`průměr ${ROK-10}-${ROK-1}; záporné = voda chybí`)+
+    kar('p','Tropické dny',fmt(mean(pos.map(b=>b.d30)),0),`2001-2010: ${fmt(mean(prv.map(b=>b.d30)),0)} za rok; trend <b>${tr('d30')>0?'+':''}${fmt(tr('d30'),1)} dní za 10 let</b>`,'za rok',`nejvíc ${body.reduce((a,b)=>b.d30>a.d30?b:a).r} (${body.reduce((a,b)=>b.d30>a.d30?b:a).d30}); nejteplejší den ${csd(nejt.Tx[0])} ${fmt(nejt.Tx[1],1)} °C`);
   const w10=body.filter(b=>b.b<0).length;
   const nejh=body.reduce((a,b)=>b.b<a.b?b:a);
-  $('jb-l2-n').innerHTML=`Nemochovice 2001-2025 (25 let, ČHMÚ ✅), ET₀ Hargreaves-Samani 📄. Bilance byla záporná ve všech ${w10} úplných letech; nejhůř ${nejh.r} (${fmt(nejh.b,0)} mm).`+
-    (cur?` <b>${cur.r}*</b> = neúplný rok do ${cur.do.slice(8,10).replace(/^0/,'')}. ${cur.do.slice(5,7).replace(/^0/,'')}. (předběžná data): bilance už teď ${fmt(cur.b,0)} mm${cur.b<nejh.b?' - horší než celý rok '+nejh.r:''}, ET₀ ${fmt(cur.E,0)} mm (kroužek), ${cur.d30} tropických dní; průměrná teplota se za neúplný rok nekreslí, chybí jí zima.`:'');
+  $('jb-l2-n').innerHTML=`Srážky Koryčany minus možný výpar spočítaný z teplot Nemochovic, ${body[0].r}-${body[body.length-1].r} (ČHMÚ ✅, výpočet výparu 📄). Srážky nepokryly výpar ${w10===body.length?'ani v jednom':'ve '+w10} z ${body.length} úplných let; nejvíc chybělo ${nejh.r} (${fmt(-nejh.b,0)} mm).`+
+    (cur?` <b>${cur.r}*</b> = neúplný rok do ${dt} (předběžná data): chybí už ${fmt(-cur.b,0)} mm${cur.b<nejh.b?' - víc než za celý rok '+nejh.r:''}, možný výpar ${fmt(cur.E,0)} mm (kroužek).`:'');
+  $('jb-l3-n').innerHTML=`ČHMÚ Nemochovice (8 km) ✅, ${body[0].r}-${body[body.length-1].r}. Tropický den = nejvyšší teplota dne aspoň 30 °C. Průměrná teplota je průměr dne i noci za celý rok, proto vychází kolem 10 °C. Najetím na bod uvidíš nejteplejší den roku.`+
+    (cur?` <b>${cur.r}*</b> = do ${dt}: ${cur.d30} tropických dní${txt(cur.Tx)}; průměrná teplota se za neúplný rok nekreslí, chybí jí zima.`:'');
   $('jb-l-call').innerHTML=`<div class="mot-h">Co z toho plyne pro pozemek</div><p>Déšť přijde v epizodách a mezi nimi je krajina v deficitu - srážky ročně zhruba stejné, výpar roste. Co z deště nezůstane na pozemku, odteče během hodin.</p><p><b>Proto má smysl zadržet vodu tam, kde spadne.</b></p><div class="mot-a"><a href="#" data-go="pozemek">Spočítej to na svém pozemku →</a><a href="#" data-go="katalog">Co se dá udělat (katalog) →</a></div>`;
   $('jb-l-call').querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault(); document.querySelector(`nav.tabs button[data-tab="${a.dataset.go}"]`).click(); window.scrollTo({top:0,behavior:'smooth'});}));
 })();
@@ -1371,9 +1395,9 @@ function render(){
   const obd=`${csd(s.dd[0])} - ${csd(s.dd[s.dd.length-1])}, ${dni(s.dni)}`;
   $('jb-cards').innerHTML=
     karta('p','Srážky',fmt(s.P,0),'mm',{k:pP>=100?'plus':'minus',t:`<b>${pP}&nbsp;%</b> normálu (${fmt(s.nP_,0)} mm za stejné dny, 1991-2020)`},`${obd}; ${zd}; ${dni(s.d1)} s deštěm ≥ 1 mm${s.posl?', naposledy '+csd(s.posl):''}`)+
-    karta('t','Teplota',s.T==null?'-':fmt(s.T,1),'°C',{k:s.T>=s.Tn?'minus':'plus',t:`<b>${s.T>=s.Tn?'+':''}${fmt(s.T-s.Tn,1)}&nbsp;°C</b> proti průměru ${fmt(s.Tn,1)} °C (2001-2025)`},`ČHMÚ Nemochovice, 8 km; max ${s.tmax?fmt(s.tmax[0],1)+' °C '+csd(s.tmax[1]):'-'}`)+
-    karta('e','Výpar ET₀',fmt(s.E,0),'mm',{k:pE<=100?'plus':'minus',t:`<b>${pE}&nbsp;%</b> průměru (${fmt(s.nE_,0)} mm, 2001-2025)`},`Hargreaves-Samani z teplot Nemochovice 📄`)+
-    karta('b','Bilance P - ET₀',(s.bil>0?'+':'')+fmt(s.bil,0),'mm',{k:s.bil>=s.biln?'plus':'minus',t:`průměr ${s.biln>0?'+':''}${fmt(s.biln,0)} mm; ${s.bil<0?'krajině chybí':'přebytek'} <b>${fmt(Math.abs(s.bil),0)} mm</b>`},`klimatický deficit, ne odtok`);
+    karta('t','Teplota',s.T==null?'-':fmt(s.T,1),'°C',{k:s.T>=s.Tn?'minus':'plus',t:`<b>${s.T>=s.Tn?'+':''}${fmt(s.T-s.Tn,1)}&nbsp;°C</b> proti průměru ${fmt(s.Tn,1)} °C (2001-2025)`},`průměr dne i noci; ČHMÚ Nemochovice, 8 km; nejvyšší ${s.tmax?fmt(s.tmax[0],1)+' °C '+csd(s.tmax[1]):'-'}`)+
+    karta('e','Možný výpar',fmt(s.E,0),'mm',{k:pE<=100?'plus':'minus',t:`<b>${pE}&nbsp;%</b> průměru (${fmt(s.nE_,0)} mm, 2001-2025)`},`z teplot Nemochovice (Hargreaves-Samani 📄)`)+
+    karta('b','Srážky minus výpar',(s.bil>0?'+':'')+fmt(s.bil,0),'mm',{k:s.bil>=s.biln?'plus':'minus',t:`průměr ${s.biln>0?'+':''}${fmt(s.biln,0)} mm; ${s.bil<0?'krajině chybí':'voda zbývá'} <b>${fmt(Math.abs(s.bil),0)} mm</b>`},`kolik chybí nebo zbývá; není to odtok`);
   $('jb-ext').innerHTML=[
     ['Nejvíc za den',s.pmax?`<span class="num">${fmt(s.pmax[0],1)} mm</span> ${csd(s.pmax[1])}`:'-'],
     ['Nejdelší období bez deště',`<span class="num">${s.suchoMax}</span> ${s.suchoMax===1?'den':s.suchoMax<5?'dny':'dní'}`],
@@ -1387,14 +1411,15 @@ function render(){
 }
 function grafDenni(dd){
   const svg=$('jb-graf'); const Wd=720,Hd=230,L=34,R_=34,T=12,B=26; const w=Wd-L-R_,h=Hd-T-B;
-  const Pmax=Math.max(10,...dd.map(d=>W.dny[d][0]||0),...dd.map(d=>W.dny[d][5]||0)); const Ts=dd.map(d=>W.dny[d][2]).filter(x=>x!=null);
-  const Tlo=Math.min(-5,...Ts), Thi=Math.max(25,...Ts);
-  const x=i=>L+w*(i+.5)/dd.length, yP=v=>T+h-h*v/Pmax, yT=v=>T+h-h*(v-Tlo)/(Thi-Tlo), bw=Math.max(1,w/dd.length-1);
-  let o='';
-  [0,.5,1].forEach(f=>{o+=`<line class="ax" x1="${L}" x2="${L+w}" y1="${T+h-h*f}" y2="${T+h-h*f}"/><text x="${L-4}" y="${T+h-h*f+3}" text-anchor="end">${Math.round(Pmax*f)}</text><text x="${L+w+4}" y="${T+h-h*f+3}">${Math.round(Tlo+(Thi-Tlo)*f)}°</text>`;});
-  dd.forEach((d,i)=>{const [P,z,Tm,,,E]=W.dny[d]; if(P!=null) o+=`<rect class="${z==='K'?'bP':'bPn'}" x="${x(i)-bw/2}" y="${yP(P)}" width="${bw}" height="${T+h-yP(P)}"><title>${csd(d)}: ${fmt(P,1)} mm (${ZDR[z]||'?'})${Tm!=null?', '+fmt(Tm,1)+' °C':''}${E!=null?', ET₀ '+fmt(E,1)+' mm':''}</title></rect>`;});
+  const sP=nice(0,Math.max(10,...dd.map(d=>W.dny[d][0]||0),...dd.map(d=>W.dny[d][5]||0)),4);
+  const Ts=dd.flatMap(d=>[W.dny[d][2],W.dny[d][4]]).filter(x=>x!=null);
+  const sT=nice(Math.min(0,...Ts),Math.max(30,...Ts),4);
+  const x=i=>L+w*(i+.5)/dd.length, yP=v=>T+h-h*v/sP.hi, yT=v=>T+h-h*(v-sT.lo)/(sT.hi-sT.lo), bw=Math.max(1,w/dd.length-1);
+  let o=osy(L,w,T,h,sP)+osy(L,w,T,h,sT,{right:true,suf:'°'});
+  o+=`<line x1="${L}" x2="${L+w}" y1="${yT(30)}" y2="${yT(30)}" style="stroke:var(--bad);stroke-dasharray:2 3;opacity:.6"><title>30 °C = tropický den</title></line>`;
+  dd.forEach((d,i)=>{const [P,z,Tm,,Tx,E]=W.dny[d]; if(P!=null) o+=`<rect class="${z==='K'?'bP':'bPn'}" x="${x(i)-bw/2}" y="${yP(P)}" width="${bw}" height="${T+h-yP(P)}"><title>${csd(d)}: ${fmt(P,1)} mm (${ZDR[z]||'?'})${Tm!=null?', průměr '+fmt(Tm,1)+' °C':''}${Tx!=null?', nejvýš '+fmt(Tx,1)+' °C':''}${E!=null?', možný výpar '+fmt(E,1)+' mm':''}</title></rect>`;});
   const path=(idx,fy)=>{let p='',on=false;dd.forEach((d,i)=>{const v=W.dny[d][idx]; if(v==null){on=false;return;} p+=(on?'L':'M')+x(i).toFixed(1)+' '+fy(v).toFixed(1)+' '; on=true;}); return p;};
-  o+=`<path class="lE" d="${path(5,yP)}"/><path class="lT" d="${path(2,yT)}"/>`;
+  o+=`<path class="lE" d="${path(5,yP)}"/><path class="lT" d="${path(2,yT)}"/><path class="lX" d="${path(4,yT)}"/>`;
   const krok=dd.length>40?Math.ceil(dd.length/12):dd.length>12?5:1;
   dd.forEach((d,i)=>{if(i%krok===0) o+=`<text x="${x(i)}" y="${Hd-8}" text-anchor="middle">${dd.length>40?(+d.slice(8))+'.'+(+d.slice(5,7))+'.':+d.slice(8)}</text>`;});
   o+=`<text x="${L}" y="${T-3}">mm</text><text x="${L+w}" y="${T-3}" text-anchor="end">°C</text>`;
@@ -1410,8 +1435,8 @@ function rocniky(od,do_,s){
   body.push([rokRef,letos]); body.sort((a,b)=>a[0]-b[0]);
   const norm=mm.reduce((a,[y,m])=>a+N.mesic[m].P,0);
   const nazev=mm.length===1?`${MES[mm[0][1]-1]}`:`${MES[mm[0][1]-1]} až ${MES[mm[mm.length-1][1]-1]}`;
-  const svg=$('jb-roc'); const Wd=720,Hd=200,L=34,Rr=6,T=10,B=24,w=Wd-L-Rr,h=Hd-T-B; const vmax=Math.max(norm*1.2,...body.map(b=>b[1]));
-  const bw=w/body.length, y=v=>T+h-h*v/vmax; let o=osy(L,w,T,h,0,vmax,'');
+  const svg=$('jb-roc'); const Wd=720,Hd=200,L=34,Rr=6,T=12,B=24,w=Wd-L-Rr,h=Hd-T-B; const sc=nice(0,Math.max(norm*1.2,...body.map(b=>b[1])),4), vmax=sc.hi;
+  const bw=w/body.length, y=v=>T+h-h*v/vmax; let o=osy(L,w,T,h,sc)+`<text x="${L}" y="${T-3}">mm</text>`;
   body.forEach(([r,v],i)=>{const cls=r===rokRef?'now':v<norm*0.6?'lo':v>norm*1.4?'hi':''; o+=`<rect class="rY ${cls}" x="${(L+i*bw).toFixed(1)}" y="${y(v)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${T+h-y(v)}"><title>${r}: ${fmt(v,0)} mm</title></rect>`; if(r%10===0||r===rokRef) o+=`<text x="${L+(i+.5)*bw}" y="${Hd-8}" text-anchor="middle">${r}</text>`;});
   o+=`<line class="nrm" x1="${L}" x2="${L+w}" y1="${y(norm)}" y2="${y(norm)}"/><text x="${L+w}" y="${y(norm)-3}" text-anchor="end">normál ${fmt(norm,0)} mm</text>`;
   svg.innerHTML=o;
