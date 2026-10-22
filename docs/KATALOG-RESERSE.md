@@ -187,3 +187,49 @@ CzechGlobe + UPOL, projekt TAČR ZÉTA (2,1 mil. Kč, 2 roky), měření Olomouc
 - Číselník `misto` + **H: organizační opatření obce při vedrech**; schema ID `H[0-9]{2}`.
 - Nové: U08, H01, H02. Nové zdroje: tacr2021_horko, ct24_2022_horko, zhaw2023_mlzeni, wien_coolspot, coollife2025_wien, rivm2026_nl, aarau2022, enki_stromy, earthwatch_fr, ct24_2021_eth, dach2019_lee, koeniz2025, stz2026_kornwestheim, dresden_huckepack, adapterra2026, adapterra2023.
 - Doplňky: Z06 + U01 (CH tři úrovně), U02/S04 (Köniz), U06/Z08 (trávník), U07 (Kornwestheim, Drážďany, Červená Voda).
+
+---
+
+## Blok C: veřejný prostor obce a škola (rešerše 22. 10. 2026)
+
+Hledáno: Rakousko (Graz, Vídeň - Schwammstadt pro stromy), Švédsko (Stockholm), Sasko (Taucha, Lipsko), NRW, Berlín, Slovensko (Trebišov), ČR (Cehnice, Močovice, Kujavy, Jílové u Prahy, Adapterra 2026). **Poctivý závěr: v bloku C je měřených účinků málo** - většina obecních realizací se nevyhodnocuje, publikují se počty a ceny. Nejcennější je saské dlouhodobé měření průlehů (Taucha) a stockholmská data ke stromovým rabátkům. Výsledek: **1 nové opatření (U09 plán hospodaření s dešťovou vodou obce)** a **doplňky k U01, U03, U04, U05, U07**.
+
+### Nové opatření
+
+#### U09 Studie a plán hospodaření s dešťovou vodou obce (kde zadržet, kdo se stará)
+- místo U, H | rozhoduje O | pracnost 2 | účinky R, I, Q (nepřímo: podmínka pro ostatní U)
+- **Co to je**: obec si nechá zpracovat (nebo se školou udělá) přehled, kam teče voda ze střech veřejných budov, silnic a náměstí, kde jsou místa pro průlehy, rabátka a nádrže, a kdo se o ně bude starat. Bez toho se opatření staví nahodile a po letech chátrají (Taucha). V Koryčanech to z velké části dělá tato aplikace.
+- **Doklady**: Taucha (Sasko), Grüner Ring Leipzig 5/2024 ✅ (https://gruenerring-leipzig.de/wp-content/uploads/2024/08/broschuere-final-leseansicht-finale-26-06-2024.pdf): u 25-30 let starých průlehů selhávaly hlavně správa a údržba (ucpané vtoky, chybějící spád, zrušené soukromé průlehy, zásahy sítí), ne princip; doporučení: vlastnictví a údržbu určit smluvně nebo v katastru, provozní řád, kontrola vsaku každých 10 let, cedule pro obyvatele. Jílové u Prahy ✅ (Portico/EUI 17. 5. 2026, https://portico.urban-initiative.eu/urban-matchmaker/nature-based-rainwater-retention-climate-resilient-small-towns): malé město má studii retenční kapacity a hledá, jak přejít „od analýzy k realizaci“. Močovice (Středočeský kraj), VRV 2020 ✅ (https://www.mocovice.cz/mocovice/rozvoj-obce/koncepce-rozvoje-vodnich-ploch/koncepce-rozvoje-vodnich-ploch.pdf): koncepce vodních ploch obce - návesní rybník 0,65 ha, sediment 906 m³, varianty 2,5-2,8 mil. Kč bez DPH. Dolní Rakousko dotuje obcím „Regenwasserpläne“ 📄 (web NÖ 22. 10. offline, neověřeno).
+- **Přenositelnost**: plně; pro Koryčany = tato aplikace + pasport svodů veřejných budov + dohoda, kdo seče a čistí průlehy.
+- **Rizika**: studie bez realizace (Jílové); náklady studie nedohledány.
+
+### Doplňky k existujícím opatřením
+
+#### U01 Uliční stromořadí s vsakovacími rabátky (Schwammstadt / stockholmský systém)
+- **Doklady**: Stockholm, Embrén 2015 ✅⏳ (https://www.tdag.org.uk/uploads/4/2/8/0/4280686/22.06.15_the_stockholm_system_bjorn_embren.pdf): cca **2 000 přestavěných stromových míst** na strukturálním substrátu (drcená žula 90-150 mm, od 2013 s biouhlem), voda ze střech a chodníků vedena do rabátek; příklad 4 600 m² ploch × 600 mm = **2,3 mil. l/rok** do systému; stromy vysazené s obvodem 30-35 cm měly po 8 letech 70-83 cm (Erik Dahlbergsallén); bez kontrolního srovnání a bez čísel přežití. Graz, Leonhardgürtel, projekt MUFUWU (BMK 2024) ✅ (https://nachhaltigwirtschaften.at/resources/sdz_pdf/schriftenreihe-2024-39-mufuwu.pdf): 7 nových stromů + 4 sanované kaštany, tělesa 60 cm, měření 2022-2023 (půdní voda, tok mízy, přírůst, přítok/odtok): střešní voda doplňuje zásobu i při malých deštích; hladina v rabátku jen při intenzivním dešti; **zálivka v prvních letech nutná**; retence vs. klasické rabátko nevyčíslena; náklady nereprezentativní. HBLFA Schönbrunn, DaFNE 2019-2024 ✅ (https://dafne.at/projekte/schwammstadt): známé chyby při stavbě výrazně snižují hydrologický výkon; zásobování stromu plánovat spolu s podzemní retencí. ZHAW 2022 (Saluz a kol., Sci. Total Environ. 838) ✅ (https://srv-clst-301-data66.zhaw.ch/bitstream/11475/25111/2/2022_Gion-Saluz-et-al_Science-of-the-total-enviroment.pdf): nádobový pokus, 5 % biouhlu v žulovém substrátu = objem kořenů +270-310 % proti kontrole; retence neměřena.
+- **Pro aplikaci**: účinek R/I jako vzorec (napojená plocha × srážka, strop objemem substrátu × pórovitost ~30 % 🤔); CH podle Z06/U01 (CzechGlobe). V Koryčanech: náměstí a hlavní ulice při rekonstrukci chodníků; strop = pelozemě pod rabátkem (HSP C/D) -> nutný bezpečnostní přepad.
+
+#### U03 Zasakovací pásy a průlehy podél komunikací
+- **Dlouhodobé měření**: Taucha (Sasko), IWS Leipzig 1/2024 + brožura 5/2024 ✅ (viz U09): 3 soustavy průleh-rýha staré **25-30 let**: k_f 3e-6 až 9e-5 m/s (infiltrometr), 1e-5 až 1e-4 m/s (zaplavení celého průlehu), **vyprázdnění do 24 h (DWA-A 138) splněno**; měď a zinek z měděných okapů nad preventivními limity do 25 cm půdy (nepoužívat měď); návrh: plocha průlehu 10 % napojené plochy na písku, 20 % na hlíně; odstup od budov 1,5× hloubka výkopu; 1 m nad podzemní vodou. **Náklady**: stavba cca 35 €/m² napojené plochy (průleh), 45 €/m² (průleh + rýha); provoz 1-2 €/m² průlehu/rok proti cca 20 €/m²/rok při odvádění do kanalizace. Werther u Bielefeldu, FH Bielefeld 2005 ✅⏳ (https://www.lanuk.nrw.de/fileadmin/forschung/wasser/niederschlag/Abschlussberichtdezentraleversickerung.pdf): sprašová hlína k_f ~1e-7 m/s (jako HSP D), systém 6,5 ha od 2000: odtok rozložen na dlouhou dobu místo špiček, ale rýhy v zimě dlouho zaplavené, lokální zamokření u rýh; v suchých létech 2003-04 prázdné. **Pro Koryčany (HSP C/D)**: průleh s rýhou a regulovaným odtokem, ne čistý vsak.
+- **Příklady**: Taucha 1994-2024 ✅; Werther 2000-2005 ✅⏳.
+
+#### U04 Retence a zasakování vody z veřejných budov (škola, úřad)
+- **Příklady**: Trebišov (SK), střední odborná škola, Zeleňáková & Junáková (TU Košice) ✅ (https://doi.mendelu.cz/pdfs/doi/9900/02/00.pdf): dešťová zahrada 19 m², nádrž 1,5 m³, vsakovací rýhy 9 + 10 m², zatravňovací dlažba, zelená stěna 7,5 m s kapkovou závlahou z nádrže; **účinek nevyčíslen**. Berlín Treptow-Köpenick, projekt odstranění asfaltu na školách (stav 2/2023) ✅ (https://berlin.de/ba-treptow-koepenick/ueber-den-bezirk/nachhaltigkeit/2023-02-13-projektsteckbrief-schulhoefe-entsiegeln.pdf): 6 škol + hotová Schule am Altglienicker Wasserturm (2019/20): částečné odstranění zpevnění, výsadby, zasakovací průlehy; měření žádné; úspora poplatku za srážkovou vodu cca 1,80 €/m² napojené plochy/rok (Berlín). Praha 9 ZŠ Českobrodská ✅ (blok B).
+- **Pro Koryčany**: ZŠ, úřad, sokolovna, hasičárna: velké střechy = největší „jednotlivé“ objemy v obci; nejdřív pasport svodů (U09).
+
+#### U05 Obecní tůň, mokřad, obnova návesní nádrže
+- **Příklady**: Wiesenena (Sasko, obec Wiedemar), renaturace betonové požární nádrže 2008-2009 ✅⏳ (https://www.laendlicher-raum.sachsen.de/download/Dorfteich_Wiesenena.pdf): cca 1 000 m² hladiny, mělké břehy, litorál, břehule; náklady a měření neuvedeny. Močovice, koncepce VRV 2020 ✅ (viz U09): návesní rybník 4 530 m² hladiny, odbahnění 906 m³, 2,5-2,8 mil. Kč bez DPH (2020). Cehnice (Jihočeský kraj), retenční nádrž Třtí na Cehnickém potoce ✅ (SMO ČR, https://www.smocr.cz/Shared/Clanky/10359/sosnova-1-retencni-nadrz-trti-na-cehnickem-potoce.pdf): stálá hladina 11 401 m³ + **retenční prostor 50 363 m³**, 15,95 mil. Kč (OPŽP 13,56 mil.), rok neuveden, účinek po stavbě nevyčíslen - spíš T07. Kujavy (Novojičínsko), „Voda pro krajinu“: obnova 3 tůní svépomocí (myslivci, nadace Hyundai/OSF), rozpracováno 2026 ✅ (zpravodaj obce 2/2026, https://pv.svkos.cz/Zpravodaj_obce_Kujavy/Zpravodaj_obce_Kujavy_2026/Zpravodaj_obce_Kujavy_2026_2.pdf; finalista Adapterra 2026 ✅).
+- Měření mikroklimatu návesní nádrže: **nedohledal jsem** (platí CzechGlobe: malé vodní plochy na vzduch skoro nic; hodnota je retence a biodiverzita).
+
+#### U07 Školní zahrada / školní dvůr
+- Trebišov ✅ a Berlín ✅ (viz U04) jako příklady školních areálů; Kornwestheim ✅ (blok A). Pro Koryčany: školní projekt „kam teče voda ze školy“ (pasport svodů, měření M01, M05) jako vstup do U09.
+
+### Co se nepodařilo dohledat (blok C)
+- Měřená retence stromového rabátka vs. klasické (MUFUWU ji nevyčíslil); přežití stromů ve Stockholmu vs. běžná výsadba.
+- Měřený efekt odpojení veřejné budovy (m³/rok) v ČR nebo SK; cena rabátka Schwammstadt v ČR.
+- Dolní Rakousko „Regenwasserpläne“ (web offline), Auerbergland decentralizovaná protipovodňová opatření (web BLE v údržbě).
+- Mikroklima návesních nádrží.
+
+### Návrh zápisu (po odsouhlasení)
+- Nové: U09 (kontext=True). Zdroje: taucha2024, iws2024_taucha, portico2026_jilove, vrv2020_mocovice, embren2015, mufuwu2024, dafne_schwammstadt, saluz2022, werther2005, zelenakova_trebisov, berlin_tk2023, wiesenena2009, smocr_cehnice, kujavy2026.
+- Doplňky: U01 (Stockholm, Graz, kvantifikace R vzorec), U03 (Taucha k_f, náklady, Werther pro HSP D), U04, U05, U07 (příklady).

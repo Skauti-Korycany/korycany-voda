@@ -1,8 +1,8 @@
 {
  "meta": {
   "nazev": "Katalog opatření - Koryčany resilience",
-  "verze": "0.6",
-  "datum": "2026-10-21",
+  "verze": "0.7",
+  "datum": "2026-10-22",
   "licence_dat": "CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
   "upozorneni": "Zjednodušený osvětový model, ne projektová dokumentace. Každé číslo má zdroj a značku původu. Ceny jen se zdrojem a datem; jinak 'cena neověřena'. Paragrafy vodního zákona ověřit v e-Sbírce.",
   "zdroje_md": [
@@ -297,7 +297,7 @@
    "url": "https://www.tzb-info.cz/normy/csn-75-9010-2012-02",
    "rok": 2012,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "text normy neotevřen; hodnoty z prezentací ASIO, MZe (Novotná), ČVUT (Stránský)"
   },
   "tnv759011": {
@@ -306,7 +306,7 @@
    "url": "https://mze.gov.cz/public/portal/-q363041---QOCSTmOG/tnv-75-9011-hospodareni-se-srazkovymi",
    "rok": 2013,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "tab_c": {
@@ -315,7 +315,7 @@
    "url": "https://www.tzb-info.cz/docu/tabulky/0000/000088_help.html",
    "rok": null,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "zdroj normy na stránce neuveden"
   },
   "izomat": {
@@ -324,7 +324,7 @@
    "url": "https://www.izomat.cz/out/media/114-tl_dlazby_vegetacni_a_zatravnovaci-1.pdf",
    "rok": null,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "výrobce, ne norma"
   },
   "nzu2026": {
@@ -333,7 +333,7 @@
    "url": "https://sfzp.gov.cz/files/documents/storage/2026/05/29/1780055187_2026-05-27_NZ%C3%9A-RD26+.pdf",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "szuz2019": {
@@ -342,7 +342,7 @@
    "url": "https://novazelenausporam.cz/files/documents/storage/2020/04/02/1585808609_Vegetacni_souvrstvi_zelenych_strech_Standardy_%202019_web-1.pdf",
    "rok": 2019,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "zilina2024": {
@@ -351,7 +351,7 @@
    "url": "https://www.estav.cz/cz/12505.strecha-s-vegetaci-jak-rostliny-chrani-dum-pred-horkem-nebo-kolik-zadrzi-vody-vedci-to-zmerili",
    "rok": 2024,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "ujep2023": {
@@ -360,7 +360,7 @@
    "url": "https://www.fse.ujep.cz/wp-content/uploads/2024/01/Zprava_pro_klicove_aktery_c_4_zelene_strechy.pdf",
    "rok": 2023,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "hornbach_nadrz": {
@@ -369,7 +369,7 @@
    "url": "https://www.hornbach.cz/p/nadrz-na-destovou-vodu-4rain-flat-295126-podzemni-5000-l-vc-sachtove-kopule/10356772/",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "hornbach_ibc": {
@@ -378,7 +378,7 @@
    "url": "https://www.hornbach.cz/p/ibc-kontejner-tba-un-1000-l-paleta-novy/10235182/",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "mendelu2022_dz": {
@@ -387,7 +387,7 @@
    "url": "https://ubz.zf.mendelu.cz/wcd/w-zf-ubz/prednasky/seubz_2022_2_destovezahrady_prez.pdf",
    "rok": 2022,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "praha2009_dv": {
@@ -396,7 +396,7 @@
    "url": "https://www.praha14.cz/app/uploads/sites/4/2021/06/jak_hospodarit_s_destovou_vodou-1.pdf",
    "rok": 2009,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "sppk_b02_001": {
@@ -405,7 +405,7 @@
    "url": "https://www.mas-rakovnicko.cz/evt_file.php?file=3152",
    "rok": 2014,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "vz_55": {
@@ -414,7 +414,7 @@
    "url": "https://www.pracepropravniky.cz/zakony/vodni-zakon/paragraf-55/",
    "rok": null,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "ověřit v e-Sbírce"
   },
   "vz_15b": {
@@ -423,7 +423,7 @@
    "url": "https://www.sagit.cz/info/sb19312",
    "rok": 2019,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "mmr2025_sz": {
@@ -432,7 +432,7 @@
    "url": "https://mmr.gov.cz/getmedia/484d345e-55e0-402b-bab1-7a6f2e5c2f0d/MMR-60951-25-31-ze-dne-3-9-2025.pdf.aspx?ext=.pdf",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "sppk_a02_001": {
@@ -441,7 +441,7 @@
    "url": "https://www.mashlinecko.cz/_uploads/content/431/12-6-standard-aopk.pdf",
    "rok": 2013,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "existuje aktualizované vydání, rok neověřen"
   },
   "sppk_a02_003": {
@@ -450,7 +450,7 @@
    "url": "https://www.mashlinecko.cz/_uploads/content/431/12-6-standard-aopk.pdf",
    "rok": 2013,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "sppk_c02_003": {
@@ -459,7 +459,7 @@
    "url": "https://www.mashlinecko.cz/_uploads/content/431/12-6-standard-aopk.pdf",
    "rok": 2014,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "sppk_d02_004": {
@@ -486,7 +486,7 @@
    "url": "https://www.epa.gov/sites/default/files/2017-05/documents/reducing_urban_heat_islands_ch_2.pdf",
    "rok": 2008,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "epa_trees_benefits": {
@@ -495,7 +495,7 @@
    "url": "https://epa.gov/heatislands/benefits-trees-and-vegetation",
    "rok": null,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "epa2008_coolroof": {
@@ -504,7 +504,7 @@
    "url": "https://www.epa.gov/sites/default/files/2014-06/documents/coolroofscompendium.pdf",
    "rok": 2008,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "epa2025_coolroof": {
@@ -513,7 +513,7 @@
    "url": "https://19january2025snapshot.epa.gov/heatislands/using-cool-roofs-reduce-heat-islands/index.html",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "mulc2024": {
@@ -522,7 +522,7 @@
    "url": "https://link.springer.com/article/10.1007/s00271-024-00924-8",
    "rok": 2024,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "název a autoři nedohledáni"
   },
   "unl_windbreak": {
@@ -531,7 +531,7 @@
    "url": "https://extensionpubs.unl.edu/publication/ec1763/2006/pdf/view/ec1763-2006.pdf",
    "rok": 2006,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "dufkova2007": {
@@ -540,7 +540,7 @@
    "url": "https://acta.mendelu.cz/pdfs/acu/2007/05/09.pdf",
    "rok": 2007,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "jedno měření, neobecňovat"
   },
   "vumop_vitr2016": {
@@ -549,7 +549,7 @@
    "url": "https://agronavigator.cz/sites/default/files/2025-04/Nmet%252B-%252BMetodika%252B%25C5%2599%25C3%25ADzen%25C3%25AD%252Bv%25C4%259Btrn%25C3%25A9%252Beroze.pdf",
    "rok": 2017,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "mze2022_vitr": {
@@ -558,7 +558,7 @@
    "url": "https://mze.gov.cz/public/portal/mze/-a74770---r9wNxZdR/prezentace-podhrazska-jana-opatreni-proti-vetrne-erozi",
    "rok": 2022,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "cvut_rain_2023": {
@@ -567,7 +567,7 @@
    "url": "https://rain.fsv.cvut.cz/data/files/metodika_N_srazky_2023_web.pdf",
    "rok": 2023,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "rastr 1 km, radar 20 let + stanice 30+ let; podmínky užití dat portál neuvádí"
   },
   "vumop_r2022": {
@@ -576,7 +576,7 @@
    "url": "https://metadata.vumop.cz/record/basic/65379397-1a6c-4f19-b153-50fe0a000319",
    "rok": 2023,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "chmi_korycany": {
@@ -585,7 +585,7 @@
    "url": "https://opendata.chmi.cz/meteorology/climate/",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "vukrom2021": {
@@ -594,7 +594,7 @@
    "url": "https://www.vukrom.cz/userfiles/files/obilnarske_listy/2021/2021_2/39_43.pdf",
    "rok": 2021,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "kalkulacka_manual": {
@@ -603,7 +603,7 @@
    "url": "https://kalkulacka.vumop.cz/docs/manual.pdf",
    "rok": 2017,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "janecek2012": {
@@ -612,7 +612,7 @@
    "url": "https://storm.fsv.cvut.cz/data/files/p%C5%99edm%C4%9Bty/YPEO/Metodika_PEO_novelizace%20upravene%2025_1_2012.pdf",
    "rok": 2012,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "dumbrovsky2021": {
@@ -621,7 +621,7 @@
    "url": "https://protieroznipasy.vumop.cz/data/Vrstevnicové%20obdělávání%20a%20pásové%20střídaní%20plodin.pdf",
    "rok": 2021,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "vumop_pasy2022": {
@@ -630,7 +630,7 @@
    "url": "https://protieroznipasy.vumop.cz/data/protierozni_pasy_metodika.pdf",
    "rok": 2022,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "tacr2025_pasy": {
@@ -639,7 +639,7 @@
    "url": "https://tacr.gov.cz/wp-content/uploads/documents/2026/01/14/1768398787_TACR%20Ochranne%20pasy%20-%20PTK%2017122025%20-%20V%C3%A1clav%20B%C3%ADl%C3%BD.pdf",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "vopravil2025": {
@@ -648,7 +648,7 @@
    "url": "https://mze.gov.cz/public/portal/mze/-a84150---QEFagIDj/prezentace-z-22.-10.-2025-vliv-pudy-a-jejiho-stavu-na-vodni-rezim-krajiny",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "hladik_pot": {
@@ -657,7 +657,7 @@
    "url": "https://aa.ecn.cz/img_upload/410697af7dfcb092dfd4e3937dd69e3f/pudoochranne-technologie_zandov_jiri-hladik_prezentace.pdf",
    "rok": null,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "tvrzení o organické hmotě bez zdroje"
   },
   "dzes5_2026": {
@@ -666,7 +666,7 @@
    "url": "https://www.mze.gov.cz/public/portal/mze/-a81614---9i2f6ULe/metodicka-prirucka-k-plneni-standardu-dzes-5-dobry-zemedelsky-a-environmentalni-stav-pudy-pro-jarni-osevy-roku-2026-a-nasledujici-obdobi",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "agroles2026": {
@@ -675,7 +675,7 @@
    "url": "https://mze.gov.cz/public/portal/mze/-a91928---kRzRGYfn/metodika-agrolesnictvi-2026",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "czu2026_als": {
@@ -684,7 +684,7 @@
    "url": "https://bioeconomy.czu.cz/dl/156269?lang=cs",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "zajicek2021": {
@@ -693,7 +693,7 @@
    "url": "https://agronavigator.cz/sites/default/files/2025-04/HOZ_metodika_publ.pdf",
    "rok": 2021,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "spu_meliorace": {
@@ -702,7 +702,7 @@
    "url": "https://portal.gov.cz/sluzby-vs/S43666",
    "rok": null,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "ipr_manual": {
@@ -711,7 +711,7 @@
    "url": "https://iprpraha.cz/uploads/assets/manual_tvorby_verejnych_prostranstvi/pdf/D.2.pdf",
    "rok": null,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "brno2024": {
@@ -720,7 +720,7 @@
    "url": "https://www.cka.cz/++api++/sluzby/legislativa/pravni-predpisy/provadeci-vyhlasky/narizeni-c-142024-o-pozadavcich-na-vystavbu-ve-statutarnim-meste-brne-brnenske-stavebni-predpisy.pdf/@@download/file",
    "rok": 2024,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "tsk2025": {
@@ -729,7 +729,7 @@
    "url": "https://cdn.tsk-praha.cz/portal/2026/01/TP_Odvodneni-komunikaci-TSK-06.2025.pdf",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "uur2025_zelen": {
@@ -738,7 +738,7 @@
    "url": "https://www.uur.cz/media/4jebc4v3/09-zelen-ceny-ti-2025.pdf",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "uur2025_komunikace": {
@@ -747,7 +747,7 @@
    "url": "https://www.uur.cz/media/y1ulzdvg/08-komunikace-ceny-ti-2025.pdf",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "uur2025_kanalizace": {
@@ -756,7 +756,7 @@
    "url": "https://www.uur.cz/media/xa3pha4j/03-kanalizace-ceny-ti-2025.pdf",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "při druhé kontrole 18. 10. znovu neotevřeno; ověřit ve fázi 6"
   },
   "noo2024": {
@@ -765,7 +765,7 @@
    "url": "https://mzp.gov.cz/system/files/2025-04/O610-NPO_POPFK_vyzva_c_5_2024_priloha_c_7_NOO-20240614.pdf",
    "rok": 2024,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "novější NOO 2025_2 a 2026 existují, z Claude nevytažitelné"
   },
   "aopk_grenzteich": {
@@ -774,7 +774,7 @@
    "url": "https://dotace.aopk.gov.cz/-/tune-grenzteich",
    "rok": 2024,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "spu_malavrbka": {
@@ -783,7 +783,7 @@
    "url": "https://spu.gov.cz/frontend/webroot/uploads/files/2025/02/170a24801._stavba_mokradu_1_v_k24801.u24801._mala_vrbka24801.pdf",
    "rok": 2024,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "aopk_piskova": {
@@ -792,7 +792,7 @@
    "url": "https://dotace.aopk.gov.cz/-/vetrolam-piskova-lhota",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "chytra2024": {
@@ -801,7 +801,7 @@
    "url": "https://www.priroda.nature.cz/index.php/priroda/article/download/66/94/289",
    "rok": 2024,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "mhmp2019_sec": {
@@ -810,7 +810,7 @@
    "url": "https://eud.praha.eu/pub/deska/6000004/4/6000003%23MHMPAWO0A020%23MHMP1011LEE0%230/6000003%23MHMPAWO0A020%23MHMP1011HPIR/1_Metodick%C3%A9%20doporu%C4%8Den%C3%AD%20k%20se%C4%8Den%C3%AD%20tr%C3%A1vn%C3%ADk%C5%AF.pdf",
    "rok": 2019,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "oz_pacht": {
@@ -819,7 +819,7 @@
    "url": "https://businesscenter.podnikatel.cz/pravo/zakony/obcansky-zakonik/f4586359/",
    "rok": null,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "zak139_2002": {
@@ -828,7 +828,7 @@
    "url": "https://www.dauc.cz/predpisy/247/139-2002-sb",
    "rok": null,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "spu_kopu_form": {
@@ -837,7 +837,7 @@
    "url": "https://spu.gov.cz/pozemkove-upravy/zadost-o-pozemkove-upravy-formular",
    "rok": 2023,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "fucik2015_pastva": {
@@ -846,7 +846,7 @@
    "url": "https://agronavigator.cz/sites/default/files/2025-04/metodika-PASTVA_VUMOP_komplet_final%252Bend.pdf",
    "rok": 2015,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "čísla v metodice jsou zahraniční citace (📄)"
   },
   "mze2020_bystriny": {
@@ -855,7 +855,7 @@
    "url": "https://mze.gov.cz/public/portal/mze/-q321647---Qfn_joPV/td-pro-hrazeni-bystrin-a-strzi-mze-2020",
    "rok": 2020,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "vyhl239_2017": {
@@ -864,7 +864,7 @@
    "url": "https://www.tzb-info.cz/docu/predpisy/download/V239-2017.pdf",
    "rok": 2017,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "lcr_strani": {
@@ -873,7 +873,7 @@
    "url": "https://smlouvy.gov.cz/smlouva/soubor/43163565/SML-00211-2025-957-P.pdf",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "avcr2023_liz": {
@@ -882,7 +882,7 @@
    "url": "https://www.avcr.cz/export/sites/avcr.cz/.content/galerie-souboru/tiskove-zpravy/2023/TZ-UH-23.11.23-BUKY-NAKLADAJI-S-PUDNI-VODOU-MENE-HOSPODARNE-NEZ-SMRKY-.pdf",
    "rok": 2023,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "hemr2023": {
@@ -891,7 +891,7 @@
    "url": "https://link.springer.com/article/10.1007/s10342-023-01592-7",
    "rok": 2023,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "czu2011_plo36": {
@@ -900,7 +900,7 @@
    "url": "https://rozcestnik.fld.czu.cz/vyzkum/maps/kolm/PLO36.pdf",
    "rok": 2011,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "wolstenholme2024": {
@@ -909,7 +909,7 @@
    "url": "https://egusphere.copernicus.org/preprints/2024/egusphere-2024-2132/egusphere-2024-2132-manuscript-version3.pdf",
    "rok": 2024,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "aopk2020_toky": {
@@ -918,7 +918,7 @@
    "url": "https://vodnitoky.ochranaprirody.cz/download/183/aopk_metodika_ochrana_vodnich_toku_kap_1_az_7.pdf",
    "rok": 2020,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "vz_17_46_47": {
@@ -927,7 +927,7 @@
    "url": "https://www.pracepropravniky.cz/zakony/vodni-zakon/",
    "rok": null,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "ověřit v e-Sbírce"
   },
   "studanky2025": {
@@ -936,7 +936,7 @@
    "url": "https://wp.estudanky.eu/down/let/nrps-od-pramene-ke-studance.pdf",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "kalny2017": {
@@ -945,7 +945,7 @@
    "url": "https://www.kmae-journal.org/articles/kmae/abs/2017/01/kmae160097/kmae160097.html",
    "rok": 2017,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "trimmel2018": {
@@ -954,7 +954,7 @@
    "url": "https://hess.copernicus.org/articles/22/437/2018/hess-22-437-2018.pdf",
    "rok": 2018,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "tnv752415": {
@@ -963,7 +963,7 @@
    "url": "https://mze.gov.cz/public/portal/mze/-q363047---5Jh01CKw/tnv-75-2415-suche-nadrze",
    "rok": 2013,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "tpeo2014": {
@@ -972,7 +972,7 @@
    "url": "https://storm.fsv.cvut.cz/data/files/p%C5%99edm%C4%9Bty/YPEO/Metodika_TPEO.pdf",
    "rok": 2014,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "vumop2020_siltfence": {
@@ -981,7 +981,7 @@
    "url": "https://www.mzp.gov.cz/system/files/2024-12/OAZK-Metodika_projektovani_a_realizace_krajinnych_opatreni_cast2-20240801.pdf",
    "rok": 2020,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "zivavoda2018": {
@@ -990,7 +990,7 @@
    "url": "https://www.zememeric.cz/wp-content/uploads/2020/05/VODA-Zdonov.pdf",
    "rok": 2018,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "autory označena za předběžnou"
   },
   "opzp105": {
@@ -999,7 +999,7 @@
    "url": "https://opzp.cz/files/documents/storage/2026/06/02/1780378967_Text%20výzvy%20-%20105.%20výzva.pdf",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "aopk_zmv17": {
@@ -1008,7 +1008,7 @@
    "url": "https://dotace.aopk.gov.cz/-/aopk-opzp-zmv-17-vyzva",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "opzp104": {
@@ -1017,7 +1017,7 @@
    "url": "https://opzp.cz/files/documents/storage/2026/06/30/1782797467_104.%20výzva%20SC%201.3%20Opatření%201.3.1_změna%20č.%201_v2.pdf",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "ppkb2026": {
@@ -1026,7 +1026,7 @@
    "url": "https://dotace.aopk.gov.cz/-/vyzva-ppk-b-2-pro-rok-2026",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "popfk": {
@@ -1035,7 +1035,7 @@
    "url": "https://dotace.aopk.gov.cz/npo-popfk",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "pdp_zk2021": {
@@ -1044,7 +1044,7 @@
    "url": "https://zlinskykraj.cz/file/6526a2a5cc8b4a0f8404e1a4",
    "rok": 2021,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "az1911_2021": {
@@ -1053,7 +1053,7 @@
    "url": "https://extension.arizona.edu/sites/default/files/2024-08/az1911-2021.pdf",
    "rok": 2021,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "aridní klima; úspora 60-70 % je citace 📄 z pokusu s kukuřicí"
   },
   "oyas_bxl": {
@@ -1062,7 +1062,7 @@
    "url": "https://environnement.brussels/media/15711/download",
    "rok": 2023,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "údaje výrobce, studie nejmenovány; pozorování obce po 1 sezóně"
   },
   "roeschwoog2022": {
@@ -1071,7 +1071,7 @@
    "url": "https://www.neozone.org/ecologie-planete/un-village-alsacien-utilise-la-technique-ancestrale-des-jarres-enterrees-oyas-pour-economiser-leau-de-ses-jardins",
    "rok": 2022,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "bez měření úspory vody"
   },
   "felixova2025_olla": {
@@ -1080,7 +1080,7 @@
    "url": "https://www.zahrada.sk/magazine/fotopostup-ako-si-doma-vyrobit-zavlazovacie-nadoby-olla/",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "archivní kopie fotek: tools/stahni_zdroje.py (mimo git)"
   },
   "lwg_misch2021": {
@@ -1089,7 +1089,7 @@
    "url": "https://lwg.bayern.de/mam/cms06/landespflege/dateien/mischpflanzen_bf.pdf",
    "rok": 2021,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "lwg_klimabaeume2019": {
@@ -1098,7 +1098,7 @@
    "url": "https://www.lwg.bayern.de/mam/cms06/landespflege/dateien/zukunft_klimabaeume.pdf",
    "rok": 2019,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "lwg_versickern2010": {
@@ -1107,7 +1107,7 @@
    "url": "https://www.lwg.bayern.de/mam/cms06/landespflege/dateien/merkblatt_mit_pflanzen_versickern.pdf",
    "rok": 2010,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "lfu_mulden2023": {
@@ -1116,7 +1116,7 @@
    "url": "https://www.cee.ed.tum.de/fileadmin/w00cbe/sww/_my_direct_uploads/LfU_Kurzdarstellung_2023_Versickerungsmulden.pdf",
    "rok": 2023,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "rok vydání v dokumentu neuveden"
   },
   "lakhi2025": {
@@ -1125,7 +1125,7 @@
    "url": "https://research.ou.nl/en/studentTheses/the-impact-of-greening-measures-for-private-gardens-on-flood-prev/",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "3 zahrady, infiltrometr + Horton; modelované hodnoty"
   },
   "hoyk2024": {
@@ -1134,7 +1134,7 @@
    "url": "https://regscience.hu/items/3845b111-d508-4224-b71a-1ddfbe631ffe",
    "rok": 2024,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "jen abstrakt, bez čísel"
   },
   "bratislava_com": {
@@ -1143,7 +1143,7 @@
    "url": "https://eu-mayors.ec.europa.eu/sites/default/files/2022-10/EN_case%20study_Bratislava.pdf",
    "rok": 2022,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "účinek neměřen"
   },
   "steenbreek_sponstuin": {
@@ -1152,7 +1152,7 @@
    "url": "https://steenbreek.nl//wp-content/uploads/2019/08/20190621-sponstuin-flyer.pdf",
    "rok": 2019,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "výsledky měření v letáku nejsou"
   },
   "nrw2005_belaege": {
@@ -1161,7 +1161,7 @@
    "url": "https://www.lanuk.nrw.de/fileadmin/forschung/wasser/sonstiges/Kurzbericht_wasserdurchl_Flaeche.pdf",
    "rok": 2005,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "bayern2003_entsiegelung": {
@@ -1170,7 +1170,7 @@
    "url": "https://mv.gartenbauvereine.org/wp-content/uploads/2020/05/MehrGruendurchBodenentsiegelung.pdf",
    "rok": 2003,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "hlnug2022": {
@@ -1179,7 +1179,7 @@
    "url": "https://www.hlnug.de/fileadmin/dokumente/boden/Planung/Kompboden/msb_072_teilentsiegelung_versickerungsbelaege.pdf",
    "rok": 2022,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "tegelwippen2025": {
@@ -1188,7 +1188,7 @@
    "url": "https://www.bnnvara.nl/vroegevogels/artikelen/nk-tegelwippen-2025-levert-bijna-6-miljoen-nieuwe-plekken-voor-natuur-op",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "dwd_mulch": {
@@ -1197,7 +1197,7 @@
    "url": "https://www.gartenbau.sachsen.de/download/Die_Wirkung_einer_Mulchbedeckung_auf_die_Evaporation.pdf",
    "rok": 2014,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "rok vydání neuveden"
   },
   "igz_heistermann": {
@@ -1206,7 +1206,7 @@
    "url": "https://orgprints.org/id/eprint/53926/1/Beitrag_279_final_a.pdf",
    "rok": 2023,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "rok vydání neuveden"
   },
   "minasny2018": {
@@ -1215,7 +1215,7 @@
    "url": "https://agris.fao.org/search/en/records/65df2f3a63b8185d9cab777b",
    "rok": 2018,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "abstrakt a highlights; plný text neotevřen"
   },
   "blake2021": {
@@ -1224,7 +1224,7 @@
    "url": "https://rshare.library.torontomu.ca/articles/thesis/The_Potential_for_Perennial_Vines_to_Mitigate_Summer_Warming_of_an_Urban_Microclimate/14657580",
    "rok": 2021,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "Toronto, přísavník trojcípý, 6 měsíců"
   },
   "bayika2022": {
@@ -1233,7 +1233,7 @@
    "url": "https://www.bayika.de/bayika-wAssets/docs/presse/standpunkte/2022-07-29.Fassadenbegruenung_und_Stadtklima_-_29-07-2022_Klaus_Juergen_Edelhaeuser.pdf",
    "rok": 2022,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "názorový sloupek, cituje nejmenované studie"
   },
   "byrne2020": {
@@ -1242,7 +1242,7 @@
    "url": "https://www.mdpi.com/2073-4441/12/8/2310",
    "rok": 2020,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "3 domy u Fremantle (Austrálie)"
   },
   "nolde2026": {
@@ -1251,7 +1251,7 @@
    "url": "https://www.vermieter-ratgeber.de/sites/default/files/public/data-fachartikel/IVV_2026_05_Vier-Fragen-an-Dipl_-Ing_-Erwin-Nolde_40-41.pdf",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "csn756780": {
@@ -1260,7 +1260,7 @@
    "url": "https://www.tzb-info.cz/normy/csn-75-6780-2021-09",
    "rok": 2021,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "text normy neotevřen"
   },
   "szu2022_seda": {
@@ -1269,7 +1269,7 @@
    "url": "https://hygiena.szu.cz/pdfs/hyg/2022/04/02.pdf",
    "rok": 2022,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "adapterra2022": {
@@ -1278,7 +1278,7 @@
    "url": "https://www.businessinfo.cz/clanky/adapterra-awards-2022-ocenila-sobestacny-dum-energeticky-pozitivni-skolu-i-protierozni-prvky-v-krajine/",
    "rok": 2022,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "bez čísel"
   },
   "ceskestavby2022_orechov": {
@@ -1287,7 +1287,7 @@
    "url": "https://www.ceskestavby.cz/clanky/sobestacny-dum-i-energeticky-pozitivni-skola-podivejte-se-vitezne-projekty-proti-zmenam-klimatu-31347.html",
    "rok": 2022,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "objemy a využití nádrží neuvedeny"
   },
   "mall2010": {
@@ -1296,7 +1296,7 @@
    "url": "https://www.baulinks.de/webplugin/2010/1798.php4",
    "rok": 2010,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "údaje výrobce, odhady"
   },
   "praha14_voda2022": {
@@ -1305,7 +1305,7 @@
    "url": "https://www.praha14.cz/app/uploads/sites/4/2022/06/Letak-Voda-2022.pdf",
    "rok": 2022,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "zdroj čísel v letáku neuveden"
   },
   "madzia2019": {
@@ -1314,7 +1314,7 @@
    "url": "https://www.jeeng.net/Reduction-of-Treated-Water-Use-through-Application-of-Rainwater-Tanks-in-Households,112495,0,2.html",
    "rok": 2019,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "nomogram/výpočet, ne měření; vyšší srážky než Koryčany"
   },
   "csu2024_voda": {
@@ -1323,7 +1323,7 @@
    "url": "https://csu.gov.cz/produkty/domacnosti-vodou-nadale-setri-v-prumyslu-jeji-spotreba-mirne-roste",
    "rok": 2024,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "tacr2021_horko": {
@@ -1332,7 +1332,7 @@
    "url": "https://tacr.gov.cz/wp-content/uploads/2022/08/220805_riziko-teplotniho-stresu-ve-mestech.pdf",
    "rok": 2021,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "pocitová teplota; samotná metodika a mapy pro města nedohledány"
   },
   "ct24_2022_horko": {
@@ -1341,7 +1341,7 @@
    "url": "https://ct24.ceskatelevize.cz/veda/3520774-i-travnik-pomuze-vedci-pripravili-doporuceni-ktera-maji-pomoci-ceskym-mestum-zvladat",
    "rok": 2022,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "zhaw2023_mlzeni": {
@@ -1350,7 +1350,7 @@
    "url": "https://meetingorganizer.copernicus.org/EGU23/EGU23-13652.html",
    "rok": 2023,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "konferenční abstrakt, jedna sezóna"
   },
   "wien_coolspot": {
@@ -1359,7 +1359,7 @@
    "url": "https://www.wien.gv.at/umwelt/energie-projekt-coolspot-im-esterhazypark",
    "rok": 2020,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "'až 6 °C' bez metodiky"
   },
   "coollife2025_wien": {
@@ -1368,7 +1368,7 @@
    "url": "https://ieecp.org/wp-content/uploads/2025/12/CoolLIFE_GoodPractices_AustriaHeatActionPlanVienna.pdf",
    "rok": 2025,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "jen počty, účinky neměřeny"
   },
   "rivm2026_nl": {
@@ -1377,7 +1377,7 @@
    "url": "https://climate-adapt.eea.europa.eu/en/metadata/case-studies/evaluating-the-effectiveness-of-the-dutch-national-heatwave-plan",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "aarau2022": {
@@ -1386,7 +1386,7 @@
    "url": "https://www.aarau.ch/public/upload/assets/18407/2022-51%20Beantwortung%20Anfrage%20Pascal%20Benz%20%28FDP%29%2C%20Einsatz%20tempor%C3%A4rer%20Sonnensegel%20in%20Aarau.pdf",
    "rok": 2022,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "enki_stromy": {
@@ -1395,7 +1395,7 @@
    "url": "https://mladimyslivci.cmmj.cz/wp-content/uploads/sites/99/2025/03/Jak_stromy_chladi.pdf",
    "rok": null,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "IR snímky, jednotlivá měření"
   },
   "earthwatch_fr": {
@@ -1404,7 +1404,7 @@
    "url": "https://panorama.solutions/en/solution/measuring-effects-trees-heat-mitigation-northern-france",
    "rok": 2020,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "ct24_2021_eth": {
@@ -1422,7 +1422,7 @@
    "url": "https://meetingorganizer.copernicus.org/DACH2019/DACH2019-24.pdf",
    "rok": 2019,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "model, bez čísel"
   },
   "koeniz2025": {
@@ -1431,7 +1431,7 @@
    "url": "https://www.koeniz.ch/public/upload/assets/24417/260422%20faktenblatt_auswertung_pilotprojekt_waldeggstrasse.pdf",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "stz2026_kornwestheim": {
@@ -1440,7 +1440,7 @@
    "url": "https://www.stuttgarter-zeitung.de/lokales/ludwigsburg/hitze-in-kornwestheim-562-grad-auf-schulhof-gemessen-so-reagiert-die-stadt-jetzt-79527198.html",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "dresden_huckepack": {
@@ -1449,7 +1449,7 @@
    "url": "https://rekis.hydro.tu-dresden.de/wp-content/uploads/2026/07/GPB_Steckbrief_FRL-EuK_Montessori-Huckepack_Formatvorlage-Fachbeitrag.pdf",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "v běhu, bez měření"
   },
   "adapterra2026": {
@@ -1458,7 +1458,7 @@
    "url": "https://www.businessinfo.cz/clanky/ziska-cenu-mokrad-pole-nebo-zachranarske-zakladny-o-vitezi-adapterra-awards-2026-rozhodne-i-verejnost/",
    "rok": 2026,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "adapterra2023": {
@@ -1467,7 +1467,7 @@
    "url": "https://www.businessinfo.cz/clanky/adapterra-awards-soutez-zna-viteze-ocenila-nejlepsi-ekologicke-projekty/",
    "rok": 2023,
    "znacka": "overeno",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": null
   },
   "pmo2009_korycany_cov": {
@@ -1476,8 +1476,134 @@
    "url": "https://avd.pmo.cz/pop/2009/Dyje/end/c-stav/listyopatreni/c4_06/2_ostatni/dy100033.pdf",
    "rok": 2009,
    "znacka": "overeno_stare",
-   "overeno_dne": "2026-10-21",
+   "overeno_dne": "2026-10-22",
    "pozn": "stav po rekonstrukci neověřen"
+  },
+  "taucha2024": {
+   "id": "taucha2024",
+   "nazev": "Grüner Ring Leipzig / město Taucha / IWS / KWL, 5/2024: Versickerung von Regenwasser - Untersuchungen von langjährig genutzten Mulden-Rigolen-Systemen in Taucha (BMBF StadtLandNavi)",
+   "url": "https://gruenerring-leipzig.de/wp-content/uploads/2024/08/broschuere-final-leseansicht-finale-26-06-2024.pdf",
+   "rok": 2024,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": null
+  },
+  "iws2024_taucha": {
+   "id": "iws2024_taucha",
+   "nazev": "IWS Leipzig (Milke), Abschlussbericht Messprogramm Mulden-Rigolen-Monitoring Taucha, 22. 1. 2024",
+   "url": "https://gruenerring-leipzig.de/wp-content/uploads/2024/08/eb-mrs-monitoring-taucha.pdf",
+   "rok": 2024,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": "výsledky z brožury; závěry zprávy neotevřeny celé"
+  },
+  "werther2005": {
+   "id": "werther2005",
+   "nazev": "FH Bielefeld / I.W.A. Minden 2005: Dezentrale Versickerung in Lehmböden - Mulden-Rigolen-System im Lößlehm, Werther (2000-2005)",
+   "url": "https://www.lanuk.nrw.de/fileadmin/forschung/wasser/niederschlag/Abschlussberichtdezentraleversickerung.pdf",
+   "rok": 2005,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-22",
+   "pozn": null
+  },
+  "portico2026_jilove": {
+   "id": "portico2026_jilove",
+   "nazev": "Portico / European Urban Initiative 17. 5. 2026: Nature-based rainwater retention for climate-resilient small towns (Jílové u Prahy)",
+   "url": "https://portico.urban-initiative.eu/urban-matchmaker/nature-based-rainwater-retention-climate-resilient-small-towns",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": null
+  },
+  "vrv2020_mocovice": {
+   "id": "vrv2020_mocovice",
+   "nazev": "VRV a.s. 2/2020: Koncepce rozvoje vodních ploch obce Močovice (návesní rybník, jez, náhon)",
+   "url": "https://www.mocovice.cz/mocovice/rozvoj-obce/koncepce-rozvoje-vodnich-ploch/koncepce-rozvoje-vodnich-ploch.pdf",
+   "rok": 2020,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": null
+  },
+  "embren2015": {
+   "id": "embren2015",
+   "nazev": "Embrén B. (město Stockholm), The Stockholm System, prezentace TDAG 2015",
+   "url": "https://www.tdag.org.uk/uploads/4/2/8/0/4280686/22.06.15_the_stockholm_system_bjorn_embren.pdf",
+   "rok": 2015,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-22",
+   "pozn": "bez kontrolního srovnání"
+  },
+  "mufuwu2024": {
+   "id": "mufuwu2024",
+   "nazev": "Zimmermann a kol. (3:0 Landschaftsarchitektur, Landschafft Wasser, BAW, Bundesgärten), MUFUWU-Stadtbaum, BMK Berichte 39/2024: Schwammstadt pro stromy, Leonhardgürtel Graz",
+   "url": "https://nachhaltigwirtschaften.at/resources/sdz_pdf/schriftenreihe-2024-39-mufuwu.pdf",
+   "rok": 2024,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": "kapitoly o chlazení a retenci neotevřeny celé"
+  },
+  "dafne_schwammstadt": {
+   "id": "dafne_schwammstadt",
+   "nazev": "HBLFA Schönbrunn (Roth), DaFNE projekt 101466 Schwammstadt: Struktursubstrate, lysimetry a Fahrbahnnebenflächen (2019-2024)",
+   "url": "https://dafne.at/projekte/schwammstadt",
+   "rok": 2024,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": "jen abstrakt"
+  },
+  "saluz2022": {
+   "id": "saluz2022",
+   "nazev": "Saluz, Bleuler, Krähenbühl, Schönborn (ZHAW) 2022: Quality and suitability of fecal biochar in structurally stable urban tree substrates, Sci. Total Environ. 838:156236",
+   "url": "https://srv-clst-301-data66.zhaw.ch/bitstream/11475/25111/2/2022_Gion-Saluz-et-al_Science-of-the-total-enviroment.pdf",
+   "rok": 2022,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": "nádobový pokus, ne ulice"
+  },
+  "zelenakova_trebisov": {
+   "id": "zelenakova_trebisov",
+   "nazev": "Zeleňáková M., Junáková N. (TU Košice): Water retention measures ... in the city of Trebišov, Slovakia (sborník MENDELU, cca 2021-2022)",
+   "url": "https://doi.mendelu.cz/pdfs/doi/9900/02/00.pdf",
+   "rok": 2022,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": "rok neuveden; bez měření"
+  },
+  "berlin_tk2023": {
+   "id": "berlin_tk2023",
+   "nazev": "Berlin Treptow-Köpenick, Straßen- und Grünflächenamt: Projektsteckbrief Schulhöfe entsiegeln (stav 2/2023)",
+   "url": "https://berlin.de/ba-treptow-koepenick/ueber-den-bezirk/nachhaltigkeit/2023-02-13-projektsteckbrief-schulhoefe-entsiegeln.pdf",
+   "rok": 2023,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": "bez měření"
+  },
+  "wiesenena2009": {
+   "id": "wiesenena2009",
+   "nazev": "Sasko, Ländlicher Raum: Dorfteich Wiesenena (Gemeinde Wiedemar), renaturace požární nádrže 2008-2009",
+   "url": "https://www.laendlicher-raum.sachsen.de/download/Dorfteich_Wiesenena.pdf",
+   "rok": 2018,
+   "znacka": "overeno_stare",
+   "overeno_dne": "2026-10-22",
+   "pozn": "bez měření a nákladů"
+  },
+  "smocr_cehnice": {
+   "id": "smocr_cehnice",
+   "nazev": "SMO ČR, příklad dobré praxe: Cehnice - retenční nádrž Třtí na Cehnickém potoce (OPŽP)",
+   "url": "https://www.smocr.cz/Shared/Clanky/10359/sosnova-1-retencni-nadrz-trti-na-cehnickem-potoce.pdf",
+   "rok": null,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": "rok stavby neuveden"
+  },
+  "kujavy2026": {
+   "id": "kujavy2026",
+   "nazev": "Zpravodaj obce Kujavy 2/2026: Voda pro krajinu - obnova 3 tůní (nadace Hyundai, OSF); finalista Adapterra 2026",
+   "url": "https://pv.svkos.cz/Zpravodaj_obce_Kujavy/Zpravodaj_obce_Kujavy_2026/Zpravodaj_obce_Kujavy_2026_2.pdf",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-10-22",
+   "pozn": null
   }
  },
  "programy": {
@@ -4408,6 +4534,33 @@
       "dach2019_lee"
      ],
      "znacka": "overeno"
+    },
+    {
+     "ucinek": "R",
+     "typ": "vzorec",
+     "popis": "Voda ze střech a chodníků do rabátka: V = napojená plocha × srážka, strop = objem substrátu × pórovitost (~30 % 🤔); Stockholm: 4 600 m² × 600 mm = 2,3 mil. l/rok",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": "V_m3 = min(A_napojena_m2 * P_m, V_substrat_m3 * 0.3)",
+     "zdroj": [
+      "embren2015"
+     ],
+     "znacka": "overeno_stare"
+    },
+    {
+     "ucinek": "B",
+     "typ": "kvalitativne",
+     "popis": "Stockholm: stromy vysazené s obvodem 30-35 cm měly po 8 letech 70-83 cm (bez kontrolního srovnání); Graz MUFUWU: střešní voda doplňuje zásobu i při malých deštích, zálivka v prvních letech nutná, retence vs. klasické rabátko nevyčíslena",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "embren2015",
+      "mufuwu2024"
+     ],
+     "znacka": "overeno"
     }
    ],
    "vhodnost": {
@@ -4473,10 +4626,43 @@
       "tacr2021_horko"
      ],
      "znacka": "overeno"
+    },
+    {
+     "kde": "Stockholm",
+     "kdy": "2002-2015",
+     "kdo": "město Stockholm (Embrén)",
+     "co": "cca 2 000 stromových míst přestavěno na strukturální substrát (drcená žula 90-150 mm, od 2013 biouhel), voda ze střech a chodníků vedena do rabátek",
+     "mereno": "obvod kmene po 8 letech; objem vody do systému",
+     "zdroj": [
+      "embren2015"
+     ],
+     "znacka": "overeno_stare"
+    },
+    {
+     "kde": "Graz, Leonhardgürtel",
+     "kdy": "2021-2024",
+     "kdo": "3:0 Landschaftsarchitektur, BAW, Bundesgärten, město Graz",
+     "co": "7 nových stromů + 4 sanované kaštany v tělesech 60 cm; měření půdní vody, toku mízy, přírůstu a přítoku/odtoku 2022-2023 (projekt MUFUWU, BMK)",
+     "mereno": "půdní voda, tok mízy, přírůst kmene",
+     "zdroj": [
+      "mufuwu2024"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "kde": "Vídeň Schönbrunn (HBLFA) + Graz Gradnerstraße + Seestadt",
+     "kdy": "2019-2024",
+     "kdo": "HBLFA Schönbrunn",
+     "co": "lysimetry a dva uliční pokusy se strukturálními substráty 2019-2024; závěr: chyby při stavbě výrazně snižují hydrologický výkon, zásobování stromu plánovat spolu s retencí",
+     "mereno": "lysimetr (čísla v abstraktu nejsou)",
+     "zdroj": [
+      "dafne_schwammstadt"
+     ],
+     "znacka": "overeno"
     }
    ],
-   "prenositelnost": null,
-   "rizika": "V noci stromy mírně zadržují teplo (+0,1 až +1,3 °C pocitově). Umisťovat podle map horkých míst, ne nahodile (CzechGlobe).",
+   "prenositelnost": "Náměstí a hlavní ulice při rekonstrukci chodníků. Pod rabátkem jsou v Koryčanech pelozemě (HSP C/D): nutný bezpečnostní přepad a drenáž, jinak strom stojí ve vodě.",
+   "rizika": "Retence proti běžnému rabátku není změřena; chyby stavby (zhutnění, jemné frakce v substrátu) výkon zničí; zálivka první 2-3 roky.",
    "vahy_skaly": null
   },
   {
@@ -4650,6 +4836,36 @@
       "tsk2025"
      ],
      "znacka": "overeno"
+    },
+    {
+     "ucinek": "I",
+     "typ": "hodnota",
+     "popis": "Taucha: 3 soustavy průleh-rýha po 25-30 letech: k_f 3e-6 až 9e-5 m/s (infiltrometr), 1e-5 až 1e-4 m/s (zaplavení celého průlehu); vyprázdnění do 24 h (DWA-A 138) splněno; návrh 10 % napojené plochy na písku, 20 % na hlíně; odstup od budov 1,5× hloubka výkopu",
+     "hodnota": null,
+     "jednotka": "m/s",
+     "rozsah": [
+      3e-06,
+      0.0001
+     ],
+     "vzorec": null,
+     "zdroj": [
+      "taucha2024",
+      "iws2024_taucha"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "ucinek": "Q",
+     "typ": "kvalitativne",
+     "popis": "Werther (sprašová hlína, k_f ~1e-7 m/s jako HSP D), 6,5 ha od 2000: odtok rozložen v čase místo špiček, ale rýhy v zimě dlouho zaplavené, lokální zamokření; v suchých létech prázdné - pro HSP C/D průleh s rýhou a regulovaným odtokem, ne čistý vsak",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "werther2005"
+     ],
+     "znacka": "overeno_stare"
     }
    ],
    "vhodnost": {
@@ -4678,6 +4894,18 @@
      "rok": 2024,
      "zdroj": "noo2024",
      "pozn": null
+    },
+    {
+     "polozka": "stavba průlehu / průleh + rýha (Sasko, literatura upravená)",
+     "hodnota": null,
+     "rozsah": [
+      35,
+      45
+     ],
+     "jednotka": "EUR/m² napojené plochy",
+     "rok": 2024,
+     "zdroj": "taucha2024",
+     "pozn": "provoz 1-2 EUR/m² průlehu/rok; odvádění do kanalizace cca 20 EUR/m²/rok"
     }
    ],
    "financovani": [
@@ -4687,11 +4915,36 @@
     "csn759010",
     "tsk2025"
    ],
-   "nedohledano": [],
+   "nedohledano": [
+    "cena průlehu v ČR 2025-2026 kromě NOO"
+   ],
    "pozn_poctivost": null,
-   "priklady": [],
+   "priklady": [
+    {
+     "kde": "Taucha (Sasko)",
+     "kdy": "1994-2024",
+     "kdo": "město Taucha, IWS Leipzig",
+     "co": "soustavy průleh-rýha v obytných ulicích z let 1994-1999, vyhodnocení 2023; měď a zinek z měděných okapů nad limity do 25 cm půdy (nepoužívat měď)",
+     "mereno": "k_f, doba vyprázdnění, těžké kovy",
+     "zdroj": [
+      "taucha2024"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "kde": "Werther u Bielefeldu (NRW)",
+     "kdy": "2000-2005",
+     "kdo": "FH Bielefeld, I.W.A. Minden",
+     "co": "průleh-rýha v nové zástavbě 6,5 ha na sprašové hlíně, měření 2000-2005 (hladiny v rýhách, vlhkost, podzemní voda, lysimetr)",
+     "mereno": "vsak, hladiny, podzemní voda",
+     "zdroj": [
+      "werther2005"
+     ],
+     "znacka": "overeno_stare"
+    }
+   ],
    "prenositelnost": null,
-   "rizika": null,
+   "rizika": "Na HSP D se voda v rýze drží týdny; bez regulovaného odtoku hrozí zamokření sousedních pozemků. Měděné okapy kontaminují půdu průlehu. Údržba: vtoky, spád, travní drn.",
    "vahy_skaly": null
   },
   {
@@ -4780,8 +5033,31 @@
    ],
    "nedohledano": [],
    "pozn_poctivost": null,
-   "priklady": [],
-   "prenositelnost": null,
+   "priklady": [
+    {
+     "kde": "Trebišov (SK), střední odborná škola",
+     "kdy": "2021",
+     "kdo": "TU Košice, škola",
+     "co": "dešťová zahrada 19 m², nádrž 1,5 m³ s přepadem, vsakovací rýhy 9 + 10 m², zatravňovací dlažba, zelená stěna 7,5 m s kapkovou závlahou z nádrže; účinek nevyčíslen",
+     "mereno": null,
+     "zdroj": [
+      "zelenakova_trebisov"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "kde": "Berlín Treptow-Köpenick, školní dvory",
+     "kdy": "2019-2023",
+     "kdo": "Straßen- und Grünflächenamt",
+     "co": "6 škol + hotová Schule am Altglienicker Wasserturm (2019/20): částečné odstranění asfaltu, výsadby, zasakovací průlehy; úspora poplatku za srážkovou vodu cca 1,80 EUR/m² napojené plochy/rok; měření žádné",
+     "mereno": null,
+     "zdroj": [
+      "berlin_tk2023"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "prenositelnost": "ZŠ, úřad, sokolovna, hasičárna = největší jednotlivé střechy v obci; nejdřív pasport svodů (U09), pak S02 + Z01/Z10/S06.",
    "rizika": null,
    "vahy_skaly": null
   },
@@ -4888,12 +5164,59 @@
     "vz_15b"
    ],
    "nedohledano": [
-    "cena poldru a hráze (dřívější údaj se v ÚÚR 2025 nepotvrdil, vyřazen)"
+    "cena poldru a hráze (dřívější údaj se v ÚÚR 2025 nepotvrdil, vyřazen)",
+    "mikroklima návesní nádrže"
    ],
    "pozn_poctivost": null,
-   "priklady": [],
+   "priklady": [
+    {
+     "kde": "Wiesenena (Sasko, obec Wiedemar)",
+     "kdy": "2008-2009",
+     "kdo": "obec Wiedemar",
+     "co": "renaturace betonové požární nádrže: cca 1 000 m² hladiny, mělké břehy, litorál, hnízdiště břehulí, lavičky; náklady a měření neuvedeny",
+     "mereno": null,
+     "zdroj": [
+      "wiesenena2009"
+     ],
+     "znacka": "overeno_stare"
+    },
+    {
+     "kde": "Močovice",
+     "kdy": "2020",
+     "kdo": "obec, VRV a.s.",
+     "co": "koncepce: návesní rybník 4 530 m² hladiny, odbahnění 906 m³ (ponechat 10 cm pro těsnění), litorál, oprava hráze a výpusti; 2,5-2,8 mil. Kč bez DPH",
+     "mereno": null,
+     "zdroj": [
+      "vrv2020_mocovice"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "kde": "Cehnice (Jihočeský kraj)",
+     "kdy": null,
+     "kdo": "obec Cehnice",
+     "co": "retenční nádrž Třtí na Cehnickém potoce: stálá hladina 11 401 m³ + retenční prostor 50 363 m³, revitalizace přítoku s tůněmi a mokřadem; 15,95 mil. Kč (OPŽP 13,56 mil.) - spíš T07",
+     "mereno": null,
+     "zdroj": [
+      "smocr_cehnice"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "kde": "Kujavy (Novojičínsko)",
+     "kdy": "2025-2026",
+     "kdo": "obec a spolky",
+     "co": "'Voda pro krajinu': obnova 3 tůní svépomocí (myslivci, mladí myslivci), nadace Hyundai a OSF; rozpracováno; finalista Adapterra 2026",
+     "mereno": null,
+     "zdroj": [
+      "kujavy2026",
+      "adapterra2026"
+     ],
+     "znacka": "overeno"
+    }
+   ],
    "prenositelnost": null,
-   "rizika": null,
+   "rizika": "Mikroklima návesní nádrže neměřeno; podle CzechGlobe malé vodní plochy vzduch skoro neochladí - hodnota je retence a biodiverzita.",
    "vahy_skaly": null
   },
   {
@@ -5063,7 +5386,8 @@
      "M04",
      "M05",
      "M06",
-     "H02"
+     "H02",
+     "U09"
     ],
     "konflikt": []
    },
@@ -5111,10 +5435,140 @@
       "adapterra2026"
      ],
      "znacka": "overeno"
+    },
+    {
+     "kde": "Trebišov (SK)",
+     "kdy": "2021",
+     "kdo": "TU Košice",
+     "co": "školní atria: dešťová zahrada, nádrž, vsakovací rýhy, zelená stěna (viz U04)",
+     "mereno": null,
+     "zdroj": [
+      "zelenakova_trebisov"
+     ],
+     "znacka": "overeno"
     }
    ],
    "prenositelnost": "Pro ZŠ Koryčany je prvním krokem změřit dvůr IR teploměrem v létě (M05): asfalt vs. stín vs. tráva. Pak odstranění části asfaltu, stromové mísy, štěpka.",
    "rizika": null,
+   "vahy_skaly": null
+  },
+  {
+   "id": "U09",
+   "nazev": "Studie a plán hospodaření s dešťovou vodou obce (kam teče voda z veřejných ploch, kdo se stará)",
+   "popis": "Obec si nechá zpracovat (nebo se školou udělá) přehled, kam teče voda ze střech veřejných budov, silnic a náměstí, kde jsou místa pro průlehy, rabátka a nádrže, a kdo se o ně bude starat. Bez toho se opatření staví nahodile a po letech chátrají. V Koryčanech tuto roli z velké části plní tato aplikace.",
+   "misto": [
+    "U",
+    "H"
+   ],
+   "rozhoduje": [
+    "O",
+    "S"
+   ],
+   "pracnost": 2,
+   "ucinky": {
+    "primarni": [
+     "R",
+     "I",
+     "Q"
+    ],
+    "vedlejsi": []
+   },
+   "meritko": "uzemi",
+   "kontext": true,
+   "kvantifikace": [
+    {
+     "ucinek": "Q",
+     "typ": "kvalitativne",
+     "popis": "Taucha (Sasko): u 25-30 let starých průlehů selhávaly správa a údržba (ucpané vtoky, chybějící spád, zrušené soukromé průlehy, zásahy sítí), ne princip; doporučení: vlastnictví a údržbu určit smluvně, provozní řád, kontrola vsaku každých 10 let, cedule pro obyvatele",
+     "hodnota": null,
+     "jednotka": null,
+     "rozsah": null,
+     "vzorec": null,
+     "zdroj": [
+      "taucha2024"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "vhodnost": {
+    "vsude": true
+   },
+   "vazby": {
+    "potrebuje": [],
+    "synergie": [
+     "U01",
+     "U03",
+     "U04",
+     "U05",
+     "U07",
+     "M01",
+     "M05"
+    ],
+    "konflikt": []
+   },
+   "povoleni": 0,
+   "povoleni_pozn": null,
+   "ceny": [
+    {
+     "polozka": "celkem",
+     "hodnota": null,
+     "rozsah": null,
+     "jednotka": "Kč",
+     "rok": null,
+     "zdroj": null,
+     "pozn": "cena neověřena"
+    }
+   ],
+   "financovani": [
+    "vlastni",
+    "opzp_1_3_4"
+   ],
+   "standardy": [
+    "taucha2024"
+   ],
+   "nedohledano": [
+    "cena studie HDV pro obec do 3 000 obyvatel",
+    "NÖ Regenwasserpläne (web offline)"
+   ],
+   "pozn_poctivost": null,
+   "priklady": [
+    {
+     "kde": "Taucha (Sasko)",
+     "kdy": "2023-2024",
+     "kdo": "město Taucha, Grüner Ring Leipzig, IWS, KWL",
+     "co": "vyhodnocení 3 soustav průleh-rýha po 25-30 letech provozu; obecné pokyny pro obce (plánování, vlastnictví, provoz, údržba, monitoring)",
+     "mereno": "k_f, vyprázdnění do 24 h, těžké kovy v půdě",
+     "zdroj": [
+      "taucha2024",
+      "iws2024_taucha"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "kde": "Jílové u Prahy",
+     "kdy": "2026",
+     "kdo": "město Jílové u Prahy",
+     "co": "malé město má studii retenční kapacity (vsak, malé nádrže, krajinná opatření) a hledá partnery, jak přejít 'od analýzy k realizaci'",
+     "mereno": null,
+     "zdroj": [
+      "portico2026_jilove"
+     ],
+     "znacka": "overeno"
+    },
+    {
+     "kde": "Močovice (Středočeský kraj)",
+     "kdy": "2020",
+     "kdo": "obec, VRV a.s.",
+     "co": "koncepce rozvoje vodních ploch obce: návesní rybník 0,65 ha (4 530 m² hladiny), odbahnění 906 m³, varianty 2,5-2,8 mil. Kč bez DPH, jez 7,6-16,6 mil. Kč",
+     "mereno": null,
+     "zdroj": [
+      "vrv2020_mocovice"
+     ],
+     "znacka": "overeno"
+    }
+   ],
+   "prenositelnost": "Plně. Pro Koryčany: tato aplikace + pasport svodů veřejných budov (škola, úřad, sokolovna, hasičárna) + dohoda, kdo seče a čistí průlehy. Školní projekt 'kam teče voda ze školy' (M01, M05) jako vstup.",
+   "rizika": "Studie bez realizace (Jílové). Náklady studie nedohledány. Dolní Rakousko dotuje obcím 'Regenwasserpläne' 📄 (web 22. 10. offline).",
    "vahy_skaly": null
   },
   {

@@ -8,7 +8,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "data")
 os.makedirs(OUT, exist_ok=True)
 
-DNES = "2026-10-21"
+DNES = "2026-10-22"
 
 # ---------------------------------------------------------------- zdroje
 # znacka: "overeno" (✅ otevřeno online), "overeno_stare" (✅⏳ >12 měs.), "citace" (📄), "odhad" (🤔), "pamet" (💻)
@@ -152,6 +152,22 @@ zdroj("dresden_huckepack", "ReKIS / Sachsen EuK: Montessorischule Huckepack Dres
 zdroj("adapterra2026", "businessinfo.cz 26. 8. 2026: finalisté Adapterra Awards 2026 (mj. školní zahrada Červená Voda 2 000 m²)", "https://www.businessinfo.cz/clanky/ziska-cenu-mokrad-pole-nebo-zachranarske-zakladny-o-vitezi-adapterra-awards-2026-rozhodne-i-verejnost/", 2026, "overeno")
 zdroj("adapterra2023", "businessinfo.cz 2. 11. 2023: vítězové Adapterra Awards 2023 (zvl. ocenění Obnova údolní nivy řeky Kyjovky)", "https://www.businessinfo.cz/clanky/adapterra-awards-soutez-zna-viteze-ocenila-nejlepsi-ekologicke-projekty/", 2023, "overeno")
 zdroj("pmo2009_korycany_cov", "Plán oblasti povodí Dyje 2009, list opatření DY100033 Koryčany - rekonstrukce ČOV (jednotná kanalizace s OK, 4 100 EO)", "https://avd.pmo.cz/pop/2009/Dyje/end/c-stav/listyopatreni/c4_06/2_ostatni/dy100033.pdf", 2009, "overeno_stare", "stav po rekonstrukci neověřen")
+
+# --- blok C rešerše dobré praxe (veřejný prostor, škola), 22. 10. 2026
+zdroj("taucha2024", "Grüner Ring Leipzig / město Taucha / IWS / KWL, 5/2024: Versickerung von Regenwasser - Untersuchungen von langjährig genutzten Mulden-Rigolen-Systemen in Taucha (BMBF StadtLandNavi)", "https://gruenerring-leipzig.de/wp-content/uploads/2024/08/broschuere-final-leseansicht-finale-26-06-2024.pdf", 2024, "overeno")
+zdroj("iws2024_taucha", "IWS Leipzig (Milke), Abschlussbericht Messprogramm Mulden-Rigolen-Monitoring Taucha, 22. 1. 2024", "https://gruenerring-leipzig.de/wp-content/uploads/2024/08/eb-mrs-monitoring-taucha.pdf", 2024, "overeno", "výsledky z brožury; závěry zprávy neotevřeny celé")
+zdroj("werther2005", "FH Bielefeld / I.W.A. Minden 2005: Dezentrale Versickerung in Lehmböden - Mulden-Rigolen-System im Lößlehm, Werther (2000-2005)", "https://www.lanuk.nrw.de/fileadmin/forschung/wasser/niederschlag/Abschlussberichtdezentraleversickerung.pdf", 2005, "overeno_stare")
+zdroj("portico2026_jilove", "Portico / European Urban Initiative 17. 5. 2026: Nature-based rainwater retention for climate-resilient small towns (Jílové u Prahy)", "https://portico.urban-initiative.eu/urban-matchmaker/nature-based-rainwater-retention-climate-resilient-small-towns", 2026, "overeno")
+zdroj("vrv2020_mocovice", "VRV a.s. 2/2020: Koncepce rozvoje vodních ploch obce Močovice (návesní rybník, jez, náhon)", "https://www.mocovice.cz/mocovice/rozvoj-obce/koncepce-rozvoje-vodnich-ploch/koncepce-rozvoje-vodnich-ploch.pdf", 2020, "overeno")
+zdroj("embren2015", "Embrén B. (město Stockholm), The Stockholm System, prezentace TDAG 2015", "https://www.tdag.org.uk/uploads/4/2/8/0/4280686/22.06.15_the_stockholm_system_bjorn_embren.pdf", 2015, "overeno_stare", "bez kontrolního srovnání")
+zdroj("mufuwu2024", "Zimmermann a kol. (3:0 Landschaftsarchitektur, Landschafft Wasser, BAW, Bundesgärten), MUFUWU-Stadtbaum, BMK Berichte 39/2024: Schwammstadt pro stromy, Leonhardgürtel Graz", "https://nachhaltigwirtschaften.at/resources/sdz_pdf/schriftenreihe-2024-39-mufuwu.pdf", 2024, "overeno", "kapitoly o chlazení a retenci neotevřeny celé")
+zdroj("dafne_schwammstadt", "HBLFA Schönbrunn (Roth), DaFNE projekt 101466 Schwammstadt: Struktursubstrate, lysimetry a Fahrbahnnebenflächen (2019-2024)", "https://dafne.at/projekte/schwammstadt", 2024, "overeno", "jen abstrakt")
+zdroj("saluz2022", "Saluz, Bleuler, Krähenbühl, Schönborn (ZHAW) 2022: Quality and suitability of fecal biochar in structurally stable urban tree substrates, Sci. Total Environ. 838:156236", "https://srv-clst-301-data66.zhaw.ch/bitstream/11475/25111/2/2022_Gion-Saluz-et-al_Science-of-the-total-enviroment.pdf", 2022, "overeno", "nádobový pokus, ne ulice")
+zdroj("zelenakova_trebisov", "Zeleňáková M., Junáková N. (TU Košice): Water retention measures ... in the city of Trebišov, Slovakia (sborník MENDELU, cca 2021-2022)", "https://doi.mendelu.cz/pdfs/doi/9900/02/00.pdf", 2022, "overeno", "rok neuveden; bez měření")
+zdroj("berlin_tk2023", "Berlin Treptow-Köpenick, Straßen- und Grünflächenamt: Projektsteckbrief Schulhöfe entsiegeln (stav 2/2023)", "https://berlin.de/ba-treptow-koepenick/ueber-den-bezirk/nachhaltigkeit/2023-02-13-projektsteckbrief-schulhoefe-entsiegeln.pdf", 2023, "overeno", "bez měření")
+zdroj("wiesenena2009", "Sasko, Ländlicher Raum: Dorfteich Wiesenena (Gemeinde Wiedemar), renaturace požární nádrže 2008-2009", "https://www.laendlicher-raum.sachsen.de/download/Dorfteich_Wiesenena.pdf", 2018, "overeno_stare", "bez měření a nákladů")
+zdroj("smocr_cehnice", "SMO ČR, příklad dobré praxe: Cehnice - retenční nádrž Třtí na Cehnickém potoce (OPŽP)", "https://www.smocr.cz/Shared/Clanky/10359/sosnova-1-retencni-nadrz-trti-na-cehnickem-potoce.pdf", None, "overeno", "rok stavby neuveden")
+zdroj("kujavy2026", "Zpravodaj obce Kujavy 2/2026: Voda pro krajinu - obnova 3 tůní (nadace Hyundai, OSF); finalista Adapterra 2026", "https://pv.svkos.cz/Zpravodaj_obce_Kujavy/Zpravodaj_obce_Kujavy_2026/Zpravodaj_obce_Kujavy_2026_2.pdf", 2026, "overeno")
 
 # ------------------------------------------------------- dotační programy
 PROGRAMY = {
@@ -462,6 +478,19 @@ op("U07", "Školní zahrada jako ukázkový pozemek", ["U","Z"], ["S","O"], 1, [
    vhodnost={"areal_skoly": True}, vazby={"potrebuje": [], "synergie": ["Z01","Z02","Z05","Z06","Z08","S01","S02","M01","M02","M03","M04","M05","M06"], "konflikt": []}, povoleni=0, povoleni_pozn="0-1",
    ceny=[], financovani=["opzp_1_3_4","participativni","vlastni"])
 
+op("U09", "Studie a plán hospodaření s dešťovou vodou obce (kam teče voda z veřejných ploch, kdo se stará)", ["U","H"], ["O","S"], 2, ["R","I","Q"], [], "uzemi", kontext=True,
+   popis="Obec si nechá zpracovat (nebo se školou udělá) přehled, kam teče voda ze střech veřejných budov, silnic a náměstí, kde jsou místa pro průlehy, rabátka a nádrže, a kdo se o ně bude starat. Bez toho se opatření staví nahodile a po letech chátrají. V Koryčanech tuto roli z velké části plní tato aplikace.",
+   kvant=[kv("Q","kvalitativne","Taucha (Sasko): u 25-30 let starých průlehů selhávaly správa a údržba (ucpané vtoky, chybějící spád, zrušené soukromé průlehy, zásahy sítí), ne princip; doporučení: vlastnictví a údržbu určit smluvně, provozní řád, kontrola vsaku každých 10 let, cedule pro obyvatele", zdroj=["taucha2024"], znacka="overeno")],
+   vhodnost={"vsude": True},
+   vazby={"potrebuje": [], "synergie": ["U01","U03","U04","U05","U07","M01","M05"], "konflikt": []}, povoleni=0,
+   ceny=[NEOVERENA], financovani=["vlastni","opzp_1_3_4"], standardy=["taucha2024"],
+   priklady=[pr("Taucha (Sasko)", "vyhodnocení 3 soustav průleh-rýha po 25-30 letech provozu; obecné pokyny pro obce (plánování, vlastnictví, provoz, údržba, monitoring)", kdy="2023-2024", kdo="město Taucha, Grüner Ring Leipzig, IWS, KWL", mereno="k_f, vyprázdnění do 24 h, těžké kovy v půdě", zdroj=["taucha2024","iws2024_taucha"]),
+             pr("Jílové u Prahy", "malé město má studii retenční kapacity (vsak, malé nádrže, krajinná opatření) a hledá partnery, jak přejít 'od analýzy k realizaci'", kdy="2026", kdo="město Jílové u Prahy", mereno=None, zdroj=["portico2026_jilove"]),
+             pr("Močovice (Středočeský kraj)", "koncepce rozvoje vodních ploch obce: návesní rybník 0,65 ha (4 530 m² hladiny), odbahnění 906 m³, varianty 2,5-2,8 mil. Kč bez DPH, jez 7,6-16,6 mil. Kč", kdy="2020", kdo="obec, VRV a.s.", mereno=None, zdroj=["vrv2020_mocovice"])],
+   prenositelnost="Plně. Pro Koryčany: tato aplikace + pasport svodů veřejných budov (škola, úřad, sokolovna, hasičárna) + dohoda, kdo seče a čistí průlehy. Školní projekt 'kam teče voda ze školy' (M01, M05) jako vstup.",
+   rizika="Studie bez realizace (Jílové). Náklady studie nedohledány. Dolní Rakousko dotuje obcím 'Regenwasserpläne' 📄 (web 22. 10. offline).",
+   nedohledano=["cena studie HDV pro obec do 3 000 obyvatel","NÖ Regenwasserpläne (web offline)"])
+
 # ===== H organizační opatření obce při vedrech + U08 (blok A, 21. 10. 2026)
 op("U08", "Mlžení a kropení při letních hromadných akcích (mlžná brána, tryska na hydrantu)", ["U","H"], ["O","S"], 1, ["CH"], [], "lokalita",
    popis="Mlžná brána nebo tryska na hydrantu na hodech, táboře, sportovním dni nebo trhu v horkém dni. Pomůže lidem, kteří stojí přímo u ní; ulici ani obec neochladí. Jako trvalý prvek nemá smysl (rozhodnutí 21. 10. 2026), jen pro akce.",
@@ -723,7 +752,7 @@ CISELNIKY = {
 }
 
 DATA = {
- "meta": {"nazev":"Katalog opatření - Koryčany resilience","verze":"0.6","datum":DNES,"licence_dat":"CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
+ "meta": {"nazev":"Katalog opatření - Koryčany resilience","verze":"0.7","datum":DNES,"licence_dat":"CC BY 4.0 (vlastní kompilace; citované zdroje mají vlastní licence)",
           "upozorneni":"Zjednodušený osvětový model, ne projektová dokumentace. Každé číslo má zdroj a značku původu. Ceny jen se zdrojem a datem; jinak 'cena neověřena'. Paragrafy vodního zákona ověřit v e-Sbírce.",
           "zdroje_md":["claude/KATALOG.md","claude/KATALOG-Z-S.md","claude/KATALOG-U-P.md","claude/KATALOG-L-LES-T-C.md","claude/KATALOG-RESERSE.md"]},
  "ciselniky": CISELNIKY, "konstanty": KONSTANTY, "zdroje": Z, "programy": PROGRAMY, "nastroje": NASTROJE, "opatreni": O,
@@ -833,6 +862,43 @@ doplnit("U07",
              pr("Červená Voda", "školní zahrada 2 000 m² (koloběh vody, včely, energie, mikroklima), finalista Adapterra Awards 2026", kdy="2026", kdo="ZŠ Červená Voda", mereno=None, zdroj=["adapterra2026"])],
    prenositelnost="Pro ZŠ Koryčany je prvním krokem změřit dvůr IR teploměrem v létě (M05): asfalt vs. stín vs. tráva. Pak odstranění části asfaltu, stromové mísy, štěpka.",
    synergie=["M05","H02"])
+
+# --- doplňky blok C (veřejný prostor, škola), 22. 10. 2026
+doplnit("U01",
+   kvant=[kv("R","vzorec","Voda ze střech a chodníků do rabátka: V = napojená plocha × srážka, strop = objem substrátu × pórovitost (~30 % 🤔); Stockholm: 4 600 m² × 600 mm = 2,3 mil. l/rok", vzorec="V_m3 = min(A_napojena_m2 * P_m, V_substrat_m3 * 0.3)", zdroj=["embren2015"], znacka="overeno_stare"),
+          kv("B","kvalitativne","Stockholm: stromy vysazené s obvodem 30-35 cm měly po 8 letech 70-83 cm (bez kontrolního srovnání); Graz MUFUWU: střešní voda doplňuje zásobu i při malých deštích, zálivka v prvních letech nutná, retence vs. klasické rabátko nevyčíslena", zdroj=["embren2015","mufuwu2024"], znacka="overeno")],
+   priklady=[pr("Stockholm", "cca 2 000 stromových míst přestavěno na strukturální substrát (drcená žula 90-150 mm, od 2013 biouhel), voda ze střech a chodníků vedena do rabátek", kdy="2002-2015", kdo="město Stockholm (Embrén)", mereno="obvod kmene po 8 letech; objem vody do systému", zdroj=["embren2015"], znacka="overeno_stare"),
+             pr("Graz, Leonhardgürtel", "7 nových stromů + 4 sanované kaštany v tělesech 60 cm; měření půdní vody, toku mízy, přírůstu a přítoku/odtoku 2022-2023 (projekt MUFUWU, BMK)", kdy="2021-2024", kdo="3:0 Landschaftsarchitektur, BAW, Bundesgärten, město Graz", mereno="půdní voda, tok mízy, přírůst kmene", zdroj=["mufuwu2024"]),
+             pr("Vídeň Schönbrunn (HBLFA) + Graz Gradnerstraße + Seestadt", "lysimetry a dva uliční pokusy se strukturálními substráty 2019-2024; závěr: chyby při stavbě výrazně snižují hydrologický výkon, zásobování stromu plánovat spolu s retencí", kdy="2019-2024", kdo="HBLFA Schönbrunn", mereno="lysimetr (čísla v abstraktu nejsou)", zdroj=["dafne_schwammstadt"])],
+   prenositelnost="Náměstí a hlavní ulice při rekonstrukci chodníků. Pod rabátkem jsou v Koryčanech pelozemě (HSP C/D): nutný bezpečnostní přepad a drenáž, jinak strom stojí ve vodě.",
+   rizika="Retence proti běžnému rabátku není změřena; chyby stavby (zhutnění, jemné frakce v substrátu) výkon zničí; zálivka první 2-3 roky.")
+
+doplnit("U03",
+   kvant=[kv("I","hodnota","Taucha: 3 soustavy průleh-rýha po 25-30 letech: k_f 3e-6 až 9e-5 m/s (infiltrometr), 1e-5 až 1e-4 m/s (zaplavení celého průlehu); vyprázdnění do 24 h (DWA-A 138) splněno; návrh 10 % napojené plochy na písku, 20 % na hlíně; odstup od budov 1,5× hloubka výkopu", rozsah=[3e-6,1e-4], jednotka="m/s", zdroj=["taucha2024","iws2024_taucha"], znacka="overeno"),
+          kv("Q","kvalitativne","Werther (sprašová hlína, k_f ~1e-7 m/s jako HSP D), 6,5 ha od 2000: odtok rozložen v čase místo špiček, ale rýhy v zimě dlouho zaplavené, lokální zamokření; v suchých létech prázdné - pro HSP C/D průleh s rýhou a regulovaným odtokem, ne čistý vsak", zdroj=["werther2005"], znacka="overeno_stare")],
+   priklady=[pr("Taucha (Sasko)", "soustavy průleh-rýha v obytných ulicích z let 1994-1999, vyhodnocení 2023; měď a zinek z měděných okapů nad limity do 25 cm půdy (nepoužívat měď)", kdy="1994-2024", kdo="město Taucha, IWS Leipzig", mereno="k_f, doba vyprázdnění, těžké kovy", zdroj=["taucha2024"]),
+             pr("Werther u Bielefeldu (NRW)", "průleh-rýha v nové zástavbě 6,5 ha na sprašové hlíně, měření 2000-2005 (hladiny v rýhách, vlhkost, podzemní voda, lysimetr)", kdy="2000-2005", kdo="FH Bielefeld, I.W.A. Minden", mereno="vsak, hladiny, podzemní voda", zdroj=["werther2005"], znacka="overeno_stare")],
+   rizika="Na HSP D se voda v rýze drží týdny; bez regulovaného odtoku hrozí zamokření sousedních pozemků. Měděné okapy kontaminují půdu průlehu. Údržba: vtoky, spád, travní drn.",
+   nedohledano=["cena průlehu v ČR 2025-2026 kromě NOO"])
+# náklady Taucha jako cenová položka U03
+next(x for x in O if x["id"]=="U03")["ceny"].append(cena("stavba průlehu / průleh + rýha (Sasko, literatura upravená)", None, "EUR/m² napojené plochy", 2024, "taucha2024", rozsah=[35,45], pozn="provoz 1-2 EUR/m² průlehu/rok; odvádění do kanalizace cca 20 EUR/m²/rok"))
+
+doplnit("U04",
+   priklady=[pr("Trebišov (SK), střední odborná škola", "dešťová zahrada 19 m², nádrž 1,5 m³ s přepadem, vsakovací rýhy 9 + 10 m², zatravňovací dlažba, zelená stěna 7,5 m s kapkovou závlahou z nádrže; účinek nevyčíslen", kdy="2021", kdo="TU Košice, škola", mereno=None, zdroj=["zelenakova_trebisov"]),
+             pr("Berlín Treptow-Köpenick, školní dvory", "6 škol + hotová Schule am Altglienicker Wasserturm (2019/20): částečné odstranění asfaltu, výsadby, zasakovací průlehy; úspora poplatku za srážkovou vodu cca 1,80 EUR/m² napojené plochy/rok; měření žádné", kdy="2019-2023", kdo="Straßen- und Grünflächenamt", mereno=None, zdroj=["berlin_tk2023"])],
+   prenositelnost="ZŠ, úřad, sokolovna, hasičárna = největší jednotlivé střechy v obci; nejdřív pasport svodů (U09), pak S02 + Z01/Z10/S06.")
+
+doplnit("U05",
+   priklady=[pr("Wiesenena (Sasko, obec Wiedemar)", "renaturace betonové požární nádrže: cca 1 000 m² hladiny, mělké břehy, litorál, hnízdiště břehulí, lavičky; náklady a měření neuvedeny", kdy="2008-2009", kdo="obec Wiedemar", mereno=None, zdroj=["wiesenena2009"], znacka="overeno_stare"),
+             pr("Močovice", "koncepce: návesní rybník 4 530 m² hladiny, odbahnění 906 m³ (ponechat 10 cm pro těsnění), litorál, oprava hráze a výpusti; 2,5-2,8 mil. Kč bez DPH", kdy="2020", kdo="obec, VRV a.s.", mereno=None, zdroj=["vrv2020_mocovice"]),
+             pr("Cehnice (Jihočeský kraj)", "retenční nádrž Třtí na Cehnickém potoce: stálá hladina 11 401 m³ + retenční prostor 50 363 m³, revitalizace přítoku s tůněmi a mokřadem; 15,95 mil. Kč (OPŽP 13,56 mil.) - spíš T07", kdy=None, kdo="obec Cehnice", mereno=None, zdroj=["smocr_cehnice"]),
+             pr("Kujavy (Novojičínsko)", "'Voda pro krajinu': obnova 3 tůní svépomocí (myslivci, mladí myslivci), nadace Hyundai a OSF; rozpracováno; finalista Adapterra 2026", kdy="2025-2026", kdo="obec a spolky", mereno=None, zdroj=["kujavy2026","adapterra2026"])],
+   rizika="Mikroklima návesní nádrže neměřeno; podle CzechGlobe malé vodní plochy vzduch skoro neochladí - hodnota je retence a biodiverzita.",
+   nedohledano=["mikroklima návesní nádrže"])
+
+doplnit("U07",
+   priklady=[pr("Trebišov (SK)", "školní atria: dešťová zahrada, nádrž, vsakovací rýhy, zelená stěna (viz U04)", kdy="2021", kdo="TU Košice", mereno=None, zdroj=["zelenakova_trebisov"])],
+   synergie=["U09"])
 
 # ----------------------------------------------------------------- kontroly
 ids = [o["id"] for o in O]
