@@ -304,6 +304,8 @@ out = {
                     "Tmin": r1(prumer([z["leto"]["Tmin"] for r, z in rocniky.items() if "leto" in z and T_OBDOBI[0] <= int(r) <= T_OBDOBI[1]])),
                     "roku": sum(1 for r, z in rocniky.items() if "leto" in z and T_OBDOBI[0] <= int(r) <= T_OBDOBI[1])},
     "rekordy": rekordy,
+    # nejvetsi denni srazky cele rady (jen mereni na stanici Korycany, ne doplnky), pro kapitolu Kdyz prijde lijak
+    "top_denni": [[d.isoformat(), v] for v, d in sorted(((v, d) for d, v in P_mer.items()), reverse=True)[:10]],
     "pocty": {"P_dni": len(P), "T_dni": len(T), "ET0_dni": len(ET0), "rocniky_P_uplne": sum(1 for z in rocniky.values() if "rok" in z.get("P", {})),
               "rocniky_T_uplne": sum(1 for z in rocniky.values() if "rok" in z.get("T", {}))},
 }

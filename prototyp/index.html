@@ -11,7 +11,7 @@
 :root{
   --bg:#f6f3ee; --panel:#ffffff; --fg:#1f2a2e; --muted:#5c6b70; --line:#d8d2c7;
   --accent:#1f6f8b; --accent-ink:#ffffff; --soil:#7a5a3a; --water:#2d7fb8; --ok:#3b7a57; --warn:#b5651d; --bad:#a23b3b; --dry:#b8923a; --hot:#6b1d4a;
-  --chip:#e9e4da; --mark:#eef4f7;
+  --chip:#e9e4da; --mark:#eef4f7; --soilbg:#e8dccb; --water-l:#9fc5e3;
   --f-display:"Source Serif 4", Georgia, "Times New Roman", serif;
   --f-body:"IBM Plex Sans", "Segoe UI", Arial, sans-serif;
   --f-mono:"IBM Plex Mono", Consolas, monospace;
@@ -19,11 +19,11 @@
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --bg:#171c1f; --panel:#1f2629; --fg:#e8e4dc; --muted:#a3adb1; --line:#36414a;
   --accent:#5aa9c9; --accent-ink:#0f1a1f; --soil:#c49a6c; --water:#6fb3e0; --ok:#7fc39a; --warn:#e0a060; --bad:#e08080; --dry:#d4b26a; --hot:#f07ac0;
-  --chip:#2b353a; --mark:#1b2a31; color-scheme:dark } }
+  --chip:#2b353a; --mark:#1b2a31; --soilbg:#3a3229; --water-l:#2f5f80; color-scheme:dark } }
 :root[data-theme="dark"]{
   --bg:#171c1f; --panel:#1f2629; --fg:#e8e4dc; --muted:#a3adb1; --line:#36414a;
   --accent:#5aa9c9; --accent-ink:#0f1a1f; --soil:#c49a6c; --water:#6fb3e0; --ok:#7fc39a; --warn:#e0a060; --bad:#e08080; --dry:#d4b26a; --hot:#f07ac0;
-  --chip:#2b353a; --mark:#1b2a31; color-scheme:dark }
+  --chip:#2b353a; --mark:#1b2a31; --soilbg:#3a3229; --water-l:#2f5f80; color-scheme:dark }
 html,body{height:100%}
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.45;margin:0}
 *{box-sizing:border-box}
@@ -118,6 +118,42 @@ input[type=range]{width:100%}
 .src{font-size:.8rem;color:var(--muted)} .src a{color:var(--accent)}
 .hidden-tab{display:none}
 /* Jak bylo */
+.jb-story{display:flex;flex-direction:column}
+.jb-hero{max-width:46rem;display:flex;flex-direction:column;gap:.6rem;margin:.4rem 0 .2rem}
+.jb-kicker,.jb-eyebrow{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.jb-eyebrow{color:var(--soil)}
+.jb-title{font-family:var(--f-display);font-size:clamp(1.8rem,4.5vw,2.8rem);line-height:1.1;margin:0}
+.jb-lede{font-size:1.12rem;line-height:1.55;margin:0}
+.jb-key{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.7rem;margin:1rem 0 .6rem}
+.jb-k{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:.8rem 1rem;display:grid;gap:.25rem;font-size:.92rem}
+.jb-k .num{font-size:2rem;font-weight:500}
+h3.jb-ch{font-family:var(--f-display);font-size:1.55rem;margin:2.2rem 0 .3rem}
+.jb-p{font-size:1.04rem;line-height:1.6;max-width:46rem;margin:.2rem 0 .3rem}
+.jb-box{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:1.1rem 1.2rem;margin:1.6rem 0 .4rem}
+.jb-box h4{font-family:var(--f-display);font-size:1.3rem;margin:.2rem 0 .4rem}
+.jb-split{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center}
+.jb-split .jb-box-t{flex:1 1 280px} .jb-split .jb-box-t p{margin:.3rem 0;line-height:1.55}
+.jb-split svg.il{flex:1 1 360px;max-width:560px}
+.jb-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:.8rem}
+.jb-3>div{display:flex;flex-direction:column;gap:.35rem} .jb-3 p{margin:0;font-size:.95rem;line-height:1.5}
+.jb-facts{border-top:1px solid var(--line);padding-top:.9rem;margin-top:1rem}
+svg.il{width:100%;height:auto;display:block}
+.il .soilbg{fill:var(--soilbg)} .il .soil{stroke:var(--soil)} .il .cloud{fill:var(--chip)} .il .rain{stroke:var(--water)}
+.il .sunf{fill:var(--warn)} .il .sun{stroke:var(--warn)} .il .house{fill:var(--panel);stroke:var(--fg)} .il .ln{stroke:var(--fg)}
+.il .bad{stroke:var(--bad)} .il .badt{fill:var(--bad)} .il .wfill{fill:var(--water-l)} .il .wf2{fill:var(--water)}
+.il .plant{stroke:var(--ok)} .il .dry{stroke:var(--dry)} .il .tree{fill:var(--ok)} .il .trunk{stroke:var(--soil)} .il .door{fill:var(--chip)}
+.il text{fill:var(--fg);font-family:var(--f-body);font-size:16px} .il .il-big text{font-size:22px;font-weight:500}
+.il .num-b circle{fill:var(--accent)} .il .num-t text{fill:var(--accent-ink);font-weight:600;font-size:15px}
+.jb-lijak{display:grid;gap:.45rem;max-width:40rem;margin:.6rem 0 .3rem}
+.jb-bar{display:grid;grid-template-columns:7rem minmax(0,1fr) 4.5rem;gap:.6rem;align-items:center;font-size:.95rem}
+.jb-bar .b{height:16px;background:var(--chip);border-radius:3px;overflow:hidden} .jb-bar .b i{display:block;height:100%;background:var(--water)}
+.jb-bar .num{text-align:right}
+.jb-cta{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;margin:2rem 0 1rem;padding:1.2rem;border-radius:14px;background:var(--accent);color:var(--accent-ink)}
+.jb-cta-t{flex:1 1 300px} .jb-cta h3{font-family:var(--f-display);font-size:1.5rem;margin:0 0 .4rem;color:inherit} .jb-cta p{margin:.3rem 0;line-height:1.55}
+.jb-cta .mot-a{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
+.jb-cta .mot-a a{background:var(--panel);color:var(--accent);font-weight:600;text-decoration:none;padding:.55rem .95rem;border-radius:999px;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center}
+.jb-cta svg.il{flex:1 1 320px;max-width:520px;background:var(--bg);border-radius:12px}
+details.jb-cist{margin-top:1rem;border-top:1px solid var(--line);padding-top:.5rem} details.jb-cist summary{cursor:pointer;min-height:40px;display:flex;align-items:center;gap:.3rem} details.jb-cist p{line-height:1.55}
 .jb-head{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:end}
 .jb-head label.f{min-width:160px}
 .jb-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.8rem;margin-top:.8rem}
@@ -994,28 +1030,106 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <main>
 <!-- ======================= JAK BYLO ======================= -->
 <section id="tab-jakbylo">
-  <div class="panel">
-    <h2>Jak bylo v Koryčanech</h2>
-    <p class="note" style="margin:.2rem 0 0">Co se tu děje s vodou: kolik naprší, kolik se vypaří a co zbyde. Nejdřív dlouhé řady, protože jeden měsíc trend neukáže.</p>
-    <p class="note" style="margin:.2rem 0 0">Data se stahují automaticky každý den; poslední aktualizace <span class="num" id="jb-upd"></span>.</p>
-    <h3 style="margin-top:1rem">Dlouhý pohled: srážky Koryčany od roku 1921</h3>
+  <div class="panel jb-story">
+    <div class="jb-hero">
+      <div class="jb-kicker">Jak bylo · data ČHMÚ 1921-<span id="jb-rok"></span></div>
+      <h2 class="jb-title">Prší pořád stejně. Krajina přesto vysychá.</h2>
+      <p class="jb-lede">Za sto let se v Koryčanech množství deště skoro nezměnilo. Změnilo se, kolik vody stihne odejít do vzduchu a jak prudce prší. Proto je sucho, i když je rok „normální“.</p>
+      <p class="note">Data se stahují automaticky každý den; poslední aktualizace <span class="num" id="jb-upd"></span>.</p>
+    </div>
+    <div class="jb-key" id="jb-key"></div>
+
+    <h3 class="jb-ch">1. Kolik u nás naprší</h3>
+    <p class="jb-p" id="jb-ch1"></p>
     <p class="note" id="jb-l1-n"></p>
     <svg class="jb-chart" id="jb-l1" viewBox="0 0 720 220" role="img" aria-label="Roční srážky 1921-2025"></svg>
     <div class="legend"><span><b style="background:var(--chip)"></b>roční úhrn</span><span><b style="background:var(--dry)"></b>3 nejsušší roky</span><span><b style="background:var(--water)"></b>3 nejdeštivější roky</span><span><b style="background:var(--dry);opacity:.45"></b>letošek do dneška</span><span><b style="background:var(--muted);border-radius:50%;width:.4rem;height:.4rem;vertical-align:1px"></b>tečka pod rokem = část dní doplněna z okolní stanice</span><span><b style="background:var(--warn)"></b>klouzavý průměr 10 let</span><span><b style="background:var(--fg)"></b>normál 1991-2020</span></div>
-    <h3 style="margin-top:1rem">Dlouhý pohled: kolik vody zbyde po výparu (od roku 2001)</h3>
+
+    <div class="jb-box jb-split">
+      <div class="jb-box-t">
+        <div class="jb-eyebrow">Vysvětlení</div>
+        <h4>Kam mizí déšť</h4>
+        <p id="jb-box1"></p>
+        <p class="note">Možný výpar = kolik by se vypařilo z trávníku, který má vody dost (ET₀, FAO-56). Skutečný je v suchu menší, protože není z čeho.</p>
+      </div>
+      <svg class="il" viewBox="0 0 560 300" role="img" aria-label="Ilustrace: déšť, možný výpar, odtok do kanálu a vsak do půdy">
+        <rect class="soilbg" x="0" y="210" width="560" height="90"/><path class="soil" d="M0 210H560" stroke-width="2"/>
+        <g class="cloud"><ellipse cx="120" cy="52" rx="62" ry="24"/><ellipse cx="160" cy="40" rx="42" ry="22"/><ellipse cx="86" cy="44" rx="34" ry="18"/></g>
+        <g class="rain" stroke-width="2.5" stroke-linecap="round"><path d="M70 86l-6 18M100 90l-6 18M130 86l-6 18M160 90l-6 18M190 86l-6 18M85 120l-6 18M115 124l-6 18M145 120l-6 18M175 124l-6 18"/></g>
+        <circle class="sunf" cx="470" cy="56" r="24"/>
+        <g class="sun" stroke-width="3" stroke-linecap="round"><path d="M470 16v8M470 88v8M430 56h8M502 56h8M442 28l6 6M492 78l6 6M498 28l-6 6M448 78l-6 6"/></g>
+        <g class="soil" fill="none" stroke-width="2.5" stroke-linecap="round"><path d="M360 200c-8-14 8-22 0-36s8-22 0-36"/><path d="M400 200c-8-14 8-22 0-36s8-22 0-36"/><path d="M440 200c-8-14 8-22 0-36s8-22 0-36"/><path d="M352 136l8-10 8 10M392 136l8-10 8 10M432 136l8-10 8 10"/></g>
+        <path class="house" d="M220 210v-58h76v58" stroke-width="2.5"/><path class="ln" d="M208 154l50-40 50 40" fill="none" stroke-width="2.5"/>
+        <path class="ln" d="M306 154v52q0 10-10 10h-40" fill="none" stroke-width="2.5"/>
+        <path class="bad" d="M250 216h-60" stroke-width="3" stroke-dasharray="7 5"/><path class="bad" d="M196 210l-8 6 8 6" fill="none" stroke-width="3"/>
+        <g class="rain" stroke-width="2.5" stroke-linecap="round" fill="none"><path d="M120 222v34M108 246l12 12 12-12"/><path d="M500 222v34M488 246l12 12 12-12"/></g>
+        <g class="il-big"><text x="20" y="172" id="jb-il-p">naprší 633 mm</text><text x="434" y="40" text-anchor="end">mohlo by se</text><text x="434" y="66" text-anchor="end" id="jb-il-e">vypařit 858 mm</text><text x="210" y="202" text-anchor="end" class="badt">do kanálu</text><text x="20" y="292">vsak do zásoby</text><text x="548" y="292" text-anchor="end" id="jb-il-d">žízeň o 225 mm větší</text></g>
+      </svg>
+    </div>
+
+    <h3 class="jb-ch">2. Krajina má větší žízeň, než kolik naprší</h3>
+    <p class="jb-p" id="jb-ch2"></p>
     <p class="note" id="jb-l2-n"></p>
     <svg class="jb-chart" id="jb-l2" viewBox="0 0 720 220" role="img" aria-label="Srážky minus výpar a možný výpar 2001-2025"></svg>
     <div class="legend"><span><b style="background:var(--ok)"></b>srážky minus výpar: voda zbyla</span><span><b style="background:var(--dry)"></b>srážky minus výpar: voda chyběla</span><span><b class="ln" style="border-color:var(--soil);border-top-style:dashed"></b>možný výpar za rok</span><span><b style="background:var(--muted);border-radius:50%;width:.4rem;height:.4rem;vertical-align:1px"></b>tečka pod rokem = část dní doplněna z okolní stanice</span></div>
     <div class="jb-cards" id="jb-trend-v"></div>
-    <h3 style="margin-top:1rem">Dlouhý pohled: teplota a horko (od roku 2001)</h3>
+
+    <div class="jb-box">
+      <div class="jb-eyebrow">Vysvětlení</div>
+      <h4>Kde se ten rozdíl vezme?</h4>
+      <p class="jb-p">Nikde. Víc vody, než naprší, se vypařit nemůže. Možný výpar je jen to, kolik by se vypařilo, kdyby vody bylo dost. Když v půdě dojde, rostliny zavřou průduchy a skutečný výpar klesne, až k nule. To, co v grafu chybí, je voda, kterou rostliny chtěly a nedostaly. Tak vypadá sucho.</p>
+      <div class="jb-3">
+        <div><svg class="il" viewBox="0 0 260 170" role="img" aria-label="Zima: půda plná, přebytek prosakuje do podzemní vody">
+          <rect class="soilbg" x="0" y="40" width="260" height="130"/><path class="soil" d="M0 40H260" stroke-width="2"/>
+          <g class="rain" stroke-width="2.5" stroke-linecap="round"><path d="M60 4l-5 14M100 8l-5 14M140 4l-5 14M180 8l-5 14M220 4l-5 14"/></g>
+          <rect class="wfill ln" x="60" y="48" width="140" height="70" stroke-width="2"/>
+          <g class="rain" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M100 122v26M90 140l10 10 10-10M160 122v26M150 140l10 10 10-10"/></g>
+          <text x="130" y="89" text-anchor="middle">půda je plná</text>
+        </svg><b>Zima: déšť je víc než žízeň</b><p id="jb-zima"></p></div>
+        <div><svg class="il" viewBox="0 0 260 170" role="img" aria-label="Jaro a léto: rostliny berou vodu ze zásoby v půdě">
+          <rect class="soilbg" x="0" y="40" width="260" height="130"/><path class="soil" d="M0 40H260" stroke-width="2"/>
+          <circle class="sunf" cx="225" cy="16" r="10"/>
+          <g class="plant" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M130 40V12M130 22q-10 0-14-10M130 20q10 0 14-10"/></g>
+          <rect class="house" x="60" y="48" width="140" height="70" stroke-width="2"/><rect class="wfill" x="61" y="88" width="138" height="29"/>
+          <path class="plant" d="M130 86V54" stroke-width="2.5"/>
+          <text x="130" y="76" text-anchor="middle">zásoba ubývá</text>
+        </svg><b>Jaro a léto: žízeň je větší než déšť</b><p id="jb-leto"></p></div>
+        <div><svg class="il" viewBox="0 0 260 170" role="img" aria-label="Konec léta: zásoba došla, rostliny vadnou">
+          <rect class="soilbg" x="0" y="40" width="260" height="130"/><path class="soil" d="M0 40H260" stroke-width="2"/>
+          <circle class="sunf" cx="225" cy="16" r="10"/>
+          <g class="dry" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M130 40V20q0-8-10-6M130 26q8 2 12 10"/></g>
+          <rect class="house" x="60" y="48" width="140" height="70" stroke-width="2"/>
+          <g class="dry" stroke-width="1.5"><path d="M80 60l10 14M120 56l-6 18M160 62l10 12M100 92l12 10M150 90l-8 16"/></g>
+          <text x="130" y="142" text-anchor="middle">zásoba došla</text>
+        </svg><b>Konec léta: zásoba došla</b><p>Půda je vyčerpaná, rostliny strádají a výpar klesá. Po suché nebo teplé zimě se půda znovu nenasytí, podzemní voda se nedoplní a deficit se přenáší do dalšího roku. Tak to šlo od roku 2015.</p></div>
+      </div>
+      <h4 style="margin-top:1rem;font-size:1rem">Srážky minus možný výpar po měsících, průměr</h4>
+      <svg class="jb-chart" id="jb-mes" viewBox="0 0 720 190" role="img" aria-label="Měsíční bilance: zimní měsíce kladné, od března do září záporné"></svg>
+      <div class="legend"><span><b style="background:var(--water)"></b>zásoba se doplňuje</span><span><b style="background:var(--dry)"></b>bere se ze zásoby</span><span>srážky Koryčany 1991-2020, možný výpar Nemochovice 2001-2025</span></div>
+      <div class="jb-3 jb-facts">
+        <div><b>Kam jde déšť v průměru za rok (celé Česko)</b><p>Ze 675 mm srážek asi 505 mm skutečně odejde výparem, 170 mm odteče potoky a z toho asi 72 mm doplní podzemní vodu ✅.</p></div>
+        <div><b>Co dělá teplo</b><p>Mezi obdobími 1971-2010 a 1981-2019 se v Česku oteplilo o 0,4 °C. Srážek je skoro stejně (o 1,6 % méně), ale podzemní vody se doplňuje o 7-12 % méně ✅. Víc vody si vezme vzduch.</p></div>
+        <div><b>Co z toho plyne pro zahradu</b><p>Každý kubík, který v zimě a při lijáku zasákne místo do kanálu, je zásoba na léto. Proto má smysl udržet vodu tam, kde spadne.</p></div>
+      </div>
+      <p class="src">Zdroje: <a href="https://www.fao.org/3/x0490e/x0490e0e.htm" target="_blank" rel="noopener">FAO-56, kap. 8</a> ✅⏳ (při nedostatku vody klesá skutečný výpar až k nule); <a href="https://www.vtei.cz/wp-content/uploads/2022/10/6483-casopis-VTEI-5-22-Odhad-prirodnich-zdroju.pdf" target="_blank" rel="noopener">Kašpárek a kol., VTEI 2022/5</a> ✅ (bilance ČR 1981-2019); <a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2020/Stav_a_vyvoj_sucha-kveten_2020.pdf" target="_blank" rel="noopener">Národní koalice pro boj se suchem, květen 2020</a> ✅⏳ (zima doplňuje zásoby, letní déšť spotřebuje vegetace, deficit od roku 2015).</p>
+    </div>
+
+    <h3 class="jb-ch">3. Horka přibývá</h3>
+    <p class="jb-p" id="jb-ch3"></p>
     <p class="note" id="jb-l3-n"></p>
     <svg class="jb-chart" id="jb-l3" viewBox="0 0 720 210" role="img" aria-label="Tropické a supertropické dny, tropické noci a letní maxima 2001-2025"></svg>
     <div class="legend" id="jb-l3-leg"><span><b style="background:var(--bad);border-radius:50%"></b>tropické dny (≥ 30 °C)</span><span><b style="background:var(--hot);transform:rotate(45deg) scale(.8)"></b>supertropické dny (≥ 35 °C)</span><span><b style="background:none;border:2px solid var(--accent);border-radius:50%"></b>tropické noci (minimum ≥ 20 °C)</span><span class="jb-leto"><b class="ln" style="border-color:var(--warn)"></b>letní maxima: průměr nejvyšších teplot dne červen-srpen (pravá osa)</span><span><b class="ln" style="border-color:var(--bad);border-top-style:dashed;opacity:.6"></b>trend tropických dní</span><span><b style="background:var(--muted);border-radius:50%;width:.4rem;height:.4rem;vertical-align:1px"></b>tečka pod rokem = část dní doplněna z okolní stanice</span></div>
     <div class="jb-cards" id="jb-trend"></div>
-    <div class="motiv" id="jb-l-call"></div>
 
-    <div class="jb-head" style="margin-top:1.4rem">
-      <div><h3>Detail: vybrané období</h3><p class="note" style="margin:.2rem 0 0">Denní data jsou od 1. 1. 2026 (ČHMÚ je zveřejňuje jen pro běžící rok); starší roky jsou v řadách nahoře.</p></div>
+    <h3 class="jb-ch">4. Když přijde liják</h3>
+    <p class="jb-p">Sucho a povodeň nejsou protiklady. Vyschlá a utužená půda nestihne vsáknout, voda steče po povrchu a vezme s sebou ornici. Největší deště za den v řadě od roku 1921:</p>
+    <div class="jb-lijak" id="jb-lijak"></div>
+    <p class="note" id="jb-lijak-n"></p>
+
+    <h3 class="jb-ch" id="jb-letos-h">5. Letošek</h3>
+    <div class="jb-cards" id="jb-letos"></div>
+    <div class="jb-head" style="margin-top:1.2rem">
+      <div><h4 style="margin:0">Detail: vybrané období</h4><p class="note" style="margin:.2rem 0 0">Denní data jsou od 1. 1. 2026 (ČHMÚ je zveřejňuje jen pro běžící rok); starší roky jsou v řadách nahoře.</p></div>
       <label class="f" style="margin-left:auto">Období<select id="jb-obd"></select></label>
       <label class="f">od<input type="date" id="jb-od"></label>
       <label class="f">do<input type="date" id="jb-do"></label>
@@ -1023,14 +1137,24 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="jb-cards" id="jb-cards"></div>
     <svg class="jb-chart" id="jb-graf" viewBox="0 0 720 230" role="img" aria-label="Denní průběh srážek, teploty a výparu"></svg>
     <div class="legend" id="jb-leg"><span><b style="background:var(--water)"></b>srážky mm/den (světlejší = náhradní stanice)</span><span><b class="ln" style="border-color:var(--bad)"></b>nejvyšší teplota dne °C</span><span><b class="ln" style="border-color:var(--warn)"></b>průměrná teplota dne (průměr za 24 h) °C</span><span><b class="ln" style="border-color:var(--soil);border-top-style:dashed"></b>možný výpar mm/den</span><span><b style="background:var(--bad);border-radius:50%"></b>tropický den (≥ 30 °C)</span><span><b style="background:var(--hot);transform:rotate(45deg) scale(.8)"></b>supertropický den (≥ 35 °C)</span></div>
-    <h3 style="margin-top:1rem">Extrémy období</h3>
+    <h4 style="margin-top:1rem">Extrémy období</h4>
     <div class="jb-ext" id="jb-ext"></div>
-    <h3 style="margin-top:1rem" id="jb-roc-h">Srovnání ročníků</h3>
+    <h4 style="margin-top:1rem" id="jb-roc-h">Srovnání ročníků</h4>
     <p class="note" id="jb-roc-n"></p>
     <svg class="jb-chart" id="jb-roc" viewBox="0 0 720 200" role="img" aria-label="Srovnání ročníků"></svg>
     <div class="legend"><span><b style="background:var(--chip)"></b>úhrn ve vybraných měsících</span><span><b style="background:var(--bad)"></b>pod 60 % normálu</span><span><b style="background:var(--water)"></b>nad 140 % normálu</span><span><b style="background:var(--accent)"></b>letošek</span><span><b class="ln" style="border-color:var(--fg);border-top-style:dashed"></b>normál 1991-2020</span><span><b style="background:var(--muted);border-radius:50%;width:.4rem;height:.4rem;vertical-align:1px"></b>část dní doplněna z okolní stanice</span></div>
     <div class="jb-rank" id="jb-rank"></div>
-    <div class="callout" style="margin-top:1rem"><b>Jak to číst.</b> <b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, počítaná z teplot metodou Hargreaves-Samani podle FAO-56 📄). <b>Srážky minus výpar</b> je žízeň krajiny (odborně klimatická vodní bilance), ne voda, která někam zmizela: víc, než naprší, se vypařit nemůže. V zimě je déšť větší než žízeň a přebytek doplní půdu a podzemní vodu; od jara do září si rostliny berou ze zásoby v půdě, a když dojde, zavřou průduchy a skutečný výpar klesne až k nule (FAO-56 ✅⏳). Záporné číslo je tedy voda, kterou rostliny chtěly a nedostaly. Po suché nebo teplé zimě se zásoba nedoplní a deficit se přenáší do dalšího roku (Národní koalice pro boj se suchem 2020 ✅⏳). Vítr a vlhkost vzduchu metoda nezná; při větru je skutečná ztráta větší. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne. Prahy podle ČHMÚ ✅: tropický den = nejvyšší teplota aspoň 30 °C, supertropický aspoň 35 °C (neoficiální název), tropická noc = teplota neklesne pod 20 °C (<a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2025/TI_Leto2025.pdf" target="_blank" rel="noopener">ČHMÚ, Klimatologické léto 2025</a>).</div>
+
+    <div class="jb-box">
+      <div class="jb-eyebrow">Výhled</div>
+      <h4>Co nás čeká</h4>
+      <p class="jb-p">Podle výpočtů CzechGlobe z klimatických modelů se Česko při nejpravděpodobnějším vývoji do poloviny století oteplí o 2 °C (1,8-2,5 °C) proti letům 1981-2010, v létě o 2,5 °C. Srážek za rok bude zhruba stejně (+3,6 %, s nejistotou -5 až +9 %), v zimě spíš přibudou a padnou jako déšť, v létě ubudou ✅. Víc tepla a méně letního deště znamená vyšší výpar a častější, delší a rychleji nastupující sucha. Mezivládní panel pro změnu klimatu (IPCC) řadí střední Evropu mezi oblasti, kde při oteplení o 2 °C přibude sucha v půdě ✅⏳, a čeká víc škod z přívalových dešťů ✅⏳.</p>
+      <p class="src">Zdroje: <a href="https://www.klimatickazmena.cz/odhad-budouciho-vyvoje-teplot2/" target="_blank" rel="noopener">CzechGlobe, klimatickazmena.cz - teploty</a> ✅, <a href="https://www.klimatickazmena.cz/odhad-budouciho-vyvoje-srazek2/" target="_blank" rel="noopener">srážky</a> ✅, <a href="https://www.klimatickazmena.cz/odhad-budouciho-vyvoje-klimatu/" target="_blank" rel="noopener">výhled</a> ✅ (modely CMIP6, Česko celkem); <a href="https://www.ipcc.ch/report/ar6/wg1/figures/chapter-11/figure-11-18/" target="_blank" rel="noopener">IPCC AR6 WGI, obr. 11.18</a> ✅⏳; <a href="https://www.ipcc.ch/report/ar6/wg2/downloads/outreach/IPCC_AR6_WGII_FactSheet_Europe.pdf" target="_blank" rel="noopener">IPCC AR6 WGII, Evropa</a> ✅⏳. Pro konkrétní katastr Koryčan nabízí výpočty <a href="https://www.climrisk.cz/mapa-cr/" target="_blank" rel="noopener">ClimRisk</a>.</p>
+    </div>
+
+    <div class="jb-cta" id="jb-l-call"></div>
+
+    <details class="jb-cist"><summary><b>Jak to číst</b> - pojmy a metody</summary><p><b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, počítaná z teplot metodou Hargreaves-Samani podle FAO-56 📄). <b>Srážky minus výpar</b> je žízeň krajiny (odborně klimatická vodní bilance), ne voda, která někam zmizela. Vítr a vlhkost vzduchu metoda nezná; při větru je skutečná ztráta větší. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne. Prahy podle ČHMÚ ✅: tropický den = nejvyšší teplota aspoň 30 °C, supertropický aspoň 35 °C (neoficiální název), tropická noc = teplota neklesne pod 20 °C (<a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2025/TI_Leto2025.pdf" target="_blank" rel="noopener">ČHMÚ, Klimatologické léto 2025</a>).</p></details>
     <p class="src" id="jb-src"></p>
   </div>
 </section>
@@ -2648,6 +2772,7 @@ const addD=(s,n)=>{const d=new Date(s+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()
 const dni=n=>n+' '+(n===1?'den':n>=2&&n<=4?'dny':'dní');
 const ZDR={K:'ČHMÚ Koryčany',P:'KS Koryčany (Povodí Moravy)',N:'ČHMÚ Nemochovice'};
 const R=N.rocniky, LAST=DNY[DNY.length-1], ROK=+LAST.slice(0,4);
+const JB={};   // hodnoty z grafu pro texty pribehu
 $('jb-upd').textContent=W.vytvoreno.replace('T',' ').replace('Z',' UTC');
 const mean=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
 function lin(xs,ys){const n=xs.length,mx=mean(xs),my=mean(ys);let sxy=0,sxx=0;for(let i=0;i<n;i++){sxy+=(xs[i]-mx)*(ys[i]-my);sxx+=(xs[i]-mx)**2;}return sxx?sxy/sxx:0;}
@@ -2673,6 +2798,7 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
   let cur=null;
   if(!R[ROK]){ const dd=DNY.filter(d=>d.startsWith(ROK+'-')); let P=0,nP=0,Pn=0; dd.forEach(d=>{const p=W.dny[d][0], m=+d.slice(5,7); Pn+=N.mesic[m].P/dim(ROK,m); if(p!=null){P+=p;nP++;}});
     if(nP>60) cur={r:ROK,P,Pn,do:dd[dd.length-1],n:nP,dni:dd.length}; }
+  JB.p1={cur,body};
   // osa x po letech: chybějící rok = mezera (ne posun ostatních)
   const R0=body[0][0], n=(cur?cur.r:body[body.length-1][0])-R0+1;
   const norm=N.rok.P, Wd=720,Hd=220,L=40,Rr=6,T=12,B=24,w=Wd-L-Rr,h=Hd-T-B, sc=nice(0,Math.max(...body.map(b=>b[1])),4), vmax=sc.hi, bw=w/n, y=v=>T+h-h*v/vmax, X=r=>L+(r-R0)*bw;
@@ -2778,7 +2904,62 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
         if(cur.lx!=null&&bodyT.some(b=>b.lx!=null)&&cur.lx>mx('lx')) rek.push(`nejteplejší léto řady (dosud ${fmt(mx('lx'),1)} °C)`);
         return rek.length?` <b>Rekord: ${rek.join('; ')}.</b>`:'';})():'')+
     (maH?'':' <i>Supertropické dny, tropické noci a letní maxima za minulé roky se právě přepočítávají.</i>');
-  $('jb-l-call').innerHTML=`<div class="mot-h">Co z toho plyne pro pozemek</div><p>Déšť přijde v epizodách a mezi nimi je krajina v deficitu - srážky ročně zhruba stejné, výpar roste. Co z deště nezůstane na pozemku, odteče během hodin.</p><p><b>Proto má smysl zadržet vodu tam, kde spadne.</b></p><div class="mot-a"><a href="#" data-go="pozemek">Spočítej to na svém pozemku →</a><a href="#" data-go="katalog">Co se dá udělat (katalog) →</a></div>`;
+  JB.p2={cur,body,bodyT,nejh};
+})();
+
+// ---------- Jak bylo jako datovy pribeh (22. 10. 2026): klicova cisla, texty kapitol, vysvetleni, lijaky, letosek, vyzva
+(function(){
+  const p1=JB.p1, p2=JB.p2; if(!p1||!p2) return;
+  const Py=Object.fromEntries(p1.body), avgP=(a,b)=>mean(Object.entries(Py).filter(([r])=>r>=a&&r<=b).map(([,v])=>v));
+  const bT=p2.bodyT, bV=p2.body, rng=(arr,a,b,k)=>mean(arr.filter(x=>x.r>=a&&x.r<=b&&x[k]!=null).map(x=>x[k]));
+  const trE=lin(bV.map(b=>b.r),bV.map(b=>b.E))*10, d30a=rng(bT,2001,2010,'d30'), d30b=rng(bT,ROK-10,ROK-1,'d30');
+  $('jb-rok').textContent=ROK;
+  const kc=(n,c,t)=>`<div class="jb-k"><div class="num" style="color:var(${c})">${n}</div><div>${t}</div></div>`;
+  $('jb-key').innerHTML=kc(`${fmt0(N.rok.P)} mm`,'--water',`naprší za rok (normál 1991-2020). V letech 1921-1950 to bylo ${fmt0(avgP(1921,1950))} mm.`)
+    +kc(`${fmt0(N.rok.ET0)} mm`,'--soil',`by se mohlo za rok vypařit. ${trE>0?'Roste':'Mění se'} o ${fmt0(Math.abs(trE))} mm za každých 10 let.`)
+    +kc(`${fmt0(d30a)} → ${fmt0(d30b)}`,'--bad',`tropických dní za rok: průměr 2001-2010 proti ${ROK-10}-${ROK-1}.`);
+  // kapitola 1
+  $('jb-ch1').innerHTML=`Stanice v Koryčanech měří srážky přes sto let. Mokré a suché roky se střídají, ale desetiletý průměr (oranžová čára) se drží kolem 600 mm. Normál 1991-2020 je ${fmt0(N.rok.P)} mm, v letech 1921-1950 to bylo ${fmt0(avgP(1921,1950))} mm. Na množství deště to tedy není.`;
+  // box 1: kam mizi dest
+  const zizen=N.rok.ET0-N.rok.P;
+  $('jb-box1').innerHTML=`Na metr čtvereční naprší za rok ${fmt0(N.rok.P)} litrů. Slunce a vítr by ale dokázaly odpařit ${fmt0(N.rok.ET0)} litrů, kdyby voda byla. Tomu říkáme žízeň krajiny. Vypaří se jen tolik, kolik vody opravdu je, a co steče do kanálu, krajině chybí.`;
+  $('jb-il-p').textContent=`naprší ${fmt0(N.rok.P)} mm`; $('jb-il-e').textContent=`vypařit ${fmt0(N.rok.ET0)} mm`; $('jb-il-d').textContent=`žízeň o ${fmt0(zizen)} mm větší`;
+  // kapitola 2
+  const plus=bV.filter(b=>b.b>=0).map(b=>b.r), cur=p2.cur, nejh=p2.nejh;
+  $('jb-ch2').innerHTML=`Když od deště odečteme, kolik by se mohlo vypařit, vyjde minus ve ${bV.length-plus.length} z ${bV.length} let od roku ${bV[0].r}${plus.length?` (přebytek měl jen ${plus.join(', ')})`:''}.`
+    +(cur?` Letos do ${cur.do.slice(8,10).replace(/^0/,'')}. ${cur.do.slice(5,7).replace(/^0/,'')}. chybí už <b>${fmt0(-cur.b)} mm</b>${cur.b<nejh.b?`, víc než v dosud nejhorším roce ${nejh.r} (${fmt0(-nejh.b)} mm)`:''}.`:'');
+  // box 2: rocni chod z mesicnich normalu
+  const M=[1,2,3,4,5,6,7,8,9,10,11,12].map(m=>N.mesic[m].bil), zima=[10,11,12,1,2].reduce((a,m)=>a+N.mesic[m].bil,0), leto=[3,4,5,6,7,8,9].reduce((a,m)=>a+N.mesic[m].bil,0);
+  $('jb-zima').textContent=`Od října do února u nás naprší asi o ${fmt0(zima)} mm víc, než se může vypařit. Půda se nasytí a přebytek prosakuje dolů k podzemní vodě a do studní.`;
+  $('jb-leto').textContent=`Od března do září by se mohlo vypařit o ${fmt0(-leto)} mm víc, než naprší. Rostliny si berou vodu ze zásoby v půdě. Letní déšť spotřebují hned a do hloubky nedojde.`;
+  { const Wd=720,Hd=190,L=36,T=14,B=24,w=Wd-L-6,h=Hd-T-B, sc=nice(Math.min(...M),Math.max(...M),4), y=v=>T+h-h*(v-sc.lo)/(sc.hi-sc.lo), bw=w/12;
+    const MZ=['led','úno','bře','dub','kvě','čer','čvc','srp','zář','říj','lis','pro'];
+    let o=osy(L,w,T,h,sc)+`<line x1="${L}" x2="${L+w}" y1="${y(0)}" y2="${y(0)}" style="stroke:var(--fg)"/>`;
+    M.forEach((v,i)=>{const x=L+i*bw+bw*.15, ww=bw*.7; o+=`<rect x="${x.toFixed(1)}" y="${Math.min(y(0),y(v)).toFixed(1)}" width="${ww.toFixed(1)}" height="${Math.abs(y(0)-y(v)).toFixed(1)}" style="fill:var(${v<0?'--dry':'--water'})"><title>${MES[i]}: ${v>0?'+':''}${fmt(v,0)} mm</title></rect>`
+      +`<text x="${(L+(i+.5)*bw).toFixed(1)}" y="${(v<0?y(v)+12:y(v)-4).toFixed(1)}" text-anchor="middle" style="fill:var(--fg)">${v>0?'+':''}${fmt0(v)}</text><text x="${(L+(i+.5)*bw).toFixed(1)}" y="${Hd-6}" text-anchor="middle">${MZ[i]}</text>`;});
+    $('jb-mes').innerHTML=o+`<text x="${L}" y="${T-3}">mm za měsíc</text>`; }
+  // kapitola 3
+  const mx35=Math.max(0,...bT.filter(b=>b.d35!=null).map(b=>b.d35)), c2=p2.cur;
+  $('jb-ch3').innerHTML=`Tropických dní nad 30 °C bylo v letech 2001-2010 v průměru ${fmt0(d30a)} za rok, v posledních deseti letech ${fmt0(d30b)}${d30a>0?` (asi o ${fmt0(100*(d30b-d30a)/d30a)} % víc)`:''}.`
+    +(c2&&c2.d35!=null&&bT.some(b=>b.d35!=null)?` Letos bylo ${c2.d35} ${c2.d35===1?'den':c2.d35<5?'dny':'dní'} nad 35 °C${c2.d35>mx35?`, přitom za ${bT.length} let předtím jich bylo v jednom roce nejvýš ${mx35}`:''}.`:'');
+  // kapitola 4: nejvetsi denni srazky (jen mereni Korycany)
+  const top=(N.top_denni||[]).slice(0,5);
+  if(top.length){ const mxP=top[0][1];
+    $('jb-lijak').innerHTML=top.map(([d,v])=>`<div class="jb-bar"><span>${csd(d)}</span><span class="b"><i style="width:${(100*v/mxP).toFixed(0)}%"></i></span><span class="num">${fmt0(v)} mm</span></div>`).join('');
+    $('jb-lijak-n').textContent=`ČHMÚ Koryčany, jen dny skutečně změřené na stanici. Pro srovnání: běžný déšť má 10 mm a přichází asi ${fmt0(cetnost(10)||17)}x za rok.`;
+  } else { $('jb-lijak').innerHTML=''; $('jb-lijak-n').textContent='Seznam se doplní po příštím přepočtu dlouhých řad.'; }
+  // kapitola 5: letosek
+  const c1=p1.cur, dt=x=>x.slice(8,10).replace(/^0/,'')+'. '+x.slice(5,7).replace(/^0/,'')+'.';
+  const lx=bT.filter(b=>b.lx!=null), mxL=lx.length?Math.max(...lx.map(b=>b.lx)):null, mxD=Math.max(...bT.map(b=>b.d30)), mxDr=bT.find(b=>b.d30===mxD);
+  const lc=(c,a,b)=>`<div class="jb-card" style="border-top-color:var(${c})"><div class="big num">${a}</div><div class="cmp">${b}</div></div>`;
+  if(c1||c2){ $('jb-letos-h').textContent=`5. Letošek do ${dt((c1||c2).do)}`;
+    $('jb-letos').innerHTML=(c1?lc('--dry',`${fmt0(c1.P)} mm`,`srážek, ${fmt0(100*c1.P/c1.Pn)} % normálu za stejné období`):'')
+      +(c2?lc('--soil',`${fmt0(c2.b)} mm`,`srážky minus výpar${c2.b<nejh.b?`, nejhůř od roku ${bV[0].r}`:''}`):'')
+      +(c2?lc('--bad',`${c2.d30}`,`tropických dní, ${c2.d30>mxD?'nejvíc od roku '+bT[0].r:`rekord je ${mxD} (${mxDr.r})`}`):'')
+      +(c2&&c2.lx!=null&&mxL!=null?lc('--hot',`${fmt(c2.lx,1)} °C`,`průměr letních maxim${c2.lx>mxL?`, nejteplejší léto od roku ${bT[0].r}`:`, rekord ${fmt(mxL,1)} °C`}`):''); }
+  // 6: vyzva
+  $('jb-l-call').innerHTML=`<div class="jb-cta-t"><h3>6. Co s tím u vás doma</h3><p>Vodu, která spadne na střechu a dvůr, jde udržet tam, kde spadla: sud pod okapem, dešťový záhon, strom, propustná dlažba. Spočítej si, kolik to dělá na tvém pozemku.</p><div class="mot-a"><a href="#" data-go="pozemek">Spočítej svůj pozemek →</a><a href="#" data-go="katalog">Co se dá udělat (katalog) →</a></div></div>`
+    +`<svg class="il" viewBox="0 0 520 260" role="img" aria-label="Ilustrace: dům se sudem pod okapem, dešťovým záhonem, stromem a propustnou dlažbou"><rect class="soilbg" x="0" y="200" width="520" height="60"/><path class="soil" d="M0 200H520" stroke-width="2"/><path class="house" d="M60 200v-80h110v80" stroke-width="2.5"/><path class="ln" d="M46 122l69-52 69 52" fill="none" stroke-width="2.5"/><rect class="door ln" x="96" y="150" width="28" height="50" stroke-width="2"/><path class="ln" d="M184 122h8v40" fill="none" stroke-width="2.5"/><rect class="house" x="182" y="162" width="30" height="38" rx="4" stroke-width="2.5"/><rect class="wf2" x="185" y="176" width="24" height="21"/><path class="wfill soil" d="M236 200q30 22 60 0" stroke-width="2"/><g class="plant" stroke-width="2.5" stroke-linecap="round" fill="none"><path d="M252 202v-22M252 188q-6 0-8-8M252 186q6 0 8-8M280 202v-18M280 190q5 0 7-7"/></g><circle class="tree" cx="380" cy="104" r="44"/><path class="trunk" d="M380 148v52" stroke-width="5"/><g class="door ln" stroke-width="1.5"><rect x="440" y="206" width="22" height="10"/><rect x="466" y="206" width="22" height="10"/><rect x="492" y="206" width="22" height="10"/></g><g class="plant" stroke-width="2"><path d="M464 206v10M490 206v10"/></g><g class="num-b"><circle cx="197" cy="148" r="12"/><circle cx="266" cy="234" r="12"/><circle cx="380" cy="46" r="12"/><circle cx="477" cy="238" r="12"/></g><g class="num-t" text-anchor="middle"><text x="197" y="153">1</text><text x="266" y="239">2</text><text x="380" y="51">3</text><text x="477" y="243">4</text></g></svg>`;
   $('jb-l-call').querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault(); document.querySelector(`nav.tabs button[data-tab="${a.dataset.go}"]`).click(); window.scrollTo({top:0,behavior:'smooth'});}));
 })();
 
@@ -2898,7 +3079,7 @@ sel.addEventListener('change',render); inOd.addEventListener('change',render); i
   dlg.querySelector('.zoom-x').addEventListener('click',zav);
   dlg.addEventListener('click',e=>{ if(e.target===dlg) zav(); });
   const IKO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
-  function nadpis(wrap){ for(let el=wrap.previousElementSibling; el; el=el.previousElementSibling){ if(el.matches('h2,h3')) return el.textContent.trim(); const h=el.querySelector&&el.querySelector('h3'); if(h) return h.textContent.trim(); } return 'Graf'; }
+  function nadpis(wrap){ for(let el=wrap.previousElementSibling; el; el=el.previousElementSibling){ if(el.matches('h2,h3,h4')) return el.textContent.trim(); const h=el.querySelector&&el.querySelector('h3,h4'); if(h) return h.textContent.trim(); } return 'Graf'; }
   function otevri(svg){
     const wrap=svg.parentNode, c=svg.cloneNode(true); c.removeAttribute('id'); c.querySelectorAll('[id]').forEach(x=>x.removeAttribute('id'));
     document.getElementById('zoom-t').textContent=nadpis(wrap);
