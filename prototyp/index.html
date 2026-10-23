@@ -1035,7 +1035,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <div class="jb-kicker">Jak bylo · data ČHMÚ 1921-<span id="jb-rok"></span></div>
       <h2 class="jb-title">Prší pořád stejně. Krajina přesto vysychá.</h2>
       <p class="jb-lede">Za sto let se v Koryčanech množství deště skoro nezměnilo. Změnilo se, kolik vody stihne odejít do vzduchu a jak prudce prší. Proto je sucho, i když je rok „normální“.</p>
-      <p class="note">Data se stahují automaticky každý den; poslední aktualizace <span class="num" id="jb-upd"></span>.</p>
+      <p class="note">Data se stahují automaticky dvakrát denně (ráno a večer). <span id="jb-upd"></span></p>
     </div>
     <div class="jb-key" id="jb-key"></div>
 
@@ -2773,7 +2773,8 @@ const dni=n=>n+' '+(n===1?'den':n>=2&&n<=4?'dny':'dní');
 const ZDR={K:'ČHMÚ Koryčany',P:'KS Koryčany (Povodí Moravy)',N:'ČHMÚ Nemochovice'};
 const R=N.rocniky, LAST=DNY[DNY.length-1], ROK=+LAST.slice(0,4);
 const JB={};   // hodnoty z grafu pro texty pribehu
-$('jb-upd').textContent=W.vytvoreno.replace('T',' ').replace('Z',' UTC');
+{ const t=new Date(W.vytvoreno.replace('Z',':00Z')), st=isNaN(t)?W.vytvoreno:t.toLocaleString('cs-CZ',{day:'numeric',month:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Prague'});
+  $('jb-upd').innerHTML=`Poslední den s daty: <b>${csd(LAST)}</b>, staženo ${st}. ČHMÚ zveřejňuje denní data se zpožděním 1-2 dny (den měření končí v 8 ráno), proto tu včerejšek ještě nemusí být.`; }
 const mean=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
 function lin(xs,ys){const n=xs.length,mx=mean(xs),my=mean(ys);let sxy=0,sxx=0;for(let i=0;i<n;i++){sxy+=(xs[i]-mx)*(ys[i]-my);sxx+=(xs[i]-mx)**2;}return sxx?sxy/sxx:0;}
 // osy s kulatými hodnotami (0, 250, 500...): dílek 1/2/2,5/5 x 10^k, aby čáry nevypadaly jako konkrétní hodnota
