@@ -357,7 +357,7 @@ op("Z11", "Zálivka zachycenou vodou, kapková závlaha", ["Z"], ["J","S"], 1, [
    vhodnost={"vsude": True}, vazby={"potrebuje": ["S01"], "synergie": [], "konflikt": []}, povoleni=0, ceny=[NEOVERENA], financovani=["vlastni"])
 
 op("Z12", "Zalévací hliněné nádoby v záhonu (olla, oya)", ["Z"], ["J","S"], 1, ["W","E"], ["I"], "pozemek",
-   popis="Neglazovaná hliněná nádoba zakopaná po hrdlo mezi rostliny; naplní se vodou (nejlépe dešťovou z S01) a voda prosakuje stěnou přímo ke kořenům. Z povrchu půdy se nic neodpařuje, zalévá se jednou za několik dní. Středomořský princip, svépomocně ze dvou květináčů.",
+   popis="Neglazovaná hliněná nádoba zakopaná po hrdlo mezi rostliny; naplní se vodou (nejlépe dešťovou ze sudu nebo nádrže) a voda prosakuje stěnou přímo ke kořenům. Z povrchu půdy se nic neodpařuje, zalévá se jednou za několik dní. Středomořský princip, svépomocně ze dvou květináčů.",
    kvant=[kv("W","hodnota","Úspora vody 60-70 % proti zálivce konví (pokus s kukuřicí, aridní klima; citace v AZ1911)", rozsah=[60,70], jednotka="% vody na zálivku", zdroj=["az1911_2021"], znacka="citace"),
           kv("W","hodnota","Výrobce: úspora 50-70 %, zálivka 3x řidší (studie nejmenovány); obec Ixelles po 1. sezóně: čas zálivky zhruba poloviční", rozsah=[50,70], jednotka="% vody na zálivku", zdroj=["oyas_bxl"], znacka="citace"),
           kv("E","kvalitativne","Voda jde pod povrch, neproduktivní výpar z půdy odpadá; proti kapkové závlaze úspora zhruba nulová (AZ1911)", zdroj=["az1911_2021"], znacka="overeno")],
@@ -368,7 +368,7 @@ op("Z12", "Zalévací hliněné nádoby v záhonu (olla, oya)", ["Z"], ["J","S"]
    priklady=[pr("Roeschwoog, Alsasko (Francie)", "pilotní záhon 12 m² před radnicí, 11 nádob po 6,5 l (cca 1 ks/m²), bez jiné zálivky; úspora času: dosud 3 půldny zálivky týdně", kdy="2022", kdo="obec", mereno=None, zdroj=["roeschwoog2022"]),
              pr("Ixelles, Brusel (Belgie)", "300 nádob ve veřejných záhonech; po sezóně 2023 čas zálivky zhruba poloviční, menší úhyn trvalek a keřů; sousední Watermael-Boitsfort dotuje domácnostem 75 % ceny do 100 €", kdy="2023", kdo="obec, parky", mereno="čas zálivky (pozorování obce, nezávisle neověřeno)", zdroj=["oyas_bxl"]),
              pr("Fotopostup výroby ze dvou květináčů (Záhrada.sk)", "2 terakotové květináče Ø 16-18 cm, otvor zalepit střepem a sanitárním silikonem, slepit okraji, zakopat 2 cm nad zem, 3-4 sazenice kolem, zakrýt miskou, namulčovat; na zimu vyjmout", kdy="2025", kdo="M. Felixová", zdroj=["felixova2025_olla"])],
-   prenositelnost="Ano pro zeleninové a trvalkové záhony, školní zahradu (U07) a truhlíky; nezávisí na půdě ani sklonu. Nehodí se pod stromy a keře a na velké plochy.",
+   prenositelnost="Ano pro zeleninové a trvalkové záhony, školní zahradu a truhlíky; nezávisí na půdě ani sklonu. Nehodí se pod stromy a keře a na velké plochy.",
    rizika="Úspora platí proti zálivce na povrch, ne proti kapkové závlaze. Póry se zanášejí solemi z tvrdé vody; sazenice prvních cca 4 týdny zalévat navíc; na zimu vyprázdnit nebo vyjmout 🤔. Neřeší vsak ani odtok, jen šetří vodu.",
    nedohledano=["měření v ČR nebo střední Evropě","interval dolévání (l/den) pro naše klima","trvanlivost přes zimu"],
    pozn_poctivost="Čísla úspory jsou z aridního pokusu a od výrobce; v našem klimatu neměřeno. Zobrazovat jako citaci, ne jako jistotu.")
@@ -440,15 +440,15 @@ op("S05", "Šedá voda ze sprchy a umyvadel na zálivku (a WC)", ["S","Z"], ["J"
    pozn_poctivost="Austrálie má středomořské klima a jinou cenu vody; čísla brát jako rozsah, ne jako předpověď pro Koryčany.")
 
 op("S06", "Dešťová voda na splachování WC (nepitný rozvod v domě nebo škole)", ["S"], ["J","O","S"], 3, ["W","R"], ["Q"], "pozemek",
-   popis="Podzemní nádrž (S01) napojená přes filtr a čerpadlo na oddělený rozvod k WC (případně pračce) s automatickým dopouštěním pitné vody. Na rozdíl od zálivky bere vodu každý den celý rok, takže nádrž má smysl i v zimě a při každém dešti má volný objem.",
+   popis="Podzemní nádrž na dešťovou vodu napojená přes filtr a čerpadlo na oddělený rozvod k WC (případně pračce) s automatickým dopouštěním pitné vody. Na rozdíl od zálivky bere vodu každý den celý rok, takže nádrž má smysl i v zimě a při každém dešti má volný objem.",
    kvant=[kv("W","hodnota","WC = cca 20-30 % spotřeby domácnosti: Praha 2020 splachování 26 l ze 112 l/os/den; Bielsko-Biała cca 30 %; ČR 2023 celkem 86,7 l/os/den", rozsah=[20,30], jednotka="% spotřeby pitné vody", zdroj=["praha14_voda2022","madzia2019","csu2024_voda"], znacka="overeno"),
           kv("W","vzorec","Úspora pitné vody = osoby × 17-26 l/den = 6-9,5 m³/os/rok; 4 osoby 25-38 m³/rok 🤔 odvozeno", vzorec="V_rok_m3 = osoby * (0.017..0.026) * 365", zdroj=["praha14_voda2022","csu2024_voda"], znacka="odhad"),
           kv("W","hodnota","Nádrž 0,25 m³/os a střecha 30 m²/os nahradí téměř 80 % vody na splachování (přes 10 m³/os/rok); nomogram, Bielsko-Biała (vlhčí klima než Koryčany)", hodnota=80, jednotka="% vody na splachování", zdroj=["madzia2019"], znacka="overeno"),
-          kv("R","vzorec","Jako S01; nádrž se průběžně vyprazdňuje, při dešti má volný objem", vzorec="V_zachyceno_m3 = min(V_nadrz_m3 - V_naplneno_m3, A_strechy_m2 * P_m)", zdroj=["tab_c"])],
-   vhodnost={"kazda_strecha": True, "podminka": "místo na podzemní nádrž a oddělený rozvod; nejlépe novostavba, rekonstrukce, veřejná budova (U04)", "vyloucit": ["malá střecha + velká domácnost (nádrž vyschne)"]},
+          kv("R","vzorec","Jako u nádrže na dešťovou vodu; nádrž se průběžně vyprazdňuje, při dešti má volný objem", vzorec="V_zachyceno_m3 = min(V_nadrz_m3 - V_naplneno_m3, A_strechy_m2 * P_m)", zdroj=["tab_c"])],
+   vhodnost={"kazda_strecha": True, "podminka": "místo na podzemní nádrž a oddělený rozvod; nejlépe novostavba, rekonstrukce, veřejná budova", "vyloucit": ["malá střecha + velká domácnost (nádrž vyschne)"]},
    vazby={"potrebuje": ["S01"], "synergie": ["S02","U04","S05"], "konflikt": ["přepad do kanalizace"]}, povoleni=1,
    povoleni_pozn="nepitný rozvod označený podle ČSN 75 6780, ochrana proti zpětnému toku; ohlášení 🤔; souhlas provozovatele vodovodu 💻",
-   ceny=[cena("podzemní nádrž 5000 l vč. šachty, bez montáže (viz S01)", 50830, "Kč", 2026, "hornbach_nadrz"), {"polozka": "čerpadlo, filtr, nepitný rozvod, montáž", "hodnota": None, "rozsah": None, "jednotka": "Kč", "rok": None, "zdroj": None, "pozn": "cena neověřena"}],
+   ceny=[cena("podzemní nádrž 5000 l vč. šachty, bez montáže (jako u nádrže na dešťovou vodu)", 50830, "Kč", 2026, "hornbach_nadrz"), {"polozka": "čerpadlo, filtr, nepitný rozvod, montáž", "hodnota": None, "rozsah": None, "jednotka": "Kč", "rok": None, "zdroj": None, "pozn": "cena neověřena"}],
    financovani=["vlastni","nzu_rd_2026","opzp_1_3_4"], standardy=["csn756780","csn759010"],
    priklady=[pr("Kyselov u Vyššího Brodu (Český soběstačný dům)", "dům bez přípojek; zachycená dešťová voda po úpravě na sprchu a WC (Adapterra Awards 2022, Náš domov)", kdy="2022", kdo="soukromý stavebník + 40 odborníků", mereno=None, zdroj=["adapterra2022"]),
              pr("Ořechov u Brna", "obec: 4 retenční nádrže na dešťovou vodu, 3 tůně, suchý poldr, 7 ha mokřad (Adapterra Awards 2022, Volná krajina); využití nádrží na WC a objemy ve zdroji neuvedeny", kdy="2022", kdo="obec Ořechov", mereno=None, zdroj=["ceskestavby2022_orechov"]),
@@ -507,7 +507,7 @@ op("U06", "Mozaiková seč obecních ploch, květnaté louky", ["U","L"], ["O","
    financovani=["vlastni","ppk_b"], standardy=["sppk_d02_004","mhmp2019_sec"])
 
 op("U07", "Školní zahrada jako ukázkový pozemek", ["U","Z"], ["S","O"], 1, ["R","I","CH","B"], [], "pozemek",
-   popis="Sada Z01-Z08 + měření M01-M06 na školním pozemku; účinky a ceny podle složek.",
+   popis="Sada zahradních opatření (dešťový záhon, tůň, průleh, propustná dlažba, mulč, strom, živý plot, louka) a žákovských měření (srážky, teploty, vsak) na školním pozemku; účinky a ceny podle jednotlivých opatření.",
    vhodnost={"areal_skoly": True}, vazby={"potrebuje": [], "synergie": ["Z01","Z02","Z05","Z06","Z08","S01","S02","M01","M02","M03","M04","M05","M06"], "konflikt": []}, povoleni=0, povoleni_pozn="0-1",
    ceny=[], financovani=["opzp_1_3_4","participativni","vlastni"])
 
@@ -520,7 +520,7 @@ op("U09", "Studie a plán hospodaření s dešťovou vodou obce (kam teče voda 
    priklady=[pr("Taucha (Sasko)", "vyhodnocení 3 soustav průleh-rýha po 25-30 letech provozu; obecné pokyny pro obce (plánování, vlastnictví, provoz, údržba, monitoring)", kdy="2023-2024", kdo="město Taucha, Grüner Ring Leipzig, IWS, KWL", mereno="k_f, vyprázdnění do 24 h, těžké kovy v půdě", zdroj=["taucha2024","iws2024_taucha"]),
              pr("Jílové u Prahy", "malé město má studii retenční kapacity (vsak, malé nádrže, krajinná opatření) a hledá partnery, jak přejít 'od analýzy k realizaci'", kdy="2026", kdo="město Jílové u Prahy", mereno=None, zdroj=["portico2026_jilove"]),
              pr("Močovice (Středočeský kraj)", "koncepce rozvoje vodních ploch obce: návesní rybník 0,65 ha (4 530 m² hladiny), odbahnění 906 m³, varianty 2,5-2,8 mil. Kč bez DPH, jez 7,6-16,6 mil. Kč", kdy="2020", kdo="obec, VRV a.s.", mereno=None, zdroj=["vrv2020_mocovice"])],
-   prenositelnost="Plně. Pro Koryčany: tato aplikace + pasport svodů veřejných budov (škola, úřad, sokolovna, hasičárna) + dohoda, kdo seče a čistí průlehy. Školní projekt 'kam teče voda ze školy' (M01, M05) jako vstup.",
+   prenositelnost="Plně. Pro Koryčany: tato aplikace + pasport svodů veřejných budov (škola, úřad, sokolovna, hasičárna) + dohoda, kdo seče a čistí průlehy. Školní projekt 'kam teče voda ze školy' (srážkoměr, teploty povrchů) jako vstup.",
    rizika="Studie bez realizace (Jílové). Náklady studie nedohledány. Dolní Rakousko dotuje obcím 'Regenwasserpläne' 📄 (web 22. 10. offline).",
    nedohledano=["cena studie HDV pro obec do 3 000 obyvatel","NÖ Regenwasserpläne (web offline)"])
 
@@ -563,7 +563,7 @@ op("H02", "Stínění veřejných míst plachtami, pergolami s popínavkami, př
    ceny=[NEOVERENA], financovani=["vlastni","opzp_1_3_4"], standardy=[],
    priklady=[pr("Solothurn, Amtsplatz", "lanková pergola s popínavkami nad náměstím (zmíněno v odpovědi města Aarau jako vzor rostlinného stínění)", kdy=None, kdo="město Solothurn", mereno=None, zdroj=["aarau2022"], znacka="citace"),
              pr("Kornwestheim, Silcherschule", "asfalt školního dvora 56,2 °C ve 13:30, ve stínu 29,7 °C (termokamera města, červenec 2026); řešení stromy a štěpka, ne plachty", kdy="2026", kdo="město Kornwestheim", mereno="povrch termokamerou", zdroj=["stz2026_kornwestheim"])],
-   prenositelnost="Zastávky, hřiště, školní dvůr, tribuna, trh. Pergola s popínavkou (Z09) spojuje stín a výpar a je lepší než holá plachta.",
+   prenositelnost="Zastávky, hřiště, školní dvůr, tribuna, trh. Pergola s popínavkou spojuje stín a výpar a je lepší než holá plachta.",
    rizika="Plachta se ohřívá a sálá; stíní jen pod sebou; pevná konstrukce blokuje noční vychladnutí; vítr a sníh (demontáž na zimu). Neřeší vodu.",
    nedohledano=["měření teploty pod plachtou vs. pod stromem ve střední Evropě","cena"])
 
@@ -621,7 +621,7 @@ op("P07", "Větrolam, liniová výsadba na hranici pozemku", ["P","C"], ["V","O"
    financovani=["aopk_zmv","ppk_b"], standardy=["vumop_vitr2016","sppk_a02_001"], nedohledano=["snížení evapotranspirace v % (ČR)"])
 
 op("P08", "Polní cesta s doprovodnou zelení a zasakovacím příkopem", ["P","C"], ["V","O"], 3, ["E","Q","I","ER","B"], [], "lokalita",
-   popis="Víceúčelové: cesta + větrolam + biokoridor + zpomalení odtoku. Účinky podle složek P01 + P07 + C01.",
+   popis="Víceúčelové: cesta + větrolam + biokoridor + zpomalení odtoku. Účinky podle složek: zatravněný pás po vrstevnici, větrolam a zasakovací příkop u cesty.",
    vhodnost={"po_vrstevnici_nebo_sikmo": True, "hranice_vlastniku": True}, vazby={"potrebuje": ["N02|kopu"], "synergie": ["P01","P07","C01"], "konflikt": []}, povoleni=2, povoleni_pozn="1-2",
    ceny=[cena("průleh/mez", 200, "Kč/m²", 2024, "noo2024"), {"polozka": "konstrukce cesty", "hodnota": None, "rozsah": None, "jednotka": "Kč/m", "rok": None, "zdroj": None, "pozn": "podle konstrukce, ÚÚR 2025 kap. 8; bez konkrétní položky neuvádím"}],
    financovani=["opzp_1_3_1","kopu"], standardy=["tpeo2014"])
@@ -657,7 +657,7 @@ op("P12", "Zvyšování organické hmoty v půdě (hnůj, kompost, zelené hnoje
 # ===== L louka a pastvina
 op("L01", "Mozaiková nebo pozdní seč, ponechané pásy", ["L"], ["V","O"], 1, ["E","CH","B"], [], "lokalita",
    popis="Louku sekat mozaikově nebo později a část ponechat nepokosenou: chladnější půda, méně výparu, víc hmyzu.",
-   kvant=[kv("B","hodnota","Viz U06 (Chytrá a kol. 2024)", rozsah=[20,34], jednotka="% druhů", zdroj=["chytra2024"])],
+   kvant=[kv("B","hodnota","Jako u mozaikové seče obecních ploch (Chytrá a kol. 2024)", rozsah=[20,34], jednotka="% druhů", zdroj=["chytra2024"])],
    vhodnost={"vsude": True}, vazby={"potrebuje": [], "synergie": [], "konflikt": []}, povoleni=0,
    ceny=[cena("seč lehkou mechanizací", 17425, "Kč/ha", 2024, "noo2024")], financovani=["ppk_b","vlastni"], standardy=["sppk_d02_004"])
 
@@ -696,7 +696,7 @@ op("LES02", "Odvodnění lesních cest a svážnic do lesa, ne do strží (svodn
    ceny=[NEOVERENA], financovani=["vlastni"], standardy=["vyhl239_2017"], nedohledano=["rozestupy svodnic (ČSN 73 6108)"])
 
 op("LES03", "Druhově pestrý les, přirozená obnova, mrtvé dřevo a humus", ["LES"], ["V","SP"], 3, ["B"], ["I","E","CH"], "uzemi", kontext=True,
-   popis="Smíšený, druhově pestrý les s přirozenou obnovou, ponechaným mrtvým dřevem a humusem: zadrží víc vody než smrková monokultura.",
+   popis="Smíšený, druhově pestrý les s přirozenou obnovou, ponechaným mrtvým dřevem a humusem. Přínos je hlavně odolnější porost (kůrovec, vítr). Že zadrží víc vody než smrk, česká měření nepotvrdila: průměrně je vody v půdě pod oběma stejně.",
    kvant=[kv("I","hodnota","Česká data (Liz, 22 let): v suchých letech smrk propouští do podloží o ~15 % více vody než buk; průměrně se půdní voda pod porosty neliší. Tvrzení 'listnatý les zadrží víc vody' se nepoužije.", hodnota=15, jednotka="% perkolace (smrk > buk)", zdroj=["avcr2023_liz"]),
           kv("I","hodnota","Intercepce: buk 30 %, smíšený buk-dub 21 % srážek (📄 citace)", rozsah=[21,30], jednotka="%", zdroj=["hemr2023"], znacka="citace")],
    vhodnost={"lvs_chriby": "2. LVS 36 %, 3. LVS 60 % (PLO 36)", "vrstva": "NLI OPRL Lesni_vegetacni_stupne"}, vazby={"potrebuje": ["N06"], "synergie": ["LES04"], "konflikt": []}, povoleni=1, povoleni_pozn="LHP",
@@ -784,7 +784,7 @@ for mid, nazev, ucel, syn in [
     ("M03","Vlhkost půdy (jednoduché čidlo nebo gravimetricky)","validace účinku opatření",["Z05","P04"]),
     ("M04","Stav drobných toků a pramenišť (fotomonitoring, teče/neteče; registr estudanky.eu)","validace, argumentace",["T05","L04"]),
     ("M05","Teplota povrchů IR teploměrem (asfalt, tráva, tmavá vs. světlá střecha)","ukázka účinku CH",["Z06","S04","Z04"]),
-    ("M06","Mapování erozních rýh po přívalu","lokalizace C02, P05",["C02","P05"])]:
+    ("M06","Mapování erozních rýh po přívalu","kde postavit přehrážky v rýhách a kde zatravnit údolnice",["C02","P05"])]:
     op(mid, nazev, ["U","Z","L","T","C"], ["S","J"], 1, [], [], "pozemek", popis=ucel,
        vazby={"potrebuje": [], "synergie": syn, "konflikt": []}, povoleni=0, povoleni_pozn="souhlas vlastníka pozemku", ceny=[NEOVERENA], financovani=["vlastni","participativni"])
 
@@ -838,7 +838,7 @@ doplnit("Z01",
              pr("Kecskemét (Maďarsko)", "experimentální dešťová zahrada napájená ze střechy rodinného domu, různě tolerantní druhy; město ohrožené suchem", kdy="2024", kdo="Hoyk a kol.", mereno="v abstraktu bez čísel", zdroj=["hoyk2024"]),
              pr("Bratislava", "dotace domácnostem a firmám na nádrže, dešťové zahrady, propustné povrchy a zelené střechy: 50 % nákladů do 1 000 €; 2016: 16 žádostí, 6 dokončeno; účinek neměřen, zájem malý", kdy="2016-2020", kdo="hl. město Bratislava", mereno=None, zdroj=["bratislava_com"]),
              pr("Rotterdam, Sponstuin", "zkušební 'houbová zahrada': vlnitá mulda do 80 cm, 4 typy půdy s příměsemi, 2 roky měření", kdy="2019", kdo="De Urbanisten, Voedseltuin, město", mereno="výsledky v letáku nejsou", zdroj=["steenbreek_sponstuin"], znacka="overeno_stare")],
-   prenositelnost="V Koryčanech (HSP C/D, těžké půdy) pomáhá běžnému dešti 10 mm a mírným dešťům, ne N10 přívalu; na jílu počítat s rýhou nebo štěrkovým tělesem (Z10) a odstupy od domu.",
+   prenositelnost="V Koryčanech (HSP C/D, těžké půdy) pomáhá běžnému dešti 10 mm a mírným dešťům, ne přívalu jednou za 10 let; na jílu počítat s rýhou nebo štěrkovým tělesem (vsakovací objekt) a odstupy od domu.",
    rizika="Účinek na přívaly je malý, aplikace to musí říkat. Stromy ne do vsakovací zóny. Trvalky volit podle tolerance k zaplavení i suchu.",
    standardy=["lwg_versickern2010"])
 
@@ -875,7 +875,7 @@ doplnit("Z09",
 
 doplnit("Z11",
    nedohledano=["měření úspory kapkové závlahy proti postřiku v zahradách střední Evropy"],
-   pozn_poctivost="Olla (Z12) je podle AZ1911 zhruba rovnocenná kapkové závlaze.", synergie=["Z12"])
+   pozn_poctivost="Olla (zalévací hliněná nádoba) je podle AZ1911 zhruba rovnocenná kapkové závlaze.", synergie=["Z12"])
 
 doplnit("S01",
    priklady=[pr("Kyselov u Vyššího Brodu (Český soběstačný dům)", "zachycená dešťová voda po úpravě na sprchu a WC; Adapterra Awards 2022", kdy="2022", kdo="soukromý stavebník", mereno=None, zdroj=["adapterra2022"]),
@@ -884,7 +884,7 @@ doplnit("S01",
 
 doplnit("S02",
    kvant=[kv("Q","hodnota","Svedení ze zpevněných ploch na zeleň snížilo modelovaný odtok ze zpevněných ploch o 30 % (3 zahrady, Leeuwarden); na jílu se voda hromadí na povrchu", hodnota=30, jednotka="% odtoku ze zpevněných ploch", zdroj=["lakhi2025"], znacka="overeno")],
-   rizika="Na jílu (HSP D) se voda u domu hromadí; dodržet odstupy z ČSN 75 9010 a vést vodu do Z01/Z10.")
+   rizika="Na jílu (HSP D) se voda u domu hromadí; dodržet odstupy z ČSN 75 9010 a vést vodu do dešťového záhonu nebo vsakovacího objektu.")
 
 doplnit("Z02",
    rizika="V suchém létě je výpar z hladiny větší než srážky (vlastní data projektu, sekce Počasí): malá tůň bez přítoku na HSP C/D vyschne nebo žádá dolévání 🤔. Nepočítat ji jako zdroj zálivky.",
@@ -922,7 +922,7 @@ doplnit("U07",
    priklady=[pr("Kornwestheim (Bádensko-Württembersko), Silcherschule", "termokamera města: asfalt dvora 56,2 °C ve 13:30, stín 29,7 °C; odstranění asfaltu, 2 stromové mísy se štěpkou, stromy, cesty z kůry, sezení z kamene a kmenů; 37 000 € (15 000 € dotace Klimopass), městské zahradnictví 3-4 týdny", kdy="2026", kdo="město Kornwestheim", mereno="povrch termokamerou před úpravou", zdroj=["stz2026_kornwestheim"]),
              pr("Drážďany, Montessorischule Huckepack", "fólie na okna, markýzy, noční provětrávání, odstranění asfaltu, stromy, plachty, nádrž na dešťovou vodu; 2025-2027, EFRE", kdy="2025-2027", kdo="škola + Sasko (EuK)", mereno=None, zdroj=["dresden_huckepack"]),
              pr("Červená Voda", "školní zahrada 2 000 m² (koloběh vody, včely, energie, mikroklima), finalista Adapterra Awards 2026", kdy="2026", kdo="ZŠ Červená Voda", mereno=None, zdroj=["adapterra2026"])],
-   prenositelnost="Pro ZŠ Koryčany je prvním krokem změřit dvůr IR teploměrem v létě (M05): asfalt vs. stín vs. tráva. Pak odstranění části asfaltu, stromové mísy, štěpka.",
+   prenositelnost="Pro ZŠ Koryčany je prvním krokem změřit dvůr IR teploměrem v létě: asfalt vs. stín vs. tráva. Pak odstranění části asfaltu, stromové mísy, štěpka.",
    synergie=["M05","H02"])
 
 # --- doplňky blok C (veřejný prostor, škola), 22. 10. 2026
@@ -948,18 +948,18 @@ next(x for x in O if x["id"]=="U03")["ceny"].append(cena("stavba průlehu / prů
 doplnit("U04",
    priklady=[pr("Trebišov (SK), střední odborná škola", "dešťová zahrada 19 m², nádrž 1,5 m³ s přepadem, vsakovací rýhy 9 + 10 m², zatravňovací dlažba, zelená stěna 7,5 m s kapkovou závlahou z nádrže; účinek nevyčíslen", kdy="2021", kdo="TU Košice, škola", mereno=None, zdroj=["zelenakova_trebisov"]),
              pr("Berlín Treptow-Köpenick, školní dvory", "6 škol + hotová Schule am Altglienicker Wasserturm (2019/20): částečné odstranění asfaltu, výsadby, zasakovací průlehy; úspora poplatku za srážkovou vodu cca 1,80 EUR/m² napojené plochy/rok; měření žádné", kdy="2019-2023", kdo="Straßen- und Grünflächenamt", mereno=None, zdroj=["berlin_tk2023"])],
-   prenositelnost="ZŠ, úřad, sokolovna, hasičárna = největší jednotlivé střechy v obci; nejdřív pasport svodů (U09), pak S02 + Z01/Z10/S06.")
+   prenositelnost="ZŠ, úřad, sokolovna, hasičárna = největší jednotlivé střechy v obci; nejdřív zjistit, kam vedou svody (plán hospodaření s dešťovou vodou obce), pak odpojit svody od kanalizace a vést vodu do dešťového záhonu, vsakovacího objektu nebo nádrže na splachování.")
 
 doplnit("U05",
    priklady=[pr("Wiesenena (Sasko, obec Wiedemar)", "renaturace betonové požární nádrže: cca 1 000 m² hladiny, mělké břehy, litorál, hnízdiště břehulí, lavičky; náklady a měření neuvedeny", kdy="2008-2009", kdo="obec Wiedemar", mereno=None, zdroj=["wiesenena2009"], znacka="overeno_stare"),
              pr("Močovice", "koncepce: návesní rybník 4 530 m² hladiny, odbahnění 906 m³ (ponechat 10 cm pro těsnění), litorál, oprava hráze a výpusti; 2,5-2,8 mil. Kč bez DPH", kdy="2020", kdo="obec, VRV a.s.", mereno=None, zdroj=["vrv2020_mocovice"]),
-             pr("Cehnice (Jihočeský kraj)", "retenční nádrž Třtí na Cehnickém potoce: stálá hladina 11 401 m³ + retenční prostor 50 363 m³, revitalizace přítoku s tůněmi a mokřadem; 15,95 mil. Kč (OPŽP 13,56 mil.) - spíš T07", kdy=None, kdo="obec Cehnice", mereno=None, zdroj=["smocr_cehnice"]),
+             pr("Cehnice (Jihočeský kraj)", "retenční nádrž Třtí na Cehnickém potoce: stálá hladina 11 401 m³ + retenční prostor 50 363 m³, revitalizace přítoku s tůněmi a mokřadem; 15,95 mil. Kč (OPŽP 13,56 mil.) - patří spíš k malým nádržím a poldrům", kdy=None, kdo="obec Cehnice", mereno=None, zdroj=["smocr_cehnice"]),
              pr("Kujavy (Novojičínsko)", "'Voda pro krajinu': obnova 3 tůní svépomocí (myslivci, mladí myslivci), nadace Hyundai a OSF; rozpracováno; finalista Adapterra 2026", kdy="2025-2026", kdo="obec a spolky", mereno=None, zdroj=["kujavy2026","adapterra2026"])],
    rizika="Mikroklima návesní nádrže neměřeno; podle CzechGlobe malé vodní plochy vzduch skoro neochladí - hodnota je retence a biodiverzita.",
    nedohledano=["mikroklima návesní nádrže"])
 
 doplnit("U07",
-   priklady=[pr("Trebišov (SK)", "školní atria: dešťová zahrada, nádrž, vsakovací rýhy, zelená stěna (viz U04)", kdy="2021", kdo="TU Košice", mereno=None, zdroj=["zelenakova_trebisov"])],
+   priklady=[pr("Trebišov (SK)", "školní atria: dešťová zahrada, nádrž, vsakovací rýhy, zelená stěna (jako u vody z veřejných budov)", kdy="2021", kdo="TU Košice", mereno=None, zdroj=["zelenakova_trebisov"])],
    synergie=["U09"])
 
 # --- doplňky blok D (krajina), 22. 10. 2026
@@ -967,14 +967,14 @@ doplnit("T02",
    kvant=[kv("R","hodnota","Sedmihorské mokřady (Český ráj): po odstranění drenáží a vyhloubení soustavy tůní o 11 543 m³ vody víc na 6 ha (🤔 cca 1 900 m³/ha); hladina v revitalizované části stabilní, v odvodněné kolísá se suchem; měřeno 2 roky hladinoměry v obou částech", hodnota=11543, jednotka="m³ na 6 ha", zdroj=["csop_sedmihorky2026"], znacka="overeno"),
           kv("R","kvalitativne","Thünen (Dolní Sasko, slatinné louky): podpovrchové zavlažování zvedlo roční hladinu o 12 cm (-0,37 -> -0,25 m), pouhé hrazení příkopů bez jasného efektu - drenáže přerušit plošně, ne jen zahradit", zdroj=["thuenen2021_swamps"], znacka="overeno")],
    priklady=[pr("Sedmihorské mokřady, Libuňka (Český ráj)", "ČSOP + Pozemkový spolek: výkup pozemků, odstranění drenáží, soustava tůní na 6 ha (2021-2022); vyhodnoceno 2026", kdy="2021-2026", kdo="ČSOP, Pozemkový spolek Sedmihorské mokřady", mereno="hladina podzemní vody 2 roky, objem zadržené vody", zdroj=["csop_sedmihorky2026"]),
-             pr("Niva Kyjovky", "Adapterra Awards 2023, zvláštní ocenění 'Obnova údolní nivy řeky Kyjovky' (lokalita v článku neuvedena); podle uživatele vznikly 3 tůně v nivě Kyjovky u Bohuslavic u Kyjova vedle cyklostezky 🤔 (online nedohledáno); další realizace Povodí Moravy u Moravské Nové Vsi (T04)", kdy="2023", kdo="neuvedeno", mereno=None, zdroj=["adapterra2023"], znacka="citace")],
-   prenositelnost="Niva Stříbrníku a Kyjovky nad jezem u Mouchnic (rozhodnutí 21. 10.): nejdřív zjistit meliorace (SPÚ, N02), pak přerušit plošně. Monitoring před/po s kontrolním profilem 3-5 let (VÚV 2018).",
+             pr("Niva Kyjovky", "Adapterra Awards 2023, zvláštní ocenění 'Obnova údolní nivy řeky Kyjovky' (lokalita v článku neuvedena); podle uživatele vznikly 3 tůně v nivě Kyjovky u Bohuslavic u Kyjova vedle cyklostezky 🤔 (online nedohledáno); další realizace Povodí Moravy u Moravské Nové Vsi (revitalizace toku)", kdy="2023", kdo="neuvedeno", mereno=None, zdroj=["adapterra2023"], znacka="citace")],
+   prenositelnost="Niva Stříbrníku a Kyjovky nad jezem u Mouchnic (rozhodnutí 21. 10.): nejdřív zjistit meliorace (Státní pozemkový úřad), pak přerušit plošně. Monitoring před/po s kontrolním profilem 3-5 let (VÚV 2018).",
    rizika="Hrazení příkopů bez odstranění drenáží nestačí (Thünen). Jeden rok měření nestačí (VÚV). Zamokření sousedních pozemků - dohoda s vlastníky.",
    standardy=["vuv2018_monitoring"])
 
 doplnit("T04",
    priklady=[pr("Kyjovka u Moravské Nové Vsi", "Povodí Moravy od 2022: nové přírodě blízké koryto 1 730 m odbočené ze stávajícího, přelivný val pro rozliv, 3 tůně, výsadby vrb, topolů, dubů, jasanů, jilmů; cena a měřený účinek neuvedeny (dolní tok v nížině)", kdy="2022-", kdo="Povodí Moravy", mereno=None, zdroj=["brnodaily2022_kyjovka"])],
-   prenositelnost="Princip (odbočené koryto, rozliv, tůně) ano; měřítko ne - u Koryčan jde o drobný tok a Stříbrník. Správce Povodí Moravy (N06).")
+   prenositelnost="Princip (odbočené koryto, rozliv, tůně) ano; měřítko ne - u Koryčan jde o drobný tok a Stříbrník. Správce Povodí Moravy.")
 
 doplnit("T03",
    kvant=[kv("Q","hodnota","Model (prototyp 32 km², 20 let srážek): přehrážky jen na tocích 1. řádu snížily špičku až o 50 % a zadržely nejvíc vody; jen na tocích 3. řádu zvýšily špičku o >10 % ve 22 % epizod (synchronizace); u častých malých dešťů špička rostla i s přehrážkami", hodnota=50, jednotka="% špičky (1. řád, model)", zdroj=["wolstenholme_egu2024"], znacka="overeno"),
@@ -986,12 +986,12 @@ doplnit("T03",
 doplnit("L02",
    kvant=[kv("I","hodnota","MENDELU 2011-2013: vsak v 1. minutě neobhospodařovaný trávník 34,5, sečená louka 12,6, pastvina skotu 7,0 mm/min; objemová hmotnost 1,17 / 1,42 / 1,57 g/cm³; pastva i sklizňová technika vsak významně snižují", rozsah=[7,34.5], jednotka="mm/min (1. minuta)", zdroj=["sochorec2015"], znacka="overeno_stare")],
    priklady=[pr("MENDELU Brno (pokusná plocha)", "tříletý pokus louka vs. pastvina vs. neobhospodařovaný porost; lokalita v abstraktu neuvedena", kdy="2011-2013", kdo="MENDELU", mereno="infiltrace, objemová hmotnost, pórovitost", zdroj=["sochorec2015"], znacka="overeno_stare")],
-   rizika="Sešlap skotu = nejnižší vsak; vyloučit skot z mokřin a pramenišť (L04, T05). Mozaiková pastva s odpočinkem ploch 🤔.")
+   rizika="Sešlap skotu = nejnižší vsak; vyloučit skot z mokřin a pramenišť (ochrana pramenišť a mokřin). Mozaiková pastva s odpočinkem ploch 🤔.")
 
 doplnit("LES02",
    kvant=[kv("Q","kvalitativne","FVA BW: rigole = propustný štěrkový práh v tělese cesty šikmo 3-5 %, výkop >= 2 × 1 m (75 cm hrubý kámen, 10 cm štěrk, 10 cm povrch), usazovací jímka 1-1,5 m³, pro cesty do 6 % sklonu; voda z příkopu se vsakuje pod cestou a po svahu místo soustředění v propustku; retence nevyčíslena, cena malá při opravě cesty", zdroj=["fva2025_rigole"], znacka="overeno")],
    priklady=[pr("Bádensko-Württembersko, 27 pilotních lesů", "program Dezentraler Wasserrückhalt im Wald 2023-2027: svedení vody z cest, brzdné prvky v příkopech, rigole místo propustků, změna profilu cesty, přeložení potoka z koleje; čísla do 2027", kdy="2023-2027", kdo="FVA BW, obce", mereno="v běhu", zdroj=["fva2025_kolokvium"])],
-   prenositelnost="Lesní cesty v Chřibech nad Jestřabicemi a Lískovcem; dohoda s LČR (N06). Školní mapování M06 po přívalu ukáže, kde cesty vodu soustředí.",
+   prenositelnost="Lesní cesty v Chřibech nad Jestřabicemi a Lískovcem; dohoda s Lesy ČR. Školní mapování erozních rýh po přívalu ukáže, kde cesty vodu soustředí.",
    standardy=["csvts_mp2"])
 
 doplnit("C03",
@@ -1051,7 +1051,7 @@ HLAVNI_CISLO = {
  "L04": ("prameniště bez sešlapu zůstává zdrojem vody i v suchu (bez čísla)", None),
  "LES01": ("zadrží objem tůně a splaveniny ještě v lese; na potůčcích 1. řádu i nižší špička", "overeno"),
  "LES02": ("voda z cesty vsákne po svahu místo soustředění ve strži (čísla do 2027)", "overeno"),
- "LES03": ("listnatý les propustí o cca 15 % víc vody do půdy než smrk", "overeno"),
+ "LES03": ("odolnější porost (kůrovec, vítr); vody v půdě průměrně stejně jako pod smrkem", "overeno"),
  "LES04": ("závětří a stín na okraji lesa (bez čísla)", None),
  "T01": ("zadrží objem tůně; život a chlad u potoka", "overeno"),
  "T02": ("po odstranění drenáží o 11 500 m³ vody víc na 6 ha (Český ráj)", "overeno"),
@@ -1059,7 +1059,7 @@ HLAVNI_CISLO = {
  "T04": ("voda se rozlévá do nivy místo rychlého odtoku (bez čísla pro Koryčany)", None),
  "T05": ("studánka chráněná před sešlapem a splachy (bez čísla)", None),
  "T06": ("voda v zastíněném potoce o 2-4 °C chladnější", "overeno"),
- "T07": ("zadrží retenční objem nádrže nebo poldru (počítá jádro)", "overeno"),
+ "T07": ("zadrží objem nádrže nebo poldru (spočítáš v Celé území, kapitola Hráz na potoce)", "overeno"),
  "C01": ("voda z cesty do průlehu místo do potoka (počítá se z ploch)", "overeno"),
  "C02": ("zastaví prohlubování strže a zadrží splaveniny (bez čísla)", None),
  "C03": ("udržované terasy: eroze nižší o 87-98 %", "overeno_stare"),

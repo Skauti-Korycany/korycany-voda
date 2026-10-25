@@ -167,6 +167,21 @@ Aktualizováno: 22. 10. 2026 21:00 (Jak bylo v produkci jako datový příběh -
 - Vzorový pozemek: 100 m² střechy, 50 m² dvora (dlažba s pískovými spárami), 250 m² zahrady, HSP B, sklon 3 %, svody do kanálu, déšť 10 mm.
 - „Jedno číslo“ upřednostňuje spočtené EFF před katalogovou hodnotou; odhady (🤔) se jako hlavní číslo nezobrazují.
 
+## Celé území - kapitoly ve stylu Jak bylo (25. 10. 2026)
+
+Podnět uživatele: čtenář nechápe CN, stránka míchá témata bez rozdělení, opatření se odkazují jen kódem (S02, P04...).
+- Úvod (nadpis „Kdo v Koryčanech rozhoduje o vodě“) + obsah s 5 kapitolami (odkazy): 1 Domácnosti, 2 Velké střechy, 3 Pole, louky a les, 4 Hráz na potoce, 5 Velké projekty. Na konci výzva „Začni u sebe“.
+- Jeden výběr deště pro celou stránku (lepivý pruh nahoře: běžný 10, silný 20, liják 32, vzácný 53, extrémní 87 mm); select „Jiný déšť“ (26 a 94 mm) je v Upřesnit čísla kapitoly 1. Hráz bere déšť odtud (h-rain skrytý, synchronizovaný).
+- Každá kapitola: nadpísek, nadpis, věta se zjištěním (počítaná), box „Zkus si to“, klíčová čísla jako v Jak bylo, podrobnosti a metodika ve sbaleném rámečku „+“.
+- Kap. 1: tlačítka opatření s ikonami a slovy (odpojit okap od kanálu, dešťový záhon, sud nebo nádrž 1 m³, propustná dlažba); boxy „Na co to nestačí“ a „Co to ale je“ zkrácené; rozpad po částech území s čitelnými názvy.
+- Kap. 2: sloupcový graf vody ze střech podle účelu, karty „Kdo s tím může co udělat“ (domácnosti, firmy, obec, zemědělci, bytové domy) slovy; tabulka sbalená.
+- Kap. 3: vysvětlení „číslo odtoku (CN)“ se stupnicí 50-100 (les, louky, zahrady, orná, střechy a silnice) a větou, do jakého deště se vsákne všechno (Ia = 0,2 S). Posuvníky slovy bez kódů, zaškrtávátko opravené. Nápověda „Přepnout na liják“, když se na polích při slabém dešti nic neděje. Klíčová čísla: odtok teď / se změnami / eroze t/ha proti přípustným 9 t/ha.
+- Kap. 4: mapa v zaobleném rámečku, bobr jako box, podmínky stavby sbalené.
+- Kap. 5: karty velkých projektů: popis, „Co to udělá“, kdo rozhoduje, povolení; důkazy a financování sbalené. Kódy zmizely.
+- Katalog (tools/build_opatreni.py): 24 odkazů kódem v textech přepsáno slovy (např. „dešťovou z S01“ -> „ze sudu nebo nádrže“). Zůstal jen kód normy „SPPK C02 003“ (není opatření).
+- Oprava věcné chyby v katalogu: LES03 (druhově pestrý les) tvrdil „zadrží víc vody než smrk“ a hlavní číslo „listnatý les propustí o 15 % víc vody“, citovaná data (Liz, AV ČR) říkají opak: v suchých letech propouští víc smrk, průměrně bez rozdílu. Nově: přínos je odolnost porostu (kůrovec, vítr), vody v půdě průměrně stejně. T07: „(počítá jádro)“ -> odkaz na kapitolu Hráz na potoce.
+Ověřeno headless: počítač a mobil, světlý i tmavý režim, bez chyb JS, bez vodorovného posunu; odkaz z Můj pozemek (krok 5) přenese déšť i „jako můj pozemek“.
+
 ## Můj pozemek - sladění stylu s Jak bylo (25. 10. 2026)
 
 Podnět uživatele: sladit vzhled s Jak bylo (aspoň zaoblené rohy rámečku mapy), přehlednost a orientace návštěvníka.

@@ -2153,7 +2153,7 @@
      "znacka": "overeno_stare"
     }
    ],
-   "prenositelnost": "V Koryčanech (HSP C/D, těžké půdy) pomáhá běžnému dešti 10 mm a mírným dešťům, ne N10 přívalu; na jílu počítat s rýhou nebo štěrkovým tělesem (Z10) a odstupy od domu.",
+   "prenositelnost": "V Koryčanech (HSP C/D, těžké půdy) pomáhá běžnému dešti 10 mm a mírným dešťům, ne přívalu jednou za 10 let; na jílu počítat s rýhou nebo štěrkovým tělesem (vsakovací objekt) a odstupy od domu.",
    "rizika": "Účinek na přívaly je malý, aplikace to musí říkat. Stromy ne do vsakovací zóny. Trvalky volit podle tolerance k zaplavení i suchu.",
    "vahy_skaly": null
   },
@@ -3459,7 +3459,7 @@
    "nedohledano": [
     "měření úspory kapkové závlahy proti postřiku v zahradách střední Evropy"
    ],
-   "pozn_poctivost": "Olla (Z12) je podle AZ1911 zhruba rovnocenná kapkové závlaze.",
+   "pozn_poctivost": "Olla (zalévací hliněná nádoba) je podle AZ1911 zhruba rovnocenná kapkové závlaze.",
    "hlavni_cislo": {
     "text": "šetří pitnou vodu; úspora v litrech nedohledána",
     "znacka": null
@@ -3472,7 +3472,7 @@
   {
    "id": "Z12",
    "nazev": "Zalévací hliněné nádoby v záhonu (olla, oya)",
-   "popis": "Neglazovaná hliněná nádoba zakopaná po hrdlo mezi rostliny; naplní se vodou (nejlépe dešťovou z S01) a voda prosakuje stěnou přímo ke kořenům. Z povrchu půdy se nic neodpařuje, zalévá se jednou za několik dní. Středomořský princip, svépomocně ze dvou květináčů.",
+   "popis": "Neglazovaná hliněná nádoba zakopaná po hrdlo mezi rostliny; naplní se vodou (nejlépe dešťovou ze sudu nebo nádrže) a voda prosakuje stěnou přímo ke kořenům. Z povrchu půdy se nic neodpařuje, zalévá se jednou za několik dní. Středomořský princip, svépomocně ze dvou květináčů.",
    "misto": [
     "Z"
    ],
@@ -3625,7 +3625,7 @@
      "znacka": "overeno"
     }
    ],
-   "prenositelnost": "Ano pro zeleninové a trvalkové záhony, školní zahradu (U07) a truhlíky; nezávisí na půdě ani sklonu. Nehodí se pod stromy a keře a na velké plochy.",
+   "prenositelnost": "Ano pro zeleninové a trvalkové záhony, školní zahradu a truhlíky; nezávisí na půdě ani sklonu. Nehodí se pod stromy a keře a na velké plochy.",
    "rizika": "Úspora platí proti zálivce na povrch, ne proti kapkové závlaze. Póry se zanášejí solemi z tvrdé vody; sazenice prvních cca 4 týdny zalévat navíc; na zimu vyprázdnit nebo vyjmout 🤔. Neřeší vsak ani odtok, jen šetří vodu.",
    "vahy_skaly": null
   },
@@ -4013,7 +4013,7 @@
    },
    "priklady": [],
    "prenositelnost": null,
-   "rizika": "Na jílu (HSP D) se voda u domu hromadí; dodržet odstupy z ČSN 75 9010 a vést vodu do Z01/Z10.",
+   "rizika": "Na jílu (HSP D) se voda u domu hromadí; dodržet odstupy z ČSN 75 9010 a vést vodu do dešťového záhonu nebo vsakovacího objektu.",
    "vahy_skaly": null
   },
   {
@@ -4443,7 +4443,7 @@
   {
    "id": "S06",
    "nazev": "Dešťová voda na splachování WC (nepitný rozvod v domě nebo škole)",
-   "popis": "Podzemní nádrž (S01) napojená přes filtr a čerpadlo na oddělený rozvod k WC (případně pračce) s automatickým dopouštěním pitné vody. Na rozdíl od zálivky bere vodu každý den celý rok, takže nádrž má smysl i v zimě a při každém dešti má volný objem.",
+   "popis": "Podzemní nádrž na dešťovou vodu napojená přes filtr a čerpadlo na oddělený rozvod k WC (případně pračce) s automatickým dopouštěním pitné vody. Na rozdíl od zálivky bere vodu každý den celý rok, takže nádrž má smysl i v zimě a při každém dešti má volný objem.",
    "misto": [
     "S"
    ],
@@ -4513,7 +4513,7 @@
     {
      "ucinek": "R",
      "typ": "vzorec",
-     "popis": "Jako S01; nádrž se průběžně vyprazdňuje, při dešti má volný objem",
+     "popis": "Jako u nádrže na dešťovou vodu; nádrž se průběžně vyprazdňuje, při dešti má volný objem",
      "hodnota": null,
      "jednotka": null,
      "rozsah": null,
@@ -4526,7 +4526,7 @@
    ],
    "vhodnost": {
     "kazda_strecha": true,
-    "podminka": "místo na podzemní nádrž a oddělený rozvod; nejlépe novostavba, rekonstrukce, veřejná budova (U04)",
+    "podminka": "místo na podzemní nádrž a oddělený rozvod; nejlépe novostavba, rekonstrukce, veřejná budova",
     "vyloucit": [
      "malá střecha + velká domácnost (nádrž vyschne)"
     ]
@@ -4548,7 +4548,7 @@
    "povoleni_pozn": "nepitný rozvod označený podle ČSN 75 6780, ochrana proti zpětnému toku; ohlášení 🤔; souhlas provozovatele vodovodu 💻",
    "ceny": [
     {
-     "polozka": "podzemní nádrž 5000 l vč. šachty, bez montáže (viz S01)",
+     "polozka": "podzemní nádrž 5000 l vč. šachty, bez montáže (jako u nádrže na dešťovou vodu)",
      "hodnota": 50830,
      "rozsah": null,
      "jednotka": "Kč",
@@ -5248,7 +5248,7 @@
      "znacka": "overeno"
     }
    ],
-   "prenositelnost": "ZŠ, úřad, sokolovna, hasičárna = největší jednotlivé střechy v obci; nejdřív pasport svodů (U09), pak S02 + Z01/Z10/S06.",
+   "prenositelnost": "ZŠ, úřad, sokolovna, hasičárna = největší jednotlivé střechy v obci; nejdřív zjistit, kam vedou svody (plán hospodaření s dešťovou vodou obce), pak odpojit svody od kanalizace a vést vodu do dešťového záhonu, vsakovacího objektu nebo nádrže na splachování.",
    "rizika": null,
    "vahy_skaly": null
   },
@@ -5390,7 +5390,7 @@
      "kde": "Cehnice (Jihočeský kraj)",
      "kdy": null,
      "kdo": "obec Cehnice",
-     "co": "retenční nádrž Třtí na Cehnickém potoce: stálá hladina 11 401 m³ + retenční prostor 50 363 m³, revitalizace přítoku s tůněmi a mokřadem; 15,95 mil. Kč (OPŽP 13,56 mil.) - spíš T07",
+     "co": "retenční nádrž Třtí na Cehnickém potoce: stálá hladina 11 401 m³ + retenční prostor 50 363 m³, revitalizace přítoku s tůněmi a mokřadem; 15,95 mil. Kč (OPŽP 13,56 mil.) - patří spíš k malým nádržím a poldrům",
      "mereno": null,
      "zdroj": [
       "smocr_cehnice"
@@ -5544,7 +5544,7 @@
   {
    "id": "U07",
    "nazev": "Školní zahrada jako ukázkový pozemek",
-   "popis": "Sada Z01-Z08 + měření M01-M06 na školním pozemku; účinky a ceny podle složek.",
+   "popis": "Sada zahradních opatření (dešťový záhon, tůň, průleh, propustná dlažba, mulč, strom, živý plot, louka) a žákovských měření (srážky, teploty, vsak) na školním pozemku; účinky a ceny podle jednotlivých opatření.",
    "misto": [
     "U",
     "Z"
@@ -5643,7 +5643,7 @@
      "kde": "Trebišov (SK)",
      "kdy": "2021",
      "kdo": "TU Košice",
-     "co": "školní atria: dešťová zahrada, nádrž, vsakovací rýhy, zelená stěna (viz U04)",
+     "co": "školní atria: dešťová zahrada, nádrž, vsakovací rýhy, zelená stěna (jako u vody z veřejných budov)",
      "mereno": null,
      "zdroj": [
       "zelenakova_trebisov"
@@ -5651,7 +5651,7 @@
      "znacka": "overeno"
     }
    ],
-   "prenositelnost": "Pro ZŠ Koryčany je prvním krokem změřit dvůr IR teploměrem v létě (M05): asfalt vs. stín vs. tráva. Pak odstranění části asfaltu, stromové mísy, štěpka.",
+   "prenositelnost": "Pro ZŠ Koryčany je prvním krokem změřit dvůr IR teploměrem v létě: asfalt vs. stín vs. tráva. Pak odstranění části asfaltu, stromové mísy, štěpka.",
    "rizika": null,
    "vahy_skaly": null
   },
@@ -5774,7 +5774,7 @@
      "znacka": "overeno"
     }
    ],
-   "prenositelnost": "Plně. Pro Koryčany: tato aplikace + pasport svodů veřejných budov (škola, úřad, sokolovna, hasičárna) + dohoda, kdo seče a čistí průlehy. Školní projekt 'kam teče voda ze školy' (M01, M05) jako vstup.",
+   "prenositelnost": "Plně. Pro Koryčany: tato aplikace + pasport svodů veřejných budov (škola, úřad, sokolovna, hasičárna) + dohoda, kdo seče a čistí průlehy. Školní projekt 'kam teče voda ze školy' (srážkoměr, teploty povrchů) jako vstup.",
    "rizika": "Studie bez realizace (Jílové). Náklady studie nedohledány. Dolní Rakousko dotuje obcím 'Regenwasserpläne' 📄 (web 22. 10. offline).",
    "vahy_skaly": null
   },
@@ -6167,7 +6167,7 @@
      "znacka": "overeno"
     }
    ],
-   "prenositelnost": "Zastávky, hřiště, školní dvůr, tribuna, trh. Pergola s popínavkou (Z09) spojuje stín a výpar a je lepší než holá plachta.",
+   "prenositelnost": "Zastávky, hřiště, školní dvůr, tribuna, trh. Pergola s popínavkou spojuje stín a výpar a je lepší než holá plachta.",
    "rizika": "Plachta se ohřívá a sálá; stíní jen pod sebou; pevná konstrukce blokuje noční vychladnutí; vítr a sníh (demontáž na zimu). Neřeší vodu.",
    "vahy_skaly": null
   },
@@ -6868,7 +6868,7 @@
   {
    "id": "P08",
    "nazev": "Polní cesta s doprovodnou zelení a zasakovacím příkopem",
-   "popis": "Víceúčelové: cesta + větrolam + biokoridor + zpomalení odtoku. Účinky podle složek P01 + P07 + C01.",
+   "popis": "Víceúčelové: cesta + větrolam + biokoridor + zpomalení odtoku. Účinky podle složek: zatravněný pás po vrstevnici, větrolam a zasakovací příkop u cesty.",
    "misto": [
     "P",
     "C"
@@ -7350,7 +7350,7 @@
     {
      "ucinek": "B",
      "typ": "hodnota",
-     "popis": "Viz U06 (Chytrá a kol. 2024)",
+     "popis": "Jako u mozaikové seče obecních ploch (Chytrá a kol. 2024)",
      "hodnota": null,
      "jednotka": "% druhů",
      "rozsah": [
@@ -7518,7 +7518,7 @@
     }
    ],
    "prenositelnost": null,
-   "rizika": "Sešlap skotu = nejnižší vsak; vyloučit skot z mokřin a pramenišť (L04, T05). Mozaiková pastva s odpočinkem ploch 🤔.",
+   "rizika": "Sešlap skotu = nejnižší vsak; vyloučit skot z mokřin a pramenišť (ochrana pramenišť a mokřin). Mozaiková pastva s odpočinkem ploch 🤔.",
    "vahy_skaly": null
   },
   {
@@ -7907,14 +7907,14 @@
      "znacka": "overeno"
     }
    ],
-   "prenositelnost": "Lesní cesty v Chřibech nad Jestřabicemi a Lískovcem; dohoda s LČR (N06). Školní mapování M06 po přívalu ukáže, kde cesty vodu soustředí.",
+   "prenositelnost": "Lesní cesty v Chřibech nad Jestřabicemi a Lískovcem; dohoda s Lesy ČR. Školní mapování erozních rýh po přívalu ukáže, kde cesty vodu soustředí.",
    "rizika": null,
    "vahy_skaly": null
   },
   {
    "id": "LES03",
    "nazev": "Druhově pestrý les, přirozená obnova, mrtvé dřevo a humus",
-   "popis": "Smíšený, druhově pestrý les s přirozenou obnovou, ponechaným mrtvým dřevem a humusem: zadrží víc vody než smrková monokultura.",
+   "popis": "Smíšený, druhově pestrý les s přirozenou obnovou, ponechaným mrtvým dřevem a humusem. Přínos je hlavně odolnější porost (kůrovec, vítr). Že zadrží víc vody než smrk, česká měření nepotvrdila: průměrně je vody v půdě pod oběma stejně.",
    "misto": [
     "LES"
    ],
@@ -8002,7 +8002,7 @@
    "nedohledano": [],
    "pozn_poctivost": "Přínos smíšeného lesa formulovat jako odolnost porostu (kůrovec, vítr), ne jako vodní bilanci.",
    "hlavni_cislo": {
-    "text": "listnatý les propustí o cca 15 % víc vody do půdy než smrk",
+    "text": "odolnější porost (kůrovec, vítr); vody v půdě průměrně stejně jako pod smrkem",
     "znacka": "overeno"
    },
    "priklady": [],
@@ -8329,7 +8329,7 @@
      "kde": "Niva Kyjovky",
      "kdy": "2023",
      "kdo": "neuvedeno",
-     "co": "Adapterra Awards 2023, zvláštní ocenění 'Obnova údolní nivy řeky Kyjovky' (lokalita v článku neuvedena); podle uživatele vznikly 3 tůně v nivě Kyjovky u Bohuslavic u Kyjova vedle cyklostezky 🤔 (online nedohledáno); další realizace Povodí Moravy u Moravské Nové Vsi (T04)",
+     "co": "Adapterra Awards 2023, zvláštní ocenění 'Obnova údolní nivy řeky Kyjovky' (lokalita v článku neuvedena); podle uživatele vznikly 3 tůně v nivě Kyjovky u Bohuslavic u Kyjova vedle cyklostezky 🤔 (online nedohledáno); další realizace Povodí Moravy u Moravské Nové Vsi (revitalizace toku)",
      "mereno": null,
      "zdroj": [
       "adapterra2023"
@@ -8337,7 +8337,7 @@
      "znacka": "citace"
     }
    ],
-   "prenositelnost": "Niva Stříbrníku a Kyjovky nad jezem u Mouchnic (rozhodnutí 21. 10.): nejdřív zjistit meliorace (SPÚ, N02), pak přerušit plošně. Monitoring před/po s kontrolním profilem 3-5 let (VÚV 2018).",
+   "prenositelnost": "Niva Stříbrníku a Kyjovky nad jezem u Mouchnic (rozhodnutí 21. 10.): nejdřív zjistit meliorace (Státní pozemkový úřad), pak přerušit plošně. Monitoring před/po s kontrolním profilem 3-5 let (VÚV 2018).",
    "rizika": "Hrazení příkopů bez odstranění drenáží nestačí (Thünen). Jeden rok měření nestačí (VÚV). Zamokření sousedních pozemků - dohoda s vlastníky.",
    "vahy_skaly": null
   },
@@ -8589,7 +8589,7 @@
      "znacka": "overeno"
     }
    ],
-   "prenositelnost": "Princip (odbočené koryto, rozliv, tůně) ano; měřítko ne - u Koryčan jde o drobný tok a Stříbrník. Správce Povodí Moravy (N06).",
+   "prenositelnost": "Princip (odbočené koryto, rozliv, tůně) ano; měřítko ne - u Koryčan jde o drobný tok a Stříbrník. Správce Povodí Moravy.",
    "rizika": null,
    "vahy_skaly": null
   },
@@ -8861,7 +8861,7 @@
    ],
    "pozn_poctivost": "Dřívější údaj o ceně poldru/hráze se nepotvrdil a byl vyřazen.",
    "hlavni_cislo": {
-    "text": "zadrží retenční objem nádrže nebo poldru (počítá jádro)",
+    "text": "zadrží objem nádrže nebo poldru (spočítáš v Celé území, kapitola Hráz na potoce)",
     "znacka": "overeno"
    },
    "priklady": [],
@@ -9483,7 +9483,7 @@
   {
    "id": "M06",
    "nazev": "Mapování erozních rýh po přívalu",
-   "popis": "lokalizace C02, P05",
+   "popis": "kde postavit přehrážky v rýhách a kde zatravnit údolnice",
    "misto": [
     "U",
     "Z",

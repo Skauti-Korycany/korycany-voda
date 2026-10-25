@@ -130,13 +130,13 @@ Generováno z `data/opatreni.json` v0.9 (2026-10-22); podrobný rozbor a odkazy:
 ### L02 Extenzivní rotační pastva, omezení přepásání a sešlapu (doplněno)
 - Účinek infiltrace do půdy (hodnota) ✅⏳: MENDELU 2011-2013: vsak v 1. minutě neobhospodařovaný trávník 34,5, sečená louka 12,6, pastvina skotu 7,0 mm/min; objemová hmotnost 1,17 / 1,42 / 1,57 g/cm³; pastva i sklizňová technika vsak významně snižují [7-34.5 mm/min (1. minuta)]. Zdroj: [Sochorec, Jandák, Raus, Kvasnovský, Hejduk, Knot (MENDELU) 2015](https://agrojournal.org/21/03-15.html)
 - Kde to funguje: **MENDELU Brno (pokusná plocha)** (2011-2013): tříletý pokus louka vs. pastvina vs. neobhospodařovaný porost; lokalita v abstraktu neuvedena. Měřeno: infiltrace, objemová hmotnost, pórovitost. ✅⏳ [Sochorec, Jandák, Raus, Kvasnovský, Hejduk, Knot (MENDELU) 2015](https://agrojournal.org/21/03-15.html)
-- Rizika, co z toho neplyne: Sešlap skotu = nejnižší vsak; vyloučit skot z mokřin a pramenišť (L04, T05). Mozaiková pastva s odpočinkem ploch 🤔.
+- Rizika, co z toho neplyne: Sešlap skotu = nejnižší vsak; vyloučit skot z mokřin a pramenišť (ochrana pramenišť a mokřin). Mozaiková pastva s odpočinkem ploch 🤔.
 - Nedohledáno: české měření extenzivní vs. intenzivní
 
 ### LES02 Odvodnění lesních cest a svážnic do lesa, ne do strží (svodnice, příčné prahy) (doplněno)
 - Účinek zpomalení odtoku (kvalitativne) ✅: FVA BW: rigole = propustný štěrkový práh v tělese cesty šikmo 3-5 %, výkop >= 2 × 1 m (75 cm hrubý kámen, 10 cm štěrk, 10 cm povrch), usazovací jímka 1-1,5 m³, pro cesty do 6 % sklonu; voda z příkopu se vsakuje pod cestou a po svahu místo soustředění v propustku; retence nevyčíslena, cena malá při opravě cesty. Zdroj: [FVA Baden-Württemberg, Info-Faltblatt 4/2025](https://www.fva-bw.de/fileadmin/user_upload/Abteilungen/Boden_und_Umwelt/Wasserrueckhalt_Wald/Steckbrief_Rigole_final.pdf)
 - Kde to funguje: **Bádensko-Württembersko, 27 pilotních lesů** (2023-2027): program Dezentraler Wasserrückhalt im Wald 2023-2027: svedení vody z cest, brzdné prvky v příkopech, rigole místo propustků, změna profilu cesty, přeložení potoka z koleje; čísla do 2027. Měřeno: v běhu. ✅ [Keller, Puhlmann a kol. (FVA Baden-Württemberg), kolokvium 4. 12. 2025](https://www.fva-bw.de/fileadmin/user_upload/Themen/Wissenstransfer/2025-26_Kolloquien/FVA-Kolloquium_20251204_Keller_web.pdf)
-- Přenositelnost do Koryčan: Lesní cesty v Chřibech nad Jestřabicemi a Lískovcem; dohoda s LČR (N06). Školní mapování M06 po přívalu ukáže, kde cesty vodu soustředí.
+- Přenositelnost do Koryčan: Lesní cesty v Chřibech nad Jestřabicemi a Lískovcem; dohoda s Lesy ČR. Školní mapování erozních rýh po přívalu ukáže, kde cesty vodu soustředí.
 - Nedohledáno: rozestupy svodnic (ČSN 73 6108)
 
 ### T01 Tůň v nivě (bez fólie), soustava tůní, obnova zazemněné tůně (doplněno)
@@ -146,8 +146,8 @@ Generováno z `data/opatreni.json` v0.9 (2026-10-22); podrobný rozbor a odkazy:
 - Účinek zadržení objemu (hodnota) ✅: Sedmihorské mokřady (Český ráj): po odstranění drenáží a vyhloubení soustavy tůní o 11 543 m³ vody víc na 6 ha (🤔 cca 1 900 m³/ha); hladina v revitalizované části stabilní, v odvodněné kolísá se suchem; měřeno 2 roky hladinoměry v obou částech [11543 m³ na 6 ha]. Zdroj: [Novinky.cz 4. 8. 2026](https://www.novinky.cz/clanek/domaci-zpravy-liberecky-kraj-v-sedmihorskych-mokradech-pribyla-voda-jako-pro-pet-olympijskych-bazenu-40591088)
 - Účinek zadržení objemu (kvalitativne) ✅: Thünen (Dolní Sasko, slatinné louky): podpovrchové zavlažování zvedlo roční hladinu o 12 cm (-0,37 -> -0,25 m), pouhé hrazení příkopů bez jasného efektu - drenáže přerušit plošně, ne jen zahradit. Zdroj: [Thünen-Institut, Project Brief 2021/20 (SWAMPS 2016-2021)](https://www.thuenen.de/media/publikationen/project_brief/Project_Brief_2021_20.pdf)
 - Kde to funguje: **Sedmihorské mokřady, Libuňka (Český ráj)** (2021-2026): ČSOP + Pozemkový spolek: výkup pozemků, odstranění drenáží, soustava tůní na 6 ha (2021-2022); vyhodnoceno 2026. Měřeno: hladina podzemní vody 2 roky, objem zadržené vody. ✅ [Novinky.cz 4. 8. 2026](https://www.novinky.cz/clanek/domaci-zpravy-liberecky-kraj-v-sedmihorskych-mokradech-pribyla-voda-jako-pro-pet-olympijskych-bazenu-40591088)
-- Kde to funguje: **Niva Kyjovky** (2023): Adapterra Awards 2023, zvláštní ocenění 'Obnova údolní nivy řeky Kyjovky' (lokalita v článku neuvedena); podle uživatele vznikly 3 tůně v nivě Kyjovky u Bohuslavic u Kyjova vedle cyklostezky 🤔 (online nedohledáno); další realizace Povodí Moravy u Moravské Nové Vsi (T04). Bez měření. 📄 [businessinfo.cz 2. 11. 2023](https://www.businessinfo.cz/clanky/adapterra-awards-soutez-zna-viteze-ocenila-nejlepsi-ekologicke-projekty/)
-- Přenositelnost do Koryčan: Niva Stříbrníku a Kyjovky nad jezem u Mouchnic (rozhodnutí 21. 10.): nejdřív zjistit meliorace (SPÚ, N02), pak přerušit plošně. Monitoring před/po s kontrolním profilem 3-5 let (VÚV 2018).
+- Kde to funguje: **Niva Kyjovky** (2023): Adapterra Awards 2023, zvláštní ocenění 'Obnova údolní nivy řeky Kyjovky' (lokalita v článku neuvedena); podle uživatele vznikly 3 tůně v nivě Kyjovky u Bohuslavic u Kyjova vedle cyklostezky 🤔 (online nedohledáno); další realizace Povodí Moravy u Moravské Nové Vsi (revitalizace toku). Bez měření. 📄 [businessinfo.cz 2. 11. 2023](https://www.businessinfo.cz/clanky/adapterra-awards-soutez-zna-viteze-ocenila-nejlepsi-ekologicke-projekty/)
+- Přenositelnost do Koryčan: Niva Stříbrníku a Kyjovky nad jezem u Mouchnic (rozhodnutí 21. 10.): nejdřív zjistit meliorace (Státní pozemkový úřad), pak přerušit plošně. Monitoring před/po s kontrolním profilem 3-5 let (VÚV 2018).
 - Rizika, co z toho neplyne: Hrazení příkopů bez odstranění drenáží nestačí (Thünen). Jeden rok měření nestačí (VÚV). Zamokření sousedních pozemků - dohoda s vlastníky.
 
 ### T03 Mrtvé dřevo a dřevní přehrážky v korytě drobného toku (leaky dams) (doplněno)
@@ -160,7 +160,7 @@ Generováno z `data/opatreni.json` v0.9 (2026-10-22); podrobný rozbor a odkazy:
 
 ### T04 Revitalizace drobného toku (odstranění opevnění, rozvlnění, snížení břehů) (doplněno)
 - Kde to funguje: **Kyjovka u Moravské Nové Vsi** (2022-): Povodí Moravy od 2022: nové přírodě blízké koryto 1 730 m odbočené ze stávajícího, přelivný val pro rozliv, 3 tůně, výsadby vrb, topolů, dubů, jasanů, jilmů; cena a měřený účinek neuvedeny (dolní tok v nížině). Bez měření. ✅ [Brno Daily 28. 8. 2022](https://brnodaily.com/2022/08/28/brno/the-morava-river-basin-project-is-revitalising-the-kyjovka-river-and-its-fauna/)
-- Přenositelnost do Koryčan: Princip (odbočené koryto, rozliv, tůně) ano; měřítko ne - u Koryčan jde o drobný tok a Stříbrník. Správce Povodí Moravy (N06).
+- Přenositelnost do Koryčan: Princip (odbočené koryto, rozliv, tůně) ano; měřítko ne - u Koryčan jde o drobný tok a Stříbrník. Správce Povodí Moravy.
 - Nedohledáno: SPPK kód pro revitalizace; měřený efekt (ČR)
 
 ### C03 Zatravnění a výsadba na svazích, terasování starých úvozů (doplněno)

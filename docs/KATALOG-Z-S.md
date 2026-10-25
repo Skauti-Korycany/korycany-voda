@@ -149,7 +149,7 @@ Generováno z `data/opatreni.json` v0.9 (2026-10-22); podrobný rozbor a odkazy:
 - Kde to funguje: **Kecskemét (Maďarsko)** (2024): experimentální dešťová zahrada napájená ze střechy rodinného domu, různě tolerantní druhy; město ohrožené suchem. Měřeno: v abstraktu bez čísel. ✅ [Hoyk, Szórát, Farkas 2024](https://regscience.hu/items/3845b111-d508-4224-b71a-1ddfbe631ffe)
 - Kde to funguje: **Bratislava** (2016-2020): dotace domácnostem a firmám na nádrže, dešťové zahrady, propustné povrchy a zelené střechy: 50 % nákladů do 1 000 €; 2016: 16 žádostí, 6 dokončeno; účinek neměřen, zájem malý. Bez měření. ✅ [Covenant of Mayors, případová studie Bratislava](https://eu-mayors.ec.europa.eu/sites/default/files/2022-10/EN_case%20study_Bratislava.pdf)
 - Kde to funguje: **Rotterdam, Sponstuin** (2019): zkušební 'houbová zahrada': vlnitá mulda do 80 cm, 4 typy půdy s příměsemi, 2 roky měření. Měřeno: výsledky v letáku nejsou. ✅⏳ [De Urbanisten / Steenbreek](https://steenbreek.nl//wp-content/uploads/2019/08/20190621-sponstuin-flyer.pdf)
-- Přenositelnost do Koryčan: V Koryčanech (HSP C/D, těžké půdy) pomáhá běžnému dešti 10 mm a mírným dešťům, ne N10 přívalu; na jílu počítat s rýhou nebo štěrkovým tělesem (Z10) a odstupy od domu.
+- Přenositelnost do Koryčan: V Koryčanech (HSP C/D, těžké půdy) pomáhá běžnému dešti 10 mm a mírným dešťům, ne přívalu jednou za 10 let; na jílu počítat s rýhou nebo štěrkovým tělesem (vsakovací objekt) a odstupy od domu.
 - Rizika, co z toho neplyne: Účinek na přívaly je malý, aplikace to musí říkat. Stromy ne do vsakovací zóny. Trvalky volit podle tolerance k zaplavení i suchu.
 - Nedohledáno: cena 2025-2026
 
@@ -190,14 +190,14 @@ Generováno z `data/opatreni.json` v0.9 (2026-10-22); podrobný rozbor a odkazy:
 - Nedohledáno: cena
 
 ### Z12 Zalévací hliněné nádoby v záhonu (olla, oya) (nové)
-- Co to je: Neglazovaná hliněná nádoba zakopaná po hrdlo mezi rostliny; naplní se vodou (nejlépe dešťovou z S01) a voda prosakuje stěnou přímo ke kořenům. Z povrchu půdy se nic neodpařuje, zalévá se jednou za několik dní. Středomořský princip, svépomocně ze dvou květináčů.
+- Co to je: Neglazovaná hliněná nádoba zakopaná po hrdlo mezi rostliny; naplní se vodou (nejlépe dešťovou ze sudu nebo nádrže) a voda prosakuje stěnou přímo ke kořenům. Z povrchu půdy se nic neodpařuje, zalévá se jednou za několik dní. Středomořský princip, svépomocně ze dvou květináčů.
 - Účinek šetření pitnou vodou (hodnota) 📄: Úspora vody 60-70 % proti zálivce konví (pokus s kukuřicí, aridní klima; citace v AZ1911) [60-70 % vody na zálivku]. Zdroj: [University of Arizona Extension AZ1911, Nickel & Brischke](https://extension.arizona.edu/sites/default/files/2024-08/az1911-2021.pdf)
 - Účinek šetření pitnou vodou (hodnota) 📄: Výrobce: úspora 50-70 %, zálivka 3x řidší (studie nejmenovány); obec Ixelles po 1. sezóně: čas zálivky zhruba poloviční [50-70 % vody na zálivku]. Zdroj: [Oyas (Brusel), podklad pro zakázku obce Ixelles, bilance sezóny 2023](https://environnement.brussels/media/15711/download)
 - Účinek omezení neproduktivního výparu / větru (kvalitativne) ✅: Voda jde pod povrch, neproduktivní výpar z půdy odpadá; proti kapkové závlaze úspora zhruba nulová (AZ1911). Zdroj: [University of Arizona Extension AZ1911, Nickel & Brischke](https://extension.arizona.edu/sites/default/files/2024-08/az1911-2021.pdf)
 - Kde to funguje: **Roeschwoog, Alsasko (Francie)** (2022): pilotní záhon 12 m² před radnicí, 11 nádob po 6,5 l (cca 1 ks/m²), bez jiné zálivky; úspora času: dosud 3 půldny zálivky týdně. Bez měření. ✅ [Neozone 24. 5. 2022 (podle France 3)](https://www.neozone.org/ecologie-planete/un-village-alsacien-utilise-la-technique-ancestrale-des-jarres-enterrees-oyas-pour-economiser-leau-de-ses-jardins)
 - Kde to funguje: **Ixelles, Brusel (Belgie)** (2023): 300 nádob ve veřejných záhonech; po sezóně 2023 čas zálivky zhruba poloviční, menší úhyn trvalek a keřů; sousední Watermael-Boitsfort dotuje domácnostem 75 % ceny do 100 €. Měřeno: čas zálivky (pozorování obce, nezávisle neověřeno). ✅ [Oyas (Brusel), podklad pro zakázku obce Ixelles, bilance sezóny 2023](https://environnement.brussels/media/15711/download)
 - Kde to funguje: **Fotopostup výroby ze dvou květináčů (Záhrada.sk)** (2025): 2 terakotové květináče Ø 16-18 cm, otvor zalepit střepem a sanitárním silikonem, slepit okraji, zakopat 2 cm nad zem, 3-4 sazenice kolem, zakrýt miskou, namulčovat; na zimu vyjmout. Bez měření. ✅ [Felixová M., Záhrada.sk 15. 4. 2025](https://www.zahrada.sk/magazine/fotopostup-ako-si-doma-vyrobit-zavlazovacie-nadoby-olla/)
-- Přenositelnost do Koryčan: Ano pro zeleninové a trvalkové záhony, školní zahradu (U07) a truhlíky; nezávisí na půdě ani sklonu. Nehodí se pod stromy a keře a na velké plochy.
+- Přenositelnost do Koryčan: Ano pro zeleninové a trvalkové záhony, školní zahradu a truhlíky; nezávisí na půdě ani sklonu. Nehodí se pod stromy a keře a na velké plochy.
 - Rizika, co z toho neplyne: Úspora platí proti zálivce na povrch, ne proti kapkové závlaze. Póry se zanášejí solemi z tvrdé vody; sazenice prvních cca 4 týdny zalévat navíc; na zimu vyprázdnit nebo vyjmout 🤔. Neřeší vsak ani odtok, jen šetří vodu.
 - Kč: svépomocně ze 2 květináčů Ø 16-18 cm + silikon: cena neověřena
 - Povolení: 0
@@ -221,7 +221,7 @@ Generováno z `data/opatreni.json` v0.9 (2026-10-22); podrobný rozbor a odkazy:
 
 ### S02 Odpojení dešťových svodů od kanalizace, svedení na pozemek (doplněno)
 - Účinek zpomalení odtoku (hodnota) ✅: Svedení ze zpevněných ploch na zeleň snížilo modelovaný odtok ze zpevněných ploch o 30 % (3 zahrady, Leeuwarden); na jílu se voda hromadí na povrchu [30 % odtoku ze zpevněných ploch]. Zdroj: [Lakhi N. 2025, Open Universiteit (diplomová práce)](https://research.ou.nl/en/studentTheses/the-impact-of-greening-measures-for-private-gardens-on-flood-prev/)
-- Rizika, co z toho neplyne: Na jílu (HSP D) se voda u domu hromadí; dodržet odstupy z ČSN 75 9010 a vést vodu do Z01/Z10.
+- Rizika, co z toho neplyne: Na jílu (HSP D) se voda u domu hromadí; dodržet odstupy z ČSN 75 9010 a vést vodu do dešťového záhonu nebo vsakovacího objektu.
 - Nedohledáno: typ kanalizace v Koryčanech; cena
 
 ### S04 Světlá střecha a plochy (albedo, cool roof) (doplněno)
@@ -245,17 +245,17 @@ Generováno z `data/opatreni.json` v0.9 (2026-10-22); podrobný rozbor a odkazy:
 - Nedohledáno: měření na rodinném domě ve střední Evropě; množství šedé vody z RD (l/os/den) z primárního zdroje; cena technologie pro RD 2026
 
 ### S06 Dešťová voda na splachování WC (nepitný rozvod v domě nebo škole) (nové)
-- Co to je: Podzemní nádrž (S01) napojená přes filtr a čerpadlo na oddělený rozvod k WC (případně pračce) s automatickým dopouštěním pitné vody. Na rozdíl od zálivky bere vodu každý den celý rok, takže nádrž má smysl i v zimě a při každém dešti má volný objem.
+- Co to je: Podzemní nádrž na dešťovou vodu napojená přes filtr a čerpadlo na oddělený rozvod k WC (případně pračce) s automatickým dopouštěním pitné vody. Na rozdíl od zálivky bere vodu každý den celý rok, takže nádrž má smysl i v zimě a při každém dešti má volný objem.
 - Účinek šetření pitnou vodou (hodnota) ✅: WC = cca 20-30 % spotřeby domácnosti: Praha 2020 splachování 26 l ze 112 l/os/den; Bielsko-Biała cca 30 %; ČR 2023 celkem 86,7 l/os/den [20-30 % spotřeby pitné vody]. Zdroj: [MČ Praha 14, leták Voda (2022)](https://www.praha14.cz/app/uploads/sites/4/2022/06/Letak-Voda-2022.pdf); [Madzia M. a kol. 2019](https://www.jeeng.net/Reduction-of-Treated-Water-Use-through-Application-of-Rainwater-Tanks-in-Households,112495,0,2.html); [ČSÚ 2. 5. 2024](https://csu.gov.cz/produkty/domacnosti-vodou-nadale-setri-v-prumyslu-jeji-spotreba-mirne-roste)
 - Účinek šetření pitnou vodou (vzorec) 🤔: Úspora pitné vody = osoby × 17-26 l/den = 6-9,5 m³/os/rok; 4 osoby 25-38 m³/rok 🤔 odvozeno. Zdroj: [MČ Praha 14, leták Voda (2022)](https://www.praha14.cz/app/uploads/sites/4/2022/06/Letak-Voda-2022.pdf); [ČSÚ 2. 5. 2024](https://csu.gov.cz/produkty/domacnosti-vodou-nadale-setri-v-prumyslu-jeji-spotreba-mirne-roste)
 - Účinek šetření pitnou vodou (hodnota) ✅: Nádrž 0,25 m³/os a střecha 30 m²/os nahradí téměř 80 % vody na splachování (přes 10 m³/os/rok); nomogram, Bielsko-Biała (vlhčí klima než Koryčany) [80 % vody na splachování]. Zdroj: [Madzia M. a kol. 2019](https://www.jeeng.net/Reduction-of-Treated-Water-Use-through-Application-of-Rainwater-Tanks-in-Households,112495,0,2.html)
-- Účinek zadržení objemu (vzorec) ✅: Jako S01; nádrž se průběžně vyprazdňuje, při dešti má volný objem. Zdroj: [Tabulka součinitelů odtoku (tzb-info, reprodukce ČSN)](https://www.tzb-info.cz/docu/tabulky/0000/000088_help.html)
+- Účinek zadržení objemu (vzorec) ✅: Jako u nádrže na dešťovou vodu; nádrž se průběžně vyprazdňuje, při dešti má volný objem. Zdroj: [Tabulka součinitelů odtoku (tzb-info, reprodukce ČSN)](https://www.tzb-info.cz/docu/tabulky/0000/000088_help.html)
 - Kde to funguje: **Kyselov u Vyššího Brodu (Český soběstačný dům)** (2022): dům bez přípojek; zachycená dešťová voda po úpravě na sprchu a WC (Adapterra Awards 2022, Náš domov). Bez měření. ✅ [businessinfo.cz 2. 11. 2022](https://www.businessinfo.cz/clanky/adapterra-awards-2022-ocenila-sobestacny-dum-energeticky-pozitivni-skolu-i-protierozni-prvky-v-krajine/)
 - Kde to funguje: **Ořechov u Brna** (2022): obec: 4 retenční nádrže na dešťovou vodu, 3 tůně, suchý poldr, 7 ha mokřad (Adapterra Awards 2022, Volná krajina); využití nádrží na WC a objemy ve zdroji neuvedeny. Bez měření. ✅ [ceskestavby.cz 2. 11. 2022](https://www.ceskestavby.cz/clanky/sobestacny-dum-i-energeticky-pozitivni-skola-podivejte-se-vitezne-projekty-proti-zmenam-klimatu-31347.html)
 - Kde to funguje: **Německo (celá země)** (2010): cca 1,8 mil. instalovaných nádrží na dešťovou vodu, 60-65 tis. ročně, 40 % do stávajících domů (studie trhu výrobce). Měřeno: odhad výrobce, ne měření. ✅⏳ [Mall GmbH, studie trhu Regenwassernutzung 2010 (baulinks.de 9/2010)](https://www.baulinks.de/webplugin/2010/1798.php4)
 - Přenositelnost do Koryčan: Ano u novostaveb a rekonstrukcí RD; u veřejných budov (škola, úřad) ještě lépe, protože WC je tam hlavní spotřeba 🤔. Nehodí se tam, kde není místo na nádrž, nebo malá střecha + velká domácnost.
 - Rizika, co z toho neplyne: V suchém létě 5 m³ nádrž pro 4 osoby bez deště dojde za 1-3 týdny 🤔, pak dopouští pitná voda. Nešetří vodu v krajině, šetří pitnou a odlehčí kanalizaci. NZÚ 2026 podporuje jen v kombinaci se zateplením nebo zdrojem energie.
-- Kč: podzemní nádrž 5000 l vč. šachty, bez montáže (viz S01): 50830 Kč; čerpadlo, filtr, nepitný rozvod, montáž: cena neověřena
+- Kč: podzemní nádrž 5000 l vč. šachty, bez montáže (jako u nádrže na dešťovou vodu): 50830 Kč; čerpadlo, filtr, nepitný rozvod, montáž: cena neověřena
 - Povolení: 1 (nepitný rozvod označený podle ČSN 75 6780, ochrana proti zpětnému toku; ohlášení 🤔; souhlas provozovatele vodovodu 💻)
 - Nedohledáno: měření na RD ve střední Evropě; podíl WC na spotřebě v ČR z primárního zdroje (SOVAK/ČSÚ); cena technologie 2026
 <!-- RESERSE-END -->
