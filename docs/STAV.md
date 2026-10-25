@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 22. 10. 2026 21:00 (Jak bylo v produkci jako datový příběh - sekce **Jak bylo - datový příběh v produkci**); dříve 16:30 (Můj pozemek krok 4 jako hra: dlaždice s obrázky, ukazatel Kapka-Oáza, skutečný déšť 30 dní - sekce **Můj pozemek - krok 4 jako hra**; doplnění chybějících let z okolních stanic; Jak bylo: srozumitelné názvy grafů, kulaté osy, graf Horko se supertropickými dny, tropickými nocemi a letními maximy, workflow Normaly pocasi - sekce **Počasí - Jak bylo**, rozhodnutí 22. 10. relace 12 „Rešerše dobré praxe“ **uzavřena: bloky B, A, C, D hotové**, katalog v0.6 / JSON 0.8; sekce **Katalog - rešerše dobré praxe** níže. UX opatření hotovo 22. 10. (sekce **Opatření - UX výběru** níže). **Další chat**: rešerše zdrojů k biodiverzitě a krajině (oblast „Život a voda v krajině“) - uživatel chce doplnit; pak napojení EFF na skutečný pozemek.) Předtím relace 11 „Můj pozemek UX“ uzavřena, včetně večerních úprav: výchozí déšť 10 mm v celé aplikaci, pozemek jako východisko pro Celé území, texty kroků. ~~Další chat: rešerše dobré praxe do katalogu~~ blok B hotov 21. 10. Detail: záložka přestavěna na **průvodce po krocích (varianta A)** včetně hledání adresy RÚIAN a odkazu se stavem, sekce **Můj pozemek - průvodce** níže. Předtím relace 10 „Nádrže v jádru“ uzavřena: bloky O a P hotové - **území modelu rozšířeno k jezu před Mouchnicemi, 17,7 km²**; úpravy Jak bylo a Celé území; **další chat: přestavba Můj pozemek podle `docs/POZEMEK-UX-ZADANI.md`**; předtím relace 9 „Počasí“, sekce **Počasí - Jak bylo** níže). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
+Aktualizováno: 25. 10. 2026 17:00 (sjednocení celé aplikace do stylu datové žurnalistiky: Jak bylo zeštíhlené, Můj pozemek, Celé území, Katalog s náčrtky, O modelu s dotacemi; stav.html aktualizován - sekce **Relace 25. 10. 2026 - shrnutí** a sekce pod ní); dříve 22. 10. 2026 21:00 (Jak bylo v produkci jako datový příběh - sekce **Jak bylo - datový příběh v produkci**); dříve 16:30 (Můj pozemek krok 4 jako hra: dlaždice s obrázky, ukazatel Kapka-Oáza, skutečný déšť 30 dní - sekce **Můj pozemek - krok 4 jako hra**; doplnění chybějících let z okolních stanic; Jak bylo: srozumitelné názvy grafů, kulaté osy, graf Horko se supertropickými dny, tropickými nocemi a letními maximy, workflow Normaly pocasi - sekce **Počasí - Jak bylo**, rozhodnutí 22. 10. relace 12 „Rešerše dobré praxe“ **uzavřena: bloky B, A, C, D hotové**, katalog v0.6 / JSON 0.8; sekce **Katalog - rešerše dobré praxe** níže. UX opatření hotovo 22. 10. (sekce **Opatření - UX výběru** níže). **Další chat**: rešerše zdrojů k biodiverzitě a krajině (oblast „Život a voda v krajině“) - uživatel chce doplnit; pak napojení EFF na skutečný pozemek.) Předtím relace 11 „Můj pozemek UX“ uzavřena, včetně večerních úprav: výchozí déšť 10 mm v celé aplikaci, pozemek jako východisko pro Celé území, texty kroků. ~~Další chat: rešerše dobré praxe do katalogu~~ blok B hotov 21. 10. Detail: záložka přestavěna na **průvodce po krocích (varianta A)** včetně hledání adresy RÚIAN a odkazu se stavem, sekce **Můj pozemek - průvodce** níže. Předtím relace 10 „Nádrže v jádru“ uzavřena: bloky O a P hotové - **území modelu rozšířeno k jezu před Mouchnicemi, 17,7 km²**; úpravy Jak bylo a Celé území; **další chat: přestavba Můj pozemek podle `docs/POZEMEK-UX-ZADANI.md`**; předtím relace 9 „Počasí“, sekce **Počasí - Jak bylo** níže). Hotovo dnes: stav.html, K návrhové srážky, L vážený odtok, M zeleň SCS-CN + roční bilance, D Kachník, povodňový plán, N USLE vč. prototypu, kritické body VÚV. **Nový samostatný chat „Koryčaňáci - jak bylo“ (počasí, ET₀, denní automatika): zadání v `docs/POCASI-ZADANI.md`.**
 
 ## Fáze: 1 a 2 hotové. Fáze 3 (jádro) rozpracovaná: v0.1 umí statistiku pozemku, SCS-CN po buňkách, povodí bodu, nádrž/poldr z DMR; chybí transformace vlny, bilance P-ET, USLE, napojení opatření.
 
@@ -166,6 +166,29 @@ Aktualizováno: 22. 10. 2026 21:00 (Jak bylo v produkci jako datový příběh -
 ### Předpoklady (UX)
 - Vzorový pozemek: 100 m² střechy, 50 m² dvora (dlažba s pískovými spárami), 250 m² zahrady, HSP B, sklon 3 %, svody do kanálu, déšť 10 mm.
 - „Jedno číslo“ upřednostňuje spočtené EFF před katalogovou hodnotou; odhady (🤔) se jako hlavní číslo nezobrazují.
+
+## Relace 25. 10. 2026 - shrnutí
+
+Hotovo dnes: Jak bylo zeštíhlené podle náčrtu; Můj pozemek, Celé území, Katalog a O modelu sladěné se stylem Jak bylo (podrobnosti v sekcích níže); kódy opatření v textech nahrazeny slovy; oprava LES03 (les a voda) a filtru „Měř s námi“; dotace s odkazem a větou kdy-kolik-na co (ověřeno 25. 10.); stav.html aktualizován (stav k 25. 10., katalog 66 opatření a 157 zdrojů, dotace, Jak bylo s čísly roku 2026 do 23. 10., aplikace 5 záložek, další kroky, zdroje; opraveno „vlastní čidlo“ -> čidlo hlásné služby a „48 %“ -> 38 % odhadu HSP).
+
+### Další kroky (pořadí)
+1. Zkouška celé aplikace s dalšími lidmi (Můj pozemek kroky 1 a 4, Celé území kapitola 3), sbírat, kde se ztrácí.
+2. AOPK OPŽP ZMV 17. výzva končí 3. 11. 2026 - rozhodnutí obce nebo oddílu, jestli něco podat (tůň, výsadba).
+3. Validace: žádost Povodí Moravy (srážkoměr a průtok u přehrady); porovnat odtok modelu s epizodami u Kachníku.
+4. VÚMOP: odpověď na žádost o HSP (odeslána 19. 10.) - pak přepočet CN.
+5. Lokální čísla ClimRisk pro k. ú. Koryčany (čeká na uživatele) a místní fotky se souhlasem.
+6. Podmínky užití otevřených dat ČHMÚ zapsat do VRSTVY.md.
+
+### Na co ses nezeptal a měl bys (25. 10.)
+- Výchozí déšť v Celém území je 10 mm; u něj se v kapitole 3 a u hráze skoro nic neděje. Zvážit start na lijáku 32 mm.
+- Karty velkých projektů v Celém území (kapitola 5) a dlaždice v katalogu se ještě mírně liší.
+- Nadace Partnerství „Pro odolná města a zdravou krajinu“ (obce, 50-200 tis. Kč, uzávěrka letos 15. 10.) - oficiální stránku neotevřena, nezařazeno.
+- Katalog na mobilu má i po zkrácení 10 500 px; filtry jsou nahoře, ale skupiny by šly i sbalit.
+
+### Předpoklady zvolené 25. 10.
+- Texty hlaviček kroků, kapitol a karet psal Claude; náčrtky k opatřením mimo zahradu přiřadil Claude (některé se opakují).
+- Rozdělení Hotovo / Rozpracováno / Chybí v O modelu sestaveno ze STAV.md.
+- NZÚ: odkaz na závazné pokyny SFŽP (PDF), čísla ověřena přes ceskestavby.cz (oficiální web NZÚ se nenačetl).
 
 ## O modelu - aktuální stav a dotace (25. 10. 2026)
 
