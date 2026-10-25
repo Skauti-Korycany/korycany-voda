@@ -1501,10 +1501,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <label class="f u-prumer">Průměrně zpevněno (m², odhad 🤔)<input type="number" id="u-paved" value="35" min="0" step="5"></label>
         <label class="f">Jiný déšť<select id="u-rain">
           <optgroup label="Běžné deště (denní úhrny ČHMÚ Koryčany 1991-2019 ✅)">
-            <option value="10" selected>10 mm - běžný déšť, asi 17x za rok</option>
+            <option value="10">10 mm - běžný déšť, asi 17x za rok</option>
             <option value="20">20 mm - silný déšť, asi 5x za rok</option></optgroup>
           <optgroup label="Návrhový déšť Koryčany, 6 hodin (ČVUT/ČHMÚ 2023 ✅)">
-            <option value="32.2" data-n="N2">liják - 32 mm, 1x za 2 roky</option>
+            <option value="32.2" data-n="N2" selected>liják - 32 mm, 1x za 2 roky</option>
             <option value="53.2" data-n="N10">vzácný liják - 53 mm, 1x za 10 let</option>
             <option value="87" data-n="N100">extrémní liják - 87 mm, 1x za 100 let</option></optgroup>
           <optgroup label="Další">
@@ -1573,8 +1573,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <option value="0.5">0,5 m</option><option value="1" selected>1 m</option><option value="1.5">1,5 m</option><option value="2">2 m</option>
         <option value="2.5">2,5 m (vodní dílo)</option><option value="3">3 m (vodní dílo)</option><option value="4">4 m (vodní dílo)</option></select></label>
       <select id="h-rain" hidden aria-hidden="true">
-        <option value="10" selected>10</option><option value="20">20</option><option value="26.2">26.2</option>
-        <option value="32.2" data-n="N2">32.2</option><option value="53.2" data-n="N10">53.2</option><option value="87" data-n="N100">87</option><option value="93.5">93.5</option></select>
+        <option value="10">10</option><option value="20">20</option><option value="26.2">26.2</option>
+        <option value="32.2" data-n="N2" selected>32.2</option><option value="53.2" data-n="N10">53.2</option><option value="87" data-n="N100">87</option><option value="93.5">93.5</option></select>
     </div>
     <div class="uz-map"><div id="dam-map" aria-label="Mapa potoků pro hráz"></div></div>
     <div class="callout" id="h-vd" style="border-left-color:var(--accent);display:none"></div>

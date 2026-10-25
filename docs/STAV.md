@@ -180,7 +180,7 @@ Hotovo dnes: Jak bylo zeštíhlené podle náčrtu; Můj pozemek, Celé území,
 6. Podmínky užití otevřených dat ČHMÚ zapsat do VRSTVY.md.
 
 ### Na co ses nezeptal a měl bys (25. 10.)
-- Výchozí déšť v Celém území je 10 mm; u něj se v kapitole 3 a u hráze skoro nic neděje. Zvážit start na lijáku 32 mm.
+- ~~Výchozí déšť v Celém území 10 mm~~ rozhodnuto 25. 10. večer: výchozí je liják 32 mm (jednou za 2 roky) pro celou stránku i hráz; Můj pozemek dál začíná na 10 mm.
 - Karty velkých projektů v Celém území (kapitola 5) a dlaždice v katalogu se ještě mírně liší.
 - Nadace Partnerství „Pro odolná města a zdravou krajinu“ (obce, 50-200 tis. Kč, uzávěrka letos 15. 10.) - oficiální stránku neotevřena, nezařazeno.
 - Katalog na mobilu má i po zkrácení 10 500 px; filtry jsou nahoře, ale skupiny by šly i sbalit.
