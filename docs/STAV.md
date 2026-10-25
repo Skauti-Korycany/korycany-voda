@@ -167,6 +167,19 @@ Aktualizováno: 22. 10. 2026 21:00 (Jak bylo v produkci jako datový příběh -
 - Vzorový pozemek: 100 m² střechy, 50 m² dvora (dlažba s pískovými spárami), 250 m² zahrady, HSP B, sklon 3 %, svody do kanálu, déšť 10 mm.
 - „Jedno číslo“ upřednostňuje spočtené EFF před katalogovou hodnotou; odhady (🤔) se jako hlavní číslo nezobrazují.
 
+## Můj pozemek - sladění stylu s Jak bylo (25. 10. 2026)
+
+Podnět uživatele: sladit vzhled s Jak bylo (aspoň zaoblené rohy rámečku mapy), přehlednost a orientace návštěvníka.
+- Společná hlavička nad mapou i panelem: „Krok N z 5“, nadpis a jedna věta, co v kroku udělat (texty v PZ_HEAD, krok 1 se mění po výběru parcely). Nadpisy h2 uvnitř kroků zrušené.
+- Mapa v rámečku s rohy 14 px; „Z map víme“, výsledky deště, posledních 30 dní, ukazatel Oázy a „Kolik vody odteče“ jako boxy jako v Jak bylo (rámeček, 14 px, nadpísek).
+- Ukazatel kroků: čísla v kroužcích, hotové kroky vybarvené; na mobilu jen název aktuálního kroku.
+- Krok 1: box „Jak to půjde“ (3 kroky), první číslo v boxu; pruh „Najdi svůj dům“ nahradila hlavička. Na mobilu hledání na celou šířku, tlačítka pod ním.
+- Krok 2: otázky číslované 1-3, „Upřesnit čísla“ až za nimi.
+- Krok 5: box „Kolik vody odteče při dešti X mm“, řádky „teď“ a „s tvými opatřeními“.
+- Výpis výběru bez dvojitých závorek („parcela č. 1858 (87 m², 1 budova)“). Opraveno prázdné okno našeptávače (čára pod hledáním).
+- Na mobilu se „Z map víme“ ukazuje jen v kroku 2 (kratší posun ke hlavnímu obsahu).
+Ověřeno headless: počítač 1300 px a mobil 390 px, světlý i tmavý režim, kroky 1-5, bez chyb JS a bez vodorovného posunu.
+
 ## Jak bylo - zeštíhlení první stránky (25. 10. 2026)
 
 Podnět uživatele: náčrt působil stručněji a údernějí než živý web. Vlastní rozbor (měřeno headless): živá stránka měla 7 300 px na počítači a 11 600 px na mobilu, výzva „Co s tím u vás doma“ až na 10 800 px (mobil); pod každým grafem dlouhá šedá poznámka (celkem ~1 700 znaků, opakovala text kapitol), legendy vyšší než graf (mobil), 18 dlaždic s čísly, detail období (nástroj, ne příběh) uprostřed příběhu, letošek zahrabaný.
