@@ -301,6 +301,25 @@ details.uz-det[open]{padding-bottom:.9rem}
 .kt-vic{font:inherit;font-weight:600;color:var(--accent);background:var(--panel);border:1px solid var(--line);border-radius:999px;min-height:44px;padding:.4rem 1rem;margin-top:.7rem;cursor:pointer}
 .kt-vic:hover,.kt-vic:focus-visible{border-color:var(--accent)}
 .kt details ul{margin:.3rem 0 .2rem;padding-left:1.1rem} .kt details li{margin:.2rem 0;line-height:1.4}
+/* O modelu ve stylu ostatnich stranek (25. 10. 2026) */
+.om-stav{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.8rem;margin-top:1rem}
+.om-s{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:.9rem 1rem;border-top:4px solid var(--line)}
+.om-s.ok{border-top-color:var(--ok)} .om-s.wip{border-top-color:var(--warn)} .om-s.no{border-top-color:var(--bad)}
+.om-s ul{margin:.3rem 0 0;padding-left:1.1rem;font-size:.93rem;line-height:1.45} .om-s li{margin:.35rem 0}
+.om-met{margin-top:1rem}
+.om-zn{margin:.8rem 0 0}
+.om-data td,.om-data th{vertical-align:top}
+.om-pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:.7rem}
+.om-p{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:.85rem 1rem;display:grid;gap:.35rem;align-content:start}
+.om-p p{margin:0;line-height:1.5;font-size:.94rem}
+.om-p-h{display:flex;flex-wrap:wrap;gap:.3rem .6rem;align-items:baseline;justify-content:space-between}
+.om-p-h a{color:var(--accent)}
+.om-st{font-size:.78rem;border-radius:999px;padding:.1rem .55rem;background:var(--chip);white-space:nowrap}
+.om-st.ok{background:var(--ok);color:#fff} .om-st.no{background:var(--chip);color:var(--muted)} .om-st.wip{background:var(--warn);color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .om-st.ok,:root:not([data-theme="light"]) .om-st.wip{color:#0f1a1f}}
+:root[data-theme="dark"] .om-st.ok,:root[data-theme="dark"] .om-st.wip{color:#0f1a1f}
+.om .jb-box a{color:var(--accent)}
+.om-neumi{line-height:1.5;max-width:46rem;padding-left:1.1rem} .om-neumi li{margin:.4rem 0}
 .uz-cn-l{display:none}
 @media(max-width:599px){ svg.uz-cn{display:none} .uz-cn-l{display:grid} .uz .inputs{grid-template-columns:1fr} }
 .uz-cta{margin-top:2.6rem}
@@ -983,7 +1002,7 @@ details.banner[open]>summary .more{display:none}
     <div class="uz-q">Místo</div><div class="filters" id="k-misto"></div>
     <div class="uz-q">Kdo rozhoduje</div><div class="filters" id="k-rozhoduje"></div>
     <div class="uz-q">Účinek</div><div class="filters" id="k-ucinek"></div>
-    <div class="uz-q">Peníze a pracnost</div><div class="filters" id="k-fin"><button aria-pressed="false" data-f="otevreno">jen s otevřenou dotací (k 18. 10. 2026)</button><button aria-pressed="false" data-f="svepomoc">jen svépomoc (za víkend, bez povolení)</button></div>
+    <div class="uz-q">Peníze a pracnost</div><div class="filters" id="k-fin"><button aria-pressed="false" data-f="otevreno">jen s dotací, která je teď otevřená</button><button aria-pressed="false" data-f="svepomoc">jen svépomoc (za víkend, bez povolení)</button></div>
     </details>
   </div>
   <p class="note kt-n">Čísla jsou pro vzorový dům (100 m² střechy, 50 m² dvora, běžný déšť 10 mm). Pro tvůj dům je spočítá <a href="#" data-tab-go4="pozemek">Můj pozemek</a>. Každé číslo má zdroj a značku původu.</p>
@@ -992,27 +1011,93 @@ details.banner[open]>summary .more{display:none}
 </section>
 
 <!-- ======================= O MODELU ======================= -->
-<section id="tab-model" class="hidden-tab">
-  <div class="panel">
-    <h2>O modelu</h2>
-    <p>Jedno výpočetní jádro, dvě obálky (občan, škola/expert). Primární ukazatel: kolik vody z přívalu zůstane v území (zasákne, zadrží se, zůstane v půdě) místo odtoku korytem za hodinu. Zploštění povodňové vlny je vedlejší produkt. Výpar je součást bilance: méně neproduktivního výparu, víc vody v půdě a biomase.</p>
-    <h3 style="margin-top:.8rem">Co jádro počítá v této verzi</h3>
-    <ul>
-      <li>Odtok z ploch: V = plocha × srážka × součinitel odtoku C (ČSN 75 9010 / TNV 75 9011 ✅).</li>
-      <li>Účinek opatření jen tam, kde má katalog typ "vzorec" nebo doloženou "hodnotu". Odhady a kvalitativní účinky se nesčítají.</li>
-      <li>Součet za území = počet domácností × průměrný pozemek × balíček opatření.</li>
+<section id="tab-model" class="hidden-tab om uz">
+  <header class="jb-hero">
+    <div class="jb-kicker">O modelu</div>
+    <h2 class="jb-title">Jak to počítáme a co ještě neumíme</h2>
+    <p class="jb-lede">Aplikace je zjednodušený model pro osvětu a pro rozhodování, kde začít. Není to projektová dokumentace. Každé číslo má zdroj; tady je, odkud čísla jsou, co je hotové a co ještě chybí.</p>
+  </header>
+  <nav class="uz-obsah" aria-label="Kapitoly">
+    <a href="#om-1"><span class="n">1</span><b>Co je hotové</b><small>a co ještě chybí</small></a>
+    <a href="#om-2"><span class="n">2</span><b>Jak se počítá</b><small>metody a vzorce</small></a>
+    <a href="#om-3"><span class="n">3</span><b>Odkud jsou data</b><small>zdroje a licence</small></a>
+    <a href="#om-4"><span class="n">4</span><b>Z čeho to zaplatit</b><small>dotace a další cesty</small></a>
+    <a href="#om-5"><span class="n">5</span><b>Co model neumí</b><small>a kdo za ním stojí</small></a>
+  </nav>
+
+  <section class="uz-ch" id="om-1">
+    <div class="jb-kicker">Kapitola 1 · Stav</div>
+    <h3 class="jb-ch">Co je hotové a co chybí</h3>
+    <p class="jb-p">Stav k 25. 10. 2026. Aplikace běží na skutečných datech o terénu, půdě, budovách a srážkách v Koryčanech, ale zatím jsme ji neporovnali s měřením průtoku v potoce. Proto u ní stojí <b>nevalidováno</b>.</p>
+    <div class="om-stav">
+      <div class="om-s ok"><span class="jb-kicker">Hotovo</span><ul>
+        <li><b>Jak bylo:</b> srážky a teploty ČHMÚ Koryčany od roku 1921, chybějící roky doplněné z okolních stanic; denní data se stahují samy dvakrát denně.</li>
+        <li><b>Můj pozemek:</b> skutečné parcely a budovy z katastru, sklon z výškopisu, půda z map BPEJ, skutečný déšť za posledních 30 dní.</li>
+        <li><b>Celé území:</b> střechy podle účelu budov, odtok z polí, luk a lesů po čtvercích 5 m, eroze orné půdy, objem vody za hrází na potoce.</li>
+        <li><b>Katalog:</b> 66 opatření s účinkem, cenou, zdrojem a cestou k penězům.</li></ul></div>
+      <div class="om-s wip"><span class="jb-kicker">Rozpracováno</span><ul>
+        <li><b>Půda:</b> čekáme na podrobnou mapu hydrologických skupin půd od VÚMOP; zatím odhad z BPEJ, v zástavbě a v lese hrubší.</li>
+        <li><b>Měření:</b> reakce Stříbrníku na déšť u Kachníku (léto 2026) je zpracovaná; data z přehrady od Povodí Moravy zatím nemáme.</li>
+        <li><b>Zkouška s lidmi:</b> Můj pozemek prošel první test s občanem a podle něj se upravil.</li></ul></div>
+      <div class="om-s no"><span class="jb-kicker">Chybí</span><ul>
+        <li><b>Ověření na měření</b> (validace): porovnat výpočet s průtokem v potoce po skutečném dešti.</li>
+        <li><b>Průběh povodňové vlny:</b> model počítá objemy vody, ne to, jak rychle vlna přijde a jak ji opatření zpomalí.</li>
+        <li><b>Klima 2050 a 2090 v číslech pro Koryčany:</b> zatím jen výhled CzechGlobe a IPCC v Jak bylo.</li>
+        <li><b>Horko a vítr jako mapa</b> a <b>formulář pro měření školy</b>.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="uz-ch" id="om-2">
+    <div class="jb-kicker">Kapitola 2 · Metody</div>
+    <h3 class="jb-ch">Jak se počítá</h3>
+    <p class="jb-p">Používáme jednoduché a ověřené české a mezinárodní metody, aby se dal každý výsledek přepočítat ručně. Hlavní otázka je vždy stejná: kolik vody z deště zůstane v území a kolik odteče.</p>
+    <div class="uz-kdo om-met">
+      <div><b>Jak bylo</b><span class="v">srážky, výpar, horko</span><ul><li>Denní srážky a teploty ČHMÚ (Koryčany, Nemochovice), předběžná data Povodí Moravy.</li><li>Možný výpar podle Hargreaves-Samani (FAO-56).</li><li>Tropický den od 30 °C, tropická noc od 20 °C (ČHMÚ).</li></ul></div>
+      <div><b>Můj pozemek</b><span class="v">jeden pozemek, jeden déšť</span><ul><li>Střechy a dlažba: součinitel odtoku podle ČSN 75 9010, první 1 mm deště zůstane na povrchu.</li><li>Zahrada: metoda SCS-CN podle půdy A-D (Janeček a kol. 2012).</li><li>Účinek opatření jen tam, kde je doložený vzorcem nebo měřením.</li></ul></div>
+      <div><b>Celé území</b><span class="v">1 770 ha nad jezem u Mouchnic</span><ul><li>Odtok z krajiny SCS-CN po čtvercích 5 m (výškopis DMR 5G, ZABAGED, BPEJ); u lijáků váha nasycené půdy podle Kavky a kol. 2023.</li><li>Eroze orné půdy USLE (R faktor VÚMOP/ČHMÚ 2022).</li><li>Nádrž za hrází: kam vystoupá voda v terénu DMR 5G.</li></ul></div>
+      <div><b>Katalog</b><span class="v">66 opatření</span><ul><li>Každý účinek má zdroj a značku původu.</li><li>Nejistota jako rozsah, ne jedno číslo.</li><li>Odhady (🤔) se do součtů nepočítají.</li></ul></div>
+    </div>
+    <p class="note om-zn">Značky u čísel: ✅ zdroj jsme otevřeli a ověřili, ⏳ zdroj starší než rok, 📄 citováno z druhé ruky, 🤔 odhad, 💻 neověřeno.</p>
+    <details class="jb-cist uz-det"><summary><b>Konstanty a vzorce pro odborníky</b></summary>
+      <div id="konst" class="src"></div>
+    </details>
+  </section>
+
+  <section class="uz-ch" id="om-3">
+    <div class="jb-kicker">Kapitola 3 · Data</div>
+    <h3 class="jb-ch">Odkud jsou data</h3>
+    <p class="jb-p">Jen veřejné zdroje státních a odborných institucí. Mapy a data ČÚZK jsou pod licencí CC BY 4.0. Osobní údaje (vlastníci pozemků, adresy) aplikace nenačítá ani neukládá.</p>
+    <div class="uz-tw"><table class="flow om-data">
+      <tr><th>co</th><th>odkud</th><th>k čemu</th></tr>
+      <tr><td>výškopis DMR 5G, parcely, budovy, ZABAGED, mapy a ortofoto</td><td>ČÚZK, CC BY 4.0 ✅</td><td>sklon, kam teče voda, střechy, využití ploch</td></tr>
+      <tr><td>bonitované půdně ekologické jednotky (BPEJ)</td><td>Státní pozemkový úřad ✅</td><td>jak rychle se vsákne voda (skupina půdy A-D)</td></tr>
+      <tr><td>účel budov, hledání adres</td><td>RÚIAN (ČÚZK) ✅</td><td>velké střechy, hledání v Můj pozemek</td></tr>
+      <tr><td>denní srážky a teploty</td><td>ČHMÚ, otevřená data (podmínky užití ještě zapisujeme); Povodí Moravy, srážkoměr u přehrady (předběžná data)</td><td>Jak bylo, skutečný déšť za 30 dní</td></tr>
+      <tr><td>návrhové deště N2-N100</td><td>ČVUT a ČHMÚ, metodika 2023 ✅</td><td>lijáky jednou za 2, 10 a 100 let</td></tr>
+      <tr><td>R faktor eroze 2022</td><td>VÚMOP a ČHMÚ ✅</td><td>smyv půdy z polí</td></tr>
+      <tr><td>toky, kritické body přívalových povodní</td><td>ČÚZK ✅, VÚV TGM (CC BY 4.0) ✅</td><td>hráz na potoce, místa ohrožená přívalem</td></tr>
+      <tr><td>tabulky čísla odtoku (CN)</td><td>Janeček a kol. 2012 ✅⏳, USDA TR-55</td><td>odtok ze zahrad, polí a lesů</td></tr>
+    </table></div>
+  </section>
+
+  <section class="uz-ch" id="om-4">
+    <div class="jb-kicker">Kapitola 4 · Peníze</div>
+    <h3 class="jb-ch">Z čeho to zaplatit</h3>
+    <p class="jb-p">Nejrychlejší cesta jsou vlastní peníze: bez žádostí a bez čekání, a řada opatření na zahradě stojí málo nebo skoro nic. Pro větší věci jsou tu dotace. U každé je odkaz a jedna věta: kdy, kolik a na co. Dotace se mění, před žádostí vždy otevři odkaz.</p>
+    <div id="progs" class="om-progs"></div>
+  </section>
+
+  <section class="uz-ch" id="om-5">
+    <div class="jb-kicker">Kapitola 5 · Hranice</div>
+    <h3 class="jb-ch">Co model neumí</h3>
+    <ul class="om-neumi">
+      <li><b>Nenahradí projekt.</b> Pro stavbu nádrže, poldru nebo vsaku je potřeba projektant, hydrogeolog a povolení.</li>
+      <li><b>Neukáže zatopené ulice.</b> Rozliv vody po obci (2D hydraulika) je úloha pro specializované programy.</li>
+      <li><b>Nezná skutečný stav každého pozemku.</b> Kam vedou okapy, kolik je dlažby nebo jak se hospodaří na poli, víš líp ty.</li>
+      <li><b>Nepočítá podzemní vodu</b> a to, jak rychle se po dešti doplní studny.</li>
     </ul>
-    <h3 style="margin-top:.8rem">Co tu chybí a proč</h3>
-    <ul>
-      <li>Terén, půda, plochy střech: fáze 2 (DMR 5G, VÚMOP, ZABAGED). V náhledu zadáváš ručně.</li>
-      <li>Eroze polí (USLE), objem nádrže z DMR, měření školy: další verze.</li>
-      <li>Klimatické scénáře 2050/2090: zdroj s licencí zatím nedohledán.</li>
-    </ul>
-    <h3 style="margin-top:.8rem">Konstanty</h3>
-    <div id="konst" class="src"></div>
-    <h3 style="margin-top:.8rem">Dotační programy (stav k 18. 10. 2026)</h3>
-    <div id="progs" class="src"></div>
-  </div>
+    <div class="jb-box"><span class="jb-kicker">Kdo za tím stojí</span><p>Aplikaci připravuje skautský oddíl v Koryčanech spolu se ZŠ Koryčany (program Ekoškola). Je nekomerční a otevřená: kód i data jsou veřejně na <a href="https://github.com/Skauti-Korycany/korycany-voda" target="_blank" rel="noopener">GitHubu</a>, podrobný stav práce je na <a href="stav.html">stránce Stav projektu</a>.</p></div>
+  </section>
 </section>
 
 <footer>Skautský oddíl Hříběcí hory, Koryčany, s ZŠ Koryčany. Data: ČÚZK (CC BY 4.0), katalog opatření v0.3 (vlastní kompilace, zdroje u každé položky). Náhled 18. 10. 2026.</footer>
@@ -1494,7 +1579,21 @@ function coButtons(id, state, cb){ $(id).innerHTML=Object.entries(CO).map(([k,v]
   $(id).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?state.add(b.dataset.k):state.delete(b.dataset.k); cb();})); }
 const PZCO = new Set();
 function coMatch(o, state){ if(!state.size) return true; const ob=oblastiOp(o); return [...state].some(k=>ob.has(k)); }
-function finText(o){ return o.financovani.map(f=>{const p=D.programy[f]; return p? (p.stav==='otevreno'&&f!=='vlastni'?'● ':'')+p.nazev.split(' - ')[0].split(' (')[0] : f}).join('; '); }
+// dotace (25. 10. 2026): karta s odkazem a jednou vetou KDY, KOLIK, NA CO; stav podle data (po termínu se sám zavře)
+const DNES_ISO = new Date().toISOString().slice(0,10);
+const csdK = s=>{ const [y,m,d]=s.split('-'); return `${+d}. ${+m}. ${y}`; };
+const progOtevreno = p => (p.stav==='otevreno' && (!p.do || p.do>=DNES_ISO) && (!p.od || p.od<=DNES_ISO)) || p.stav==='prubezne';
+function progStav(p){
+  if(p.stav==='vzdy') return ['ok','kdykoli'];
+  if(p.stav==='mesto') return ['ok','každý rok, termíny na webu města'];
+  if(p.stav==='nastroj') return ['','nástroj, ne dotace'];
+  if(p.stav==='prubezne') return ['ok','průběžně'];
+  if(p.stav==='otevreno' && p.od && p.od>DNES_ISO) return ['wip','otevře se '+csdK(p.od)];
+  if(progOtevreno(p)) return ['ok', p.stav_text || (p.do ? 'otevřeno do '+csdK(p.do) : 'otevřeno')];
+  return ['no','teď zavřeno'];
+}
+function finText(o){ return o.financovani.map(f=>{ const p=D.programy[f]; if(!p) return f; if(f==='vlastni') return 'vlastní peníze (bez byrokracie)'; if(p.stav==='ukonceno') return '';
+  const n=p.url?`<a href="${p.url}" target="_blank" rel="noopener">${p.kratce||p.nazev}</a>`:(p.kratce||p.nazev), st=progStav(p)[1]; return `${n} (${st})`; }).filter(Boolean).join('; '); }
 function povText(o){ return (CZ.povoleni[String(o.povoleni)]||'?')+(o.povoleni_pozn?' ('+o.povoleni_pozn+')':''); }
 // zadrzeni vody na jednom pozemku pri zvolenych opatrenich (pouziva Muj pozemek i Cele uzemi v rezimu "jako muj pozemek")
 function zadrzeni(i, r, ch){
@@ -1893,7 +1992,7 @@ const KAT_OPEN = new Set();
 function renderKatalog(){
   const list=D.opatreni.filter(o=> (!KF.kde.size||kdeOp(o).some(k=>KF.kde.has(k))) && coMatch(o,KF.co) && (!KF.misto.size||o.misto.some(m=>KF.misto.has(m))) && (!KF.rozhoduje.size||o.rozhoduje.some(m=>KF.rozhoduje.has(m)))
     && (!KF.ucinek.size||[...o.ucinky.primarni,...o.ucinky.vedlejsi].some(u=>KF.ucinek.has(u)))
-    && (!KF.fin.has('otevreno')||o.financovani.some(f=>D.programy[f]&&D.programy[f].stav==='otevreno'&&f!=='vlastni'))
+    && (!KF.fin.has('otevreno')||o.financovani.some(f=>D.programy[f]&&f!=='vlastni'&&progOtevreno(D.programy[f])))
     && (!KF.fin.has('svepomoc')||(o.pracnost===1&&o.povoleni===0)));
   const filtr = Object.values(KF).some(s=>s.size);
   $('k-count').innerHTML = filtr ? `Zobrazeno <b>${list.length}</b> z ${D.opatreni.length} opatření.` : `Všech <b>${D.opatreni.length}</b> opatření podle místa, od nejsnazších.`;
@@ -1925,8 +2024,11 @@ $('konst').innerHTML = `<ul><li>Srážky: ${K.srazky_rocni_mm.hodnota} mm/rok �
 <li>Zelené plochy pozemku: SCS-CN, CN zahrady podle půdy A-D (Janeček 2012 / TR-55 ✅⏳: trávník 39/61/74/80), bez úpravy na sklon (české metodiky ji nemají); u návrhových dešťů vážení CN2/CN3 jako v krajině; roční odtok po dnech z histogramu denních úhrnů ČHMÚ Koryčany 1991-2019. Střechy a zpevněné plochy: součinitel ČSN × (déšť - 1 mm), 1 mm = ztráta smáčením (Ia pro CN 98 podle TR-55 ✅⏳)</li>
 <li>Součinitele odtoku C (střechy, zpevněné; sklon &lt;1 / 1-5 / &gt;5 %): ${Object.entries(C).filter(([k,v])=>Array.isArray(v)).map(([k,v])=>k.replaceAll('_',' ')+' '+v.join('/')).join('; ')} ✅</li>
 <li>Vsak: prázdné do ${K.vsak.vyprazdneni_max_h} h, ${K.vsak.nad_hladinou_pv_min_m} m nad podzemní vodou, ${K.vsak.odstup_budova_nehydroizolovana_m} m od budovy ✅</li>
-<li>USLE: přípustná ztráta půdy od 1. 7. 2026 ${K.usle.Gp_t_ha_rok['od_2026-07-01'].melke}/${K.usle.Gp_t_ha_rok['od_2026-07-01'].ostatni} t/ha/rok ✅ (v náhledu se nepočítá)</li></ul>`;
-$('progs').innerHTML='<ul>'+Object.values(D.programy).map(p=>`<li><b>${p.nazev}</b> - ${p.stav}${p.do?' do '+p.do:''}${p.pozn?': '+p.pozn:''}</li>`).join('')+'</ul>';
+<li>USLE: přípustná ztráta půdy od 1. 7. 2026 ${K.usle.Gp_t_ha_rok['od_2026-07-01'].melke}/${K.usle.Gp_t_ha_rok['od_2026-07-01'].ostatni} t/ha/rok ✅ (počítá se v Celé území, kapitola 3)</li></ul>`;
+const PROG_SK = [['Bez žádostí',['vlastni','participativni']],['Pro domácnosti',['nzu_rd_2026']],['Pro obec, školu a spolky',['aopk_zmv','opzp_1_3_4','opzp_1_3_1']],['Pro krajinu a zemědělce',['ppk_b','szp_agroles','kopu']]];
+$('progs').innerHTML = PROG_SK.map(([t,ks])=>`<h4 class="uz-h4">${t}</h4><div class="om-pg">${ks.filter(k=>D.programy[k]).map(k=>{ const p=D.programy[k], [c,st]=progStav(p);
+  return `<div class="om-p"><div class="om-p-h"><b>${p.url?`<a href="${p.url}" target="_blank" rel="noopener">${p.nazev}</a>`:p.nazev}</b><span class="om-st ${c}">${st}</span></div><p>${p.veta||p.pozn||''}</p>${p.overeno?`<p class="note">Ověřeno ${csdK(p.overeno)} ✅</p>`:''}</div>`; }).join('')}</div>`).join('');
+document.getElementById('tab-model').addEventListener('click',e=>{ const a=e.target.closest('.uz-obsah a'); if(a){ e.preventDefault(); const t=document.querySelector(a.getAttribute('href')); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); } });
 
 // ---------- Jak bylo
 (function(){

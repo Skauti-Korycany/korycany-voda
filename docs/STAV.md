@@ -167,6 +167,15 @@ Aktualizováno: 22. 10. 2026 21:00 (Jak bylo v produkci jako datový příběh -
 - Vzorový pozemek: 100 m² střechy, 50 m² dvora (dlažba s pískovými spárami), 250 m² zahrady, HSP B, sklon 3 %, svody do kanálu, déšť 10 mm.
 - „Jedno číslo“ upřednostňuje spočtené EFF před katalogovou hodnotou; odhady (🤔) se jako hlavní číslo nezobrazují.
 
+## O modelu - aktuální stav a dotace (25. 10. 2026)
+
+Podnět uživatele: aktualizovat O modelu podle skutečného stavu a sjednotit styl; dotace odkazem na konkrétní příležitost s jednou větou KDY, KOLIK, NA CO; vlastní prostředky = bez byrokracie; participativní rozpočet Koryčan odkazem na web města (neopisovat, znění se mění).
+- O modelu přestavěno na 5 kapitol s rozcestníkem: 1 Co je hotové a co chybí (3 sloupce Hotovo / Rozpracováno / Chybí, „nevalidováno“), 2 Jak se počítá (metody po záložkách, vysvětlení značek, konstanty sbalené), 3 Odkud jsou data (tabulka zdroj, licence, k čemu), 4 Z čeho to zaplatit (karty programů), 5 Co model neumí + kdo za tím stojí (odkaz GitHub a stav.html).
+- Programy (tools/build_opatreni.py, PROGRAMY): nová pole `kratce`, `url`, `veta` (KDY, KOLIK, NA CO), `overeno`, u agrolesnictví `stav_text`; stav `prubezne` (NZÚ) a `mesto` (participativní rozpočet). Stav karty a „otevřeno do“ se počítá z data v prohlížeči, takže výzva se po termínu sama ukáže jako zavřená. Filtr katalogu „jen s dotací, která je teď otevřená“ taky podle data.
+- Ověřeno online 25. 10. 2026 ✅: participativní rozpočet Koryčany existuje (korycany.cz, stránka s výzvou na rok 2026 a zásadami; hlasování přes Mobilní rozhlas „Dáme na vás“); AOPK OPŽP ZMV 17. výzva 20. 10. - 3. 11. 2026, 275 mil. Kč, žadatelé vč. fyzických osob a NNO; OPŽP 105. výzva 17. 6. - 17. 12. 2026, 70/85 %, 200 mil. Kč, ne fyzické osoby; OPŽP 104. výzva skončila 25. 9. 2026; PPK B 2/2026 skončila 18. 6. 2026, max. 250 000 Kč, B.3 jen mimo zastavěné území, o 2027 nic; agrolesnictví: ohlášení zájmu do 15. 5. 2026, žádost do 30. 11. 2026; NZÚ RD: zvýhodněný úvěr do 100 000 Kč na dešťovou vodu pro WC a zálivku (150 000 Kč se šedou vodou), zelená střecha 2 000 Kč/m², jen s energetickým opatřením (ceskestavby.cz, aktualizováno 15. 10. 2026; oficiální stránka novazelenausporam.cz se nenačetla).
+- „Z čeho zaplatit“ v katalogu a v Celé území: vlastní peníze „(bez byrokracie)“, ostatní programy jako odkaz s krátkým názvem a stavem. POPFK (ukončen) se nezobrazuje.
+- Nalezeno navíc, nezařazeno: Nadace Partnerství „Pro odolná města a zdravou krajinu 2026“ (obce, 50-200 tis. Kč, uzávěrka 15. 10. 2026) - jen z přehledu BMO, oficiální stránku jsem neotevřel.
+
 ## Katalog - náčrtky a sladění stylu (25. 10. 2026)
 
 Podnět uživatele: doplnit do katalogu náčrtky opatření z Můj pozemek a sladit stránku s ostatními (přehlednost, pochopitelnost).
