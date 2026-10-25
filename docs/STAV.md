@@ -167,6 +167,12 @@ Aktualizováno: 22. 10. 2026 21:00 (Jak bylo v produkci jako datový příběh -
 - Vzorový pozemek: 100 m² střechy, 50 m² dvora (dlažba s pískovými spárami), 250 m² zahrady, HSP B, sklon 3 %, svody do kanálu, déšť 10 mm.
 - „Jedno číslo“ upřednostňuje spočtené EFF před katalogovou hodnotou; odhady (🤔) se jako hlavní číslo nezobrazují.
 
+## Jak bylo - zeštíhlení první stránky (25. 10. 2026)
+
+Podnět uživatele: náčrt působil stručněji a údernějí než živý web. Vlastní rozbor (měřeno headless): živá stránka měla 7 300 px na počítači a 11 600 px na mobilu, výzva „Co s tím u vás doma“ až na 10 800 px (mobil); pod každým grafem dlouhá šedá poznámka (celkem ~1 700 znaků, opakovala text kapitol), legendy vyšší než graf (mobil), 18 dlaždic s čísly, detail období (nástroj, ne příběh) uprostřed příběhu, letošek zahrabaný.
+Klíčové pro první stránku: titulek a 3 čísla; v každé kapitole jedna věta se zjištěním + graf s popisky přímo v grafu (rekordní rok, letošek) + krátká legenda a jednořádkový zdroj; ilustrace a schémata (vysvětlení žízně); 5 největších lijáků; letošek 4 karty; výhled 3 věty; výzva.
+Přesunuto do sbaleného „Více o tématu“ (dole): výběr období a srovnání ročníků (celý detail), karty trendů (výpar, bilance, 5 karet horka), měsíční bilance + fakta za ČR + zdroje, dlouhé poznámky ke grafům, Jak to číst, zdroje. Z hlavního grafu horka vypuštěny tropické noci (zůstávají v kartě a popiscích) a nulové supertropické dny. Výsledek: 4 600 px počítač, 6 700 px mobil, výzva na 6 100 px (mobil).
+
 ## Jak bylo - datový příběh v produkci (22. 10. 2026 večer)
 
 Podle schváleného náčrtu (artefakt „Jak bylo jako datový příběh - náčrt“). `build_dummy.py`, záložka Jak bylo:
