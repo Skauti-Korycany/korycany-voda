@@ -167,6 +167,17 @@ Aktualizováno: 22. 10. 2026 21:00 (Jak bylo v produkci jako datový příběh -
 - Vzorový pozemek: 100 m² střechy, 50 m² dvora (dlažba s pískovými spárami), 250 m² zahrady, HSP B, sklon 3 %, svody do kanálu, déšť 10 mm.
 - „Jedno číslo“ upřednostňuje spočtené EFF před katalogovou hodnotou; odhady (🤔) se jako hlavní číslo nezobrazují.
 
+## Katalog - náčrtky a sladění stylu (25. 10. 2026)
+
+Podnět uživatele: doplnit do katalogu náčrtky opatření z Můj pozemek a sladit stránku s ostatními (přehlednost, pochopitelnost).
+- Úvod ve stylu Jak bylo („Co se dá udělat“), filtry v boxu (Kde, S čím to pomůže, počet a „Zrušit výběr“), podrobné filtry s popisky bez kódů.
+- Karty jako dlaždice v kroku 4 Můj pozemek: náčrtek, krátký název + podnázev ze závorky, popis, hlavní číslo, štítky (pracnost slovy, cena od, kdo rozhoduje, povolení, + život, velký projekt), „Kde to funguje“, „Proč a jak“ (účinky se zdroji, cena, z čeho zaplatit, povolení, kde a kdo, „Nejdřív je potřeba“ a „Hodí se k“ slovy). Kód opatření jen drobně na konci „Proč a jak“. U zahradních opatření odkaz „Spočítej u sebe“.
+- Náčrtky: 19 ze zahrady a domu převzato z Můj pozemek (AKCE), pro ostatní dokresleno 17 nových ve stejném stylu (pás po vrstevnici, větrolam, cesta s příkopem, pramen, přehrážka, potok, les, nádrž s hrází, srážkoměr, studna, teploměr, stínění, plán, mlžení, rýhy, vlhkoměr, drenáž); mapování KAT_IK v build_dummy.py.
+- Skupiny podle hlavního místa (Na zahradě, Na domě a střeše, V obci a ve škole, Na poli, Na louce a pastvině, V lese, U potoka..., U cest..., Měř s námi) s rozcestníkem nahoře; bez filtru je ve skupině vidět prvních 6 (mobil 3) nejsnazších, zbytek „Ukázat další“. Stránka 7 000 px na počítači (dřív 11 000), 10 500 px na mobilu (dřív 18 000).
+- Opravena chyba: filtr „Měř s námi“ nenašel nic (měření nemají místo M); kdeOp bere i předponu kódu.
+- Katalog (build_opatreni.py): popisy měření M01-M06 přepsány do běžné řeči (dřív „validace, argumentace“, „ukázka účinku CH“). Prázdná cena se ukazuje jen jako „Cena: neověřena“.
+Ověřeno headless: počítač a mobil, světlý i tmavý režim, filtry a „Zrušit výběr“, bez kódů v textu karet (zbývá jen norma SPPK C02 003), ostatní záložky bez chyb.
+
 ## Celé území - kapitoly ve stylu Jak bylo (25. 10. 2026)
 
 Podnět uživatele: čtenář nechápe CN, stránka míchá témata bez rozdělení, opatření se odkazují jen kódem (S02, P04...).

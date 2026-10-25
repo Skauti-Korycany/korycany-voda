@@ -779,12 +779,12 @@ op("C03", "Zatravnění a výsadba na svazích, terasování starých úvozů", 
 
 # ===== M měření (podpůrná)
 for mid, nazev, ucel, syn in [
-    ("M01","Srážkoměr (jednoduchý, denní odečet)","základ pro bilanci a validaci",["*"]),
-    ("M02","Hladina ve studních (měsíční odečet, síť dobrovolníků)","indikátor podzemní vody",[]),
-    ("M03","Vlhkost půdy (jednoduché čidlo nebo gravimetricky)","validace účinku opatření",["Z05","P04"]),
-    ("M04","Stav drobných toků a pramenišť (fotomonitoring, teče/neteče; registr estudanky.eu)","validace, argumentace",["T05","L04"]),
-    ("M05","Teplota povrchů IR teploměrem (asfalt, tráva, tmavá vs. světlá střecha)","ukázka účinku CH",["Z06","S04","Z04"]),
-    ("M06","Mapování erozních rýh po přívalu","kde postavit přehrážky v rýhách a kde zatravnit údolnice",["C02","P05"])]:
+    ("M01","Srážkoměr (jednoduchý, denní odečet)","Jednoduchý srážkoměr na zahradě nebo u školy, každé ráno se odečte. Ukáže, kolik u nás opravdu napršelo, a zpřesní výpočty v aplikaci.",["*"]),
+    ("M02","Hladina ve studních (měsíční odečet, síť dobrovolníků)","Jednou za měsíc změřit hladinu ve studni. Síť studní v obci ukáže, jestli podzemní voda klesá.",[]),
+    ("M03","Vlhkost půdy (jednoduché čidlo nebo gravimetricky)","Měřit vlhkost půdy čidlem nebo vážením vzorku před a po vysušení. Ukáže, jestli mulč, louka nebo pole bez orby opravdu drží vodu.",["Z05","P04"]),
+    ("M04","Stav drobných toků a pramenišť (fotomonitoring, teče/neteče; registr estudanky.eu)","Fotit a zapisovat, jestli potok nebo pramen teče. Záznamy se dají poslat i do celostátního registru studánek.",["T05","L04"]),
+    ("M05","Teplota povrchů IR teploměrem (asfalt, tráva, tmavá vs. světlá střecha)","Infračerveným teploměrem změřit asfalt, trávu, stín a tmavou a světlou střechu. Ukáže, jak moc zeleň a světlé povrchy chladí.",["Z06","S04","Z04"]),
+    ("M06","Mapování erozních rýh po přívalu","Po silném dešti vyfotit a zakreslit rýhy na polích a cestách. Ukáže, kde postavit přehrážky a kde zatravnit údolnice.",["C02","P05"])]:
     op(mid, nazev, ["U","Z","L","T","C"], ["S","J"], 1, [], [], "pozemek", popis=ucel,
        vazby={"potrebuje": [], "synergie": syn, "konflikt": []}, povoleni=0, povoleni_pozn="souhlas vlastníka pozemku", ceny=[NEOVERENA], financovani=["vlastni","participativni"])
 

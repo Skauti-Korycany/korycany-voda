@@ -276,6 +276,31 @@ details.uz-det[open]{padding-bottom:.9rem}
 @media(max-width:599px){ .uz-bar-t span:nth-child(2){display:none} .uz-obsah{grid-template-columns:1fr;gap:.4rem} .uz-obsah a{min-height:46px;padding:.45rem .7rem} .uz-obsah .n{grid-row:auto;width:1.6rem;height:1.6rem;font-size:.85rem} .uz-obsah small{display:none} }
 .uz-ctx-t{font-size:1.05rem;display:block} .uz-ctx-p{margin:.35rem 0;line-height:1.5;font-size:.95rem} .uz-ctx-h{margin:.3rem 0 .5rem;font-size:.92rem}
 .uz-ctx details.kde{margin-top:.5rem}
+/* Katalog ve stylu Jak bylo a Můj pozemek (25. 10. 2026) */
+.kat .jb-box{margin:1rem 0 .4rem}
+.kt-filtr>.jb-kicker{display:block;margin:.2rem 0 .1rem}
+.kt-filtr .co{margin-bottom:.2rem}
+.kt-count{margin:.5rem 0 0;font-size:.95rem}
+.kt-count .linkbtn{margin-left:.5rem}
+.kt-n{margin:.6rem 0 .2rem}
+.kt-obsah{display:flex;flex-wrap:wrap;gap:.35rem;margin:.8rem 0 .2rem}
+.kt-obsah a{font-size:.85rem;text-decoration:none;color:var(--fg);border:1px solid var(--line);border-radius:999px;background:var(--panel);padding:.35rem .75rem;min-height:36px;display:inline-flex;align-items:center;gap:.3rem}
+.kt-obsah a:hover,.kt-obsah a:focus-visible{border-color:var(--accent)} .kt-obsah small{color:var(--muted)}
+.kt-sk{scroll-margin-top:12px}
+.kt-sk h3.t-h{font-family:var(--f-display);font-size:1.35rem;margin:1.8rem 0 .6rem;padding-top:1rem;border-top:1px solid var(--line)}
+.kt-tiles{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
+.kt .tile-h{cursor:default;grid-template-columns:52px 1fr}
+.kt .kt-pod{font-size:.8rem;color:var(--muted);line-height:1.3}
+.kt .kt-one{font-size:.92rem;line-height:1.35}
+.kt .tags .z{color:var(--ok);font-weight:600}
+.kt-go{display:inline-block;margin:0 .8rem .7rem calc(52px + 1.3rem);color:var(--accent);font-weight:600;font-size:.9rem}
+@media(max-width:600px){ .kt-go{margin-left:.8rem} }
+.kt details.kde{display:block;margin:0}
+.kt>details>summary{min-height:30px;display:list-item}
+.tile.kt>details{padding-bottom:.15rem} .tile.kt>details:last-of-type{padding-bottom:.6rem}
+.kt-vic{font:inherit;font-weight:600;color:var(--accent);background:var(--panel);border:1px solid var(--line);border-radius:999px;min-height:44px;padding:.4rem 1rem;margin-top:.7rem;cursor:pointer}
+.kt-vic:hover,.kt-vic:focus-visible{border-color:var(--accent)}
+.kt details ul{margin:.3rem 0 .2rem;padding-left:1.1rem} .kt details li{margin:.2rem 0;line-height:1.4}
 .uz-cn-l{display:none}
 @media(max-width:599px){ svg.uz-cn{display:none} .uz-cn-l{display:grid} .uz .inputs{grid-template-columns:1fr} }
 .uz-cta{margin-top:2.6rem}
@@ -942,21 +967,28 @@ details.banner[open]>summary .more{display:none}
 </section>
 
 <!-- ======================= KATALOG ======================= -->
-<section id="tab-katalog" class="hidden-tab">
-  <div class="panel">
-    <h2>Katalog opatření</h2>
-    <p class="note">Vyber, kde jsi a co tě trápí. Čísla jsou pro vzorový případ (100 m² střechy, 50 m² dvora, běžný déšť 10 mm); přesná čísla pro svůj dům dostaneš v záložce Můj pozemek. Každé číslo má zdroj a značku. Tečky u názvu = pracnost: ●○○ ruce a víkend, ●●○ dny a malá technika, ●●● projekt a firma.</p>
+<section id="tab-katalog" class="hidden-tab kat">
+  <header class="jb-hero">
+    <div class="jb-kicker">Katalog</div>
+    <h2 class="jb-title">Co se dá udělat</h2>
+    <p class="jb-lede">Od sudu pod okapem po rybník. U každého opatření najdeš, co udělá, kolik stojí, kdo ho může udělat a z čeho ho zaplatit.</p>
+  </header>
+  <div class="jb-box kt-filtr">
+    <span class="jb-kicker">Kde</span>
     <div class="kde" id="k-kde"></div>
+    <span class="jb-kicker">S čím to pomůže</span>
     <div class="co" id="k-co"></div>
-    <p class="note"><span class="num" id="k-count"></span> opatření</p>
+    <p class="kt-count"><span id="k-count"></span> <button type="button" class="linkbtn" id="k-reset" hidden>Zrušit výběr</button></p>
     <details class="pz-more"><summary>Podrobné filtry (pro školu a úřad)</summary>
-    <div class="filters" id="k-misto"></div>
-    <div class="filters" id="k-rozhoduje"></div>
-    <div class="filters" id="k-ucinek"></div>
-    <div class="filters" id="k-fin"><button aria-pressed="false" data-f="otevreno">jen s otevřenou dotací (k 18. 10. 2026)</button><button aria-pressed="false" data-f="svepomoc">jen svépomoc (pracnost 1, povolení 0)</button></div>
+    <div class="uz-q">Místo</div><div class="filters" id="k-misto"></div>
+    <div class="uz-q">Kdo rozhoduje</div><div class="filters" id="k-rozhoduje"></div>
+    <div class="uz-q">Účinek</div><div class="filters" id="k-ucinek"></div>
+    <div class="uz-q">Peníze a pracnost</div><div class="filters" id="k-fin"><button aria-pressed="false" data-f="otevreno">jen s otevřenou dotací (k 18. 10. 2026)</button><button aria-pressed="false" data-f="svepomoc">jen svépomoc (za víkend, bez povolení)</button></div>
     </details>
-    <div class="cards" id="k-cards"></div>
   </div>
+  <p class="note kt-n">Čísla jsou pro vzorový dům (100 m² střechy, 50 m² dvora, běžný déšť 10 mm). Pro tvůj dům je spočítá <a href="#" data-tab-go4="pozemek">Můj pozemek</a>. Každé číslo má zdroj a značku původu.</p>
+  <nav class="kt-obsah" id="k-obsah" aria-label="Skupiny opatření"></nav>
+  <div id="k-cards"></div>
 </section>
 
 <!-- ======================= O MODELU ======================= -->
@@ -1440,7 +1472,7 @@ const KDE = {zahrada:{n:'Zahrada',d:'záhon, dvůr, sad',m:['Z']}, dum:{n:'Dům 
 const CO = {sucho:{n:'Sucho',u:['I','R','W','E']}, prival:{n:'Příval a voda do kanálu',u:['Q','R','I','ER']}, horko:{n:'Horko',u:['CH','E']}, zivot:{n:'Život a voda v krajině',u:['B']}};
 const PRAC = {1:'ruce a víkend',2:'dny, malá technika',3:'projekt a firma'};
 const oblastiOp = o=>{const u=new Set([...o.ucinky.primarni,...o.ucinky.vedlejsi]); const r=new Set(); Object.entries(CO).forEach(([k,c])=>{if(c.u.some(x=>u.has(x))) r.add(k);}); if(o.misto.some(m=>['T','L','LES'].includes(m))) r.add('zivot'); return r;};
-const kdeOp = o=> Object.keys(KDE).filter(k=>o.misto.some(m=>KDE[k].m.includes(m)));
+const kdeOp = o=> Object.keys(KDE).filter(k=>o.misto.some(m=>KDE[k].m.includes(m)) || KDE[k].m.includes(o.id.replace(/\d+$/,'')));
 // vzorový pozemek pro katalog: 100 m² střecha, 50 m² dvůr, 250 m² zahrada, HSP B, 10 mm, svody do kanálu
 const VZOR = {roof:100,paved:50,pavedType:'dlazba_piskove_spary',green:250,drain:'kanal',slope:3,soil:'B',rain:0.010,greenType:'zahrada',nkey:null};
 const fmtN = x=> Number.isInteger(+x) ? (+x).toLocaleString("cs-CZ") : (+x).toLocaleString("cs-CZ",{maximumFractionDigits:1});
@@ -1498,6 +1530,24 @@ const IK = (() => {
     step: `<ellipse class="s" cx="11" cy="31" rx="7" ry="4"/><ellipse class="s" cx="28" cy="33" rx="6" ry="3"/><path class="g" d="M20 30V18M20 22l-4-4M20 22l4-4M33 27v-7M33 23l-3-3M7 24v-6M7 21l3-3"/><circle class="sun" cx="31" cy="7" r="4"/>`,
     sprcha: `<path d="M5 3h12v6"/><path d="M11 9h12l-2 4H13z"/>${d(13,20,.6)}${d(18,24,.6)}${d(16,30,.6)}<path class="ws" d="M22 31h8l-3-3M30 31l-3 3"/><path class="g" d="M35 37V25M35 29q-3 0-4-3M35 28q3 0 4-3"/>`,
     wc: `<rect x="9" y="3" width="16" height="10" rx="1.5"/>${d(17,8,.6)}<path d="M7 17h22c0 7-4 11-11 11S7 24 7 17z"/><path d="M13 28v8h10v-8"/>`,
+    // katalog: nacrtky pro opatreni mimo zahradu (25. 10. 2026), stejny styl
+    pas: `<path class="s" d="M3 11q17-6 34 0M3 18q17-6 34 0M3 35q17-6 34 0"/><path class="g" d="M3 26q17-6 34 0" stroke-width="5" opacity=".85"/><path class="g" d="M9 22l1-3M20 20l1-3M31 22l1-3"/>`,
+    vetrolam: `<path class="mut" d="M2 10h9M2 16h6M8 7l3 3-3 3"/><circle class="gf" cx="19" cy="17" r="5"/><circle class="gf" cx="28" cy="13" r="6.5"/><circle class="gf" cx="36" cy="18" r="4"/><path class="s" d="M19 22v13M28 19v16M36 22v13"/>${zem(35)}`,
+    cesta: `<path d="M12 38L17 3M27 38L22 3"/><path d="M19.5 34v-4M19.5 24v-4M19.5 14v-3" opacity=".45"/><path class="ws" d="M33 38L25 3" stroke-width="3"/><path class="g" d="M5 33l1-3M7 24l1-3M9 15l1-3"/>`,
+    pramen: `<ellipse class="s" cx="13" cy="19" rx="9" ry="6"/><path class="s" d="M6 17q4-3 8 0" opacity=".6"/><path class="ws" d="M19 24q5 3 10 3t9 6" stroke-width="3"/>${d(24,13,.8)}<path class="g" d="M33 22V14M33 18q-3 0-3-3M6 34v-6M6 30q3 0 3-3"/>`,
+    prehrazka: `<path class="s" d="M3 7L16 31h8L37 7"/><path class="w" d="M9.5 18h21l-6.5 12h-8z" stroke="none"/><path class="s" d="M8 18h24M10 22.5h20" stroke-width="3.2"/><path class="ws" d="M18 35q2 2 4 0"/>`,
+    potok: `<path class="ws" d="M3 5c12 2 14 8 8 14s-2 12 10 14 12 2 16 3" stroke-width="4"/><path class="g" d="M28 11l1-3M33 13l1-3M6 30l1-3M11 35l1-3"/><circle class="gf" cx="31" cy="23" r="4"/>`,
+    les: `<path class="gf" d="M11 4L3 21h16z"/><circle class="gf" cx="26" cy="14" r="8"/><path class="gf" d="M34 11l-5 12h10z"/><path class="s" d="M11 21v14M26 22v13M34 23v12"/>${zem(35)}`,
+    nadrz: `<path class="w" d="M3 21h24l-2.5 12H3z" stroke="none"/><path class="ws" d="M3 21h24"/><path class="s" d="M2 34h23l4.5-17h3.5l4.5 17"/><path class="g" d="M8 17v-6M13 17v-8"/>`,
+    srazkomer: `<path d="M13 8h14l-3 6h-8z"/><rect x="15" y="14" width="10" height="20" rx="1.5"/><path class="w" d="M16.5 25h7v7.5h-7z" stroke="none"/><path d="M15 20h3M15 26h3" opacity=".6"/>${d(20,3,.6)}${d(31,7,.6)}${d(9,6,.6)}${zem(36)}`,
+    studna: `<path d="M6 13L20 5l14 8"/><path d="M10 13v6M30 13v6"/><rect x="8" y="19" width="24" height="16" rx="1"/><path d="M20 13v10"/><rect class="w" x="17" y="23" width="6" height="5" rx="1" stroke="none"/><path class="ws" d="M11 31h18" opacity=".8"/>`,
+    teplomer: `<path d="M17 25V7a3 3 0 0 1 6 0v18"/><path class="fl" d="M18.5 24V14h3v10z"/><circle class="fl" cx="20" cy="29" r="5"/><circle cx="20" cy="29" r="5"/><circle class="sun" cx="33" cy="8" r="3.5"/><path class="sun" d="M33 1.5v1M38.5 8h-1M37 4l-1 1"/>`,
+    stin: `<path d="M4 13l16-7 16 7z"/><path d="M8 13v23M32 13v23"/><ellipse class="sh" cx="20" cy="36" rx="14" ry="2.2"/><circle class="sun" cx="35" cy="4" r="2.5"/><path class="g" d="M14 36v-5M14 33q-2 0-3-2M26 36v-5M26 33q2 0 3-2"/>`,
+    plan: `<path d="M5 9l10-4 10 4 10-4v26l-10 4-10-4-10 4z"/><path d="M15 5v26M25 9v26" opacity=".35"/><path class="ws" d="M8 27q6-11 12-5t12-12" stroke-width="2.5"/><circle class="fl2" cx="20" cy="22" r="2.2"/>`,
+    mlha: `<path d="M3 17h9v-3h5v10h-5v-3H3"/><path class="ws" d="M21 14l9-6M21 19h13M21 24l9 6" opacity=".75"/>${d(33,6,.5)}${d(37,19,.5)}${d(33,32,.5)}<path d="M8 21v14"/>`,
+    ryha: `<path class="s" d="M3 8l34 26"/><path class="ws" d="M8 13q4 7 1 13M17 20q4 6 0 12M26 27q2 4 0 8"/><circle cx="31" cy="11" r="5"/><path d="M34.5 14.5l3.5 3.5"/>`,
+    vlhkomer: `${zem(16)}<g class="dot"><circle cx="8" cy="22" r="1.3"/><circle cx="30" cy="24" r="1.3"/><circle cx="11" cy="31" r="1.3"/><circle cx="28" cy="33" r="1.3"/></g><path d="M20 8v24"/><rect x="15" y="2" width="10" height="7" rx="1.5"/><path d="M18 5.5h4" opacity=".6"/>${d(20,25,.7)}`,
+    drenaz: `${zem(12)}<path class="g" d="M8 12V6M8 9q-3 0-3-3M20 12V5M20 8q3 0 3-3M32 12V6"/><rect x="3" y="22" width="34" height="7" rx="3.5"/><g class="dot"><circle cx="10" cy="25.5" r="1"/><circle cx="17" cy="25.5" r="1"/></g><path class="ws" d="M25 18v15" stroke-width="3"/><path class="w" d="M27 23h9v5h-9z" stroke="none"/>`,
   };
   return k => `<svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${S[k]||S.zahon}</svg>`;
 })();
@@ -1795,36 +1845,74 @@ document.getElementById('tab-uzemi').addEventListener('click',e=>{ const b=e.tar
   const a=e.target.closest('.uz-obsah a'); if(a){ e.preventDefault(); const t=document.querySelector(a.getAttribute('href')); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); } });
 uzDestUI();
 
-// ---------- katalog
+// ---------- katalog (25. 10. 2026: nacrtky jako v Můj pozemek, skupiny podle mista, dlazdice, nazvy misto kodu)
 const KF={misto:new Set(),rozhoduje:new Set(),ucinek:new Set(),fin:new Set(),kde:new Set(),co:new Set()};
 kdeButtons('k-kde',KF.kde,()=>renderKatalog()); coButtons('k-co',KF.co,()=>renderKatalog());
 const VZOR_R = runoff(VZOR);
-function chips(id,obj,key){ $(id).innerHTML=Object.entries(obj).map(([k,v])=>`<button aria-pressed="false" data-k="${k}">${k} ${v.split(' (')[0]}</button>`).join('');
+// nacrtek ke kazdemu opatreni: zahrada a dum z Můj pozemek (AKCE), ostatni z katalogu
+const KAT_IK = {U01:'strom',U02:'dlazba',U03:'pruleh',U04:'okap',U05:'tun',U06:'louka',U07:'zahon',U08:'mlha',U09:'plan',H01:'teplomer',H02:'stin',
+  P01:'pas',P02:'pruleh',P03:'pas',P04:'mulc',P05:'pas',P06:'louka',P07:'vetrolam',P08:'cesta',P09:'strom',P10:'drenaz',P11:'plot',P12:'mulc',
+  L01:'louka',L02:'louka',L03:'strom',L04:'pramen',LES01:'prehrazka',LES02:'cesta',LES03:'les',LES04:'plot',
+  T01:'tun',T02:'tun',T03:'prehrazka',T04:'potok',T05:'pramen',T06:'strom',T07:'nadrz',C01:'pruleh',C02:'prehrazka',C03:'louka',
+  M01:'srazkomer',M02:'studna',M03:'vlhkomer',M04:'potok',M05:'teplomer',M06:'ryha'};
+const katIk = o => AKCE[o.id] ? AKCE[o.id].i : (KAT_IK[o.id]||'zahon');
+// skupiny podle hlavniho mista (predpona kodu); filtr "Kde" dal bere vsechna mista opatreni
+const KAT_SK = [['Z','Na zahradě'],['S','Na domě a střeše'],['U','V obci a ve škole'],['P','Na poli'],['L','Na louce a pastvině'],['LES','V lese'],['T','U potoka, tůně a pramene'],['C','U cest, na svazích a ve stržích'],['M','Měř s námi']];
+const kodPred = o => o.id.replace(/\d+$/,'')==='H' ? 'U' : o.id.replace(/\d+$/,'');
+const kratce = o => o.nazev.split(' (')[0];
+const podnazev = o => { const m=o.nazev.match(/\(([^)]*)\)\s*$/); return m ? m[1] : ''; };
+const jmenaOp = ids => ids.flatMap(x=>String(x).split('|')).map(id=>byId[id]).filter(Boolean).map(o=>kratce(o).toLowerCase());
+function chips(id,obj,key){ $(id).innerHTML=Object.entries(obj).map(([k,v])=>`<button aria-pressed="false" data-k="${k}">${v.split(' (')[0]}</button>`).join('');
   $(id).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?KF[key].add(b.dataset.k):KF[key].delete(b.dataset.k); renderKatalog();})); }
 chips('k-misto',CZ.misto,'misto'); chips('k-rozhoduje',Object.fromEntries(Object.entries(CZ.rozhoduje).filter(([k])=>k!=='zemedelec')),'rozhoduje'); chips('k-ucinek',CZ.ucinek,'ucinek');
 $('k-fin').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on); on?KF.fin.add(b.dataset.f):KF.fin.delete(b.dataset.f); renderKatalog();}));
+$('k-reset').addEventListener('click',()=>{ Object.values(KF).forEach(s=>s.clear()); document.querySelectorAll('#tab-katalog [aria-pressed="true"]').forEach(b=>b.setAttribute('aria-pressed','false')); renderKatalog(); });
+function katTile(o, co1){
+  const jeVzor = o.misto.some(m=>['Z','S'].includes(m)), j=jednoCislo(o, co1, jeVzor?VZOR:null, VZOR_R), pod=podnazev(o), cena=cenaKratce(o);
+  const kdo=o.rozhoduje.map(r=>CZ.rozhoduje[r]?CZ.rozhoduje[r].split(' (')[0]:r);
+  const kdoT = kdo.length ? (kdo[0]==='jednotlivec na svém pozemku' ? 'udělá každý sám' : 'rozhoduje: '+kdo.map(x=>x.split(' ')[0].replace('jednotlivec','každý')).join(', ')) : '';
+  const potr=jmenaOp(o.vazby.potrebuje||[]), syn=jmenaOp(o.vazby.synergie||[]);
+  return `<div class="tile kt" id="op-${o.id}"><div class="tile-h"><span class="ico">${IK(katIk(o))}</span><span class="tx">
+      <b>${kratce(o)}</b>${pod?`<span class="kt-pod">${pod}</span>`:''}
+      ${o.popis?`<span class="proc">${o.popis}</span>`:''}
+      <span class="kt-one">${j.t}${j.vzor?' <span class="note">(vzorový dům, 10 mm)</span>':''}</span>
+      <span class="tags"><span>${PRAC_IK[o.pracnost]||''} ${PRAC_SL[o.pracnost]||''}</span>${cena?`<span>${cena}</span>`:''}${kdoT?`<span>${kdoT}</span>`:''}${o.povoleni>0?`<span>povolení: ${o.povoleni===2?'úřad':'souhlas'}</span>`:''}${o.ucinky.primarni.includes('B')?'<span class="z">+ život</span>':''}${o.kontext?'<span>velký projekt</span>':''}</span>
+    </span></div>
+    ${kdeText(o)}
+    <details data-k="${o.id}"><summary>Proč a jak</summary><ul>
+      ${o.kvantifikace.map(k=>`<li><b>${CZ.ucinek[k.ucinek]||k.ucinek}:</b> ${k.popis} ${ZN[k.znacka]||''}${(k.zdroj||[]).map(z=>D.zdroje[z]?` <a class="src" href="${D.zdroje[z].url||'#'}" target="_blank" rel="noopener">[${D.zdroje[z].nazev.split(',')[0].slice(0,50)}]</a>`:'').join('')}</li>`).join('')}
+      ${o.ceny.map(c=>c.hodnota==null&&!c.rozsah?'<li><b>Cena:</b> neověřena</li>':`<li><b>Cena:</b> ${c.polozka} - ${c.hodnota!=null||c.rozsah?(c.hodnota!=null?fmt0(c.hodnota):fmt0(c.rozsah[0])+'-'+fmt0(c.rozsah[1]))+' '+c.jednotka+(c.rok?' ('+c.rok+')':''):'cena neověřena'}${c.pozn?' - '+c.pozn:''}</li>`).join('')}
+      <li><b>Z čeho zaplatit:</b> ${finText(o)}</li><li><b>Povolení:</b> ${povText(o)}</li>
+      <li><b>Kde:</b> ${o.misto.map(m=>CZ.misto[m]).join(', ')}; <b>rozhoduje:</b> ${kdo.join(', ')}</li>
+      ${potr.length?`<li><b>Nejdřív je potřeba:</b> ${potr.join(', ')}</li>`:''}${syn.length?`<li><b>Hodí se k:</b> ${syn.join(', ')}</li>`:''}
+      ${o.nedohledano&&o.nedohledano.length?`<li><b>Nedohledáno:</b> ${o.nedohledano.join('; ')}</li>`:''}${o.pozn_poctivost?`<li>${o.pozn_poctivost}</li>`:''}
+    </ul><p class="note">Kód v katalogu: ${o.id}</p></details>
+    ${jeVzor && EFF[o.id] ? `<a href="#" class="kt-go" data-tab-go4="pozemek">Spočítej u sebe →</a>` : ''}</div>`;
+}
+const KAT_OPEN = new Set();
 function renderKatalog(){
   const list=D.opatreni.filter(o=> (!KF.kde.size||kdeOp(o).some(k=>KF.kde.has(k))) && coMatch(o,KF.co) && (!KF.misto.size||o.misto.some(m=>KF.misto.has(m))) && (!KF.rozhoduje.size||o.rozhoduje.some(m=>KF.rozhoduje.has(m)))
     && (!KF.ucinek.size||[...o.ucinky.primarni,...o.ucinky.vedlejsi].some(u=>KF.ucinek.has(u)))
     && (!KF.fin.has('otevreno')||o.financovani.some(f=>D.programy[f]&&D.programy[f].stav==='otevreno'&&f!=='vlastni'))
     && (!KF.fin.has('svepomoc')||(o.pracnost===1&&o.povoleni===0)));
-  $('k-count').textContent=list.length+' / '+D.opatreni.length;
-  const co1=[...KF.co][0]||null; const jeVzor=o=>o.misto.some(m=>['Z','S'].includes(m));
-  list.sort((a,b)=>(a.pracnost-b.pracnost)||(a.kontext-b.kontext));
-  $('k-cards').innerHTML=list.map(o=>`<div class="card"><header><div class="t"><b>${o.nazev}</b>${PRAC_IK[o.pracnost]||''}${o.kontext?'<span class="chip">obec / správce</span>':''}</div></header>
-    ${o.popis?`<div class="eff">${o.popis}</div>`:''}
-    <div class="one">${(()=>{const j=jednoCislo(o, co1, jeVzor(o)?VZOR:null, VZOR_R); return j.t+(j.vzor?' <span class="note">(vzor: 100 m² střechy, 10 mm)</span>':'');})()}</div>
-    ${o.ucinky.primarni.includes('B')?'<div class="zivot">+ život a pestrost</div>':''}
-    ${kdeText(o)}
-    <details><summary>účinek, zdroje, ceny, financování</summary><ul>
-      <li>${o.id} - kde: ${o.misto.map(m=>CZ.misto[m]).join(', ')}; rozhoduje: ${o.rozhoduje.map(r=>CZ.rozhoduje[r]?CZ.rozhoduje[r].split(' (')[0]:r).join(', ')}; účinky: ${o.ucinky.primarni.map(u=>CZ.ucinek[u]).join(', ')}${o.ucinky.vedlejsi.length?' (vedlejší: '+o.ucinky.vedlejsi.map(u=>CZ.ucinek[u]).join(', ')+')':''}</li>
-      ${o.kvantifikace.map(k=>`<li><b>${CZ.ucinek[k.ucinek]||k.ucinek}</b> (${k.typ}) ${ZN[k.znacka]||''}: ${k.popis}${(k.zdroj||[]).map(z=>D.zdroje[z]?` <a class="src" href="${D.zdroje[z].url||'#'}" target="_blank" rel="noopener">[${D.zdroje[z].nazev.split(',')[0].slice(0,50)}]</a>`:'').join('')}</li>`).join('')}
-      ${o.ceny.map(c=>`<li>Cena: ${c.polozka} - ${c.hodnota!=null?fmt0(c.hodnota):(c.rozsah?fmt0(c.rozsah[0])+'-'+fmt0(c.rozsah[1]):'cena neověřena')} ${c.jednotka}${c.rok?' ('+c.rok+')':''}${c.pozn?' - '+c.pozn:''}</li>`).join('')}
-      <li>Financování: ${finText(o)}</li><li>Povolení: ${povText(o)}</li>
-      ${o.vazby.potrebuje.length?`<li>Potřebuje: ${o.vazby.potrebuje.join(', ')}</li>`:''}${o.vazby.synergie.length?`<li>Hodí se k: ${o.vazby.synergie.join(', ')}</li>`:''}
-      ${o.nedohledano&&o.nedohledano.length?`<li>Nedohledáno: ${o.nedohledano.join('; ')}</li>`:''}${o.pozn_poctivost?`<li>${o.pozn_poctivost}</li>`:''}
-    </ul></details></div>`).join('');
+  const filtr = Object.values(KF).some(s=>s.size);
+  $('k-count').innerHTML = filtr ? `Zobrazeno <b>${list.length}</b> z ${D.opatreni.length} opatření.` : `Všech <b>${D.opatreni.length}</b> opatření podle místa, od nejsnazších.`;
+  $('k-reset').hidden = !filtr;
+  const otevrene=new Set([...document.querySelectorAll('#k-cards details[open][data-k]')].map(d=>d.dataset.k));
+  const co1=[...KF.co][0]||null;
+  const sk = KAT_SK.map(([p,t])=>[p,t,list.filter(o=>kodPred(o)===p).sort((a,b)=>(a.pracnost-b.pracnost)||(a.kontext-b.kontext))]).filter(x=>x[2].length);
+  $('k-obsah').innerHTML = sk.map(([p,t,l])=>`<a href="#kt-${p}">${t} <small>${l.length}</small></a>`).join('');
+  // bez filtru ukaz v kazde skupine jen nejsnazsi opatreni, zbytek na kliknuti (kratsi stranka hlavne na mobilu)
+  const LIM = matchMedia('(max-width:600px)').matches ? 3 : 6;
+  $('k-cards').innerHTML = sk.map(([p,t,l])=>{ const cel = filtr || KAT_OPEN.has(p) || l.length<=LIM+1, v = cel ? l : l.slice(0,LIM);
+    return `<section class="kt-sk" id="kt-${p}"><h3 class="t-h">${t} <span class="note">(${l.length})</span></h3><div class="tiles kt-tiles">${v.map(o=>katTile(o,co1)).join('')}</div>${cel?'':`<button type="button" class="kt-vic" data-sk="${p}">Ukázat další ${l.length-LIM} opatření →</button>`}</section>`; }).join('')
+    || '<p class="note">Tomuhle výběru nic neodpovídá. Zruš některý filtr.</p>';
+  document.querySelectorAll('#k-cards details[data-k]').forEach(d=>{ if(otevrene.has(d.dataset.k)) d.open=true; });
 }
+document.getElementById('tab-katalog').addEventListener('click',e=>{
+  const g=e.target.closest('[data-tab-go4]'); if(g){ e.preventDefault(); document.querySelector(`nav.tabs button[data-tab="${g.dataset.tabGo4}"]`).click(); window.scrollTo({top:0}); return; }
+  const v=e.target.closest('.kt-vic'); if(v){ KAT_OPEN.add(v.dataset.sk); renderKatalog(); return; }
+  const a=e.target.closest('.kt-obsah a'); if(a){ const p=a.getAttribute('href').slice(4); if(!KAT_OPEN.has(p)){ KAT_OPEN.add(p); renderKatalog(); } e.preventDefault(); const t=document.querySelector(a.getAttribute('href')); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); } });
 renderKatalog();
 
 // ---------- o modelu

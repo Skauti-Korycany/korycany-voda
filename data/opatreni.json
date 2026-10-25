@@ -9181,7 +9181,7 @@
   {
    "id": "M01",
    "nazev": "Srážkoměr (jednoduchý, denní odečet)",
-   "popis": "základ pro bilanci a validaci",
+   "popis": "Jednoduchý srážkoměr na zahradě nebo u školy, každé ráno se odečte. Ukáže, kolik u nás opravdu napršelo, a zpřesní výpočty v aplikaci.",
    "misto": [
     "U",
     "Z",
@@ -9241,7 +9241,7 @@
   {
    "id": "M02",
    "nazev": "Hladina ve studních (měsíční odečet, síť dobrovolníků)",
-   "popis": "indikátor podzemní vody",
+   "popis": "Jednou za měsíc změřit hladinu ve studni. Síť studní v obci ukáže, jestli podzemní voda klesá.",
    "misto": [
     "U",
     "Z",
@@ -9299,7 +9299,7 @@
   {
    "id": "M03",
    "nazev": "Vlhkost půdy (jednoduché čidlo nebo gravimetricky)",
-   "popis": "validace účinku opatření",
+   "popis": "Měřit vlhkost půdy čidlem nebo vážením vzorku před a po vysušení. Ukáže, jestli mulč, louka nebo pole bez orby opravdu drží vodu.",
    "misto": [
     "U",
     "Z",
@@ -9360,7 +9360,7 @@
   {
    "id": "M04",
    "nazev": "Stav drobných toků a pramenišť (fotomonitoring, teče/neteče; registr estudanky.eu)",
-   "popis": "validace, argumentace",
+   "popis": "Fotit a zapisovat, jestli potok nebo pramen teče. Záznamy se dají poslat i do celostátního registru studánek.",
    "misto": [
     "U",
     "Z",
@@ -9421,7 +9421,7 @@
   {
    "id": "M05",
    "nazev": "Teplota povrchů IR teploměrem (asfalt, tráva, tmavá vs. světlá střecha)",
-   "popis": "ukázka účinku CH",
+   "popis": "Infračerveným teploměrem změřit asfalt, trávu, stín a tmavou a světlou střechu. Ukáže, jak moc zeleň a světlé povrchy chladí.",
    "misto": [
     "U",
     "Z",
@@ -9483,7 +9483,7 @@
   {
    "id": "M06",
    "nazev": "Mapování erozních rýh po přívalu",
-   "popis": "kde postavit přehrážky v rýhách a kde zatravnit údolnice",
+   "popis": "Po silném dešti vyfotit a zakreslit rýhy na polích a cestách. Ukáže, kde postavit přehrážky a kde zatravnit údolnice.",
    "misto": [
     "U",
     "Z",
