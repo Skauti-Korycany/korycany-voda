@@ -1,5 +1,5 @@
 {
- "vytvoreno": "2026-10-24T17:43Z",
+ "vytvoreno": "2026-10-25T05:36Z",
  "stanice": {
   "chmu_korycany": {
    "wsi": "0-203-0-41701068002",
@@ -4182,11 +4182,11 @@
    "P_kor": null,
    "P_pmo": 0.0,
    "P_nem": 0.1,
-   "T": null,
-   "Tmin": null,
-   "Tmax": null,
-   "H": null,
-   "F": null,
+   "T": 8.0,
+   "Tmin": -0.9,
+   "Tmax": 12.6,
+   "H": 75.0,
+   "F": 2.2,
    "T_pmo": {
     "min": 3.2,
     "max": 16.4,
@@ -4194,33 +4194,33 @@
    },
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": null,
-   "bil": null
+   "ET0": 1.36,
+   "bil": -1.36
   }
  },
  "log": [
-  "12_pocasi.py 2026-10-24 17:43 UTC",
+  "12_pocasi.py 2026-10-25 05:36 UTC",
   "1) CHMU Korycany (srazky)",
-  "  0-203-0-41701068002 2026-10: 138 zaznamu",
+  "  0-203-0-41701068002 2026-10: 144 zaznamu",
   "  0-203-0-41701068002 2026-09: 180 zaznamu",
   "  0-203-0-41701068002 2026-08: 186 zaznamu",
   "2) CHMU Nemochovice",
-  "  0-203-0-41503035001 2026-10: 736 zaznamu",
+  "  0-203-0-41503035001 2026-10: 768 zaznamu",
   "  0-203-0-41503035001 2026-09: 960 zaznamu",
   "  0-203-0-41503035001 2026-08: 992 zaznamu",
   "  Nemochovice P: 84 dni (2026-08-01..2026-10-23)",
-  "  Nemochovice T: 83 dni (2026-08-01..2026-10-22)",
-  "  Nemochovice Tmax: 83 dni (2026-08-01..2026-10-22)",
-  "  Nemochovice Tmin: 83 dni (2026-08-01..2026-10-22)",
-  "  Nemochovice H: 83 dni (2026-08-01..2026-10-22)",
-  "  Nemochovice F: 83 dni (2026-08-01..2026-10-22)",
+  "  Nemochovice T: 84 dni (2026-08-01..2026-10-23)",
+  "  Nemochovice Tmax: 84 dni (2026-08-01..2026-10-23)",
+  "  Nemochovice Tmin: 84 dni (2026-08-01..2026-10-23)",
+  "  Nemochovice H: 84 dni (2026-08-01..2026-10-23)",
+  "  Nemochovice F: 84 dni (2026-08-01..2026-10-23)",
   "  Korycany P: 31 dni s hodnotou",
   "3) Povodi Moravy KS Korycany",
-  "  24 hodinovych radku (23.10. 20:00 - 24.10. 19:00)",
-  "  archiv pmo_korycany.csv: 104 radku",
+  "  24 hodinovych radku (24.10. 07:00 - 25.10. 06:00)",
+  "  archiv pmo_korycany.csv: 115 radku",
   "4) hladiny.cz Nemotice_SR",
-  "  10 hodinovych radku (24.10. 03:00 - 24.10. 12:00)",
-  "  archiv nemotice.csv: 66 radku",
+  "  10 hodinovych radku (24.10. 19:00 - 25.10. 03:00)",
+  "  archiv nemotice.csv: 75 radku",
   "5) denni.json"
  ]
 }
