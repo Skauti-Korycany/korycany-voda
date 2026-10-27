@@ -68,7 +68,7 @@ Prototyp: panel „Hráz na potoce“ v Celém území; `smer_v` a `toky.json` s
 Testy (`web/test_jadro.js`, 37 OK): kolmost osy na tok (cos < 0,05), Kyjovka pod přehradou 2 m / 4 m, rokle horního Stříbrníku -> profil, malý tok -> tůň s rozsahem 1 : 1,5, klik daleko od toku, rychlost.
 
 ## Ověření proti Pythonu (06_cn.py)
-Území modelu (od 21. 10. 2026 k jezu před Mouchnicemi): plocha 1 771,9 ha (Python 1 769,9 - rozdíl = rasterizace polygonu), CN 72,5 = 72,5, odtok P40 98 939 m³ = 98 939 m³, les 711 ha = 40,1 % (= vyuziti_pudy.json), HSP odhad 38,5 % = 38,5 %. (Do 21. 10.: 1 412 ha, CN 72,0, P40 78 248 m³.)
+Území modelu (od 27. 10. 2026 s HSP VÚMOP 2026): plocha 1 771,9 ha (Python 1 769,9 - rozdíl = rasterizace polygonu), CN 67,4 = 67,4, odtok P40 74 205 m³ = 74 206 m³, les 711 ha = 40,1 % (= vyuziti_pudy.json), HSP odhad 1,2 % = 1,2 %; Stříbrník CN 60,1. (21.-26. 10. s HSP z BPEJ: CN 72,5, P40 98 939 m³, odhad 38,5 %. Do 21. 10.: 1 412 ha, CN 72,0, P40 78 248 m³.)
 
 ## Co jádro zatím neumí (další kroky fáze 3)
 - Transformace vlny poldrem (zatím jen bilance objem nádrže vs. objem odtoku).

@@ -35,7 +35,7 @@ Licence: nedohledal jsem (https://www.vumop.cz/poskytovani-dat ❌, https://geop
 | Vodní/větrná eroze | https://wms.vumop.cz/public/eroze.php | ❌ | metadata ✅ https://metadata.vumop.cz/en/record/full/5242cc65-3d9c-4ba3-808c-28487f000001 : "otherRestrictions" | 📄 |
 | Erozní události (monitoring) | https://wms.vumop.cz/public/udalosti.php | ❌ | ✅ https://me.vumop.cz/ "poskytována bezplatně" | 📄 |
 | BPEJ | WMS VÚMOP nedohledal jsem | - | metadata ✅ https://metadata.vumop.cz/en/record/full/d2da8900-8900-12da-9a36-4745e3f89a4a odkazují na SPÚ https://geoportal.spucr.cz/web/cz/bpej-open-data (❌), kód CC BY-SA 4.0 | alternativa: vrstva `BPEJ_WMS` ve WMS MZe plpis.fcgi (bod 8) |
-| Hydrologické skupiny půd | WMS nedohledal jsem | - | metadata ✅ https://metadata.vumop.cz/record/xml/5cc1bdc2-de34-4eee-a439-41420a000319 : přístup bez omezení | odkaz jen na geoportal.vumop.cz |
+| Hydrologické skupiny půd | WMS nedohledal jsem | - | **Data poskytnuta 27. 10. 2026 na žádost (e-mail VÚMOP): vektor HSP 2026, GPKG, EPSG:5514, obec + 500 m, licence CC BY-NC - nekomerční použití, úpravy i prezentace povoleny, uvádět autora „VÚMOP, v.v.i.“**; metadata ✅ https://metadata.vumop.cz/record/xml/5cc1bdc2-de34-4eee-a439-41420a000319 | Soubor `data/vumop/HSP_Korycany.gpkg` jen na PC (ne v gitu); 1 352 polygonů A/B/C/D, 2× B/D (= D), 8× bez hodnoty. VÚMOP: letos celorepubliková aktualizace mimo ZPF, lesy podrobněji rozdělené do HSP. |
 | R faktor, C faktor (stažení) | https://owncloud.cesnet.cz/index.php/s/I3hc8FqLsG7wASP (R faktor) | metadata ✅ https://metadata.vumop.cz/record/basic/65379397-1a6c-4f19-b153-50fe0a000319 | "žádné podmínky neplatí" | pro USLE |
 | Infiltrace, retenční vodní kapacita | nedohledal jsem | - | - | - |
 

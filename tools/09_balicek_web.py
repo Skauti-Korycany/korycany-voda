@@ -98,10 +98,10 @@ if os.path.exists(os.path.join(DMR, "smer_vypaleny.tif")):
                        "nodata": 255, "zdroj": "14_toky_vypaleni.py (HY-NET snizen o 2 m, priority-flood, D8)"}
 
 for nazev, soubor, popis, zdroj in [
-    ("cn", "cn.tif", "CN (IPS II), 0 = mimo", "06_cn.py, Janecek 2012 + TR-55"),
+    ("cn", "cn.tif", "CN (IPS II), 0 = mimo", "06_cn.py, Janecek 2012 + TR-55; HSP VUMOP (CC BY-NC)"),
     ("vyuziti", "vyuziti_kod.tif", "kod vyuziti pudy, legenda data/vyuziti_pudy.json", "04_vyuziti_pudy.py (ZABAGED, INSPIRE BU)"),
-    ("hsp", "hsp.tif", "hydrologicka skupina pud 1=A 2=B 3=C 4=D, 0 = mimo", "05_hsp.py (BPEJ SPU + Janecek tab. 2.2)"),
-    ("hsp_zdroj", "hsp_zdroj.tif", "1 = z BPEJ, 2 = odhad (nejblizsi bonitovana plocha), 3 = VUMOP", "05_hsp.py"),
+    ("hsp", "hsp.tif", "hydrologicka skupina pud 1=A 2=B 3=C 4=D, 0 = mimo", "05_hsp.py: VUMOP, v.v.i., HSP 2026 (CC BY-NC, nekomercni, uvadet autora); kde chybi BPEJ SPU + Janecek tab. 2.2"),
+    ("hsp_zdroj", "hsp_zdroj.tif", "1 = z BPEJ, 2 = odhad (nejblizsi hodnota), 3 = VUMOP HSP 2026", "05_hsp.py"),
     ("povodi", "povodi_id.tif", "id dilciho povodi (data/povodi.geojson, typ sidlo), 0 = mimo", "02_rozvodnice.py"),
 ]:
     p, dp = cti(soubor)
@@ -161,7 +161,7 @@ info = {
         "kontrolni_body": kb,
     },
     "pasma": pasma, "velikost_B": velikosti,
-    "licence": "data CC BY 4.0 (CUZK DMR 5G, ZABAGED, INSPIRE BU); BPEJ SPU otevrena data; odvozeno skripty tools/01-06",
+    "licence": "data CC BY 4.0 (CUZK DMR 5G, ZABAGED, INSPIRE BU); BPEJ SPU otevrena data; pasma hsp a cn odvozena z HSP VUMOP, v.v.i. pod CC BY-NC (jen nekomercne, uvadet autora); odvozeno skripty tools/01-06",
 }
 with open(os.path.join(OUT, "rastr.json"), "w", encoding="utf-8") as f:
     json.dump(info, f, ensure_ascii=False, indent=1)

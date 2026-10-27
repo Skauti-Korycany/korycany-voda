@@ -5,10 +5,13 @@ NÁHRADNÍ CESTA (dokud nepřijdou data VÚMOP): BPEJ z otevřeného WFS SPÚ ->
 -> HSP podle Janeček a kol. 2012, tab. 2.2 (orientační přiřazení). Plochy bez BPEJ (lesy, intravilán, voda)
 se doplní hodnotou NEJBLIŽŠÍ bonitované plochy (stejný geologický podklad) a označí jako odhad.
 
-Až přijdou data VÚMOP: ulož je jako data/vumop/hsp.* (SHP/GPKG/GeoTIFF) a spusť s --vumop <soubor>; skript je
-vypálí místo BPEJ a do hsp_zdroj.tif dá kód 3. Navazující 06_cn.py nic nepozná - čte jen hsp.tif.
+Data VÚMOP (od 27. 10. 2026): vektor HSP 2026 (data/vumop/HSP_Korycany.gpkg, vrstva HSP_2026, atribut HSP A-D,
+EPSG:5514, území obce + 500 m; licence CC BY-NC, uvádět „VÚMOP, v.v.i.“; v gitu NENÍ). Když soubor existuje,
+použije se automaticky (nebo --vumop <soubor>, --bez-vumop pro starou cestu). VÚMOP má přednost před BPEJ,
+do hsp_zdroj.tif jde kód 3. Dvojí skupina „B/D“ (odvodněno / neodvodněno, TR-55) = D, protože odvodnění neznáme.
+Plochy bez hodnoty dostanou BPEJ, jinak nejbližší hodnotu (odhad). Navazující 06_cn.py nic nepozná - čte jen hsp.tif.
 
-Použití:  python tools/05_hsp.py [--bez-stahovani] [--vumop cesta]
+Použití:  python tools/05_hsp.py [--bez-stahovani] [--vumop cesta | --bez-vumop]
 
 Vstup:  WFS SPÚ https://geoportal.spucr.cz/api/open-data/wfs/wfs_bpej (WFS 1.0.0, GML2, EPSG:5514, Fees none,
         AccessConstraints none; ověřeno 19. 10. 2026), vrstva ft_pudniJednotka, atribut at_pudniJednotka_kodBpej.
@@ -77,10 +80,63 @@ def parse_gml2(txt):
                       "polys": polys})
     return feats
 
+# ---- čtení GeoPackage bez GDAL (sqlite3 + WKB), stačí pro polygony VÚMOP
+import sqlite3, struct
+
+def _wkb(b, o=0):
+    end = '<' if b[o] == 1 else '>'; o += 1
+    t, = struct.unpack(end + 'I', b[o:o+4]); o += 4
+    has_z = (t & 0x80000000) or (1000 <= t % 10000 < 2000) or (3000 <= t % 10000 < 4000)
+    has_m = (t & 0x40000000) or (2000 <= t % 10000 < 4000)
+    base = (t & 0x0FFFFFFF) % 1000
+    dim = 2 + (1 if has_z else 0) + (1 if has_m else 0)
+    def ring(o):
+        n, = struct.unpack(end + 'I', b[o:o+4]); o += 4
+        pts = []
+        for _ in range(n):
+            v = struct.unpack(end + 'd' * dim, b[o:o+8*dim]); o += 8 * dim
+            pts.append((v[0], v[1]))
+        return pts, o
+    if base == 3:
+        nr, = struct.unpack(end + 'I', b[o:o+4]); o += 4
+        poly = []
+        for _ in range(nr):
+            r, o = ring(o); poly.append(r)
+        return [poly], o
+    if base == 6:
+        np_, = struct.unpack(end + 'I', b[o:o+4]); o += 4
+        out = []
+        for _ in range(np_):
+            p, o = _wkb(b, o); out += p
+        return out, o
+    raise ValueError(f"nepodporovaný typ geometrie {t}")
+
+def gpkg_geom(blob):
+    if blob is None: return []
+    assert blob[:2] == b'GP', "není GPKG geometrie"
+    flags = blob[3]; env = (flags >> 1) & 7
+    off = 8 + {0: 0, 1: 32, 2: 48, 3: 48, 4: 64}[env]
+    polys, _ = _wkb(blob, off)
+    return polys
+
+def cti_gpkg(path, vrstva=None):
+    c = sqlite3.connect(path)
+    if vrstva is None:
+        vrstva = c.execute("select table_name from gpkg_contents where data_type='features'").fetchone()[0]
+    gcol, srs = c.execute("select column_name, srs_id from gpkg_geometry_columns where table_name=?", (vrstva,)).fetchone()
+    cols = [r[1] for r in c.execute(f"pragma table_info('{vrstva}')")]
+    out = []
+    for row in c.execute(f"select * from '{vrstva}'"):
+        d = dict(zip(cols, row)); g = d.pop(gcol)
+        out.append((d, gpkg_geom(g)))
+    c.close()
+    return out, srs, vrstva
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--bez-stahovani", action="store_true")
-    ap.add_argument("--vumop", default=None, help="cesta k datům VÚMOP (GeoTIFF s HSP 1-4/A-D, nebo GeoJSON/GML s atributem HSP)")
+    ap.add_argument("--vumop", default=None, help="cesta k datům VÚMOP (GPKG nebo GeoJSON s atributem HSP, nebo GeoTIFF 1-4); výchozí data/vumop/HSP_Korycany.gpkg, když existuje")
+    ap.add_argument("--bez-vumop", action="store_true", help="nepoužít data VÚMOP ani když existují (stará cesta jen z BPEJ)")
     ap.add_argument("--buffer", type=float, default=300.0)
     a = ap.parse_args()
     import rasterio
@@ -135,6 +191,9 @@ def main():
     zdroj = np.where(hsp > 0, 1, 0).astype(np.uint8)
 
     # ---- 2. VÚMOP (když je)
+    vychozi = os.path.join(data, "vumop", "HSP_Korycany.gpkg")
+    if not a.vumop and not a.bez_vumop and os.path.exists(vychozi): a.vumop = vychozi
+    if a.bez_vumop: a.vumop = None
     if a.vumop:
         vp = a.vumop
         if vp.lower().endswith((".tif", ".tiff")):
@@ -146,16 +205,25 @@ def main():
             # dovol i písmena v kódu rastru: 1-4 beru jako je
             arr = np.where((arr >= 1) & (arr <= 4), arr, 0).astype(np.uint8)
         else:
-            vj = json.load(open(vp, encoding="utf-8"))
-            shp = []
-            for f in vj["features"]:
-                val = f["properties"].get("HSP") or f["properties"].get("hsp") or f["properties"].get("HSP_K")
+            if vp.lower().endswith(".gpkg"):
+                prvky, srs, vrstva = cti_gpkg(vp)
+                if srs != 5514: sys.exit(f"GPKG {vp}: čekám EPSG:5514, je {srs}")
+                vstup = [(d, polys) for d, polys in prvky]
+            else:
+                vj = json.load(open(vp, encoding="utf-8")); vstup = []
+                for f in vj["features"]:
+                    g = f["geometry"]; vstup.append((f["properties"], [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"]))
+            shp = []; dvoji = 0
+            for props, polys in vstup:
+                val = props.get("HSP") or props.get("hsp") or props.get("HSP_K")
                 if val is None: continue
-                val = {"A": 1, "B": 2, "C": 3, "D": 4}.get(str(val).strip().upper(), 0)
+                t = str(val).strip().upper()
+                if "/" in t: t = t.split("/")[-1]; dvoji += 1   # B/D: neodvodněný stav (D), odvodnění v území neznáme
+                val = {"A": 1, "B": 2, "C": 3, "D": 4}.get(t, 0)
                 if not val: continue
-                g = f["geometry"]; polys = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"]
                 for poly in polys: shp.append(({"type": "Polygon", "coordinates": poly}, val))
             arr = rasterize(shp, out_shape=(H, W), transform=transform, fill=0, dtype="uint8")
+            if dvoji: log(f"   dvojí skupina (např. B/D) u {dvoji} prvků -> druhé písmeno (neodvodněno)")
         hsp = np.where(arr > 0, arr, hsp); zdroj = np.where(arr > 0, 3, zdroj).astype(np.uint8)
         log(f"   VÚMOP: {int((arr > 0).sum() * ha)} ha převzato z {vp}")
 
@@ -182,15 +250,15 @@ def main():
     info = {"datum": time.strftime("%Y-%m-%d"),
             "zdroj_bpej": "SPÚ, otevřená data, WFS wfs_bpej (WFS 1.0.0, GML2, EPSG:5514), Fees none, AccessConstraints none",
             "prirazeni_hsp": "Janeček a kol. 2012, Ochrana zemědělské půdy před erozí, tab. 2.2 (HPJ -> HSP, orientační)",
-            "metoda_doplneni": "buňky bez BPEJ (les, intravilán, voda) = HSP nejbližší bonitované plochy (euklidovsky) - ODHAD; "
-                               "nahradit daty VÚMOP (--vumop)",
+            "zdroj_vumop": ("VÚMOP, v.v.i., vektor HSP 2026 (" + os.path.basename(a.vumop) + "), CC BY-NC, poskytnuto 27. 10. 2026; B/D = D") if a.vumop else None,
+            "metoda_doplneni": "pořadí: VÚMOP HSP 2026 (když je) > BPEJ (Janeček 2012 tab. 2.2) > nejbližší hodnota (euklidovsky) - ODHAD",
             "uzemi_modelu_celkem_ha": round(float(mask.sum() * ha), 1), "plochy_hsp_ha": plochy, "zdroj_hsp_ha": zdr,
             "podil_odhadu_pct": round(100 * zdr["doplneno_nejblizsi_ha"] / max(1e-9, mask.sum() * ha), 1),
             "cetnost_hpj_polygony": dict(sorted(hpj_cet.items())),
             "kody": {"hsp": {"1": "A", "2": "B", "3": "C", "4": "D"}, "hsp_zdroj": {"1": "BPEJ přímo", "2": "doplněno nejbližší BPEJ (odhad)", "3": "VÚMOP"}}}
     with open(os.path.join(data, "hsp_info.json"), "w", encoding="utf-8") as f: json.dump(info, f, ensure_ascii=False, indent=1)
     for k, v in plochy.items(): log(f"   HSP {k}: {v} ha")
-    log(f"   z toho odhad (bez BPEJ): {zdr['doplneno_nejblizsi_ha']} ha = {info['podil_odhadu_pct']} %")
+    log(f"   z toho odhad (bez dat, doplněno nejbližší): {zdr['doplneno_nejblizsi_ha']} ha = {info['podil_odhadu_pct']} %")
 
     # GeoJSON BPEJ pro mapu (jen bbox, WGS84)
     gf = []
@@ -214,9 +282,9 @@ def main():
     ax.imshow(od, cmap=ListedColormap(["#ffffff"]), alpha=0.35, extent=[transform.c, transform.c + W * res, transform.f - H * res, transform.f], interpolation="nearest")
     ax.plot(ring[:, 0], ring[:, 1], color="k", lw=1)
     ax.set_xlim(xmin - 300, xmax + 300); ax.set_ylim(ymin - 300, ymax + 300)
-    ax.legend(handles=[Patch(color=c, label=f"HSP {l}") for c, l in zip(cm.colors, "ABCD")] + [Patch(facecolor="#ffffff", edgecolor="#888", label="zesvětleno = bez BPEJ, doplněno nejbližší (odhad)")],
+    ax.legend(handles=[Patch(color=c, label=f"HSP {l}") for c, l in zip(cm.colors, "ABCD")] + [Patch(facecolor="#ffffff", edgecolor="#888", label="zesvětleno = bez dat, doplněno nejbližší (odhad)")],
               loc="upper left", bbox_to_anchor=(1.01, 1), fontsize=8)
-    ax.set_title("Hydrologické skupiny půd (BPEJ SPÚ -> HPJ -> HSP, Janeček 2012 tab. 2.2)")
+    ax.set_title("Hydrologické skupiny půd (VÚMOP HSP 2026, CC BY-NC; jinde BPEJ SPÚ -> Janeček 2012)" if a.vumop else "Hydrologické skupiny půd (BPEJ SPÚ -> HPJ -> HSP, Janeček 2012 tab. 2.2)")
     fig.savefig(os.path.join(data, "hsp_nahled.png"), dpi=150, bbox_inches="tight"); plt.close(fig)
     log("hotovo.")
 

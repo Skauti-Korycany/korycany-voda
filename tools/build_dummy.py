@@ -564,7 +564,7 @@ details.banner[open]>summary .more{display:none}
     <button role="tab" aria-selected="false" data-tab="model">O modelu</button>
   </nav>
 </header>
-<details class="banner"><summary><b>Zjednodušený model pro osvětu, ne projekt. Nevalidováno.</b> Nic se neukládá. <span class="more">víc</span></summary>Po kliku do mapy se sklon a půda berou z dat (DMR 5G ČÚZK, BPEJ SPÚ); střechy a výměry z katastru (ČÚZK) po kliknutí na parcely, zpevněné plochy zadáváš sám. Katalog, vzorce, ceny a zdroje: opatreni.json v0.4 (20. 10. 2026). Značky: ✅ ověřený zdroj, ✅⏳ starší než rok, 📄 citace, 🤔 odhad.</details>
+<details class="banner"><summary><b>Zjednodušený model pro osvětu, ne projekt. Nevalidováno.</b> Nic se neukládá. <span class="more">víc</span></summary>Po kliku do mapy se sklon a půda berou z dat (DMR 5G ČÚZK, hydrologické skupiny půd VÚMOP, v.v.i., CC BY-NC); střechy a výměry z katastru (ČÚZK) po kliknutí na parcely, zpevněné plochy zadáváš sám. Katalog, vzorce, ceny a zdroje: data/opatreni.json, podrobnosti v záložce O modelu. Značky: ✅ ověřený zdroj, ✅⏳ starší než rok, 📄 citace, 🤔 odhad.</details>
 
 <main>
 <!-- ======================= JAK BYLO ======================= -->
@@ -748,7 +748,7 @@ details.banner[open]>summary .more{display:none}
           <dl class="kv" id="where">
             <dt class="pz-det">Místo</dt><dd class="pz-det" id="w-pos">-</dd>
             <dt>Sklon</dt><dd><span class="num" id="w-slope">-</span> % <span class="note" id="w-slope-n">(po kliku z DMR 5G, průměr v okruhu 15 m)</span></dd>
-            <dt>Půda</dt><dd id="w-soil">- <span class="note">(po kliku z BPEJ; v lese a zástavbě odhad - ověř zkouškou vsaku)</span></dd>
+            <dt>Půda</dt><dd id="w-soil">- <span class="note">(po kliku z mapy půd VÚMOP; upřesníš zkouškou vsaku)</span></dd>
             <dt>Okolí 30 m</dt><dd id="w-okoli">-</dd>
           </dl>
         </div>
@@ -771,7 +771,7 @@ details.banner[open]>summary .more{display:none}
         <div class="pz-q" style="margin-top:0"><div class="q"><span class="qn">1</span>Kam vedou okapy ze střechy?</div><div class="pz-chips" data-for="in-drain"></div></div>
         <div class="pz-q"><div class="q"><span class="qn">2</span>Kolik máš dlažby, betonu a štěrku?</div><div class="pz-chips" data-for="in-paved"></div><div class="note" id="pz-paved-n"></div></div>
         <div class="pz-q"><div class="q"><span class="qn">3</span>Jakou máš půdu?</div><div class="pz-chips" data-for="in-soil"></div>
-          <div class="note">Předvybráno z mapy půd, v zástavbě je to odhad.</div>
+          <div class="note">Předvybráno z mapy hydrologických skupin půd VÚMOP. Na zahradě může být půda jiná (navezená, ušlapaná), zkouška vsaku to ukáže.</div>
           <details class="pz-mini"><summary>Jak to zjistit sám</summary><p class="note">Vykopej jámu 30 cm, nalij vodu a po 30 minutách změř, o kolik klesla. Přes 8 cm velmi propustná, 4-8 cm propustná, 2-4 cm spíš těžká, pod 2 cm jíl.</p></details></div>
         <details class="pz-more" id="pz-detail"><summary>Upřesnit čísla (plochy v m², sklon, dlažba, zahrada)</summary>
           <div class="inputs">
@@ -950,7 +950,7 @@ details.banner[open]>summary .more{display:none}
     <details class="jb-cist uz-det"><summary><b>Tabulka po plochách a jak se to počítá</b></summary>
       <div class="uz-tw"><table class="flow" id="k-table" style="margin-top:.6rem"></table></div>
       <p class="jb-zdroj" id="k-limit"></p>
-      <p class="jb-zdroj" id="k-zdroj">Plochy a půdy ze skutečných dat (ZABAGED využití, BPEJ -> hydrologické skupiny půd, DMR 5G) v mřížce 5 m, území modelu 1 772 ha (Kyjovka k jezu před Mouchnicemi). Posuvníky mění stav hospodaření na části plochy; odtok počítá SCS-CN po buňkách. Je to tabulková změna čísla odtoku, ne měření - ukazuje řád, ne přesné číslo.</p>
+      <p class="jb-zdroj" id="k-zdroj">Plochy a půdy ze skutečných dat (ZABAGED využití, hydrologické skupiny půd VÚMOP 2026 - CC BY-NC, DMR 5G) v mřížce 5 m, území modelu 1 772 ha (Kyjovka k jezu před Mouchnicemi). Posuvníky mění stav hospodaření na části plochy; odtok počítá SCS-CN po buňkách. Je to tabulková změna čísla odtoku, ne měření - ukazuje řád, ne přesné číslo.</p>
     </details>
   </section>
 
@@ -1032,11 +1032,11 @@ details.banner[open]>summary .more{display:none}
     <div class="om-stav">
       <div class="om-s ok"><span class="jb-kicker">Hotovo</span><ul>
         <li><b>Jak bylo:</b> srážky a teploty ČHMÚ Koryčany od roku 1921, chybějící roky doplněné z okolních stanic; denní data se stahují samy dvakrát denně.</li>
-        <li><b>Můj pozemek:</b> skutečné parcely a budovy z katastru, sklon z výškopisu, půda z map BPEJ, skutečný déšť za posledních 30 dní.</li>
+        <li><b>Můj pozemek:</b> skutečné parcely a budovy z katastru, sklon z výškopisu, půda z mapy VÚMOP, skutečný déšť za posledních 30 dní.</li>
+        <li><b>Půda:</b> podrobná mapa hydrologických skupin půd od VÚMOP (27. 10. 2026), i pro les a zástavbu; dřív byl skoro 40 % území odhad.</li>
         <li><b>Celé území:</b> střechy podle účelu budov, odtok z polí, luk a lesů po čtvercích 5 m, eroze orné půdy, objem vody za hrází na potoce.</li>
         <li><b>Katalog:</b> 66 opatření s účinkem, cenou, zdrojem a cestou k penězům.</li></ul></div>
       <div class="om-s wip"><span class="jb-kicker">Rozpracováno</span><ul>
-        <li><b>Půda:</b> čekáme na podrobnou mapu hydrologických skupin půd od VÚMOP; zatím odhad z BPEJ, v zástavbě a v lese hrubší.</li>
         <li><b>Měření:</b> reakce Stříbrníku na déšť u Kachníku (léto 2026) je zpracovaná; data z přehrady od Povodí Moravy zatím nemáme.</li>
         <li><b>Zkouška s lidmi:</b> Můj pozemek prošel první test s občanem a podle něj se upravil.</li></ul></div>
       <div class="om-s no"><span class="jb-kicker">Chybí</span><ul>
@@ -1054,7 +1054,7 @@ details.banner[open]>summary .more{display:none}
     <div class="uz-kdo om-met">
       <div><b>Jak bylo</b><span class="v">srážky, výpar, horko</span><ul><li>Denní srážky a teploty ČHMÚ (Koryčany, Nemochovice), předběžná data Povodí Moravy.</li><li>Možný výpar podle Hargreaves-Samani (FAO-56).</li><li>Tropický den od 30 °C, tropická noc od 20 °C (ČHMÚ).</li></ul></div>
       <div><b>Můj pozemek</b><span class="v">jeden pozemek, jeden déšť</span><ul><li>Střechy a dlažba: součinitel odtoku podle ČSN 75 9010, první 1 mm deště zůstane na povrchu.</li><li>Zahrada: metoda SCS-CN podle půdy A-D (Janeček a kol. 2012).</li><li>Účinek opatření jen tam, kde je doložený vzorcem nebo měřením.</li></ul></div>
-      <div><b>Celé území</b><span class="v">1 770 ha nad jezem u Mouchnic</span><ul><li>Odtok z krajiny SCS-CN po čtvercích 5 m (výškopis DMR 5G, ZABAGED, BPEJ); u lijáků váha nasycené půdy podle Kavky a kol. 2023.</li><li>Eroze orné půdy USLE (R faktor VÚMOP/ČHMÚ 2022).</li><li>Nádrž za hrází: kam vystoupá voda v terénu DMR 5G.</li></ul></div>
+      <div><b>Celé území</b><span class="v">1 770 ha nad jezem u Mouchnic</span><ul><li>Odtok z krajiny SCS-CN po čtvercích 5 m (výškopis DMR 5G, ZABAGED, půdy VÚMOP); u lijáků váha nasycené půdy podle Kavky a kol. 2023.</li><li>Eroze orné půdy USLE (R faktor VÚMOP/ČHMÚ 2022).</li><li>Nádrž za hrází: kam vystoupá voda v terénu DMR 5G.</li></ul></div>
       <div><b>Katalog</b><span class="v">66 opatření</span><ul><li>Každý účinek má zdroj a značku původu.</li><li>Nejistota jako rozsah, ne jedno číslo.</li><li>Odhady (🤔) se do součtů nepočítají.</li></ul></div>
     </div>
     <p class="note om-zn">Značky u čísel: ✅ zdroj jsme otevřeli a ověřili, ⏳ zdroj starší než rok, 📄 citováno z druhé ruky, 🤔 odhad, 💻 neověřeno.</p>
@@ -1070,7 +1070,8 @@ details.banner[open]>summary .more{display:none}
     <div class="uz-tw"><table class="flow om-data">
       <tr><th>co</th><th>odkud</th><th>k čemu</th></tr>
       <tr><td>výškopis DMR 5G, parcely, budovy, ZABAGED, mapy a ortofoto</td><td>ČÚZK, CC BY 4.0 ✅</td><td>sklon, kam teče voda, střechy, využití ploch</td></tr>
-      <tr><td>bonitované půdně ekologické jednotky (BPEJ)</td><td>Státní pozemkový úřad ✅</td><td>jak rychle se vsákne voda (skupina půdy A-D)</td></tr>
+      <tr><td>hydrologické skupiny půd (HSP 2026)</td><td>VÚMOP, v.v.i., CC BY-NC (jen nekomerčně) ✅</td><td>jak rychle se vsákne voda (skupina půdy A-D)</td></tr>
+      <tr><td>bonitované půdně ekologické jednotky (BPEJ)</td><td>Státní pozemkový úřad ✅</td><td>jak snadno se půda smývá (eroze)</td></tr>
       <tr><td>účel budov, hledání adres</td><td>RÚIAN (ČÚZK) ✅</td><td>velké střechy, hledání v Můj pozemek</td></tr>
       <tr><td>denní srážky a teploty</td><td>ČHMÚ, otevřená data (podmínky užití ještě zapisujeme); Povodí Moravy, srážkoměr u přehrady (předběžná data)</td><td>Jak bylo, skutečný déšť za 30 dní</td></tr>
       <tr><td>návrhové deště N2-N100</td><td>ČVUT a ČHMÚ, metodika 2023 ✅</td><td>lijáky jednou za 2, 10 a 100 let</td></tr>
@@ -1276,8 +1277,8 @@ function odvodZMapy(lon,lat){
   const s30 = Jadro.statBunek(Jadro.bunkyPolygonu(kruh(lon,lat,30)));
   const sklonPct = s15.sklon_prumer_pct!=null ? Math.round(s15.sklon_prumer_pct) : null;
   if(sklonPct!=null){ $('in-slope').value = sklonPct; $('w-slope').textContent = sklonPct; $('w-slope-n').textContent = PARC.vybrane.size ? `(DMR 5G, průměr vybraných parcel, ${s15.n_platnych} buněk 5 m)` : `(DMR 5G, průměr v okruhu 15 m; v bodě ${fmt(Jadro.sklonDeg(b.i)||0)}°)`; }
-  const h = Jadro.hsp(b.i), odhad = Jadro.p.hsp_zdroj[b.i]===2;
-  if(h){ $('in-soil').value = 'ABCD'[h-1]; $('w-soil').innerHTML = `skupina ${HSPN[h]} <span class="note">(${odhad?'odhad z nejbližší bonitované plochy - ověř zkouškou vsaku':'z BPEJ (SPÚ) + Janeček 2012'})</span>`; }
+  const h = Jadro.hsp(b.i), zdr = Jadro.p.hsp_zdroj[b.i];
+  if(h){ $('in-soil').value = 'ABCD'[h-1]; $('w-soil').innerHTML = `skupina ${HSPN[h]} <span class="note">(${zdr===3?'mapa půd VÚMOP 2026':zdr===2?'odhad z nejbližší plochy - ověř zkouškou vsaku':'z BPEJ (SPÚ) + Janeček 2012'})</span>`; }
   else $('w-soil').innerHTML = '- <span class="note">(bez dat, zadej podle zkoušky vsaku)</span>';
   const A = s30.plocha_ha*1e4 || 1;
   const sum = ks => ks.reduce((t,k)=>t+(s30.vyuziti_ha[k]||0),0)*1e4;
@@ -2018,8 +2019,8 @@ renderKatalog();
 $('konst').innerHTML = `<ul><li>Srážky: ${K.srazky_rocni_mm.hodnota} mm/rok ✅ (${K.srazky_rocni_mm.pozn}); měsíčně I-XII: ${Object.values(D.uzemi.srazky.mesicni_mm).join(', ')} mm; největší denní úhrny ${D.uzemi.srazky.max_denni.map(x=>x[1]+' mm ('+x[0]+')').join(', ')}</li>
 <li>Návrhové 6hodinové úhrny Koryčany ✅ (ČVUT/ČHMÚ metodika 2023, rastr 1 km): N2 ${K.navrhovy_dest_6h_korycany.N2_mm}, N5 ${K.navrhovy_dest_6h_korycany.N5_mm}, N10 ${K.navrhovy_dest_6h_korycany.N10_mm}, N20 ${K.navrhovy_dest_6h_korycany.N20_mm}, N50 ${K.navrhovy_dest_6h_korycany.N50_mm}, N100 ${K.navrhovy_dest_6h_korycany.N100_mm} mm; nejčastější průběh C (dva vrcholy, 35 %), přívalový A jen 9 %</li>
 <li>N-leté denní úhrny Koryčany (Gumbel 1921-2025, odhad 🤔, jen pro srovnání): N2 ${K.navrhovy_dest_denni_korycany.N2_mm}, N10 ${K.navrhovy_dest_denni_korycany.N10_mm}, N100 ${K.navrhovy_dest_denni_korycany.N100_mm} mm</li>
-<li>Území modelu: ${fmt0(D.uzemi.plocha_ha)} ha, CN vážené ${D.uzemi.cn_vazene} (HSP z BPEJ, v lese a zástavbě odhad), odtok při 20/40/60 mm: ${fmt0(D.uzemi.odtok.P20mm.objem_m3)} / ${fmt0(D.uzemi.odtok.P40mm.objem_m3)} / ${fmt0(D.uzemi.odtok.P60mm.objem_m3)} m³ (SCS-CN, IPS II) ✅ 06_cn.py</li>
-<li>Terén a půda po kliku: DMR 5G ČÚZK (5 m), BPEJ SPÚ -> HSP podle Janeček 2012; jádro web/jadro.js (docs/JADRO.md)</li>
+<li>Území modelu: ${fmt0(D.uzemi.plocha_ha)} ha, CN vážené ${D.uzemi.cn_vazene} (HSP VÚMOP 2026, CC BY-NC), odtok při 20/40/60 mm: ${fmt0(D.uzemi.odtok.P20mm.objem_m3)} / ${fmt0(D.uzemi.odtok.P40mm.objem_m3)} / ${fmt0(D.uzemi.odtok.P60mm.objem_m3)} m³ (SCS-CN, IPS II) ✅ 06_cn.py</li>
+<li>Terén a půda po kliku: DMR 5G ČÚZK (5 m), hydrologické skupiny půd VÚMOP 2026 (kde chybí, BPEJ SPÚ podle Janeček 2012); jádro web/jadro.js (docs/JADRO.md)</li>
 <li>Návrhový déšť p=0,2: 15 min ${K.navrhovy_dest_p02['15min_mm']} mm, 60 min ${K.navrhovy_dest_p02['60min_mm']} mm, 24 h ${K.navrhovy_dest_p02['24h_mm']} mm ✅ (${K.navrhovy_dest_p02.pozn})</li>
 <li>Zelené plochy pozemku: SCS-CN, CN zahrady podle půdy A-D (Janeček 2012 / TR-55 ✅⏳: trávník 39/61/74/80), bez úpravy na sklon (české metodiky ji nemají); u návrhových dešťů vážení CN2/CN3 jako v krajině; roční odtok po dnech z histogramu denních úhrnů ČHMÚ Koryčany 1991-2019. Střechy a zpevněné plochy: součinitel ČSN × (déšť - 1 mm), 1 mm = ztráta smáčením (Ia pro CN 98 podle TR-55 ✅⏳)</li>
 <li>Součinitele odtoku C (střechy, zpevněné; sklon &lt;1 / 1-5 / &gt;5 %): ${Object.entries(C).filter(([k,v])=>Array.isArray(v)).map(([k,v])=>k.replaceAll('_',' ')+' '+v.join('/')).join('; ')} ✅</li>

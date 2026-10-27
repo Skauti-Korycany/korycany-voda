@@ -1,21 +1,22 @@
 {
- "datum": "2026-10-21",
+ "datum": "2026-10-27",
  "zdroj_bpej": "SPÚ, otevřená data, WFS wfs_bpej (WFS 1.0.0, GML2, EPSG:5514), Fees none, AccessConstraints none",
  "prirazeni_hsp": "Janeček a kol. 2012, Ochrana zemědělské půdy před erozí, tab. 2.2 (HPJ -> HSP, orientační)",
- "metoda_doplneni": "buňky bez BPEJ (les, intravilán, voda) = HSP nejbližší bonitované plochy (euklidovsky) - ODHAD; nahradit daty VÚMOP (--vumop)",
+ "zdroj_vumop": "VÚMOP, v.v.i., vektor HSP 2026 (HSP_Korycany.gpkg), CC BY-NC, poskytnuto 27. 10. 2026; B/D = D",
+ "metoda_doplneni": "pořadí: VÚMOP HSP 2026 (když je) > BPEJ (Janeček 2012 tab. 2.2) > nejbližší hodnota (euklidovsky) - ODHAD",
  "uzemi_modelu_celkem_ha": 1771.9,
  "plochy_hsp_ha": {
-  "A": 11.4,
-  "B": 1085.4,
-  "C": 204.7,
-  "D": 470.4
+  "A": 201.8,
+  "B": 1203.8,
+  "C": 187.9,
+  "D": 178.4
  },
  "zdroj_hsp_ha": {
-  "BPEJ primo_ha": 1090.1,
-  "doplneno_nejblizsi_ha": 681.8,
-  "vumop_ha": 0.0
+  "BPEJ primo_ha": 1.7,
+  "doplneno_nejblizsi_ha": 20.9,
+  "vumop_ha": 1749.3
  },
- "podil_odhadu_pct": 38.5,
+ "podil_odhadu_pct": 1.2,
  "cetnost_hpj_polygony": {
   "00": 18,
   "02": 2,
