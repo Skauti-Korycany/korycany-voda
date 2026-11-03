@@ -1,5 +1,5 @@
 {
- "vytvoreno": "2026-11-03T05:57Z",
+ "vytvoreno": "2026-11-03T18:01Z",
  "stanice": {
   "chmu_korycany": {
    "wsi": "0-203-0-41701068002",
@@ -3441,7 +3441,7 @@
    "bil": -3.95
   },
   "2026-09-01": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 17.2,
@@ -3450,12 +3450,12 @@
    "H": 62.0,
    "F": 0.8,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 3.61,
    "bil": -3.61
   },
   "2026-09-02": {
-   "P_kor": null,
+   "P_kor": 0.1,
    "P_pmo": null,
    "P_nem": 0.1,
    "T": 19.8,
@@ -3464,12 +3464,12 @@
    "H": 58.0,
    "F": 1.1,
    "P": 0.1,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 4.35,
    "bil": -4.25
   },
   "2026-09-03": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 17.1,
@@ -3478,12 +3478,12 @@
    "H": 67.0,
    "F": 1.2,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 3.58,
    "bil": -3.58
   },
   "2026-09-04": {
-   "P_kor": null,
+   "P_kor": 2.5,
    "P_pmo": null,
    "P_nem": 2.5,
    "T": 20.3,
@@ -3492,12 +3492,12 @@
    "H": 63.0,
    "F": 1.3,
    "P": 2.5,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 4.17,
    "bil": -1.67
   },
   "2026-09-05": {
-   "P_kor": null,
+   "P_kor": 0.1,
    "P_pmo": null,
    "P_nem": 0.5,
    "T": 19.0,
@@ -3505,13 +3505,13 @@
    "Tmax": 24.3,
    "H": 61.0,
    "F": 2.3,
-   "P": 0.5,
-   "zdroj_P": "chmu_nemochovice",
+   "P": 0.1,
+   "zdroj_P": "chmu_korycany",
    "ET0": 3.02,
-   "bil": -2.52
+   "bil": -2.92
   },
   "2026-09-06": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 14.5,
@@ -3520,12 +3520,12 @@
    "H": 59.0,
    "F": 1.2,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 3.31,
    "bil": -3.31
   },
   "2026-09-07": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 17.3,
@@ -3534,12 +3534,12 @@
    "H": 57.0,
    "F": 1.3,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 4.04,
    "bil": -4.04
   },
   "2026-09-08": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 21.5,
@@ -3548,12 +3548,12 @@
    "H": 52.0,
    "F": 1.6,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 4.64,
    "bil": -4.64
   },
   "2026-09-09": {
-   "P_kor": null,
+   "P_kor": 13.4,
    "P_pmo": null,
    "P_nem": 10.0,
    "T": 21.6,
@@ -3561,13 +3561,13 @@
    "Tmax": 30.6,
    "H": 57.0,
    "F": 1.3,
-   "P": 10.0,
-   "zdroj_P": "chmu_nemochovice",
+   "P": 13.4,
+   "zdroj_P": "chmu_korycany",
    "ET0": 4.02,
-   "bil": 5.98
+   "bil": 9.38
   },
   "2026-09-10": {
-   "P_kor": null,
+   "P_kor": 4.1,
    "P_pmo": null,
    "P_nem": 3.1,
    "T": 13.3,
@@ -3575,13 +3575,13 @@
    "Tmax": 18.1,
    "H": 80.0,
    "F": 1.1,
-   "P": 3.1,
-   "zdroj_P": "chmu_nemochovice",
+   "P": 4.1,
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.17,
-   "bil": 0.93
+   "bil": 1.93
   },
   "2026-09-11": {
-   "P_kor": null,
+   "P_kor": 9.2,
    "P_pmo": null,
    "P_nem": 5.8,
    "T": 11.0,
@@ -3589,13 +3589,13 @@
    "Tmax": 14.2,
    "H": 92.0,
    "F": 2.0,
-   "P": 5.8,
-   "zdroj_P": "chmu_nemochovice",
+   "P": 9.2,
+   "zdroj_P": "chmu_korycany",
    "ET0": 1.56,
-   "bil": 4.24
+   "bil": 7.64
   },
   "2026-09-12": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 13.0,
@@ -3604,12 +3604,12 @@
    "H": 81.0,
    "F": 1.2,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 3.07,
    "bil": -3.07
   },
   "2026-09-13": {
-   "P_kor": null,
+   "P_kor": 2.1,
    "P_pmo": null,
    "P_nem": 1.4,
    "T": 15.1,
@@ -3617,13 +3617,13 @@
    "Tmax": 20.5,
    "H": 85.0,
    "F": 1.3,
-   "P": 1.4,
-   "zdroj_P": "chmu_nemochovice",
+   "P": 2.1,
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.94,
-   "bil": -1.54
+   "bil": -0.84
   },
   "2026-09-14": {
-   "P_kor": null,
+   "P_kor": 4.4,
    "P_pmo": null,
    "P_nem": 3.0,
    "T": 15.7,
@@ -3631,13 +3631,13 @@
    "Tmax": 20.3,
    "H": 95.0,
    "F": 0.5,
-   "P": 3.0,
-   "zdroj_P": "chmu_nemochovice",
+   "P": 4.4,
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.08,
-   "bil": 0.92
+   "bil": 2.32
   },
   "2026-09-15": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 14.6,
@@ -3646,12 +3646,12 @@
    "H": 83.0,
    "F": 0.6,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.77,
    "bil": -2.77
   },
   "2026-09-16": {
-   "P_kor": null,
+   "P_kor": 9.8,
    "P_pmo": null,
    "P_nem": 10.1,
    "T": 18.7,
@@ -3659,13 +3659,13 @@
    "Tmax": 25.1,
    "H": 79.0,
    "F": 2.0,
-   "P": 10.1,
-   "zdroj_P": "chmu_nemochovice",
+   "P": 9.8,
+   "zdroj_P": "chmu_korycany",
    "ET0": 3.56,
-   "bil": 6.54
+   "bil": 6.24
   },
   "2026-09-17": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 14.0,
@@ -3674,12 +3674,12 @@
    "H": 81.0,
    "F": 0.9,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.26,
    "bil": -2.26
   },
   "2026-09-18": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 14.0,
@@ -3688,12 +3688,12 @@
    "H": 83.0,
    "F": 1.0,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.83,
    "bil": -2.83
   },
   "2026-09-19": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 14.5,
@@ -3702,12 +3702,12 @@
    "H": 75.0,
    "F": 0.8,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.99,
    "bil": -2.99
   },
   "2026-09-20": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.3,
    "T": 17.1,
@@ -3715,13 +3715,13 @@
    "Tmax": 25.1,
    "H": 68.0,
    "F": 1.4,
-   "P": 0.3,
-   "zdroj_P": "chmu_nemochovice",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
    "ET0": 3.29,
-   "bil": -2.99
+   "bil": -3.29
   },
   "2026-09-21": {
-   "P_kor": null,
+   "P_kor": 5.4,
    "P_pmo": null,
    "P_nem": 5.6,
    "T": 13.0,
@@ -3729,13 +3729,13 @@
    "Tmax": 20.1,
    "H": 67.0,
    "F": 2.6,
-   "P": 5.6,
-   "zdroj_P": "chmu_nemochovice",
+   "P": 5.4,
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.18,
-   "bil": 3.42
+   "bil": 3.22
   },
   "2026-09-22": {
-   "P_kor": null,
+   "P_kor": 0.1,
    "P_pmo": null,
    "P_nem": 0.5,
    "T": 12.2,
@@ -3743,13 +3743,13 @@
    "Tmax": 15.3,
    "H": 74.0,
    "F": 2.7,
-   "P": 0.5,
-   "zdroj_P": "chmu_nemochovice",
+   "P": 0.1,
+   "zdroj_P": "chmu_korycany",
    "ET0": 1.74,
-   "bil": -1.24
+   "bil": -1.64
   },
   "2026-09-23": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 9.0,
@@ -3758,12 +3758,12 @@
    "H": 81.0,
    "F": 1.0,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.14,
    "bil": -2.14
   },
   "2026-09-24": {
-   "P_kor": null,
+   "P_kor": 3.0,
    "P_pmo": null,
    "P_nem": 1.9,
    "T": 10.2,
@@ -3771,13 +3771,13 @@
    "Tmax": 13.9,
    "H": 90.0,
    "F": 1.4,
-   "P": 1.9,
-   "zdroj_P": "chmu_nemochovice",
+   "P": 3.0,
+   "zdroj_P": "chmu_korycany",
    "ET0": 1.92,
-   "bil": -0.02
+   "bil": 1.08
   },
   "2026-09-25": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 10.4,
@@ -3786,12 +3786,12 @@
    "H": 84.0,
    "F": 0.5,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 1.76,
    "bil": -1.76
   },
   "2026-09-26": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 10.7,
@@ -3800,12 +3800,12 @@
    "H": 81.0,
    "F": 1.1,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.41,
    "bil": -2.41
   },
   "2026-09-27": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 12.3,
@@ -3814,12 +3814,12 @@
    "H": 78.0,
    "F": 0.9,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.5,
    "bil": -2.5
   },
   "2026-09-28": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 12.6,
@@ -3828,12 +3828,12 @@
    "H": 76.0,
    "F": 0.7,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.61,
    "bil": -2.61
   },
   "2026-09-29": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 12.6,
@@ -3842,12 +3842,12 @@
    "H": 67.0,
    "F": 1.1,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.55,
    "bil": -2.55
   },
   "2026-09-30": {
-   "P_kor": null,
+   "P_kor": 0.0,
    "P_pmo": null,
    "P_nem": 0.0,
    "T": 16.4,
@@ -3856,7 +3856,7 @@
    "H": 56.0,
    "F": 2.2,
    "P": 0.0,
-   "zdroj_P": "chmu_nemochovice",
+   "zdroj_P": "chmu_korycany",
    "ET0": 2.76,
    "bil": -2.76
   },
@@ -4329,11 +4329,11 @@
    "P_kor": null,
    "P_pmo": 0.5,
    "P_nem": 1.1,
-   "T": null,
-   "Tmin": null,
-   "Tmax": null,
-   "H": null,
-   "F": null,
+   "T": 7.8,
+   "Tmin": 5.1,
+   "Tmax": 11.6,
+   "H": 81.0,
+   "F": 1.4,
    "T_pmo": {
     "min": 7.2,
     "max": 14.3,
@@ -4341,8 +4341,8 @@
    },
    "P": 0.5,
    "zdroj_P": "pmo_korycany",
-   "ET0": null,
-   "bil": null
+   "ET0": 0.83,
+   "bil": -0.33
   },
   "2026-11-01": {
    "P_kor": null,
@@ -4362,10 +4362,29 @@
    "zdroj_P": "pmo_korycany",
    "ET0": 0.73,
    "bil": -0.73
+  },
+  "2026-11-02": {
+   "P_kor": null,
+   "P_pmo": 0.0,
+   "P_nem": 0.0,
+   "T": null,
+   "Tmin": null,
+   "Tmax": null,
+   "H": null,
+   "F": null,
+   "T_pmo": {
+    "min": 7.5,
+    "max": 10.4,
+    "avg": 8.7
+   },
+   "P": 0.0,
+   "zdroj_P": "pmo_korycany",
+   "ET0": null,
+   "bil": null
   }
  },
  "log": [
-  "12_pocasi.py 2026-11-03 05:57 UTC",
+  "12_pocasi.py 2026-11-03 18:01 UTC",
   "1) CHMU Korycany (srazky)",
   "  0-203-0-41701068002 2026-11: 12 zaznamu",
   "  0-203-0-41701068002 2026-10: 186 zaznamu",
@@ -4374,19 +4393,19 @@
   "  0-203-0-41503035001 2026-11: 64 zaznamu",
   "  0-203-0-41503035001 2026-10: 992 zaznamu",
   "  0-203-0-41503035001 2026-09: 960 zaznamu",
-  "  Nemochovice P: 62 dni (2026-09-01..2026-11-01)",
-  "  Nemochovice T: 61 dni (2026-09-01..2026-11-01)",
-  "  Nemochovice Tmax: 61 dni (2026-09-01..2026-11-01)",
-  "  Nemochovice Tmin: 61 dni (2026-09-01..2026-11-01)",
-  "  Nemochovice H: 61 dni (2026-09-01..2026-11-01)",
-  "  Nemochovice F: 61 dni (2026-09-01..2026-11-01)",
-  "  Korycany P: 0 dni s hodnotou",
+  "  Nemochovice P: 63 dni (2026-09-01..2026-11-02)",
+  "  Nemochovice T: 62 dni (2026-09-01..2026-11-01)",
+  "  Nemochovice Tmax: 62 dni (2026-09-01..2026-11-01)",
+  "  Nemochovice Tmin: 62 dni (2026-09-01..2026-11-01)",
+  "  Nemochovice H: 62 dni (2026-09-01..2026-11-01)",
+  "  Nemochovice F: 62 dni (2026-09-01..2026-11-01)",
+  "  Korycany P: 30 dni s hodnotou",
   "3) Povodi Moravy KS Korycany",
-  "  24 hodinovych radku (02.11. 07:00 - 03.11. 06:00)",
-  "  archiv pmo_korycany.csv: 331 radku",
+  "  24 hodinovych radku (02.11. 19:00 - 03.11. 18:00)",
+  "  archiv pmo_korycany.csv: 343 radku",
   "4) hladiny.cz Nemotice_SR",
-  "  10 hodinovych radku (02.11. 19:00 - 03.11. 04:00)",
-  "  archiv nemotice.csv: 242 radku",
+  "  10 hodinovych radku (03.11. 03:00 - 03.11. 12:00)",
+  "  archiv nemotice.csv: 250 radku",
   "5) denni.json"
  ]
 }
