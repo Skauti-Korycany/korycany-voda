@@ -160,7 +160,8 @@ Generováno z `data/opatreni.json` v0.9 (2026-10-22); podrobný rozbor a odkazy:
 
 ### T04 Revitalizace drobného toku (odstranění opevnění, rozvlnění, snížení břehů) (doplněno)
 - Kde to funguje: **Kyjovka u Moravské Nové Vsi** (2022-): Povodí Moravy od 2022: nové přírodě blízké koryto 1 730 m odbočené ze stávajícího, přelivný val pro rozliv, 3 tůně, výsadby vrb, topolů, dubů, jasanů, jilmů; cena a měřený účinek neuvedeny (dolní tok v nížině). Bez měření. ✅ [Brno Daily 28. 8. 2022](https://brnodaily.com/2022/08/28/brno/the-morava-river-basin-project-is-revitalising-the-kyjovka-river-and-its-fauna/)
-- Přenositelnost do Koryčan: Princip (odbočené koryto, rozliv, tůně) ano; měřítko ne - u Koryčan jde o drobný tok a Stříbrník. Správce Povodí Moravy.
+- Kde to funguje: **Otročínský potok, úsek Otročín - Poseč (Karlovarsko)** (2026): Povodí Ohře, 2. etapa (navazuje na 1. etapu z roku 2014): drobný vodní tok, na úseku 531 m odstraněno opevnění z betonových tvárnic a vytvořeno nové koryto s meandry, tůněmi a mrtvými rameny v údolní nivě; stavba 7-10/2026, smlouva 1,82 mil. Kč bez DPH. Bez měření. ✅ [iROZHLAS (ČRo Karlovy Vary) 4. 11. 2026](https://www.irozhlas.cz/zpravy-domov/povodi-ohre-upravilo-koryto-otrocinskeho-potoka-v-prirodni-udolni-nivu-stavba_2611040031_aru); [Registr smluv (Hlídač státu)](https://www.hlidacstatu.cz/Detail/37220917)
+- Přenositelnost do Koryčan: Princip (odstranit opevnění, meandry, tůně, rozliv do nivy) ano. Měřítkem je bližší Otročínský potok (drobný vodní tok, 531 m, 1,8 mil. Kč) než Kyjovka u Moravské Nové Vsi (dolní tok v nížině). U Koryčan jde o Stříbrník a Kyjovku pod soutokem; správce Povodí Moravy.
 - Nedohledáno: SPPK kód pro revitalizace; měřený efekt (ČR)
 
 ### C03 Zatravnění a výsadba na svazích, terasování starých úvozů (doplněno)

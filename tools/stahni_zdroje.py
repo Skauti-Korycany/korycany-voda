@@ -38,6 +38,8 @@ ZDROJE = {
         ["https://www.vermieter-ratgeber.de/sites/default/files/public/data-fachartikel/IVV_2026_05_Vier-Fragen-an-Dipl_-Ing_-Erwin-Nolde_40-41.pdf"]),
     "S06_praha14_2022": ("MČ Praha 14, leták Voda 2022 (spotřeba podle činností)",
         ["https://www.praha14.cz/app/uploads/sites/4/2022/06/Letak-Voda-2022.pdf"]),
+    "T04_otrocinsky_potok_2026": ("iROZHLAS 4. 11. 2026, foto Povodí Ohře: revitalizovaný Otročínský potok, úsek Otročín - Poseč (2. etapa, 531 m, meandry, tůně, mrtvá ramena). Článek: https://www.irozhlas.cz/zpravy-domov/povodi-ohre-upravilo-koryto-otrocinskeho-potoka-v-prirodni-udolni-nivu-stavba_2611040031_aru",
+        ["https://www.irozhlas.cz/sites/default/files/uploader/image_261102-170446_aru.jpg"]),
     "D_cyprus_terasy_egu2017": ("Camera a kol., EGU 2017, suché kamenné terasy Troodos (pro blok D)",
         ["https://meetingorganizer.copernicus.org/EGU2017/EGU2017-7404.pdf?pdf"]),
 }

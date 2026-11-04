@@ -1641,6 +1641,24 @@
    "overeno_dne": "2026-10-22",
    "pozn": "cena a účinek neuvedeny; zahájení potvrzuje zpravodaj PMO 4/2022 ✅"
   },
+  "irozhlas2026_otrocin": {
+   "id": "irozhlas2026_otrocin",
+   "nazev": "iROZHLAS (ČRo Karlovy Vary) 4. 11. 2026: Povodí Ohře revitalizovalo Otročínský potok, úsek Otročín - Poseč (531 m, betonové opevnění pryč, meandry, tůně, mrtvá ramena; foto Povodí Ohře)",
+   "url": "https://www.irozhlas.cz/zpravy-domov/povodi-ohre-upravilo-koryto-otrocinskeho-potoka-v-prirodni-udolni-nivu-stavba_2611040031_aru",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-11-04",
+   "pozn": "změřený účinek neuveden; 1. etapa 2014"
+  },
+  "hlidac2026_otrocin": {
+   "id": "hlidac2026_otrocin",
+   "nazev": "Registr smluv (Hlídač státu): Povodí Ohře, smlouva 324/2026 ze 18. 3. 2026, DVT Otročínský potok - II. etapa revitalizace, 1 818 119 Kč bez DPH",
+   "url": "https://www.hlidacstatu.cz/Detail/37220917",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-11-04",
+   "pozn": null
+  },
   "pickering2015": {
    "id": "pickering2015",
    "nazev": "Forest Research 5/2015: Slowing the Flow at Pickering, Phase II Executive Summary",
@@ -8621,9 +8639,21 @@
       "brnodaily2022_kyjovka"
      ],
      "znacka": "overeno"
+    },
+    {
+     "kde": "Otročínský potok, úsek Otročín - Poseč (Karlovarsko)",
+     "kdy": "2026",
+     "kdo": "Povodí Ohře",
+     "co": "Povodí Ohře, 2. etapa (navazuje na 1. etapu z roku 2014): drobný vodní tok, na úseku 531 m odstraněno opevnění z betonových tvárnic a vytvořeno nové koryto s meandry, tůněmi a mrtvými rameny v údolní nivě; stavba 7-10/2026, smlouva 1,82 mil. Kč bez DPH",
+     "mereno": null,
+     "zdroj": [
+      "irozhlas2026_otrocin",
+      "hlidac2026_otrocin"
+     ],
+     "znacka": "overeno"
     }
    ],
-   "prenositelnost": "Princip (odbočené koryto, rozliv, tůně) ano; měřítko ne - u Koryčan jde o drobný tok a Stříbrník. Správce Povodí Moravy.",
+   "prenositelnost": "Princip (odstranit opevnění, meandry, tůně, rozliv do nivy) ano. Měřítkem je bližší Otročínský potok (drobný vodní tok, 531 m, 1,8 mil. Kč) než Kyjovka u Moravské Nové Vsi (dolní tok v nížině). U Koryčan jde o Stříbrník a Kyjovku pod soutokem; správce Povodí Moravy.",
    "rizika": null,
    "vahy_skaly": null
   },
