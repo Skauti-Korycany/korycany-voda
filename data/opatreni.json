@@ -1659,6 +1659,15 @@
    "overeno_dne": "2026-11-04",
    "pozn": null
   },
+  "irozhlas2026_jizbice": {
+   "id": "irozhlas2026_jizbice",
+   "nazev": "iROZHLAS (ČRo Střední Čechy) 14. 10. 2026: Lesy ČR revitalizovaly Stupnický potok v Jizbickém lese (Benešovsko) - zrušené odvodňovací kanály, tok vrácen do původního koryta, 30 ha",
+   "url": "https://www.irozhlas.cz/veda-technologie/priroda/revitalizaci-potoka-vratili-prirode-zivot-do-jizbickeho-lesa-se-vratily-ruzne_2610141729_tez",
+   "rok": 2026,
+   "znacka": "overeno",
+   "overeno_dne": "2026-11-04",
+   "pozn": "bez měření a bez ceny; pozorování lesníků"
+  },
   "pickering2015": {
    "id": "pickering2015",
    "nazev": "Forest Research 5/2015: Slowing the Flow at Pickering, Phase II Executive Summary",
@@ -8387,6 +8396,17 @@
       "adapterra2023"
      ],
      "znacka": "citace"
+    },
+    {
+     "kde": "Jizbický les, Stupnický potok (Benešovsko)",
+     "kdy": "dokončeno 2026",
+     "kdo": "Lesy ČR",
+     "co": "Lesy ČR, správa toků: v lese od pramene po okraj lesa zahrazeny desítky let staré meliorační kanály a vymělčen regulovaný tok vrácený do původního koryta, obnova údolní nivy na 30 ha; půl roku po dokončení podle lesníků vlhká půda i daleko od potoka v suchém roce, v trase zahrazených kanálů drobné mokřady s rašeliníkem, návrat trav, bylin a hmyzu",
+     "mereno": null,
+     "zdroj": [
+      "irozhlas2026_jizbice"
+     ],
+     "znacka": "overeno"
     }
    ],
    "prenositelnost": "Niva Stříbrníku a Kyjovky nad jezem u Mouchnic (rozhodnutí 21. 10.): nejdřív zjistit meliorace (Státní pozemkový úřad), pak přerušit plošně. Monitoring před/po s kontrolním profilem 3-5 let (VÚV 2018).",

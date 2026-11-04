@@ -40,6 +40,8 @@ ZDROJE = {
         ["https://www.praha14.cz/app/uploads/sites/4/2022/06/Letak-Voda-2022.pdf"]),
     "T04_otrocinsky_potok_2026": ("iROZHLAS 4. 11. 2026, foto Povodí Ohře: revitalizovaný Otročínský potok, úsek Otročín - Poseč (2. etapa, 531 m, meandry, tůně, mrtvá ramena). Článek: https://www.irozhlas.cz/zpravy-domov/povodi-ohre-upravilo-koryto-otrocinskeho-potoka-v-prirodni-udolni-nivu-stavba_2611040031_aru",
         ["https://www.irozhlas.cz/sites/default/files/uploader/image_261102-170446_aru.jpg"]),
+    "T02_jizbicky_les_2026": ("iROZHLAS 14. 10. 2026, foto Věra Hájková / Český rozhlas: Jizbický les (Benešovsko), revitalizace Stupnického potoka Lesy ČR - zahrazené meliorační kanály, mokřady s rašeliníkem. Článek: https://www.irozhlas.cz/veda-technologie/priroda/revitalizaci-potoka-vratili-prirode-zivot-do-jizbickeho-lesa-se-vratily-ruzne_2610141729_tez",
+        [f"https://www.irozhlas.cz/sites/default/files/uploader/whatsapp_image_2026-_261014-151308_tez{x}.jpeg" for x in ("", "_0", "_1")]),
     "D_cyprus_terasy_egu2017": ("Camera a kol., EGU 2017, suché kamenné terasy Troodos (pro blok D)",
         ["https://meetingorganizer.copernicus.org/EGU2017/EGU2017-7404.pdf?pdf"]),
 }
