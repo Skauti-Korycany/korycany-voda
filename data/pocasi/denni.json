@@ -1,5 +1,5 @@
 {
- "vytvoreno": "2026-11-03T18:01Z",
+ "vytvoreno": "2026-11-04T06:02Z",
  "stanice": {
   "chmu_korycany": {
    "wsi": "0-203-0-41701068002",
@@ -4367,11 +4367,11 @@
    "P_kor": null,
    "P_pmo": 0.0,
    "P_nem": 0.0,
-   "T": null,
-   "Tmin": null,
-   "Tmax": null,
-   "H": null,
-   "F": null,
+   "T": 6.4,
+   "Tmin": 6.0,
+   "Tmax": 8.5,
+   "H": 69.0,
+   "F": 3.4,
    "T_pmo": {
     "min": 7.5,
     "max": 10.4,
@@ -4379,33 +4379,33 @@
    },
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": null,
-   "bil": null
+   "ET0": 0.47,
+   "bil": -0.47
   }
  },
  "log": [
-  "12_pocasi.py 2026-11-03 18:01 UTC",
+  "12_pocasi.py 2026-11-04 06:02 UTC",
   "1) CHMU Korycany (srazky)",
-  "  0-203-0-41701068002 2026-11: 12 zaznamu",
+  "  0-203-0-41701068002 2026-11: 18 zaznamu",
   "  0-203-0-41701068002 2026-10: 186 zaznamu",
   "  0-203-0-41701068002 2026-09: 180 zaznamu",
   "2) CHMU Nemochovice",
-  "  0-203-0-41503035001 2026-11: 64 zaznamu",
+  "  0-203-0-41503035001 2026-11: 96 zaznamu",
   "  0-203-0-41503035001 2026-10: 992 zaznamu",
   "  0-203-0-41503035001 2026-09: 960 zaznamu",
   "  Nemochovice P: 63 dni (2026-09-01..2026-11-02)",
-  "  Nemochovice T: 62 dni (2026-09-01..2026-11-01)",
-  "  Nemochovice Tmax: 62 dni (2026-09-01..2026-11-01)",
-  "  Nemochovice Tmin: 62 dni (2026-09-01..2026-11-01)",
-  "  Nemochovice H: 62 dni (2026-09-01..2026-11-01)",
-  "  Nemochovice F: 62 dni (2026-09-01..2026-11-01)",
+  "  Nemochovice T: 63 dni (2026-09-01..2026-11-02)",
+  "  Nemochovice Tmax: 63 dni (2026-09-01..2026-11-02)",
+  "  Nemochovice Tmin: 63 dni (2026-09-01..2026-11-02)",
+  "  Nemochovice H: 63 dni (2026-09-01..2026-11-02)",
+  "  Nemochovice F: 63 dni (2026-09-01..2026-11-02)",
   "  Korycany P: 30 dni s hodnotou",
   "3) Povodi Moravy KS Korycany",
-  "  24 hodinovych radku (02.11. 19:00 - 03.11. 18:00)",
-  "  archiv pmo_korycany.csv: 343 radku",
+  "  24 hodinovych radku (03.11. 07:00 - 04.11. 06:00)",
+  "  archiv pmo_korycany.csv: 355 radku",
   "4) hladiny.cz Nemotice_SR",
-  "  10 hodinovych radku (03.11. 03:00 - 03.11. 12:00)",
-  "  archiv nemotice.csv: 250 radku",
+  "  10 hodinovych radku (03.11. 19:00 - 04.11. 04:00)",
+  "  archiv nemotice.csv: 260 radku",
   "5) denni.json"
  ]
 }
