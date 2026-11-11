@@ -2,8 +2,9 @@ name: Pocasi - denni sber
 
 on:
   schedule:
-    - cron: "17 5 * * *"      # 05:17 UTC = 07:17 CEST / 06:17 CET, po 06:00 UTC konci klimatologicky den
-    - cron: "17 17 * * *"     # 17:17 UTC druhy beh: PMO a Nemotice drzi online jen 24 h / ~10 h, dva behy = bez der
+    - cron: "17 5,11,17,23 * * *"   # 4x denne po 6 h. 05:17 UTC je po konci klimatologickeho dne (06:00 UTC).
+                                    # Nemotice drzi online jen ~10 h a GitHub cron se zpozduje az o hodinu,
+                                    # se 2 behy denne vznikaly diry ~6 h; 4 behy snesou i jeden vypadly beh.
   workflow_dispatch:
     inputs:
       mesicu:
