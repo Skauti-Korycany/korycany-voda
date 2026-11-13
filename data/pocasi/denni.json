@@ -1,5 +1,5 @@
 {
- "vytvoreno": "2026-11-13T06:15Z",
+ "vytvoreno": "2026-11-13T12:07Z",
  "stanice": {
   "chmu_korycany": {
    "wsi": "0-203-0-41701068002",
@@ -4547,10 +4547,29 @@
    "zdroj_P": "pmo_korycany",
    "ET0": 0.67,
    "bil": 2.73
+  },
+  "2026-11-12": {
+   "P_kor": null,
+   "P_pmo": 10.2,
+   "P_nem": null,
+   "T": null,
+   "Tmin": null,
+   "Tmax": null,
+   "H": null,
+   "F": null,
+   "T_pmo": {
+    "min": 6.0,
+    "max": 11.1,
+    "avg": 9.1
+   },
+   "P": 10.2,
+   "zdroj_P": "pmo_korycany",
+   "ET0": null,
+   "bil": null
   }
  },
  "log": [
-  "12_pocasi.py 2026-11-13 06:15 UTC",
+  "12_pocasi.py 2026-11-13 12:07 UTC",
   "1) CHMU Korycany (srazky)",
   "  0-203-0-41701068002 2026-11: 72 zaznamu",
   "  0-203-0-41701068002 2026-10: 186 zaznamu",
@@ -4567,8 +4586,8 @@
   "  Nemochovice F: 72 dni (2026-09-01..2026-11-11)",
   "  Korycany P: 30 dni s hodnotou",
   "3) Povodi Moravy KS Korycany",
-  "  23 hodinovych radku (12.11. 08:00 - 13.11. 06:00)",
-  "  archiv pmo_korycany.csv: 571 radku",
+  "  23 hodinovych radku (12.11. 14:00 - 13.11. 12:00)",
+  "  archiv pmo_korycany.csv: 577 radku",
   "4) hladiny.cz Nemotice_SR",
   "  10 hodinovych radku (13.11. 03:30 - 13.11. 05:10)",
   "  archiv nemotice.csv: 436 radku",
