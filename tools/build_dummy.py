@@ -28,7 +28,9 @@ data["uzemi"] = {
     "zdroj": "budovy_info.json (ČÚZK INSPIRE BU), cn_info.json (06_cn.py), srazky_chmi.json (ČHMÚ Koryčany)",
     "plocha_ha": CNI["uzemi_modelu"]["plocha_ha"], "cn_vazene": CNI["uzemi_modelu"]["cn_vazene"],
     "odtok": CNI["uzemi_modelu"]["odtok"],
-    "rd_pocet": BUD["podle_ucelu"]["rodinný dům"]["pocet"], "rd_strechy_m2": BUD["podle_ucelu"]["rodinný dům"]["plocha_strech_m2"],
+    # RD + "bydleni" (1 budova), stejne jako skupina "domacnosti" v kap. 2, aby pocty v aplikaci sedely
+    "rd_pocet": sum(BUD["podle_ucelu"].get(k, {}).get("pocet", 0) for k in ("rodinný dům", "bydlení")),
+    "rd_strechy_m2": sum(BUD["podle_ucelu"].get(k, {}).get("plocha_strech_m2", 0) for k in ("rodinný dům", "bydlení")),
     "budov": BUD["budov_v_uzemi_modelu"], "strechy_m2": BUD["plocha_pudorysu_v_uzemi_m2"],
     "podle_povodi": BUD["podle_povodi"], "podle_ucelu": BUD["podle_ucelu"],
     "srazky": {"normal_mm": kor["normal_1991_2020_mm"], "n_lete_denni_mm": kor["n_lete_denni_mm_gumbel"], "max_denni": [(x["max_denni_datum"], x["max_denni_mm"]) for x in sorted(kor["rocni"].values(), key=lambda x: -x["max_denni_mm"])[:3]], "mesicni_mm": kor["normal_mesicni_mm"]},
@@ -57,6 +59,18 @@ data["pocasi"] = {
 DATA_JS = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
 
 HTML = r"""<title>Voda v Koryčanech</title>
+<meta name="description" content="__POPIS__">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:site_name" content="Voda v Koryčanech">
+<meta property="og:title" content="Voda v Koryčanech: kolik vody ti uteče při dešti?">
+<meta property="og:description" content="__POPIS__">
+<meta property="og:url" content="https://skauti-korycany.github.io/korycany-voda/">
+<meta property="og:image" content="https://skauti-korycany.github.io/korycany-voda/docs/img/sdileni.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1f6f8b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2C16 2 6 14 6 20a10 10 0 0 0 20 0C26 14 16 2 16 2z' fill='%231f6f8b'/%3E%3C/svg%3E">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -555,7 +569,7 @@ details.banner[open]>summary .more{display:none}
 <style>__LEAFLET_CSS__</style>
 
 <header class="top">
-  <div><h1>Voda v Koryčanech</h1><div class="tag">náhled v0.2 - skutečný terén, půda, budovy a srážky; katalog v0.8</div></div>
+  <div><h1>Voda v Koryčanech</h1><div class="tag">náhled - skutečný terén, půda, budovy a srážky; katalog v__KATV__</div></div>
   <nav class="tabs" role="tablist">
     <button role="tab" aria-selected="true" data-tab="jakbylo">Jak bylo</button>
     <button role="tab" aria-selected="false" data-tab="pozemek">Můj pozemek</button>
@@ -574,7 +588,7 @@ details.banner[open]>summary .more{display:none}
       <div class="jb-kicker">Jak bylo · data ČHMÚ 1921-<span id="jb-rok"></span></div>
       <h2 class="jb-title">Prší pořád stejně. Krajina přesto vysychá.</h2>
       <p class="jb-lede">Za sto let se v Koryčanech množství deště skoro nezměnilo. Změnilo se, kolik vody stihne odejít do vzduchu a jak prudce prší. Proto je sucho, i když je rok „normální“.</p>
-      <p class="note">Data se stahují automaticky dvakrát denně (ráno a večer). <span id="jb-upd"></span></p>
+      <p class="note">Data se stahují automaticky čtyřikrát denně. <span id="jb-upd"></span></p>
     </div>
     <div class="jb-key" id="jb-key"></div>
 
@@ -1031,7 +1045,7 @@ details.banner[open]>summary .more{display:none}
     <p class="jb-p">Stav k 25. 10. 2026. Aplikace běží na skutečných datech o terénu, půdě, budovách a srážkách v Koryčanech, ale zatím jsme ji neporovnali s měřením průtoku v potoce. Proto u ní stojí <b>nevalidováno</b>.</p>
     <div class="om-stav">
       <div class="om-s ok"><span class="jb-kicker">Hotovo</span><ul>
-        <li><b>Jak bylo:</b> srážky a teploty ČHMÚ Koryčany od roku 1921, chybějící roky doplněné z okolních stanic; denní data se stahují samy dvakrát denně.</li>
+        <li><b>Jak bylo:</b> srážky a teploty ČHMÚ Koryčany od roku 1921, chybějící roky doplněné z okolních stanic; denní data se stahují samy čtyřikrát denně.</li>
         <li><b>Můj pozemek:</b> skutečné parcely a budovy z katastru, sklon z výškopisu, půda z mapy VÚMOP, skutečný déšť za posledních 30 dní.</li>
         <li><b>Půda:</b> podrobná mapa hydrologických skupin půd od VÚMOP (27. 10. 2026), i pro les a zástavbu; dřív byl skoro 40 % území odhad.</li>
         <li><b>Celé území:</b> střechy podle účelu budov, odtok z polí, luk a lesů po čtvercích 5 m, eroze orné půdy, objem vody za hrází na potoce.</li>
@@ -1101,7 +1115,7 @@ details.banner[open]>summary .more{display:none}
   </section>
 </section>
 
-<footer>Skautský oddíl Hříběcí hory, Koryčany, s ZŠ Koryčany. Data: ČÚZK (CC BY 4.0), katalog opatření v0.3 (vlastní kompilace, zdroje u každé položky). Náhled 18. 10. 2026.</footer>
+<footer>Skautský oddíl Hříběcí hory, Koryčany, s ZŠ Koryčany. Data: ČÚZK (CC BY 4.0), katalog opatření v__KATV__ z __KATD__ (vlastní kompilace, zdroje u každé položky). Data počasí k __POCD__.</footer>
 </main>
 
 <script>__LEAFLET_JS__</script>
@@ -1876,7 +1890,8 @@ function renderStrechy(){
   $('s-bars').innerHTML=rows.filter(r=>r.u!=='neuvedeno').map(r=>`<div class="uz-bar"><span>${r.u} <small>${fmt0(r.n)} ${bud(r.n)}</small></span><span class="b"><i style="width:${(100*r.v/mx).toFixed(1)}%"></i></span><span class="num">${fmt0(r.v)} m³</span></div>`).join('')
     +`<div class="uz-bar uz-bar-t"><span><b>všechny budovy</b> <small>${fmt0(rows.reduce((t,r)=>t+r.n,0))}</small></span><span></span><span class="num"><b>${fmt0(tot)} m³</b></span></div>`;
   $('s-kdo').innerHTML=UZ_KDO.map(([t,sk,co,go])=>{ const v=sk.reduce((s,k)=>s+(U[k]?U[k].plocha_strech_m2*rain:0),0), nb=sk.reduce((s,k)=>s+(U[k]?U[k].pocet:0),0);
-    return `<div><b>${t}</b><span class="v">${fmt0(nb)} ${bud(nb)}, ${fmt0(v)} m³ při ${P} mm</span><ul>${co.map(c=>`<li>${c}</li>`).join('')}</ul>${go?`<a href="#" data-tab-go3="${go}" class="uz-go">Spočítej svůj pozemek →</a>`:''}</div>`; }).join('');
+    const vb = (sk[0]==='domácnosti' && U[sk[1]]) ? `${fmt0(U[sk[0]].pocet)} domů a ${fmt0(U[sk[1]].pocet)} garáží a kůlen` : `${fmt0(nb)} ${bud(nb)}`;
+    return `<div><b>${t}</b><span class="v">${vb}, ${fmt0(v)} m³ při ${P} mm</span><ul>${co.map(c=>`<li>${c}</li>`).join('')}</ul>${go?`<a href="#" data-tab-go3="${go}" class="uz-go">Spočítej svůj pozemek →</a>`:''}</div>`; }).join('');
   $('s-table').innerHTML=`<tr><th>účel budov</th><th class="num">budov</th><th class="num">střechy ha</th><th class="num">m³ na déšť ${P} mm</th><th class="num">m³ na budovu</th><th>kdo rozhoduje</th><th>co může udělat</th></tr>`+
     rows.map(r=>`<tr><td>${r.u}</td><td class="num">${fmt0(r.n)}</td><td class="num">${fmt(r.a/1e4)}</td><td class="num">${fmt0(r.v)}</td><td class="num">${fmt(r.v/r.n)}</td><td>${(UCEL_KDO[r.u]||['',''])[0]}</td><td>${(UCEL_KDO[r.u]||['',''])[1]}</td></tr>`).join('')+
     `<tr class="total"><td>všechny budovy v území</td><td class="num">${fmt0(rows.reduce((t,r)=>t+r.n,0))}</td><td class="num">${fmt(totA/1e4)}</td><td class="num">${fmt0(tot)}</td><td></td><td></td><td></td></tr>`;
@@ -2001,7 +2016,7 @@ function renderKatalog(){
   const otevrene=new Set([...document.querySelectorAll('#k-cards details[open][data-k]')].map(d=>d.dataset.k));
   const co1=[...KF.co][0]||null;
   const sk = KAT_SK.map(([p,t])=>[p,t,list.filter(o=>kodPred(o)===p).sort((a,b)=>(a.pracnost-b.pracnost)||(a.kontext-b.kontext))]).filter(x=>x[2].length);
-  $('k-obsah').innerHTML = sk.map(([p,t,l])=>`<a href="#kt-${p}">${t} <small>${l.length}</small></a>`).join('');
+  $('k-obsah').innerHTML = sk.length<2 ? '' : '<span class="note">Přejít na:</span>' + sk.map(([p,t,l])=>`<a href="#kt-${p}">${t} <small>${l.length}</small></a>`).join('');
   // bez filtru ukaz v kazde skupine jen nejsnazsi opatreni, zbytek na kliknuti (kratsi stranka hlavne na mobilu)
   const LIM = matchMedia('(max-width:600px)').matches ? 3 : 6;
   $('k-cards').innerHTML = sk.map(([p,t,l])=>{ const cel = filtr || KAT_OPEN.has(p) || l.length<=LIM+1, v = cel ? l : l.slice(0,LIM);
@@ -2387,8 +2402,16 @@ recalc();
 pzObnov();
 </script>
 """
+def cesky_datum(iso):
+    r, m, d = iso[:10].split("-")
+    return f"{int(d)}. {int(m)}. {r}"
+OPM = json.load(open(os.path.join(ROOT, "data", "opatreni.json"), encoding="utf-8"))["meta"]
+_dny = sorted(data["pocasi"]["dny"]) if isinstance(data.get("pocasi"), dict) and isinstance(data["pocasi"].get("dny"), dict) else []
+POCD = cesky_datum(_dny[-1]) if _dny else "?"
 JADRO_JS = open(os.path.join(ROOT, "web", "jadro.js"), encoding="utf-8").read()
 html = (HTML.replace("__LEAFLET_CSS__", LEAFLET_CSS).replace("__LEAFLET_JS__", LEAFLET_JS + "\n" + JADRO_JS).replace("__DATA__", DATA_JS)
+        .replace("__KATV__", OPM["verze"]).replace("__KATD__", cesky_datum(OPM["datum"])).replace("__POCD__", POCD)
+        .replace("__POPIS__", "Osvětová aplikace skautů a ZŠ Koryčany: jak u nás prší a vysychá, kolik vody odteče z tvého pozemku a co se dá udělat. Zjednodušený model, nevalidováno.")
         .replace("__RD__", str(data["uzemi"]["rd_pocet"])).replace("__ROOF__", str(round(data["uzemi"]["rd_strechy_m2"] / data["uzemi"]["rd_pocet"]))))
 pre = '<!doctype html>\n<html lang="cs">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
 i = html.index('<header class="top">')

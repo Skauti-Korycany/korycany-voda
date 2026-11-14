@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 14. 11. 2026. Jen aktuální stav. Historie relací, podrobnosti bloků a všechna dřívější rozhodnutí: `docs/STAV-HISTORIE.md`. Kontext pro Claude Code: `CLAUDE.md` v kořeni repa.
+Aktualizováno: 14. 11. 2026 (večer: drobné opravy rozhraní, verze, počty domů, náhled pro sdílení). Jen aktuální stav. Historie relací, podrobnosti bloků a všechna dřívější rozhodnutí: `docs/STAV-HISTORIE.md`. Kontext pro Claude Code: `CLAUDE.md` v kořeni repa.
 
 ## Fáze
 
@@ -74,6 +74,8 @@ Rozhraní
 - Styl celé aplikace = datová žurnalistika (Jak bylo), písmo nadpisů Source Serif 4, vlastní SVG ilustrace.
 - Katalog: výběr KDE + CO ŘEŠÍM, karta s jedním číslem (`hlavni_cislo`), podrobnosti rozbalovací, bez kódů opatření v textu, dotace odkazem s větou KDY-KOLIK-NA CO.
 - Hledání adresy přes RÚIAN ČÚZK; stav v URL hash, nic se neukládá.
+- Verze a datum v hlavičce a patičce se berou z `opatreni.json` a dat počasí, nikdy natvrdo (14. 11.).
+- Počet rodinných domů v aplikaci = RÚIAN "rodinný dům" + "bydlení" = 1 076 (14. 11.).
 - Les a voda: "listnatý les zadrží víc vody" se nepoužívá; přínos smíšeného lesa = odolnost.
 
 Provoz
@@ -94,6 +96,7 @@ Provoz
 - Klimatické scénáře 2050/2090 s licencí nedohledány.
 - Sdílený odkaz obsahuje čísla parcel: stačí upozornění u tlačítka?
 - Kdo bude mít po uživateli práva k repozitáři (aspoň dva správci)?
+- `stav.html` (čísla natvrdo, stav k 27. 10.): aktualizovat, generovat, nebo nahradit odkazem na O modelu?
 - Upozornění z GitHubu při neúspěšném běhu workflow počasí (jinak data tiše přestanou přibývat).
 
 ## Platné předpoklady
