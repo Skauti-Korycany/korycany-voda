@@ -11,6 +11,8 @@ Prohlídka webu, seznam návrhů vylepšení a opravy, které nevyžadovaly rozh
 - Katalog: rychlá navigace po skupinách má popisek "Přejít na:" (není to druhý filtr, jen skok na skupinu); při jedné skupině se skryje.
 - Sdílení: meta description, Open Graph (náhled pro Facebook, WhatsApp), ikona kapky, theme-color. Náhledový obrázek `docs/img/sdileni.png` (1200 × 630, snímek záložky Jak bylo).
 - Ověřeno: headless Chromium 1300 a 390 px, světlý i tmavý režim, bez chyb v konzoli, bez vodorovného posunu.
+- Data pro mobil: parcely, budovy, povodí a rastry (`Jadro.nacti`) se stahují až při otevření Můj pozemek nebo Celé území (`nactiMapovaData()` v `build_dummy.py`). Jak bylo, Katalog a O modelu dřív stahovaly ~13 MB navíc, teď jen index.html (~0,2 MB gzip). Ověřeno: výběr parcely, obnovení ze sdíleného odkazu, start s uloženou záložkou Celé území, krajina, bez chyb.
+- Rastry `data/web/*.png` bezeztrátově překomprimovány (oxipng, beze změny typu barev, pixely ověřeny shodné): 6,6 -> 5,4 MB. `node web/test_jadro.js` VŠE OK. Pozor: nový běh `09_balicek_web.py` na PC zapíše zase větší soubory (jen velikost, ne obsah).
 - Prověřeno a ponecháno: poznámka pod mapou v Můj pozemek je vidět, překryv byl jen artefakt snímku celé stránky (přilepená lišta "Dál"). `stav.html` beze změny (rozhodne uživatel: aktualizovat, nebo zrušit).
 
 

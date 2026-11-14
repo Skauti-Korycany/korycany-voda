@@ -45,7 +45,7 @@ Aktualizováno: 14. 11. 2026 (večer: drobné opravy rozhraní, verze, počty do
 3. Validace: data Povodí Moravy, porovnání s epizodami u Kachníku (`docs/MERENI.md`).
 4. Transformace vlny poldrem; nádrž/tůň u potoka do Můj pozemek.
 5. Mapa eroze v aplikaci; deprese po filtru.
-6. Zmenšit data pro mobil (parcely 4,4 MB, rastry 6,6 MB).
+6. Zmenšit data pro mobil: hotovo líné načítání (mapová data až v Můj pozemek / Celé území) a bezeztrátová komprese rastrů (5,4 MB). Zbývá ořez rastrů na území modelu a hrubší akumulace (vyžaduje `09_balicek_web.py` na PC).
 7. Krátké úhrny ČSN 75 9010 pro Koryčany; podmínky otevřených dat ČHMÚ do VRSTVY.md.
 8. Fáze 5: rozhraní škola/expert, formulář měření (úložiště mimo GitHub Pages zatím chybí).
 9. Revitalizace toků (T02/T04, příklady Otročínský potok a Jizbický les): zjistit opevněné úseky Stříbrníku a Kyjovky, meliorační kanály v lesích nad nádrží, oslovit Povodí Moravy.

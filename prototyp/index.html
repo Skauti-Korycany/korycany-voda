@@ -2306,6 +2306,7 @@ function coef(key,slope){const a=C[key]; return Array.isArray(a)?a[cIdx(slope)]:
 document.querySelectorAll('nav.tabs button').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('nav.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));
   ['jakbylo','pozemek','uzemi','katalog','model'].forEach(t=>{document.getElementById('tab-'+t).classList.toggle('hidden-tab',t!==b.dataset.tab);});
+  if(b.dataset.tab==='pozemek'||b.dataset.tab==='uzemi') nactiMapovaData();
   if(b.dataset.tab==='pozemek') setTimeout(()=>map.invalidateSize(),50);
   if(b.dataset.tab==='uzemi') setTimeout(hrazInit,50);
   try{localStorage.setItem('kor_tab',b.dataset.tab)}catch(e){}
@@ -2332,6 +2333,9 @@ const BASE = location.pathname.includes('/prototyp/') ? '../' : '';
 const PARC = {feats:[], layer:null, vybrane:new Set(), zvyr:null, budovy:null};
 const vBodu = (ring, x, y) => { let inside=false; for(let i=0,j=ring.length-1;i<ring.length;j=i++){ const [xi,yi]=ring[i],[xj,yj]=ring[j]; if((yi>y)!==(yj>y) && x < (xj-xi)*(y-yi)/(yj-yi)+xi) inside=!inside; } return inside; };
 const canvasR = L.canvas({padding:0.5});
+// mapova data (~13 MB) se stahuji az pri otevreni Muj pozemek nebo Cele uzemi, ne pri prvnim nacteni stranky (mobilni data)
+function nactiMapovaData(){ if(nactiMapovaData.uz) return; nactiMapovaData.uz=true; nactiParcely(); nactiJadro(); }
+function nactiParcely(){
 fetch(BASE+'data/parcely.geojson').then(r=>r.json()).then(gj=>{
   PARC.feats = gj.features.map((f,k)=>{ const ring=f.geometry.coordinates[0]; let a=[Infinity,Infinity,-Infinity,-Infinity]; for(const [x,y] of ring){ if(x<a[0])a[0]=x; if(y<a[1])a[1]=y; if(x>a[2])a[2]=x; if(y>a[3])a[3]=y; } return {k, f, ring, diry:f.geometry.coordinates.slice(1), bbox:a}; });
   PARC.layer = L.geoJSON(gj,{renderer:canvasR, interactive:false, style:{color:'#7a5a3a',weight:0.7,fill:false,opacity:0.8}});
@@ -2344,6 +2348,7 @@ fetch(BASE+'data/budovy.geojson').then(r=>r.json()).then(gj=>{
   const ukaz=()=>{ if(map.getZoom()>=16){ if(!map.hasLayer(PARC.budovy)) PARC.budovy.addTo(map); } else if(map.hasLayer(PARC.budovy)) map.removeLayer(PARC.budovy); };
   map.on('zoomend',ukaz); ukaz();
 }).catch(()=>{});
+}
 function najdiParcelu(lon,lat){
   for(const p of PARC.feats){ if(lon<p.bbox[0]||lon>p.bbox[2]||lat<p.bbox[1]||lat>p.bbox[3]) continue; if(vBodu(p.ring,lon,lat) && !p.diry.some(d=>vBodu(d,lon,lat))) return p; }
   return null;
@@ -2375,8 +2380,10 @@ document.getElementById('in-paved').addEventListener('input',()=>{ if(PARC.vybra
 let jadroStav = 'nacitam';
 const HSPN = {1:'A, velmi propustná',2:'B, propustná',3:'C, málo propustná',4:'D, jíl, nepropustná'};
 const LEG = {};
+function nactiJadro(){
 fetch(BASE+'data/vyuziti_pudy.json').then(r=>r.json()).then(j=>Object.assign(LEG,j.legenda)).catch(()=>{});
 Jadro.nacti(BASE+'data/web/', {bez:['smer_v'], toky:false}).then(()=>{ jadroStav='ok'; return fetch(BASE+'data/povodi.geojson').then(r=>r.json()); }).then(gj=>{ krajinaHistogram(gj); renderKrajina(); }).catch(err=>{ jadroStav = jadroStav==='ok' ? jadroStav : 'chyba'; console.warn('jadro/krajina', err); $('k-zdroj').textContent='Rastry nebo povodí se nenačetly - tato část nefunguje.'; });
+}
 // ---------- krajina: histogram bunek uzemi modelu: trida x HSP x udolnice x svah
 const KRAJ = {h:{}, e:{}, n:0};   // e = suma K*LS (USLE) orne pudy na klic
 function krajinaHistogram(gj){
