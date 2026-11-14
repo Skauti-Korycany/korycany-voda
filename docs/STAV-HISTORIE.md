@@ -19,6 +19,7 @@ Prohlídka webu, seznam návrhů vylepšení a opravy, které nevyžadovaly rozh
   - Průleh Z03: při přítoku vhodný i pod 3 % sklonu, v textu objem vody shora (nesčítá se, není z pozemku).
   - Nádrž T07 v Můj pozemek jako "Udělej jezírko nebo malou nádrž": 5 % zahrady (6-40 m²), 0,3 m volného prostoru 🤔, zadrží vodu ze střechy a dvora, potřebuje odpojený okap; od 100 m² zahrady; text o těsnění dna podle HSP, přepadu, cestě přívalové vody a potoku; povolení "ověř na úřadě" 💻. V katalogu zůstává T07 s ručním hlavním číslem.
   - O modelu a `docs/JADRO.md` doplněny.
+- **Mapa eroze** v Celé území, kap. 3 ("Kde se z polí smývá půda"): USLE po buňkách 5 m jen na orné půdě uvnitř území modelu, A = R (průměr orné 65,9) × K × LS × C, P = 1. Tři přepínače: teď C 0,2 | bez orby, meziplodiny C 0,1 | + zatravnění údolnic (>= 1 ha) a svahů >= 7° C 0,01. Třídy do 2 / 2-9 / 9-20 / nad 20 t/ha (Gp od 7/2026 2 a 9 t/ha). Kontrola proti `usle_info.json`: C 0,2 průměr 10,7 vs 10,5 t/ha, nad 9 t/ha 46 vs 45 %; C 0,1 5,4 vs 5,3 a 18 vs 17 % (rozdíl = R jako průměr místo rastru). Hranice území čárkovaně, mapa se kreslí za ~0,1 s.
 - Prověřeno a ponecháno: poznámka pod mapou v Můj pozemek je vidět, překryv byl jen artefakt snímku celé stránky (přilepená lišta "Dál"). `stav.html` beze změny (rozhodne uživatel: aktualizovat, nebo zrušit).
 
 

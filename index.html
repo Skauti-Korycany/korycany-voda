@@ -216,8 +216,11 @@ details.jb-cist{margin-top:1rem;border-top:1px solid var(--line);padding-top:.5r
 svg.uz-cn{width:100%;max-width:760px;height:auto;display:block;margin:.3rem 0}
 .uz-cn text{fill:var(--fg);font-family:var(--f-body);font-size:13px;font-weight:500} .uz-cn .ax{stroke:var(--line)} .uz-cn text.t{fill:var(--muted);font-size:11px;font-weight:400}
 .uz-map{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:.8rem;background:#dfe7ea}
-.uz-map #dam-map{height:400px}
-@media(max-width:599px){ .uz-map #dam-map{height:320px} }
+.uz-map #dam-map,.uz-map #er-map{height:400px}
+@media(max-width:599px){ .uz-map #dam-map,.uz-map #er-map{height:320px} }
+.er-sc{flex-wrap:wrap;overflow:visible;margin:.3rem 0}
+.er-leg{display:flex;flex-wrap:wrap;gap:.35rem .9rem;margin:.5rem 0 .2rem;font-size:.85rem} .er-leg span{display:inline-flex;align-items:center;gap:.35rem}
+.er-leg i{display:inline-block;width:14px;height:14px;border-radius:3px}
 #h-out .sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.7rem}
 #h-out .sum>div{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:.8rem 1rem}
 .uz-bobr{border-left:4px solid var(--ok)} .uz-bobr p{margin:.2rem 0 0;line-height:1.5}
@@ -1573,7 +1576,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
     </div>
     <div class="callout" id="k-hint" hidden></div>
     <div class="jb-key" id="k-key"></div>
-    <details class="jb-cist uz-det"><summary><b>Tabulka po plochách a jak se to počítá</b></summary>
+    <h4 class="uz-h4">Kde se z polí smývá půda</h4>
+    <p class="uz-cn-t">Mapa ukazuje průměrnou roční ztrátu půdy na orné půdě. Nejvíc se smývá na dlouhých a strmých svazích a tam, kde se voda slévá. Přepni, co by se změnilo.</p>
+    <div class="uz-dest-c er-sc" id="er-sc" role="group" aria-label="Způsob hospodaření na mapě eroze">
+      <button type="button" aria-pressed="true" data-sc="0">teď (obilniny)</button>
+      <button type="button" aria-pressed="false" data-sc="1">bez orby, meziplodiny</button>
+      <button type="button" aria-pressed="false" data-sc="2">+ zatravnit strmá pole a údolnice</button>
+    </div>
+    <div class="uz-map"><div id="er-map" aria-label="Mapa eroze orné půdy"></div></div>
+    <div class="er-leg" id="er-leg"></div>
+    <p class="note" id="er-sum"></p>
       <div class="uz-tw"><table class="flow" id="k-table" style="margin-top:.6rem"></table></div>
       <p class="jb-zdroj" id="k-limit"></p>
       <p class="jb-zdroj" id="k-zdroj">Plochy a půdy ze skutečných dat (ZABAGED využití, hydrologické skupiny půd VÚMOP 2026 - CC BY-NC, DMR 5G) v mřížce 5 m, území modelu 1 772 ha (Kyjovka k jezu před Mouchnicemi). Posuvníky mění stav hospodaření na části plochy; odtok počítá SCS-CN po buňkách. Je to tabulková změna čísla odtoku, ne měření - ukazuje řád, ne přesné číslo.</p>
@@ -2327,7 +2339,7 @@ document.querySelectorAll('nav.tabs button').forEach(b=>b.addEventListener('clic
   ['jakbylo','pozemek','uzemi','katalog','model'].forEach(t=>{document.getElementById('tab-'+t).classList.toggle('hidden-tab',t!==b.dataset.tab);});
   if(b.dataset.tab==='pozemek'||b.dataset.tab==='uzemi') nactiMapovaData();
   if(b.dataset.tab==='pozemek') setTimeout(()=>map.invalidateSize(),50);
-  if(b.dataset.tab==='uzemi') setTimeout(hrazInit,50);
+  if(b.dataset.tab==='uzemi') setTimeout(()=>{ hrazInit(); erozeInit(); },50);
   try{localStorage.setItem('kor_tab',b.dataset.tab)}catch(e){}
 }));
 
@@ -2409,6 +2421,9 @@ function krajinaHistogram(gj){
   const f = gj.features.find(x=>x.properties.typ==='uzemi_modelu'); if(!f) return;
   const geom = f.geometry.type==='Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
   let bunky=[]; for(const poly of geom) bunky = bunky.concat(Jadro.bunkyPolygonu(poly[0], poly.slice(1)));
+  KRAJ.orna = bunky.filter(i=>Jadro.vyuziti(i)===1 && Jadro.p.usle_ls && Jadro.p.usle_ls[i] && Jadro.p.usle_k[i]);
+  KRAJ.ornaM = new Uint8Array(Jadro.ncol*Jadro.nrow); for(const i of KRAJ.orna) KRAJ.ornaM[i]=1; KRAJ.ornaBB = Jadro.obalMasky(KRAJ.ornaM, 300); KRAJ.geom = geom;
+  { let a=[Infinity,Infinity,-Infinity,-Infinity]; for(const poly of geom) for(const [x,y] of poly[0]){ a[0]=Math.min(a[0],x); a[1]=Math.min(a[1],y); a[2]=Math.max(a[2],x); a[3]=Math.max(a[3],y); } KRAJ.bbox=a; }
   const UD = 400; // bunek 5 m = 1 ha
   for(const i of bunky){ const v=Jadro.vyuziti(i), h=Jadro.hsp(i); if(!v||!h) continue; const a=Jadro.p.akumulace[i], ud=(a && Math.pow(10,(a-1)/40)>=UD)?1:0; const sk=Jadro.sklonDeg(i), sv=(sk!=null&&sk>=7)?1:0; const k=v+'|'+h+'|'+ud+'|'+sv; KRAJ.h[k]=(KRAJ.h[k]||0)+1; KRAJ.n++; if(v===1 && Jadro.p.usle_ls && Jadro.p.usle_ls[i]){ KRAJ.e[k]=(KRAJ.e[k]||0)+Jadro.p.usle_ls[i]/10*Jadro.p.usle_k[i]/100; } }
 }
@@ -3147,6 +3162,42 @@ function renderStrechy(){
 }
 renderStrechy(); $('u-rain').addEventListener('input',renderStrechy);
 // ---------- hraz na potoce (jadro.js nadrz v0.3; toky.json a smer_v se dotahuji az tady)
+// ---------- mapa eroze orne pudy (USLE po bunkach: R prumer orne x K x LS x C; P = 1, u vrstevnic se v mape nepocita)
+// scenar 0: C 0,2 (obilniny); 1: C 0,1 (bez orby, meziplodiny); 2: jako 1 + udolnice >= 1 ha a svahy >= 7 st. zatravnene C 0,01 (P05, P06)
+let erMap=null, erVrstva=null, erSc=0;
+const ER_TRIDY = [[2,'#7fb685','do 2 t/ha'],[9,'#e8c34a','2-9 t/ha'],[20,'#d9822b','9-20 t/ha'],[Infinity,'#a23b3b','nad 20 t/ha']];
+const hexRGB = h=>[1,3,5].map(k=>parseInt(h.slice(k,k+2),16));
+function erC(i, sc){
+  if(sc===0) return 0.2;
+  if(sc===2){ const a=Jadro.akumulace(i), sk=Jadro.sklonDeg(i); if((a!=null && a*Jadro.plochaB>=1e4) || (sk!=null && sk>=7)) return 0.01; }
+  return 0.1;
+}
+function erA(i, sc){ return K.usle.R_korycany.orna_prumer * Jadro.p.usle_ls[i]/10 * Jadro.p.usle_k[i]/100 * erC(i, sc); }
+function erozeKresli(){
+  if(!erMap || !KRAJ.orna || !KRAJ.orna.length) return;
+  const G=K.usle.Gp_t_ha_rok['od_2026-07-01'];
+  if(erVrstva){ erVrstva.remove(); erVrstva=null; }
+  const RGB=ER_TRIDY.map(t=>hexRGB(t[1]));
+  const im=Jadro.obrazek(i=>{ if(!KRAJ.ornaM[i]) return null; const A=erA(i,erSc); const k=ER_TRIDY.findIndex(t=>A<t[0]); return [...RGB[k],200]; }, KRAJ.ornaBB, matchMedia('(max-width:600px)').matches?700:1000);
+  const c=document.createElement('canvas'); c.width=im.width; c.height=im.height; c.getContext('2d').putImageData(new ImageData(im.data,im.width,im.height),0,0);
+  erVrstva=L.imageOverlay(c.toDataURL(),im.bounds,{opacity:.85}).addTo(erMap);
+  let n=0, nad=0, sum=0; for(const i of KRAJ.orna){ const A=erA(i,erSc); n++; sum+=A; if(A>G.ostatni) nad++; }
+  const ha=n*Jadro.plochaB/1e4;
+  $('er-sum').innerHTML = `Orná půda v území ${fmt0(ha)} ha: průměrně <b>${fmt(sum/n,1)} t/ha za rok</b>, nad přípustnou ztrátou ${G.ostatni} t/ha ✅ je ${fmt0(100*nad/n)} % plochy. Na mělkých půdách je přípustné jen ${G.melke} t/ha, ty mapa nerozlišuje. Model USLE pro osvětu: délka svahu z výškopisu neví o mezích a cestách, proto na dlouhých svazích spíš přehání; závazná je kalkulačka VÚMOP.`;
+}
+function erozeInit(){
+  if(erMap){ erMap.invalidateSize(); return; }
+  erMap = L.map('er-map',{zoomControl:true, scrollWheelZoom:false}).setView([49.105,17.165],13);
+  L.tileLayer('https://ags.cuzk.gov.cz/arcgis1/rest/services/ZTM_WM/MapServer/WMTS/tile/1.0.0/ZTM_WM/default/GoogleMapsCompatible/{z}/{y}/{x}',{maxZoom:19,attribution:'ČÚZK - on-line (ZTM); eroze: USLE, R VÚMOP/ČHMÚ, K z BPEJ (SPÚ)'}).addTo(erMap);
+  $('er-leg').innerHTML = ER_TRIDY.map(t=>`<span><i style="background:${t[1]}"></i>${t[2]}</span>`).join('');
+  $('er-sum').textContent='Načítám terén a půdy...';
+  const cekej = ()=> (jadroStav==='ok' && KRAJ.orna) ? Promise.resolve() : (jadroStav==='chyba' ? Promise.reject('rastry') : new Promise(r=>setTimeout(r,300)).then(cekej));
+  cekej().then(()=>{ const b=KRAJ.ornaBB; erMap.fitBounds([[b[1],b[0]],[b[3],b[2]]]);
+    L.layerGroup(KRAJ.geom.map(poly=>L.polyline(poly[0].map(([x,y])=>[y,x]),{color:'#1f6f8b',weight:1.5,opacity:.7,dashArray:'4 4',interactive:false}))).addTo(erMap); erozeKresli(); })
+    .catch(()=>{ $('er-sum').textContent='Rastry se nenačetly - mapa eroze nefunguje.'; });
+}
+document.getElementById('er-sc').addEventListener('click',e=>{ const b=e.target.closest('button[data-sc]'); if(!b) return;
+  erSc=+b.dataset.sc; document.querySelectorAll('#er-sc button').forEach(x=>x.setAttribute('aria-pressed', x===b)); erozeKresli(); });
 let damMap=null, damVrstva=null, damStav='nic';
 function hrazInit(){
   if(damMap){ damMap.invalidateSize(); return; }
