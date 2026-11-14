@@ -102,6 +102,19 @@ ok('klik daleko od toku -> chyba', nD && nD.chyba === 'daleko_od_toku', nD && `$
 // rychlost
 { const t0 = Date.now(); J.nadrz(...bodXY(-557944.1, -1173838.8).ll, 3, 60); ok('nadrz na Kyjovce v centru do 1,5 s', Date.now() - t0 < 1500, `${Date.now() - t0} ms`); }
 
+// 5b. pritok na pozemek shora
+{ const i0 = p2.uzaver, row = Math.floor(i0 / J.ncol), col = i0 - row * J.ncol;
+  const ctverec = []; for (let dr = -2; dr <= 2; dr++) for (let dc = -2; dc <= 2; dc++) ctverec.push((row + dr) * J.ncol + col + dc);
+  const t0 = Date.now(), pr = J.pritok(ctverec);
+  const vlastniHa = ctverec.filter(J.platna).length * J.plochaB / 1e4;
+  ok('pritok: pozemek na Stribrniku = povodi profilu bez pozemku', blizko(pr.plocha_ha + vlastniHa, p2.stat.plocha_ha, 0.02) && pr.tok && pr.udolnice, `${pr.plocha_ha.toFixed(1)} + ${vlastniHa.toFixed(2)} vs ${p2.stat.plocha_ha.toFixed(1)} ha, ${Date.now() - t0} ms`);
+  // nejvyssi bunka uzemi: nic nad ni neni
+  let top = -1, zt = -1; for (const i of bunky) { const z = J.vyska(i); if (z != null && z > zt) { zt = z; top = i; } }
+  const prT = J.pritok([top]);
+  ok('pritok: vrchol bez pritoku', prT.plocha_ha < 0.01 && !prT.udolnice, `${(prT.plocha_ha * 1e4).toFixed(0)} m2, ${zt} m n. m.`);
+  const prO = J.pritok(ctverec, 1000);
+  ok('pritok: omezeni maxBunek -> orez', prO.orez && prO.plocha_ha <= 1000 * J.plochaB / 1e4, `${prO.plocha_ha.toFixed(2)} ha`); }
+
 // 6. obrazek masky povodi
 const bbox = J.obalMasky(p2.maska, 50);
 const t1 = Date.now();

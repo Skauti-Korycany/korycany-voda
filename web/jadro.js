@@ -263,6 +263,21 @@
     st.orez_okrajem = pov.orez || J.naOkraji(pov.maska);
     return { stat: st, maska: pov.maska, bunky: pov.bunky, uzaver: i0 };
   };
+  // pritok na pozemek shora: povodi vsech bunek pozemku (zpetne D8) bez bunek pozemku samotneho.
+  // Teren DMR 5G bez ulic, kanalizace a plotu - v zastavbe jen orientacne. maxBunek omezi vypocet u pozemku na potoce.
+  // vraci {plocha_ha (cizi plocha nad pozemkem), bunky (Int32Array cizich bunek), udolnice (akumulace v pozemku >= 1 ha),
+  //        tok (>= 0,25 km2, jako 02_rozvodnice.py), orez (povodi vetsi nez maxBunek nebo na okraji rastru)}
+  J.pritok = function (bunkyPozemku, maxBunek) {
+    const vlastni = new Set(bunkyPozemku);
+    const pov = J.povodiBunky(Array.from(vlastni), maxBunek || 400000);
+    const cizi = [];
+    for (const k of pov.bunky) if (!vlastni.has(k) && J.platna(k)) cizi.push(k);
+    let amax = 0;
+    for (const i of vlastni) { const a = J.akumulace(i); if (a != null && a > amax) amax = a; }
+    return { plocha_ha: cizi.length * J.plochaB / 1e4, bunky: Int32Array.from(cizi),
+      udolnice: amax * J.plochaB >= 1e4, tok: amax * J.plochaB >= 0.25e6, akumulace_max_ha: amax * J.plochaB / 1e4,
+      orez: pov.orez || J.naOkraji(pov.maska) };
+  };
   // povodi sahajici k okraji rastru je neuplne
   J.naOkraji = function (maska) {
     for (let c = 0; c < J.ncol; c++) if (maska[c] || maska[(J.nrow - 1) * J.ncol + c]) return true;

@@ -40,7 +40,7 @@ Aktualizováno: 14. 11. 2026 (večer: drobné opravy rozhraní, verze, počty do
 
 ## Další kroky (pořadí)
 
-1. Napojit opatření katalogu na skutečný pozemek (EFF -> `statPolygon`: sklon, HSP, akumulace, vzdálenost k toku).
+1. Napojit opatření katalogu na skutečný pozemek: sklon, HSP, přítok shora a údolnice/potok hotové (14. 11.), nádrž T07 v Můj pozemek. Zbývá: zkouška s lidmi, zda upozornění neplaší; případně vzdálenost k toku přes `toky.json`.
 2. Rešerše k oblasti "Život a voda v krajině" (biodiverzita).
 3. Validace: data Povodí Moravy, porovnání s epizodami u Kachníku (`docs/MERENI.md`).
 4. Transformace vlny poldrem; nádrž/tůň u potoka do Můj pozemek.
@@ -74,6 +74,8 @@ Rozhraní
 - Styl celé aplikace = datová žurnalistika (Jak bylo), písmo nadpisů Source Serif 4, vlastní SVG ilustrace.
 - Katalog: výběr KDE + CO ŘEŠÍM, karta s jedním číslem (`hlavni_cislo`), podrobnosti rozbalovací, bez kódů opatření v textu, dotace odkazem s větou KDY-KOLIK-NA CO.
 - Hledání adresy přes RÚIAN ČÚZK; stav v URL hash, nic se neukládá.
+- Nádrž (jezírko) se v Můj pozemek nabízí i v zástavbě (14. 11.).
+- Cesta přívalové vody: upozornění klidným tónem od 1 ha cizí plochy nebo údolnice, informace od 500 m² 🤔 (14. 11.).
 - Verze a datum v hlavičce a patičce se berou z `opatreni.json` a dat počasí, nikdy natvrdo (14. 11.).
 - Počet rodinných domů v aplikaci = RÚIAN "rodinný dům" + "bydlení" = 1 076 (14. 11.).
 - Les a voda: "listnatý les zadrží víc vody" se nepoužívá; přínos smíšeného lesa = odolnost.
@@ -90,7 +92,6 @@ Provoz
 - Zpevněné plochy u domů nejsou v žádné vrstvě (pasport města?).
 - Meliorace v území: žádost SPÚ (bezplatná).
 - Mokřiny u soutoku: ZABAGED má jen 0,19 ha bažin; zamokřené louky vedené jako TTP?
-- Nádrž v intravilánu: nabízet, nebo rovnou "v zástavbě jen retence u domů"?
 - Srážkoměr v povodí (škola/oddíl u Kachníku) - bez něj přívaly neověřitelné.
 - Smí se data VOX a PMO použít ve veřejné aplikaci (podmínky neuvedeny)? Teď jen agregace.
 - Klimatické scénáře 2050/2090 s licencí nedohledány.

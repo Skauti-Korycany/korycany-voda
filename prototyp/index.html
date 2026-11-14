@@ -380,6 +380,8 @@ footer{font-size:.78rem;color:var(--muted);margin-top:2rem;border-top:1px solid 
 .pz[data-step]:not([data-step="1"]) .leaflet-control-container,.pz[data-step]:not([data-step="1"]) #w-parc-x,.pz[data-step]:not([data-step="1"]) .pz-only1,.pz[data-step]:not([data-step="1"]) .pz-ask,.pz[data-step]:not([data-step="1"]) .pz-maphint{display:none}
 .pz-sel{font-size:.9rem;margin-top:.45rem}
 .pz-maphint{margin:.35rem 0 0}
+.pz-info,.pz-upoz{border:1px solid var(--line);border-left:4px solid var(--water);background:var(--panel);border-radius:8px;padding:.7rem .9rem;margin:.8rem 0;line-height:1.5}
+.pz-upoz{border-left-color:var(--warn)} .pz-info .note,.pz-upoz .note{margin-top:.35rem}
 .linkbtn{font:inherit;background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;cursor:pointer}
 .pz-step{display:none}
 .pz[data-step="1"] .pz-step[data-s="1"],.pz[data-step="2"] .pz-step[data-s="2"],.pz[data-step="3"] .pz-step[data-s="3"],.pz[data-step="4"] .pz-step[data-s="4"],.pz[data-step="5"] .pz-step[data-s="5"]{display:block}
@@ -1372,6 +1374,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
             <dt>Sklon</dt><dd><span class="num" id="w-slope">-</span> % <span class="note" id="w-slope-n">(po kliku z DMR 5G, průměr v okruhu 15 m)</span></dd>
             <dt>Půda</dt><dd id="w-soil">- <span class="note">(po kliku z mapy půd VÚMOP; upřesníš zkouškou vsaku)</span></dd>
             <dt>Okolí 30 m</dt><dd id="w-okoli">-</dd>
+            <dt>Přitéká shora</dt><dd id="w-pritok">- <span class="note">(po výběru parcel z výškopisu)</span></dd>
           </dl>
         </div>
       <p class="note pz-maphint">Katastr a budovy ČÚZK (CC BY 4.0), podklad ZTM a ortofoto ČÚZK. Hledání adresy dělá vyhledávací služba RÚIAN (ČÚZK): hledaný text se pošle jí, u nás se nic neukládá. Poloha telefonu zůstává v telefonu. Vlastníci se nenačítají. <button type="button" class="linkbtn" id="pz-manual">Nechci mapu, zadám plochy ručně</button></p>
@@ -1422,6 +1425,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="pz-q" style="margin-top:0"><div class="q">Jaký déšť?</div><div class="pz-chips" data-for="in-rain"></div><div class="note">Vzácné přívalové deště (53, 87 a 94 mm) najdeš v „Jak se to počítá“.</div></div>
         <div id="pz-rain-big"></div>
         <div id="pz-30"></div>
+        <div id="pz-pritok"></div>
         <p id="pz-year"></p>
         <details class="pz-more"><summary>Jak se to počítá</summary>
           <div class="inputs" style="margin-top:.5rem"><label class="f">Jiný déšť<select id="in-rain">
@@ -1997,6 +2001,21 @@ svg.leaflet-image-layer.leaflet-interactive path {
     st.orez_okrajem = pov.orez || J.naOkraji(pov.maska);
     return { stat: st, maska: pov.maska, bunky: pov.bunky, uzaver: i0 };
   };
+  // pritok na pozemek shora: povodi vsech bunek pozemku (zpetne D8) bez bunek pozemku samotneho.
+  // Teren DMR 5G bez ulic, kanalizace a plotu - v zastavbe jen orientacne. maxBunek omezi vypocet u pozemku na potoce.
+  // vraci {plocha_ha (cizi plocha nad pozemkem), bunky (Int32Array cizich bunek), udolnice (akumulace v pozemku >= 1 ha),
+  //        tok (>= 0,25 km2, jako 02_rozvodnice.py), orez (povodi vetsi nez maxBunek nebo na okraji rastru)}
+  J.pritok = function (bunkyPozemku, maxBunek) {
+    const vlastni = new Set(bunkyPozemku);
+    const pov = J.povodiBunky(Array.from(vlastni), maxBunek || 400000);
+    const cizi = [];
+    for (const k of pov.bunky) if (!vlastni.has(k) && J.platna(k)) cizi.push(k);
+    let amax = 0;
+    for (const i of vlastni) { const a = J.akumulace(i); if (a != null && a > amax) amax = a; }
+    return { plocha_ha: cizi.length * J.plochaB / 1e4, bunky: Int32Array.from(cizi),
+      udolnice: amax * J.plochaB >= 1e4, tok: amax * J.plochaB >= 0.25e6, akumulace_max_ha: amax * J.plochaB / 1e4,
+      orez: pov.orez || J.naOkraji(pov.maska) };
+  };
   // povodi sahajici k okraji rastru je neuplne
   J.naOkraji = function (maska) {
     for (let c = 0; c < J.ncol; c++) if (maska[c] || maska[(J.nrow - 1) * J.ncol + c]) return true;
@@ -2367,12 +2386,12 @@ function prekresliVyber(){
     L.geoJSON(p.f,{style:{color:'#1f6f8b',weight:2.5,fillColor:'#1f6f8b',fillOpacity:0.12}}).addTo(PARC.zvyr);
     popis.push(`${q.cislo} (${fmt0(q.plocha_m2)} m²${q.budov?', '+(q.budov===1?'1 budova':q.budov+(q.budov<5?' budovy':' budov')):''})`); }
   if(typeof pzUI==='function') pzUI();
-  if(!PARC.vybrane.size){ $('w-parc').innerHTML='Zatím nic nevybráno.'; return; }
+  if(!PARC.vybrane.size){ PRITOK=null; $('w-parc').innerHTML='Zatím nic nevybráno.'; return; }
   const paved = +$('in-paved').value||0;
   $('in-roof').value = Math.round(roof);
   $('in-green').value = Math.max(0, Math.round(A - roof - paved));
   $('w-parc').innerHTML = `<b>Vybráno ${fmt0(A)} m², z toho střechy ${fmt0(roof)} m²</b> <button type="button" id="w-parc-x" class="linkbtn">zrušit výběr</button><div class="note">${PARC.vybrane.size===1?'parcela':'parcely'} č. ${popis.join(', ')}</div>`;
-  $('w-parc-x').onclick=()=>{ PARC.vybrane.clear(); prekresliVyber(); recalc(); };
+  $('w-parc-x').onclick=()=>{ PARC.vybrane.clear(); PRITOK=null; prekresliVyber(); recalc(); };
   recalc();
 }
 document.getElementById('in-paved').addEventListener('input',()=>{ if(PARC.vybrane.size){ let A=0,roof=0; for(const k of PARC.vybrane){ const q=PARC.feats[k].f.properties; A+=q.plocha_m2; roof+=q.strechy_m2; } document.getElementById('in-green').value=Math.max(0,Math.round(A-roof-(+document.getElementById('in-paved').value||0))); } });
@@ -2464,6 +2483,7 @@ function odvodZMapy(lon,lat){
   if(!b){ $('w-slope-n').textContent='(mimo území dat)'; return; }
   let bunky = Jadro.bunkyPolygonu(kruh(lon,lat,15));
   if(PARC.vybrane.size){ bunky=[]; for(const k of PARC.vybrane){ const p=PARC.feats[k]; bunky=bunky.concat(Jadro.bunkyPolygonu(p.ring,p.diry)); } if(bunky.length<4) bunky=Jadro.bunkyPolygonu(kruh(lon,lat,15)); }
+  PRITOK = PARC.vybrane.size ? Object.assign(Jadro.pritok(bunky), {cache:{}}) : null;
   const s15 = Jadro.statBunek(bunky);
   const s30 = Jadro.statBunek(Jadro.bunkyPolygonu(kruh(lon,lat,30)));
   const sklonPct = s15.sklon_prumer_pct!=null ? Math.round(s15.sklon_prumer_pct) : null;
@@ -2479,6 +2499,42 @@ function odvodZMapy(lon,lat){
   recalc();
 }
 
+
+// ---------- pritok na pozemek shora (Jadro.pritok: zpetne D8 z DMR 5G nad vybranymi parcelami)
+// prahy 🤔: pod 500 m2 se neukazuje; od 1 ha (nebo udolnice >= 1 ha v pozemku) klidne upozorneni - jako P05 "kam stéká aspoň 1 ha"
+let PRITOK = null;
+const PRITOK_MIN_HA = 0.05, PRITOK_UPOZ_HA = 1;
+function pritokOdtok(Pmm, nkey){
+  if(!PRITOK || !PRITOK.bunky.length || PRITOK.orez) return null;
+  const k = Pmm+'|'+(nkey||''); if(PRITOK.cache[k]!=null) return PRITOK.cache[k];
+  const st = Jadro.statBunek(PRITOK.bunky, Pmm, 2); if(!st.odtok) return null;
+  const w3 = nkey && D.navrhove.podil_tvaru_pct[nkey] ? Jadro.vahaCN3(D.navrhove.podil_tvaru_pct[nkey], D.navrhove.qAPI) : 0;
+  return PRITOK.cache[k] = st.odtok.objem_m3*(1-w3) + st.odtok.objem_m3_cn3*w3;
+}
+function pritokUroven(){
+  if(!PRITOK) return 0;
+  if(PRITOK.tok) return 3;
+  if(PRITOK.udolnice || PRITOK.plocha_ha >= PRITOK_UPOZ_HA) return 2;
+  return PRITOK.plocha_ha >= PRITOK_MIN_HA ? 1 : 0;
+}
+const plochaText = ha => ha >= 1 ? `${fmt(ha,1)} ha` : `${fmt0(Math.round(ha*1e4/50)*50)} m²`;
+function renderPritok(i){
+  const el=$('pz-pritok'), w=$('w-pritok'); const u=pritokUroven();
+  if(!PRITOK){ el.innerHTML=''; if(w) w.innerHTML='- <span class="note">(po výběru parcel z výškopisu)</span>'; return; }
+  const ha=PRITOK.plocha_ha, P=Math.round(i.rain*1000);
+  if(w) w.innerHTML = u===0 ? 'skoro nic, pozemek je nahoře nebo na rovině' : (PRITOK.orez ? `z velké plochy (přes ${fmt0(ha)} ha)` : `z plochy asi ${plochaText(ha)}`)+' <span class="note">(DMR 5G, odhad)</span>';
+  if(u===0){ el.innerHTML=''; return; }
+  const v=pritokOdtok(P, i.nkey), v10=pritokOdtok(53.2,'N10');
+  const kolik = v==null ? '' : (v<0.05 ? ` Při dešti ${P} mm se skoro všechna vsákne cestou.` : ` Při dešti ${P} mm by sem přiteklo asi <b>${fmt(v)} m³</b>.`)
+    + (u<3 && v10!=null && P<53 && v10>=0.05 ? ` Při vzácném lijáku 53 mm (1x za 10 let) asi ${fmt0(v10)} m³.` : '');
+  const pozn = '<div class="note">Odhad z výškopisu DMR 5G (mřížka 5 m) a mapy půd, odtok SCS-CN. Ulice, obrubníky, kanalizace a ploty v něm nejsou a mohou vodu poslat jinam. Je to nápověda, ne posudek. 🤔</div>';
+  const proti = 'Pomoct může průleh nebo nízký val na horní hraně pozemku, který vodu zpomalí a nechá vsáknout, propustné plochy a vyvýšený práh u vstupů do domu.';
+  if(u===1){ el.innerHTML = `<div class="pz-info"><b>Voda shora.</b> Na pozemek stéká voda i z okolí, z plochy asi ${plochaText(ha)} nad ním.${kolik}${pozn}</div>`; return; }
+  const uvod = u===3
+    ? `Pozemek leží v údolí, kudy teče potok nebo se slévá voda z velké plochy (${PRITOK.orez?'přes '+fmt0(ha):fmt0(ha)} ha nad ním). Při přívalu tu může voda téct i mimo koryto.`
+    : `Zdá se, že přívalová voda ze svahu nad tebou může protékat přes tento pozemek (stéká sem voda z asi ${plochaText(ha)}).`;
+  el.innerHTML = `<div class="pz-upoz"><b>Možná cesta přívalové vody.</b> ${uvod}${kolik} Doporučujeme s tou možností počítat a zvážit protiopatření. ${proti}${pozn}</div>`;
+}
 
 // ---------- Muj pozemek: pruvodce po krocich (varianta A)
 const PZ = {step:1, manual:false};
@@ -2700,8 +2756,10 @@ const EFF = {
   Z04(i,r){ const cNew=coef('zatravnovaci_tvarnice',i.slope); const dV=i.paved*Math.max(0,i.rain-IA_NEPROPUSTNE_MM/1000)*(r.cP-cNew); const dYear=i.paved*RAIN_Y_NEPR*(r.cP-cNew);
     const fit = i.paved<=0 ? 'žádné zpevněné plochy' : (i.soil==='D' ? 'půda D - pod dlažbou se nevsákne' : true);
     return {dV,dYear,fit,text:`${fmt0(i.paved)} m² ${i.pavedType==='zatravnovaci_tvarnice'?'už jsou tvárnice':'-> zatravňovací tvárnice (C '+r.cP+' -> '+cNew+')'}: zasákne o ${fmt(dV)} m³ víc na tento déšť, o ${fmt0(dYear)} m³ za rok. Tráva je o 1-2 °C chladnější než dlažba ✅⏳ EPA 2008. Tvárnice 1 136 Kč/m² ✅ ÚÚR 2025.`}; },
-  Z03(i,r){ const fit = i.slope<3 ? 'sklon pod 3 % - průleh nemá co zachytávat' : (i.slope>15 ? 'sklon nad 15 % - riziko eroze, raději terasa' : (i.soil==='D'?'půda D - nevsákne':true));
-    const V=Math.min(10*0.3, r.greenOut); return {dV:V,dYear:Math.min(10*0.3*20,r.yearGreen||0),fit,text:`Průleh 10 m × 0,3 m² zadrží ${fmt(10*0.3)} m³ povrchového odtoku z vlastní zelené plochy (odtéká z ní ${fmt(r.greenOut)} m³). Vliv na vlhkost půdy nekvantifikován 🤔.`}; },
+  Z03(i,r){ const pu=(i===VZOR)?0:pritokUroven(), pv=pu?pritokOdtok(Math.round(i.rain*1000),i.nkey):null;
+    const pt = pu ? ` Na horní hraně pozemku zachytí i část vody, která přitéká shora${pv!=null&&pv>=0.05?` (při tomto dešti asi ${fmt(pv)} m³)`:''}; ta se do čísla nepočítá, není z tvého pozemku.` : '';
+    const fit = (i.slope<3 && !pu) ? 'sklon pod 3 % - průleh nemá co zachytávat' : (i.slope>15 ? 'sklon nad 15 % - riziko eroze, raději terasa' : (i.soil==='D'?'půda D - nevsákne':true));
+    const V=Math.min(10*0.3, r.greenOut); return {dV:V,dYear:Math.min(10*0.3*20,r.yearGreen||0),fit,text:`Průleh 10 m × 0,3 m² zadrží ${fmt(10*0.3)} m³ povrchového odtoku z vlastní zelené plochy (odtéká z ní ${fmt(r.greenOut)} m³). Vliv na vlhkost půdy nekvantifikován 🤔.${pt}`}; },
   Z02(i,r){ const fit = (i.soil==='A'||i.soil==='B') ? 'půda '+i.soil+' propustná - tůň bez fólie neudrží vodu' : true;
     return {dV:1.0,dYear:null,fit,text:`Tůň 2×1 m, 0,5 m = 1 m³ (SPPK B02 001 ✅: hloubka 0,8-1 m, mělčiny ≥ polovina, břehy ≤ 1:3). Hlavní přínos je život v zahradě 🤔; část vody se odpaří (bez čísla). Bez hráze a mimo potok není vodní dílo ✅ § 55; do 300 m² ověřit na úřadě ORP.`}; },
   S03(i,r){ return {dV:r.roofOut*0.75,dYear:r.yearRoof*0.75,fit:'jen ploché a mírně šikmé střechy s nosností - ověřit statikem',
@@ -2719,12 +2777,21 @@ const EFF = {
   S06(i,r){ const osoby=4, V=5.0, rok=osoby*0.022*365; const dV=Math.max(0,Math.min(V,r.roofOut)-1.0); const dYear=Math.min(rok,r.yearRoof);
     return {dV,dYear,fit:(i.roof<40?'střecha pod 40 m² - nádrž na WC se nenaplní':true),needs:['S01','S02'],text:`Nádrž 5 m³ na WC bere vodu každý den (🤔 4 osoby × 17-26 l = ${fmt0(osoby*0.017*365)}-${fmt0(osoby*0.026*365)} m³/rok; WC je 20-30 % spotřeby ✅ Praha 14, Bielsko-Biała 2019). Proti nádrži 1 m³ zadrží navíc ${fmt(dV)} m³ z tohoto deště, za rok nahradí až ${fmt0(dYear)} m³ pitné vody. V suchém létě dojde za 1-3 týdny 🤔.`}; },
 };
+// T07 jen v Můj pozemek (v katalogu je T07 rybník a poldr v krajině - tam platí ručně psané hlavní číslo)
+EFF.T07 = function(i,r){
+  const An = Math.max(6, Math.min(40, Math.round(0.05*i.green))), h = 0.3, V = An*h;   // 🤔 5 % zahrady, 0,3 m volného prostoru nad hladinou
+  const dV = Math.min(V, r.roofOut + r.pavedOut);
+  const fit = i.green < 100 ? 'malá zahrada - stačí nádrž na dešťovou vodu (sud, IBC)' : true;
+  const tok = i!==VZOR && PRITOK && PRITOK.tok, pu = i!==VZOR ? pritokUroven() : 0;
+  const dno = (i.soil==='A'||i.soil==='B') ? `půda ${i.soil} je propustná, dno je potřeba utěsnit jílem nebo fólií` : `půda ${i.soil} vodu drží, často stačí jílové těsnění 🤔`;
+  return {dV, dYear:null, fit, needs:['S02'], text:`Jezírko nebo malá nádrž asi ${fmt0(An)} m² se stálou vodou a ${fmt(h,1)} m volného prostoru nad hladinou pojme ${fmt(V)} m³ z každého deště 🤔; z tohoto deště zadrží ${fmt(dV)} m³ ze střechy a dvora. Mezi dešti se prostor vyprázdní výparem a pomalým odtokem, proto číslo za rok neuvádíme. Dno: ${dno}. Přepad svést na vlastní zahradu nebo do průlehu, ne k sousedům.${pu>=2?' Pozemek je v možné cestě přívalové vody: nádrž umísti stranou od ní, aby ji voda ze svahu nezanesla bahnem.':''}${tok?' U potoka: nádrž mimo koryto, napájená jen ze střechy. Zásah do koryta nebo odběr vody z potoka potřebuje souhlas vodoprávního úřadu 💻.':''} Zda je potřeba povolení (podle velikosti a hloubky), ověř na stavebním úřadě 💻. Cena: neověřena.`};
+};
 const ORDER_FALLBACK = 99;
 // opatreni, ktera potrebuji kus zahrady (puda, zahon, strom); bez zahrady se presunou do "Nehodi se" s pobidkou
-const ZAHRADNI = new Set(['Z01','Z02','Z03','Z05','Z06','Z07','Z08','Z10','Z11','Z12','Z13','S05']);
+const ZAHRADNI = new Set(['Z01','Z02','Z03','Z05','Z06','Z07','Z08','Z10','Z11','Z12','Z13','S05','T07']);
 const BEZ_ZAHRADY = i => i.green < 10;
 function evalMeasures(i,r){
-  const list = D.opatreni.filter(o=>o.misto.some(m=>['Z','S'].includes(m)) && EFF[o.id]).map(o=>{
+  const list = D.opatreni.filter(o=>(o.misto.some(m=>['Z','S'].includes(m))||o.id==='T07') && EFF[o.id]).map(o=>{
     const e = EFF[o.id](i,r); if(BEZ_ZAHRADY(i) && ZAHRADNI.has(o.id) && e.fit===true) e.fit='potřebuje zahradu - pokud k domu patří, označ ji v mapě';
     return Object.assign({o},e);
   });
@@ -2756,7 +2823,7 @@ const fmtN = x=> Number.isInteger(+x) ? (+x).toLocaleString("cs-CZ") : (+x).toLo
 const SLOVO = {E:'snížení výparu o', CH:'ochlazení o', W:'úspora pitné vody', ER:'méně eroze o', I:'vsak', R:'zadrží', Q:'zpomalení odtoku', B:''};
 function jednoCislo(o, co, i, r){
   // 1) spočtené z EFF (pozemek nebo vzor) - jen když vyjde víc než nula
-  if(EFF[o.id] && i){ const e=EFF[o.id](i,r); const y=e.dYear||0, v=e.dV||0;
+  if(EFF[o.id] && i && !(o.id==='T07' && i===VZOR)){ const e=EFF[o.id](i,r); const y=e.dYear||0, v=e.dV||0;
     if(co==='sucho' && Math.round(y)>=1) return {t:`<b>za rok zůstane až ${fmt0(y)} m³</b> vody`, vzor:true};
     if(v>=0.05) return {t:`<b>z tohoto deště zadrží ${fmt(v)} m³</b>`, vzor:true};
     if(Math.round(y)>=1) return {t:`<b>za rok zůstane až ${fmt0(y)} m³</b> vody`, vzor:true}; }
@@ -2845,6 +2912,7 @@ const IK = (() => {
 // CO udelat (kratce, jako ukol) a obrazek; PROC je spocitane cislo nebo hlavni_cislo z katalogu
 const AKCE = {
   S02:{t:'Odpoj okap od kanálu', i:'okap'},
+  T07:{t:'Udělej jezírko nebo malou nádrž', i:'tun'},
   S01:{t:'Dej pod okap sud nebo nádrž', i:'sud'},
   Z01:{t:'Udělej dešťový záhon', i:'zahon'},
   Z10:{t:'Zakopej vsakovací box', i:'vsak'},
@@ -2953,6 +3021,7 @@ function recalc(){
     <tr><td>zelené plochy <span class="note">(CN ${fmt0(r.g.cn2s)}${r.g.w3?` / nasycená ${fmt0(r.g.cn3s)}, váha ${fmt0(100*r.g.w3)} %`:''}; déšť do ${fmt0(r.g.Ia_mm)} mm se vsákne celý)</span></td><td class="num">${fmt0(i.green)}</td><td class="num">${fmt(r.cG,2)}</td><td class="num">${fmt(r.greenOut)}</td></tr>
     <tr class="total"><td>celkem pryč z pozemku při ${rainmm} mm</td><td class="num">${fmt0(i.roof+i.paved+i.green)}</td><td></td><td class="num">${fmt(r.out)} m³</td></tr>`;
   // účinky zvolených
+  renderPritok(i);
   const z = zadrzeni(i, r, chosen); const ev = z.ev; let kept = z.kept, keptYear = z.keptYear;
   const pct=(x)=> r.out>0? 100*x/r.out:0;
   $('pz-pp-h').textContent = `Kolik vody odteče při dešti ${rainmm} mm`;
@@ -3214,6 +3283,7 @@ $('konst').innerHTML = `<ul><li>Srážky: ${K.srazky_rocni_mm.hodnota} mm/rok �
 <li>Území modelu: ${fmt0(D.uzemi.plocha_ha)} ha, CN vážené ${D.uzemi.cn_vazene} (HSP VÚMOP 2026, CC BY-NC), odtok při 20/40/60 mm: ${fmt0(D.uzemi.odtok.P20mm.objem_m3)} / ${fmt0(D.uzemi.odtok.P40mm.objem_m3)} / ${fmt0(D.uzemi.odtok.P60mm.objem_m3)} m³ (SCS-CN, IPS II) ✅ 06_cn.py</li>
 <li>Terén a půda po kliku: DMR 5G ČÚZK (5 m), hydrologické skupiny půd VÚMOP 2026 (kde chybí, BPEJ SPÚ podle Janeček 2012); jádro web/jadro.js (docs/JADRO.md)</li>
 <li>Návrhový déšť p=0,2: 15 min ${K.navrhovy_dest_p02['15min_mm']} mm, 60 min ${K.navrhovy_dest_p02['60min_mm']} mm, 24 h ${K.navrhovy_dest_p02['24h_mm']} mm ✅ (${K.navrhovy_dest_p02.pozn})</li>
+<li>Voda přitékající shora na vybraný pozemek: povodí parcel zpětně po směrech odtoku D8 z DMR 5G (mřížka 5 m) bez parcel samotných, odtok SCS-CN po buňkách podle CN z mapy půd a využití; upozornění od 1 ha cizí plochy nebo údolnice, potok od 0,25 km² 🤔. Ulice, kanalizace a ploty v terénu nejsou, v zástavbě jen nápověda. Nádrž na pozemku (jezírko): 5 % zahrady, 6-40 m², 0,3 m volného prostoru nad hladinou 🤔.</li>
 <li>Zelené plochy pozemku: SCS-CN, CN zahrady podle půdy A-D (Janeček 2012 / TR-55 ✅⏳: trávník 39/61/74/80), bez úpravy na sklon (české metodiky ji nemají); u návrhových dešťů vážení CN2/CN3 jako v krajině; roční odtok po dnech z histogramu denních úhrnů ČHMÚ Koryčany 1991-2019. Střechy a zpevněné plochy: součinitel ČSN × (déšť - 1 mm), 1 mm = ztráta smáčením (Ia pro CN 98 podle TR-55 ✅⏳)</li>
 <li>Součinitele odtoku C (střechy, zpevněné; sklon &lt;1 / 1-5 / &gt;5 %): ${Object.entries(C).filter(([k,v])=>Array.isArray(v)).map(([k,v])=>k.replaceAll('_',' ')+' '+v.join('/')).join('; ')} ✅</li>
 <li>Vsak: prázdné do ${K.vsak.vyprazdneni_max_h} h, ${K.vsak.nad_hladinou_pv_min_m} m nad podzemní vodou, ${K.vsak.odstup_budova_nehydroizolovana_m} m od budovy ✅</li>

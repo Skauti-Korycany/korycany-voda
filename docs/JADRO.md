@@ -77,3 +77,8 @@ Testy (`web/test_jadro.js`, 37 OK): kolmost osy na tok (cos < 0,05), Kyjovka pod
 - ~~Vážení přes tvary a qAPI~~ hotovo 21. 10. (v0.2). Území modelu N10 53 mm: CN2 152 tis. m³, CN3 332 tis., vážené **189 tis. m³** (Q 13,4 mm, koef. 0,25). V prototypu zapojeno v panelu „Pole, louky a les“; u dešťů mimo N2/N10/N100 (20 mm, 26 mm, 94 mm) se počítá jen CN2.
 - Deprese (`deprese.tif`) nejsou v balíčku - nejdřív filtr (hladina VN, zářezy).
 - Přichycení k toku: hlásný profil Stříbrník leží > 60 m od rastrového koryta; v UI použito 100 m. Pro malé toky (zahrady) je nutné okruh zmenšit nebo nabídnout „bez přichycení“.
+
+## Přítok na pozemek shora (`J.pritok`, 14. 11. 2026)
+
+`J.pritok(bunkyPozemku, maxBunek = 400000)` -> `{plocha_ha, bunky, udolnice, tok, akumulace_max_ha, orez}`.
+Povodí všech buněk pozemku zpětným D8 (`povodiBunky`, pásmo `smer`) bez buněk pozemku samotného. `udolnice` = akumulace v pozemku >= 1 ha, `tok` >= 0,25 km² (jako `02_rozvodnice.py`). Odtok z cizí plochy počítá aplikace přes `statBunek(pritok.bunky, P)` s vážením CN2/CN3 u návrhových dešťů. Terén bez ulic, kanalizace a plotů: v zástavbě jen orientačně. Testy v `web/test_jadro.js` (oddíl 5b).

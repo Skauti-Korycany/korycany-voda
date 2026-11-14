@@ -13,6 +13,12 @@ Prohlídka webu, seznam návrhů vylepšení a opravy, které nevyžadovaly rozh
 - Ověřeno: headless Chromium 1300 a 390 px, světlý i tmavý režim, bez chyb v konzoli, bez vodorovného posunu.
 - Data pro mobil: parcely, budovy, povodí a rastry (`Jadro.nacti`) se stahují až při otevření Můj pozemek nebo Celé území (`nactiMapovaData()` v `build_dummy.py`). Jak bylo, Katalog a O modelu dřív stahovaly ~13 MB navíc, teď jen index.html (~0,2 MB gzip). Ověřeno: výběr parcely, obnovení ze sdíleného odkazu, start s uloženou záložkou Celé území, krajina, bez chyb.
 - Rastry `data/web/*.png` bezeztrátově překomprimovány (oxipng, beze změny typu barev, pixely ověřeny shodné): 6,6 -> 5,4 MB. `node web/test_jadro.js` VŠE OK. Pozor: nový běh `09_balicek_web.py` na PC zapíše zase větší soubory (jen velikost, ne obsah).
+- **Opatření nad skutečným pozemkem (krok 1 z úkolu č. 1).** Rozhodnutí uživatele 14. 11.: nádrž na pozemku nabízet; upozornění na cestu přívalové vody klidným tónem.
+  - Jádro: `J.pritok(bunky)` = povodí parcel zpětným D8 bez parcel samotných; `udolnice` (akumulace >= 1 ha), `tok` (>= 0,25 km²); 3 nové testy (40 OK).
+  - Můj pozemek: řádek "Přitéká shora" v kroku 1, v kroku 3 informace (0,05-1 ha) nebo upozornění (od 1 ha, údolnice, potok) s objemem při zvoleném dešti a při 53 mm (u potoka bez 53 mm). Text podle uživatele, převedený na tykání jako zbytek aplikace. Poznámka, že ulice, kanalizace a ploty v terénu nejsou.
+  - Průleh Z03: při přítoku vhodný i pod 3 % sklonu, v textu objem vody shora (nesčítá se, není z pozemku).
+  - Nádrž T07 v Můj pozemek jako "Udělej jezírko nebo malou nádrž": 5 % zahrady (6-40 m²), 0,3 m volného prostoru 🤔, zadrží vodu ze střechy a dvora, potřebuje odpojený okap; od 100 m² zahrady; text o těsnění dna podle HSP, přepadu, cestě přívalové vody a potoku; povolení "ověř na úřadě" 💻. V katalogu zůstává T07 s ručním hlavním číslem.
+  - O modelu a `docs/JADRO.md` doplněny.
 - Prověřeno a ponecháno: poznámka pod mapou v Můj pozemek je vidět, překryv byl jen artefakt snímku celé stránky (přilepená lišta "Dál"). `stav.html` beze změny (rozhodne uživatel: aktualizovat, nebo zrušit).
 
 
