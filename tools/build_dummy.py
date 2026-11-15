@@ -49,6 +49,7 @@ data["pocasi"] = {
     "dny": {d: [v.get("P"), ZDR_P.get(v.get("zdroj_P"), ""), v.get("T"), v.get("Tmin"), v.get("Tmax"), v.get("ET0")] for d, v in POC["dny"].items()},
     "normaly": {"obdobi": NRM["obdobi"], "rok": NRM["rok"], "mesic": NRM["mesic"], "rekordy": NRM["rekordy"],
                 "rocniky": {r: {"P": z.get("P", {}).get("rok"), "Pm": [z.get("P", {}).get(str(m)) for m in range(1, 13)],
+                                "Pmx": (z.get("P", {}).get("max_den") or [None, None])[1],
                                 "T": z.get("T", {}).get("rok"), "ET0": z.get("ET0", {}).get("rok"), "bil": z.get("bil", {}).get("rok"),
                                 "d30": z.get("T", {}).get("dni_nad_30"), "d0": z.get("T", {}).get("dni_pod_0"),
                                 "Tx": z.get("T", {}).get("max_den"), "d35": z.get("T", {}).get("dni_nad_35"),
@@ -591,8 +592,8 @@ details.banner[open]>summary .more{display:none}
   <div class="panel jb-story">
     <div class="jb-hero">
       <div class="jb-kicker">Jak bylo · data ČHMÚ 1921-<span id="jb-rok"></span></div>
-      <h2 class="jb-title">Prší pořád stejně. Krajina přesto vysychá.</h2>
-      <p class="jb-lede">Za sto let se v Koryčanech množství deště skoro nezměnilo. Změnilo se, kolik vody stihne odejít do vzduchu a jak prudce prší. Proto je sucho, i když je rok „normální“.</p>
+      <h2 class="jb-title">Prší stejně jako před sto lety. Je ale tepleji a krajina potřebuje víc vody.</h2>
+      <p class="jb-lede" id="jb-lede">Roční úhrn srážek se v Koryčanech za sto let nezměnil. Od roku 2001 se ale otepluje a teplejší vzduch si bere víc vody, takže stejný déšť stačí krajině na méně. Část té vody může zadržet každý u sebe doma.</p>
       <p class="note">Data se stahují automaticky čtyřikrát denně. <span id="jb-upd"></span></p>
     </div>
     <div class="jb-key" id="jb-key"></div>
@@ -600,8 +601,8 @@ details.banner[open]>summary .more{display:none}
     <h3 class="jb-ch">1. Kolik u nás naprší</h3>
     <p class="jb-p" id="jb-ch1"></p>
     <svg class="jb-chart" id="jb-l1" viewBox="0 0 720 220" role="img" aria-label="Roční srážky 1921-2025"></svg>
-    <div class="legend"><span><b style="background:var(--chip)"></b>srážky za rok</span><span><b style="background:var(--dry)"></b>3 nejsušší roky</span><span><b style="background:var(--water)"></b>3 nejdeštivější</span><span><b style="background:var(--warn)"></b>průměr 10 let</span></div>
-    <p class="jb-zdroj">ČHMÚ Koryčany, roční úhrny 1921-2025, letošek předběžně. Tečka pod rokem = část dní doplněna z okolní stanice.</p>
+    <div class="legend"><span><b style="background:var(--chip)"></b>srážky za rok</span><span><b style="background:var(--dry)"></b>3 nejsušší roky</span><span><b style="background:var(--water)"></b>3 nejdeštivější</span><span><b class="ln" style="border-color:var(--warn)"></b>klouzavý průměr 10 let</span><span><b class="ln" style="border-color:var(--fg);border-top-style:dashed"></b>průměr 30 let</span><span><b style="background:var(--muted);width:.35rem;height:.35rem;border-radius:50%;vertical-align:1px"></b>tečka pod rokem: část dní doplněna z okolní stanice</span></div>
+    <p class="jb-zdroj">ČHMÚ Koryčany, roční úhrny 1921-2025, letošek předběžně. Oranžová čára je průměr vždy z posledních deseti let, čárkované úseky průměry let 1921-1950 a 1991-2020.</p>
 
     <div class="jb-box jb-split">
       <div class="jb-box-t">
@@ -669,7 +670,7 @@ details.banner[open]>summary .more{display:none}
     <p class="jb-zdroj">ČHMÚ Nemochovice (8 km). Tropický den = nejvyšší teplota aspoň 30 °C, supertropický 35 °C.</p>
 
     <h3 class="jb-ch">4. Když přijde liják</h3>
-    <p class="jb-p">Sucho a povodeň nejsou protiklady. Vyschlá a utužená půda nestihne vsáknout, voda steče po povrchu a vezme s sebou ornici. Největší deště za den v řadě od roku 1921:</p>
+    <p class="jb-p">Sucho a povodeň nejsou protiklady. Vyschlá a utužená půda nestihne vsáknout, voda steče po povrchu a vezme s sebou ornici. <span id="jb-ch4"></span> Největší deště za den v řadě od roku 1921:</p>
     <div class="jb-lijak" id="jb-lijak"></div>
     <p class="note" id="jb-lijak-n"></p>
 
@@ -726,7 +727,7 @@ details.banner[open]>summary .more{display:none}
     <p class="note" id="jb-l2-n"></p>
     <p class="note" id="jb-l3-n"></p>
 
-    <details class="jb-cist" open><summary><b>Jak to číst</b> - pojmy a metody</summary><p><b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, počítaná z teplot metodou Hargreaves-Samani podle FAO-56 📄). <b>Srážky minus výpar</b> je žízeň krajiny (odborně klimatická vodní bilance), ne voda, která někam zmizela. Vítr a vlhkost vzduchu metoda nezná; při větru je skutečná ztráta větší. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne. Prahy podle ČHMÚ ✅: tropický den = nejvyšší teplota aspoň 30 °C, supertropický aspoň 35 °C (neoficiální název), tropická noc = teplota neklesne pod 20 °C (<a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2025/TI_Leto2025.pdf" target="_blank" rel="noopener">ČHMÚ, Klimatologické léto 2025</a>).</p></details>
+    <details class="jb-cist" open><summary><b>Jak to číst</b> - pojmy a metody</summary><p><b>Odkud jsou data.</b> Srážky měří stanice ČHMÚ Koryčany (manuální srážkoměrná stanice, 305 m n. m., úhrn se odečítá jednou denně ráno, řada od listopadu 1920 ✅). Teploty jsou ze stanice ČHMÚ Nemochovice (8 km od Koryčan, měří od prosince 2000 ✅), proto řady teplot a výparu začínají rokem 2001. Než dorazí data ČHMÚ, doplňuje poslední dny <a href="https://sap.pmo.cz/portal/Srazky/cz/pc/Mereni.aspx?id=60&amp;oid=3" target="_blank" rel="noopener">srážkoměr Povodí Moravy pod přehradou</a>. Data ČHMÚ: <a href="https://opendata.chmi.cz/" target="_blank" rel="noopener">opendata.chmi.cz</a>.</p><p><b>Průměr a normál.</b> Všechna čísla „za rok“ jsou průměry za více let a období je vždy uvedeno. Jednotlivé roky se od průměru liší i o třetinu. <b>Normál</b> je meteorologický pojem: průměr za 30 let, teď se používá období 1991-2020 (<a href="https://wmo.int/media/news/updated-30-year-reference-period-reflects-changing-climate" target="_blank" rel="noopener">WMO</a> ✅). <b>Klouzavý průměr 10 let</b> je průměr vždy z deseti po sobě jdoucích let, vyhlazuje výkyvy. <b>Trend</b> je sklon přímky proložené roky 2001-2025; za 25 let je spolehlivý u teploty, u výparu a tropických dní jde zatím o náznak.</p><p><b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, počítaná z teplot metodou Hargreaves-Samani podle FAO-56 📄). <b>Srážky minus výpar</b> je žízeň krajiny (odborně klimatická vodní bilance), ne voda, která někam zmizela. Vítr a vlhkost vzduchu metoda nezná; při větru je skutečná ztráta větší. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne. Prahy podle ČHMÚ ✅: tropický den = nejvyšší teplota aspoň 30 °C, supertropický aspoň 35 °C (neoficiální název), tropická noc = teplota neklesne pod 20 °C (<a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2025/TI_Leto2025.pdf" target="_blank" rel="noopener">ČHMÚ, Klimatologické léto 2025</a>).</p></details>
     <p class="src" id="jb-src"></p>
     </details>
   </div>
@@ -788,7 +789,7 @@ details.banner[open]>summary .more{display:none}
       </div>
       <div class="pz-step" data-s="2">
         <p class="callout" id="pz-manual-n" hidden>Bez mapy počítám s příkladem: střecha 120 m², zahrada 300 m². Oprav to v „Upřesnit čísla“.</p>
-        <div class="pz-q" style="margin-top:0"><div class="q"><span class="qn">1</span>Kam vedou okapy ze střechy?</div><div class="pz-chips" data-for="in-drain"></div></div>
+        <div class="pz-q" style="margin-top:0"><div class="q"><span class="qn">1</span>Kam vedou svody (okapové roury) ze střechy?</div><div class="pz-chips" data-for="in-drain"></div></div>
         <div class="pz-q"><div class="q"><span class="qn">2</span>Kolik máš dlažby, betonu a štěrku?</div><div class="pz-chips" data-for="in-paved"></div><div class="note" id="pz-paved-n"></div></div>
         <div class="pz-q"><div class="q"><span class="qn">3</span>Jakou máš půdu?</div><div class="pz-chips" data-for="in-soil"></div>
           <div class="note">Předvybráno z mapy hydrologických skupin půd VÚMOP. Na zahradě může být půda jiná (navezená, ušlapaná), zkouška vsaku to ukáže.</div>
@@ -806,7 +807,7 @@ details.banner[open]>summary .more{display:none}
             <label class="f">Co na nich je<select id="in-greentype"><option value="zahrada, trávník > 75 %" selected>hlavně trávník (přes 3/4)</option><option value="zahrada, trávník 50-75 % (záhony, cesty)">trávník s záhony a cestami (1/2 až 3/4)</option></select></label>
             <label class="f">Sklon pozemku (%)<input type="number" id="in-slope" value="4" min="0" max="40" step="1"></label>
             <label class="f">Svody ze střechy<select id="in-drain">
-          <option value="kanal" selected>do kanalizace</option><option value="pozemek">na pozemek</option><option value="nevim">nevím</option></select></label>
+          <option value="100" selected>všechny do kanalizace</option><option value="75">3/4 do kanalizace, 1/4 na pozemek</option><option value="50">půl na půl</option><option value="25">1/4 do kanalizace, 3/4 na pozemek</option><option value="0">všechny na pozemek</option><option value="nevim">nevím</option></select></label>
             <label class="f">Půda (zkouška vsaku, 30 min)<select id="in-soil">
           <option value="A">kleslo přes 8 cm - A, velmi propustná</option>
           <option value="B" selected>kleslo 4-8 cm - B, propustná</option>
@@ -1398,7 +1399,7 @@ document.getElementById('pz-manual').addEventListener('click', ()=>{ PZ.manual=t
 
 // ---------- Muj pozemek: otazky s tlacitky (nastavuji puvodni vstupy, vypocet beze zmeny)
 const PZ_CHIPS = {
-  'in-drain':[['kanal','do kanalizace'],['pozemek','na zahradu'],['nevim','nevím']],
+  'in-drain':[['100','všechny do kanalizace'],['75','3/4 do kanalizace'],['50','půl na půl'],['25','1/4 do kanalizace'],['0','všechny na zahradu'],['nevim','nevím']],
   'in-paved':[['0','skoro nic'],['20','cesta, malý dvůr (~20 m²)'],['60','dvůr a příjezd (~60 m²)'],['150','velký dvůr (~150 m²)']],
   'in-soil':[['A','velmi propustná, písek'],['B','propustná'],['C','spíš těžká'],['D','jíl, voda stojí']],
   'in-rain':[['10','běžný, 10 mm'],['20','silný, 20 mm'],['32.2','liják, 32 mm']],
@@ -1430,7 +1431,7 @@ function pzRender(i, r, kept, keptYear, n){
   // krok 3: kolik spadne, kolik odtece, odkud
   const fall = r.total, pct = fall>0 ? Math.round(100*r.out/fall) : 0;
   const src = [['ze střechy',r.roofOut],['z dlažby a betonu',r.pavedOut],['ze zahrady',r.greenOut]].sort((a,b)=>b[1]-a[1])[0];
-  const dest = i.drain==='kanal' ? 'Voda z okapů teče do kanalizace a dál do potoka.' : i.drain==='pozemek' ? 'Okapy už vedou na zahradu, to je dobrý začátek - v kroku 4 uvidíš, jak tu vodu udržet.' : 'Kam vedou okapy, poznáš u paty svodu: když mizí v trubce v zemi, většinou je to kanalizace 🤔.';
+  const dest = i.drain==='kanal' ? (i.kan<1 ? `Voda z ${fmt0(i.kan*100)} % střechy teče do kanalizace a dál do potoka, zbytek už na zahradu.` : 'Voda z okapů teče do kanalizace a dál do potoka.') : i.drain==='pozemek' ? 'Okapy už vedou na zahradu, to je dobrý začátek - v kroku 4 uvidíš, jak tu vodu udržet.' : 'Kam vedou okapy, poznáš u paty svodu: když mizí v trubce v zemi, většinou je to kanalizace 🤔.';
   $('pz-rain-big').innerHTML = `<div class="pz-big pz-box"><span class="jb-kicker">Jeden déšť</span><div class="note">Při dešti ${P} mm (${rt}) spadne na tvůj pozemek (${fmt0(i.roof+i.paved+i.green)} m²)</div>
     <div><span class="big num">${fmt(fall)} m³</span> <span class="note">${KONVE(fall)}</span></div>
     <p>Z toho <b>${fmt(r.out)} m³ odteče</b> (${pct} %), zbytek se vsákne do zahrady.</p>
@@ -1529,7 +1530,7 @@ async function pzObnov(){
   (q.get('p')||'').split(',').filter(Boolean).forEach(id=>{ const i=id.indexOf(':'), ku=id.slice(0,i), c=id.slice(i+1); const p=PARC.feats.find(p=>p.f.properties.ku_kod===ku && p.f.properties.cislo===c); if(p) PARC.vybrane.add(p.k); });
   if(PARC.vybrane.size){ prekresliVyber(); const c=PARC.zvyr.getBounds().getCenter(); odvodZMapy(c.lng,c.lat); $('w-pos').innerHTML='<span class="note">podle vybraných parcel</span>'; }
   else if(q.get('r')!=null){ PZ.manual=true; $('in-roof').value=q.get('r'); $('in-green').value=q.get('g')||0; }
-  if(q.get('o')) $('in-drain').value=q.get('o'); if(q.get('s')) $('in-soil').value=q.get('s'); if(q.get('d')) $('in-rain').value=q.get('d');
+  if(q.get('o')) $('in-drain').value=({kanal:'100',pozemek:'0'})[q.get('o')]||q.get('o'); if(q.get('s')) $('in-soil').value=q.get('s'); if(q.get('d')) $('in-rain').value=q.get('d');
   if(q.get('z')!=null){ $('in-paved').value=q.get('z'); $('in-paved').dispatchEvent(new Event('input')); }
   if(q.has('m')) chosen = new Set(q.get('m').split('.').filter(Boolean));
   PZ.restoring = false; recalc(); pzGo(+q.get('k')||1);
@@ -1543,9 +1544,13 @@ document.getElementById('tab-pozemek').addEventListener('click', async e=>{ cons
 document.getElementById('pz-known-x').addEventListener('click', e=>{ const k=e.target.closest('.pz-known'); const on=k.classList.toggle('ukaz'); e.target.setAttribute('aria-expanded', String(on)); e.target.textContent = on ? 'skrýt' : 'podrobnosti'; });
 // ---------- vstupy
 const $ = id=>document.getElementById(id);
+// svody: podil strechy svedeny do kanalizace (0-1); 'nevim' se pocita jako vse do kanalizace. drain = slovni stav pro texty a stare vetve.
+const kanP = i => i.kan!=null ? i.kan : (i.drain==='pozemek' ? 0 : 1);
+const svodyTxt = i => { const k=Math.round(kanP(i)*100); return i.drain==='nevim' ? 'nevíš kam' : k>=100 ? 'do kanalizace' : k<=0 ? 'na zahradu' : `z ${k} % do kanalizace`; };
 function inputs(){
+  const dv=$('in-drain').value, kan=dv==='nevim'?1:(+dv||0)/100;
   return {roof:+$('in-roof').value||0, paved:+$('in-paved').value||0, pavedType:$('in-pavedtype').value, green:+$('in-green').value||0,
-          drain:$('in-drain').value, slope:+$('in-slope').value||0, soil:$('in-soil').value, rain:+$('in-rain').value/1000, greenType:$('in-greentype').value, nkey:$('in-rain').selectedOptions[0]?.dataset.n||null};
+          kan, drain: dv==='nevim'?'nevim':kan<=0?'pozemek':'kanal', slope:+$('in-slope').value||0, soil:$('in-soil').value, rain:+$('in-rain').value/1000, greenType:$('in-greentype').value, nkey:$('in-rain').selectedOptions[0]?.dataset.n||null};
 }
 // ---------- jádro: odtok
 // zelena plocha: SCS-CN (ne soucinitel) - mala srazka se vsakne cela (Ia = 0,2 S), vetsi odteka podle pudy (HSP A-D) a sklonu
@@ -1572,8 +1577,8 @@ function runoff(i){
 // ---------- jádro: účinky opatření (jen typ vzorec/hodnota; zbytek kvalitativně)
 // vrací {dV: m³ zadržené při zvoleném dešti, dYear: m³/rok, text, fit:true|string důvod nevhodnosti, needs:[]}
 const EFF = {
-  S02(i,r){ const fit = i.drain==='pozemek' ? 'svody už vedou na pozemek' : (i.drain==='nevim' ? true : true);
-    return {dV:0,dYear:0,enabler:true,fit, text:`Sám nezadrží nic, ale otevře cestu pro zahradu a nádrž: ze střechy jde ${fmt(r.roofOut)} m³ na jeden déšť (${fmt0(r.yearRoof)} m³/rok) ${i.drain==='kanal'?'do kanalizace':'někam'}.`}; },
+  S02(i,r){ const k=kanP(i), fit = k<=0 ? 'svody už vedou na pozemek' : true;
+    return {dV:0,dYear:0,enabler:true,fit, text:`Sám nezadrží nic, ale otevře cestu pro zahradu a nádrž: ze střechy jde ${fmt(r.roofOut*k)} m³ na jeden déšť (${fmt0(r.yearRoof*k)} m³/rok) ${i.drain==='nevim'?'někam':'do kanalizace'}${k>0&&k<1?' (zbytek střechy už teče na pozemek)':''}.`}; },
   Z01(i,r){ const fit = (i.soil==='D') ? 'půda D (jíl) - voda by stála, zvaž tůň Z02' : (i.slope>5 ? 'sklon nad 5 % - zvaž průleh Z03' : true);
     const A=(i.roof+i.paved); const lo=0.10*A, hi=0.20*A; const V=hi*0.25; // vzdutí 0,25 m
     const dV=Math.min(V, r.roofOut+r.pavedOut); const dYear=Math.min(hi*0.25*20, r.yearRoof+r.yearPaved); // 🤔 kapacita za rok ~ 20 naplnění
@@ -1686,9 +1691,12 @@ function finText(o){ return o.financovani.map(f=>{ const p=D.programy[f]; if(!p)
 function povText(o){ return (CZ.povoleni[String(o.povoleni)]||'?')+(o.povoleni_pozn?' ('+o.povoleni_pozn+')':''); }
 // zadrzeni vody na jednom pozemku pri zvolenych opatrenich (pouziva Muj pozemek i Cele uzemi v rezimu "jako muj pozemek")
 function zadrzeni(i, r, ch){
-  const ev = evalMeasures(i,r);
+  const ev = evalMeasures(i,r), k=kanP(i);
+  // bez odpojeni svodu (S02) maji opatreni napojena na strechu k dispozici jen tu cast strechy, ktera uz tece na pozemek
+  const evC = (k>0 && k<1 && !ch.has('S02')) ? Object.fromEntries(evalMeasures(i,{...r, roofOut:r.roofOut*(1-k), yearRoof:r.yearRoof*(1-k)}).fit.map(x=>[x.o.id,x])) : null;
   let kept=0, keptYear=0;
-  ev.fit.forEach(x=>{ if(ch.has(x.o.id)){ const needsOK = !(x.needs||[]).length || (x.needs||[]).every(n=>ch.has(n) || (n==='S02'&&i.drain==='pozemek')); if(needsOK){ kept+=x.dV; keptYear+= (x.dYear||0);} } });
+  ev.fit.forEach(x=>{ if(ch.has(x.o.id)){ const needsOK = !(x.needs||[]).length || (x.needs||[]).every(n=>ch.has(n) || (n==='S02'&&k<1));
+    if(needsOK){ const y=(evC && (x.needs||[]).includes('S02') && evC[x.o.id]) || x; kept+=y.dV; keptYear+= (y.dYear||0);} } });
   kept=Math.min(kept,r.out); const yearOut=r.yearRoof+r.yearPaved+(r.yearGreen||0); keptYear=Math.min(keptYear,yearOut);
   return {ev, kept, keptYear};
 }
@@ -1768,7 +1776,7 @@ const PRAC_SL = {1:'za víkend', 2:'pár dní, technika', 3:'projekt s firmou'};
 function cenaKratce(o){ const c=(o.ceny||[]).find(c=>c.hodnota!=null||c.rozsah); if(!c) return ''; const v=c.rozsah?c.rozsah[0]:c.hodnota; if(!v) return 'skoro zadarmo'; return 'od '+fmt0(v)+' '+c.jednotka.replace('Kč/ks','Kč'); }
 function procText(x, i, r, P){
   const o=x.o;
-  if(x.enabler) return i.drain==='kanal' ? `Bez toho nefunguje sud ani záhon. Teď ti při ${P} mm odteče ze střechy ${fmt(r.roofOut)} m³ do kanálu.` : 'Bez toho nefunguje sud ani záhon.';
+  if(x.enabler) return i.drain==='kanal' ? (kanP(i)<1 ? `Bez toho se sud a záhon plní jen z části střechy. Teď ti při ${P} mm odteče ze střechy ${fmt(r.roofOut*kanP(i))} m³ do kanálu.` : `Bez toho nefunguje sud ani záhon. Teď ti při ${P} mm odteče ze střechy ${fmt(r.roofOut)} m³ do kanálu.`) : 'Bez toho nefunguje sud ani záhon.';
   if(x.dV>=0.05){
     if(o.id==='S01'||o.id==='S06') return `Z deště ${P} mm zachytí ${fmt(x.dV)} m³${KONVE(x.dV)} na zálivku zadarmo.`;
     return `Z deště ${P} mm udrží doma ${fmt(x.dV)} m³${KONVE(x.dV,' (')}${x.dV<1?')':''}, voda zůstane v zahradě místo v kanálu.`;
@@ -1901,7 +1909,7 @@ function renderUzemi(){
   if(moje){ const z=zadrzeni(i, r, chosen); per=z.kept; perY=z.keptYear;
     const nazvy=[...chosen].filter(id=>byId[id] && z.ev.fit.some(x=>x.o.id===id)).map(id=>AK(byId[id]).t.toLowerCase());
     $('u-moje-n').hidden=false;
-    $('u-moje-n').innerHTML=`<b>Počítám, jako by každá zapojená domácnost měla pozemek jako ty:</b> střecha ${fmt0(i.roof)} m², dlažba ${fmt0(i.paved)} m², zahrada ${fmt0(i.green)} m², okapy ${i.drain==='kanal'?'do kanalizace':i.drain==='pozemek'?'na zahradu':'nevíš kam'}; opatření: ${nazvy.length?nazvy.join(', '):'zatím žádné, které zadrží vodu'}. Jedna domácnost tak udrží ${fmt(per)} m³ z deště ${P} mm. <button type="button" class="linkbtn" data-tab-go2="pozemek">Změnit v Můj pozemek</button><br><span class="note">Domy v obci mají různé střechy a půdy, je to „co kdyby“, ne odhad pro obec 🤔. Průměrný dům v území má půdorys __ROOF__ m² (ČÚZK ✅).</span>`;
+    $('u-moje-n').innerHTML=`<b>Počítám, jako by každá zapojená domácnost měla pozemek jako ty:</b> střecha ${fmt0(i.roof)} m², dlažba ${fmt0(i.paved)} m², zahrada ${fmt0(i.green)} m², svody ${svodyTxt(i)}; opatření: ${nazvy.length?nazvy.join(', '):'zatím žádné, které zadrží vodu'}. Jedna domácnost tak udrží ${fmt(per)} m³ z deště ${P} mm. <button type="button" class="linkbtn" data-tab-go2="pozemek">Změnit v Můj pozemek</button><br><span class="note">Domy v obci mají různé střechy a půdy, je to „co kdyby“, ne odhad pro obec 🤔. Průměrný dům v území má půdorys __ROOF__ m² (ČÚZK ✅).</span>`;
   } else $('u-moje-n').hidden=true;
   const bezOkapu = !moje && !pack.includes('S02') && (pack.includes('Z01')||pack.includes('S01'));
   $('u-pozor').hidden = !bezOkapu;
@@ -2209,7 +2217,7 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
     o+=`<rect class="rY ${cls}" x="${X(r).toFixed(1)}" y="${y(v)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${T+h-y(v)}"><title>${r}: ${fmt(v,0)} mm${DOPL_T(r,'P')}</title></rect>`;
     if(r%10===0&&!(cur&&r>=cur.r-6))o+=`<text x="${X(r)+bw/2}" y="${Hd-8}" text-anchor="middle">${r}</text>`;});
   // klouzavý průměr 10 let jen přes 10 po sobě jdoucích let
-  const P_=Object.fromEntries(body); let p='',prev=null;
+  const P_=Object.fromEntries(body), a50=mean(body.filter(b=>b[0]>=1921&&b[0]<=1950).map(b=>b[1])); let p='',prev=null;
   body.forEach(([r])=>{const okno=[]; for(let k=r-9;k<=r;k++) if(P_[k]!=null) okno.push(P_[k]); if(okno.length<10){prev=null;return;}
     p+=(prev===r-1?'L':'M')+(X(r)+bw/2).toFixed(1)+' '+y(mean(okno)).toFixed(1)+' '; prev=r;});
   const dt=cur?cur.do.slice(8,10).replace(/^0/,'')+'. '+cur.do.slice(5,7).replace(/^0/,'')+'.':'';
@@ -2217,7 +2225,8 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
     o+=`<rect x="${xx.toFixed(1)}" y="${y(cur.P)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${T+h-y(cur.P)}" style="fill:var(--dry);opacity:.45;stroke:var(--dry);stroke-dasharray:2 2"><title>${cur.r} do ${dt}: ${fmt(cur.P,0)} mm (normál za stejné období ${fmt(cur.Pn,0)} mm)</title></rect>`+
       `<line x1="${xx.toFixed(1)}" x2="${(xx+bw).toFixed(1)}" y1="${y(cur.Pn)}" y2="${y(cur.Pn)}" style="stroke:var(--fg);stroke-width:1.5"><title>normál do ${dt}: ${fmt(cur.Pn,0)} mm</title></line>`+
       `<text x="${xx+bw/2}" y="${Hd-8}" text-anchor="end">${cur.r}*</text>`; }
-  o+=`<path class="lT" d="${p}"/><line class="nrm" x1="${L}" x2="${L+w}" y1="${y(norm)}" y2="${y(norm)}"/><text x="${L+w}" y="${y(norm)-3}" text-anchor="end">normál ${fmt(norm,0)} mm</text>`;
+  o+=`<path class="lT" d="${p}"/><line class="nrm" style="stroke-width:1.6" x1="${X(1991).toFixed(1)}" x2="${X(2021).toFixed(1)}" y1="${y(norm)}" y2="${y(norm)}"/><text x="${X(2021).toFixed(1)}" y="${T+8}" text-anchor="end">průměr 1991-2020: ${fmt(norm,0)} mm</text>`
+    +`<line class="nrm" style="stroke-width:1.6" x1="${X(1921).toFixed(1)}" x2="${X(1951).toFixed(1)}" y1="${y(a50)}" y2="${y(a50)}"/><text x="${X(1921).toFixed(1)}" y="${T+8}">průměr 1921-1950: ${fmt(a50,0)} mm</text>`;
   // popisky primo v grafu: nejdestivejsi rok od 1950 a letosek
   const mk=body.filter(b=>b[0]>=1950).reduce((a,b)=>b[1]>a[1]?b:a);
   o+=`<text class="ann" x="${(X(mk[0])-3).toFixed(1)}" y="${(y(mk[1])+4).toFixed(1)}" text-anchor="end">${mk[0]}: ${fmt0(mk[1])} mm</text>`;
@@ -2326,18 +2335,22 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
   const trE=lin(bV.map(b=>b.r),bV.map(b=>b.E))*10, d30a=rng(bT,2001,2010,'d30'), d30b=rng(bT,ROK-10,ROK-1,'d30');
   $('jb-rok').textContent=ROK;
   const kc=(n,c,t)=>`<div class="jb-k"><div class="num" style="color:var(${c})">${n}</div><div>${t}</div></div>`;
-  $('jb-key').innerHTML=kc(`${fmt0(N.rok.P)} mm`,'--water',`naprší za rok (normál 1991-2020). V letech 1921-1950 to bylo ${fmt0(avgP(1921,1950))} mm.`)
-    +kc(`${fmt0(N.rok.ET0)} mm`,'--soil',`by se mohlo za rok vypařit. ${trE>0?'Roste':'Mění se'} o ${fmt0(Math.abs(trE))} mm za každých 10 let.`)
+  const trT=lin(bV.map(b=>b.r),bV.map(b=>b.T))*10, P25=mean(p1.body.filter(b=>b[0]>=bV[0].r&&b[0]<=bV[bV.length-1].r).map(b=>b[1])), obdT=`${bV[0].r}-${bV[bV.length-1].r}`;
+  const sgn=v=>(v>0?'+':v<0?'-':'')+fmt(Math.abs(v),1);
+  $('jb-lede').innerHTML=`Roční úhrn srážek se v Koryčanech za sto let nezměnil: v letech 1921-1950 to bylo v průměru ${fmt0(avgP(1921,1950))} mm, v letech 1991-2020 ${fmt0(N.rok.P)} mm. Od roku ${bV[0].r} se ale otepluje, v průměru o ${fmt(Math.abs(trT),1)} °C za každých deset let. Teplejší vzduch si bere víc vody, takže stejný déšť stačí krajině na méně. Část té vody může zadržet každý u sebe doma.`;
+  $('jb-key').innerHTML=kc(`${fmt0(N.rok.P)} mm`,'--water',`naprší v průměru za rok (1991-2020). V letech 1921-1950 to bylo v průměru ${fmt0(avgP(1921,1950))} mm.`)
+    +kc(`${sgn(trT)} °C`,'--soil',`za každých 10 let: tak se mění průměrná roční teplota (${obdT}, ČHMÚ Nemochovice).`)
     +kc(`${fmt0(d30a)} → ${fmt0(d30b)}`,'--bad',`tropických dní za rok: průměr 2001-2010 proti ${ROK-10}-${ROK-1}.`);
   // kapitola 1
-  $('jb-ch1').innerHTML=`Stanice v Koryčanech měří srážky přes sto let. Mokré a suché roky se střídají, ale desetiletý průměr (oranžová čára) se drží kolem 600 mm. Normál 1991-2020 je ${fmt0(N.rok.P)} mm, v letech 1921-1950 to bylo ${fmt0(avgP(1921,1950))} mm. Na množství deště to tedy není.`;
+  const pMin=p1.body.reduce((a,b)=>b[1]<a[1]?b:a), pMax=p1.body.reduce((a,b)=>b[1]>a[1]?b:a);
+  $('jb-ch1').innerHTML=`Srážky se v Koryčanech měří přes sto let (stanice ČHMÚ, řada od roku ${p1.body[0][0]}). Mokré a suché roky se střídají: od ${fmt0(pMin[1])} mm (${pMin[0]}) po ${fmt0(pMax[1])} mm (${pMax[0]}). Klouzavý průměr za 10 let (oranžová čára) se ale drží kolem 600 mm. Průměr let 1921-1950 byl ${fmt0(avgP(1921,1950))} mm, průměr let 1991-2020 (takzvaný normál) je ${fmt0(N.rok.P)} mm. Deště za rok tedy dlouhodobě neubývá ani nepřibývá.`;
   // box 1: kam mizi dest
-  const zizen=N.rok.ET0-N.rok.P;
-  $('jb-box1').innerHTML=`Na metr čtvereční naprší za rok ${fmt0(N.rok.P)} litrů. Slunce a vítr by ale dokázaly odpařit ${fmt0(N.rok.ET0)} litrů, kdyby voda byla. Tomu říkáme žízeň krajiny. Vypaří se jen tolik, kolik vody opravdu je, a co steče do kanálu, krajině chybí.`;
-  $('jb-il-p').textContent=`naprší ${fmt0(N.rok.P)} mm`; $('jb-il-e').textContent=`vypařit ${fmt0(N.rok.ET0)} mm`; $('jb-il-d').textContent=`žízeň o ${fmt0(zizen)} mm větší`;
+  const zizen=N.rok.ET0-P25;
+  $('jb-box1').innerHTML=`V letech ${obdT} napršelo na metr čtvereční v průměru ${fmt0(P25)} litrů za rok. Slunce a teplo by ale dokázaly odpařit v průměru ${fmt0(N.rok.ET0)} litrů, kdyby voda byla. Tomu rozdílu říkáme žízeň krajiny. Vypaří se jen tolik, kolik vody opravdu je. Čím je půda sušší, tím méně má co odpařit a tím víc rostliny strádají. Co steče do kanálu, krajině chybí.`;
+  $('jb-il-p').textContent=`naprší ${fmt0(P25)} mm`; $('jb-il-e').textContent=`vypařit ${fmt0(N.rok.ET0)} mm`; $('jb-il-d').textContent=`žízeň o ${fmt0(zizen)} mm větší`;
   // kapitola 2
   const plus=bV.filter(b=>b.b>=0).map(b=>b.r), cur=p2.cur, nejh=p2.nejh;
-  $('jb-ch2').innerHTML=`Když od deště odečteme, kolik by se mohlo vypařit, vyjde minus ve ${bV.length-plus.length} z ${bV.length} let od roku ${bV[0].r}${plus.length?` (přebytek měl jen ${plus.join(', ')})`:''}.`
+  $('jb-ch2').innerHTML=`Když od deště odečteme, kolik by se mohlo vypařit, vyjde minus ve ${bV.length-plus.length} z ${bV.length} let od roku ${bV[0].r}${plus.length?` (přebytek měl jen ${plus.join(', ')})`:''}. Možný výpar byl v letech ${obdT} v průměru ${fmt0(N.rok.ET0)} mm za rok a za tu dobu ${trE>0?'roste':'klesá'} asi o ${fmt0(Math.abs(trE))} mm za deset let (řada je krátká, zatím jde o náznak).`
     +(cur?` Letos do ${cur.do.slice(8,10).replace(/^0/,'')}. ${cur.do.slice(5,7).replace(/^0/,'')}. chybí už <b>${fmt0(-cur.b)} mm</b>${cur.b<nejh.b?`, víc než v dosud nejhorším roce ${nejh.r} (${fmt0(-nejh.b)} mm)`:''}.`:'');
   // box 2: rocni chod z mesicnich normalu
   const M=[1,2,3,4,5,6,7,8,9,10,11,12].map(m=>N.mesic[m].bil), zima=[10,11,12,1,2].reduce((a,m)=>a+N.mesic[m].bil,0), leto=[3,4,5,6,7,8,9].reduce((a,m)=>a+N.mesic[m].bil,0);
@@ -2351,8 +2364,11 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
     $('jb-mes').innerHTML=o+`<text x="${L}" y="${T-3}">mm za měsíc</text>`; }
   // kapitola 3
   const mx35=Math.max(0,...bT.filter(b=>b.d35!=null).map(b=>b.d35)), c2=p2.cur;
-  $('jb-ch3').innerHTML=`Tropických dní nad 30 °C bylo v letech 2001-2010 v průměru ${fmt0(d30a)} za rok, v posledních deseti letech ${fmt0(d30b)}${d30a>0?` (asi o ${fmt0(100*(d30b-d30a)/d30a)} % víc)`:''}.`
-    +(c2&&c2.d35!=null&&bT.some(b=>b.d35!=null)?` Letos bylo ${c2.d35} ${c2.d35===1?'den':c2.d35<5?'dny':'dní'} nad 35 °C${c2.d35>mx35?`, přitom za ${bT.length} let předtím jich bylo v jednom roce nejvýš ${mx35}`:''}.`:'');
+  $('jb-ch3').innerHTML=`Tropických dní (nejvyšší teplota dne aspoň 30 °C) bylo v letech 2001-2010 v průměru ${fmt0(d30a)} za rok, v letech ${ROK-10}-${ROK-1} v průměru ${fmt0(d30b)}. Průměrná roční teplota se za roky ${obdT} mění o ${sgn(trT)} °C za deset let.`
+    +(c2&&c2.d35!=null&&bT.some(b=>b.d35!=null)?` Letos (předběžně) bylo ${c2.d30} tropických dní, z toho ${c2.d35} s teplotou aspoň 35 °C; v letech ${obdT} jich bylo v jednom roce nejvýš ${mx35}.`:'');
+  // kapitola 4: cetnost velkych dennich uhrnu po tretinach rady (jen roky se zmerenym dennim maximem)
+  { const PM=Object.entries(R).filter(([r,z])=>z.Pmx!=null).map(([r,z])=>[+r,z.Pmx]), tri=[[1921,1955],[1956,1990],[1991,2025]].map(([a,b])=>{const q=PM.filter(x=>x[0]>=a&&x[0]<=b); return `${a}-${b} v ${q.filter(x=>x[1]>=40).length} z ${q.length} změřených let`;});
+    $('jb-ch4').textContent = PM.length ? `V koryčanské řadě velkých lijáků zatím nepřibývá ani neubývá: den s úhrnem aspoň 40 mm přišel ${tri.join(', ')}.` : ''; }
   // kapitola 4: nejvetsi denni srazky (jen mereni Korycany)
   const top=(N.top_denni||[]).slice(0,5);
   if(top.length){ const mxP=top[0][1];

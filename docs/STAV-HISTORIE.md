@@ -2,6 +2,21 @@
 
 Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `docs/STAV.md`. Starší rozhodnutí mohou být nahrazena novějšími (u nahrazených je to v textu poznamenáno).
 
+## 15. 11. 2026 - zpětná vazba od čtenáře, blok 1 a 2 (Claude Code, cloud)
+
+Zpětná vazba: nadpis zjednodušující, moc údajů (návrh Stručně/Podrobně), widgety, "633 mm za rok" bez slova průměr, nesrozumitelných 858 mm výparu, chybí popis stanice, pojem normál, legenda grafu, "8 dní nad 35 °C" (čtenář čekal 28), svody v poměru.
+
+Ověřeno v datech repa (normaly.json, denni.json, lineární regrese):
+- srážky za rok: 1921-1950 625 mm, 1961-1990 610, 1991-2020 633, trend 1921-2025 p 0,59 (žádný); duben-září ani říjen-březen bez trendu;
+- roční denní maximum bez trendu (p 0,69); roky s dnem >= 40 mm: 11 / 10 / 12 po třetinách řady;
+- 2001-2025: teplota +0,48 °C / 10 let (p 0,011), ET0 +14 mm / 10 let (p 0,14), tropické dny +3 / 10 let (p 0,14), bilance P-ET0 bez trendu (p 0,95);
+- 2026 do 14. 11.: 349 mm = 61 % normálu za stejné období, 28 tropických dní, 8 dní >= 35 °C (data byla správně, věta mátla).
+
+Rozhodnutí uživatele: nadpis pevný a pravdivý, východisko jsou dlouhé řady a trendy, ne jeden rok; nestranně, jen čísla z dat; zpráva pro občana "začněme každý u sebe doma".
+Odchylka od zadání: "extrémy jsou častější" místní data potvrzují jen u horka (náznak), u lijáků ne - v textu je to řečeno přímo, častější přívalové deště zůstávají ve výhledu (CzechGlobe, IPCC).
+
+Změny v `tools/build_dummy.py` (podrobně STAV.md, Hotovo naposledy). `web/jadro.js` beze změny; `node web/test_jadro.js` v cloudu neběžel (chybí pngjs). Kontrola headless Chromium 1300 a 390 px, světlý i tmavý režim, bez chyb a bez vodorovného posunu.
+
 ## 15. 11. 2026 - úklid kontextu
 
 - `docs/STAV.md` zkrácen na údaje pro další vývoj (hotové 14. 11., pořadí dalších kroků, platná rozhodnutí včetně přítoku, jezírka a mapy eroze, otevřené otázky). `CLAUDE.md` aktualizován (40 testů, `J.pritok`, líné načítání, 5,4 MB rastrů, mapa eroze, otevřené úkoly odkazují na STAV.md).

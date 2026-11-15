@@ -22,8 +22,17 @@ Aktualizováno: 15. 11. 2026. Jen to, co je potřeba pro další vývoj. Archite
 - Celé území kap. 3: mapa eroze orné půdy (USLE po buňkách, 3 scénáře).
 - `tools/aktualizuj_z_githubu.bat`: stáhne main z GitHubu do složky repo na PC (nic nemaže).
 
+## Hotovo naposledy (15. 11., zpětná vazba od čtenáře)
+
+- Jak bylo: pevný nadpis podle dlouhých řad ("Prší stejně jako před sto lety. Je ale tepleji a krajina potřebuje víc vody."), perex a klíčová čísla z dat (633 mm v průměru, +0,5 °C / 10 let, tropické dny 12 -> 17); 858 mm z úvodu pryč, výpar vysvětlen v kap. 2 a srovnán se srážkami za stejné období (2001-2025: 648 mm).
+- Graf srážek: průměry 1921-1950 a 1991-2020 jen nad svým obdobím, legenda (klouzavý průměr 10 let, průměr 30 let, tečka = doplněné dny).
+- Kap. 3: "28 tropických dní, z toho 8 nad 35 °C"; kap. 4: četnost dnů >= 40 mm po třetinách řady (v rocnicich nové pole `Pmx`).
+- "Jak to číst": odkud jsou data (stanice), průměr, normál (WMO ✅), klouzavý průměr, trend.
+- Můj pozemek: svody v poměru 100/75/50/25/0 % do kanalizace (`i.kan`, `kanP()`); bez S02 mají opatření napojená na střechu jen část střechy, která už teče na pozemek. V hash `o=` číslo, staré `kanal`/`pozemek` se převedou.
+
 ## Další kroky (pořadí)
 
+0. Ze zpětné vazby zbývá: režim Stručně / Podrobně; widgety pro web města (iframe, až po vyjasnění podmínek dat ČHMÚ a PMO); výpar Penman-Monteith vedle Hargreavese a měřená půdní vlhkost (Intersucho / čidlo u školy).
 1. Zkouška s lidmi: Můj pozemek (krok 1, upozornění na přívalovou vodu, krok 4), Celé území kap. 3 a mapa eroze (čitelnost nad podkladem ZTM), hráz v0.3.
 2. "Co dělat při vedru" (H01, H02): chladná místa, pitná voda, plán města - údaje ověřit online nebo dodá uživatel.
 3. Kontakt / zpětná vazba z aplikace (bez osobních údajů, úložiště mimo Pages chybí).
@@ -63,6 +72,8 @@ Výpočty
 - Počet RD = RÚIAN "rodinný dům" + "bydlení" = 1 076.
 
 Rozhraní
+- Jak bylo vychází z dlouhých řad a trendů, ne z jednoho roku; letošek je jen doplněk (kap. 5). Nadpis pevný. Tvrdit jen to, co data ukazují: srážky za rok se nemění (trend p 0,59), teplota roste (+0,5 °C / 10 let, p 0,01), výpar a tropické dny jen náznak (p 0,14), velkých lijáků v místní řadě nepřibývá (p 0,69) - častější extrémy srážek uvádět jen jako výhled se zdrojem (CzechGlobe, IPCC).
+- Každé číslo "za rok" nese "v průměru" a období. Svody v poměru po 25 %.
 - Výchozí déšť: Můj pozemek 10 mm, Celé území 32 mm.
 - Můj pozemek = průvodce 5 kroků, krok 4 hra Kapka / Louže / Tůňka / Oáza. Jezírko se nabízí i v zástavbě.
 - Upozornění klidným tónem, tykání jako celá aplikace.
