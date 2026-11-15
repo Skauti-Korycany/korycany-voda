@@ -57,6 +57,8 @@ data["pocasi"] = {
                 "doplneni": NRM.get("doplneni"), "top_denni": NRM.get("top_denni"),
                 "leto_normal": NRM.get("leto_normal")},
 }
+_hp = os.path.join(ROOT, "data", "hydro_rocni.json")   # měřené prameny a průtok Kyjovky (tools/build_hydro.py)
+data["hydro"] = json.load(open(_hp, encoding="utf-8")) if os.path.exists(_hp) else None
 DATA_JS = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
 
 HTML = r"""<title>Voda v Koryčanech</title>
@@ -592,8 +594,8 @@ details.banner[open]>summary .more{display:none}
   <div class="panel jb-story">
     <div class="jb-hero">
       <div class="jb-kicker">Jak bylo · data ČHMÚ 1921-<span id="jb-rok"></span></div>
-      <h2 class="jb-title">Prší stejně jako před sto lety. Je ale tepleji a krajina potřebuje víc vody.</h2>
-      <p class="jb-lede" id="jb-lede">Roční úhrn srážek se v Koryčanech za sto let nezměnil. Od roku 2001 se ale otepluje a teplejší vzduch si bere víc vody, takže stejný déšť stačí krajině na méně. Část té vody může zadržet každý u sebe doma.</p>
+      <h2 class="jb-title">Prší stejně jako před sto lety. Vody v krajině přesto ubývá.</h2>
+      <p class="jb-lede" id="jb-lede">Roční úhrn srážek se v Koryčanech za sto let nezměnil. Od roku 2001 se ale otepluje, teplejší vzduch si bere víc vody a prameny v okolí slábnou. Část vody může zadržet každý u sebe doma.</p>
       <p class="note">Data se stahují automaticky čtyřikrát denně. <span id="jb-upd"></span></p>
     </div>
     <div class="jb-key" id="jb-key"></div>
@@ -663,18 +665,26 @@ details.banner[open]>summary .more{display:none}
       </div>
     </div>
 
-    <h3 class="jb-ch">3. Horka přibývá</h3>
+    <h3 class="jb-ch">3. Prameny slábnou a potoku ubývá</h3>
+    <p class="jb-p" id="jb-ch-h"></p>
+    <svg class="jb-chart" id="jb-h1" viewBox="0 0 720 200" role="img" aria-label="Vydatnost pramene u Koryčan po letech"></svg>
+    <div class="legend"><span><b style="background:var(--water)"></b>pramen Koryčany, průměrná vydatnost za rok (litry za sekundu)</span><span><b class="ln" style="border-color:var(--warn)"></b>klouzavý průměr 10 let</span></div>
+    <svg class="jb-chart" id="jb-h2" viewBox="0 0 720 200" role="img" aria-label="Průtok Kyjovky nad nádrží po letech"></svg>
+    <div class="legend"><span><b style="background:var(--chip)"></b>Kyjovka nad nádrží, průměrný průtok za rok (litry za sekundu)</span><span><b class="ln" style="border-color:var(--warn)"></b>klouzavý průměr 10 let</span></div>
+    <p class="jb-zdroj" id="jb-h-n"></p>
+
+    <h3 class="jb-ch">4. Horka přibývá</h3>
     <p class="jb-p" id="jb-ch3"></p>
     <svg class="jb-chart" id="jb-l3" viewBox="0 0 720 210" role="img" aria-label="Tropické a supertropické dny, tropické noci a letní maxima 2001-2025"></svg>
     <div class="legend" id="jb-l3-leg"><span><b style="background:var(--bad);border-radius:50%"></b>tropické dny (≥ 30 °C)</span><span><b style="background:var(--hot);transform:rotate(45deg) scale(.8)"></b>supertropické dny (≥ 35 °C)</span><span class="jb-leto"><b class="ln" style="border-color:var(--warn)"></b>letní maxima, průměr VI-VIII (pravá osa)</span><span><b class="ln" style="border-color:var(--bad);border-top-style:dashed;opacity:.6"></b>trend</span></div>
     <p class="jb-zdroj">ČHMÚ Nemochovice (8 km). Tropický den = nejvyšší teplota aspoň 30 °C, supertropický 35 °C.</p>
 
-    <h3 class="jb-ch">4. Když přijde liják</h3>
+    <h3 class="jb-ch">5. Když přijde liják</h3>
     <p class="jb-p">Sucho a povodeň nejsou protiklady. Vyschlá a utužená půda nestihne vsáknout, voda steče po povrchu a vezme s sebou ornici. <span id="jb-ch4"></span> Největší deště za den v řadě od roku 1921:</p>
     <div class="jb-lijak" id="jb-lijak"></div>
     <p class="note" id="jb-lijak-n"></p>
 
-    <h3 class="jb-ch" id="jb-letos-h">5. Letošek</h3>
+    <h3 class="jb-ch" id="jb-letos-h">6. Letošek</h3>
     <div class="jb-cards" id="jb-letos"></div>
     <p class="jb-zdroj">Předběžná data ČHMÚ. Výběr období a srovnání s minulými roky najdeš níže v části <a href="#" data-vice="1">Více o tématu</a>.</p>
 
@@ -727,7 +737,7 @@ details.banner[open]>summary .more{display:none}
     <p class="note" id="jb-l2-n"></p>
     <p class="note" id="jb-l3-n"></p>
 
-    <details class="jb-cist" open><summary><b>Jak to číst</b> - pojmy a metody</summary><p><b>Odkud jsou data.</b> Srážky měří stanice ČHMÚ Koryčany (manuální srážkoměrná stanice, 305 m n. m., úhrn se odečítá jednou denně ráno, řada od listopadu 1920 ✅). Teploty jsou ze stanice ČHMÚ Nemochovice (8 km od Koryčan, měří od prosince 2000 ✅), proto řady teplot a výparu začínají rokem 2001. Než dorazí data ČHMÚ, doplňuje poslední dny <a href="https://sap.pmo.cz/portal/Srazky/cz/pc/Mereni.aspx?id=60&amp;oid=3" target="_blank" rel="noopener">srážkoměr Povodí Moravy pod přehradou</a>. Data ČHMÚ: <a href="https://opendata.chmi.cz/" target="_blank" rel="noopener">opendata.chmi.cz</a>.</p><p><b>Průměr a normál.</b> Všechna čísla „za rok“ jsou průměry za více let a období je vždy uvedeno. Jednotlivé roky se od průměru liší i o třetinu. <b>Normál</b> je meteorologický pojem: průměr za 30 let, teď se používá období 1991-2020 (<a href="https://wmo.int/media/news/updated-30-year-reference-period-reflects-changing-climate" target="_blank" rel="noopener">WMO</a> ✅). <b>Klouzavý průměr 10 let</b> je průměr vždy z deseti po sobě jdoucích let, vyhlazuje výkyvy. <b>Trend</b> je sklon přímky proložené roky 2001-2025; za 25 let je spolehlivý u teploty, u výparu a tropických dní jde zatím o náznak.</p><p><b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, počítaná z teplot metodou Hargreaves-Samani podle FAO-56 📄). <b>Srážky minus výpar</b> je žízeň krajiny (odborně klimatická vodní bilance), ne voda, která někam zmizela. Vítr a vlhkost vzduchu metoda nezná; při větru je skutečná ztráta větší. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne. Prahy podle ČHMÚ ✅: tropický den = nejvyšší teplota aspoň 30 °C, supertropický aspoň 35 °C (neoficiální název), tropická noc = teplota neklesne pod 20 °C (<a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2025/TI_Leto2025.pdf" target="_blank" rel="noopener">ČHMÚ, Klimatologické léto 2025</a>).</p></details>
+    <details class="jb-cist" open><summary><b>Jak to číst</b> - pojmy a metody</summary><p><b>Odkud jsou data.</b> Srážky měří stanice ČHMÚ Koryčany (manuální srážkoměrná stanice, 305 m n. m., úhrn se odečítá jednou denně ráno, řada od listopadu 1920 ✅). Teploty jsou ze stanice ČHMÚ Nemochovice (8 km od Koryčan, měří od prosince 2000 ✅), proto řady teplot a výparu začínají rokem 2001. Než dorazí data ČHMÚ, doplňuje poslední dny <a href="https://sap.pmo.cz/portal/Srazky/cz/pc/Mereni.aspx?id=60&amp;oid=3" target="_blank" rel="noopener">srážkoměr Povodí Moravy pod přehradou</a>. Data ČHMÚ: <a href="https://opendata.chmi.cz/" target="_blank" rel="noopener">opendata.chmi.cz</a>.</p><p><b>Prameny a potok.</b> Vydatnost pramenů měří ČHMÚ (pramen Koryčany, objekt PB0425, 450 m n. m. v Chřibech; do roku 2021 jednou týdně, od roku 2022 denně ✅). Průtok Kyjovky měří stanice ČHMÚ Koryčany nad nádrží (povodí 19,4 km², od listopadu 1967 ✅); je to voda, která do přehrady přitéká z lesů nad ní, tedy bez vlivu řízení přehrady. Roční průměr je jen z úplných let. Data: <a href="https://opendata.chmi.cz/hydrology/" target="_blank" rel="noopener">opendata.chmi.cz/hydrology</a>.</p><p><b>Průměr a normál.</b> Všechna čísla „za rok“ jsou průměry za více let a období je vždy uvedeno. Jednotlivé roky se od průměru liší i o třetinu. <b>Normál</b> je meteorologický pojem: průměr za 30 let, teď se používá období 1991-2020 (<a href="https://wmo.int/media/news/updated-30-year-reference-period-reflects-changing-climate" target="_blank" rel="noopener">WMO</a> ✅). <b>Klouzavý průměr 10 let</b> je průměr vždy z deseti po sobě jdoucích let, vyhlazuje výkyvy. <b>Trend</b> je sklon přímky proložené roky 2001-2025; za 25 let je spolehlivý u teploty, u výparu a tropických dní jde zatím o náznak.</p><p><b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, počítaná z teplot metodou Hargreaves-Samani podle FAO-56 📄). <b>Srážky minus výpar</b> je žízeň krajiny (odborně klimatická vodní bilance), ne voda, která někam zmizela. Vítr a vlhkost vzduchu metoda nezná; při větru je skutečná ztráta větší. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne. Prahy podle ČHMÚ ✅: tropický den = nejvyšší teplota aspoň 30 °C, supertropický aspoň 35 °C (neoficiální název), tropická noc = teplota neklesne pod 20 °C (<a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2025/TI_Leto2025.pdf" target="_blank" rel="noopener">ČHMÚ, Klimatologické léto 2025</a>).</p></details>
     <p class="src" id="jb-src"></p>
     </details>
   </div>
@@ -1103,6 +1113,7 @@ details.banner[open]>summary .more{display:none}
       <tr><td>výškopis DMR 5G, parcely, budovy, ZABAGED, mapy a ortofoto</td><td>ČÚZK, CC BY 4.0 ✅</td><td>sklon, kam teče voda, střechy, využití ploch</td></tr>
       <tr><td>hydrologické skupiny půd (HSP 2026)</td><td>VÚMOP, v.v.i., CC BY-NC (jen nekomerčně) ✅</td><td>jak rychle se vsákne voda (skupina půdy A-D)</td></tr>
       <tr><td>bonitované půdně ekologické jednotky (BPEJ)</td><td>Státní pozemkový úřad ✅</td><td>jak snadno se půda smývá (eroze)</td></tr>
+      <tr><td>vydatnost pramenů a průtok Kyjovky</td><td>ČHMÚ, otevřená data hydrologie ✅</td><td>Jak bylo: jestli vody v krajině ubývá</td></tr>
       <tr><td>účel budov, hledání adres</td><td>RÚIAN (ČÚZK) ✅</td><td>velké střechy, hledání v Můj pozemek</td></tr>
       <tr><td>denní srážky a teploty</td><td>ČHMÚ, otevřená data (podmínky užití ještě zapisujeme); Povodí Moravy, srážkoměr u přehrady (předběžná data)</td><td>Jak bylo, skutečný déšť za 30 dní</td></tr>
       <tr><td>návrhové deště N2-N100</td><td>ČVUT a ČHMÚ, metodika 2023 ✅</td><td>lijáky jednou za 2, 10 a 100 let</td></tr>
@@ -2341,6 +2352,26 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
   $('jb-key').innerHTML=kc(`${fmt0(N.rok.P)} mm`,'--water',`naprší v průměru za rok (1991-2020). V letech 1921-1950 to bylo v průměru ${fmt0(avgP(1921,1950))} mm.`)
     +kc(`${sgn(trT)} °C`,'--soil',`za každých 10 let: tak se mění průměrná roční teplota (${obdT}, ČHMÚ Nemochovice).`)
     +kc(`${fmt0(d30a)} → ${fmt0(d30b)}`,'--bad',`tropických dní za rok: průměr 2001-2010 proti ${ROK-10}-${ROK-1}.`);
+  // kapitola 3: merene prameny a prutok (data/hydro_rocni.json)
+  const HY=D.hydro, pr=HY&&HY.prameny.PB0425, ky=HY&&HY.prutoky['483100'];
+  if(pr&&ky){
+    const f2=v=>fmt(v,2), tp=pr.trend, tk=ky.trend, pct=t=>fmt0(100*t.poslednich_10[2]/t.prvnich_10[2]), ob=a=>`${a[0]}-${a[1]}`;
+    $('jb-key').innerHTML+=kc(`${f2(tp.prvnich_10[2])} → ${f2(tp.poslednich_10[2])} l/s`,'--water',`dává pramen u Koryčan: průměr ${ob(tp.prvnich_10)} proti ${ob(tp.poslednich_10)} (měření ČHMÚ).`);
+    $('jb-lede').innerHTML=$('jb-lede').innerHTML.replace('Teplejší vzduch si bere víc vody, takže stejný déšť stačí krajině na méně.', `Teplejší vzduch si bere víc vody. Pramen v Chřibech nad Koryčany dává dnes ${pct(tp)} % toho, co v 80. letech, a potokem přitéká do přehrady ${pct(tk)} % vody proti letům ${ob(tk.prvnich_10)}.`);
+    const dalsi=Object.entries(HY.prameny).filter(([k])=>k!=='PB0425').map(([k,z])=>`${z.nazev} (${z.km.toLocaleString('cs-CZ')} km) z ${f2(z.trend.prvnich_10[2])} na ${f2(z.trend.poslednich_10[2])} l/s`);
+    $('jb-ch-h').innerHTML=`Že vody ubývá, je vidět na měření. Pramen v Chřibech nad Koryčany dával v letech ${ob(tp.prvnich_10)} v průměru ${f2(tp.prvnich_10[2])} litru za sekundu, v letech ${ob(tp.poslednich_10)} jen ${f2(tp.poslednich_10[2])} litru. Stejně slábnou i další měřené prameny v okolí: ${dalsi.join(', ')}. Kyjovka přiváděla do přehrady v letech ${ob(tk.prvnich_10)} v průměru ${fmt0(tk.prvnich_10[2])} litrů za sekundu, v letech ${ob(tk.poslednich_10)} už jen ${fmt0(tk.poslednich_10[2])}. Deště přitom neubylo.`;
+    const graf=(id,z,cls,dec)=>{ const b=Object.entries(z.roky).map(([r,v])=>[+r,v]).sort((a,c)=>a[0]-c[0]), R0=b[0][0], n=b[b.length-1][0]-R0+1;
+      const Wd=720,Hd=200,L=40,T=14,B=24,w=Wd-L-6,h=Hd-T-B, sc=nice(0,Math.max(...b.map(x=>x[1])),4), y=v=>T+h-h*v/sc.hi, bw=w/n, X=r=>L+(r-R0)*bw, P_=Object.fromEntries(b);
+      let o=osy(L,w,T,h,sc)+`<text x="${L}" y="${T-3}">litry za sekundu</text>`, p='', prev=null;
+      b.forEach(([r,v])=>{ o+=`<rect x="${X(r).toFixed(1)}" y="${y(v).toFixed(1)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${(T+h-y(v)).toFixed(1)}" style="fill:var(${cls})"><title>${r}: ${fmt(v,dec)} l/s</title></rect>`;
+        if(r%10===0) o+=`<text x="${(X(r)+bw/2).toFixed(1)}" y="${Hd-8}" text-anchor="middle">${r}</text>`;
+        const okno=[]; for(let k=r-9;k<=r;k++) if(P_[k]!=null) okno.push(P_[k]); if(okno.length<10){prev=null;return;}
+        p+=(prev===r-1?'L':'M')+(X(r)+bw/2).toFixed(1)+' '+y(mean(okno)).toFixed(1)+' '; prev=r; });
+      $(id).innerHTML=o+`<path class="lT" d="${p}"/>`; };
+    graf('jb-h1',pr,'--water',2); graf('jb-h2',ky,'--chip',0);
+    const pv=t=>t.p<0.001?'pod 0,001':fmt(t.p,3);
+    $('jb-h-n').innerHTML=`Měření ČHMÚ ✅ (otevřená data hydrologie, zpracováno ${HY.vytvoreno.split('-').reverse().map(Number).join('. ')}). Pramen Koryčany ${Object.keys(pr.roky)[0]}-${Object.keys(pr.roky).pop()}: pokles o ${f2(-tp.za_10_let)} l/s za deset let, průkazný (p ${pv(tp)}). Kyjovka nad nádrží ${Object.keys(ky.roky)[0]}-${Object.keys(ky.roky).pop()}: pokles o ${fmt0(-tk.za_10_let)} l/s za deset let (p ${pv(tk)}). Měření říká, že vody ubývá, ne proč. Srážky se nezměnily; nabízí se vyšší teplota a výpar, roli ale může hrát i stav lesa, odběry vody nebo úprava jímání pramene 🤔.`;
+  } else { ['jb-ch-h','jb-h-n'].forEach(i=>$(i).textContent='Data o pramenech se nepodařilo načíst.'); }
   // kapitola 1
   const pMin=p1.body.reduce((a,b)=>b[1]<a[1]?b:a), pMax=p1.body.reduce((a,b)=>b[1]>a[1]?b:a);
   $('jb-ch1').innerHTML=`Srážky se v Koryčanech měří přes sto let (stanice ČHMÚ, řada od roku ${p1.body[0][0]}). Mokré a suché roky se střídají: od ${fmt0(pMin[1])} mm (${pMin[0]}) po ${fmt0(pMax[1])} mm (${pMax[0]}). Klouzavý průměr za 10 let (oranžová čára) se ale drží kolem 600 mm. Průměr let 1921-1950 byl ${fmt0(avgP(1921,1950))} mm, průměr let 1991-2020 (takzvaný normál) je ${fmt0(N.rok.P)} mm. Deště za rok tedy dlouhodobě neubývá ani nepřibývá.`;
@@ -2379,13 +2410,13 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
   const c1=p1.cur, dt=x=>x.slice(8,10).replace(/^0/,'')+'. '+x.slice(5,7).replace(/^0/,'')+'.';
   const lx=bT.filter(b=>b.lx!=null), mxL=lx.length?Math.max(...lx.map(b=>b.lx)):null, mxD=Math.max(...bT.map(b=>b.d30)), mxDr=bT.find(b=>b.d30===mxD);
   const lc=(c,a,b)=>`<div class="jb-card" style="border-top-color:var(${c})"><div class="big num">${a}</div><div class="cmp">${b}</div></div>`;
-  if(c1||c2){ $('jb-letos-h').textContent=`5. Letošek do ${dt((c1||c2).do)}`;
+  if(c1||c2){ $('jb-letos-h').textContent=`6. Letošek do ${dt((c1||c2).do)}`;
     $('jb-letos').innerHTML=(c1?lc('--dry',`${fmt0(c1.P)} mm`,`srážek, ${fmt0(100*c1.P/c1.Pn)} % normálu za stejné období`):'')
       +(c2?lc('--soil',`${fmt0(c2.b)} mm`,`srážky minus výpar${c2.b<nejh.b?`, nejhůř od roku ${bV[0].r}`:''}`):'')
       +(c2?lc('--bad',`${c2.d30}`,`tropických dní, ${c2.d30>mxD?'nejvíc od roku '+bT[0].r:`rekord je ${mxD} (${mxDr.r})`}`):'')
       +(c2&&c2.lx!=null&&mxL!=null?lc('--hot',`${fmt(c2.lx,1)} °C`,`průměr letních maxim${c2.lx>mxL?`, nejteplejší léto od roku ${bT[0].r}`:`, rekord ${fmt(mxL,1)} °C`}`):''); }
   // 6: vyzva
-  $('jb-l-call').innerHTML=`<div class="jb-cta-t"><h3>6. Co s tím u vás doma</h3><p>Vodu, která spadne na střechu a dvůr, jde udržet tam, kde spadla: sud pod okapem, dešťový záhon, strom, propustná dlažba. Spočítej si, kolik to dělá na tvém pozemku.</p><div class="mot-a"><a href="#" data-go="pozemek">Spočítej svůj pozemek →</a><a href="#" data-go="katalog">Co se dá udělat (katalog) →</a></div></div>`
+  $('jb-l-call').innerHTML=`<div class="jb-cta-t"><h3>7. Co s tím u vás doma</h3><p>Vodu, která spadne na střechu a dvůr, jde udržet tam, kde spadla: sud pod okapem, dešťový záhon, strom, propustná dlažba. Spočítej si, kolik to dělá na tvém pozemku.</p><div class="mot-a"><a href="#" data-go="pozemek">Spočítej svůj pozemek →</a><a href="#" data-go="katalog">Co se dá udělat (katalog) →</a></div></div>`
     +`<svg class="il" viewBox="0 0 520 260" role="img" aria-label="Ilustrace: dům se sudem pod okapem, dešťovým záhonem, stromem a propustnou dlažbou"><rect class="soilbg" x="0" y="200" width="520" height="60"/><path class="soil" d="M0 200H520" stroke-width="2"/><path class="house" d="M60 200v-80h110v80" stroke-width="2.5"/><path class="ln" d="M46 122l69-52 69 52" fill="none" stroke-width="2.5"/><rect class="door ln" x="96" y="150" width="28" height="50" stroke-width="2"/><path class="ln" d="M184 122h8v40" fill="none" stroke-width="2.5"/><rect class="house" x="182" y="162" width="30" height="38" rx="4" stroke-width="2.5"/><rect class="wf2" x="185" y="176" width="24" height="21"/><path class="wfill soil" d="M236 200q30 22 60 0" stroke-width="2"/><g class="plant" stroke-width="2.5" stroke-linecap="round" fill="none"><path d="M252 202v-22M252 188q-6 0-8-8M252 186q6 0 8-8M280 202v-18M280 190q5 0 7-7"/></g><circle class="tree" cx="380" cy="104" r="44"/><path class="trunk" d="M380 148v52" stroke-width="5"/><g class="door ln" stroke-width="1.5"><rect x="440" y="206" width="22" height="10"/><rect x="466" y="206" width="22" height="10"/><rect x="492" y="206" width="22" height="10"/></g><g class="plant" stroke-width="2"><path d="M464 206v10M490 206v10"/></g><g class="num-b"><circle cx="197" cy="148" r="12"/><circle cx="266" cy="234" r="12"/><circle cx="380" cy="46" r="12"/><circle cx="477" cy="238" r="12"/></g><g class="num-t" text-anchor="middle"><text x="197" y="153">1</text><text x="266" y="239">2</text><text x="380" y="51">3</text><text x="477" y="243">4</text></g></svg>`;
   $('jb-l-call').querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault(); document.querySelector(`nav.tabs button[data-tab="${a.dataset.go}"]`).click(); window.scrollTo({top:0,behavior:'smooth'});}));
 })();
