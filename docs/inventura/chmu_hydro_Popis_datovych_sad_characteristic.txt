@@ -1,0 +1,19 @@
+Popis datových sad v adresáři characteristic
+                                                        Hydrologické veličiny
+ Adresář                       Název datové sady
+                                                        Název                                      Ukazatel
+                                                        měrná křivka průtoků
+ discharge_rating_curve        RC_WIGOSID.json                                                     H, Q
+                                                        (vodní stav a odpovídající průtok)
+
+                               CHAR_MDQ_WIGOSID.json    M -denní průtoky, Qa, Pa                   QM
+
+                                                        měsíční charakteristiky                    QM_AVG, QM_MAX,
+ hydrological_characteristic   CHAR_MONQ_WIGOSID.json
+                                                        (průměrný, maximální a minimální průtok)   QM_MIN
+
+                               NY_WIGOSID.json          N -leté průtoky                            QN
+
+
+ annual_peakflow
+

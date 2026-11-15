@@ -1,0 +1,51 @@
+Popis kódů použitých v metadatech pro datové sady historical
+ Kód                                Popis
+
+ objID                              WIGOS identifikátor objektu v databázi WMO
+
+ DBC                                Databázové číslo objektu v databázi ČHMÚ
+
+ STATION_NAME                       Název objektu
+
+ STREAM_NAME                        Název toku
+
+ GEOGR1                             Zeměpisná šířka
+
+ GEOGR2                             Zeměpisná délka
+
+ DRYH                               Vodní stav limitu stavu sucha
+
+ SPA1H                              Vodní stav úrovně 1. SPA
+
+ SPA2H                              Vodní stav úrovně 2. SPA
+
+ SPA3H                              Vodní stav úrovně 3. SPA
+
+ SPA4H                              Vodní stav úrovně 50letého průtoku
+
+ DRYQ                               Průtok limitu stavu sucha
+
+ SPA1Q                              Průtok úrovně 1. SPA
+
+ SPA2Q                              Průtok úrovně 2. SPA
+
+ SPA3Q                              Průtok úrovně 3. SPA
+
+ SPA4Q                              Průtok úrovně 50letého průtoku
+
+ PLO_STA                            Plocha povodí ke stanici (km2)
+ HLGP4                              Hydrologické povodí IV. řádu
+
+ TSCON_ID                           Ukazatel hydrologické veličiny
+
+ TSCON_DS                           Název hydrologické veličiny
+
+ UNIT_ID                            Označení jednotky hydrologické veličiny
+
+ UNIT_DS                            Jednotka hydrologické veličiny
+
+Vysvětlivky:
+SPA – stupeň povodňové aktivity
+WIGOS – Integrovaný globální pozorovací systém WMO (WMO Integrated Global Observing System)
+WMO – Světová meteorologická organizace (World Meteorological Organization)
+

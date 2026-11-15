@@ -2,6 +2,15 @@
 
 Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `docs/STAV.md`. Starší rozhodnutí mohou být nahrazena novějšími (u nahrazených je to v textu poznamenáno).
 
+## 15. 11. 2026 - další zdroje dat, prameny a Kyjovka (Claude Code, cloud)
+
+- Z cloudu jsou blokované všechny zdrojové servery i čtení stránek; průzkum proto běžel jako skript v GitHub Actions spouštěný pushem do větve `claude/**` (`inventura-zdroju.yml`, `hydro.yml`), výsledek bot commitne do téže větve.
+- Inventura: prvky stanic ČHMÚ do 45 km (svit, vítr, vlhkost, záření, výpar), struktura opendata hydrologie, Open-Meteo (názvy proměnných ověřeny voláním), PVGIS, licence Intersucha (CC BY-NC-ND 4.0). Zápis `docs/VRSTVY.md` kap. 5a.
+- Formát hydrologických souborů ČHMÚ: `tsList` s `tsConID` (YT týdenní vydatnost, YD denní, TT/TD teplota vody, QD denní průtok, HD stav, QK měsíční maximum, QM měsíční průměr); některé soubory jsou více JSON dokumentů za sebou, proto `vse_json()`.
+- Roční průměry a trendy: prameny Koryčany 0,268 -> 0,103 l/s, Čeložnice 0,382 -> 0,188, Lovčice 0,501 -> 0,184, Staré Hutě 0,839 -> 0,230 (prvních proti posledním 10 úplným letům; p < 0,001); Kyjovka nad nádrží 100 -> 59 l/s (p 0,027, tau -0,22), pod přehradou p 0,78.
+- Nadpis Jak bylo změněn na "Vody v krajině přesto ubývá" - původní zpráva uživatele, předtím nedoložená, teď doložená měřením.
+- Neověřeno: příčina poklesu, případné změny jímání pramene, podmínky užití hydrologických otevřených dat (v popisech nejsou).
+
 ## 15. 11. 2026 - zpětná vazba od čtenáře, blok 1 a 2 (Claude Code, cloud)
 
 Zpětná vazba: nadpis zjednodušující, moc údajů (návrh Stručně/Podrobně), widgety, "633 mm za rok" bez slova průměr, nesrozumitelných 858 mm výparu, chybí popis stanice, pojem normál, legenda grafu, "8 dní nad 35 °C" (čtenář čekal 28), svody v poměru.

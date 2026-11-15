@@ -1,0 +1,38 @@
+Popis datových sad v adresáři historical
+                                                          Hydrologické veličiny
+ Adresář                       Název datové sady
+                                                          Název                                             Ukazatel
+                                                          průměrné denní hodnoty
+ daily                         H_WIGOSID_DQ_RRRR.json                                                       HD, QD, TD, PD
+                                                          (vodní stavy, průtoky, teploty vody, plaveniny)
+                                                          přímé měření průtoku
+ flowmeter                     H_WIGOSID_OF_RRRR.json                                                       QC
+                                                          (průtoky)
+                                                          průměrné hodinové hodnoty
+ hourly                        H_WIGOSID_HQ_RRRR.json                                                       HH, QH
+                                                          (vodní stavy, průtoky)
+                                                          okamžité teploty vody
+ measured_ temperature         H_WIGOSID_OT_RRRR.json                                                       TO
+                                                          (teploty vody)
+                                                          okamžité vodní stavy
+ measured_ water_level         H_WIGOSID_OH_RRRR.json                                                       HC
+                                                          (vodní stavy)
+                                                          průměrné měsíční hodnoty
+ monthly                       H_WIGOSID_MQ_RRRR.json                                                       QM, TM
+                                                          (průtoky, teploty vody)
+                                                          maximální měsíční okamžité průtoky
+ monthly_max                   H_WIGOSID_MMQ_RRRR.json                                                      QK
+                                                          (průtoky)
+                                                          okamžité teploty vody v 7 hodin ráno
+ morning_temperature           H_WIGOSID_OT7_RRRR.json                                                      TR
+                                                          (teploty vody)
+                                                          okamžité vodní stavy v 7 hodin ráno
+ morning_water_level           H_WIGOSID_OH7_RRRR.json                                                      HR
+                                                          (teploty vody)
+                                                          přirozené průměrné měsíční průtoky
+ natural                       H_WIGOSID_NATQ_RRRR.json                                                     QNEX, QNEY
+                                                          (2 řady průtoků)
+
+Vysvětlivky:
+RRRR v názvu datové sady označuje kalendářní rok
+

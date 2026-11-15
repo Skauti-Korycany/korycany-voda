@@ -1,0 +1,38 @@
+1) prameny
+  groundwater/historical/data/: 227 souborů z 86758
+  groundwater/recent/data/: 47 souborů z 12026
+2) Kyjovka (denní, měsíční, měsíční maxima)
+  historical/data/daily/: 121 souborů z 39291
+  historical/data/monthly/: 121 souborů z 39081
+  historical/data/monthly_max/: 102 souborů z 24957
+   483100 HD [CM]: 9557 hodnot, 1989-11-01 až 2025-12-31
+   483100 QD [M3_S]: 21246 hodnot, 1967-11-01 až 2025-12-31
+   483100 QK [M3_S]: 601 hodnot, 1975-11-21 až 2025-12-05
+   483100 QM [M3_S]: 698 hodnot, 1967-11-01 až 2025-12-01
+   484000 HD [CM]: 9557 hodnot, 1989-11-01 až 2025-12-31
+   484000 QD [M3_S]: 22341 hodnot, 1964-11-01 až 2025-12-31
+   484000 QK [M3_S]: 602 hodnot, 1975-11-21 až 2025-12-18
+   484000 QM [M3_S]: 734 hodnot, 1964-11-01 až 2025-12-01
+   PB0411 TD [0C]: 730 hodnot, 2023-01-01 až 2024-12-31
+   PB0411 TT [0C]: 729 hodnot, 2010-01-06 až 2023-12-26
+   PB0411 YD [L_S]: 1321 hodnot, 2023-01-01 až 2026-11-14
+   PB0411 YT [L_S]: 3295 hodnot, 1959-11-04 až 2022-12-28
+   PB0415 TD [0C]: 730 hodnot, 2022-01-01 až 2023-12-31
+   PB0415 TT [0C]: 781 hodnot, 2010-01-06 až 2024-12-25
+   PB0415 YD [L_S]: 747 hodnot, 2023-01-01 až 2026-11-14
+   PB0415 YT [L_S]: 3244 hodnot, 1960-11-06 až 2024-12-25
+   PB0425 TD [0C]: 1096 hodnot, 2022-01-01 až 2024-12-31
+   PB0425 TT [0C]: 683 hodnot, 2010-01-06 až 2023-12-27
+   PB0425 YD [L_S]: 1276 hodnot, 2022-01-01 až 2026-11-14
+   PB0425 YT [L_S]: 2148 hodnot, 1980-11-05 až 2021-12-29
+   PB0433 TD [0C]: 731 hodnot, 2023-01-01 až 2024-12-31
+   PB0433 TT [0C]: 731 hodnot, 2010-01-06 až 2023-12-27
+   PB0433 YD [L_S]: 731 hodnot, 2023-01-01 až 2024-12-31
+   PB0433 YT [L_S]: 2252 hodnot, 1979-11-14 až 2022-12-28
+   meta objID,DBC,OBJECT_NAME,OBJECT_TYPE,GEOGR1,GEOGR2,ALTITUDE ['0-203-1-PB0415', 'PB0415', 'Staré Hutě', 'spring', 49.1455237, 17.2881679, 440.0]
+   meta objID,DBC,OBJECT_NAME,OBJECT_TYPE,GEOGR1,GEOGR2,ALTITUDE ['0-203-1-PB0411', 'PB0411', 'Lovčice', 'spring', 49.092357, 17.0499011, 370.0]
+   meta objID,DBC,OBJECT_NAME,OBJECT_TYPE,GEOGR1,GEOGR2,ALTITUDE ['0-203-1-PB0425', 'PB0425', 'Koryčany', 'spring', 49.0977737, 17.1949012, 450.0]
+   meta objID,DBC,OBJECT_NAME,OBJECT_TYPE,GEOGR1,GEOGR2,ALTITUDE ['0-203-1-PB0433', 'PB0433', 'Čeložnice', 'spring', 49.0721571, 17.1567345, 400.0]
+   meta objID,DBC,STATION_NAME,STREAM_NAME,GEOGR1,GEOGR2,SPA_TYP,SPAH_DS,SPAH_UNIT,DRYH,SPA1H,SPA2H,SPA3H,SPA4H,SPAQ_DS,SPAQ_UNIT,DRYQ,SPA1Q,SPA2Q,SPA3Q,SPA4Q,PLO_STA,HLGP4 ['0-203-1-484000', '484000', 'VD Koryčany', 'Kyjovka', 49.1168265, 17.1890512, 'H', 'vodní stav', 'CM', 9, 80, 100, 120, 171, 'průtok', 'M3_S', 0.0045, 4.766, 8.147, 12.342, 25.1, 27.54, '4-17-01-0680']
+   meta objID,DBC,STATION_NAME,STREAM_NAME,GEOGR1,GEOGR2,SPA_TYP,SPAH_DS,SPAH_UNIT,DRYH,SPA1H,SPA2H,SPA3H,SPA4H,SPAQ_DS,SPAQ_UNIT,DRYQ,SPA1Q,SPA2Q,SPA3Q,SPA4Q,PLO_STA,HLGP4 ['0-203-1-483100', '483100', 'Koryčany nad nádrží', 'Kyjovka', 49.1074136, 17.2222021, 'H', 'vodní stav', 'CM', 8, None, None, None, 212, 'průtok', 'M3_S', 0.0088, None, None, None, 28, 19.42, '4-17-01-0680']
+hotovo

@@ -1,0 +1,307 @@
+Popis základních
+klimatologických dat
+na serveru
+opendata.chmi.cz
+Obsah
+Klimatologická data ......................................................................................... 3
+
+        Adresář now ............................................................................................................... 3
+
+        Adresář recent ............................................................................................................ 4
+
+        Adresář historical........................................................................................................ 6
+
+        Adresář historical_csv ................................................................................................ 8
+
+
+
+
+                                                                                                                                        2
+Klimatologická data
+V červnu 2024 bylo spuštěno nahrávání vybraných dat naměřených v síti meteorologických
+pozemních stanic ve správě ČHMÚ a dalších spolupracujících subjektů na server
+opendata.chmi.cz. Data jsou nahrávána ve formátu JSON do tří základních adresářů (now,
+recent a historical). S ohledem na požadavky široké veřejnosti, byla data v denním, měsíčním
+a ročním kroku zveřejněna po prvcích také ve formátu CSV. Tato data nahrazují data
+zveřejněna dle zákona 123/1998 Sb. na portále ČHMÚ.
+
+Adresář now
+V adresáři /now/data/ jsou dostupná data za aktuální den, soubory starší jak 24 hodin jsou
+automaticky smazány. V adresáři /now/data/ jsou desetiminutová (10m) a hodinová data (1h)
+data pro všechny automatizované meteorologické stanice.
+
+   -      konvence názvu souborů
+               10m-{WSI}-{YYYYMMDD}.json
+               1h-{WSI}-{YYYYMMDD}.json
+
+           kde WSI je indikativ stanice (WIGOS Station Identifier), YYYYMMDD je datum
+
+   -      seznam prvků
+               10minutová data – T, TMA, TMI, TPM, H, P, SSV10M, SRA10M, SCEa,
+                SVHa, D, F, Dprum, Fprum, Dmax, Fmax, Casmax, T05, T10, T20, T50,
+                T100, REUV10/25 , RGLB10
+               1hodinová data – SSV1H, SRA1H, E, RDIF1H
+               1hodinová data (zpráva SYNOP) – N, Td, VV, P, P_hm, Gph925,
+                Gph850, ppp, ww, W1, W2, wa, Wa1, Wa2
+               1hodinová data (ceilometr) - C-C1Av, C-C1Co, C-C1Mn, C-C1Mx,
+                C-C2Av, C-C2Co, C-C2Mn, C-C2Mx, C-C3Av, C-C3Co, C-C3Mn,
+                C-C3Mx, C-H1Av, C-H1Co, C-H1Mn, C-H1Mx, C-H2Av, C-H2Co,
+                C-H2Mn, C-H2Mx, C-H3Av, C-H3Co, C-H3Mn, C-H3Mx, C-I1Co,
+                C-I1Md, C-I1Su, C-I2Co, C-I2Md, C-I2Su, C-I3Co, C-I3Md, C-I3Su,
+                C-MLAv, C-MLI
+
+Datové soubory jsou vytvářeny 1x za hodinu, postupně od půlnoci je soubor rozšiřován a na
+serveru opendata.chmi.cz přepisován. Na konci dne by měl každý 10m soubor obsahovat
+1440 řádků pro každý měřený prvek a 1h soubor 24 řádků pro každý prvek.
+
+Příklad uložení souboru pro jednu stanici na serveru opendata.chmi.cz:
+
+
+
+
+                                                                                               3
+V čase 00:02 byl 18. 6. 2024 vytvořen poslední soubor za předchozí den (17. 6. 2024) a data pro 18. 6.
+2024 jsou postupně každou hodinu přepisována, v příkladu s časem 05:02 obsahují data od 00:00 do
+04:50. Časy jsou v UTC.
+
+Adresář /now/ dále obsahuje podadresář /now/metadata/ obsahující popisné (metadatové)
+záznamy k jednotlivým stanicím a datovým záznamům. Soubory starší 10 dní jsou i zde
+automaticky smazány.
+
+    -       konvence názvu souborů
+                 meta1-{YYYYMMDD}.json
+                 meta2-{YYYYMMDD}.json
+                 meta3-{YYYYMMDD}.json
+                 meta4-{YYYYMMDD}.json
+
+Soubor meta1 obsahuje základní popisné informace pro jednotlivé stanice. Seznam je
+připraven tak, aby obsahoval všechny stanice, které mají v daný den definováno měření
+některého z povinných prvků. V souboru meta2 je pro každou stanici uveden seznam
+měřených prvků zasílaných na server opendata.chmi.cz. Soubor meta3 obsahuje pro povinné
+prvky možné výskyty příznaků (FLAG) bez ohledu na to, zda se v daném období v datech
+vyskytují nebo ne a soubor meta4 vysvětluje význam kódů kvality, které jsou v datovém
+souboru přiřazeny každé hodnotě.
+
+    -       položky v souboru meta1
+                  WSI, GH_ID, FULL_NAME, GEOGR1, GEOGR2, ELEVATION
+    -       položky v souboru meta2
+                  WSI, EG_EL_ABBREVIATION, NAME, UN_DESCRIPTION, HEIGHT
+    -       položky v souboru meta3
+                  EL_ABBREVIATION, FLAG, DESCRIPTION
+    -       položky v souboru meta4
+                  FLAG2 , DESCRIPTION
+
+Adresář recent
+V adresáři /recent/data/ jsou data rozdělena do podadresářů /10min/, /1hour/, /daily/,
+/monthly/, /pentadic/ a /phenomena/.
+
+V adresářích /recent/data/10min jsou desetiminutová (10m) a /recent/data/1hour hodinová
+(1h) data pro všechny automatizované meteorologické stanice. Soubory 10m a 1h v adresářích
+/10min/ a /1hour/ jsou vytvořeny stejně jako soubory v adresáři /now/data/ vždy 2x denně
+zejména kvůli aktualizaci dat po kontrole a případných opravách.
+
+V adresáři /recent/data/daily jsou denní data jak pro automatizované, tak pro manuální
+srážkoměrné meteorologické stanice. Soubory denních dat (dly) v adresáři /daily/ jsou
+vytvářeny po skončení dne a obsahují data postupně od prvního do předchozího dne v měsíci.
+
+    -       konvence názvu souborů
+
+
+                                                                                                         4
+                dly-{WSI}-{YYYYMM}.json
+    -      seznam prvků
+                dly - TMA, TMI, TMInoc, TPM, T, SSV, SRA, API30, SNO, SCE,
+                 SCEdif, SVH, D10, F, Fmax, Dmax, Casmax, H, E, P, T05, T10, T20, T50,
+                 T100, VY, RDIF_D, RGLB_D, RDIR_D, REUV_D, O3
+
+V adresáři /recent/data/monthly jsou dostupné měsíční klimatologické charakteristiky
+(průměr, úhrn, maximum, minimum, počet charakteristických dní) odvozeny z denních
+klimatologických charakteristik pro aktuální rok
+
+-       konvence názvu souborů
+
+              mly-{WSI}.json
+
+-       seznam prvků
+
+              TMA, TMI, TMInoc, TPM, T, SSV, SRA, SNO, SCE, SVH, F, Fmax, H, E,
+               SD, O, P, P_hm, T05, T10, T20, T50, T100, RDIF_D, RGLB_D, RDIR_D,
+               REUV_D
+
+Měsíční data jsou pro ukončený měsíc nahrány začátkem měsíce následujícího. Kvůli
+aktualizaci dat po kontrole a případných opravách, jsou data přehrány s dvouměsíčním
+odstupem.
+
+    V adresáři /recent/data/pentadic jsou dostupná 5denní klimatologické charakteristiky
+    (průměr, úhrn, maximum a minimum) odvozeny z denních klimatologických
+    charakteristik
+
+Data za pentády jsou pro ukončený měsíc nahrány začátkem měsíce následujícího. Kvůli
+aktualizaci dat po kontrole a případných opravách, jsou data přehrány s dvouměsíčním
+odstupem.
+
+    -   konvence názvu souborů
+            5d-{WSI}.json
+    -      seznam prvků
+            T, TMA, TMI, SRA
+
+V adresáři /recent/data/phenomena jsou dostupné pozorované jevy. Seznam jevů je uveden
+v metadatovém souboru meta2.
+
+    -   konvence názvu souborů
+            ph-{WSI}.json
+    -      seznam jevů
+           BO, DE, JI, KR, LE, ML, MS, NA, RO, SN, SV
+
+
+
+
+                                                                                           5
+Soubory výskytu jevů v adresáři /phenomena/ jsou vytvářeny po skončení dne a obsahují data
+postupně od prvního do předchozího dne v měsíci, pokud byl v daný den zaznamenán některý
+z uvedených jevů,
+
+Každý adresář pro 10m, 1h, dly, daily, monthly, pentadic a phenomena data v části /recent/
+obsahuje i data za průběžný rok v měsíčních adresářích (/01/, /02/, …, /12/). Soubory pro 10m
+a 1h data jsou proti předchozím částem připraveny jako měsíční soubory, nejsou děleny po
+dnech. Tyto měsíční soubory jsou nahrávány vždy 3. den v měsíci. Aby byla zajištěna
+aktuálnost a úplnost těchto dat, tak jsou vždy smazány a znovu připraveny soubory za dva
+předchozí měsíce.
+
+Adresář historical
+V adresáři /historical/data/ jsou data rozdělena do podadresářů /10min/, /1hour/,/daily/,
+/monthly/, /pentadic/, /yearly/ a /phenomena/. Adresář /historical/metadata/ obsahuje popisné
+(metadatové) záznamy k jednotlivým stanicím a datovým záznamům (viz. adresář /now/).
+
+Soubory jsou aktualizovány jen jednou ročně po skončení aktuálního roku do konce února
+roku následujícího.
+
+V adresářích /historical/data/10min jsou desetiminutová (10m) a /historical/data/1hour
+hodinová (1h) data pro všechny automatizované meteorologické stanice od roku 2018.
+
+   -       konvence názvu souborů
+                10m-{WSI}-{YYYYMMDD}.json
+                1h-{WSI}-{YYYYMMDD}.json
+
+           kde WSI je indikativ stanice (WIGOS Station Identifier), YYYYMMDD je datum
+
+   -       seznam prvků
+                10minutová data – T, TMA, TMI, TPM, H, P, SSV10M, SRA10M, SCEa,
+                 SVHa, D, F, Dprum, Fprum, Dmax, Fmax, Casmax, T05, T10, T20, T50,
+                 T100, REUV10/25 , RGLB10
+                1hodinová data – SSV1H, SRA1H, E, RDIF1H
+                1hodinová data (zpráva SYNOP) – N, Td, VV, P, P_hm, Gph925,
+                 Gph850, ppp, ww, W1, W2, wa, Wa1, Wa2
+                1hodinová data (ceilometr) - C-C1Av, C-C1Co, C-C1Mn, C-C1Mx,
+                 C-C2Av, C-C2Co, C-C2Mn, C-C2Mx, C-C3Av, C-C3Co, C-C3Mn,
+                 C-C3Mx, C-H1Av, C-H1Co, C-H1Mn, C-H1Mx, C-H2Av, C-H2Co,
+                 C-H2Mn, C-H2Mx, C-H3Av, C-H3Co, C-H3Mn, C-H3Mx, C-I1Co,
+                 C-I1Md, C-I1Su, C-I2Co, C-I2Md, C-I2Su, C-I3Co, C-I3Md, C-I3Su,
+                 C-MLAv, C-MLI
+
+    Denní a termínová data ve staničních souborech (všechny prvky za celé období v jednom
+    souboru) jsou dostupná v adresáři /historical/data/daily/
+
+    -   konvence názvu souborů
+
+                                                                                                6
+           dly-{WSI}.json
+   -      seznam prvků
+           TMA,TMI, TMInoc, TPM, T, SSV, SRA, API30, SNO, SCE, SCEdif, SVH,
+              D10, F, Fmax, Dmax, Casmax, H, E, P, T05, T10, T20, T50, T100, VY, O3,
+              RDIF_D, RGLB_D, RDIR_D, RLWD_D, REUV_D
+
+   5denní klimatologické charakteristiky (průměr, úhrn, maximum a minimum) odvozeny
+   z denních klimatologických charakteristik jsou dostupná v adresáři
+   /historical/data/pentadic/
+
+   -   konvence názvu souborů
+           5d-{WSI}.json
+   -      seznam prvků
+           T, TMA, TMI, SRA
+
+   Měsíční klimatologické charakteristiky (průměr, úhrn, maximum, minimum, počet
+   charakteristických dní) odvozeny z denních klimatologických charakteristik jsou
+   dostupná v adresáři /historical/data//monthly/
+
+   -   konvence názvu souborů
+           mly-{WSI}.json
+   -      seznam prvků
+           TMA, TMI, TMInoc, TPM, T, SSV, SRA, SNO, SCE, SVH, F, Fmax, H, E,
+              SD, O, P, P_hm, T05, T10, T20, T50, T100, RDIF_D, RGLB_D, RDIR_D,
+              REUV_D
+
+   Roční klimatologické charakteristiky (průměr, úhrn, maximum, minimum, počet
+   charakteristických dní) jsou dostupná v adresáři /historical/data/yearly/
+
+   -   konvence názvu souborů
+           yrs-{WSI}.json
+   -      seznam prvků
+           TMA, TMI, TMInoc, TPM, T, SSV, SRA, SNO, SCE, SVH, F, Fmax, H, E,
+              SD, O, P, P_hm, T05, T10, T20, T50, T100, RDIF_D, RGLB_D, RDIR_D,
+              REUV_D
+
+V datových souborech je zvoleno řazení podle prvku, času měření a data měření, které je při
+výběrech z databáze nejrychlejší.
+
+   V adresáři /historical/data/phenomena/ jsou dostupné pozorované jevy.
+
+   -   konvence názvu souborů
+           ph-{WSI}.json
+   -      seznam jevů
+          BO, DE, JI, KR, LE, ML, MS, NA, RO, SN, SV
+
+
+
+
+                                                                                              7
+Adresář historical_csv
+V adresáři /historical_csv/data/ jsou data rozdělena do podadresářů /10min/, /1hour/,/daily/,
+/monthly/, /pentadic/, /yearly/ a /phenomena/. Adresář /historical/metadata/ obsahuje popisné
+(metadatové) záznamy k jednotlivým stanicím a datovým záznamům ve formátu csv (viz.
+adresář /now/).
+
+Soubory jsou aktualizovány jen jednou ročně po skončení aktuálního roku do konce února
+roku následujícího.
+
+V adresářích /historical_csv/data/10min jsou desetiminutová (10m) a
+/historical_csv/data/1hour hodinová (1h) data pro všechny automatizované meteorologické
+stanice od roku 2018.
+
+   -       konvence názvu souborů
+                10m-{WSI}-{PRVEK}.csv
+                1h-{WSI}-{PRVEK}.csv
+
+           kde WSI je indikativ stanice (WIGOS Station Identifier),
+
+    Denní a termínová data ve staničních souborech v adresářích po charakteristikách za celé
+    období měření dané stanice jsou dostupná v adresáři /daily/.
+
+    -   konvence názvu souborů
+            dly-{WSI}-{PRVEK}.csv
+
+    Měsíční klimatologické charakteristiky (průměr, úhrn, maximum, minimum, počet
+    charakteristických dní) odvozeny z denních klimatologických charakteristik jsou
+    dostupná v adresáři /monthly/ v adresářích po charakteristikách
+
+    -   konvence názvu souborů
+            mly-{WSI}-{PRVEK}.csv
+
+    Roční klimatologické charakteristiky (průměr, úhrn, maximum, minimum, počet
+    charakteristických dní) jsou dostupná v adresáři /yearly/ v adresářích po
+    charakteristikách
+
+    -   konvence názvu souborů
+            yrs-{WSI}-{PRVEK}.csv
+
+    V adresáři /historical_csv/data/phenomena/ jsou dostupné pozorované jevy.
+
+    -   konvence názvu souborů
+            ph-{WSI}.csv
+    -      seznam jevů
+           BO, DE, JI, KR, LE, ML, MS, NA, RO, SN, SV
+
+
+
+                                                                                                8
+

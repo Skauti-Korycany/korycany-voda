@@ -30,8 +30,18 @@ Aktualizováno: 15. 11. 2026. Jen to, co je potřeba pro další vývoj. Archite
 - "Jak to číst": odkud jsou data (stanice), průměr, normál (WMO ✅), klouzavý průměr, trend.
 - Můj pozemek: svody v poměru 100/75/50/25/0 % do kanalizace (`i.kan`, `kanP()`); bez S02 mají opatření napojená na střechu jen část střechy, která už teče na pozemek. V hash `o=` číslo, staré `kanal`/`pozemek` se převedou.
 
+## Hotovo naposledy (15. 11., měřené prameny a Kyjovka)
+
+- `tools/15_pramen_kyjovka.py` + workflow `hydro.yml` (Actions): řady ČHMÚ do `data/hydro/*.csv` - vydatnost pramenů Koryčany PB0425 (1980-), Čeložnice, Lovčice (1959-), Staré Hutě; Kyjovka nad nádrží 483100 (denní průtok 1967-, stav 1989-) a pod přehradou 484000 (1964-), měsíční maxima, měrné křivky, N-leté průtoky.
+- `tools/build_hydro.py` -> `data/hydro_rocni.json` (roční průměry z úplných let, trend, p). Výsledek: pramen Koryčany 0,27 -> 0,10 l/s (1981-1990 proti 2015-2024, p < 0,001), všechny 4 prameny klesají průkazně; Kyjovka nad nádrží 100 -> 59 l/s (1968-1977 proti 2016-2025, p 0,027); pod přehradou bez trendu (řízený odtok).
+- Jak bylo: nová kap. 3 "Prameny slábnou a potoku ubývá" (2 grafy), čtvrté klíčové číslo, nadpis "Prší stejně jako před sto lety. Vody v krajině přesto ubývá." (teď doložený měřením). Kapitoly přečíslovány (horko 4, liják 5, letošek 6, výzva 7).
+- Inventura dalších zdrojů (`tools/inventura_zdroju.py`, `docs/inventura/`, `docs/VRSTVY.md` kap. 5a).
+
 ## Další kroky (pořadí)
 
+0a. Validace s daty Kyjovky nad nádrží (denní průtoky a měsíční maxima jsou v `data/hydro/`): porovnat epizody s SCS-CN pro povodí nad nádrží; pozor, toto povodí leží mimo území modelu (nad hrází).
+0b. ET0 Penman-Monteith FAO-56 s větrem a vlhkostí Nemochovic a slunečním svitem Starého Města (od 2007) / Kroměříže (od 1953), srovnat s Hargreavesem a s výparoměrem Kroměříž; Open-Meteo 1940+ jen pro srovnání (model).
+0c. Prameny: zjistit u ČHMÚ, zda se u PB0425 neměnilo jímání nebo způsob měření (přechod týdenní -> denní 2022); dohledat podmínky užití otevřených dat hydrologie. V březnu 2027 znovu `hydro.yml` + `build_hydro.py`.
 0. Ze zpětné vazby zbývá: režim Stručně / Podrobně; widgety pro web města (iframe, až po vyjasnění podmínek dat ČHMÚ a PMO); výpar Penman-Monteith vedle Hargreavese a měřená půdní vlhkost (Intersucho / čidlo u školy).
 1. Zkouška s lidmi: Můj pozemek (krok 1, upozornění na přívalovou vodu, krok 4), Celé území kap. 3 a mapa eroze (čitelnost nad podkladem ZTM), hráz v0.3.
 2. "Co dělat při vedru" (H01, H02): chladná místa, pitná voda, plán města - údaje ověřit online nebo dodá uživatel.
@@ -72,6 +82,7 @@ Výpočty
 - Počet RD = RÚIAN "rodinný dům" + "bydlení" = 1 076.
 
 Rozhraní
+- "Vody ubývá" se opírá o měření pramenů a Kyjovky (ČHMÚ), ne o výpočet výparu; příčinu měření neurčuje a text to říká.
 - Jak bylo vychází z dlouhých řad a trendů, ne z jednoho roku; letošek je jen doplněk (kap. 5). Nadpis pevný. Tvrdit jen to, co data ukazují: srážky za rok se nemění (trend p 0,59), teplota roste (+0,5 °C / 10 let, p 0,01), výpar a tropické dny jen náznak (p 0,14), velkých lijáků v místní řadě nepřibývá (p 0,69) - častější extrémy srážek uvádět jen jako výhled se zdrojem (CzechGlobe, IPCC).
 - Každé číslo "za rok" nese "v průměru" a období. Svody v poměru po 25 %.
 - Výchozí déšť: Můj pozemek 10 mm, Celé území 32 mm.

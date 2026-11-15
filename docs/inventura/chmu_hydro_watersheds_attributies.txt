@@ -1,0 +1,138 @@
+Rozvodnice základních ploch povodí
+Číslo hydrologického pořadí (ČHP)
+Číslo hydrologického pořadí (ČHP) je základní a jedinečný hydrologický identifikátor daného povodí.
+Původní osmimístné číslo bylo přiřazeno povodím vyčleněných vodních toků s vlastním vyvinutým
+korytem a plochou povodí větší než 5 km2 v rámci zpracování Hydrologických poměrů ČSSR v roce
+1965. V současné době obsahuje ČHP celkem 14 pozic: a-bb-cc-dddd-e-ff-gg. Význam jednotlivých
+číslic je uveden v tabulce 1.
+
+Číselný identifikátor (ČHP), geometrické hranice polygonu a velikost plochy povodí je povinen Český
+hydrometeorologický ústav (ČHMÚ) evidovat na základě §2 vyhlášky 252/2013 Sb. „o rozsahu údajů v
+evidencích stavu povrchových a podzemních vod a o způsobu zpracování, ukládání a předávání těchto
+údajů do informačních systémů veřejné správy“.
+
+Tabulka 1 Význam jednotlivých číslic ČHP
+
+ a            Hlavní povodí (1 – Labe, 2 – Odra, 4 – Dunaj)
+
+ bb-cc        Hydrologické pořadí podrobnějšího členění hlavních povodí
+
+ dddd         Hydrologické pořadí dílčích povodí k soutokům
+
+ e            Dělení dílčího povodí profilem hráze vodního díla
+
+ ff           Dělení dílčího povodí v místě mimoúrovňového křížení
+
+ gg           Dělení dílčího povodí v místě profilu vodoměrné stanice
+
+
+Rozvodnice povodí 4. řádu plus
+Rozvodnice povodí 4. řádu rozšířené o rozvodnice k významným vodním dílům, mimoúrovňovým
+křížením a k vodoměrným stanicím.
+
+ Název pole       Alias                   Význam atributového pole
+
+ chp_14_s         Číslo povodí            Číslo hydrologického pořadí povodí ve formátu a-bb-cc-dddd-e-ff-gg
+
+ chp_14_s_u       Pramenné povodí         Číslo hydrologického pořadí pramenného povodí příslušného vodního
+                                          toku
+ chp_14_s_d       Povodí recipientu       Číslo hydrologického pořadí následujícího povodí (recipientu)
+                                              9-99-99-9999-9-99-99: tok má recipient v zahraničí
+                                              8-88-88-8888-8-88-88: povodí nemá recipient (bezodtoká oblast)
+ a_km2            Plocha povodí v km2     Plocha dílčího povodí odvozená v plochojevné projekci 3035 -
+                                          ETRS89/LAEA Europe
+ asum_km2         Celková plocha povodí   Součet ploch dílčích povodí od pramene do závěrového profilu daného
+                  v km2                   povodí příslušného hlavního toku (celková plocha povodí od pramene)
+ aa_km2           Plocha povodí           Plocha dílčího povodí nacházejícího se za hranicemi ČR (plochojevná
+                  v zahraničí v km2       projekce 3035 - ETRS89/LAEA Europe)
+ naz_tok          Název toku              Název hlavního vodního toku v daném povodí dle databáze Geonames
+Název pole   Alias                     Význam atributového pole
+
+naz_tok_2    Název toku                Alternativní název hlavního vodního toku
+             (alternativní)
+tok_id       Identifikátor toku        Identifikátor hlavního vodního toku povodí (dle ZABAGED)
+
+delka_toku   Délka úseku toku v m      Délka úseku hlavního vodního toku v povodí (dle ZABAGED)
+
+vd           Vodní dílo                Název vodního díla, k jehož hrázi je vedená rozvodnice
+dbcn         Číslo vodoměrné stanice   Identifikátor vodoměrné stanice, k jejímuž profilu je vedená rozvodnice
+chp_14       Číslo povodí (num)        Číslo hydrologického pořadí povodí v číselném formátu (bez pomlček)
+chp_14_u     Pramenné povodí (num)     Číslo hydrologického pořadí pramenného povodí příslušného vodního
+                                       toku v číselném formátu (bez pomlček)
+chp_14_d     Povodí recipientu (num)   Číslo hydrologického pořadí následujícího povodí v číselném formátu (bez
+                                       pomlček)
+chp_1        Povodí 1. řádu            Číslo hydrologického pořadí povodí 1. řádu
+chp_2        Povodí 2. řádu            Číslo hydrologického pořadí povodí 2. řádu
+chp_3        Povodí 3. řádu            Číslo hydrologického pořadí povodí 3. řádu
+chp_4        Povodí 4. řádu            Číslo hydrologického pořadí povodí 4. řádu
+pobocka      Pobočka ČHMÚ              Název pobočky ČHMÚ, pod kterou podle územní působnosti spadá dané
+                                       dílčí povodí
+
+
+Rozvodnice povodí 4. řádu
+Název pole   Alias                     Význam atributového pole
+
+chp_4        Povodí 4. řádu            Číslo hydrologického pořadí povodí ve formátu a-bb-cc-dddd
+
+chp_u        Pramenné povodí           Číslo hydrologického pořadí pramenného povodí příslušného vodního
+                                       toku
+chp_d        Povodí recipientu         Číslo hydrologického pořadí následujícího povodí (recipientu)
+                                           9-99-99-9999: tok má recipient v zahraničí
+                                           8-88-88-8888: povodí nemá recipient (bezodtoká oblast)
+naz_tok      Název toku                Název hlavního vodního toku v daném povodí dle databáze Geonames
+
+naz_tok_2    Název toku                Alternativní název hlavního vodního toku
+             (alternativní)
+a_km2        Plocha povodí v km2       Plocha dílčího povodí odvozená v plochojevné projekci 3035 -
+                                       ETRS89/LAEA Europe
+asum_km2     Celková plocha povodí     Součet ploch dílčích povodí od pramene do závěrového profilu daného
+             v km2                     povodí příslušného hlavního toku (celková plocha povodí od pramene)
+aa_km2       Plocha povodí             Plocha dílčího povodí nacházejícího se za hranicemi ČR (plochojevná
+             v zahraničí v km2         projekce 3035 - ETRS89/LAEA Europe)
+
+
+Rozvodnice povodí 3. řádu
+Název pole   Alias                     Význam atributového pole
+
+chp_3        Povodí 3. řádu            Číslo hydrologického pořadí povodí ve formátu a-bb-cc
+
+a_km2        Plocha povodí v km2       Plocha povodí odvozená v plochojevné projekci 3035 - ETRS89/LAEA
+                                       Europe
+ aa_km2         Plocha povodí         Dílčí plocha povodí nacházejícího se za hranicemi ČR (plochojevná
+                v zahraničí v km2     projekce 3035 - ETRS89/LAEA Europe)
+ naz_pov        Název povodí          Slovní název povodí
+
+
+Rozvodnice povodí 2. řádu
+ Název pole     Alias                 Význam atributového pole
+
+ chp_2          Povodí 2. řádu        Číslo hydrologického pořadí povodí ve formátu a-bb
+
+ a_km2          Plocha povodí v km2   Plocha povodí odvozená v plochojevné projekci 3035 - ETRS89/LAEA
+                                      Europe
+ aa_km2         Plocha povodí         Dílčí plocha povodí nacházejícího se za hranicemi ČR (plochojevná
+                v zahraničí v km2     projekce 3035 - ETRS89/LAEA Europe)
+ naz_pov        Název povodí          Slovní název povodí
+
+
+Rozvodnice povodí 1. řádu
+ Název pole     Alias                 Význam atributového pole
+
+ chp_1          Povodí 1. řádu        Číslo hydrologického pořadí povodí ve formátu a
+
+ a_km2          Plocha povodí v km2   Plocha povodí odvozená v plochojevné projekci 3035 - ETRS89/LAEA
+                                      Europe
+ aa_km2         Plocha povodí         Dílčí plocha povodí nacházejícího se za hranicemi ČR (plochojevná
+                v zahraničí v km2     projekce 3035 - ETRS89/LAEA Europe)
+ naz_pov        Název povodí          Slovní název povodí
+
+
+Poznámky
+Plocha povodí je uváděna v kilometrech čtverečních [km2].
+
+Kontakt
+Ing. Radovan Tyl, Ph.D.
+Český hydrometeorologický ústav
+Na Šabatce 2050/17
+143 06 Praha 4 – Komořany
+
