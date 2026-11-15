@@ -1,0 +1,15 @@
+1) prameny - historical
+  groundwater/historical/data/: 227 souborů z 86758
+Traceback (most recent call last):
+  File "/home/runner/work/korycany-voda/korycany-voda/tools/15_pramen_kyjovka.py", line 88, in <module>
+    uloz(stahni("groundwater/historical/data/", seznam(CH + "groundwater/historical/data/"),
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/korycany-voda/korycany-voda/tools/15_pramen_kyjovka.py", line 62, in stahni
+    j = json.loads(b)
+        ^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/json/decoder.py", line 341, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1 column 39 (char 38)
