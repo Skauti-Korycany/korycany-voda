@@ -32,6 +32,7 @@ Aktualizováno: 15. 11. 2026. Jen to, co je potřeba pro další vývoj. Archite
 
 ## Další kroky (pořadí)
 
+0a. Nové zdroje dat (inventura 15. 11., `docs/VRSTVY.md` kap. 5a): (1) pramen ČHMÚ Koryčany PB0425 a vodoměrné stanice Kyjovka nad nádrží / pod přehradou - stáhnout řady, zjistit délku, použít pro "vody ubývá?" a pro validaci; (2) ET0 Penman-Monteith FAO-56 s větrem a vlhkostí Nemochovic a slunečním svitem Starého Města (od 2007) / Kroměříže (od 1953), srovnat s Hargreavesem a s výparoměrem Kroměříž; (3) Open-Meteo jako dlouhá řada 1940+ jen pro srovnání (model).
 0. Ze zpětné vazby zbývá: režim Stručně / Podrobně; widgety pro web města (iframe, až po vyjasnění podmínek dat ČHMÚ a PMO); výpar Penman-Monteith vedle Hargreavese a měřená půdní vlhkost (Intersucho / čidlo u školy).
 1. Zkouška s lidmi: Můj pozemek (krok 1, upozornění na přívalovou vodu, krok 4), Celé území kap. 3 a mapa eroze (čitelnost nad podkladem ZTM), hráz v0.3.
 2. "Co dělat při vedru" (H01, H02): chladná místa, pitná voda, plán města - údaje ověřit online nebo dodá uživatel.

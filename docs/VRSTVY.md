@@ -68,6 +68,30 @@ Seznam služeb ✅ https://cgs.gov.cz/en/maps-and-data/web-services. Podmínky �
 | Hlásné profily (hpps) | ✅ https://hydro.chmi.cz/hpps/pov/objekt/307008 (Koryčany pod přehradou, Kyjovka, kat. A, Povodí Moravy) | ano | stav a průtok | - |
 | Intersucho | https://www.intersucho.cz/ ❌ | - | - | nedohledal jsem |
 
+## 5a. Data pro výpar, sucho a validaci (inventura 15. 11. 2026)
+
+Zjištěno skriptem `tools/inventura_zdroju.py` v GitHub Actions (workflow `inventura-zdroju.yml`), výstupy v `docs/inventura/`. Vše ✅ ověřeno tímto během, pokud není uvedeno jinak. Z prostředí Claude jsou tyto servery blokované, z Actions dostupné.
+
+| Zdroj | Co má | Kde | Licence |
+|---|---|---|---|
+| ČHMÚ Nemochovice (8 km) | denně vítr F, vlhkost H, tlak páry E od 12/2000 (už stahujeme, v ET0 nevyužito) | `historical_csv/data/daily/{wind,humidity}/dly-0-203-0-41503035001-*.csv` | jako ostatní ČHMÚ (kap. 5) |
+| ČHMÚ Staré Město (19 km, 175 m) | sluneční svit SSV od 2007, F, H, E od 1949, teplota půdy od 1999 | WSI 0-203-0-11754 | dtto |
+| ČHMÚ Kroměříž (27 km, 193 m) | SSV od 1953, F, H, E od 1924, teplota půdy od 1961, výpar z výparoměru VY 1968-2015 | WSI 0-203-0-11751 | dtto |
+| ČHMÚ Strážnice (26 km) | SSV od 1925, globální záření RGLB_D od 2024 (stanice v metadatech končí 2026) | WSI 0-203-0-11755 | dtto |
+| ČHMÚ Holešov (37 km), Brno-Tuřany (35 km) | globální záření RGLB_D od 2013, SSV od 1953/1948, výpar VY od 2014/2006 | WSI 0-20000-0-11774, 0-20000-0-11723 | dtto |
+| ČHMÚ Střílky (5 km, 350 m) | SSV, F, H, E jen 1960-1981 (historie) | WSI 0-203-0-11753 | dtto |
+| Oblačnost N | v okruhu 45 km jen Prostějov a Přerov; pro výpar stačí svit nebo záření | - | - |
+| ČHMÚ pramen Koryčany PB0425 | vydatnost pramene (l/s), 2,3 km od středu území, 450 m n. m., měří se i teď | `hydrology/groundwater/{historical,recent,now}/`, soubory `H_0-203-1-PB0425_*`; délku řady ověřit | ČHMÚ |
+| ČHMÚ prameny Čeložnice PB0433, Lovčice PB0411, Staré Hutě PB0415 | vydatnost, 4-10 km | dtto | ČHMÚ |
+| ČHMÚ vodoměrné stanice Kyjovka | Koryčany nad nádrží 483100 (bez SPA), Koryčany pod přehradou 484000 (SPA 80/100/120 cm); denní stavy a průtoky, hodinové, měrné křivky | `hydrology/historical/data/daily/H_0-203-1-483100_DQ_RRRR.json`, `characteristic/data/discharge_rating_curve/` | ČHMÚ; délku řad ověřit |
+| ČHMÚ stav podzemních vod | týdenní kategorie sucha podle SGI po objektech a povodích | `hydrology/product/data/groundwater/` | ČHMÚ |
+| Open-Meteo (reanalýza ERA5 od 1940, ERA5-Land od 1950) | denně `et0_fao_evapotranspiration`, `shortwave_radiation_sum`, `sunshine_duration`, `wind_speed_10m_mean`, `cloud_cover_mean`, `relative_humidity_2m_mean`, `vapour_pressure_deficit_max`, `soil_moisture_*` (4 hloubky); buňka 49,10 N 17,20 E | `archive-api.open-meteo.com/v1/archive` | data CC BY 4.0, bezplatné API jen nekomerčně (vyhledáno, stránku licence nečteno 📄); je to model, ne měření |
+| PVGIS (JRC) | hodinové záření z družice SARAH-3 a z ERA5, 2005-2023 | `re.jrc.ec.europa.eu/api/v5_3/seriescalc` | licence nedohledána; volání z prohlížeče zakázáno, z Actions jde |
+| Intersucho (CzechGlobe) | půdní vlhkost a intenzita sucha po katastrech, model | https://www.intersucho.cz/cs/licence-a-odpovednost/ | **CC BY-NC-ND 4.0**: jen odkaz nebo nezměněný obrázek s uvedením zdroje, žádné přepočty |
+| E-OBS (Copernicus/KNMI) | denní mřížka 0,1°: záření, vítr, vlhkost | - | jen nekomerční výzkum a vzdělávání 📄 (vyhledáno); přes Open-Meteo zbytečné |
+
+Pozn.: ERA5-Land pro tuto buňku vrací jen teplotu, vlhkost a půdní vlhkost; záření, vítr a ET0 bere Open-Meteo z ERA5 (25 km). Půdní vlhkost ERA5 a ERA5-Land se liší (0,14 proti 0,24 m³/m³ ve stejný den), brát jen jako relativní vývoj.
+
 ## 6. ClimRisk
 
 Web ❌. Z druhé ruky: ✅ tisková zpráva AV ČR 2022 (CzechGlobe, 500 m grid, periody 2011-2040 až 2061-2090); ✅ abstrakt EMS2026-518 (ClimRisk.eu, 4 SSP, CMIP6, 0,5 km, "users can download data for any specific location"). WMS nedohledal jsem, licence dat nedohledal jsem. Nutno ověřit ručně v prohlížeči a případně napsat CzechGlobe.
