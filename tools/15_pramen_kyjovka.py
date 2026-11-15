@@ -49,6 +49,22 @@ def tabulky(o, out):
     return out
 
 
+def vse_json(t):
+    """soubor může být jeden JSON, nebo několik JSON dokumentů za sebou"""
+    dec, i, out = json.JSONDecoder(), 0, []
+    while i < len(t):
+        while i < len(t) and t[i] in " \r\n\t,":
+            i += 1
+        if i >= len(t):
+            break
+        try:
+            o, i = dec.raw_decode(t, i)
+            out.append(o)
+        except json.JSONDecodeError:
+            i += 1
+    return out
+
+
 def stahni(slozka, soubory, klic):
     """klic(nazev) -> (objekt, typ) nebo None; vrací {(objekt, typ): (header, radky)}"""
     vyber = [(s, klic(s)) for s in soubory]; vyber = [(s, k) for s, k in vyber if k]
@@ -59,9 +75,9 @@ def stahni(slozka, soubory, klic):
     for (s, k), b in zip(vyber, data):
         if not b:
             continue
-        j = json.loads(b)
         if k not in ukazka:
-            ukazka.add(k); open(os.path.join(OUT, f"ukazka_{k[0]}_{k[1]}_{slozka.strip('/').replace('/', '-')}.json"), "w", encoding="utf-8").write(json.dumps(j, ensure_ascii=False)[:2500])
+            ukazka.add(k); open(os.path.join(OUT, f"ukazka_{k[0]}_{k[1]}_{slozka.strip('/').replace('/', '-')}.txt"), "wb").write(b[:2500])
+        j = vse_json(b.decode("utf-8-sig", "replace"))
         for t in tabulky(j, []):
             h = t["header"] if isinstance(t["header"], str) else ",".join(t["header"])
             res.setdefault(k, (h, []))[1].extend(t["values"])
