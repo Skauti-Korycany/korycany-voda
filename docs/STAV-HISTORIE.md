@@ -2,6 +2,15 @@
 
 Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `docs/STAV.md`. Starší rozhodnutí mohou být nahrazena novějšími (u nahrazených je to v textu poznamenáno).
 
+## 15. 11. 2026 - převod aplikace na Penman-Monteith, pravidlo laik / zvídavý (Claude Code, cloud)
+
+- Rozhodnutí uživatele: převést celý nástroj na přesnější metody; informace dělit na rychlé jasné číslo pro laika a doplňující informace pro zvídavého.
+- Ověření `et0_pm` proti `build_vypar.py`: 702 mm (shoda). Vliv náhrad na roční úhrn: bez svitu 729, bez vlhkosti 720, bez větru 701, bez všeho 765, HS 861 mm.
+- První zkušební běh `pocasi.yml` na větvi spadl na konfliktu v `index.html` (souběh s `normaly.yml`); oprava pořadí kroků (commit dat -> pull --rebase -> build -> commit webu -> push). Druhý běh v pořádku: svit 349 dní ze všech tří stanic, 348 dní `pm`.
+- Recent JSON ČHMÚ: sluneční svit je prvek `SSV`, VTYPE `00:00`, v hodinách.
+- Letošek do 14. 11.: bilance -418 mm (HS dávalo -580 mm), možný výpar 766 mm.
+- Graf bilance: popisek jen u největšího přebytku (kladných let je teď 10, popisky se překrývaly).
+
 ## 15. 11. 2026 - zpřesnění výparu (Claude Code, cloud)
 
 - Zadání: zjistit, zda statistiku výparu zpřesní další zdroje dat. Ano: vítr a vlhkost Nemochovice (už stahované), sluneční svit Staré Město (od 2007, 19 km), Kroměříž, Strážnice, Holešov; měřené záření Holešov a Brno-Tuřany od 2013; výparoměry Kroměříž 1968-2015, Holešov 2014-, Brno 2006-.

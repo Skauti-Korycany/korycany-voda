@@ -25,7 +25,7 @@ Osvětová webová aplikace pro obyvatele Koryčan (okres Kroměříž): reáln�
 
 ## 3. Pozor při práci s repozitářem
 
-- **Bot commituje do `main` 4× denně** (`.github/workflows/pocasi.yml`, zpráva `[bot] počasí YYYY-MM-DD`): mění `data/pocasi/*`, `index.html`, `prototyp/index.html`. Před pushem vždy `git pull --rebase`. Při konfliktu v `index.html` ho neřešit ručně - přegenerovat `python tools/build_dummy.py`.
+- **Bot commituje do `main` 4× denně** (`.github/workflows/pocasi.yml`, zpráva `[bot] počasí YYYY-MM-DD`): mění `data/pocasi/*`, `index.html`, `prototyp/index.html`. Před pushem vždy `git pull --rebase`. Workflow počasí a normálů pushují do větve, ze které běžely, a web generují až po stažení cizích změn; na větvi `claude/**` se dají vyzkoušet (normaly pushem, pocasi ručním spuštěním s `ref`). Při konfliktu v `index.html` ho neřešit ručně - přegenerovat `python tools/build_dummy.py`.
 - **`index.html` a `prototyp/index.html` se nikdy needitují ručně.** Zdroj = `tools/build_dummy.py` (HTML, CSS a JS aplikace jako šablona v Pythonu; vkládá Leaflet, `web/jadro.js` a zúžená data).
 - **`data/opatreni.json` se needituje ručně.** Zdroj = `tools/build_opatreni.py`.
 - Sekce "Doplnění z rešerše dobré praxe" v `docs/KATALOG-Z-S.md`, `KATALOG-U-P.md`, `KATALOG-L-LES-T-C.md` (mezi značkami RESERSE-START/END) generuje `tools/build_katalog_md.py`.
@@ -60,7 +60,7 @@ tools/NN_*.py + vyrob_*.bat        datová příprava (kap. 6)
 tools/build_*.py                   generátory JSON/MD/HTML
 tools/aktualizuj_z_githubu.bat     aktualizace klonu na PC z GitHubu (uživatel poklepe)
 tools/vendor/leaflet-1.9.4         Leaflet (BSD-2), vkládá se do HTML
-.github/workflows/                 pocasi.yml (4× denně), normaly.yml, stahni-vstupy.yml
+.github/workflows/                 pocasi.yml (4× denně), normaly.yml, hydro.yml, vypar.yml, inventura-zdroju.yml, stahni-vstupy.yml
 data/                              lehké odvozené vrstvy a JSON (v gitu)
 data/web/                          rastrový balíček pro prohlížeč (5,4 MB, PNG překomprimované oxipng bez změny typu barev)
 data/pocasi/                       denní data počasí (bot)
@@ -123,8 +123,8 @@ Pořadí a závislosti. Každý skript má `.bat` spouštěč (instaluje knihovn
 | `09_balicek_web.py` | rastry -> `data/web/*.png` + `rastr.json` (přidá `usle_*`, `smer_v`, když existují tify) |
 | `10_parcely.py` | INSPIRE CP -> `parcely.geojson` |
 | `11_usle.py` | R × K × LS × C × P -> `usle_info.json` |
-| `12_pocasi.py` | (Actions) ČHMÚ recent + scrape PMO/Nemotice -> `pocasi/denni.json` (P, T, Tmin, Tmax, H, F, ET0, bil, zdroj_P) |
-| `13_normaly_pocasi.py` | (Actions `normaly.yml`) historical_csv -> `pocasi/normaly.json`, doplňování mezer z okolních stanic; **v březnu 2027 spustit znovu** (ročník 2026) |
+| `12_pocasi.py` | (Actions) ČHMÚ recent + scrape PMO/Nemotice + sluneční svit -> `pocasi/denni.json` (P, T, Tmin, Tmax, H, F, S, ET0 Penman-Monteith, zdroj_ET0, bil, zdroj_P); ET0 se při každém běhu přepočítá pro všechny dny z uložených vstupů |
+| `13_normaly_pocasi.py` | (Actions `normaly.yml`) historical_csv (vč. slunečního svitu 4 stanic) -> `pocasi/normaly.json` (ET0 Penman-Monteith, `ET0_HS` pro srovnání), doplňování mezer z okolních stanic; **v březnu 2027 spustit znovu** (ročník 2026) |
 | `14_toky_vypaleni.py` | toky ČÚZK vypálené -2 m do DMR -> `smer_vypaleny.tif`, `data/web/toky.json` |
 | `15_pramen_kyjovka.py` (Actions `hydro.yml`) -> `build_hydro.py` | ČHMÚ hydrologie: prameny a Kyjovka -> `data/hydro/*.csv` -> `hydro_rocni.json` (Jak bylo kap. 3); pak `build_dummy.py` |
 | `16_vypar_data.py` (Actions `vypar.yml`) -> `build_vypar.py` | ČHMÚ svit, vítr, vlhkost, záření, výparoměry + Open-Meteo -> `data/vypar/*.csv` -> `vypar_rocni.json` (ET0 Penman-Monteith proti Hargreaves, kontroly); pak `build_dummy.py` |
@@ -151,7 +151,7 @@ API `Jadro.*` (podrobně `docs/JADRO.md`):
 - `nadrz(lon, lat, h, opts)`: hráz jen na toku ČÚZK, osa kolmo na tok (max 300 m); povodí >= 0,25 km² = zátopa DMR, menší = tůň v údolnici jako rozsah A·L/3 až A·L/2; vrací `info`, `vodni_dilo` (> 2 m), `tbd`
 - `obrazek`, `obalMasky` (překryvy pro Leaflet)
 
-Metody mimo jádro (v `build_dummy.py`): zeleň pozemku SCS-CN podle HSP (bez sklonové úpravy - rozhodnuto), roční odtok ze zeleně z histogramu denních úhrnů 1991-2019, střechy a zpevněné plochy součinitel ČSN s počáteční ztrátou 1 mm, USLE scénáře (P06/P05 C 0,01, P04 C 0,1, P01 P 0,65/0,9), ET₀ Hargreaves-Samani (FAO-56 rov. 52).
+Metody mimo jádro (v `build_dummy.py`): zeleň pozemku SCS-CN podle HSP (bez sklonové úpravy - rozhodnuto), roční odtok ze zeleně z histogramu denních úhrnů 1991-2019, střechy a zpevněné plochy součinitel ČSN s počáteční ztrátou 1 mm, USLE scénáře (P06/P05 C 0,01, P04 C 0,1, P01 P 0,65/0,9), ET₀ Penman-Monteith FAO-56 (`et0_pm` v `12_pocasi.py`: teplota, vlhkost, vítr Nemochovice, sluneční svit Staré Město / Kroměříž / Holešov; bez svitu záření z rozpětí teplot). Hargreaves-Samani (`et0_hs`) zůstává jen pro srovnání, pro Koryčany nadhodnocuje o ~23 %.
 
 Kontrolní hodnoty (musí sedět s Pythonem): území CN 67,4, P40 74 205 m³ (06_cn.py 74 206), Stříbrník CN 60,1, 4,23 km²; mapa eroze C 0,2 10,7 t/ha a 46 % nad 9 t/ha (`usle_info.json` 10,5 a 45 %, rozdíl = R průměr místo rastru). Spustit `node web/test_jadro.js` (potřebuje `pngjs`), musí vypsat VŠE OK.
 
