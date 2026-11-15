@@ -107,7 +107,17 @@ if m2:
             prvky.setdefault(w, []).append({k: v for k, v in r.items() if k != "WSI"})
     zapis("chmu_meta2_vzorek.txt", "\n".join(t.splitlines()[:15]))
 vyst = [dict(wsi=w, **s, prvky=prvky.get(w, [])) for w, s in sorted(blizke.items(), key=lambda x: x[1]["km"])]
-json.dump(vyst, open(os.path.join(OUT, "chmu_stanice_prvky.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+# kompaktně: denní prvky a jejich období u každé stanice
+kompakt = []
+for s_ in vyst:
+    o = {}
+    for p_ in s_["prvky"]:
+        if p_.get("OBS_TYPE") != "DLY":
+            continue
+        e = p_["EG_EL_ABBREVIATION"]; a_, b_ = p_["BEGIN_DATE"][:4], p_["END_DATE"][:4]
+        o[e] = [min(a_, o[e][0]) if e in o else a_, max(b_, o[e][1]) if e in o else b_]
+    kompakt.append({k: v for k, v in s_.items() if k != "prvky"} | {"denni": {e: f"{x[0]}-{x[1]}" for e, x in sorted(o.items())}})
+json.dump(kompakt, open(os.path.join(OUT, "chmu_stanice_prvky.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 # přehled: které prvky mají aktivní stanice
 for s in vyst:
     zk = sorted({str(next((v for k, v in p.items() if "ABBR" in k.upper() or k.upper() == "ELEMENT"), "?")) for p in s["prvky"]})
@@ -151,4 +161,54 @@ if b:
     l = sorted(set(re.findall(r'href="([^"]+)"', t)))
     zapis("intersucho_odkazy.txt", "\n".join(l))
     print("   odkazy s daty/podminkami:", [x for x in l if re.search(r"podmin|licen|data|api|wms|stazen|download|o-projektu|kontakt", x, re.I)][:40], flush=True)
+for cesta in ("/cs/licence-a-odpovednost/", "/cs/o-projektu/"):
+    b = get("https://www.intersucho.cz" + cesta)
+    if b:
+        t = re.sub(r"(?s)<(script|style).*?</\1>", " ", b.decode("utf-8", "replace")); t = re.sub(r"<[^>]+>", " ", t); t = re.sub(r"\s+", " ", t)
+        zapis("intersucho" + cesta.replace("/", "_") + ".txt", t[:12000])
+
+# ---------------------------------------------------------------- 6. ČHMÚ hydrologie: objekty v okolí (vrty, prameny, vodoměrné stanice)
+print("6) CHMU hydro objekty do 30 km", flush=True)
+
+
+def tabulky(o, out):
+    if isinstance(o, dict):
+        if "header" in o and "values" in o:
+            out.append(o)
+        for v in o.values():
+            tabulky(v, out)
+    elif isinstance(o, list):
+        for v in o[:50]:
+            if isinstance(v, (dict, list)):
+                tabulky(v, out)
+    return out
+
+
+for nazev, url in (("podzemni_historical", CH + "/hydrology/groundwater/historical/metadata/meta1.json"), ("podzemni_now", CH + "/hydrology/groundwater/now/metadata/meta1.json"),
+                   ("povrchove_now", CH + "/hydrology/now/metadata/meta1.json"), ("podzemni_historical_meta2", CH + "/hydrology/groundwater/historical/metadata/meta2.json")):
+    b = get(url, 300)
+    if not b:
+        continue
+    try:
+        j = json.loads(b)
+    except Exception as e:  # noqa
+        print("  neni JSON", nazev, e); zapis(f"hydro_{nazev}_zacatek.txt", b[:3000].decode("utf-8", "replace")); continue
+    tt = tabulky(j, [])
+    print("  ", nazev, "tabulek:", len(tt), "klice:", list(j)[:8] if isinstance(j, dict) else type(j), flush=True)
+    if not tt:
+        zapis(f"hydro_{nazev}_zacatek.txt", json.dumps(j, ensure_ascii=False)[:3000]); continue
+    for t in tt[:2]:
+        h = t["header"].split(",") if isinstance(t["header"], str) else list(t["header"])
+        print("   sloupce:", h, "radku:", len(t["values"]), flush=True)
+        ix = [i for i, c in enumerate(h) if re.search(r"GEOGR|LAT|LON|^X$|^Y$", c, re.I)]
+        vyber = []
+        for r in t["values"]:
+            cis = [r[i] for i in ix if isinstance(r[i], (int, float))]
+            la = next((c for c in cis if 48 < c < 51.5), None); lo = next((c for c in cis if 12 < c < 19), None)
+            if la and lo and km(LON, LAT, lo, la) <= 30:
+                vyber.append([round(km(LON, LAT, lo, la), 1)] + r)
+        vyber.sort(key=lambda r: r[0])
+        zapis(f"hydro_{nazev}_blizke.json", json.dumps({"sloupce": ["km"] + h, "radky": vyber if ix else t["values"][:5]}, ensure_ascii=False, indent=0))
+        for r in vyber[:25]:
+            print("    ", r, flush=True)
 print("hotovo", flush=True)
