@@ -127,6 +127,7 @@ Pořadí a závislosti. Každý skript má `.bat` spouštěč (instaluje knihovn
 | `13_normaly_pocasi.py` | (Actions `normaly.yml`) historical_csv -> `pocasi/normaly.json`, doplňování mezer z okolních stanic; **v březnu 2027 spustit znovu** (ročník 2026) |
 | `14_toky_vypaleni.py` | toky ČÚZK vypálené -2 m do DMR -> `smer_vypaleny.tif`, `data/web/toky.json` |
 | `15_pramen_kyjovka.py` (Actions `hydro.yml`) -> `build_hydro.py` | ČHMÚ hydrologie: prameny a Kyjovka -> `data/hydro/*.csv` -> `hydro_rocni.json` (Jak bylo kap. 3); pak `build_dummy.py` |
+| `16_vypar_data.py` (Actions `vypar.yml`) -> `build_vypar.py` | ČHMÚ svit, vítr, vlhkost, záření, výparoměry + Open-Meteo -> `data/vypar/*.csv` -> `vypar_rocni.json` (ET0 Penman-Monteith proti Hargreaves, kontroly); pak `build_dummy.py` |
 | `build_kachnik.py` | VOX + hodinové srážky -> `kachnik_2026.json` |
 | `build_opatreni.py` -> `build_katalog_md.py` -> `build_dummy.py` | katalog -> JSON -> MD -> HTML |
 | `stahni_vstupy.py` (Actions `stahni-vstupy.yml`, větev `vstupy`), `stahni_zdroje.py` | stahování surovin a archivu podkladů (mimo git) |
