@@ -23,13 +23,16 @@ jobs:
           python-version: "3.12"
       - name: Stazeni a vypocet
         run: python tools/12_pocasi.py --mesicu "${{ github.event.inputs.mesicu || '3' }}"
-      - name: Pregenerovat index.html
-        run: python tools/build_dummy.py
       - name: Commit
+        # nejdriv data, pak stazeni cizich zmen, az potom vygenerovani webu: index.html se generuje vzdy z aktualniho stavu,
+        # takze se dva behy (nebo beh a rucni push) nepotkaji v konfliktu na generovanem souboru
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/pocasi index.html prototyp/index.html
+          git add data/pocasi
           git commit -m "[bot] počasí $(date -u +%Y-%m-%d)" || { echo "nic noveho"; exit 0; }
           git pull --rebase -q origin "${GITHUB_REF_NAME}"
+          python tools/build_dummy.py
+          git add index.html prototyp/index.html
+          git commit -m "[bot] počasí $(date -u +%Y-%m-%d) (web)" || echo "web beze zmeny"
           git push origin "HEAD:${GITHUB_REF_NAME}"
