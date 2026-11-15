@@ -1,4 +1,4 @@
-12_pocasi.py 2026-11-15 11:55 UTC
+12_pocasi.py 2026-11-15 17:50 UTC
 1) CHMU Korycany (srazky)
   0-203-0-41701068002 2026-11: 84 zaznamu
   0-203-0-41701068002 2026-10: 186 zaznamu
@@ -7,7 +7,7 @@
   0-203-0-41503035001 2026-11: 448 zaznamu
   0-203-0-41503035001 2026-10: 992 zaznamu
   0-203-0-41503035001 2026-09: 960 zaznamu
-  Nemochovice P: 74 dni (2026-09-01..2026-11-13)
+  Nemochovice P: 75 dni (2026-09-01..2026-11-14)
   Nemochovice T: 74 dni (2026-09-01..2026-11-13)
   Nemochovice Tmax: 74 dni (2026-09-01..2026-11-13)
   Nemochovice Tmin: 74 dni (2026-09-01..2026-11-13)
@@ -15,10 +15,10 @@
   Nemochovice F: 74 dni (2026-09-01..2026-11-13)
   Korycany P: 30 dni s hodnotou
 3) Povodi Moravy KS Korycany
-  24 hodinovych radku (14.11. 13:00 - 15.11. 12:00)
-  archiv pmo_korycany.csv: 625 radku
+  24 hodinovych radku (14.11. 19:00 - 15.11. 18:00)
+  archiv pmo_korycany.csv: 631 radku
 4) hladiny.cz Nemotice_SR
-  10 hodinovych radku (14.11. 19:00 - 15.11. 04:00)
-  archiv nemotice.csv: 486 radku
+  10 hodinovych radku (15.11. 03:00 - 15.11. 12:00)
+  archiv nemotice.csv: 494 radku
 5) denni.json
   dni celkem 318, s ET0 317, s P 318
