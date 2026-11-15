@@ -60,6 +60,9 @@ _sp = importlib.util.spec_from_file_location("p12", os.path.join(HERE, "12_pocas
 p12 = importlib.util.module_from_spec(_sp)
 _sp.loader.exec_module(p12)
 et0_hs = p12.et0_hs
+et0_pm = p12.et0_pm
+# slunecni svit pro vypar: nejblizsi stanice, ktera ten den merila (WSI, nazev, km)
+S_SOUSEDE = [("0-203-0-11754", "Staré Město", 19), ("0-203-0-11751", "Kroměříž", 27), ("0-203-0-11755", "Strážnice", 26), ("0-20000-0-11774", "Holešov", 37)]
 
 
 def fl(x):
@@ -172,8 +175,22 @@ while d <= konec:
     d += timedelta(days=1)
 print(f"doplneno: srazky {len(dopl_P)} dni, teplota {len(dopl_T)} dni; poradi stanic T:", [(k[1], round(k[0], 2)) for k in kand_T])
 
-ET0 = {d: et0_hs(d, T.get(d), TMI.get(d), TMA.get(d)) for d in T}
-ET0 = {d: v for d, v in ET0.items() if v is not None}
+# vypar Penman-Monteith (FAO-56): vlhkost a vitr Nemochovice, slunecni svit z nejblizsi stanice, ktera ten den merila
+SV, sv_dni = {}, {}
+for wsi, jm, km in S_SOUSEDE:
+    x = nacti_vol(f"dly-{wsi}-SSV.csv", "00:00")
+    for d, v in x.items():
+        if d not in SV and 0 <= v <= 17:
+            SV[d] = v; sv_dni[jm] = sv_dni.get(jm, 0) + (1 if d in T else 0)
+ET0, ET0_HS, et_zpusob = {}, {}, {}
+for d in T:
+    v, zp = et0_pm(d, T.get(d), TMI.get(d), TMA.get(d), H.get(d), F.get(d), SV.get(d))
+    if v is not None:
+        ET0[d] = v; et_zpusob[zp] = et_zpusob.get(zp, 0) + 1
+    h = et0_hs(d, T.get(d), TMI.get(d), TMA.get(d))
+    if h is not None:
+        ET0_HS[d] = h
+print("vypar Penman-Monteith, zpusob (dni):", et_zpusob, "svit ze stanic (dni):", sv_dni)
 print(f"P Korycany {min(P)}..{max(P)} ({len(P)} dni); T Nemochovice {min(T)}..{max(T)} ({len(T)} dni); ET0 {len(ET0)} dni")
 
 # ---------------------------------------------------------------- rocniky (mesicni a rocni hodnoty po letech)
@@ -199,6 +216,7 @@ def extrem(f, serie, rok):
 
 
 P_m, T_m, ET0_m = mesicni(P, "sum"), mesicni(T, "mean"), mesicni(ET0, "sum")
+ET0_HS_m = mesicni(ET0_HS, "sum")
 TMA_m, TMI_m = mesicni(TMA, "mean"), mesicni(TMI, "mean")
 rocniky = {}
 for rok in sorted(set(P_m) | set(T_m)):
@@ -228,6 +246,9 @@ for rok in sorted(set(P_m) | set(T_m)):
         z["ET0"] = {str(k): em[k] for k in sorted(em)}
         if len(em) == 12:
             z["ET0"]["rok"] = round(sum(em.values()), 1)
+        hm = ET0_HS_m.get(rok, {})
+        if len(hm) == 12:
+            z["ET0_HS"] = round(sum(hm.values()), 1)      # jen pro srovnani metod
     if pm and em and len(pm) == 12 and len(em) == 12:
         z["bil"] = {str(k): round(pm[k] - em[k], 1) for k in range(1, 13)}
         z["bil"]["rok"] = round(sum(pm.values()) - sum(em.values()), 1)
@@ -288,10 +309,14 @@ for mes in range(1, 13):
 out = {
     "vytvoreno": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),
     "zdroj": "ČHMÚ otevřená data, historical_csv (denní): srážky Koryčany 0-203-0-41701068002 (1920-11 až 2025-12), "
-             "teplota/vlhkost/vítr Nemochovice 0-203-0-41503035001 (2000-12 až 2025-12); ET0 Hargreaves-Samani FAO-56 rov. 52 (viz 12_pocasi.py)",
+             "teplota/vlhkost/vítr Nemochovice 0-203-0-41503035001 (2000-12 až 2025-12), sluneční svit Staré Město / Kroměříž / Strážnice / Holešov; "
+             "ET0 Penman-Monteith FAO-56 rov. 6 (viz 12_pocasi.py, et0_pm); ET0_HS = Hargreaves-Samani rov. 52 jen pro srovnání",
+    "vypar": {"metoda": "Penman-Monteith FAO-56", "zpusob_dni": et_zpusob, "svit_dni": sv_dni,
+              "pozn": "pm = vše měřeno; pm-s = bez svitu (záření z rozpětí teplot, rov. 50); pm-h = bez vlhkosti (rov. 48); pm-f = bez větru (1,4 m/s)"},
     "obdobi": {"P": list(P_OBDOBI), "T_ET0": list(T_OBDOBI),
                "pozn": "Nemochovice měří od 12/2000, proto referenční období T a ET0 = 2001-2025 (25 let), ne standardní normál 1991-2020; srážky Koryčany normál 1991-2020"},
     "rok": {"P": P_rok, "ET0": ET0_rok, "bil": r1(P_rok - ET0_rok),
+            "P_T": r1(prumer([z["P"]["rok"] for r, z in rocniky.items() if T_OBDOBI[0] <= int(r) <= T_OBDOBI[1] and "rok" in z.get("P", {})])),
             "T": r1(prumer([mesic[str(m)]["T"] for m in range(1, 13)]))},
     "mesic": mesic,
     "den_v_roce": {"pozn": "index 0 = 1. leden (rok 2000, 366 dní), klouzavý průměr 15 dní, období T_ET0",
