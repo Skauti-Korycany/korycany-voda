@@ -1,1 +1,0 @@
-{"objID":"0-203-1-484000","tsList":[{"tsConID":"QM","unit":"M3_S","tsData":{"type":"DataCollection","data":{"header":"DT,VAL","values":[["1964-11-01T00:00:00Z",0.03],["1964-12-01T00:00:00Z",0.03]]}}}]}

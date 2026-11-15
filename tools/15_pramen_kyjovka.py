@@ -65,55 +65,60 @@ def vse_json(t):
     return out
 
 
-def stahni(slozka, soubory, klic):
-    """klic(nazev) -> (objekt, typ) nebo None; vrací {(objekt, typ): (header, radky)}"""
-    vyber = [(s, klic(s)) for s in soubory]; vyber = [(s, k) for s, k in vyber if k]
+def rady(o, out):
+    """najde všechny řady {tsConID, unit, tsData}; tsData je tabulka header/values nebo seznam {dt, value}"""
+    if isinstance(o, dict):
+        if "tsConID" in o and "tsData" in o:
+            d = o["tsData"]
+            if isinstance(d, dict):
+                for t in tabulky(d, []):
+                    out.append((o["tsConID"], o.get("unit"), [(r[0], r[1]) for r in t["values"]]))
+            elif isinstance(d, list):
+                out.append((o["tsConID"], o.get("unit"), [(r.get("dt"), r.get("value")) for r in d if isinstance(r, dict)]))
+        else:
+            for v in o.values():
+                rady(v, out)
+    elif isinstance(o, list):
+        for v in o:
+            rady(v, out)
+    return out
+
+
+VSE = {}   # (objekt, veličina) -> {"unit":.., "data": {dt: val}}
+
+
+def stahni(slozka, soubory, objekty):
+    vyber = [(s, next((o for o in objekty if f"-{o}_" in s or f"-{o}." in s), None)) for s in soubory]; vyber = [(s, o) for s, o in vyber if o]
     print(f"  {slozka}: {len(vyber)} souborů z {len(soubory)}", flush=True)
     with ThreadPoolExecutor(8) as ex:
         data = list(ex.map(lambda sk: get(CH + slozka + sk[0]), vyber))
-    res, ukazka = {}, set()
-    for (s, k), b in zip(vyber, data):
+    for (s, o), b in zip(vyber, data):
         if not b:
             continue
-        if k not in ukazka:
-            ukazka.add(k); open(os.path.join(OUT, f"ukazka_{k[0]}_{k[1]}_{slozka.strip('/').replace('/', '-')}.txt"), "wb").write(b[:2500])
-        j = vse_json(b.decode("utf-8-sig", "replace"))
-        for t in tabulky(j, []):
-            h = t["header"] if isinstance(t["header"], str) else ",".join(t["header"])
-            res.setdefault(k, (h, []))[1].extend(t["values"])
-    return res
+        for con, unit, rr in rady(vse_json(b.decode("utf-8-sig", "replace")), []):
+            z = VSE.setdefault((o, con), {"unit": unit, "data": {}})
+            for dt, v in rr:
+                if dt and v is not None:
+                    z["data"][dt] = v
 
 
-def uloz(res, pripona):
-    for (obj, typ), (h, radky) in sorted(res.items()):
-        radky = sorted({json.dumps(r, ensure_ascii=False) for r in radky})
-        radky = [json.loads(r) for r in radky]
-        try:
-            radky.sort(key=lambda r: [str(x) for x in r])
-        except Exception:  # noqa
-            pass
-        p = os.path.join(OUT, f"{obj}_{typ}_{pripona}.csv")
-        with open(p, "w", encoding="utf-8") as f:
-            f.write(h + "\n")
-            for r in radky:
-                f.write(",".join("" if x is None else str(x) for x in r) + "\n")
-        print(f"   {obj} {typ} {pripona}: {len(radky)} řádků, sloupce {h}, první {radky[0] if radky else None}, poslední {radky[-1] if radky else None}", flush=True)
-
-
-print("1) prameny - historical", flush=True)
-uloz(stahni("groundwater/historical/data/", seznam(CH + "groundwater/historical/data/"),
-            lambda s: next(((o, s.split("_")[2]) for o in PRAMENY if f"-{o}_" in s), None)), "hist")
-print("2) prameny - recent", flush=True)
-uloz(stahni("groundwater/recent/data/", seznam(CH + "groundwater/recent/data/"),
-            lambda s: next(((o, s.split("_")[1]) for o in PRAMENY if f"-{o}_" in s), None)), "recent")
+print("1) prameny", flush=True)
+stahni("groundwater/historical/data/", seznam(CH + "groundwater/historical/data/"), PRAMENY)
+stahni("groundwater/recent/data/", seznam(CH + "groundwater/recent/data/"), PRAMENY)
 for o in PRAMENY:
     b = get(CH + f"groundwater/characteristic/data/GCHAR_0-203-1-{o}.json")
     if b:
         open(os.path.join(OUT, f"{o}_charakteristiky.json"), "wb").write(b)
-print("3) Kyjovka - historical (denní, měsíční, měsíční maxima)", flush=True)
+print("2) Kyjovka (denní, měsíční, měsíční maxima)", flush=True)
 for sl in ("daily", "monthly", "monthly_max"):
-    uloz(stahni(f"historical/data/{sl}/", seznam(CH + f"historical/data/{sl}/"),
-                lambda s: next(((o, s.split("_")[2]) for o in STANICE if f"-{o}_" in s), None)), "hist")
+    stahni(f"historical/data/{sl}/", seznam(CH + f"historical/data/{sl}/"), STANICE)
+for (o, con), z in sorted(VSE.items()):
+    d = sorted(z["data"].items())
+    with open(os.path.join(OUT, f"{o}_{con}.csv"), "w", encoding="utf-8") as f:
+        f.write(f"datum,{con}_{z['unit']}\n")
+        for dt, v in d:
+            f.write(f"{dt[:10] if dt[11:19] in ('00:00:00', '05:00:00', '06:00:00', '07:00:00') else dt},{v}\n")
+    print(f"   {o} {con} [{z['unit']}]: {len(d)} hodnot, {d[0][0][:10]} až {d[-1][0][:10]}", flush=True)
 for o in STANICE:
     for pre, sl in (("RC", "discharge_rating_curve"), ("CHAR_MDQ", "hydrological_characteristic"), ("CHAR_MONQ", "hydrological_characteristic"), ("NY", "hydrological_characteristic")):
         b = get(CH + f"characteristic/data/{sl}/{pre}_0-203-1-{o}.json")
