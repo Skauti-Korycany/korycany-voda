@@ -1,0 +1,27 @@
+name: Podklady pro vypar (CHMU, Open-Meteo)
+
+# Stahne denni rady pro vypocet vyparu FAO-56 a jeho kontrolu. Vystup data/vypar/ ve vetvi, ze ktere bezel.
+on:
+  push:
+    branches: ['claude/**']
+    paths: [tools/16_vypar_data.py, .github/workflows/vypar.yml]
+  workflow_dispatch:
+
+jobs:
+  vypar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: mkdir -p data/vypar && python tools/16_vypar_data.py data/vypar 2>&1 | tee data/vypar/log.txt
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f data/vypar
+          git commit -m "[bot] vypar $(date -u +%Y-%m-%d)" || exit 0
+          git push origin HEAD:${GITHUB_REF_NAME}
