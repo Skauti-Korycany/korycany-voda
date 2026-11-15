@@ -2,6 +2,11 @@
 
 Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `docs/STAV.md`. Starší rozhodnutí mohou být nahrazena novějšími (u nahrazených je to v textu poznamenáno).
 
+## 15. 11. 2026 - úklid kontextu
+
+- `docs/STAV.md` zkrácen na údaje pro další vývoj (hotové 14. 11., pořadí dalších kroků, platná rozhodnutí včetně přítoku, jezírka a mapy eroze, otevřené otázky). `CLAUDE.md` aktualizován (40 testů, `J.pritok`, líné načítání, 5,4 MB rastrů, mapa eroze, otevřené úkoly odkazují na STAV.md).
+- Synchronizace s PC: Remote Control složka se z cloudové relace nezobrazila; nový `tools/aktualizuj_z_githubu.bat` (stáhne ZIP větve main, robocopy bez mazání, bez `.git`).
+
 ## Relace 14. 11. 2026 - drobné opravy rozhraní (Claude Code)
 
 Prohlídka webu, seznam návrhů vylepšení a opravy, které nevyžadovaly rozhodnutí:

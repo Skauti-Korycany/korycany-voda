@@ -1,6 +1,6 @@
 # CLAUDE.md - Koryčany resilience (korycany-voda)
 
-Předávací kontext pro práci v Claude Code. Stav k 14. 11. 2026. Aktuální stav: `docs/STAV.md`. Historie relací a starší rozhodnutí: `docs/STAV-HISTORIE.md` (dlouhý, číst cíleně podle sekcí).
+Předávací kontext pro práci v Claude Code. Stav k 15. 11. 2026. Aktuální stav: `docs/STAV.md`. Historie relací a starší rozhodnutí: `docs/STAV-HISTORIE.md` (dlouhý, číst cíleně podle sekcí).
 
 ## 1. Co to je
 
@@ -21,7 +21,7 @@ Osvětová webová aplikace pro obyvatele Koryčan (okres Kroměříž): reáln�
 - **Žádné osobní údaje** v datech, sumářích ani aplikaci: vlastníci, LV, adresy, č.p., ID RÚIAN/ISKN, jména žáků, kontakty z e-mailů. Parcelní číslo je veřejný identifikátor pozemku a smí se zobrazit.
 - Práce po uzavřených blocích (jeden blok = jeden hotový použitelný výstup). Na konci relace aktualizovat `docs/STAV.md` (jen aktuální stav: hotové, rozpracované, další kroky, platná rozhodnutí, otevřené otázky, předpoklady) a podrobný záznam relace připsat na začátek `docs/STAV-HISTORIE.md`. V odpovědi uživateli doplnit "na co ses nezeptal" a zvolené předpoklady.
 - Když na úkol LLM není vhodný nástroj (ruční klikání ve státních portálech, 2D hydraulika, kalibrace bez dat), říct to a připravit podklady, ať to uživatel udělá sám.
-- Po každém pushi zapsat stejné soubory i do klonu na PC uživatele: `C:\Users\obcho\Desktop\Claude - zoofix\skaut - aktivity\korycany-voda\repo` (celé repo, ne jen tools; `.git` na PC je starý a s GitHubem nesouvisí). Totéž platí pro PC-only rastry, pokud se přepočítávají.
+- Klon na PC uživatele: `C:\Users\obcho\Desktop\Claude - zoofix\skaut - aktivity\korycany-voda\repo` (`.git` na PC je starý a s GitHubem nesouvisí). Z relace běžící na PC zapisovat po pushi přímo tam. Z cloudové relace PC nedostupné (Remote Control složka se 14. 11. nezobrazila): po pushi připomenout uživateli `tools\aktualizuj_z_githubu.bat` (stáhne main, nic nemaže). PC-only rastry řeší `.bat` skripty.
 
 ## 3. Pozor při práci s repozitářem
 
@@ -53,15 +53,16 @@ LAZ, WFS, GML, CSV ČHMÚ                     data/*.geojson, *_info.json       
 ```
 index.html, prototyp/index.html   GENEROVÁNO build_dummy.py (Pages)
 stav.html                          veřejná stavová stránka, čísla natvrdo v HTML (při změně dat aktualizovat ručně)
-web/jadro.js                       výpočetní jádro (556 ř.), běží v prohlížeči i v node
-web/test_jadro.js                  testy jádra (node + pngjs), 37 testů
+web/jadro.js                       výpočetní jádro, běží v prohlížeči i v node
+web/test_jadro.js                  testy jádra (node + pngjs), 40 testů
 web/test.html                      technický prohlížeč jádra (povodí bodu, hráz, podklady)
 tools/NN_*.py + vyrob_*.bat        datová příprava (kap. 6)
 tools/build_*.py                   generátory JSON/MD/HTML
+tools/aktualizuj_z_githubu.bat     aktualizace klonu na PC z GitHubu (uživatel poklepe)
 tools/vendor/leaflet-1.9.4         Leaflet (BSD-2), vkládá se do HTML
 .github/workflows/                 pocasi.yml (4× denně), normaly.yml, stahni-vstupy.yml
 data/                              lehké odvozené vrstvy a JSON (v gitu)
-data/web/                          rastrový balíček pro prohlížeč (~6,6 MB)
+data/web/                          rastrový balíček pro prohlížeč (5,4 MB, PNG překomprimované oxipng bez změny typu barev)
 data/pocasi/                       denní data počasí (bot)
 docs/                              sumáře: STAV, VRSTVY, JADRO, CN, SRAZKY, USLE, MERENI, KATALOG*, DATA-FORMAT, ROZHRANI, zadání UX
 ```
@@ -71,14 +72,14 @@ docs/                              sumáře: STAV, VRSTVY, JADRO, CN, SRAZKY, US
 | záložka | obsah | hlavní funkce v build_dummy.py |
 |---|---|---|
 | `jakbylo` (výchozí) | datový příběh o počasí: srážky od 1921, srážky minus možný výpar, horko, lijáky, letošek, výhled CzechGlobe; grafy vlastní SVG, "Zvětšit" v `<dialog>` | `render`, `grafDenni`, `rocniky`, `stat`, `karta` |
-| `pozemek` | průvodce 5 kroků: najdi dům (mapa, parcely od zoomu 16, hledání RÚIAN), 3 otázky (okapy, zpevněné plochy, půda), kolik odteče (+ skutečný déšť za 30 dní), opatření jako dlaždice se hrou Kapka/Louže/Tůňka/Oáza, výsledek | `pz*`, `runoff`, `greenRunoff`, `evalMeasures`, `zadrzeni`, `houbaLevel`, `tileHTML`, `recalc` |
-| `uzemi` | Celé území v 5 kapitolách: domácnosti, velké střechy, pole/louky/les (SCS-CN + USLE scénáře), hráz na potoce, velké projekty; jeden výběr deště nahoře | `renderUzemi`, `renderStrechy`, `krajinaHistogram`, `renderKrajina`, `hrazInit`, `hrazSpocti` |
+| `pozemek` | průvodce 5 kroků: najdi dům (mapa, parcely od zoomu 16, hledání RÚIAN), 3 otázky (okapy, zpevněné plochy, půda), kolik odteče (+ skutečný déšť za 30 dní, přítok shora a upozornění), opatření jako dlaždice se hrou Kapka/Louže/Tůňka/Oáza (vč. jezírka T07), výsledek | `pz*`, `runoff`, `greenRunoff`, `EFF`, `evalMeasures`, `zadrzeni`, `renderPritok`, `tileHTML`, `recalc` |
+| `uzemi` | Celé území v 5 kapitolách: domácnosti, velké střechy, pole/louky/les (SCS-CN + USLE scénáře + mapa eroze), hráz na potoce, velké projekty; jeden výběr deště nahoře | `renderUzemi`, `renderStrechy`, `krajinaHistogram`, `renderKrajina`, `erozeInit`, `erozeKresli`, `hrazInit`, `hrazSpocti` |
 | `katalog` | 66 opatření, filtry KDE / CO ŘEŠÍM (sucho, příval, horko, život), dlaždice s náčrtky, "Kde to funguje", "Proč a jak", dotace se stavem podle data | `renderKatalog`, `katTile`, `jednoCislo`, `progStav`, `finText` |
 | `model` | O modelu: co je hotové/chybí, metody, zdroje dat a licence, z čeho zaplatit, co model neumí | - |
 
 Výchozí déšť: Můj pozemek 10 mm (běžný, ~17× ročně), Celé území 32 mm (N2 6h). Nabídka: 10 / 20 / 32 (N2) / 53 (N10) / 87 (N100) mm, navíc 26 mm/60 min a 94 mm (12. 6. 2012).
 
-Do `index.html` se vkládá jako `D` (`__DATA__`): zúžený `opatreni.json`, `uzemi` (budovy_info, cn_info, srazky_chmi), `navrhove` (navrhove_srazky), `srazky_hist`, `cn_tabulka`, `pocasi` (denni.json + normaly.json). Za běhu se stahuje `data/web/*` (přes `Jadro.nacti`), `data/parcely.geojson` (4,4 MB), `budovy.geojson`, `povodi.geojson`, `vyuziti_pudy.json`; `smer_v.png` a `toky.json` až při otevření hráze (`Jadro.nactiProNadrze()`).
+Do `index.html` se vkládá jako `D` (`__DATA__`): zúžený `opatreni.json`, `uzemi` (budovy_info, cn_info, srazky_chmi), `navrhove` (navrhove_srazky), `srazky_hist`, `cn_tabulka`, `pocasi` (denni.json + normaly.json). Až při otevření Můj pozemek nebo Celé území (`nactiMapovaData()`) se stahuje `data/web/*` (přes `Jadro.nacti`), `data/parcely.geojson` (4,4 MB, gzip 0,8 MB), `budovy.geojson`, `povodi.geojson`, `vyuziti_pudy.json`; `smer_v.png` a `toky.json` až při otevření hráze (`Jadro.nactiProNadrze()`). Jak bylo, Katalog a O modelu stahují jen `index.html`. Verze v hlavičce/patičce a datum počasí doplňuje build z `opatreni.json` a dat počasí (`__KATV__`, `__KATD__`, `__POCD__`).
 
 ## 5. Datové zdroje
 
@@ -136,7 +137,7 @@ Po změně podkladových JSON (`budovy_info`, `cn_info`, `srazky_chmi`, `cn_tabu
 - Hranice: nahoře hráz VN Koryčany (odtok řízený, povodí nad hrází se nemodeluje), dole jez na Kyjovce před Mouchnicemi (X -560508, Y -1173975). **17,7 km²**, polygon `typ: uzemi_modelu` v `data/povodi.geojson`; body v `data/rozvodnice_body.json`.
 - Rozvodnice z DMR ověřeny proti ČHP (ZABAGED) i kritickým bodům VÚV (shoda).
 - Budovy jen obec Koryčany (rozhodnutí: model řeší jednu obec).
-- Klíčová čísla (HSP VÚMOP): CN vážené 67,4; HSP A 11 / B 68 / C 11 / D 10 %; les 711 ha = 40 %, orná 545 ha; budov 1 631 (RD 1 075); P40 = 74 tis. m³.
+- Klíčová čísla (HSP VÚMOP): CN vážené 67,4; HSP A 11 / B 68 / C 11 / D 10 %; les 711 ha = 40 %, orná 545 ha; budov 1 631 (RD 1 075, v aplikaci RD + "bydlení" = 1 076); P40 = 74 tis. m³; USLE orná C 0,2 průměr 10,5 t/ha/rok, 45 % nad 9 t/ha.
 
 ## 8. Výpočetní jádro (`web/jadro.js` v0.3)
 
@@ -144,13 +145,13 @@ API `Jadro.*` (podrobně `docs/JADRO.md`):
 - `nacti(base, opts)`, `lonLatNaXY`, `xyNaLonLat`, `lonLatNaBunku`
 - `scsCN(P, CN, ia=0.2)`, `cnProIPS`, `vahyCN(qAPI)`, `vahaCN3`, `odtokVazeny` (vážení CN2/CN3 podle tvarů deště, Kavka 2023 tab. 6)
 - `bunkyPolygonu`, `statBunek`, `statPolygon` (odtok se počítá **po buňkách a sčítá**, ne z průměrného CN)
-- `povodiBodu` (zpětné D8), `prichytKToku`
+- `povodiBodu` (zpětné D8), `prichytKToku`, `pritok(bunkyPozemku, maxBunek)` (cizí plocha nad pozemkem, `udolnice` >= 1 ha, `tok` >= 0,25 km²)
 - `nadrz(lon, lat, h, opts)`: hráz jen na toku ČÚZK, osa kolmo na tok (max 300 m); povodí >= 0,25 km² = zátopa DMR, menší = tůň v údolnici jako rozsah A·L/3 až A·L/2; vrací `info`, `vodni_dilo` (> 2 m), `tbd`
 - `obrazek`, `obalMasky` (překryvy pro Leaflet)
 
 Metody mimo jádro (v `build_dummy.py`): zeleň pozemku SCS-CN podle HSP (bez sklonové úpravy - rozhodnuto), roční odtok ze zeleně z histogramu denních úhrnů 1991-2019, střechy a zpevněné plochy součinitel ČSN s počáteční ztrátou 1 mm, USLE scénáře (P06/P05 C 0,01, P04 C 0,1, P01 P 0,65/0,9), ET₀ Hargreaves-Samani (FAO-56 rov. 52).
 
-Kontrolní hodnoty (musí sedět s Pythonem): území CN 67,4, P40 74 205 m³ (06_cn.py 74 206), Stříbrník CN 60,1, 4,23 km². Spustit `node web/test_jadro.js` (potřebuje `pngjs`), musí vypsat VŠE OK.
+Kontrolní hodnoty (musí sedět s Pythonem): území CN 67,4, P40 74 205 m³ (06_cn.py 74 206), Stříbrník CN 60,1, 4,23 km²; mapa eroze C 0,2 10,7 t/ha a 46 % nad 9 t/ha (`usle_info.json` 10,5 a 45 %, rozdíl = R průměr místo rastru). Spustit `node web/test_jadro.js` (potřebuje `pngjs`), musí vypsat VŠE OK.
 
 ## 9. Katalog opatření (`data/opatreni.json`, meta.verze 0.9, katalog v0.6)
 
@@ -172,22 +173,16 @@ Kontrolní hodnoty (musí sedět s Pythonem): území CN 67,4, P40 74 205 m³ (0
 6. UI v `build_dummy.py`, přegenerovat, zkontrolovat headless Chromium 1300 px a 390 px, světlý i tmavý režim, bez chyb v konzoli a bez vodorovného posunu.
 7. Aktualizovat O modelu (zdroje dat), případně `stav.html`, a `docs/STAV.md`.
 
-## 11. Otevřené úkoly (priorita)
+## 11. Otevřené úkoly
 
-1. **Napojit opatření katalogu na skutečný pozemek** (EFF z prototypu -> `statPolygon` nad vybranými parcelami: sklon, HSP, akumulace, vzdálenost k toku).
-2. Validace: žádost na Povodí Moravy (srážkoměr VD Koryčany, přítok/odtok VD, měrná křivka profilu pod přehradou); porovnat odtok modelu s epizodami u Kachníku. Do té doby "nevalidováno".
-3. Transformace vlny poldrem (jádro zatím jen objemová bilance).
-4. Nádrž/tůň do Můj pozemek u potoka; rozhodnout, zda nádrž v intravilánu vůbec nabízet.
-5. Mapa eroze v aplikaci (zatím jen čísla); deprese z `deprese.tif` po filtru (hladina VN, zářezy).
-6. Rešerše k oblasti "Život a voda v krajině" (biodiverzita) - uživatel chce doplnit.
-7. Lokální klima ClimRisk pro k.ú. Koryčany (čísla dodá uživatel z mapového rozhraní); klimatické scénáře 2050/2090 s licencí nedohledány.
-8. Krátké úhrny ČSN 75 9010 pro Koryčany (teď příklad Brno); licence otevřených dat ČHMÚ zapsat do VRSTVY.md.
-9. Fáze 5: rozhraní škola/expert + formulář vlastních měření (bez osobních údajů žáků; úložiště mimo GitHub Pages zatím chybí).
-10. Zmenšit data pro mobil (parcely 4,4 MB + rastry ~6,6 MB): ořez na území modelu, hrubší akumulace.
-11. Neznámé: kanalizace Koryčany jednotná/oddílná (klíčové pro S02, S06), kam odvádějí vodu velké střechy, meliorace (žádost SPÚ), zpevněné plochy u domů (nejsou v žádné vrstvě).
+Aktuální pořadí je v `docs/STAV.md` (Další kroky). Trvale otevřené:
+- Validace s daty Povodí Moravy; do té doby "nevalidováno".
+- Transformace vlny poldrem (jádro zatím jen objemová bilance).
+- Fáze 5: škola/expert + formulář měření (bez osobních údajů žáků; úložiště mimo GitHub Pages chybí).
+- Neznámé: kanalizace jednotná/oddílná (S02, S06), kam odvádějí vodu velké střechy, meliorace (SPÚ), zpevněné plochy u domů.
 
 Mimo rozsah do zveřejnění: projektová dokumentace staveb, výpočet dotačních žádostí, 3D, mobilní aplikace, 2D hydraulika intravilánu, data mimo povodí.
 
 ## 12. Fáze projektu
 
-1 vymezení a inventura - hotovo | 2 datová příprava - hotovo | 3 jádro - rozpracováno (chybí vlna, bilance P-ET po scénářích, opatření nad reálným pozemkem) | 4 rozhraní občan - funkční, ve zkoušce s lidmi | 5 škola/expert + měření - nezačato | 6 validace a texty - katalog hotový, validace ne | 7 test s lidmi a zveřejnění - běží neformálně.
+1 vymezení a inventura - hotovo | 2 datová příprava - hotovo | 3 jádro - rozpracováno (chybí vlna, bilance P-ET po scénářích) | 4 rozhraní občan - funkční, ve zkoušce s lidmi | 5 škola/expert + měření - nezačato | 6 validace a texty - katalog hotový, validace ne | 7 test s lidmi a zveřejnění - běží neformálně.
