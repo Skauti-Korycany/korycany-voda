@@ -1,0 +1,19 @@
+name: Testy jadra
+
+# Spusti testy vypocetniho jadra (web/test_jadro.js) pri kazde zmene jadra, rastru pro web nebo testu. Nic necommituje.
+on:
+  push:
+    branches: [main, 'claude/**']
+    paths: [web/jadro.js, web/test_jadro.js, 'data/web/**', data/cn_info.json, data/povodi.geojson, package.json, .github/workflows/testy.yml]
+  workflow_dispatch:
+
+jobs:
+  testy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install --no-audit --no-fund
+      - run: npm test
