@@ -2,6 +2,15 @@
 
 Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `docs/STAV.md`. Starší rozhodnutí mohou být nahrazena novějšími (u nahrazených je to v textu poznamenáno).
 
+## 15. 11. 2026 - zpřesnění výparu (Claude Code, cloud)
+
+- Zadání: zjistit, zda statistiku výparu zpřesní další zdroje dat. Ano: vítr a vlhkost Nemochovice (už stahované), sluneční svit Staré Město (od 2007, 19 km), Kroměříž, Strážnice, Holešov; měřené záření Holešov a Brno-Tuřany od 2013; výparoměry Kroměříž 1968-2015, Holešov 2014-, Brno 2006-.
+- Vítr se měří v 10 m (meta2), přepočet na 2 m FAO-56 rov. 47 (× 0,748). Denní soubory: T/H/F `AVG`, TMA/TMI `20:00`, SSV `00:00`, RGLB_D `SUM` (kJ/m²), VY `06:00`.
+- Svit pro Koryčany: Staré Město 6 705 dní, Strážnice 1 581, Kroměříž 753 (nejbližší stanice, která ten den měřila). Svit Kroměříže má mezery, doplněny z Holešova.
+- Čísla viz STAV.md (Hotovo naposledy, zpřesnění výparu) a `data/vypar_rocni.json`.
+- Důsledek: dosavadní tvrzení "minus ve 24 z 25 let" a "žízeň o 211 mm větší" jsou z HS nadsazená; stránka je zatím nese s viditelnou opravou, plný převod je další krok (0b).
+- Bilance P - ET0 (PM) pro Koryčany 2001-2025 nemá trend (p 0,83); úbytek vody v pramenech tedy výpočet výparu sám nevysvětluje.
+
 ## 15. 11. 2026 - další zdroje dat, prameny a Kyjovka (Claude Code, cloud)
 
 - Z cloudu jsou blokované všechny zdrojové servery i čtení stránek; průzkum proto běžel jako skript v GitHub Actions spouštěný pushem do větve `claude/**` (`inventura-zdroju.yml`, `hydro.yml`), výsledek bot commitne do téže větve.

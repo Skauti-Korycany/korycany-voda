@@ -37,10 +37,18 @@ Aktualizováno: 15. 11. 2026. Jen to, co je potřeba pro další vývoj. Archite
 - Jak bylo: nová kap. 3 "Prameny slábnou a potoku ubývá" (2 grafy), čtvrté klíčové číslo, nadpis "Prší stejně jako před sto lety. Vody v krajině přesto ubývá." (teď doložený měřením). Kapitoly přečíslovány (horko 4, liják 5, letošek 6, výzva 7).
 - Inventura dalších zdrojů (`tools/inventura_zdroju.py`, `docs/inventura/`, `docs/VRSTVY.md` kap. 5a).
 
+## Hotovo naposledy (15. 11., zpřesnění výparu)
+
+- `tools/16_vypar_data.py` + workflow `vypar.yml` (Actions) -> `data/vypar/*.csv`: denní T, TMA, TMI, H, F, sluneční svit SSV, globální záření RGLB_D a výparoměr VY pro Nemochovice, Staré Město, Kroměříž, Holešov, Brno-Tuřany, svit Strážnice; ET0 z Open-Meteo (ERA5) 1940-2025.
+- `tools/build_vypar.py` -> `data/vypar_rocni.json`: ET0 Penman-Monteith FAO-56 (ea z RHmean, vítr 10 m -> 2 m, Rs ze svitu Angström 0,25 / 0,50, G = 0) proti Hargreaves-Samani.
+- Výsledky: Koryčany 2001-2025 PM 702 mm/rok, HS 862 mm (HS o 23 % výš), Open-Meteo 823 mm. Bilance P - ET0: PM -65 mm (v minusu 15 z 24 let), HS -224 mm (24 z 24). Trend PM Koryčany +11 mm / 10 let, p 0,26 (neprůkazný). Dlouhé řady: Kroměříž 1956-2025 +17 mm / 10 let (632 -> 741 mm, p < 0,001), Holešov 1961-2025 +15 mm / 10 let. Složky Kroměříž 1961-2025 za 10 let: T +0,4 °C, H -0,7 %, F -0,08 m/s; svit Holešov +48 h.
+- Kontroly: Angström 0,25 / 0,50 proti měřenému záření Holešov a Brno (4 520 dní): průměr sedí (11,77 proti 11,78 MJ/m²/den), RMSE 1,5; regrese a 0,21, b 0,57. PM se svitem proti PM s měřeným zářením: rozdíl 1 %. Výparoměr Kroměříž (76 měsíců): 81 mm/měs., PM 89, HS 109.
+- Jak bylo kap. 2: rámeček "Zpřesnění" (text + graf výparu Kroměříž 1956-2025), doplněné "Jak to číst". Grafy kap. 2 a čísla "žízně" zůstávají zatím z HS a jsou označené jako horní odhad.
+
 ## Další kroky (pořadí)
 
 0a. Validace s daty Kyjovky nad nádrží (denní průtoky a měsíční maxima jsou v `data/hydro/`): porovnat epizody s SCS-CN pro povodí nad nádrží; pozor, toto povodí leží mimo území modelu (nad hrází).
-0b. ET0 Penman-Monteith FAO-56 s větrem a vlhkostí Nemochovic a slunečním svitem Starého Města (od 2007) / Kroměříže (od 1953), srovnat s Hargreavesem a s výparoměrem Kroměříž; Open-Meteo 1940+ jen pro srovnání (model).
+0b. Převést celou stránku Jak bylo na ET0 Penman-Monteith: `13_normaly_pocasi.py` (historie: H a F už čte, přidat svit Staré Město / Kroměříž / Strážnice / Holešov do `normaly.yml`), `12_pocasi.py` (bot: svit z recent dat Starého Města; záloha bez svitu = FAO-56 rov. 50 nebo HS s opravou), měsíční normály a bilance, texty kap. 2 ("žízeň" -65 mm místo -224 mm, v minusu 15 z 24 let), obrázek "Kam mizí déšť". Pozor na bota: změnu nejdřív vyzkoušet na větvi.
 0c. Prameny: zjistit u ČHMÚ, zda se u PB0425 neměnilo jímání nebo způsob měření (přechod týdenní -> denní 2022); dohledat podmínky užití otevřených dat hydrologie. V březnu 2027 znovu `hydro.yml` + `build_hydro.py`.
 0. Ze zpětné vazby zbývá: režim Stručně / Podrobně; widgety pro web města (iframe, až po vyjasnění podmínek dat ČHMÚ a PMO); výpar Penman-Monteith vedle Hargreavese a měřená půdní vlhkost (Intersucho / čidlo u školy).
 1. Zkouška s lidmi: Můj pozemek (krok 1, upozornění na přívalovou vodu, krok 4), Celé území kap. 3 a mapa eroze (čitelnost nad podkladem ZTM), hráz v0.3.
@@ -80,6 +88,9 @@ Výpočty
 - Eroze v mapě: A = R průměr orné (65,9) × K × LS × C, P = 1; scénáře C 0,2 / 0,1 / + údolnice ≥ 1 ha a svahy ≥ 7° C 0,01; mělké půdy (Gp 2) nerozlišeny.
 - ET₀ Hargreaves-Samani, v textu "možný výpar"; srážky ČHMÚ manuální -> KS Koryčany PMO -> Nemochovice, doplněné mezery označené.
 - Počet RD = RÚIAN "rodinný dům" + "bydlení" = 1 076.
+
+Výpar
+- Přesnější metoda je Penman-Monteith FAO-56; HS z teplot nadhodnocuje pro Koryčany o ~23 %. Tvrzení "výpar roste" opírat o dlouhé řady Kroměříž a Holešov (průkazné), pro Koryčany je řada 2001-2025 krátká (neprůkazné). Open-Meteo je model, jen pro srovnání.
 
 Rozhraní
 - "Vody ubývá" se opírá o měření pramenů a Kyjovky (ČHMÚ), ne o výpočet výparu; příčinu měření neurčuje a text to říká.
