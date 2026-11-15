@@ -1,0 +1,11 @@
+{
+  "name": "korycany-voda",
+  "private": true,
+  "description": "Testy výpočetního jádra (web/jadro.js). Aplikace sama žádné závislosti nemá.",
+  "scripts": {
+    "test": "node web/test_jadro.js"
+  },
+  "devDependencies": {
+    "pngjs": "^7.0.0"
+  }
+}
