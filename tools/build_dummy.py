@@ -635,18 +635,17 @@ details.banner[open]>summary .more{display:none}
       </svg>
     </div>
 
-    <h3 class="jb-ch">2. Krajina má větší žízeň, než kolik naprší</h3>
+    <h3 class="jb-ch">2. V létě má krajina větší žízeň, než kolik naprší</h3>
     <p class="jb-p" id="jb-ch2"></p>
     <svg class="jb-chart" id="jb-l2" viewBox="0 0 720 220" role="img" aria-label="Srážky minus výpar a možný výpar 2001-2025"></svg>
     <div class="legend"><span><b style="background:var(--ok)"></b>srážky minus výpar: voda zbyla</span><span><b style="background:var(--dry)"></b>srážky minus výpar: voda chyběla</span><span><b class="ln" style="border-color:var(--soil);border-top-style:dashed"></b>možný výpar za rok</span></div>
-    <p class="jb-zdroj">Srážky Koryčany minus možný výpar spočtený z teplot Nemochovic (ČHMÚ, FAO-56). Tečka pod rokem = část dní doplněna.</p>
-    <div class="jb-box" id="jb-vyp-box" hidden>
-      <div class="jb-eyebrow">Zpřesnění</div>
-      <h4>Výparu je méně, než vychází z teplot, ale přibývá ho</h4>
+    <p class="jb-zdroj">Srážky Koryčany minus možný výpar (výpočet z měření ČHMÚ). Tečka pod rokem = část dní doplněna.</p>
+    <div id="jb-vyp-box" hidden>
       <p class="jb-p" id="jb-vyp"></p>
       <svg class="jb-chart" id="jb-v1" viewBox="0 0 720 200" role="img" aria-label="Možný výpar v Kroměříži po letech"></svg>
       <div class="legend"><span><b style="background:var(--soil)"></b>možný výpar za rok, Kroměříž (mm)</span><span><b class="ln" style="border-color:var(--warn)"></b>klouzavý průměr 10 let</span></div>
-      <p class="jb-zdroj" id="jb-vyp-n"></p>
+      <p class="jb-zdroj">Výpočet z měření ČHMÚ v Kroměříži (27 km od Koryčan).</p>
+      <details class="jb-cist"><summary><b>Pro zvídavé</b> - jak výpar počítáme a čím je ověřený</summary><p id="jb-vyp-n"></p></details>
     </div>
 
     <div class="jb-box">
@@ -676,7 +675,7 @@ details.banner[open]>summary .more{display:none}
           <rect class="house" x="60" y="48" width="140" height="70" stroke-width="2"/>
           <g class="dry" stroke-width="1.5"><path d="M80 60l10 14M120 56l-6 18M160 62l10 12M100 92l12 10M150 90l-8 16"/></g>
           <text x="130" y="142" text-anchor="middle">zásoba došla</text>
-        </svg><b>Konec léta: zásoba došla</b><p>Půda je vyčerpaná, rostliny strádají a výpar klesá. Po suché nebo teplé zimě se půda znovu nenasytí, podzemní voda se nedoplní a deficit se přenáší do dalšího roku. Tak to šlo od roku 2015.</p></div>
+        </svg><b>Konec léta: zásoba došla</b><p>Půda je vyčerpaná, rostliny strádají a výpar klesá. Po suché nebo teplé zimě se půda znovu nenasytí, podzemní voda se nedoplní a deficit se přenáší do dalšího roku.</p></div>
       </div>
     </div>
 
@@ -686,7 +685,8 @@ details.banner[open]>summary .more{display:none}
     <div class="legend"><span><b style="background:var(--water)"></b>pramen Koryčany, průměrná vydatnost za rok (litry za sekundu)</span><span><b class="ln" style="border-color:var(--warn)"></b>klouzavý průměr 10 let</span></div>
     <svg class="jb-chart" id="jb-h2" viewBox="0 0 720 200" role="img" aria-label="Průtok Kyjovky nad nádrží po letech"></svg>
     <div class="legend"><span><b style="background:var(--chip)"></b>Kyjovka nad nádrží, průměrný průtok za rok (litry za sekundu)</span><span><b class="ln" style="border-color:var(--warn)"></b>klouzavý průměr 10 let</span></div>
-    <p class="jb-zdroj" id="jb-h-n"></p>
+    <p class="jb-zdroj">Měření ČHMÚ, roční průměry.</p>
+    <details class="jb-cist"><summary><b>Pro zvídavé</b> - jak se to měří a jak jistý je pokles</summary><p id="jb-h-n"></p></details>
 
     <h3 class="jb-ch">4. Horka přibývá</h3>
     <p class="jb-p" id="jb-ch3"></p>
@@ -752,7 +752,7 @@ details.banner[open]>summary .more{display:none}
     <p class="note" id="jb-l2-n"></p>
     <p class="note" id="jb-l3-n"></p>
 
-    <details class="jb-cist" open><summary><b>Jak to číst</b> - pojmy a metody</summary><p><b>Odkud jsou data.</b> Srážky měří stanice ČHMÚ Koryčany (manuální srážkoměrná stanice, 305 m n. m., úhrn se odečítá jednou denně ráno, řada od listopadu 1920 ✅). Teploty jsou ze stanice ČHMÚ Nemochovice (8 km od Koryčan, měří od prosince 2000 ✅), proto řady teplot a výparu začínají rokem 2001. Než dorazí data ČHMÚ, doplňuje poslední dny <a href="https://sap.pmo.cz/portal/Srazky/cz/pc/Mereni.aspx?id=60&amp;oid=3" target="_blank" rel="noopener">srážkoměr Povodí Moravy pod přehradou</a>. Data ČHMÚ: <a href="https://opendata.chmi.cz/" target="_blank" rel="noopener">opendata.chmi.cz</a>.</p><p><b>Prameny a potok.</b> Vydatnost pramenů měří ČHMÚ (pramen Koryčany, objekt PB0425, 450 m n. m. v Chřibech; do roku 2021 jednou týdně, od roku 2022 denně ✅). Průtok Kyjovky měří stanice ČHMÚ Koryčany nad nádrží (povodí 19,4 km², od listopadu 1967 ✅); je to voda, která do přehrady přitéká z lesů nad ní, tedy bez vlivu řízení přehrady. Roční průměr je jen z úplných let. Data: <a href="https://opendata.chmi.cz/hydrology/" target="_blank" rel="noopener">opendata.chmi.cz/hydrology</a>.</p><p><b>Průměr a normál.</b> Všechna čísla „za rok“ jsou průměry za více let a období je vždy uvedeno. Jednotlivé roky se od průměru liší i o třetinu. <b>Normál</b> je meteorologický pojem: průměr za 30 let, teď se používá období 1991-2020 (<a href="https://wmo.int/media/news/updated-30-year-reference-period-reflects-changing-climate" target="_blank" rel="noopener">WMO</a> ✅). <b>Klouzavý průměr 10 let</b> je průměr vždy z deseti po sobě jdoucích let, vyhlazuje výkyvy. <b>Trend</b> je sklon přímky proložené roky 2001-2025; za 25 let je spolehlivý u teploty, u výparu a tropických dní jde zatím o náznak.</p><p><b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, v grafech počítaná z teplot metodou Hargreaves-Samani podle FAO-56 📄). Nepočítá se proti žádné „požadované“ vlhkosti vzduchu: vstupem je teplota a sluneční záření podle zeměpisné šířky a dne v roce. Přesnější metoda Penman-Monteith (FAO-56 📄) přidává měřený vítr, vlhkost a sluneční svit; pro Koryčany vychází asi o pětinu níž (rámeček Zpřesnění v kapitole 2). <b>Srážky minus výpar</b> je žízeň krajiny (odborně klimatická vodní bilance), ne voda, která někam zmizela. Vítr a vlhkost vzduchu metoda nezná; při větru je skutečná ztráta větší. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne. Prahy podle ČHMÚ ✅: tropický den = nejvyšší teplota aspoň 30 °C, supertropický aspoň 35 °C (neoficiální název), tropická noc = teplota neklesne pod 20 °C (<a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2025/TI_Leto2025.pdf" target="_blank" rel="noopener">ČHMÚ, Klimatologické léto 2025</a>).</p></details>
+    <details class="jb-cist"><summary><b>Jak to číst</b> - pojmy a metody</summary><p><b>Odkud jsou data.</b> Srážky měří stanice ČHMÚ Koryčany (manuální srážkoměrná stanice, 305 m n. m., úhrn se odečítá jednou denně ráno, řada od listopadu 1920 ✅). Teploty jsou ze stanice ČHMÚ Nemochovice (8 km od Koryčan, měří od prosince 2000 ✅), proto řady teplot a výparu začínají rokem 2001. Než dorazí data ČHMÚ, doplňuje poslední dny <a href="https://sap.pmo.cz/portal/Srazky/cz/pc/Mereni.aspx?id=60&amp;oid=3" target="_blank" rel="noopener">srážkoměr Povodí Moravy pod přehradou</a>. Data ČHMÚ: <a href="https://opendata.chmi.cz/" target="_blank" rel="noopener">opendata.chmi.cz</a>.</p><p><b>Prameny a potok.</b> Vydatnost pramenů měří ČHMÚ (pramen Koryčany, objekt PB0425, 450 m n. m. v Chřibech; do roku 2021 jednou týdně, od roku 2022 denně ✅). Průtok Kyjovky měří stanice ČHMÚ Koryčany nad nádrží (povodí 19,4 km², od listopadu 1967 ✅); je to voda, která do přehrady přitéká z lesů nad ní, tedy bez vlivu řízení přehrady. Roční průměr je jen z úplných let. Data: <a href="https://opendata.chmi.cz/hydrology/" target="_blank" rel="noopener">opendata.chmi.cz/hydrology</a>.</p><p><b>Průměr a normál.</b> Všechna čísla „za rok“ jsou průměry za více let a období je vždy uvedeno. Jednotlivé roky se od průměru liší i o třetinu. <b>Normál</b> je meteorologický pojem: průměr za 30 let, teď se používá období 1991-2020 (<a href="https://wmo.int/media/news/updated-30-year-reference-period-reflects-changing-climate" target="_blank" rel="noopener">WMO</a> ✅). <b>Klouzavý průměr 10 let</b> je průměr vždy z deseti po sobě jdoucích let, vyhlazuje výkyvy. <b>Trend</b> je sklon přímky proložené roky 2001-2025; za 25 let je spolehlivý u teploty, u výparu a tropických dní jde zatím o náznak.</p><p><b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, metoda Penman-Monteith podle FAO-56 📄). Počítá se z měřené teploty, vlhkosti vzduchu a větru v Nemochovicích a ze slunečního svitu nejbližší stanice (většinou Staré Město); nepočítá se proti žádné „požadované“ vlhkosti. Když některé měření chybí, nahradí ho odhad z teplot a den je tak označen v datech. Do 15. 11. 2026 jsme počítali jen z teplot (Hargreaves-Samani) a vycházelo to asi o pětinu víc; podrobnosti v kapitole 2 pod „Pro zvídavé“. <b>Srážky minus výpar</b> je žízeň krajiny (odborně klimatická vodní bilance), ne voda, která někam zmizela. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne. Prahy podle ČHMÚ ✅: tropický den = nejvyšší teplota aspoň 30 °C, supertropický aspoň 35 °C (neoficiální název), tropická noc = teplota neklesne pod 20 °C (<a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2025/TI_Leto2025.pdf" target="_blank" rel="noopener">ČHMÚ, Klimatologické léto 2025</a>).</p></details>
     <p class="src" id="jb-src"></p>
     </details>
   </div>
@@ -1108,7 +1108,7 @@ details.banner[open]>summary .more{display:none}
     <h3 class="jb-ch">Jak se počítá</h3>
     <p class="jb-p">Používáme jednoduché a ověřené české a mezinárodní metody, aby se dal každý výsledek přepočítat ručně. Hlavní otázka je vždy stejná: kolik vody z deště zůstane v území a kolik odteče.</p>
     <div class="uz-kdo om-met">
-      <div><b>Jak bylo</b><span class="v">srážky, výpar, horko</span><ul><li>Denní srážky a teploty ČHMÚ (Koryčany, Nemochovice), předběžná data Povodí Moravy.</li><li>Možný výpar podle Hargreaves-Samani (FAO-56).</li><li>Tropický den od 30 °C, tropická noc od 20 °C (ČHMÚ).</li></ul></div>
+      <div><b>Jak bylo</b><span class="v">srážky, výpar, horko</span><ul><li>Denní srážky a teploty ČHMÚ (Koryčany, Nemochovice), předběžná data Povodí Moravy.</li><li>Možný výpar podle Penman-Monteith (FAO-56): teplota, vlhkost, vítr a sluneční svit ze stanic ČHMÚ.</li><li>Tropický den od 30 °C, tropická noc od 20 °C (ČHMÚ).</li></ul></div>
       <div><b>Můj pozemek</b><span class="v">jeden pozemek, jeden déšť</span><ul><li>Střechy a dlažba: součinitel odtoku podle ČSN 75 9010, první 1 mm deště zůstane na povrchu.</li><li>Zahrada: metoda SCS-CN podle půdy A-D (Janeček a kol. 2012).</li><li>Účinek opatření jen tam, kde je doložený vzorcem nebo měřením.</li></ul></div>
       <div><b>Celé území</b><span class="v">1 770 ha nad jezem u Mouchnic</span><ul><li>Odtok z krajiny SCS-CN po čtvercích 5 m (výškopis DMR 5G, ZABAGED, půdy VÚMOP); u lijáků váha nasycené půdy podle Kavky a kol. 2023.</li><li>Eroze orné půdy USLE (R faktor VÚMOP/ČHMÚ 2022).</li><li>Nádrž za hrází: kam vystoupá voda v terénu DMR 5G.</li></ul></div>
       <div><b>Katalog</b><span class="v">66 opatření</span><ul><li>Každý účinek má zdroj a značku původu.</li><li>Nejistota jako rozsah, ne jedno číslo.</li><li>Odhady (🤔) se do součtů nepočítají.</li></ul></div>
@@ -2208,6 +2208,7 @@ const R=N.rocniky, LAST=DNY[DNY.length-1], ROK=+LAST.slice(0,4);
 const JB={};   // hodnoty z grafu pro texty pribehu
 { const t=new Date(W.vytvoreno.replace('Z',':00Z')), st=isNaN(t)?W.vytvoreno:t.toLocaleString('cs-CZ',{day:'numeric',month:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Prague'});
   $('jb-upd').innerHTML=`Poslední den s daty: <b>${csd(LAST)}</b>, staženo ${st}. ČHMÚ zveřejňuje denní data se zpožděním 1-2 dny (den měření končí v 8 ráno), proto tu včerejšek ještě nemusí být.`; }
+const veN=n=>(([2,3,4,12,13,14].includes(n)||(n>=20&&n<50)||n>=100)?'ve ':'v ')+n;   // predlozka pred cislovkou
 const mean=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
 function lin(xs,ys){const n=xs.length,mx=mean(xs),my=mean(ys);let sxy=0,sxx=0;for(let i=0;i<n;i++){sxy+=(xs[i]-mx)*(ys[i]-my);sxx+=(xs[i]-mx)**2;}return sxx?sxy/sxx:0;}
 // osy s kulatými hodnotami (0, 250, 500...): dílek 1/2/2,5/5 x 10^k, aby čáry nevypadaly jako konkrétní hodnota
@@ -2292,7 +2293,7 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
         `<circle cx="${x(i)}" cy="${y(cur.E)}" r="3" style="fill:none;stroke:var(--soil);stroke-width:1.4"><title>možný výpar ${cur.r} do ${dt}: ${fmt(cur.E,0)} mm</title></circle>`; }
     const ann=(xx,yy,t,a)=>`<text class="ann" x="${xx.toFixed(1)}" y="${yy.toFixed(1)}" text-anchor="${a||'middle'}">${t}</text>`;
     const nh=body.reduce((a,b)=>b.b<a.b?b:a); o+=ann(x(I(nh)), y(nh.b)+13, `${nh.r}: ${fmt0(nh.b)} mm`);
-    body.filter(b=>b.b>=0).forEach(b=>{ o+=ann(x(I(b)), y(b.b)-5, `${b.r}: +${fmt0(b.b)} mm`); });
+    { const nl=body.reduce((a,b)=>b.b>a.b?b:a); if(nl.b>=0) o+=ann(x(I(nl)), y(nl.b)-5, `${nl.r}: +${fmt0(nl.b)} mm`); }   // jen nejvetsi prebytek, ostatni v popisku po najeti
     if(cur) o+=ann(L+I(cur)*bw-4, y(cur.b)+4, `letos ${fmt0(cur.b)} mm`,'end');
     o+=ann(L+4, y(body[0].E)-7, 'možný výpar', 'start');
     $('jb-l2').innerHTML=o+roky(Hd)+`<text x="${L}" y="${T-3}">mm za rok</text>`;
@@ -2340,7 +2341,7 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
   const nejh=body.reduce((a,b)=>b.b<a.b?b:a);
   const dV=body.filter(b=>Math.max(DOPL(b.r,'P'),DOPL(b.r,'T'))>=DOPL_MIN).map(b=>b.r), dH=bodyT.filter(b=>DOPL(b.r,'T')>=DOPL_MIN).map(b=>b.r);
   const dTxt=a=>a.length?` Roky ${roky_(a)} mají chybějící dny doplněné z okolní stanice (tečka pod rokem, podrobnosti po najetí).`:'';
-  $('jb-l2-n').innerHTML=`Srážky Koryčany minus možný výpar spočítaný z teplot Nemochovic, ${body[0].r}-${body[body.length-1].r} (ČHMÚ ✅, výpočet výparu 📄).`+dTxt(dV)+` Srážky nepokryly výpar ${w10===body.length?'ani v jednom':'ve '+w10} z ${body.length} úplných let; nejvíc chybělo ${nejh.r} (${fmt(-nejh.b,0)} mm).`+
+  $('jb-l2-n').innerHTML=`Srážky Koryčany minus možný výpar (Penman-Monteith z měření Nemochovic a slunečního svitu okolních stanic), ${body[0].r}-${body[body.length-1].r} (ČHMÚ ✅, výpočet výparu 📄).`+dTxt(dV)+` Srážky nepokryly výpar ${w10===body.length?'ani v jednom':veN(w10)} z ${body.length} úplných let; nejvíc chybělo ${nejh.r} (${fmt(-nejh.b,0)} mm).`+
     (cur?` <b>${cur.r}*</b> = neúplný rok do ${dt} (předběžná data): chybí už ${fmt(-cur.b,0)} mm${cur.b<nejh.b?' - víc než za celý rok '+nejh.r:''}, možný výpar ${fmt(cur.E,0)} mm (kroužek).`:'');
   $('jb-l3-n').innerHTML=`ČHMÚ Nemochovice (8 km) ✅, ${bodyT[0].r}-${bodyT[bodyT.length-1].r} (${bodyT.length} úplných let). Tropický den = nejvyšší teplota dne aspoň 30 °C, supertropický aspoň 35 °C, tropická noc = teplota neklesne pod 20 °C (prahy ČHMÚ ✅).${dTxt(dH)} Letní maxima = průměr nejvyšších teplot dne v červnu až srpnu; líp ukazují horko než průměrná teplota, ve které je i noc a zima. Najetím na bod uvidíš podrobnosti a nejteplejší den roku.`+
     (cur?` <b>${cur.r}*</b> = předběžná data do ${dt}: ${cur.d30} tropických, ${cur.d35} supertropických dní, ${cur.tn} tropických nocí${txt(cur.Tx)}${cur.lx!=null?', letní maxima '+fmt(cur.lx,1)+' °C':''}.`+
@@ -2390,28 +2391,29 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
   // zpresneni vyparu: Penman-Monteith a dlouha rada (data/vypar_rocni.json)
   const VP=D.vypar;
   if(VP){ const K=VP.kontroly, m=K.korycany_metody, b=K.bilance_korycany, km=VP.kromeriz.trend, ho=VP.holesov, ob=a=>`${a[0]}-${a[1]}`, sl=VP.slozky, vy=K.vyparomer_kromeriz;
-    $('jb-vyp-box').hidden=false;
-    $('jb-vyp').innerHTML=`Grafy výše počítají možný výpar jen z teplot (metoda Hargreaves-Samani). Přesnější výpočet podle FAO (Penman-Monteith) bere navíc vítr a vlhkost vzduchu z Nemochovic a sluneční svit z nejbližších stanic. Pro Koryčany dává v letech ${ob(m.roky)} v průměru <b>${fmt0(m.pm_mm)} mm</b> za rok, asi o ${fmt0(100*(m.hs_mm-m.pm_mm)/m.hs_mm)} % méně než ${fmt0(m.hs_mm)} mm z teplot. Srážky minus výpar pak vychází v průměru ${fmt0(b.pm_bilance_mm)} mm místo ${fmt0(b.hs_bilance_mm)} mm a v minusu je ${b.pm_let_v_minusu} z ${b.n} let, ne ${b.hs_let_v_minusu}. Čísla výše jsou tedy horní odhad a celou stránku na přesnější metodu převedeme.`
-      +` Směr se nemění: v Kroměříži (27 km), kde se všechno potřebné měří od 50. let, vzrostl možný výpar z ${fmt0(km.prvnich_10[2])} mm za rok (${ob(km.prvnich_10)}) na ${fmt0(km.poslednich_10[2])} mm (${ob(km.poslednich_10)}).`;
+    $('jb-vyp-box').hidden=false; const pv=t=>t.p<0.001?'pod 0,001':fmt(t.p,3);
+    $('jb-vyp').innerHTML=`<b>Výparu přibývá.</b> V Kroměříži, kde se všechno potřebné měří od 50. let, vzrostl možný výpar z ${fmt0(km.prvnich_10[2])} mm za rok (${ob(km.prvnich_10)}) na ${fmt0(km.poslednich_10[2])} mm (${ob(km.poslednich_10)}). Je tepleji, vzduch je sušší a slunce svítí déle.`;
     graf('jb-v1',VP.kromeriz,'--soil',0,'mm za rok','mm');
-    const pv=t=>t.p<0.001?'pod 0,001':fmt(t.p,3);
-    $('jb-vyp-n').innerHTML=`Výpočet FAO-56 Penman-Monteith 📄 z denních měření ČHMÚ ✅ (teplota, vlhkost, vítr, sluneční svit; mezery ve svitu Kroměříže doplněny z Holešova). Kroměříž ${km.od}-${km.do}: růst o ${fmt0(km.za_10_let)} mm za deset let, průkazný (p ${pv(km)}); Holešov ${ho.od}-${ho.do}: ${fmt0(ho.za_10_let)} mm za deset let (p ${pv(ho)}). Za stejnou dobu v Kroměříži: teplota ${sl.kromeriz_T.za_10_let>0?'+':''}${fmt(sl.kromeriz_T.za_10_let,1)} °C, vlhkost vzduchu ${fmt(sl.kromeriz_H.za_10_let,1)} %, vítr ${fmt(sl.kromeriz_F.za_10_let,2)} m/s za deset let (slabší vítr výpar snižuje); slunečního svitu v Holešově přibývá o ${fmt0(sl.holesov_SSV.za_10_let)} hodin za deset let. Pro Koryčany je řada krátká (${VP.korycany_pm.od}-${VP.korycany_pm.do}): ${VP.korycany_pm.za_10_let>0?'+':''}${fmt0(VP.korycany_pm.za_10_let)} mm za deset let, neprůkazně (p ${pv(VP.korycany_pm)}). Kontrola: záření odhadnuté ze svitu se od měřeného (Holešov, ${K.zareni_holesov.dni} dní) liší v průměru o ${fmt(Math.abs(K.zareni_holesov.odhad_025_050_MJ_den-K.zareni_holesov.mereno_MJ_den),2)} MJ/m² za den; proti výparoměru v Kroměříži (${vy.mesicu} měsíců, ${vy.obdobi[0]}-${vy.obdobi[1]}, průměr ${fmt(vy.vyparomer_mm_mes,0)} mm za měsíc) dává přesnější metoda ${fmt(vy.pm_mm_mes,0)} mm a metoda z teplot ${fmt(vy.hs_mm_mes,0)} mm. Výparoměr měří volnou hladinu, ne trávník, srovnání je orientační.`;
+    $('jb-vyp-n').innerHTML=`<b>Metoda.</b> Možný výpar počítáme podle FAO-56 metodou Penman-Monteith 📄 z denních měření ČHMÚ ✅: teplota, vlhkost vzduchu a vítr z Nemochovic (8 km), sluneční svit z nejbližší stanice, která ten den měřila (Staré Město, Kroměříž, Strážnice, Holešov). Vítr se měří v 10 m a přepočítává na 2 m, záření se odhaduje ze slunečního svitu.`
+      +` <b>Čím je ověřená.</b> Záření odhadnuté ze svitu se od měřeného v Holešově (${K.zareni_holesov.dni} dní) liší v průměru o ${fmt(Math.abs(K.zareni_holesov.odhad_025_050_MJ_den-K.zareni_holesov.mereno_MJ_den),2)} MJ/m² za den. Výparoměr v Kroměříži (${vy.mesicu} měsíců, ${vy.obdobi[0]}-${vy.obdobi[1]}) naměřil v průměru ${fmt(vy.vyparomer_mm_mes,0)} mm za měsíc, tato metoda dává ${fmt(vy.pm_mm_mes,0)} mm; výparoměr měří volnou hladinu, ne trávník, srovnání je orientační.`
+      +` <b>Proč se čísla změnila.</b> Do 15. 11. 2026 jsme počítali jen z teplot (Hargreaves-Samani). Ta metoda dávala pro Koryčany ${fmt0(m.hs_mm)} mm za rok, o ${fmt0(100*(m.hs_mm-m.pm_mm)/m.pm_mm)} % víc než ${fmt0(m.pm_mm)} mm z úplných měření, a proti výparoměru vycházela ${fmt(vy.hs_mm_mes,0)} mm za měsíc. Se starou metodou vycházel minus ${veN(b.hs_let_v_minusu)} z ${b.n} let, s přesnější ${veN(b.pm_let_v_minusu)}.`
+      +` <b>Jak jistý je růst.</b> Kroměříž ${km.od}-${km.do}: o ${fmt0(km.za_10_let)} mm za deset let, průkazně (p ${pv(km)}); Holešov ${ho.od}-${ho.do}: ${fmt0(ho.za_10_let)} mm za deset let (p ${pv(ho)}). V Kroměříži se za deset let mění teplota o ${sl.kromeriz_T.za_10_let>0?'+':''}${fmt(sl.kromeriz_T.za_10_let,1)} °C, vlhkost vzduchu o ${fmt(sl.kromeriz_H.za_10_let,1)} % a vítr o ${fmt(sl.kromeriz_F.za_10_let,2)} m/s (slabší vítr výpar snižuje); slunečního svitu v Holešově přibývá o ${fmt0(sl.holesov_SSV.za_10_let)} hodin. Pro Koryčany je řada krátká (${VP.korycany_pm.od}-${VP.korycany_pm.do}): ${VP.korycany_pm.za_10_let>0?'+':''}${fmt0(VP.korycany_pm.za_10_let)} mm za deset let, neprůkazně (p ${pv(VP.korycany_pm)}). Srážky minus výpar se v Koryčanech za ${obdT} průkazně nemění.`;
   }
   // kapitola 1
   const pMin=p1.body.reduce((a,b)=>b[1]<a[1]?b:a), pMax=p1.body.reduce((a,b)=>b[1]>a[1]?b:a);
   $('jb-ch1').innerHTML=`Srážky se v Koryčanech měří přes sto let (stanice ČHMÚ, řada od roku ${p1.body[0][0]}). Mokré a suché roky se střídají: od ${fmt0(pMin[1])} mm (${pMin[0]}) po ${fmt0(pMax[1])} mm (${pMax[0]}). Klouzavý průměr za 10 let (oranžová čára) se ale drží kolem 600 mm. Průměr let 1921-1950 byl ${fmt0(avgP(1921,1950))} mm, průměr let 1991-2020 (takzvaný normál) je ${fmt0(N.rok.P)} mm. Deště za rok tedy dlouhodobě neubývá ani nepřibývá.`;
   // box 1: kam mizi dest
   const zizen=N.rok.ET0-P25;
-  $('jb-box1').innerHTML=`V letech ${obdT} napršelo na metr čtvereční v průměru ${fmt0(P25)} litrů za rok. Slunce a teplo by ale dokázaly odpařit v průměru ${fmt0(N.rok.ET0)} litrů, kdyby voda byla. Tomu rozdílu říkáme žízeň krajiny. Vypaří se jen tolik, kolik vody opravdu je. Čím je půda sušší, tím méně má co odpařit a tím víc rostliny strádají. Co steče do kanálu, krajině chybí.`;
+  $('jb-box1').innerHTML=`V letech ${obdT} napršelo na metr čtvereční v průměru ${fmt0(P25)} litrů za rok. Slunce, teplo a vítr by ale dokázaly odpařit v průměru ${fmt0(N.rok.ET0)} litrů, kdyby voda byla. Tomu rozdílu říkáme žízeň krajiny. Vypaří se jen tolik, kolik vody opravdu je. Čím je půda sušší, tím méně má co odpařit a tím víc rostliny strádají. Co steče do kanálu, krajině chybí.`;
   $('jb-il-p').textContent=`naprší ${fmt0(P25)} mm`; $('jb-il-e').textContent=`vypařit ${fmt0(N.rok.ET0)} mm`; $('jb-il-d').textContent=`žízeň o ${fmt0(zizen)} mm větší`;
   // kapitola 2
   const plus=bV.filter(b=>b.b>=0).map(b=>b.r), cur=p2.cur, nejh=p2.nejh;
-  $('jb-ch2').innerHTML=`Když od deště odečteme, kolik by se mohlo vypařit, vyjde minus ve ${bV.length-plus.length} z ${bV.length} let od roku ${bV[0].r}${plus.length?` (přebytek měl jen ${plus.join(', ')})`:''}. Možný výpar byl v letech ${obdT} v průměru ${fmt0(N.rok.ET0)} mm za rok a za tu dobu ${trE>0?'roste':'klesá'} asi o ${fmt0(Math.abs(trE))} mm za deset let (řada je krátká, zatím jde o náznak).`
-    +(cur?` Letos do ${cur.do.slice(8,10).replace(/^0/,'')}. ${cur.do.slice(5,7).replace(/^0/,'')}. chybí už <b>${fmt0(-cur.b)} mm</b>${cur.b<nejh.b?`, víc než v dosud nejhorším roce ${nejh.r} (${fmt0(-nejh.b)} mm)`:''}.`:'');
+  $('jb-ch2').innerHTML=`V letech ${obdT} napršelo v průměru ${fmt0(P25)} mm za rok a mohlo by se vypařit ${fmt0(N.rok.ET0)} mm. ${veN(bV.length-plus.length).replace(/^v/,'V')} z ${bV.length} let bylo deště méně, než kolik by se mohlo vypařit. Rozhoduje léto: od dubna do srpna chybí voda skoro každý rok.`
+    +(cur?` Letos do ${cur.do.slice(8,10).replace(/^0/,'')}. ${cur.do.slice(5,7).replace(/^0/,'')}. zatím chybí <b>${fmt0(-cur.b)} mm</b> (předběžně).`:'');
   // box 2: rocni chod z mesicnich normalu
-  const M=[1,2,3,4,5,6,7,8,9,10,11,12].map(m=>N.mesic[m].bil), zima=[10,11,12,1,2].reduce((a,m)=>a+N.mesic[m].bil,0), leto=[3,4,5,6,7,8,9].reduce((a,m)=>a+N.mesic[m].bil,0);
-  $('jb-zima').textContent=`Od října do února u nás naprší asi o ${fmt0(zima)} mm víc, než se může vypařit. Půda se nasytí a přebytek prosakuje dolů k podzemní vodě a do studní.`;
-  $('jb-leto').textContent=`Od března do září by se mohlo vypařit o ${fmt0(-leto)} mm víc, než naprší. Rostliny si berou vodu ze zásoby v půdě. Letní déšť spotřebují hned a do hloubky nedojde.`;
+  const M=[1,2,3,4,5,6,7,8,9,10,11,12].map(m=>N.mesic[m].bil), zima=[9,10,11,12,1,2,3].reduce((a,m)=>a+N.mesic[m].bil,0), leto=[4,5,6,7,8].reduce((a,m)=>a+N.mesic[m].bil,0);
+  $('jb-zima').textContent=`Od září do března u nás naprší asi o ${fmt0(zima)} mm víc, než se může vypařit. Půda se nasytí a přebytek prosakuje dolů k podzemní vodě a do studní.`;
+  $('jb-leto').textContent=`Od dubna do srpna by se mohlo vypařit o ${fmt0(-leto)} mm víc, než naprší. Rostliny si berou vodu ze zásoby v půdě. Letní déšť spotřebují hned a do hloubky nedojde.`;
   { const Wd=720,Hd=190,L=36,T=14,B=24,w=Wd-L-6,h=Hd-T-B, sc=nice(Math.min(...M),Math.max(...M),4), y=v=>T+h-h*(v-sc.lo)/(sc.hi-sc.lo), bw=w/12;
     const MZ=['led','úno','bře','dub','kvě','čer','čvc','srp','zář','říj','lis','pro'];
     let o=osy(L,w,T,h,sc)+`<line x1="${L}" x2="${L+w}" y1="${y(0)}" y2="${y(0)}" style="stroke:var(--fg)"/>`;
@@ -2424,12 +2426,12 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
     +(c2&&c2.d35!=null&&bT.some(b=>b.d35!=null)?` Letos (předběžně) bylo ${c2.d30} tropických dní, z toho ${c2.d35} s teplotou aspoň 35 °C; v letech ${obdT} jich bylo v jednom roce nejvýš ${mx35}.`:'');
   // kapitola 4: cetnost velkych dennich uhrnu po tretinach rady (jen roky se zmerenym dennim maximem)
   { const PM=Object.entries(R).filter(([r,z])=>z.Pmx!=null).map(([r,z])=>[+r,z.Pmx]), tri=[[1921,1955],[1956,1990],[1991,2025]].map(([a,b])=>{const q=PM.filter(x=>x[0]>=a&&x[0]<=b); return `${a}-${b} v ${q.filter(x=>x[1]>=40).length} z ${q.length} změřených let`;});
-    $('jb-ch4').textContent = PM.length ? `V koryčanské řadě velkých lijáků zatím nepřibývá ani neubývá: den s úhrnem aspoň 40 mm přišel ${tri.join(', ')}.` : ''; }
+    $('jb-ch4').textContent = PM.length ? 'V koryčanské řadě velkých lijáků zatím nepřibývá ani neubývá.' : ''; JB.lijakTri = PM.length ? ` Den s úhrnem aspoň 40 mm přišel ${tri.join(', ')}.` : ''; }
   // kapitola 4: nejvetsi denni srazky (jen mereni Korycany)
   const top=(N.top_denni||[]).slice(0,5);
   if(top.length){ const mxP=top[0][1];
     $('jb-lijak').innerHTML=top.map(([d,v])=>`<div class="jb-bar"><span>${csd(d)}</span><span class="b"><i style="width:${(100*v/mxP).toFixed(0)}%"></i></span><span class="num">${fmt0(v)} mm</span></div>`).join('');
-    $('jb-lijak-n').textContent=`ČHMÚ Koryčany, jen dny skutečně změřené na stanici. Pro srovnání: běžný déšť má 10 mm a přichází asi ${fmt0(cetnost(10)||17)}x za rok.`;
+    $('jb-lijak-n').textContent=`ČHMÚ Koryčany, jen dny skutečně změřené na stanici. Pro srovnání: běžný déšť má 10 mm a přichází asi ${fmt0(cetnost(10)||17)}x za rok.`+(JB.lijakTri||'');
   } else { $('jb-lijak').innerHTML=''; $('jb-lijak-n').textContent='Seznam se doplní po příštím přepočtu dlouhých řad.'; }
   // kapitola 5: letosek
   const c1=p1.cur, dt=x=>x.slice(8,10).replace(/^0/,'')+'. '+x.slice(5,7).replace(/^0/,'')+'.';
@@ -2489,7 +2491,7 @@ function render(){
   $('jb-cards').innerHTML=
     karta('p','Srážky',fmt(s.P,0),'mm',{k:pP>=100?'plus':'minus',t:`<b>${pP}&nbsp;%</b> normálu (${fmt(s.nP_,0)} mm za stejné dny, 1991-2020)`},`${obd}; ${zd}; ${dni(s.d1)} s deštěm ≥ 1 mm${s.posl?', naposledy '+csd(s.posl):''}`)+
     karta('t','Teplota',s.T==null?'-':fmt(s.T,1),'°C',{k:s.T>=s.Tn?'minus':'plus',t:`<b>${s.T>=s.Tn?'+':''}${fmt(s.T-s.Tn,1)}&nbsp;°C</b> proti průměru ${fmt(s.Tn,1)} °C (2001-2025)`},`průměr dne i noci; průměr nejvyšších teplot dne ${s.nTx?fmt(s.Txs/s.nTx,1)+' °C':'-'}, nejvýš ${s.tmax?fmt(s.tmax[0],1)+' °C '+csd(s.tmax[1]):'-'}; ČHMÚ Nemochovice, 8 km`)+
-    karta('e','Možný výpar',fmt(s.E,0),'mm',{k:pE<=100?'plus':'minus',t:`<b>${pE}&nbsp;%</b> průměru (${fmt(s.nE_,0)} mm, 2001-2025)`},`z teplot Nemochovice (Hargreaves-Samani 📄)`)+
+    karta('e','Možný výpar',fmt(s.E,0),'mm',{k:pE<=100?'plus':'minus',t:`<b>${pE}&nbsp;%</b> průměru (${fmt(s.nE_,0)} mm, 2001-2025)`},`z teploty, vlhkosti, větru a slunečního svitu (ČHMÚ, Penman-Monteith 📄)`)+
     karta('b','Srážky minus výpar',(s.bil>0?'+':'')+fmt(s.bil,0),'mm',{k:s.bil>=s.biln?'plus':'minus',t:`průměr ${s.biln>0?'+':''}${fmt(s.biln,0)} mm; ${s.bil<0?'krajině chybí':'voda zbývá'} <b>${fmt(Math.abs(s.bil),0)} mm</b>`},`kolik chybí nebo zbývá; není to odtok`);
   $('jb-ext').innerHTML=[
     ['Nejvíc za den',s.pmax?`<span class="num">${fmt(s.pmax[0],1)} mm</span> ${csd(s.pmax[1])}`:'-'],
@@ -2502,7 +2504,7 @@ function render(){
     ['Mrazové dny (min < 0 °C)',`<span class="num">${s.d0}</span>`],
   ].map(([a,b])=>`<div><span>${a}</span><span>${b}</span></div>`).join('');
   grafDenni(s.dd); rocniky(od,do_,s);
-  $('jb-src').innerHTML=`Zdroje: ${W.stanice.chmu_korycany.nazev} (${W.stanice.chmu_korycany.typ}, ${W.stanice.chmu_korycany.km} km) a ${W.stanice.chmu_nemochovice.nazev} (${W.stanice.chmu_nemochovice.typ}, ${W.stanice.chmu_nemochovice.km} km, +22 m): ČHMÚ otevřená data, <a href="https://opendata.chmi.cz/" target="_blank" rel="noopener">opendata.chmi.cz</a> ✅, letošek = předběžná data (po kontrole ČHMÚ se mohou změnit; srážky Koryčany chodí se zpožděním, do té doby KS Koryčany Povodí Moravy nebo Nemochovice - zdroj je u karty). Normály: srážky Koryčany 1991-2020 (${N.rok.P} mm/rok), teplota a ET₀ Nemochovice 2001-2025 (stanice měří od 12/2000, 30letý normál nemá). ET₀ FAO-56 rov. 52 📄. Skripty tools/12_pocasi.py, tools/13_normaly_pocasi.py; trend = lineární regrese přes roky 2001-2025.`;
+  $('jb-src').innerHTML=`Zdroje: ${W.stanice.chmu_korycany.nazev} (${W.stanice.chmu_korycany.typ}, ${W.stanice.chmu_korycany.km} km) a ${W.stanice.chmu_nemochovice.nazev} (${W.stanice.chmu_nemochovice.typ}, ${W.stanice.chmu_nemochovice.km} km, +22 m): ČHMÚ otevřená data, <a href="https://opendata.chmi.cz/" target="_blank" rel="noopener">opendata.chmi.cz</a> ✅, letošek = předběžná data (po kontrole ČHMÚ se mohou změnit; srážky Koryčany chodí se zpožděním, do té doby KS Koryčany Povodí Moravy nebo Nemochovice - zdroj je u karty). Normály: srážky Koryčany 1991-2020 (${N.rok.P} mm/rok), teplota a ET₀ Nemochovice 2001-2025 (stanice měří od 12/2000, 30letý normál nemá). ET₀ Penman-Monteith FAO-56 rov. 6 📄 (vlhkost a vítr Nemochovice, sluneční svit Staré Město / Kroměříž / Holešov). Skripty tools/12_pocasi.py, tools/13_normaly_pocasi.py; trend = lineární regrese přes roky 2001-2025.`;
 }
 function grafDenni(dd){
   const svg=$('jb-graf'); const Wd=720,Hd=230,L=34,R_=34,T=12,B=26; const w=Wd-L-R_,h=Hd-T-B;

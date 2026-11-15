@@ -10,7 +10,8 @@ Zdroje (overeno 21. 10. 2026):
    Pozor: manualni Korycany chodi se zpozdenim (cely bezici mesic byva QUALITY 4 = chybi).
  - Povodi Moravy, KS Korycany: HTML tabulka "Poslednich 24h", hodinove mm a C, mistni cas, bez archivu
  - hladiny.cz, Nemotice_SR: HTML tabulka ~10 h hodinovych mm, mistni cas, bez archivu
- - ET0 = Hargreaves-Samani (FAO-56 rov. 52) z TMA/TMI/T Nemochovice + Ra pro 49,11 N (FAO-56 rov. 21-24)
+ - ET0 = Penman-Monteith (FAO-56 rov. 6): T/TMA/TMI/H/F Nemochovice + slunecni svit Stare Mesto / Kromeriz / Holesov;
+   bez svitu zareni z rozpeti teplot (rov. 50). Do 15. 11. 2026 Hargreaves-Samani (rov. 52), ktery pro Korycany nadhodnocoval o ~23 %.
    zdroj: Allen a kol. 1998, FAO Irrigation and Drainage Paper 56, kap. 3 (rov. 52) a kap. 3 priloha (Ra)
 
 Vystupy (vse v data/pocasi/, do gitu):
@@ -236,7 +237,7 @@ def num(x):
     return "" if x is None else f"{x:g}"
 
 
-# ---------------------------------------------------------------- ET0 Hargreaves-Samani (FAO-56)
+# ---------------------------------------------------------------- ET0 Hargreaves-Samani (FAO-56), jen pro srovnani
 def ra_mm(den: date, lat_deg=LAT):
     """Extraterestricka radiace, FAO-56 rov. 21-24, vysledek v mm/den (x 0.408)."""
     J = den.timetuple().tm_yday
@@ -256,6 +257,51 @@ def et0_hs(den: date, tmean, tmin, tmax):
 
 
 # ---------------------------------------------------------------- hlavni beh
+# ---------------------------------------------------------------- ET0 Penman-Monteith (FAO-56), od 15. 11. 2026 hlavni metoda
+ALT = 300            # nadmorska vyska Korycan [m]
+U2_NAHRADNI = 1.4    # m/s ve 2 m, dlouhodoby prumer Nemochovic (1,9 m/s v 10 m); pouzije se, jen kdyz vitr chybi
+S_STANICE = [("0-203-0-11754", "Staré Město", 19), ("0-203-0-11751", "Kroměříž", 27), ("0-20000-0-11774", "Holešov", 37)]
+
+
+def _es(t):
+    return 0.6108 * math.exp(17.27 * t / (t + 237.3))
+
+
+def et0_pm(den: date, tmean, tmin, tmax, rh=None, u10=None, svit_h=None, lat_deg=LAT, alt=ALT):
+    """Penman-Monteith, FAO-56 (Allen a kol. 1998) rov. 6. Vraci (ET0 mm/den, zpusob).
+    Zareni: ze slunecniho svitu (Angstrom, rov. 35, a_s 0,25, b_s 0,50); bez svitu z rozpeti teplot (rov. 50, kRs 0,16).
+    Tlak pary: z prumerne relativni vlhkosti (rov. 19); bez vlhkosti z minimalni teploty (rov. 48).
+    Vitr: mereny v 10 m prepocteny na 2 m (rov. 47); bez vetru U2_NAHRADNI. G = 0, albedo 0,23.
+    zpusob: 'pm' = vse mereno, jinak 'pm-' + chybejici vstupy (s svit, h vlhkost, f vitr)."""
+    if None in (tmean, tmin, tmax) or tmax < tmin:
+        return None, None
+    ra = ra_mm(den, lat_deg) / 0.408                       # MJ/m2/den
+    J = den.timetuple().tm_yday
+    delta = 0.409 * math.sin(2 * math.pi * J / 365 - 1.39)
+    N = 24 / math.pi * math.acos(-math.tan(math.radians(lat_deg)) * math.tan(delta))
+    chybi = ""
+    if svit_h is not None:
+        rs = (0.25 + 0.50 * min(1.0, max(0.0, svit_h / N))) * ra
+    else:
+        rs = min(0.16 * math.sqrt(tmax - tmin), 0.75 + 2e-5 * alt) * ra; chybi += "s"
+    rso = (0.75 + 2e-5 * alt) * ra
+    esm = (_es(tmax) + _es(tmin)) / 2
+    if rh is not None:
+        ea = min(esm, rh / 100 * esm)
+    else:
+        ea = _es(tmin); chybi += "h"
+    if u10 is not None:
+        u2 = u10 * 4.87 / math.log(67.8 * 10 - 5.42)
+    else:
+        u2 = U2_NAHRADNI; chybi += "f"
+    rn = 0.77 * rs - 4.903e-9 * ((tmax + 273.16) ** 4 + (tmin + 273.16) ** 4) / 2 * (0.34 - 0.14 * math.sqrt(ea)) * (1.35 * min(1.0, rs / rso) - 0.35)
+    P = 101.3 * ((293 - 0.0065 * alt) / 293) ** 5.26
+    g = 0.000665 * P
+    D = 4098 * _es(tmean) / (tmean + 237.3) ** 2
+    et = (0.408 * D * rn + g * 900 / (tmean + 273) * u2 * (esm - ea)) / (D + g * (1 + 0.34 * u2))
+    return round(max(0.0, et), 2), "pm" + ("-" + chybi if chybi else "")
+
+
 def main():
     log(f"12_pocasi.py {DNES:%Y-%m-%d %H:%M} UTC" + (f" (vzorek {VZOREK})" if VZOREK else ""))
 
@@ -267,6 +313,17 @@ def main():
     for k, v in nem.items():
         log(f"  Nemochovice {k}: {len(v)} dni" + (f" ({min(v)}..{max(v)})" if v else ""))
     log(f"  Korycany P: {len(kor['P'])} dni s hodnotou")
+    log("2b) slunecni svit (pro vypar)")
+    svit, svit_zdroj = {}, {}
+    for wsi, jm, km in S_STANICE:
+        try:
+            x = chmu_stanice(wsi, {"S": ("SSV", "00:00")})["S"]
+        except Exception as e:  # noqa - svit je doplnek, nesmi shodit sber
+            log(f"  svit {jm}: chyba {e!r}"); x = {}
+        log(f"  svit {jm}: {len(x)} dni" + (f" ({min(x)}..{max(x)})" if x else ""))
+        for d, v in x.items():
+            if d not in svit and 0 <= v <= 17:
+                svit[d], svit_zdroj[d] = v, jm
 
     log("3) Povodi Moravy KS Korycany")
     pmo = pmo_tabulka(stahni(URL_PMO, "pmo_korycany.html") or "")
@@ -319,7 +376,8 @@ def main():
         z = dict(dny.get(d, {}))
         z.update({"P_kor": kor["P"].get(d, z.get("P_kor")), "P_pmo": pmo_den.get(d, z.get("P_pmo")), "P_nem": nem["P"].get(d, z.get("P_nem")),
                   "T": nem["T"].get(d, z.get("T")), "Tmin": nem["Tmin"].get(d, z.get("Tmin")), "Tmax": nem["Tmax"].get(d, z.get("Tmax")),
-                  "H": nem["H"].get(d, z.get("H")), "F": nem["F"].get(d, z.get("F"))})
+                  "H": nem["H"].get(d, z.get("H")), "F": nem["F"].get(d, z.get("F")),
+                  "S": svit.get(d, z.get("S")), "zdroj_S": svit_zdroj.get(d, z.get("zdroj_S"))})
         if d in pmo_t:
             z["T_pmo"] = {"min": pmo_t[d][0], "max": pmo_t[d][1], "avg": pmo_t[d][2]}
         # srazky Korycany: 1) CHMU Korycany (manualni, se zpozdenim), 2) KS Korycany PMO, 3) Nemochovice
@@ -331,9 +389,15 @@ def main():
             z["P"], z["zdroj_P"] = z["P_nem"], "chmu_nemochovice"
         else:
             z["P"], z["zdroj_P"] = None, None
-        z["ET0"] = et0_hs(dd, z.get("T"), z.get("Tmin"), z.get("Tmax"))
-        z["bil"] = round(z["P"] - z["ET0"], 2) if z["P"] is not None and z["ET0"] is not None else None
         dny[d] = z
+    # svit i pro starsi dny, ktere uz v denni.json jsou (prvni beh po zmene metody: --mesicu 12)
+    for d, v in svit.items():
+        if d in dny and dny[d].get("S") is None:
+            dny[d]["S"], dny[d]["zdroj_S"] = v, svit_zdroj[d]
+    # vypar se prepocita pro vsechny dny z ulozenych vstupu, aby cela rada mela jednu metodu
+    for d, z in dny.items():
+        z["ET0"], z["zdroj_ET0"] = et0_pm(date.fromisoformat(d), z.get("T"), z.get("Tmin"), z.get("Tmax"), z.get("H"), z.get("F"), z.get("S"))
+        z["bil"] = round(z["P"] - z["ET0"], 2) if z.get("P") is not None and z["ET0"] is not None else None
     out = {
         "vytvoreno": DNES.strftime("%Y-%m-%dT%H:%MZ"),
         "stanice": {
@@ -348,7 +412,7 @@ def main():
         },
         "metoda": {
             "P": "srážky Koryčany: přednostně ČHMÚ Koryčany, jinak suma hodinových hodnot KS Koryčany za klimatologický den 06-06 UTC (jen při úplných 24 h), jinak Nemochovice; pole zdroj_P",
-            "ET0": "Hargreaves-Samani, FAO-56 (Allen a kol. 1998) rov. 52, Ra rov. 21-24 pro 49,11 N; T/Tmin/Tmax Nemochovice (8 km, +22 m)",
+            "ET0": "Penman-Monteith, FAO-56 (Allen a kol. 1998) rov. 6: teplota, vlhkost a vítr (10 m -> 2 m) Nemochovice, sluneční svit Staré Město / Kroměříž / Holešov (pole S, zdroj_S), záření ze svitu rov. 35 (0,25 / 0,50); bez svitu z rozpětí teplot rov. 50; pole zdroj_ET0 (pm = vše měřeno, pm-s bez svitu, pm-h bez vlhkosti, pm-f bez větru)",
             "bil": "P - ET0 [mm/den]",
             "licence": "ČHMÚ otevřená data (podmínky na opendata.chmi.cz); Povodí Moravy a hladiny.cz: podmínky neuvedeny, zobrazovat jen agregace",
         },
@@ -358,6 +422,10 @@ def main():
     with open(c, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
     s_et = [v["ET0"] for v in dny.values() if v.get("ET0") is not None]
+    zp = {}
+    for v in dny.values():
+        zp[v.get("zdroj_ET0")] = zp.get(v.get("zdroj_ET0"), 0) + 1
+    log(f"  zpusob vypoctu vyparu (dni): {zp}")
     log(f"  dni celkem {len(dny)}, s ET0 {len(s_et)}, s P {sum(1 for v in dny.values() if v.get('P') is not None)}")
     with open(os.path.join(OUTDIR, "log.txt"), "w", encoding="utf-8") as f:
         f.write("\n".join(LOG) + "\n")

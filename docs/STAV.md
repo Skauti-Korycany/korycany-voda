@@ -45,10 +45,17 @@ Aktualizováno: 15. 11. 2026. Jen to, co je potřeba pro další vývoj. Archite
 - Kontroly: Angström 0,25 / 0,50 proti měřenému záření Holešov a Brno (4 520 dní): průměr sedí (11,77 proti 11,78 MJ/m²/den), RMSE 1,5; regrese a 0,21, b 0,57. PM se svitem proti PM s měřeným zářením: rozdíl 1 %. Výparoměr Kroměříž (76 měsíců): 81 mm/měs., PM 89, HS 109.
 - Jak bylo kap. 2: rámeček "Zpřesnění" (text + graf výparu Kroměříž 1956-2025), doplněné "Jak to číst". Grafy kap. 2 a čísla "žízně" zůstávají zatím z HS a jsou označené jako horní odhad.
 
+## Hotovo naposledy (15. 11., převod na Penman-Monteith)
+
+- `12_pocasi.py`: `et0_pm()` (FAO-56 rov. 6), sluneční svit z recent dat Starého Města / Kroměříže / Holešova (pole `S`, `zdroj_S`), `zdroj_ET0`; ET0 se přepočítá pro všechny dny v `denni.json`. Náhrady při chybějícím měření: svit -> rov. 50 (+4 % za rok), vlhkost -> rov. 48 (+3 %), vítr -> 1,4 m/s (0 %).
+- `13_normaly_pocasi.py`: ET0 Penman-Monteith 2001-2025 (9 039 dní vše měřeno, 92 dní bez vlhkosti a větru), `ET0_HS` po rocích pro srovnání, `rok.P_T`. Normál ET0 700 mm (dřív 858), bilance v minusu v 15 z 25 let (dřív 24).
+- Workflow `pocasi.yml` a `normaly.yml`: push do větve běhu, web se generuje až po `git pull --rebase` (dřív konflikt v `index.html`, když se potkaly dva běhy). Vyzkoušeno na větvi.
+- Jak bylo podle pravidla "laik / zvídavý": kap. 2 nový nadpis "V létě má krajina větší žízeň, než kolik naprší", jedna věta s čísly, graf, "Výparu přibývá" (Kroměříž) a rozbalovací "Pro zvídavé" (metoda, ověření, proč se čísla změnila, jistota trendu); kap. 3 a 5 podrobnosti do rozbalovacích částí / poznámky; "Jak to číst" výchozí zavřené. Sezónní rámeček: září-březen +121 mm, duben-srpen -188 mm. Věta "Tak to šlo od roku 2015" vypuštěna.
+
 ## Další kroky (pořadí)
 
 0a. Validace s daty Kyjovky nad nádrží (denní průtoky a měsíční maxima jsou v `data/hydro/`): porovnat epizody s SCS-CN pro povodí nad nádrží; pozor, toto povodí leží mimo území modelu (nad hrází).
-0b. Převést celou stránku Jak bylo na ET0 Penman-Monteith: `13_normaly_pocasi.py` (historie: H a F už čte, přidat svit Staré Město / Kroměříž / Strážnice / Holešov do `normaly.yml`), `12_pocasi.py` (bot: svit z recent dat Starého Města; záloha bez svitu = FAO-56 rov. 50 nebo HS s opravou), měsíční normály a bilance, texty kap. 2 ("žízeň" -65 mm místo -224 mm, v minusu 15 z 24 let), obrázek "Kam mizí déšť". Pozor na bota: změnu nejdřív vyzkoušet na větvi.
+0b. Pravidlo "laik / zvídavý" projít i v ostatních záložkách (Můj pozemek krok 3-5, Celé území, Katalog) a v dolní části Jak bylo ("Více o tématu"); přepínač Stručně / Podrobně zatím není.
 0c. Prameny: zjistit u ČHMÚ, zda se u PB0425 neměnilo jímání nebo způsob měření (přechod týdenní -> denní 2022); dohledat podmínky užití otevřených dat hydrologie. V březnu 2027 znovu `hydro.yml` + `build_hydro.py`.
 0. Ze zpětné vazby zbývá: režim Stručně / Podrobně; widgety pro web města (iframe, až po vyjasnění podmínek dat ČHMÚ a PMO); výpar Penman-Monteith vedle Hargreavese a měřená půdní vlhkost (Intersucho / čidlo u školy).
 1. Zkouška s lidmi: Můj pozemek (krok 1, upozornění na přívalovou vodu, krok 4), Celé území kap. 3 a mapa eroze (čitelnost nad podkladem ZTM), hráz v0.3.
@@ -89,8 +96,11 @@ Výpočty
 - ET₀ Hargreaves-Samani, v textu "možný výpar"; srážky ČHMÚ manuální -> KS Koryčany PMO -> Nemochovice, doplněné mezery označené.
 - Počet RD = RÚIAN "rodinný dům" + "bydlení" = 1 076.
 
+Rozhraní - dvě úrovně
+- Každá kapitola: nahoře jedno jasné číslo a věta pro laika, podrobnosti (metoda, nejistota, p-hodnoty, kontroly) v rozbalovací části "Pro zvídavé" nebo v "Jak to číst". Platí pro vše nové.
+
 Výpar
-- Přesnější metoda je Penman-Monteith FAO-56; HS z teplot nadhodnocuje pro Koryčany o ~23 %. Tvrzení "výpar roste" opírat o dlouhé řady Kroměříž a Holešov (průkazné), pro Koryčany je řada 2001-2025 krátká (neprůkazné). Open-Meteo je model, jen pro srovnání.
+- Aplikace počítá ET0 metodou Penman-Monteith FAO-56 (od 15. 11. 2026); HS z teplot nadhodnocuje pro Koryčany o ~23 %. Tvrzení "výpar roste" opírat o dlouhé řady Kroměříž a Holešov (průkazné), pro Koryčany je řada 2001-2025 krátká (neprůkazné). Open-Meteo je model, jen pro srovnání.
 
 Rozhraní
 - "Vody ubývá" se opírá o měření pramenů a Kyjovky (ČHMÚ), ne o výpočet výparu; příčinu měření neurčuje a text to říká.
