@@ -1,0 +1,41 @@
+{
+"sloupce": [
+"km",
+"TSCON_ID",
+"TSCON_DS",
+"UNIT_ID",
+"UNIT_DS"
+],
+"radky": [
+[
+"HD",
+"Hladiny - denní",
+"MNM",
+"m n.m."
+],
+[
+"HT",
+"Hladiny - týdenní",
+"MNM",
+"m n.m."
+],
+[
+"YD",
+"Vydatnost - denní",
+"L_S",
+"l/s"
+],
+[
+"YT",
+"Vydatnost - týdenní",
+"L_S",
+"l/s"
+],
+[
+"TD",
+"Teploty vody - denní",
+"0C",
+"°C"
+]
+]
+}
