@@ -1,0 +1,39 @@
+  nemochovice  T       TIMEFUNC {'AVG': 9070, '06:00': 9070, '13:00': 9070, '20:00': 9070} -> AVG: 9039 hodnot
+  nemochovice  TMA     TIMEFUNC {'20:00': 9070} -> 20:00: 9039 hodnot
+  nemochovice  TMI     TIMEFUNC {'20:00': 9070} -> 20:00: 9039 hodnot
+  nemochovice  H       TIMEFUNC {'AVG': 9070, '06:00': 9070, '13:00': 9070, '20:00': 9070} -> AVG: 9039 hodnot
+  nemochovice  F       TIMEFUNC {'AVG': 9070, '06:00': 9070, '13:00': 9070, '20:00': 9070} -> AVG: 9039 hodnot
+  stare_mesto  T       TIMEFUNC {'AVG': 27777, '06:00': 27777, '13:00': 27777, '20:00': 27777} -> AVG: 27449 hodnot
+  stare_mesto  TMA     TIMEFUNC {'20:00': 27777} -> 20:00: 27744 hodnot
+  stare_mesto  TMI     TIMEFUNC {'20:00': 27687} -> 20:00: 27632 hodnot
+  stare_mesto  H       TIMEFUNC {'AVG': 27746, '06:00': 27746, '13:00': 27746, '20:00': 27746} -> AVG: 27418 hodnot
+  stare_mesto  F       TIMEFUNC {'AVG': 27777, '06:00': 27777, '13:00': 27777, '20:00': 27777} -> AVG: 27538 hodnot
+  stare_mesto  SSV     TIMEFUNC {'00:00': 6797} -> 00:00: 6797 hodnot
+  kromeriz     T       TIMEFUNC {'AVG': 30997, '06:00': 30997, '13:00': 30997, '20:00': 30997} -> AVG: 30785 hodnot
+  kromeriz     TMA     TIMEFUNC {'20:00': 30997} -> 20:00: 30508 hodnot
+  kromeriz     TMI     TIMEFUNC {'20:00': 30997} -> 20:00: 30526 hodnot
+  kromeriz     H       TIMEFUNC {'AVG': 30997, '06:00': 30997, '13:00': 30997, '20:00': 30997} -> AVG: 30741 hodnot
+  kromeriz     F       TIMEFUNC {'AVG': 30997, '06:00': 30997, '13:00': 30997, '20:00': 30997} -> AVG: 30707 hodnot
+  kromeriz     SSV     TIMEFUNC {'00:00': 13603} -> 00:00: 13516 hodnot
+  kromeriz     VY      TIMEFUNC {'06:00': 17054} -> 06:00: 9634 hodnot
+  holesov      T       TIMEFUNC {'AVG': 26573, '06:00': 26573, '13:00': 26573, '20:00': 26573} -> AVG: 26573 hodnot
+  holesov      TMA     TIMEFUNC {'20:00': 26573} -> 20:00: 26573 hodnot
+  holesov      TMI     TIMEFUNC {'20:00': 26573} -> 20:00: 26573 hodnot
+  holesov      H       TIMEFUNC {'AVG': 26573, '06:00': 26573, '13:00': 26573, '20:00': 26573} -> AVG: 26573 hodnot
+  holesov      F       TIMEFUNC {'AVG': 26542, '06:00': 26542, '13:00': 26542, '20:00': 26542} -> AVG: 26542 hodnot
+  holesov      SSV     TIMEFUNC {'00:00': 26573} -> 00:00: 26542 hodnot
+  holesov      RGLB_D  TIMEFUNC {'SUM': 4520} -> SUM: 4520 hodnot
+  holesov      VY      TIMEFUNC {'06:00': 4293} -> 06:00: 2425 hodnot
+  straznice    SSV     TIMEFUNC {'00:00': 34539} -> 00:00: 33052 hodnot
+  brno_turany  T       TIMEFUNC {'AVG': 24734, '06:00': 24734, '13:00': 24734, '20:00': 24734} -> AVG: 24734 hodnot
+  brno_turany  TMA     TIMEFUNC {'20:00': 24734} -> 20:00: 24734 hodnot
+  brno_turany  TMI     TIMEFUNC {'20:00': 24734} -> 20:00: 24734 hodnot
+  brno_turany  H       TIMEFUNC {'AVG': 24734, '06:00': 24734, '13:00': 24734, '20:00': 24734} -> AVG: 24734 hodnot
+  brno_turany  F       TIMEFUNC {'AVG': 24734, '06:00': 24734, '13:00': 24734, '20:00': 24734} -> AVG: 24733 hodnot
+  brno_turany  SSV     TIMEFUNC {'00:00': 24734} -> 00:00: 24734 hodnot
+  brno_turany  RGLB_D  TIMEFUNC {'SUM': 4520} -> SUM: 4520 hodnot
+  brno_turany  VY      TIMEFUNC {'06:00': 7124} -> 06:00: 3779 hodnot
+  open-meteo 1940 1969 10958 dní, buňka 49.103687 17.201365 299.0 {'time': 'iso8601', 'et0_fao_evapotranspiration': 'mm', 'shortwave_radiation_sum': 'MJ/m²'}
+  open-meteo 1970 1999 10957 dní, buňka 49.103687 17.201365 299.0 {'time': 'iso8601', 'et0_fao_evapotranspiration': 'mm', 'shortwave_radiation_sum': 'MJ/m²'}
+  open-meteo 2000 2025 9497 dní, buňka 49.103687 17.201365 299.0 {'time': 'iso8601', 'et0_fao_evapotranspiration': 'mm', 'shortwave_radiation_sum': 'MJ/m²'}
+hotovo
