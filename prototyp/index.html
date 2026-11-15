@@ -1209,14 +1209,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <p class="jb-p" id="jb-ch1"></p>
     <svg class="jb-chart" id="jb-l1" viewBox="0 0 720 220" role="img" aria-label="Roční srážky 1921-2025"></svg>
     <div class="legend"><span><b style="background:var(--chip)"></b>srážky za rok</span><span><b style="background:var(--dry)"></b>3 nejsušší roky</span><span><b style="background:var(--water)"></b>3 nejdeštivější</span><span><b class="ln" style="border-color:var(--warn)"></b>klouzavý průměr 10 let</span><span><b class="ln" style="border-color:var(--fg);border-top-style:dashed"></b>průměr 30 let</span><span><b style="background:var(--muted);width:.35rem;height:.35rem;border-radius:50%;vertical-align:1px"></b>tečka pod rokem: část dní doplněna z okolní stanice</span></div>
-    <p class="jb-zdroj">ČHMÚ Koryčany, roční úhrny 1921-2025, letošek předběžně. Oranžová čára je průměr vždy z posledních deseti let, čárkované úseky průměry let 1921-1950 a 1991-2020.</p>
+    <p class="jb-zdroj">Měření ČHMÚ v Koryčanech, letošek předběžně.</p>
+    <details class="jb-cist"><summary><b>Pro zvídavé</b> - jak graf číst a odkud jsou data</summary><p id="jb-ch1-z"></p><p id="jb-l1-n"></p></details>
 
     <div class="jb-box jb-split">
       <div class="jb-box-t">
         <div class="jb-eyebrow">Vysvětlení</div>
         <h4>Kam mizí déšť</h4>
         <p id="jb-box1"></p>
-        <p class="note">Možný výpar = kolik by se vypařilo z trávníku, který má vody dost (ET₀, FAO-56). Skutečný je v suchu menší, protože není z čeho.</p>
+        <p class="note">Možný výpar = kolik by se vypařilo z trávníku, který má vody dost. Skutečný je v suchu menší, protože není z čeho.</p>
       </div>
       <svg class="il" viewBox="0 0 560 300" role="img" aria-label="Ilustrace: déšť, možný výpar, odtok do kanálu a vsak do půdy">
         <rect class="soilbg" x="0" y="210" width="560" height="90"/><path class="soil" d="M0 210H560" stroke-width="2"/>
@@ -1243,8 +1244,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <svg class="jb-chart" id="jb-v1" viewBox="0 0 720 200" role="img" aria-label="Možný výpar v Kroměříži po letech"></svg>
       <div class="legend"><span><b style="background:var(--soil)"></b>možný výpar za rok, Kroměříž (mm)</span><span><b class="ln" style="border-color:var(--warn)"></b>klouzavý průměr 10 let</span></div>
       <p class="jb-zdroj">Výpočet z měření ČHMÚ v Kroměříži (27 km od Koryčan).</p>
-      <details class="jb-cist"><summary><b>Pro zvídavé</b> - jak výpar počítáme a čím je ověřený</summary><p id="jb-vyp-n"></p></details>
     </div>
+    <details class="jb-cist"><summary><b>Pro zvídavé</b> - jak výpar počítáme a čím je ověřený</summary><p id="jb-l2-n"></p><p id="jb-vyp-n"></p></details>
 
     <div class="jb-box">
       <div class="jb-eyebrow">Vysvětlení</div>
@@ -1290,12 +1291,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <p class="jb-p" id="jb-ch3"></p>
     <svg class="jb-chart" id="jb-l3" viewBox="0 0 720 210" role="img" aria-label="Tropické a supertropické dny, tropické noci a letní maxima 2001-2025"></svg>
     <div class="legend" id="jb-l3-leg"><span><b style="background:var(--bad);border-radius:50%"></b>tropické dny (≥ 30 °C)</span><span><b style="background:var(--hot);transform:rotate(45deg) scale(.8)"></b>supertropické dny (≥ 35 °C)</span><span class="jb-leto"><b class="ln" style="border-color:var(--warn)"></b>letní maxima, průměr VI-VIII (pravá osa)</span><span><b class="ln" style="border-color:var(--bad);border-top-style:dashed;opacity:.6"></b>trend</span></div>
-    <p class="jb-zdroj">ČHMÚ Nemochovice (8 km). Tropický den = nejvyšší teplota aspoň 30 °C, supertropický 35 °C.</p>
+    <p class="jb-zdroj">Měření ČHMÚ v Nemochovicích (8 km od Koryčan).</p>
+    <details class="jb-cist"><summary><b>Pro zvídavé</b> - prahy, trendy a jak graf číst</summary><p id="jb-l3-n"></p></details>
 
     <h3 class="jb-ch">5. Když přijde liják</h3>
     <p class="jb-p">Sucho a povodeň nejsou protiklady. Vyschlá a utužená půda nestihne vsáknout, voda steče po povrchu a vezme s sebou ornici. <span id="jb-ch4"></span> Největší deště za den v řadě od roku 1921:</p>
     <div class="jb-lijak" id="jb-lijak"></div>
     <p class="note" id="jb-lijak-n"></p>
+    <details class="jb-cist"><summary><b>Pro zvídavé</b> - přibývá lijáků?</summary><p id="jb-lijak-z"></p></details>
 
     <h3 class="jb-ch" id="jb-letos-h">6. Letošek</h3>
     <div class="jb-cards" id="jb-letos"></div>
@@ -1304,14 +1307,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="jb-box">
       <div class="jb-eyebrow">Výhled</div>
       <h4>Co nás čeká</h4>
-      <p class="jb-p">Podle výpočtů CzechGlobe z klimatických modelů se Česko při nejpravděpodobnějším vývoji do poloviny století oteplí o 2 °C (1,8-2,5 °C) proti letům 1981-2010, v létě o 2,5 °C. Srážek za rok bude zhruba stejně (+3,6 %, s nejistotou -5 až +9 %), v zimě spíš přibudou a padnou jako déšť, v létě ubudou ✅. Víc tepla a méně letního deště znamená vyšší výpar a častější, delší a rychleji nastupující sucha. Mezivládní panel pro změnu klimatu (IPCC) řadí střední Evropu mezi oblasti, kde při oteplení o 2 °C přibude sucha v půdě ✅⏳, a čeká víc škod z přívalových dešťů ✅⏳.</p>
-      <p class="src">Zdroje: <a href="https://www.klimatickazmena.cz/odhad-budouciho-vyvoje-teplot2/" target="_blank" rel="noopener">CzechGlobe, klimatickazmena.cz - teploty</a> ✅, <a href="https://www.klimatickazmena.cz/odhad-budouciho-vyvoje-srazek2/" target="_blank" rel="noopener">srážky</a> ✅, <a href="https://www.klimatickazmena.cz/odhad-budouciho-vyvoje-klimatu/" target="_blank" rel="noopener">výhled</a> ✅ (modely CMIP6, Česko celkem); <a href="https://www.ipcc.ch/report/ar6/wg1/figures/chapter-11/figure-11-18/" target="_blank" rel="noopener">IPCC AR6 WGI, obr. 11.18</a> ✅⏳; <a href="https://www.ipcc.ch/report/ar6/wg2/downloads/outreach/IPCC_AR6_WGII_FactSheet_Europe.pdf" target="_blank" rel="noopener">IPCC AR6 WGII, Evropa</a> ✅⏳. Pro konkrétní katastr Koryčan nabízí výpočty <a href="https://www.climrisk.cz/mapa-cr/" target="_blank" rel="noopener">ClimRisk</a>.</p>
+      <p class="jb-p">Do poloviny století se Česko podle klimatických modelů oteplí asi o <b>2 °C</b> proti letům 1981-2010. Srážek za rok bude zhruba stejně, ale víc jich spadne v zimě a méně v létě. Čekat se dají častější a delší sucha a víc škod z přívalových dešťů.</p>
+      <details class="jb-cist"><summary><b>Pro zvídavé</b> - rozpětí výhledu a zdroje</summary><p>Podle výpočtů CzechGlobe z klimatických modelů se Česko při nejpravděpodobnějším vývoji do poloviny století oteplí o 2 °C (1,8-2,5 °C) proti letům 1981-2010, v létě o 2,5 °C. Srážek za rok bude zhruba stejně (+3,6 %, s nejistotou -5 až +9 %), v zimě spíš přibudou a padnou jako déšť, v létě ubudou ✅. Víc tepla a méně letního deště znamená vyšší výpar a častější, delší a rychleji nastupující sucha. Mezivládní panel pro změnu klimatu (IPCC) řadí střední Evropu mezi oblasti, kde při oteplení o 2 °C přibude sucha v půdě ✅⏳, a čeká víc škod z přívalových dešťů ✅⏳.</p>
+      <p class="src">Zdroje: <a href="https://www.klimatickazmena.cz/odhad-budouciho-vyvoje-teplot2/" target="_blank" rel="noopener">CzechGlobe, klimatickazmena.cz - teploty</a> ✅, <a href="https://www.klimatickazmena.cz/odhad-budouciho-vyvoje-srazek2/" target="_blank" rel="noopener">srážky</a> ✅, <a href="https://www.klimatickazmena.cz/odhad-budouciho-vyvoje-klimatu/" target="_blank" rel="noopener">výhled</a> ✅ (modely CMIP6, Česko celkem); <a href="https://www.ipcc.ch/report/ar6/wg1/figures/chapter-11/figure-11-18/" target="_blank" rel="noopener">IPCC AR6 WGI, obr. 11.18</a> ✅⏳; <a href="https://www.ipcc.ch/report/ar6/wg2/downloads/outreach/IPCC_AR6_WGII_FactSheet_Europe.pdf" target="_blank" rel="noopener">IPCC AR6 WGII, Evropa</a> ✅⏳. Pro konkrétní katastr Koryčan nabízí výpočty <a href="https://www.climrisk.cz/mapa-cr/" target="_blank" rel="noopener">ClimRisk</a>.</p></details>
     </div>
 
     <div class="jb-cta" id="jb-l-call"></div>
 
     <details class="jb-vice" id="jb-vice">
-      <summary><span><b>Více o tématu</b><br><span class="note">výběr období a srovnání ročníků, trendy v číslech, měsíční bilance, poznámky ke grafům, metody a zdroje</span></span></summary>
+      <summary><span><b>Více o tématu</b><br><span class="note">výběr období a srovnání ročníků, trendy v číslech, měsíční bilance, pojmy, metody a zdroje</span></span></summary>
       <h4>Vyber si období</h4>
     <div class="jb-head" style="margin-top:1.2rem">
       <div><h4 style="margin:0">Detail: vybrané období</h4><p class="note" style="margin:.2rem 0 0">Denní data jsou od 1. 1. 2026 (ČHMÚ je zveřejňuje jen pro běžící rok); starší roky jsou v řadách nahoře.</p></div>
@@ -1345,12 +1349,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       </div>
       <p class="src">Zdroje: <a href="https://www.fao.org/3/x0490e/x0490e0e.htm" target="_blank" rel="noopener">FAO-56, kap. 8</a> ✅⏳ (při nedostatku vody klesá skutečný výpar až k nule); <a href="https://www.vtei.cz/wp-content/uploads/2022/10/6483-casopis-VTEI-5-22-Odhad-prirodnich-zdroju.pdf" target="_blank" rel="noopener">Kašpárek a kol., VTEI 2022/5</a> ✅ (bilance ČR 1981-2019); <a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2020/Stav_a_vyvoj_sucha-kveten_2020.pdf" target="_blank" rel="noopener">Národní koalice pro boj se suchem, květen 2020</a> ✅⏳ (zima doplňuje zásoby, letní déšť spotřebuje vegetace, deficit od roku 2015).</p>
 
-      <h4>Poznámky ke grafům</h4>
-    <p class="note" id="jb-l1-n"></p>
-    <p class="note" id="jb-l2-n"></p>
-    <p class="note" id="jb-l3-n"></p>
-
-    <details class="jb-cist"><summary><b>Jak to číst</b> - pojmy a metody</summary><p><b>Odkud jsou data.</b> Srážky měří stanice ČHMÚ Koryčany (manuální srážkoměrná stanice, 305 m n. m., úhrn se odečítá jednou denně ráno, řada od listopadu 1920 ✅). Teploty jsou ze stanice ČHMÚ Nemochovice (8 km od Koryčan, měří od prosince 2000 ✅), proto řady teplot a výparu začínají rokem 2001. Než dorazí data ČHMÚ, doplňuje poslední dny <a href="https://sap.pmo.cz/portal/Srazky/cz/pc/Mereni.aspx?id=60&amp;oid=3" target="_blank" rel="noopener">srážkoměr Povodí Moravy pod přehradou</a>. Data ČHMÚ: <a href="https://opendata.chmi.cz/" target="_blank" rel="noopener">opendata.chmi.cz</a>.</p><p><b>Prameny a potok.</b> Vydatnost pramenů měří ČHMÚ (pramen Koryčany, objekt PB0425, 450 m n. m. v Chřibech; do roku 2021 jednou týdně, od roku 2022 denně ✅). Průtok Kyjovky měří stanice ČHMÚ Koryčany nad nádrží (povodí 19,4 km², od listopadu 1967 ✅); je to voda, která do přehrady přitéká z lesů nad ní, tedy bez vlivu řízení přehrady. Roční průměr je jen z úplných let. Data: <a href="https://opendata.chmi.cz/hydrology/" target="_blank" rel="noopener">opendata.chmi.cz/hydrology</a>.</p><p><b>Průměr a normál.</b> Všechna čísla „za rok“ jsou průměry za více let a období je vždy uvedeno. Jednotlivé roky se od průměru liší i o třetinu. <b>Normál</b> je meteorologický pojem: průměr za 30 let, teď se používá období 1991-2020 (<a href="https://wmo.int/media/news/updated-30-year-reference-period-reflects-changing-climate" target="_blank" rel="noopener">WMO</a> ✅). <b>Klouzavý průměr 10 let</b> je průměr vždy z deseti po sobě jdoucích let, vyhlazuje výkyvy. <b>Trend</b> je sklon přímky proložené roky 2001-2025; za 25 let je spolehlivý u teploty, u výparu a tropických dní jde zatím o náznak.</p><p><b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, metoda Penman-Monteith podle FAO-56 📄). Počítá se z měřené teploty, vlhkosti vzduchu a větru v Nemochovicích a ze slunečního svitu nejbližší stanice (většinou Staré Město); nepočítá se proti žádné „požadované“ vlhkosti. Když některé měření chybí, nahradí ho odhad z teplot a den je tak označen v datech. Do 15. 11. 2026 jsme počítali jen z teplot (Hargreaves-Samani) a vycházelo to asi o pětinu víc; podrobnosti v kapitole 2 pod „Pro zvídavé“. <b>Srážky minus výpar</b> je žízeň krajiny (odborně klimatická vodní bilance), ne voda, která někam zmizela. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne. Prahy podle ČHMÚ ✅: tropický den = nejvyšší teplota aspoň 30 °C, supertropický aspoň 35 °C (neoficiální název), tropická noc = teplota neklesne pod 20 °C (<a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2025/TI_Leto2025.pdf" target="_blank" rel="noopener">ČHMÚ, Klimatologické léto 2025</a>).</p></details>
+    <details class="jb-cist"><summary><b>Pro zvídavé</b> - pojmy, metody a odkud jsou data</summary><p><b>Odkud jsou data.</b> Srážky měří stanice ČHMÚ Koryčany (manuální srážkoměrná stanice, 305 m n. m., úhrn se odečítá jednou denně ráno, řada od listopadu 1920 ✅). Teploty jsou ze stanice ČHMÚ Nemochovice (8 km od Koryčan, měří od prosince 2000 ✅), proto řady teplot a výparu začínají rokem 2001. Než dorazí data ČHMÚ, doplňuje poslední dny <a href="https://sap.pmo.cz/portal/Srazky/cz/pc/Mereni.aspx?id=60&amp;oid=3" target="_blank" rel="noopener">srážkoměr Povodí Moravy pod přehradou</a>. Data ČHMÚ: <a href="https://opendata.chmi.cz/" target="_blank" rel="noopener">opendata.chmi.cz</a>.</p><p><b>Prameny a potok.</b> Vydatnost pramenů měří ČHMÚ (pramen Koryčany, objekt PB0425, 450 m n. m. v Chřibech; do roku 2021 jednou týdně, od roku 2022 denně ✅). Průtok Kyjovky měří stanice ČHMÚ Koryčany nad nádrží (povodí 19,4 km², od listopadu 1967 ✅); je to voda, která do přehrady přitéká z lesů nad ní, tedy bez vlivu řízení přehrady. Roční průměr je jen z úplných let. Data: <a href="https://opendata.chmi.cz/hydrology/" target="_blank" rel="noopener">opendata.chmi.cz/hydrology</a>.</p><p><b>Průměr a normál.</b> Všechna čísla „za rok“ jsou průměry za více let a období je vždy uvedeno. Jednotlivé roky se od průměru liší i o třetinu. <b>Normál</b> je meteorologický pojem: průměr za 30 let, teď se používá období 1991-2020 (<a href="https://wmo.int/media/news/updated-30-year-reference-period-reflects-changing-climate" target="_blank" rel="noopener">WMO</a> ✅). <b>Klouzavý průměr 10 let</b> je průměr vždy z deseti po sobě jdoucích let, vyhlazuje výkyvy. <b>Trend</b> je sklon přímky proložené roky 2001-2025; za 25 let je spolehlivý u teploty, u výparu a tropických dní jde zatím o náznak.</p><p><b>Možný výpar</b> je kolik vody by se vypařilo z trávníku, kdyby jí měl dost (odborně referenční evapotranspirace ET₀, metoda Penman-Monteith podle FAO-56 📄). Počítá se z měřené teploty, vlhkosti vzduchu a větru v Nemochovicích a ze slunečního svitu nejbližší stanice (většinou Staré Město); nepočítá se proti žádné „požadované“ vlhkosti. Když některé měření chybí, nahradí ho odhad z teplot a den je tak označen v datech. Do 15. 11. 2026 jsme počítali jen z teplot (Hargreaves-Samani) a vycházelo to asi o pětinu víc; podrobnosti v kapitole 2 pod „Pro zvídavé“. <b>Srážky minus výpar</b> je žízeň krajiny (odborně klimatická vodní bilance), ne voda, která někam zmizela. <b>Průměrná teplota</b> je průměr dne i noci; horko líp ukazuje nejvyšší teplota dne. Prahy podle ČHMÚ ✅: tropický den = nejvyšší teplota aspoň 30 °C, supertropický aspoň 35 °C (neoficiální název), tropická noc = teplota neklesne pod 20 °C (<a href="https://intranet.chmi.cz/files/portal/docs/tiskove_zpravy/2025/TI_Leto2025.pdf" target="_blank" rel="noopener">ČHMÚ, Klimatologické léto 2025</a>).</p></details>
     <p class="src" id="jb-src"></p>
     </details>
   </div>
@@ -1415,7 +1414,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <div class="pz-q" style="margin-top:0"><div class="q"><span class="qn">1</span>Kam vedou svody (okapové roury) ze střechy?</div><div class="pz-chips" data-for="in-drain"></div></div>
         <div class="pz-q"><div class="q"><span class="qn">2</span>Kolik máš dlažby, betonu a štěrku?</div><div class="pz-chips" data-for="in-paved"></div><div class="note" id="pz-paved-n"></div></div>
         <div class="pz-q"><div class="q"><span class="qn">3</span>Jakou máš půdu?</div><div class="pz-chips" data-for="in-soil"></div>
-          <div class="note">Předvybráno z mapy hydrologických skupin půd VÚMOP. Na zahradě může být půda jiná (navezená, ušlapaná), zkouška vsaku to ukáže.</div>
+          <div class="note">Předvybráno z mapy půd. Na zahradě může být půda jiná (navezená, ušlapaná), zkouška vsaku to ukáže.</div>
           <details class="pz-mini"><summary>Jak to zjistit sám</summary><p class="note">Vykopej jámu 30 cm, nalij vodu a po 30 minutách změř, o kolik klesla. Přes 8 cm velmi propustná, 4-8 cm propustná, 2-4 cm spíš těžká, pod 2 cm jíl.</p></details></div>
         <details class="pz-more" id="pz-detail"><summary>Upřesnit čísla (plochy v m², sklon, dlažba, zahrada)</summary>
           <div class="inputs">
@@ -1437,16 +1436,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <option value="C">kleslo 2-4 cm - C, málo propustná</option>
           <option value="D">kleslo pod 2 cm - D, jíl, nepropustná</option></select></label>
           </div>
-          <p class="note">Střechy jsou půdorysy budov z katastru (ne plocha šikmé střechy). Zeleň = výměra vybraných parcel minus střechy a zpevněné plochy. Převod zkoušky vsaku na skupinu půdy A-D podle brožury Praha 2009 ✅⏳.</p>
+          <p class="note">Střechy jsou půdorysy budov z katastru (ne plocha šikmé střechy). Zeleň = výměra vybraných parcel minus střechy a zpevněné plochy. Půda je předvybraná z mapy hydrologických skupin půd VÚMOP. Převod zkoušky vsaku na skupinu půdy A-D podle brožury Praha 2009 ✅⏳.</p>
         </details>
       </div>
       <div class="pz-step" data-s="3">
-        <div class="pz-q" style="margin-top:0"><div class="q">Jaký déšť?</div><div class="pz-chips" data-for="in-rain"></div><div class="note">Vzácné přívalové deště (53, 87 a 94 mm) najdeš v „Jak se to počítá“.</div></div>
+        <div class="pz-q" style="margin-top:0"><div class="q">Jaký déšť?</div><div class="pz-chips" data-for="in-rain"></div><div class="note">Vzácné přívalové deště (53, 87 a 94 mm) najdeš níž v části „Pro zvídavé“.</div></div>
         <div id="pz-rain-big"></div>
         <div id="pz-30"></div>
         <div id="pz-pritok"></div>
         <p id="pz-year"></p>
-        <details class="pz-more"><summary>Jak se to počítá</summary>
+        <details class="pz-more"><summary><b>Pro zvídavé</b>&nbsp;- jak se to počítá, jiný déšť</summary>
           <div class="inputs" style="margin-top:.5rem"><label class="f">Jiný déšť<select id="in-rain">
           <optgroup label="Běžné deště (denní úhrny ČHMÚ Koryčany 1991-2019 ✅)">
             <option value="10" selected>10 mm - běžný déšť, asi 17x za rok</option>
@@ -1461,12 +1460,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <table class="flow" id="flow"></table>
           <p class="note" id="year"></p>
           <p class="note">Střechy a dlažba: součinitele odtoku ČSN 75 9010, první 1 mm deště zůstane na povrchu. Zahrada: metoda SCS-CN (Janeček a kol. 2012) podle půdy; u velkých dešťů vážený průměr běžně vlhké a nasycené půdy (Kavka a kol. 2023). Srážky: návrhové 6hodinové úhrny pro Koryčany (ČVUT a ČHMÚ 2023 ✅). Víc v záložce O modelu.</p>
+          <p class="note">Posledních 30 dní: srážky ČHMÚ Koryčany, dny bez ní srážkoměr Povodí Moravy pod přehradou a Nemochovice, předběžná data (stejná jako v Jak bylo); každý déšť se počítá zvlášť. Přítok shora: odhad z výškopisu DMR 5G (mřížka 5 m) a mapy půd, odtok SCS-CN 🤔.</p>
         </details>
       </div>
       <div class="pz-step" data-s="4">
         <div id="pz-zahrada"></div>
         <div class="pz-houba" id="pz-houba"></div>
-        <p class="note" style="margin:.8rem 0 .3rem">Čísla platí pro tvůj pozemek a zvolený déšť, podrobnosti jsou v „Proč a jak“. Tlačítky níž si vybereš, s čím chceš pomoct.</p>
+        <p class="note" style="margin:.8rem 0 .3rem">Čísla platí pro tvůj pozemek a zvolený déšť. Zdroje a podrobnosti najdeš u každého opatření v „Proč a jak“.</p>
         <div class="co" id="pz-co"></div>
         <div id="cards"></div>
         <div class="unfit" id="unfit"></div>
@@ -1529,7 +1529,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <div class="jb-box uz-limit"><span class="jb-kicker">Na co to nestačí</span><p id="u-limit"></p></div>
       <div class="jb-box uz-plus"><span class="jb-kicker">Co to ale je</span><p id="u-plus"></p></div>
     </div>
-    <details class="jb-cist uz-det"><summary><b>Upřesnit čísla a rozpad po částech území</b></summary>
+    <details class="jb-cist uz-det"><summary><b>Pro zvídavé</b> - upřesnit čísla, rozpad po částech území, zdroje</summary>
       <div class="inputs" style="margin-top:.6rem">
         <label class="f">Rodinných domů v území<input type="number" id="u-n" value="1076" min="0" step="10"></label>
         <label class="f u-prumer">Průměrný půdorys domu (m²)<input type="number" id="u-roof" value="126" min="0" step="10"></label>
@@ -1558,13 +1558,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="jb-box">
       <h4 id="s-bars-h">Voda ze střech při jednom dešti</h4>
       <div class="uz-bars" id="s-bars"></div>
-      <p class="jb-zdroj">Budovy ČÚZK INSPIRE BU ✅, účel z RÚIAN. Voda ze střechy = půdorys × déšť, skutečná plocha šikmé střechy je asi o pětinu větší 🤔.</p>
     </div>
     <h4 class="uz-h4">Kdo s tím může co udělat</h4>
     <div class="uz-kdo" id="s-kdo"></div>
     <div class="callout" id="s-limit"></div>
-    <details class="jb-cist uz-det"><summary><b>Celá tabulka podle účelu budov</b></summary>
+    <details class="jb-cist uz-det"><summary><b>Pro zvídavé</b> - celá tabulka podle účelu budov a zdroje</summary>
+      <p class="note" id="s-veta-z"></p>
       <div class="uz-tw"><table class="flow" id="s-table" style="margin-top:.6rem"></table></div>
+      <p class="jb-zdroj">Budovy ČÚZK INSPIRE BU ✅, účel z RÚIAN. Voda ze střechy = půdorys × déšť, skutečná plocha šikmé střechy je asi o pětinu větší 🤔.</p>
     </details>
   </section>
 
@@ -1574,7 +1575,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <p class="jb-p" id="k-veta">Území má 1 770 ha a skoro všechno jsou pole, louky a les. Jak na nich hospodaří zemědělci a lesníci, rozhoduje, kolik vody při lijáku steče po povrchu do potoka a kolik se vsákne.</p>
     <div class="jb-box">
       <span class="jb-kicker">Jak poznáme, kolik vody z plochy steče</span>
-      <p class="uz-cn-t">Každá plocha má <b>číslo odtoku</b> (odborně CN, z metody SCS-CN). Čím vyšší, tím víc vody steče po povrchu. Číslo se bere z tabulek podle druhu plochy, jejího stavu a půdy (Janeček a kol. 2012 ✅⏳). Opatření na polích ho snižují.</p>
+      <p class="uz-cn-t">Každá plocha má <b>číslo odtoku</b>. Čím vyšší, tím víc vody steče po povrchu. Záleží na tom, co na ploše je, v jakém je stavu a jaká je pod ní půda. Opatření na polích ho snižují.</p>
       <svg class="uz-cn" id="k-cn" viewBox="0 0 720 96" role="img" aria-label="Stupnice čísla odtoku pro plochy v území"></svg>
       <div class="uz-bars uz-cn-l" id="k-cn-l"></div>
       <p class="note" id="k-cn-n"></p>
@@ -1602,6 +1603,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="uz-map"><div id="er-map" aria-label="Mapa eroze orné půdy"></div></div>
     <div class="er-leg" id="er-leg"></div>
     <p class="note" id="er-sum"></p>
+    <details class="jb-cist uz-det"><summary><b>Pro zvídavé</b> - tabulka ploch, jak se to počítá a zdroje</summary>
+      <p class="note">Číslo odtoku je odborně CN z metody SCS-CN; bere se z tabulek podle druhu plochy, jejího stavu a půdy (Janeček a kol. 2012 ✅⏳).</p>
+      <p class="note" id="er-sum-z"></p>
       <div class="uz-tw"><table class="flow" id="k-table" style="margin-top:.6rem"></table></div>
       <p class="jb-zdroj" id="k-limit"></p>
       <p class="jb-zdroj" id="k-zdroj">Plochy a půdy ze skutečných dat (ZABAGED využití, hydrologické skupiny půd VÚMOP 2026 - CC BY-NC, DMR 5G) v mřížce 5 m, území modelu 1 772 ha (Kyjovka k jezu před Mouchnicemi). Posuvníky mění stav hospodaření na části plochy; odtok počítá SCS-CN po buňkách. Je to tabulková změna čísla odtoku, ne měření - ukazuje řád, ne přesné číslo.</p>
@@ -1623,9 +1627,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="uz-map"><div id="dam-map" aria-label="Mapa potoků pro hráz"></div></div>
     <div class="callout" id="h-vd" style="border-left-color:var(--accent);display:none"></div>
     <div id="h-out" style="margin-top:.6rem"><p class="note">Toky a terén se načtou po otevření mapy (asi 0,8 MB).</p></div>
-    <div class="jb-box uz-bobr"><span class="jb-kicker">Bobr to umí sám</span><p>Bobr evropský na Kyjovce žije a jeho hráze jsou místy vysoké skoro 1 m. Zvedají hladinu, zpomalují odtok a kolem nich vznikají mokřady, kde se usazují splaveniny a daří se dalším druhům (Ametyst, metodický list Po stopách bobra ✅). Povolení nepotřebuje. U nás je to silně ohrožený druh.</p></div>
-    <details class="jb-cist uz-det"><summary><b>Co model nepočítá a co je potřeba ke stavbě</b></summary>
-      <p class="note">Každá hráz na potoce potřebuje povolení vodoprávního úřadu (ORP Kroměříž) a dohodu se správcem toku. U malých potoků (povodí pod 0,25 km²) a úzkých roklí terén údolí nerozliší, proto se ukáže jen tůň nebo poldr v údolnici s objemem jako rozsah. Model nepočítá ztráty, bezpečnostní přeliv, těleso hráze ani koryto užší než 5 m. Je to odhad pro osvětu, ne návrh hráze. Metoda: docs/JADRO.md, kap. Nádrže; toky ČÚZK ✅, terén DMR 5G.</p>
+    <div class="jb-box uz-bobr"><span class="jb-kicker">Bobr to umí sám</span><p>Bobr evropský na Kyjovce žije a jeho hráze jsou místy vysoké skoro 1 m. Zvedají hladinu, zpomalují odtok a kolem nich vznikají mokřady, kde se usazují splaveniny a daří se dalším druhům. Povolení nepotřebuje. U nás je to silně ohrožený druh.</p></div>
+    <details class="jb-cist uz-det"><summary><b>Pro zvídavé</b> - co model nepočítá a co je potřeba ke stavbě</summary>
+      <p class="note" id="h-tech"></p>
+      <p class="note">Každá hráz na potoce potřebuje povolení vodoprávního úřadu (ORP Kroměříž) a dohodu se správcem toku. U malých potoků (povodí pod 0,25 km²) a úzkých roklí terén údolí nerozliší, proto se ukáže jen tůň nebo poldr v údolnici s objemem jako rozsah. Model nepočítá ztráty, bezpečnostní přeliv, těleso hráze ani koryto užší než 5 m. Je to odhad pro osvětu, ne návrh hráze. Metoda: docs/JADRO.md, kap. Nádrže; toky ČÚZK ✅, terén DMR 5G. Odtok z povodí k hrázi metodou SCS-CN. Bobr: Ametyst, metodický list Po stopách bobra ✅.</p>
     </details>
   </section>
 
@@ -1659,7 +1664,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="uz-q">Peníze a pracnost</div><div class="filters" id="k-fin"><button aria-pressed="false" data-f="otevreno">jen s dotací, která je teď otevřená</button><button aria-pressed="false" data-f="svepomoc">jen svépomoc (za víkend, bez povolení)</button></div>
     </details>
   </div>
-  <p class="note kt-n">Čísla jsou pro vzorový dům (100 m² střechy, 50 m² dvora, běžný déšť 10 mm). Pro tvůj dům je spočítá <a href="#" data-tab-go4="pozemek">Můj pozemek</a>. Každé číslo má zdroj a značku původu.</p>
+  <p class="note kt-n">Čísla jsou pro vzorový dům (100 m² střechy, 50 m² dvora, běžný déšť 10 mm). Pro tvůj dům je spočítá <a href="#" data-tab-go4="pozemek">Můj pozemek</a>. Zdroje, ceny a podrobnosti jsou u každého opatření v „Proč a jak“.</p>
   <nav class="kt-obsah" id="k-obsah" aria-label="Skupiny opatření"></nav>
   <div id="k-cards"></div>
 </section>
@@ -1669,7 +1674,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <header class="jb-hero">
     <div class="jb-kicker">O modelu</div>
     <h2 class="jb-title">Jak to počítáme a co ještě neumíme</h2>
-    <p class="jb-lede">Aplikace je zjednodušený model pro osvětu a pro rozhodování, kde začít. Není to projektová dokumentace. Každé číslo má zdroj; tady je, odkud čísla jsou, co je hotové a co ještě chybí.</p>
+    <p class="jb-lede">Aplikace je zjednodušený model pro osvětu: pomáhá rozhodnout, kde začít. Není to projekt stavby. Tady je, odkud čísla jsou, co je hotové a co ještě chybí.</p>
   </header>
   <nav class="uz-obsah" aria-label="Kapitoly">
     <a href="#om-1"><span class="n">1</span><b>Co je hotové</b><small>a co ještě chybí</small></a>
@@ -1704,15 +1709,17 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <section class="uz-ch" id="om-2">
     <div class="jb-kicker">Kapitola 2 · Metody</div>
     <h3 class="jb-ch">Jak se počítá</h3>
-    <p class="jb-p">Používáme jednoduché a ověřené české a mezinárodní metody, aby se dal každý výsledek přepočítat ručně. Hlavní otázka je vždy stejná: kolik vody z deště zůstane v území a kolik odteče.</p>
-    <div class="uz-kdo om-met">
+    <p class="jb-p">Otázka je vždy stejná: kolik vody z deště zůstane a kolik odteče. Počítáme jednoduchými ověřenými metodami, aby se dal každý výsledek přepočítat ručně.</p>
+    <p class="note om-zn">Značky u čísel: ✅ zdroj jsme otevřeli a ověřili, ⏳ zdroj starší než rok, 📄 citováno z druhé ruky, 🤔 odhad, 💻 neověřeno.</p>
+    <details class="jb-cist uz-det"><summary><b>Pro zvídavé</b> - metody po záložkách</summary>
+    <div class="uz-kdo om-met" style="margin-top:.6rem">
       <div><b>Jak bylo</b><span class="v">srážky, výpar, horko</span><ul><li>Denní srážky a teploty ČHMÚ (Koryčany, Nemochovice), předběžná data Povodí Moravy.</li><li>Možný výpar podle Penman-Monteith (FAO-56): teplota, vlhkost, vítr a sluneční svit ze stanic ČHMÚ.</li><li>Tropický den od 30 °C, tropická noc od 20 °C (ČHMÚ).</li></ul></div>
       <div><b>Můj pozemek</b><span class="v">jeden pozemek, jeden déšť</span><ul><li>Střechy a dlažba: součinitel odtoku podle ČSN 75 9010, první 1 mm deště zůstane na povrchu.</li><li>Zahrada: metoda SCS-CN podle půdy A-D (Janeček a kol. 2012).</li><li>Účinek opatření jen tam, kde je doložený vzorcem nebo měřením.</li></ul></div>
       <div><b>Celé území</b><span class="v">1 770 ha nad jezem u Mouchnic</span><ul><li>Odtok z krajiny SCS-CN po čtvercích 5 m (výškopis DMR 5G, ZABAGED, půdy VÚMOP); u lijáků váha nasycené půdy podle Kavky a kol. 2023.</li><li>Eroze orné půdy USLE (R faktor VÚMOP/ČHMÚ 2022).</li><li>Nádrž za hrází: kam vystoupá voda v terénu DMR 5G.</li></ul></div>
       <div><b>Katalog</b><span class="v">66 opatření</span><ul><li>Každý účinek má zdroj a značku původu.</li><li>Nejistota jako rozsah, ne jedno číslo.</li><li>Odhady (🤔) se do součtů nepočítají.</li></ul></div>
     </div>
-    <p class="note om-zn">Značky u čísel: ✅ zdroj jsme otevřeli a ověřili, ⏳ zdroj starší než rok, 📄 citováno z druhé ruky, 🤔 odhad, 💻 neověřeno.</p>
-    <details class="jb-cist uz-det"><summary><b>Konstanty a vzorce pro odborníky</b></summary>
+    </details>
+    <details class="jb-cist uz-det"><summary><b>Pro zvídavé</b> - konstanty a vzorce</summary>
       <div id="konst" class="src"></div>
     </details>
   </section>
@@ -1720,7 +1727,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <section class="uz-ch" id="om-3">
     <div class="jb-kicker">Kapitola 3 · Data</div>
     <h3 class="jb-ch">Odkud jsou data</h3>
-    <p class="jb-p">Jen veřejné zdroje státních a odborných institucí. Mapy a data ČÚZK jsou pod licencí CC BY 4.0. Osobní údaje (vlastníci pozemků, adresy) aplikace nenačítá ani neukládá.</p>
+    <p class="jb-p">Jen z veřejných zdrojů státních a odborných institucí: mapy a katastr ČÚZK, měření ČHMÚ, půdy VÚMOP. Osobní údaje (vlastníci pozemků, adresy) aplikace nenačítá ani neukládá.</p>
+    <details class="jb-cist uz-det"><summary><b>Pro zvídavé</b> - tabulka zdrojů a licencí</summary>
+    <p class="note">Mapy a data ČÚZK jsou pod licencí CC BY 4.0.</p>
     <div class="uz-tw"><table class="flow om-data">
       <tr><th>co</th><th>odkud</th><th>k čemu</th></tr>
       <tr><td>výškopis DMR 5G, parcely, budovy, ZABAGED, mapy a ortofoto</td><td>ČÚZK, CC BY 4.0 ✅</td><td>sklon, kam teče voda, střechy, využití ploch</td></tr>
@@ -1734,6 +1743,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <tr><td>toky, kritické body přívalových povodní</td><td>ČÚZK ✅, VÚV TGM (CC BY 4.0) ✅</td><td>hráz na potoce, místa ohrožená přívalem</td></tr>
       <tr><td>tabulky čísla odtoku (CN)</td><td>Janeček a kol. 2012 ✅⏳, USDA TR-55</td><td>odtok ze zahrad, polí a lesů</td></tr>
     </table></div>
+    </details>
   </section>
 
   <section class="uz-ch" id="om-4">
@@ -2559,7 +2569,7 @@ function renderPritok(i){
   const v=pritokOdtok(P, i.nkey), v10=pritokOdtok(53.2,'N10');
   const kolik = v==null ? '' : (v<0.05 ? ` Při dešti ${P} mm se skoro všechna vsákne cestou.` : ` Při dešti ${P} mm by sem přiteklo asi <b>${fmt(v)} m³</b>.`)
     + (u<3 && v10!=null && P<53 && v10>=0.05 ? ` Při vzácném lijáku 53 mm (1x za 10 let) asi ${fmt0(v10)} m³.` : '');
-  const pozn = '<div class="note">Odhad z výškopisu DMR 5G (mřížka 5 m) a mapy půd, odtok SCS-CN. Ulice, obrubníky, kanalizace a ploty v něm nejsou a mohou vodu poslat jinam. Je to nápověda, ne posudek. 🤔</div>';
+  const pozn = '<div class="note">Odhad z výškopisu a mapy půd. Ulice, obrubníky, kanalizace a ploty v něm nejsou a mohou vodu poslat jinam. Je to nápověda, ne posudek.</div>';
   const proti = 'Pomoct může průleh nebo nízký val na horní hraně pozemku, který vodu zpomalí a nechá vsáknout, propustné plochy a vyvýšený práh u vstupů do domu.';
   if(u===1){ el.innerHTML = `<div class="pz-info"><b>Voda shora.</b> Na pozemek stéká voda i z okolí, z plochy asi ${plochaText(ha)} nad ním.${kolik}${pozn}</div>`; return; }
   const uvod = u===3
@@ -2639,10 +2649,10 @@ function pzRender(i, r, kept, keptYear, n){
     <div class="pz-track" role="img" aria-label="odteče ${pct} %"><i class="away" style="width:${pct}%"></i><i class="kept" style="width:${100-pct}%"></i></div>
     <div class="legend"><span><b style="background:var(--bad)"></b>odteče</span><span><b style="background:var(--water)"></b>vsákne se</span></div>
     <p>${src[1]>0.05?`Nejvíc odteče ${src[0]} (${fmt(src[1])} m³). `:''}${dest} ${i.green>0?`Trávník při dešti do ${fmt0(r.g.Ia_mm)} mm vsákne všechno.`:''}</p></div>`;
-  $('pz-year').innerHTML = `Za celý rok (průměrně ${fmt0(K.srazky_rocni_mm.hodnota)} mm, ČHMÚ Koryčany ✅) odteče ze střech a dlažby asi <b>${fmt0(r.yearRoof+r.yearPaved)} m³</b>${r.yearGreen!=null?`, ze zahrady ${fmt0(r.yearGreen)} m³`:''}.`;
+  $('pz-year').innerHTML = `Za celý rok (v průměru naprší ${fmt0(K.srazky_rocni_mm.hodnota)} mm) odteče ze střech a dlažby asi <b>${fmt0(r.yearRoof+r.yearPaved)} m³</b>${r.yearGreen!=null?`, ze zahrady ${fmt0(r.yearGreen)} m³`:''}.`;
   // krok 3: skutecny dest za poslednich 30 dni
   const p30 = posl30(i, chosen);
-  $('pz-30').innerHTML = !p30 ? '' : (p30.n ? `<div class="pz-30 pz-box"><span class="jb-kicker">Skutečně u tebe, posledních 30 dní</span><p>Od ${csd30(p30.od)} do ${csd30(p30.do)} napršelo <b>${fmt0(p30.P)} mm</b>, pršelo ${p30.n} ${p30.n===1?'den':p30.n<5?'dny':'dní'} (nejvíc ${csd30(p30.max[0])}: ${fmt(p30.max[1])} mm). Z tvého pozemku při nich odteklo asi <b>${fmt(p30.out)} m³</b>${p30.roof>0.05&&i.drain==='kanal'?`, z toho ${fmt(p30.roof)} m³ ze střechy rovnou do kanálu`:''}. ${p30.out<1?`To je ${fmt0(p30.out*100)} konví vody na zálivku.`:''}</p><p class="note">Srážky ČHMÚ Koryčany, dny bez ní KS Koryčany (Povodí Moravy) a Nemochovice, předběžná data (stejná jako v Jak bylo). Každý déšť počítán zvlášť stejně jako výše.</p></div>`
+  $('pz-30').innerHTML = !p30 ? '' : (p30.n ? `<div class="pz-30 pz-box"><span class="jb-kicker">Skutečně u tebe, posledních 30 dní</span><p>Od ${csd30(p30.od)} do ${csd30(p30.do)} napršelo <b>${fmt0(p30.P)} mm</b>, pršelo ${p30.n} ${p30.n===1?'den':p30.n<5?'dny':'dní'} (nejvíc ${csd30(p30.max[0])}: ${fmt(p30.max[1])} mm). Z tvého pozemku při nich odteklo asi <b>${fmt(p30.out)} m³</b>${p30.roof>0.05&&i.drain==='kanal'?`, z toho ${fmt(p30.roof)} m³ ze střechy rovnou do kanálu`:''}. ${p30.out<1?`To je ${fmt0(p30.out*100)} konví vody na zálivku.`:''}</p><p class="note">Předběžná měření ČHMÚ.</p></div>`
     : `<div class="pz-30 pz-box"><span class="jb-kicker">Skutečně u tebe, posledních 30 dní</span><p>Od ${csd30(p30.od)} do ${csd30(p30.do)} nepršelo víc než 1 mm za den, nic neodteklo. Zahrada žije ze zásoby v půdě.</p></div>`);
   // krok 5: motivacni vysledek
   $('scale').hidden = !(kept>0.05);
@@ -2864,7 +2874,7 @@ function jednoCislo(o, co, i, r){
     if(v>=0.05) return {t:`<b>z tohoto deště zadrží ${fmt(v)} m³</b>`, vzor:true};
     if(Math.round(y)>=1) return {t:`<b>za rok zůstane až ${fmt0(y)} m³</b> vody`, vzor:true}; }
   // 2) ručně napsaná hlavní věta z katalogu (build_opatreni.py HLAVNI_CISLO)
-  const h=o.hlavni_cislo; if(h) return {t:(h.znacka?`<b>${h.text}</b> ${ZN[h.znacka]||''}`:`<span class="note">${h.text}</span>`), vzor:false};
+  const h=o.hlavni_cislo; if(h) return {t:(h.znacka?`<b>${h.text}</b>`:`<span class="note">${h.text}</span>`), vzor:false};
   return {t:`<span class="note">účinek doložen slovně, bez čísla</span>`, vzor:false};
 }
 const PRAC_IK = {1:'<span class="pr" title="ruce a víkend">●○○</span>',2:'<span class="pr" title="dny, malá technika">●●○</span>',3:'<span class="pr" title="projekt a firma">●●●</span>'};
@@ -2982,7 +2992,7 @@ function procText(x, i, r, P){
     if(o.id==='S01'||o.id==='S06') return `Z deště ${P} mm zachytí ${fmt(x.dV)} m³${KONVE(x.dV)} na zálivku zadarmo.`;
     return `Z deště ${P} mm udrží doma ${fmt(x.dV)} m³${KONVE(x.dV,' (')}${x.dV<1?')':''}, voda zůstane v zahradě místo v kanálu.`;
   }
-  const h=o.hlavni_cislo; if(h&&h.text) return h.text.charAt(0).toUpperCase()+h.text.slice(1)+'.'+(h.znacka?' '+(ZN[h.znacka]||''):'');
+  const h=o.hlavni_cislo; if(h&&h.text) return h.text.charAt(0).toUpperCase()+h.text.slice(1)+'.';
   return o.popis||'';
 }
 // potrebna predchozi opatreni (rekurzivne): S06 -> S01 -> S02
@@ -3032,7 +3042,7 @@ function tileHTML(x, i, r, P){
       <div class="one">${x.text}</div>
       ${oblastiOp(o).has('zivot')&&o.ucinky.primarni.includes('B')?'<div class="zivot">+ život v zahradě</div>':''}
       ${kdeText(o)}
-      <details><summary>zdroje, cena, povolení, financování</summary><ul>
+      <details><summary><b>Pro zvídavé</b> - zdroje, cena, povolení, financování</summary><ul>
         <li>Cena: ${cenaText(o)}</li><li>Financování: ${finText(o)}</li>
         <li>Povolení: ${povText(o)}</li>
         ${o.kvantifikace.map(k=>`<li>${CZ.ucinek[k.ucinek]||k.ucinek}: ${k.popis} ${ZN[k.znacka]||''}${(k.zdroj||[]).map(z=>D.zdroje[z]?` <a class="src" href="${D.zdroje[z].url||'#'}" target="_blank" rel="noopener">${D.zdroje[z].nazev.split(':')[0].slice(0,60)}</a>`:'').join(';')}</li>`).join('')}
@@ -3126,7 +3136,7 @@ function renderUzemi(){
     : `Vyber níž, co zapojené domácnosti udělají.`;
   $('u-sum').innerHTML = kcU(fmt0(hh),'--accent',`domácností z ${fmt0(n)} se zapojí`)
     + kcU(`${fmt0(tot)} m³`,'--water',`zůstane z jednoho deště ${P} mm. Teď ${moje?'z pozemků':'ze střech a dvorů'} všech domácností odteče ${fmt0(allOut)} m³.`)
-    + kcU(`${fmt0(totY)} m³`,'--ok',`za rok, to je asi ${fmt0(totY/10)} cisteren po 10 m³ 🤔`);
+    + kcU(`${fmt0(totY)} m³`,'--ok',`za rok, to je asi ${fmt0(totY/10)} cisteren po 10 m³`);
   const U=D.uzemi, spadne=U.plocha_ha*1e4*rain;
   $('u-limit').innerHTML=`${fmt0(tot)} m³ je ${fmt(100*tot/Math.max(1,spadne),2)} % vody, která při ${P} mm spadne na celé území (${fmt0(spadne)} m³). Povodňovou vlnu na Kyjovce to nezmění. Na tu jsou potřeba změny na polích a v lesích (kapitola 3) a na potocích (kapitola 4).`;
   $('u-plus').innerHTML=`${fmt0(totY)} m³ vody za rok zůstane v půdě a zahradách místo v kanálu, bez jediné velké stavby. A při každém takovém dešti steče do potoka o ${fmt0(tot)} m³ méně a pomaleji.`;
@@ -3140,7 +3150,7 @@ function renderUzemi(){
   $('u-zdroj').innerHTML=`V území modelu (${fmt0(U.plocha_ha)} ha, povodí Kyjovky k jezu před Mouchnicemi bez povodí nad přehradou) je ${fmt0(U.budov)} budov s půdorysem ${fmt0(U.strechy_m2/1e4*10)/10} ha, z toho ${fmt0(U.rd_pocet)} rodinných domů (${fmt0(U.rd_strechy_m2/1e4*10)/10} ha), ČÚZK INSPIRE BU ✅, 19. 10. 2026. Zpevněné plochy u domů v datech nejsou, je to odhad. Počítá se jen voda ze střech a dvorů rodinných domů; velké střechy jsou v kapitole 2.${od?` Povrchový odtok z celého území při ${P} mm je ${fmt0(od.objem_m3)} m³ (SCS-CN, průměrné číslo odtoku ${U.cn_vazene}, běžně vlhká půda); domácnosti z něj udrží ${fmt(100*tot/od.objem_m3,1)} %.`:''} Dešťový záhon, sud a propustná dlažba se počítají stejně jako v Můj pozemek (průměrný dům: zahrada 250 m², půda B, sklon 3 %).`;
   // kapitola 5: velke projekty (bez kodu, kod jen v katalogu)
   $('u-context').innerHTML = D.opatreni.filter(o=>o.kontext).map(o=>{ const h=o.hlavni_cislo, c=cenaText(o);
-    return `<div class="card"><b class="uz-ctx-t">${o.nazev}</b>${o.popis?`<p class="uz-ctx-p">${o.popis}</p>`:''}${h&&h.text?`<p class="uz-ctx-h"><b>Co to udělá:</b> ${h.text} ${ZN[h.znacka]||''}</p>`:''}
+    return `<div class="card"><b class="uz-ctx-t">${o.nazev}</b>${o.popis?`<p class="uz-ctx-p">${o.popis}</p>`:''}${h&&h.text?`<p class="uz-ctx-h"><b>Co to udělá:</b> ${h.text}</p>`:''}
     <div class="meta"><span class="chip">rozhoduje: ${o.rozhoduje.map(r=>CZ.rozhoduje[r].split(' ')[0]).join(', ')}</span><span class="chip">povolení: ${CZ.povoleni[String(o.povoleni)]}</span>${c!=='cena neověřena'?`<span class="chip">${c}</span>`:''}</div>
     <details class="kde"><summary>Co o tom víme a z čeho to zaplatit</summary><ul>${o.kvantifikace.map(k=>`<li>${k.popis} ${ZN[k.znacka]||''}</li>`).join('')}${o.pozn_poctivost?`<li>${o.pozn_poctivost}</li>`:''}</ul><div class="note">Financování: ${finText(o)}</div></details>${kdeText(o)}</div>`; }).join('');
 }
@@ -3181,7 +3191,8 @@ function renderStrechy(){
     rows.map(r=>`<tr><td>${r.u}</td><td class="num">${fmt0(r.n)}</td><td class="num">${fmt(r.a/1e4)}</td><td class="num">${fmt0(r.v)}</td><td class="num">${fmt(r.v/r.n)}</td><td>${(UCEL_KDO[r.u]||['',''])[0]}</td><td>${(UCEL_KDO[r.u]||['',''])[1]}</td></tr>`).join('')+
     `<tr class="total"><td>všechny budovy v území</td><td class="num">${fmt0(rows.reduce((t,r)=>t+r.n,0))}</td><td class="num">${fmt(totA/1e4)}</td><td class="num">${fmt0(tot)}</td><td></td><td></td><td></td></tr>`;
   const rd=U['domácnosti'], pr=U['průmysl'];
-  $('s-veta').innerHTML=`${fmt0(pr.pocet)} průmyslových budov má dohromady ${fmt(pr.plocha_strech_m2/1e4)} ha střech, to je ${fmt0(100*pr.plocha_strech_m2/rd.plocha_strech_m2)} % plochy střech všech ${fmt0(rd.pocet)} rodinných domů. Jedna průměrná průmyslová střecha dá při dešti tolik vody jako <b>${fmt0(pr.plocha_strech_m2/pr.pocet/(rd.plocha_strech_m2/rd.pocet))} rodinných domů</b>. O takové střeše rozhoduje jeden majitel nebo jedna rada, ne stovky lidí.`;
+  $('s-veta').innerHTML=`Jedna průměrná průmyslová střecha dá při dešti tolik vody jako <b>${fmt0(pr.plocha_strech_m2/pr.pocet/(rd.plocha_strech_m2/rd.pocet))} rodinných domů</b>. O takové střeše rozhoduje jeden majitel nebo jedna rada, ne stovky lidí.`;
+  $('s-veta-z').innerHTML=`${fmt0(pr.pocet)} průmyslových budov má dohromady ${fmt(pr.plocha_strech_m2/1e4)} ha střech, to je ${fmt0(100*pr.plocha_strech_m2/rd.plocha_strech_m2)} % plochy střech všech ${fmt0(rd.pocet)} rodinných domů.`;
   $('s-limit').innerHTML=`<b>Co v datech chybí:</b> kam tyhle střechy dnes odvádějí vodu (kanalizace, vsak, potok). Zjistit se to dá u provozovatelů. Otázka pro město: je kanalizace jednotná, nebo oddílná?`;
 }
 renderStrechy(); $('u-rain').addEventListener('input',renderStrechy);
@@ -3207,7 +3218,8 @@ function erozeKresli(){
   erVrstva=L.imageOverlay(c.toDataURL(),im.bounds,{opacity:.85}).addTo(erMap);
   let n=0, nad=0, sum=0; for(const i of KRAJ.orna){ const A=erA(i,erSc); n++; sum+=A; if(A>G.ostatni) nad++; }
   const ha=n*Jadro.plochaB/1e4;
-  $('er-sum').innerHTML = `Orná půda v území ${fmt0(ha)} ha: průměrně <b>${fmt(sum/n,1)} t/ha za rok</b>, nad přípustnou ztrátou ${G.ostatni} t/ha ✅ je ${fmt0(100*nad/n)} % plochy. Na mělkých půdách je přípustné jen ${G.melke} t/ha, ty mapa nerozlišuje. Model USLE pro osvětu: délka svahu z výškopisu neví o mezích a cestách, proto na dlouhých svazích spíš přehání; závazná je kalkulačka VÚMOP.`;
+  $('er-sum').innerHTML = `Z orné půdy (${fmt0(ha)} ha) se smývá průměrně <b>${fmt(sum/n,1)} t/ha za rok</b>. Na ${fmt0(100*nad/n)} % plochy je to víc, než kolik je přípustné (${G.ostatni} t/ha).`;
+  $('er-sum-z').innerHTML = `<b>Mapa eroze:</b> přípustná ztráta ${G.ostatni} t/ha za rok ✅; na mělkých půdách je přípustné jen ${G.melke} t/ha, ty mapa nerozlišuje. Model USLE pro osvětu: délka svahu z výškopisu neví o mezích a cestách, proto na dlouhých svazích spíš přehání; závazná je kalkulačka VÚMOP.`;
 }
 function erozeInit(){
   if(erMap){ erMap.invalidateSize(); return; }
@@ -3240,6 +3252,7 @@ let hrazPosledni=null;
 function hrazSpocti(){
   const h=+$('h-vyska').value;
   const vd=$('h-vd');
+  $('h-tech').textContent='';
   if(!hrazPosledni || damStav!=='ok'){ vd.style.display='none'; return; }
   if(damVrstva){ damVrstva.remove(); damVrstva=null; }
   const n=Jadro.nadrz(hrazPosledni[0],hrazPosledni[1],h,{polomerM:60});
@@ -3257,13 +3270,14 @@ function hrazSpocti(){
   const tun=n.typ==='tun_udolnice', V=n.objem_m3, rz=a=>`${fmt0(a[0])} - ${fmt0(a[1])}`;
   const pod=Math.min(100,100*V/Math.max(1,odt));
   $('h-out').innerHTML = `<div class="sum">`+
-    `<div><div class="eyebrow">${tun?'tůň / poldr v údolnici (orientačně)':'nádrž za hrází'}</div><div class="num" style="font-size:1.4rem">${tun?rz(n.objem_rozsah_m3):fmt0(V)} m³</div><div class="note">${tun?'rozsah: údolí tvaru V až ploché dno 🤔':'zatopí '+fmt0(n.plocha_ha*1e4)+' m², hloubka max '+fmt(n.hloubka_max_m,1)+' m'}</div></div>`+
-    `<div><div class="eyebrow">odteče z povodí při dešti ${fmt0(P)} mm</div><div class="num" style="font-size:1.4rem">${fmt0(odt)} m³</div><div class="note">povodí k hrázi ${fmt(n.povodi_km2,2)} km² (SCS-CN)</div></div>`+
+    `<div><div class="eyebrow">${tun?'tůň / poldr v údolnici (orientačně)':'nádrž za hrází'}</div><div class="num" style="font-size:1.4rem">${tun?rz(n.objem_rozsah_m3):fmt0(V)} m³</div><div class="note">${tun?'rozsah: údolí tvaru V až ploché dno':'zatopí '+fmt0(n.plocha_ha*1e4)+' m², hloubka max '+fmt(n.hloubka_max_m,1)+' m'}</div></div>`+
+    `<div><div class="eyebrow">odteče z povodí při dešti ${fmt0(P)} mm</div><div class="num" style="font-size:1.4rem">${fmt0(odt)} m³</div><div class="note">povodí k hrázi ${fmt(n.povodi_km2,2)} km²</div></div>`+
     `<div><div class="eyebrow">nádrž pojme</div><div class="num" style="font-size:1.4rem">${pod<1?"pod 1":fmt0(pod)} %</div><div class="note">prázdná nádrž, bez ztrát</div></div></div>`+
-    `<p class="note">Hráz ${fmt0(n.delka_hraze_m)} m dlouhá kolmo na tok${n.hraz_uzavira?'':' - <b>údolí neuzavře</b>'}, dno ${fmt(n.kota_dna,1)} m n. m., hladina ${fmt(n.hladina,1)} m n. m.`+
-    `${tun?`, sklon dna ${fmt(100*n.profil_odhad.sklon_dna,1)} %, voda vystoupá ${fmt0(n.profil_odhad.delka_vzduti_m)} m proti proudu`:`; kontrola z příčného profilu ${rz(n.profil_odhad.objem_m3)} m³`}.</p>`+
+    `<p class="note">Hráz by byla ${fmt0(n.delka_hraze_m)} m dlouhá${n.hraz_uzavira?'':' - <b>údolí neuzavře</b>'}.</p>`+
     (odt<1?`<p class="note">Při dešti ${fmt0(P)} mm z povodí po povrchu skoro nic neodteče, vsákne se. Nádrž plní hlavně silnější deště a průtok v potoce (ten model nepočítá) - pro posouzení hráze vyber silnější déšť.</p>`:'')+
     n.varovani.map(v=>`<p class="note" style="color:var(--warn)">! ${v}</p>`).join('');
+  $('h-tech').innerHTML = `<b>Vybraná hráz:</b> ${fmt0(n.delka_hraze_m)} m dlouhá kolmo na tok, dno ${fmt(n.kota_dna,1)} m n. m., hladina ${fmt(n.hladina,1)} m n. m.`+
+    `${tun?`, sklon dna ${fmt(100*n.profil_odhad.sklon_dna,1)} %, voda vystoupá ${fmt0(n.profil_odhad.delka_vzduti_m)} m proti proudu; objem je rozsah mezi údolím tvaru V a plochým dnem 🤔`:`; kontrola z příčného profilu ${rz(n.profil_odhad.objem_m3)} m³`}.`;
 }
 $('h-vyska').addEventListener('input',hrazSpocti); $('h-rain').addEventListener('input',hrazSpocti);
 
@@ -3576,7 +3590,8 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
   }
   // kapitola 1
   const pMin=p1.body.reduce((a,b)=>b[1]<a[1]?b:a), pMax=p1.body.reduce((a,b)=>b[1]>a[1]?b:a);
-  $('jb-ch1').innerHTML=`Srážky se v Koryčanech měří přes sto let (stanice ČHMÚ, řada od roku ${p1.body[0][0]}). Mokré a suché roky se střídají: od ${fmt0(pMin[1])} mm (${pMin[0]}) po ${fmt0(pMax[1])} mm (${pMax[0]}). Klouzavý průměr za 10 let (oranžová čára) se ale drží kolem 600 mm. Průměr let 1921-1950 byl ${fmt0(avgP(1921,1950))} mm, průměr let 1991-2020 (takzvaný normál) je ${fmt0(N.rok.P)} mm. Deště za rok tedy dlouhodobě neubývá ani nepřibývá.`;
+  $('jb-ch1').innerHTML=`V Koryčanech naprší v průměru <b>${fmt0(N.rok.P)} mm za rok</b> (1991-2020). Před sto lety to bylo ${fmt0(avgP(1921,1950))} mm (1921-1950). Mokré a suché roky se střídají, ale deště za rok dlouhodobě neubývá ani nepřibývá.`;
+  $('jb-ch1-z').innerHTML=`Srážky se v Koryčanech měří přes sto let (stanice ČHMÚ, řada od roku ${p1.body[0][0]}). Jednotlivé roky se liší od ${fmt0(pMin[1])} mm (${pMin[0]}) po ${fmt0(pMax[1])} mm (${pMax[0]}). Oranžová čára je klouzavý průměr, tedy průměr vždy z posledních deseti let; drží se kolem 600 mm. Čárkované úseky jsou průměry let 1921-1950 a 1991-2020 (takzvaný normál).`;
   // box 1: kam mizi dest
   const zizen=N.rok.ET0-P25;
   $('jb-box1').innerHTML=`V letech ${obdT} napršelo na metr čtvereční v průměru ${fmt0(P25)} litrů za rok. Slunce, teplo a vítr by ale dokázaly odpařit v průměru ${fmt0(N.rok.ET0)} litrů, kdyby voda byla. Tomu rozdílu říkáme žízeň krajiny. Vypaří se jen tolik, kolik vody opravdu je. Čím je půda sušší, tím méně má co odpařit a tím víc rostliny strádají. Co steče do kanálu, krajině chybí.`;
@@ -3597,7 +3612,7 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
     $('jb-mes').innerHTML=o+`<text x="${L}" y="${T-3}">mm za měsíc</text>`; }
   // kapitola 3
   const mx35=Math.max(0,...bT.filter(b=>b.d35!=null).map(b=>b.d35)), c2=p2.cur;
-  $('jb-ch3').innerHTML=`Tropických dní (nejvyšší teplota dne aspoň 30 °C) bylo v letech 2001-2010 v průměru ${fmt0(d30a)} za rok, v letech ${ROK-10}-${ROK-1} v průměru ${fmt0(d30b)}. Průměrná roční teplota se za roky ${obdT} mění o ${sgn(trT)} °C za deset let.`
+  $('jb-ch3').innerHTML=`Tropických dní (aspoň 30 °C) bylo v letech 2001-2010 v průměru ${fmt0(d30a)} za rok, v letech ${ROK-10}-${ROK-1} v průměru <b>${fmt0(d30b)}</b>. Průměrná teplota se za roky ${obdT} mění o ${sgn(trT)} °C za deset let.`
     +(c2&&c2.d35!=null&&bT.some(b=>b.d35!=null)?` Letos (předběžně) bylo ${c2.d30} tropických dní, z toho ${c2.d35} s teplotou aspoň 35 °C; v letech ${obdT} jich bylo v jednom roce nejvýš ${mx35}.`:'');
   // kapitola 4: cetnost velkych dennich uhrnu po tretinach rady (jen roky se zmerenym dennim maximem)
   { const PM=Object.entries(R).filter(([r,z])=>z.Pmx!=null).map(([r,z])=>[+r,z.Pmx]), tri=[[1921,1955],[1956,1990],[1991,2025]].map(([a,b])=>{const q=PM.filter(x=>x[0]>=a&&x[0]<=b); return `${a}-${b} v ${q.filter(x=>x[1]>=40).length} z ${q.length} změřených let`;});
@@ -3606,8 +3621,9 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
   const top=(N.top_denni||[]).slice(0,5);
   if(top.length){ const mxP=top[0][1];
     $('jb-lijak').innerHTML=top.map(([d,v])=>`<div class="jb-bar"><span>${csd(d)}</span><span class="b"><i style="width:${(100*v/mxP).toFixed(0)}%"></i></span><span class="num">${fmt0(v)} mm</span></div>`).join('');
-    $('jb-lijak-n').textContent=`ČHMÚ Koryčany, jen dny skutečně změřené na stanici. Pro srovnání: běžný déšť má 10 mm a přichází asi ${fmt0(cetnost(10)||17)}x za rok.`+(JB.lijakTri||'');
-  } else { $('jb-lijak').innerHTML=''; $('jb-lijak-n').textContent='Seznam se doplní po příštím přepočtu dlouhých řad.'; }
+    $('jb-lijak-n').textContent=`Pro srovnání: běžný déšť má 10 mm a přichází asi ${fmt0(cetnost(10)||17)}x za rok.`;
+    $('jb-lijak-z').innerHTML=`Měření ČHMÚ Koryčany ✅, jen dny skutečně změřené na stanici (roky doplněné z okolních stanic se nepočítají).`+(JB.lijakTri||'')+` Častější extrémní srážky jsou zatím jen výhled z klimatických modelů (viz Co nás čeká), v místním měření vidět nejsou.`;
+  } else { $('jb-lijak').innerHTML=''; $('jb-lijak-n').textContent='Seznam se doplní po příštím přepočtu dlouhých řad.'; $('jb-lijak-z').textContent=''; }
   // kapitola 5: letosek
   const c1=p1.cur, dt=x=>x.slice(8,10).replace(/^0/,'')+'. '+x.slice(5,7).replace(/^0/,'')+'.';
   const lx=bT.filter(b=>b.lx!=null), mxL=lx.length?Math.max(...lx.map(b=>b.lx)):null, mxD=Math.max(...bT.map(b=>b.d30)), mxDr=bT.find(b=>b.d30===mxD);

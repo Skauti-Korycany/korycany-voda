@@ -2,6 +2,18 @@
 
 Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `docs/STAV.md`. Starší rozhodnutí mohou být nahrazena novějšími (u nahrazených je to v textu poznamenáno).
 
+## 15. 11. 2026 (noc) - laik / zvídavý na zbytku webu
+
+Zadání: dotáhnout dvě úrovně textu mimo kap. 2 a 3 v Jak bylo. Vše v `tools/build_dummy.py`, výpočty beze změny, žádné číslo se nezměnilo ani nezmizelo, jen se přesunulo.
+
+- **Jak bylo:** kap. 1 nová krátká věta (normál 1991-2020 proti 1921-1950), rozpětí let, klouzavý průměr a poznámka ke grafu pod "Pro zvídavé" (`jb-ch1-z`, `jb-l1-n`). Kap. 2: rozbalovací část vyjmuta z boxu výparu, přibyla do ní poznámka ke grafu (`jb-l2-n`). Kap. 4: prahy a poznámka ke grafu pod "Pro zvídavé" (`jb-l3-n`). Kap. 5: četnost dnů nad 40 mm po třetinách řady pod "Pro zvídavé" (`jb-lijak-z`), nahoře jen srovnání s běžným deštěm. Výhled: tři věty nahoře, rozpětí CzechGlobe, IPCC a zdroje pod "Pro zvídavé". Oddíl "Poznámky ke grafům" ve Více o tématu zrušen (poznámky jsou u kapitol), "Jak to číst" přejmenováno na "Pro zvídavé - pojmy, metody a odkud jsou data".
+- **Můj pozemek:** "Jak se to počítá" -> "Pro zvídavé - jak se to počítá, jiný déšť"; zdroje srážek za 30 dní a metoda přítoku shora přesunuty tam; roční věta bez zdroje a značky; dlaždice bez značek původu (jsou v "Proč a jak"), vnořená část "Pro zvídavé - zdroje, cena, povolení, financování".
+- **Celé území:** kap. 1 souhrn rozbalovací části; kap. 2 nahoře jen "jedna průmyslová střecha = N rodinných domů", počty, hektary a zdroj budov pod "Pro zvídavé" (`s-veta-z`); kap. 3 číslo odtoku bez odborných zkratek, mapa eroze jedna věta (`er-sum`), výhrady USLE (`er-sum-z`), tabulka ploch, "Jak se to počítá" a zdroje v nové rozbalovací části (zároveň opravena osiřelá značka `</details>` z 2. 11.); kap. 4 technický řádek hráze (kóty, sklon dna, kontrola profilu) v `h-tech` pod "Pro zvídavé", zdroj k bobrovi tamtéž; kap. 5 "Co to udělá" bez značky.
+- **Katalog:** jedno číslo na dlaždici bez značky původu, úvodní poznámka odkazuje na "Proč a jak".
+- **O modelu:** kratší úvod; kap. 2 metody po záložkách a konstanty pod "Pro zvídavé", legenda značek zůstala viditelná; kap. 3 tabulka zdrojů a licencí pod "Pro zvídavé".
+- Kontrola: headless Chromium 1300 a 390 px, světlý i tmavý režim, všechny záložky a kroky 2-5 Můj pozemek, rozbalené i sbalené: bez chyb v konzoli, bez vodorovného posunu. Testy jádra nespouštěny (jádro beze změny).
+- Nevyzkoušeno v prohlížeči: výstup hráze po kliknutí na tok (`h-tech`), blok přítoku shora (vyžaduje vybranou parcelu).
+
 ## 15. 11. 2026 (večer) - zkrácení STAV.md a CLAUDE.md
 
 Na žádost uživatele zkrácen kontext. Plné znění STAV.md před zkrácením je na konci tohoto souboru (oddíl "Archiv: STAV.md k 15. 11. 2026 před zkrácením"). Z CLAUDE.md přesunuty kap. 5, 6 a 10 beze změny do `docs/PIPELINE.md`. Testy jádra: přidán `package.json` a workflow `testy.yml`.

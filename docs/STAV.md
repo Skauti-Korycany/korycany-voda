@@ -10,15 +10,16 @@ Web běží na GitHub Pages, 5 záložek, zkouší se neformálně s lidmi. Stá
 - **Výpar** se v celé aplikaci počítá metodou Penman-Monteith FAO-56 (dřív Hargreaves z teplot, nadhodnocoval o ~23 %). Denní sběr stahuje i sluneční svit.
 - **Měření ČHMÚ** nově v repu: prameny u Koryčan a průtok Kyjovky (`data/hydro/`, `hydro_rocni.json`), podklady výparu (`data/vypar/`, `vypar_rocni.json`).
 - **Můj pozemek:** svody v poměru 100/75/50/25/0 % do kanalizace.
+- **Laik / zvídavý na celém webu** (druhá relace 15. 11.): nahoře krátká věta s jedním číslem, metody, zdroje, značky původu a tabulky pod rozbalovacím "Pro zvídavé". Hotovo v Jak bylo (kap. 1, 4, 5, výhled), Můj pozemek (kroky 2-4, dlaždice), Celé území (kap. 1-4), Katalog a O modelu (kap. 2, 3). Zatím jen na větvi `claude/dazzling-einstein-sf1qa8`, do `main` po svolení uživatele.
 - **Provoz:** workflow počasí a normálů se už nepotkají v konfliktu; testy jádra jdou přes `npm test` a běží samy na GitHubu (`testy.yml`).
 
-## Další krok (zadáno uživatelem)
+## Další krok
 
-**Laik / zvídavý na zbytku webu.** Projít Můj pozemek (kroky 3-5, dlaždice opatření), Celé území (5 kapitol), Katalog, O modelu a dolní část Jak bylo ("Více o tématu", kap. 1, 4, 6). Sekce pro laika krátká a úderná (jedna věta, jedno číslo), do "Pro zvídavé" přesunout raději víc: metody, zdroje, značky původu, nejistoty, tabulky, delší výklad. Vzor: kap. 2 a 3 v Jak bylo (`<details class="jb-cist">`, funkce `graf()`).
-
-Navazující fáze před zveřejněním:
-- Uživatel přepíše texty pro laiky vlastními slovy (jazyk je místy krkolomný). Připravit mu je pohromadě: zvážit vytažení laických textů do jednoho souboru (např. `data/texty.json` nebo oddíl v šabloně), ať je může upravovat bez zásahu do kódu.
+Před zveřejněním (pořadí určí uživatel):
+- Uživatel projde web po úpravě laik / zvídavý a řekne, kde je laická věta stále dlouhá nebo kde naopak něco chybí.
+- Uživatel přepíše texty pro laiky vlastními slovy. Připravit mu je pohromadě: vytáhnout laické texty do jednoho souboru (např. `data/texty.json` nebo oddíl v šabloně), ať je může upravovat bez zásahu do kódu. Dnes jsou zčásti v HTML šabloně, zčásti ve větách skládaných v JS (`jb-ch1`, `jb-ch3`, `s-veta`, `er-sum`, `u-veta`, `pz-*`).
 - Místní fotografie (uživatel má, se souhlasem autorů): navrhnout místa v rozvržení (úvod Jak bylo, kapitoly, katalog "Kde to funguje"), formát a velikost; fotky dodá uživatel.
+- O modelu kap. 1: datum "Stav k 25. 10. 2026" je natvrdo a seznam Hotovo nezmiňuje prameny, Kyjovku ani nový výpočet výparu. Aktualizovat nebo generovat.
 
 ## Potom (pořadí)
 
@@ -43,7 +44,7 @@ Obsah a tón
 - Východisko jsou dlouhé řady a trendy, ne jeden rok; letošek je doplněk. Nestranně, jen čísla z dat. Zpráva: vody ubývá, i vy můžete něco změnit, začněme doma.
 - Tvrdit jen to, co data ukazují: srážky za rok se od 1921 nemění; teplota roste (+0,5 °C / 10 let, průkazně); prameny a přítok Kyjovky klesají (průkazně, příčinu měření neurčuje); výpar roste průkazně v Kroměříži a Holešově od 50. let, pro Koryčany je řada krátká; velkých lijáků v místní řadě nepřibývá - častější extrémy srážek jen jako výhled se zdrojem.
 - Každé číslo "za rok" nese "v průměru" a období. Tykání, klidný tón. "Listnatý les zadrží víc vody" se nepoužívá.
-- Dvě úrovně textu laik / zvídavý (viz `CLAUDE.md` kap. 2).
+- Dvě úrovně textu laik / zvídavý (viz `CLAUDE.md` kap. 2). Rozbalovací část se všude jmenuje "Pro zvídavé - ..." (`<details class="jb-cist">`, v Celém území a O modelu navíc `uz-det`). Značky původu (✅ 📄 🤔 ⏳) se v laické větě neukazují, jsou u téhož čísla v části pro zvídavé nebo v "Proč a jak". "Proč a jak" a "Kde to funguje" u opatření zůstávají pod svým názvem (praktické informace, ne metoda).
 
 Výpočty
 - SCS-CN (Janeček 2012, Ia = 0,2 S), urbánní TR-55, odtok po buňkách; návrhový déšť Kavka 2023 s vážením CN2/CN3. Zeleň pozemku bez sklonu; střechy a dlažba součinitel ČSN s počáteční ztrátou 1 mm.
