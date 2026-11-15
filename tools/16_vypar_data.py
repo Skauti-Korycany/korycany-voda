@@ -11,8 +11,9 @@ import csv, io, json, os, sys, time, urllib.request, urllib.error
 OUT = sys.argv[1] if len(sys.argv) > 1 else "data/vypar"
 os.makedirs(OUT, exist_ok=True)
 B = "https://opendata.chmi.cz/meteorology/climate/historical_csv/"
-SLOZKA = {"T": "temperature", "TMA": "temperature", "TMI": "temperature", "H": "humidity", "F": "wind", "E": "humidity",
-          "SSV": "sunshine", "RGLB_D": "radiation", "VY": "evaporation", "SRA": "precipitation"}
+SLOZKA = {"T": "temperature", "TMA": "temperature", "TMI": "temperature", "H": "humidity", "F": "wind",
+          "SSV": "sunshine", "RGLB_D": "radiation", "VY": "evaporation"}
+JEN = {"straznice": ("SSV",)}   # Strážnice jen jako záloha slunečního svitu
 STANICE = {"nemochovice": "0-203-0-41503035001", "stare_mesto": "0-203-0-11754", "kromeriz": "0-203-0-11751",
            "holesov": "0-20000-0-11774", "straznice": "0-203-0-11755", "brno_turany": "0-20000-0-11723"}
 PREF = ["AVG", "SUM", "00:00", "24:00", "20:00", "06:00", "07:00"]
@@ -36,6 +37,8 @@ def get(url):
 for nazev, wsi in STANICE.items():
     tab, sl = {}, []
     for el, slozka in SLOZKA.items():
+        if nazev in JEN and el not in JEN[nazev]:
+            continue
         b = get(f"{B}data/daily/{slozka}/dly-{wsi}-{el}.csv")
         if not b:
             continue
@@ -79,7 +82,7 @@ if m1:
                 f.write(radek + "\n")
 
 # Open-Meteo: reanalýza pro buňku Koryčan (model, jen pro srovnání)
-DV = "et0_fao_evapotranspiration,shortwave_radiation_sum,sunshine_duration,wind_speed_10m_mean,relative_humidity_2m_mean,temperature_2m_mean,temperature_2m_max,temperature_2m_min,precipitation_sum"
+DV = "et0_fao_evapotranspiration,shortwave_radiation_sum"
 radky, hl = [], None
 for a, b_ in ((1940, 1969), (1970, 1999), (2000, 2025)):
     b = get(f"https://archive-api.open-meteo.com/v1/archive?latitude=49.11&longitude=17.17&start_date={a}-01-01&end_date={b_}-12-31&daily={DV}&timezone=Europe%2FBerlin&wind_speed_unit=ms")
