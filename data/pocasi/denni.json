@@ -1,5 +1,5 @@
 {
- "vytvoreno": "2026-11-15T11:55Z",
+ "vytvoreno": "2026-11-15T18:12Z",
  "stanice": {
   "chmu_korycany": {
    "wsi": "0-203-0-41701068002",
@@ -33,11 +33,538 @@
  },
  "metoda": {
   "P": "srážky Koryčany: přednostně ČHMÚ Koryčany, jinak suma hodinových hodnot KS Koryčany za klimatologický den 06-06 UTC (jen při úplných 24 h), jinak Nemochovice; pole zdroj_P",
-  "ET0": "Hargreaves-Samani, FAO-56 (Allen a kol. 1998) rov. 52, Ra rov. 21-24 pro 49,11 N; T/Tmin/Tmax Nemochovice (8 km, +22 m)",
+  "ET0": "Penman-Monteith, FAO-56 (Allen a kol. 1998) rov. 6: teplota, vlhkost a vítr (10 m -> 2 m) Nemochovice, sluneční svit Staré Město / Kroměříž / Holešov (pole S, zdroj_S), záření ze svitu rov. 35 (0,25 / 0,50); bez svitu z rozpětí teplot rov. 50; pole zdroj_ET0 (pm = vše měřeno, pm-s bez svitu, pm-h bez vlhkosti, pm-f bez větru)",
   "bil": "P - ET0 [mm/den]",
   "licence": "ČHMÚ otevřená data (podmínky na opendata.chmi.cz); Povodí Moravy a hladiny.cz: podmínky neuvedeny, zobrazovat jen agregace"
  },
  "dny": {
+  "2025-12-01": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": 1.5,
+   "Tmin": -0.9,
+   "Tmax": 2.9,
+   "H": 96.0,
+   "F": 0.8,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.2,
+   "zdroj_ET0": "pm",
+   "bil": -0.2
+  },
+  "2025-12-02": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.1,
+   "T": 2.2,
+   "Tmin": 1.5,
+   "Tmax": 2.8,
+   "H": 96.0,
+   "F": 2.1,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.21,
+   "zdroj_ET0": "pm",
+   "bil": -0.21
+  },
+  "2025-12-03": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": 4.1,
+   "Tmin": 2.3,
+   "Tmax": 5.1,
+   "H": 90.0,
+   "F": 0.6,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.24,
+   "zdroj_ET0": "pm",
+   "bil": -0.24
+  },
+  "2025-12-04": {
+   "P_kor": 2.6,
+   "P_pmo": null,
+   "P_nem": 4.8,
+   "T": 6.5,
+   "Tmin": 4.0,
+   "Tmax": 7.6,
+   "H": 88.0,
+   "F": 1.8,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 2.6,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.37,
+   "zdroj_ET0": "pm",
+   "bil": 2.23
+  },
+  "2025-12-05": {
+   "P_kor": 6.6,
+   "P_pmo": null,
+   "P_nem": 4.9,
+   "T": 6.5,
+   "Tmin": 5.2,
+   "Tmax": 8.4,
+   "H": 96.0,
+   "F": 1.3,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 6.6,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.24,
+   "zdroj_ET0": "pm",
+   "bil": 6.36
+  },
+  "2025-12-06": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": 5.4,
+   "Tmin": 3.9,
+   "Tmax": 7.6,
+   "H": 95.0,
+   "F": 0.9,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.23,
+   "zdroj_ET0": "pm",
+   "bil": -0.23
+  },
+  "2025-12-07": {
+   "P_kor": 0.5,
+   "P_pmo": null,
+   "P_nem": 0.1,
+   "T": 3.9,
+   "Tmin": 2.6,
+   "Tmax": 5.7,
+   "H": 96.0,
+   "F": 1.3,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.5,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.21,
+   "zdroj_ET0": "pm",
+   "bil": 0.29
+  },
+  "2025-12-08": {
+   "P_kor": 0.2,
+   "P_pmo": null,
+   "P_nem": 0.5,
+   "T": 5.8,
+   "Tmin": 0.8,
+   "Tmax": 6.4,
+   "H": 98.0,
+   "F": 1.0,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.2,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.2,
+   "zdroj_ET0": "pm",
+   "bil": 0.0
+  },
+  "2025-12-09": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": 6.5,
+   "Tmin": 6.2,
+   "Tmax": 7.2,
+   "H": 97.0,
+   "F": 1.9,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.22,
+   "zdroj_ET0": "pm",
+   "bil": -0.22
+  },
+  "2025-12-10": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": 3.1,
+   "Tmin": 2.6,
+   "Tmax": 6.5,
+   "H": 99.0,
+   "F": 1.5,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.17,
+   "zdroj_ET0": "pm",
+   "bil": -0.17
+  },
+  "2025-12-11": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": 4.7,
+   "Tmin": 2.3,
+   "Tmax": 6.8,
+   "H": 98.0,
+   "F": 0.4,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.19,
+   "zdroj_ET0": "pm",
+   "bil": -0.19
+  },
+  "2025-12-12": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.1,
+   "T": 2.9,
+   "Tmin": 0.3,
+   "Tmax": 4.7,
+   "H": 99.0,
+   "F": 0.6,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.17,
+   "zdroj_ET0": "pm",
+   "bil": -0.17
+  },
+  "2025-12-13": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.2,
+   "T": 0.6,
+   "Tmin": 0.2,
+   "Tmax": 3.2,
+   "H": 99.0,
+   "F": 1.6,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.14,
+   "zdroj_ET0": "pm",
+   "bil": -0.14
+  },
+  "2025-12-14": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.1,
+   "T": 1.1,
+   "Tmin": 0.2,
+   "Tmax": 1.8,
+   "H": 98.0,
+   "F": 1.0,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.16,
+   "zdroj_ET0": "pm",
+   "bil": -0.16
+  },
+  "2025-12-15": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.1,
+   "T": 0.4,
+   "Tmin": -0.3,
+   "Tmax": 1.1,
+   "H": 95.0,
+   "F": 2.9,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.2,
+   "zdroj_ET0": "pm",
+   "bil": -0.2
+  },
+  "2025-12-16": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": -0.2,
+   "Tmin": -1.2,
+   "Tmax": 1.3,
+   "H": 93.0,
+   "F": 1.8,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.21,
+   "zdroj_ET0": "pm",
+   "bil": -0.21
+  },
+  "2025-12-17": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": 0.5,
+   "Tmin": -3.1,
+   "Tmax": 1.4,
+   "H": 94.0,
+   "F": 1.3,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.19,
+   "zdroj_ET0": "pm",
+   "bil": -0.19
+  },
+  "2025-12-18": {
+   "P_kor": 0.1,
+   "P_pmo": null,
+   "P_nem": 0.2,
+   "T": 1.8,
+   "Tmin": 1.2,
+   "Tmax": 2.2,
+   "H": 99.0,
+   "F": 0.8,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.1,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.15,
+   "zdroj_ET0": "pm",
+   "bil": -0.05
+  },
+  "2025-12-19": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.1,
+   "T": 3.9,
+   "Tmin": 1.7,
+   "Tmax": 4.9,
+   "H": 99.0,
+   "F": 0.8,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.17,
+   "zdroj_ET0": "pm",
+   "bil": -0.17
+  },
+  "2025-12-20": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": 2.3,
+   "Tmin": 1.8,
+   "Tmax": 4.1,
+   "H": 99.0,
+   "F": 0.4,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.16,
+   "zdroj_ET0": "pm",
+   "bil": -0.16
+  },
+  "2025-12-21": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": 3.6,
+   "Tmin": 2.1,
+   "Tmax": 4.7,
+   "H": 97.0,
+   "F": 0.4,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.18,
+   "zdroj_ET0": "pm",
+   "bil": -0.18
+  },
+  "2025-12-22": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": 3.2,
+   "Tmin": 2.4,
+   "Tmax": 3.9,
+   "H": 90.0,
+   "F": 3.3,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.35,
+   "zdroj_ET0": "pm",
+   "bil": -0.35
+  },
+  "2025-12-23": {
+   "P_kor": 1.1,
+   "P_pmo": null,
+   "P_nem": 0.6,
+   "T": 1.7,
+   "Tmin": 0.7,
+   "Tmax": 3.5,
+   "H": 91.0,
+   "F": 2.9,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 1.1,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.3,
+   "zdroj_ET0": "pm",
+   "bil": 0.8
+  },
+  "2025-12-24": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": -1.3,
+   "Tmin": -2.8,
+   "Tmax": 0.8,
+   "H": 78.0,
+   "F": 6.1,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.67,
+   "zdroj_ET0": "pm",
+   "bil": -0.67
+  },
+  "2025-12-25": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": -4.0,
+   "Tmin": -4.4,
+   "Tmax": -2.6,
+   "H": 86.0,
+   "F": 3.7,
+   "S": 0.1,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.33,
+   "zdroj_ET0": "pm",
+   "bil": -0.33
+  },
+  "2025-12-26": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": -2.1,
+   "Tmin": -5.3,
+   "Tmax": 1.5,
+   "H": 76.0,
+   "F": 1.1,
+   "S": 5.0,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.08,
+   "zdroj_ET0": "pm",
+   "bil": -0.08
+  },
+  "2025-12-27": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": -2.5,
+   "Tmin": -4.5,
+   "Tmax": 1.3,
+   "H": 86.0,
+   "F": 1.3,
+   "S": 6.6,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.0,
+   "zdroj_ET0": "pm",
+   "bil": 0.0
+  },
+  "2025-12-28": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.0,
+   "T": -2.3,
+   "Tmin": -5.2,
+   "Tmax": 3.1,
+   "H": 75.0,
+   "F": 2.1,
+   "S": 2.3,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.37,
+   "zdroj_ET0": "pm",
+   "bil": -0.37
+  },
+  "2025-12-29": {
+   "P_kor": 0.5,
+   "P_pmo": null,
+   "P_nem": 1.0,
+   "T": -1.3,
+   "Tmin": -9.5,
+   "Tmax": 2.1,
+   "H": 79.0,
+   "F": 2.0,
+   "S": 2.9,
+   "zdroj_S": "Staré Město",
+   "P": 0.5,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.24,
+   "zdroj_ET0": "pm",
+   "bil": 0.26
+  },
+  "2025-12-30": {
+   "P_kor": 0.0,
+   "P_pmo": null,
+   "P_nem": 0.1,
+   "T": -1.8,
+   "Tmin": -3.2,
+   "Tmax": 2.0,
+   "H": 65.0,
+   "F": 3.3,
+   "S": 7.2,
+   "zdroj_S": "Staré Město",
+   "P": 0.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.52,
+   "zdroj_ET0": "pm",
+   "bil": -0.52
+  },
+  "2025-12-31": {
+   "P_kor": 2.0,
+   "P_pmo": null,
+   "P_nem": 1.8,
+   "T": -2.3,
+   "Tmin": -7.8,
+   "Tmax": -0.5,
+   "H": 76.0,
+   "F": 1.9,
+   "S": 1.4,
+   "zdroj_S": "Staré Město",
+   "P": 2.0,
+   "zdroj_P": "chmu_korycany",
+   "ET0": 0.31,
+   "zdroj_ET0": "pm",
+   "bil": 1.69
+  },
   "2026-01-01": {
    "P_kor": 0.0,
    "P_pmo": null,
@@ -49,8 +576,11 @@
    "F": 2.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.21,
-   "bil": -0.21
+   "ET0": 0.47,
+   "bil": -0.47,
+   "S": 1.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-02": {
    "P_kor": 0.0,
@@ -63,8 +593,11 @@
    "F": 2.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.34,
-   "bil": -0.34
+   "ET0": 0.54,
+   "bil": -0.54,
+   "S": 0.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-03": {
    "P_kor": 0.0,
@@ -77,8 +610,11 @@
    "F": 2.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.36,
-   "bil": -0.36
+   "ET0": 0.52,
+   "bil": -0.52,
+   "S": 5.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-04": {
    "P_kor": 0.0,
@@ -91,8 +627,11 @@
    "F": 1.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.31,
-   "bil": -0.31
+   "ET0": 0.08,
+   "bil": -0.08,
+   "S": 6.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-05": {
    "P_kor": 0.0,
@@ -105,8 +644,11 @@
    "F": 0.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.27,
-   "bil": -0.27
+   "ET0": 0.09,
+   "bil": -0.09,
+   "S": 1.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-06": {
    "P_kor": 0.0,
@@ -119,8 +661,11 @@
    "F": 1.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.26,
-   "bil": -0.26
+   "ET0": 0.37,
+   "bil": -0.37,
+   "S": 0.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-07": {
    "P_kor": 0.0,
@@ -133,8 +678,11 @@
    "F": 2.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.19,
-   "bil": -0.19
+   "ET0": 0.3,
+   "bil": -0.3,
+   "S": 3.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-08": {
    "P_kor": 0.0,
@@ -147,8 +695,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.22,
-   "bil": -0.22
+   "ET0": 0.17,
+   "bil": -0.17,
+   "S": 3.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-09": {
    "P_kor": 1.7,
@@ -161,8 +712,11 @@
    "F": 1.0,
    "P": 1.7,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.26,
-   "bil": 1.44
+   "ET0": 0.16,
+   "bil": 1.54,
+   "S": 0.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-10": {
    "P_kor": 0.0,
@@ -175,8 +729,11 @@
    "F": 1.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.22,
-   "bil": -0.22
+   "ET0": 0.21,
+   "bil": -0.21,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-11": {
    "P_kor": 0.0,
@@ -189,8 +746,11 @@
    "F": 3.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.28,
-   "bil": -0.28
+   "ET0": 0.52,
+   "bil": -0.52,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-12": {
    "P_kor": 2.0,
@@ -203,8 +763,11 @@
    "F": 0.5,
    "P": 2.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.29,
-   "bil": 1.71
+   "ET0": 0.11,
+   "bil": 1.89,
+   "S": 2.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-13": {
    "P_kor": 1.3,
@@ -217,8 +780,11 @@
    "F": 1.2,
    "P": 1.3,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.3,
-   "bil": 1.0
+   "ET0": 0.2,
+   "bil": 1.1,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-14": {
    "P_kor": 0.1,
@@ -231,8 +797,11 @@
    "F": 2.0,
    "P": 0.1,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.23,
-   "bil": -0.13
+   "ET0": 0.19,
+   "bil": -0.09,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-15": {
    "P_kor": 0.1,
@@ -245,8 +814,11 @@
    "F": 0.4,
    "P": 0.1,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.29,
-   "bil": -0.19
+   "ET0": 0.21,
+   "bil": -0.11,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-16": {
    "P_kor": 0.0,
@@ -259,8 +831,11 @@
    "F": 0.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.23,
-   "bil": -0.23
+   "ET0": 0.21,
+   "bil": -0.21,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-17": {
    "P_kor": 0.0,
@@ -273,8 +848,11 @@
    "F": 3.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.45,
-   "bil": -0.45
+   "ET0": 0.59,
+   "bil": -0.59,
+   "S": 0.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-18": {
    "P_kor": 0.0,
@@ -287,8 +865,11 @@
    "F": 1.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.42,
-   "bil": -0.42
+   "ET0": 0.11,
+   "bil": -0.11,
+   "S": 8.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-19": {
    "P_kor": 0.0,
@@ -301,8 +882,11 @@
    "F": 2.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.33,
-   "bil": -0.33
+   "ET0": 0.28,
+   "bil": -0.28,
+   "S": 7.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-20": {
    "P_kor": 0.0,
@@ -315,8 +899,11 @@
    "F": 3.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.33,
-   "bil": -0.33
+   "ET0": 0.37,
+   "bil": -0.37,
+   "S": 8.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-21": {
    "P_kor": 0.0,
@@ -329,8 +916,11 @@
    "F": 2.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.49,
-   "bil": -0.49
+   "ET0": 0.48,
+   "bil": -0.48,
+   "S": 8.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-22": {
    "P_kor": 0.0,
@@ -343,8 +933,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.39,
-   "bil": -0.39
+   "ET0": 0.22,
+   "bil": -0.22,
+   "S": 4.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-23": {
    "P_kor": 0.4,
@@ -357,8 +950,11 @@
    "F": 0.7,
    "P": 0.4,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.34,
-   "bil": 0.06
+   "ET0": 0.23,
+   "bil": 0.17,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-24": {
    "P_kor": 0.7,
@@ -371,8 +967,11 @@
    "F": 1.2,
    "P": 0.7,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.2,
-   "bil": 0.5
+   "ET0": 0.23,
+   "bil": 0.47,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-25": {
    "P_kor": 2.0,
@@ -385,8 +984,11 @@
    "F": 2.0,
    "P": 2.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.63,
-   "bil": 1.37
+   "ET0": 0.39,
+   "bil": 1.61,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-26": {
    "P_kor": 0.0,
@@ -399,8 +1001,11 @@
    "F": 1.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.57,
-   "bil": -0.57
+   "ET0": 0.22,
+   "bil": -0.22,
+   "S": 3.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-27": {
    "P_kor": 0.0,
@@ -413,8 +1018,11 @@
    "F": 0.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.57,
-   "bil": -0.57
+   "ET0": 0.19,
+   "bil": -0.19,
+   "S": 4.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-28": {
    "P_kor": 0.3,
@@ -427,8 +1035,11 @@
    "F": 2.6,
    "P": 0.3,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.45,
-   "bil": -0.15
+   "ET0": 0.37,
+   "bil": -0.07,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-29": {
    "P_kor": 5.4,
@@ -441,8 +1052,11 @@
    "F": 3.4,
    "P": 5.4,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.26,
-   "bil": 5.14
+   "ET0": 0.3,
+   "bil": 5.1,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-30": {
    "P_kor": 0.8,
@@ -455,8 +1069,11 @@
    "F": 2.0,
    "P": 0.8,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.24,
-   "bil": 0.56
+   "ET0": 0.34,
+   "bil": 0.46,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-01-31": {
    "P_kor": 0.0,
@@ -469,8 +1086,11 @@
    "F": 4.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.37,
-   "bil": -0.37
+   "ET0": 0.42,
+   "bil": -0.42,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-01": {
    "P_kor": 0.2,
@@ -483,8 +1103,11 @@
    "F": 2.5,
    "P": 0.2,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.19,
-   "bil": 0.01
+   "ET0": 0.34,
+   "bil": -0.14,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-02": {
    "P_kor": 0.0,
@@ -497,8 +1120,11 @@
    "F": 2.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.32,
-   "bil": -0.32
+   "ET0": 0.33,
+   "bil": -0.33,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-03": {
    "P_kor": 0.0,
@@ -511,8 +1137,11 @@
    "F": 2.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.48,
-   "bil": -0.48
+   "ET0": 0.44,
+   "bil": -0.44,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-04": {
    "P_kor": 1.6,
@@ -525,8 +1154,11 @@
    "F": 2.1,
    "P": 1.6,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.34,
-   "bil": 1.26
+   "ET0": 0.32,
+   "bil": 1.28,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-05": {
    "P_kor": 0.2,
@@ -539,8 +1171,11 @@
    "F": 0.8,
    "P": 0.2,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.41,
-   "bil": -0.21
+   "ET0": 0.35,
+   "bil": -0.15,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-06": {
    "P_kor": 1.5,
@@ -553,8 +1188,11 @@
    "F": 0.7,
    "P": 1.5,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.55,
-   "bil": 0.95
+   "ET0": 0.36,
+   "bil": 1.14,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-07": {
    "P_kor": 0.0,
@@ -567,8 +1205,11 @@
    "F": 0.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.57,
-   "bil": -0.57
+   "ET0": 0.38,
+   "bil": -0.38,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-08": {
    "P_kor": 0.0,
@@ -581,8 +1222,11 @@
    "F": 1.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.5,
-   "bil": -0.5
+   "ET0": 0.38,
+   "bil": -0.38,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-09": {
    "P_kor": 1.0,
@@ -595,8 +1239,11 @@
    "F": 1.7,
    "P": 1.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.3,
-   "bil": 0.7
+   "ET0": 0.36,
+   "bil": 0.64,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-10": {
    "P_kor": 0.0,
@@ -609,8 +1256,11 @@
    "F": 3.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.5,
-   "bil": -0.5
+   "ET0": 0.55,
+   "bil": -0.55,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-11": {
    "P_kor": 4.8,
@@ -623,8 +1273,11 @@
    "F": 2.3,
    "P": 4.8,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.53,
-   "bil": 4.27
+   "ET0": 0.46,
+   "bil": 4.34,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-12": {
    "P_kor": 0.7,
@@ -637,8 +1290,11 @@
    "F": 2.6,
    "P": 0.7,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.8,
-   "bil": -0.1
+   "ET0": 0.49,
+   "bil": 0.21,
+   "S": 1.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-13": {
    "P_kor": 0.0,
@@ -651,8 +1307,11 @@
    "F": 0.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.93,
-   "bil": -0.93
+   "ET0": 0.48,
+   "bil": -0.48,
+   "S": 0.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-14": {
    "P_kor": 9.3,
@@ -665,8 +1324,11 @@
    "F": 3.6,
    "P": 9.3,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.59,
-   "bil": 8.71
+   "ET0": 0.42,
+   "bil": 8.88,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-15": {
    "P_kor": 0.0,
@@ -679,8 +1341,11 @@
    "F": 2.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.46,
-   "bil": -0.46
+   "ET0": 0.51,
+   "bil": -0.51,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-16": {
    "P_kor": 2.8,
@@ -693,8 +1358,11 @@
    "F": 2.3,
    "P": 2.8,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.63,
-   "bil": 2.17
+   "ET0": 0.39,
+   "bil": 2.41,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-17": {
    "P_kor": 1.0,
@@ -707,8 +1375,11 @@
    "F": 0.3,
    "P": 1.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.58,
-   "bil": 0.42
+   "ET0": 0.38,
+   "bil": 0.62,
+   "S": 0.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-18": {
    "P_kor": 0.1,
@@ -721,8 +1392,11 @@
    "F": 0.9,
    "P": 0.1,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.67,
-   "bil": -0.57
+   "ET0": 0.43,
+   "bil": -0.33,
+   "S": 0.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-19": {
    "P_kor": 0.0,
@@ -735,8 +1409,11 @@
    "F": 3.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.68,
-   "bil": -0.68
+   "ET0": 0.57,
+   "bil": -0.57,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-20": {
    "P_kor": 0.0,
@@ -749,8 +1426,11 @@
    "F": 3.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.44,
-   "bil": -0.44
+   "ET0": 0.9,
+   "bil": -0.9,
+   "S": 2.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-21": {
    "P_kor": 0.2,
@@ -763,8 +1443,11 @@
    "F": 1.2,
    "P": 0.2,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.79,
-   "bil": -0.59
+   "ET0": 0.4,
+   "bil": -0.2,
+   "S": 0.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-22": {
    "P_kor": 3.8,
@@ -777,8 +1460,11 @@
    "F": 0.9,
    "P": 3.8,
    "zdroj_P": "chmu_korycany",
-   "ET0": 0.9,
-   "bil": 2.9
+   "ET0": 0.44,
+   "bil": 3.36,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-23": {
    "P_kor": 1.8,
@@ -791,8 +1477,11 @@
    "F": 1.7,
    "P": 1.8,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.2,
-   "bil": 0.6
+   "ET0": 0.81,
+   "bil": 0.99,
+   "S": 3.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-24": {
    "P_kor": 0.0,
@@ -805,8 +1494,11 @@
    "F": 2.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.19,
-   "bil": -1.19
+   "ET0": 1.02,
+   "bil": -1.02,
+   "S": 3.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-25": {
    "P_kor": 0.0,
@@ -819,8 +1511,11 @@
    "F": 1.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.2,
-   "bil": -1.2
+   "ET0": 0.74,
+   "bil": -0.74,
+   "S": 2.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-26": {
    "P_kor": 0.0,
@@ -833,8 +1528,11 @@
    "F": 1.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.16,
-   "bil": -1.16
+   "ET0": 0.81,
+   "bil": -0.81,
+   "S": 9.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-27": {
    "P_kor": 0.0,
@@ -847,8 +1545,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.32,
-   "bil": -1.32
+   "ET0": 0.89,
+   "bil": -0.89,
+   "S": 9.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-02-28": {
    "P_kor": 0.0,
@@ -861,8 +1562,11 @@
    "F": 1.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.51,
-   "bil": -1.51
+   "ET0": 1.16,
+   "bil": -1.16,
+   "S": 9.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-01": {
    "P_kor": 0.4,
@@ -875,8 +1579,11 @@
    "F": 1.0,
    "P": 0.4,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.63,
-   "bil": -1.23
+   "ET0": 1.03,
+   "bil": -0.63,
+   "S": 7.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-02": {
    "P_kor": 0.0,
@@ -889,8 +1596,11 @@
    "F": 1.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.27,
-   "bil": -1.27
+   "ET0": 1.09,
+   "bil": -1.09,
+   "S": 9.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-03": {
    "P_kor": 0.0,
@@ -903,8 +1613,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.65,
-   "bil": -1.65
+   "ET0": 1.1,
+   "bil": -1.1,
+   "S": 8.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-04": {
    "P_kor": 0.0,
@@ -917,8 +1630,11 @@
    "F": 0.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.77,
-   "bil": -1.77
+   "ET0": 1.01,
+   "bil": -1.01,
+   "S": 7.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-05": {
    "P_kor": 0.0,
@@ -931,8 +1647,11 @@
    "F": 1.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.43,
-   "bil": -1.43
+   "ET0": 1.66,
+   "bil": -1.66,
+   "S": 10.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-06": {
    "P_kor": 0.0,
@@ -945,8 +1664,11 @@
    "F": 0.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.82,
-   "bil": -1.82
+   "ET0": 1.29,
+   "bil": -1.29,
+   "S": 10.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-07": {
    "P_kor": 0.0,
@@ -959,8 +1681,11 @@
    "F": 0.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.78,
-   "bil": -1.78
+   "ET0": 1.28,
+   "bil": -1.28,
+   "S": 10.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-08": {
    "P_kor": 0.0,
@@ -973,8 +1698,11 @@
    "F": 1.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.99,
-   "bil": -1.99
+   "ET0": 1.44,
+   "bil": -1.44,
+   "S": 8.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-09": {
    "P_kor": 0.0,
@@ -987,8 +1715,11 @@
    "F": 3.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.93,
-   "bil": -1.93
+   "ET0": 2.22,
+   "bil": -2.22,
+   "S": 10.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-10": {
    "P_kor": 0.0,
@@ -1001,8 +1732,11 @@
    "F": 2.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.77,
-   "bil": -1.77
+   "ET0": 1.75,
+   "bil": -1.75,
+   "S": 8.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-11": {
    "P_kor": 0.0,
@@ -1015,8 +1749,11 @@
    "F": 1.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.9,
-   "bil": -1.9
+   "ET0": 1.55,
+   "bil": -1.55,
+   "S": 9.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-12": {
    "P_kor": 0.0,
@@ -1029,8 +1766,11 @@
    "F": 1.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.99,
-   "bil": -1.99
+   "ET0": 1.25,
+   "bil": -1.25,
+   "S": 6.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-13": {
    "P_kor": 0.0,
@@ -1043,8 +1783,11 @@
    "F": 2.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.33,
-   "bil": -2.33
+   "ET0": 1.77,
+   "bil": -1.77,
+   "S": 9.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-14": {
    "P_kor": 0.0,
@@ -1057,8 +1800,11 @@
    "F": 5.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.07,
-   "bil": -2.07
+   "ET0": 3.09,
+   "bil": -3.09,
+   "S": 8.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-15": {
    "P_kor": 0.0,
@@ -1071,8 +1817,11 @@
    "F": 1.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.96,
-   "bil": -1.96
+   "ET0": 1.6,
+   "bil": -1.6,
+   "S": 6.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-16": {
    "P_kor": 0.3,
@@ -1085,8 +1834,11 @@
    "F": 1.3,
    "P": 0.3,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.29,
-   "bil": -0.99
+   "ET0": 0.88,
+   "bil": -0.58,
+   "S": 1.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-17": {
    "P_kor": 0.0,
@@ -1099,8 +1851,11 @@
    "F": 2.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.43,
-   "bil": -1.43
+   "ET0": 0.99,
+   "bil": -0.99,
+   "S": 1.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-18": {
    "P_kor": 0.0,
@@ -1113,8 +1868,11 @@
    "F": 3.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.87,
-   "bil": -1.87
+   "ET0": 2.43,
+   "bil": -2.43,
+   "S": 10.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-19": {
    "P_kor": 0.0,
@@ -1127,8 +1885,11 @@
    "F": 2.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.92,
-   "bil": -1.92
+   "ET0": 1.96,
+   "bil": -1.96,
+   "S": 10.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-20": {
    "P_kor": 0.0,
@@ -1141,8 +1902,11 @@
    "F": 1.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.24,
-   "bil": -2.24
+   "ET0": 1.85,
+   "bil": -1.85,
+   "S": 9.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-21": {
    "P_kor": 0.3,
@@ -1155,8 +1919,11 @@
    "F": 2.5,
    "P": 0.3,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.24,
-   "bil": -0.94
+   "ET0": 1.28,
+   "bil": -0.98,
+   "S": 0.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-22": {
    "P_kor": 0.0,
@@ -1169,8 +1936,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.71,
-   "bil": -1.71
+   "ET0": 1.43,
+   "bil": -1.43,
+   "S": 4.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-23": {
    "P_kor": 0.0,
@@ -1183,8 +1953,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.43,
-   "bil": -2.43
+   "ET0": 1.88,
+   "bil": -1.88,
+   "S": 8.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-24": {
    "P_kor": 0.0,
@@ -1197,8 +1970,11 @@
    "F": 1.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.27,
-   "bil": -2.27
+   "ET0": 1.65,
+   "bil": -1.65,
+   "S": 6.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-25": {
    "P_kor": 6.8,
@@ -1211,8 +1987,11 @@
    "F": 2.4,
    "P": 6.8,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.84,
-   "bil": 3.96
+   "ET0": 2.11,
+   "bil": 4.69,
+   "S": 3.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-26": {
    "P_kor": 19.4,
@@ -1225,8 +2004,11 @@
    "F": 3.3,
    "P": 19.4,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.64,
-   "bil": 17.76
+   "ET0": 1.2,
+   "bil": 18.2,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-27": {
    "P_kor": 0.0,
@@ -1239,8 +2021,11 @@
    "F": 4.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.24,
-   "bil": -1.24
+   "ET0": 1.64,
+   "bil": -1.64,
+   "S": 1.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-28": {
    "P_kor": 0.0,
@@ -1253,8 +2038,11 @@
    "F": 2.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.19,
-   "bil": -1.19
+   "ET0": 1.4,
+   "bil": -1.4,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-29": {
    "P_kor": 0.0,
@@ -1267,8 +2055,11 @@
    "F": 2.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.18,
-   "bil": -1.18
+   "ET0": 1.23,
+   "bil": -1.23,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-30": {
    "P_kor": 4.0,
@@ -1281,8 +2072,11 @@
    "F": 1.6,
    "P": 4.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.48,
-   "bil": 2.52
+   "ET0": 1.39,
+   "bil": 2.61,
+   "S": 2.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-03-31": {
    "P_kor": 3.1,
@@ -1295,8 +2089,11 @@
    "F": 3.0,
    "P": 3.1,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.09,
-   "bil": 2.01
+   "ET0": 1.12,
+   "bil": 1.98,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-01": {
    "P_kor": 0.5,
@@ -1310,7 +2107,10 @@
    "P": 0.5,
    "zdroj_P": "chmu_korycany",
    "ET0": 1.99,
-   "bil": -1.49
+   "bil": -1.49,
+   "S": 7.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-02": {
    "P_kor": 0.0,
@@ -1323,8 +2123,11 @@
    "F": 2.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.75,
-   "bil": -1.75
+   "ET0": 2.07,
+   "bil": -2.07,
+   "S": 0.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-03": {
    "P_kor": 0.0,
@@ -1337,8 +2140,11 @@
    "F": 1.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.59,
-   "bil": -2.59
+   "ET0": 2.23,
+   "bil": -2.23,
+   "S": 11.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-04": {
    "P_kor": 0.0,
@@ -1351,8 +2157,11 @@
    "F": 1.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.66,
-   "bil": -2.66
+   "ET0": 1.61,
+   "bil": -1.61,
+   "S": 3.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-05": {
    "P_kor": 0.0,
@@ -1365,8 +2174,11 @@
    "F": 2.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.21,
-   "bil": -3.21
+   "ET0": 2.6,
+   "bil": -2.6,
+   "S": 9.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-06": {
    "P_kor": 0.0,
@@ -1379,8 +2191,11 @@
    "F": 3.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.31,
-   "bil": -2.31
+   "ET0": 3.48,
+   "bil": -3.48,
+   "S": 9.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-07": {
    "P_kor": 0.0,
@@ -1393,8 +2208,11 @@
    "F": 2.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.77,
-   "bil": -2.77
+   "ET0": 2.86,
+   "bil": -2.86,
+   "S": 12.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-08": {
    "P_kor": 0.0,
@@ -1407,8 +2225,11 @@
    "F": 2.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.52,
-   "bil": -2.52
+   "ET0": 2.42,
+   "bil": -2.42,
+   "S": 10.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-09": {
    "P_kor": 0.0,
@@ -1422,7 +2243,10 @@
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
    "ET0": 2.27,
-   "bil": -2.27
+   "bil": -2.27,
+   "S": 12.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-10": {
    "P_kor": 0.0,
@@ -1435,8 +2259,11 @@
    "F": 1.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.96,
-   "bil": -1.96
+   "ET0": 1.65,
+   "bil": -1.65,
+   "S": 5.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-11": {
    "P_kor": 0.0,
@@ -1449,8 +2276,11 @@
    "F": 1.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.57,
-   "bil": -2.57
+   "ET0": 2.35,
+   "bil": -2.35,
+   "S": 12.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-12": {
    "P_kor": 0.0,
@@ -1463,8 +2293,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.82,
-   "bil": -2.82
+   "ET0": 1.64,
+   "bil": -1.64,
+   "S": 1.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-13": {
    "P_kor": 0.0,
@@ -1477,8 +2310,11 @@
    "F": 2.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.43,
-   "bil": -2.43
+   "ET0": 2.84,
+   "bil": -2.84,
+   "S": 0.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-14": {
    "P_kor": 0.5,
@@ -1491,8 +2327,11 @@
    "F": 1.0,
    "P": 0.5,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.53,
-   "bil": -2.03
+   "ET0": 1.44,
+   "bil": -0.94,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-15": {
    "P_kor": 0.0,
@@ -1505,8 +2344,11 @@
    "F": 2.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.86,
-   "bil": -1.86
+   "ET0": 1.94,
+   "bil": -1.94,
+   "S": 4.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-16": {
    "P_kor": 0.0,
@@ -1519,8 +2361,11 @@
    "F": 0.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.83,
-   "bil": -2.83
+   "ET0": 1.71,
+   "bil": -1.71,
+   "S": 2.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-17": {
    "P_kor": 0.1,
@@ -1533,8 +2378,11 @@
    "F": 1.0,
    "P": 0.1,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.44,
-   "bil": -3.34
+   "ET0": 2.54,
+   "bil": -2.44,
+   "S": 9.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-18": {
    "P_kor": 0.0,
@@ -1547,8 +2395,11 @@
    "F": 1.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.59,
-   "bil": -3.59
+   "ET0": 2.84,
+   "bil": -2.84,
+   "S": 12.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-19": {
    "P_kor": 4.4,
@@ -1561,8 +2412,11 @@
    "F": 1.9,
    "P": 4.4,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.83,
-   "bil": 0.57
+   "ET0": 2.44,
+   "bil": 1.96,
+   "S": 5.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-20": {
    "P_kor": 0.0,
@@ -1575,8 +2429,11 @@
    "F": 1.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.44,
-   "bil": -2.44
+   "ET0": 1.77,
+   "bil": -1.77,
+   "S": 1.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-21": {
    "P_kor": 0.0,
@@ -1589,8 +2446,11 @@
    "F": 2.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.96,
-   "bil": -1.96
+   "ET0": 2.03,
+   "bil": -2.03,
+   "S": 3.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-22": {
    "P_kor": 0.0,
@@ -1603,8 +2463,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.11,
-   "bil": -3.11
+   "ET0": 2.8,
+   "bil": -2.8,
+   "S": 12.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-23": {
    "P_kor": 0.0,
@@ -1617,8 +2480,11 @@
    "F": 3.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.98,
-   "bil": -3.98
+   "ET0": 3.55,
+   "bil": -3.55,
+   "S": 9.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-24": {
    "P_kor": 0.0,
@@ -1631,8 +2497,11 @@
    "F": 1.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.32,
-   "bil": -3.32
+   "ET0": 3.52,
+   "bil": -3.52,
+   "S": 12.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-25": {
    "P_kor": 0.0,
@@ -1645,8 +2514,11 @@
    "F": 1.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.14,
-   "bil": -4.14
+   "ET0": 3.29,
+   "bil": -3.29,
+   "S": 13.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-26": {
    "P_kor": 0.0,
@@ -1659,8 +2531,11 @@
    "F": 2.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.84,
-   "bil": -2.84
+   "ET0": 3.31,
+   "bil": -3.31,
+   "S": 12.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-27": {
    "P_kor": 0.0,
@@ -1673,8 +2548,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.94,
-   "bil": -3.94
+   "ET0": 3.17,
+   "bil": -3.17,
+   "S": 11.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-28": {
    "P_kor": 0.0,
@@ -1687,8 +2565,11 @@
    "F": 2.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.48,
-   "bil": -3.48
+   "ET0": 3.8,
+   "bil": -3.8,
+   "S": 12.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-29": {
    "P_kor": 0.0,
@@ -1701,8 +2582,11 @@
    "F": 2.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.92,
-   "bil": -2.92
+   "ET0": 3.47,
+   "bil": -3.47,
+   "S": 13.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-04-30": {
    "P_kor": 0.0,
@@ -1715,8 +2599,11 @@
    "F": 2.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.23,
-   "bil": -3.23
+   "ET0": 3.45,
+   "bil": -3.45,
+   "S": 13.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-01": {
    "P_kor": 0.0,
@@ -1729,8 +2616,11 @@
    "F": 1.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.35,
-   "bil": -4.35
+   "ET0": 2.87,
+   "bil": -2.87,
+   "S": 8.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-02": {
    "P_kor": 0.0,
@@ -1743,8 +2633,11 @@
    "F": 1.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.79,
-   "bil": -4.79
+   "ET0": 3.97,
+   "bil": -3.97,
+   "S": 13.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-03": {
    "P_kor": 0.0,
@@ -1757,8 +2650,11 @@
    "F": 2.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.95,
-   "bil": -4.95
+   "ET0": 4.57,
+   "bil": -4.57,
+   "S": 13.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-04": {
    "P_kor": 0.0,
@@ -1771,8 +2667,11 @@
    "F": 2.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.83,
-   "bil": -4.83
+   "ET0": 4.93,
+   "bil": -4.93,
+   "S": 13.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-05": {
    "P_kor": 0.0,
@@ -1785,8 +2684,11 @@
    "F": 3.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.15,
-   "bil": -5.15
+   "ET0": 5.38,
+   "bil": -5.38,
+   "S": 11.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-06": {
    "P_kor": 0.0,
@@ -1800,7 +2702,10 @@
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
    "ET0": 4.47,
-   "bil": -4.47
+   "bil": -4.47,
+   "S": 9.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-07": {
    "P_kor": 2.5,
@@ -1813,8 +2718,11 @@
    "F": 1.7,
    "P": 2.5,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.32,
-   "bil": -0.82
+   "ET0": 2.49,
+   "bil": 0.01,
+   "S": 2.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-08": {
    "P_kor": 0.0,
@@ -1827,8 +2735,11 @@
    "F": 1.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.05,
-   "bil": -3.05
+   "ET0": 2.96,
+   "bil": -2.96,
+   "S": 8.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-09": {
    "P_kor": 0.0,
@@ -1841,8 +2752,11 @@
    "F": 2.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.17,
-   "bil": -3.17
+   "ET0": 3.34,
+   "bil": -3.34,
+   "S": 10.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-10": {
    "P_kor": 0.0,
@@ -1855,8 +2769,11 @@
    "F": 1.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.59,
-   "bil": -4.59
+   "ET0": 3.61,
+   "bil": -3.61,
+   "S": 11.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-11": {
    "P_kor": 8.0,
@@ -1869,8 +2786,11 @@
    "F": 2.6,
    "P": 8.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.59,
-   "bil": 4.41
+   "ET0": 2.41,
+   "bil": 5.59,
+   "S": 1.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-12": {
    "P_kor": 0.0,
@@ -1883,8 +2803,11 @@
    "F": 2.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.61,
-   "bil": -2.61
+   "ET0": 2.4,
+   "bil": -2.4,
+   "S": 4.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-13": {
    "P_kor": 0.1,
@@ -1897,8 +2820,11 @@
    "F": 1.9,
    "P": 0.1,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.67,
-   "bil": -3.57
+   "ET0": 2.91,
+   "bil": -2.81,
+   "S": 9.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-14": {
    "P_kor": 23.0,
@@ -1911,8 +2837,11 @@
    "F": 2.9,
    "P": 23.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.12,
-   "bil": 18.88
+   "ET0": 2.59,
+   "bil": 20.41,
+   "S": 3.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-15": {
    "P_kor": 11.4,
@@ -1925,8 +2854,11 @@
    "F": 1.3,
    "P": 11.4,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.11,
-   "bil": 9.29
+   "ET0": 1.64,
+   "bil": 9.76,
+   "S": 0.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-16": {
    "P_kor": 3.0,
@@ -1939,8 +2871,11 @@
    "F": 2.9,
    "P": 3.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.68,
-   "bil": 1.32
+   "ET0": 1.62,
+   "bil": 1.38,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-17": {
    "P_kor": 0.0,
@@ -1953,8 +2888,11 @@
    "F": 2.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.37,
-   "bil": -2.37
+   "ET0": 1.94,
+   "bil": -1.94,
+   "S": 0.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-18": {
    "P_kor": 0.0,
@@ -1967,8 +2905,11 @@
    "F": 1.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.85,
-   "bil": -3.85
+   "ET0": 2.62,
+   "bil": -2.62,
+   "S": 7.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-19": {
    "P_kor": 0.0,
@@ -1981,8 +2922,11 @@
    "F": 1.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.88,
-   "bil": -4.88
+   "ET0": 3.56,
+   "bil": -3.56,
+   "S": 11.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-20": {
    "P_kor": 0.0,
@@ -1995,8 +2939,11 @@
    "F": 1.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.03,
-   "bil": -5.03
+   "ET0": 3.39,
+   "bil": -3.39,
+   "S": 7.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-21": {
    "P_kor": 0.0,
@@ -2009,8 +2956,11 @@
    "F": 1.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.06,
-   "bil": -4.06
+   "ET0": 3.37,
+   "bil": -3.37,
+   "S": 7.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-22": {
    "P_kor": 0.0,
@@ -2023,8 +2973,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.86,
-   "bil": -4.86
+   "ET0": 3.73,
+   "bil": -3.73,
+   "S": 10.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-23": {
    "P_kor": 0.0,
@@ -2037,8 +2990,11 @@
    "F": 1.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.21,
-   "bil": -5.21
+   "ET0": 4.61,
+   "bil": -4.61,
+   "S": 14.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-24": {
    "P_kor": 0.0,
@@ -2051,8 +3007,11 @@
    "F": 0.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.19,
-   "bil": -6.19
+   "ET0": 4.54,
+   "bil": -4.54,
+   "S": 13.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-25": {
    "P_kor": 0.0,
@@ -2065,8 +3024,11 @@
    "F": 2.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.21,
-   "bil": -5.21
+   "ET0": 5.18,
+   "bil": -5.18,
+   "S": 14.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-26": {
    "P_kor": 0.0,
@@ -2079,8 +3041,11 @@
    "F": 0.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.21,
-   "bil": -6.21
+   "ET0": 4.94,
+   "bil": -4.94,
+   "S": 14.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-27": {
    "P_kor": 0.0,
@@ -2093,8 +3058,11 @@
    "F": 2.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.57,
-   "bil": -6.57
+   "ET0": 5.21,
+   "bil": -5.21,
+   "S": 10.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-28": {
    "P_kor": 0.0,
@@ -2107,8 +3075,11 @@
    "F": 2.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.86,
-   "bil": -4.86
+   "ET0": 4.76,
+   "bil": -4.76,
+   "S": 15.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-29": {
    "P_kor": 0.0,
@@ -2121,8 +3092,11 @@
    "F": 1.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.02,
-   "bil": -6.02
+   "ET0": 4.77,
+   "bil": -4.77,
+   "S": 14.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-30": {
    "P_kor": 0.0,
@@ -2135,8 +3109,11 @@
    "F": 1.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.14,
-   "bil": -6.14
+   "ET0": 3.81,
+   "bil": -3.81,
+   "S": 6.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-05-31": {
    "P_kor": 0.5,
@@ -2149,8 +3126,11 @@
    "F": 2.0,
    "P": 0.5,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.06,
-   "bil": -5.56
+   "ET0": 3.95,
+   "bil": -3.45,
+   "S": 7.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-01": {
    "P_kor": 5.0,
@@ -2163,8 +3143,11 @@
    "F": 1.2,
    "P": 5.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.17,
-   "bil": 1.83
+   "ET0": 1.78,
+   "bil": 3.22,
+   "S": 0.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-02": {
    "P_kor": 0.0,
@@ -2177,8 +3160,11 @@
    "F": 0.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.25,
-   "bil": -5.25
+   "ET0": 3.82,
+   "bil": -3.82,
+   "S": 9.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-03": {
    "P_kor": 6.5,
@@ -2191,8 +3177,11 @@
    "F": 2.1,
    "P": 6.5,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.28,
-   "bil": 3.22
+   "ET0": 1.95,
+   "bil": 4.55,
+   "S": 0.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-04": {
    "P_kor": 0.0,
@@ -2205,8 +3194,11 @@
    "F": 0.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.45,
-   "bil": -4.45
+   "ET0": 3.63,
+   "bil": -3.63,
+   "S": 9.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-05": {
    "P_kor": 0.5,
@@ -2219,8 +3211,11 @@
    "F": 1.0,
    "P": 0.5,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.3,
-   "bil": -2.8
+   "ET0": 2.35,
+   "bil": -1.85,
+   "S": 3.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-06": {
    "P_kor": 0.0,
@@ -2233,8 +3228,11 @@
    "F": 0.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.51,
-   "bil": -5.51
+   "ET0": 4.15,
+   "bil": -4.15,
+   "S": 12.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-07": {
    "P_kor": 0.0,
@@ -2247,8 +3245,11 @@
    "F": 1.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.53,
-   "bil": -5.53
+   "ET0": 4.56,
+   "bil": -4.56,
+   "S": 11.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-08": {
    "P_kor": 0.0,
@@ -2261,8 +3262,11 @@
    "F": 1.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.97,
-   "bil": -5.97
+   "ET0": 4.99,
+   "bil": -4.99,
+   "S": 13.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-09": {
    "P_kor": 0.9,
@@ -2275,8 +3279,11 @@
    "F": 1.4,
    "P": 0.9,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.37,
-   "bil": -4.47
+   "ET0": 3.31,
+   "bil": -2.41,
+   "S": 3.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-10": {
    "P_kor": 18.0,
@@ -2289,8 +3296,11 @@
    "F": 2.1,
    "P": 18.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.63,
-   "bil": 15.37
+   "ET0": 1.85,
+   "bil": 16.15,
+   "S": 0.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-11": {
    "P_kor": 0.0,
@@ -2303,8 +3313,11 @@
    "F": 1.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.59,
-   "bil": -3.59
+   "ET0": 2.9,
+   "bil": -2.9,
+   "S": 4.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-12": {
    "P_kor": 0.9,
@@ -2317,8 +3330,11 @@
    "F": 1.9,
    "P": 0.9,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.46,
-   "bil": -3.56
+   "ET0": 3.34,
+   "bil": -2.44,
+   "S": 7.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-13": {
    "P_kor": 0.0,
@@ -2331,8 +3347,11 @@
    "F": 1.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.45,
-   "bil": -4.45
+   "ET0": 3.33,
+   "bil": -3.33,
+   "S": 5.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-14": {
    "P_kor": 0.0,
@@ -2345,8 +3364,11 @@
    "F": 1.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.96,
-   "bil": -3.96
+   "ET0": 3.58,
+   "bil": -3.58,
+   "S": 7.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-15": {
    "P_kor": 0.0,
@@ -2359,8 +3381,11 @@
    "F": 1.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.55,
-   "bil": -4.55
+   "ET0": 2.89,
+   "bil": -2.89,
+   "S": 5.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-16": {
    "P_kor": 0.0,
@@ -2373,8 +3398,11 @@
    "F": 1.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.92,
-   "bil": -5.92
+   "ET0": 4.14,
+   "bil": -4.14,
+   "S": 10.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-17": {
    "P_kor": 0.0,
@@ -2387,8 +3415,11 @@
    "F": 1.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.32,
-   "bil": -5.32
+   "ET0": 4.19,
+   "bil": -4.19,
+   "S": 8.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-18": {
    "P_kor": 0.0,
@@ -2401,8 +3432,11 @@
    "F": 0.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.82,
-   "bil": -5.82
+   "ET0": 3.8,
+   "bil": -3.8,
+   "S": 7.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-19": {
    "P_kor": 0.0,
@@ -2415,8 +3449,11 @@
    "F": 0.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 7.01,
-   "bil": -7.01
+   "ET0": 5.66,
+   "bil": -5.66,
+   "S": 15.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-20": {
    "P_kor": 0.0,
@@ -2429,8 +3466,11 @@
    "F": 2.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 7.62,
-   "bil": -7.62
+   "ET0": 6.07,
+   "bil": -6.07,
+   "S": 12.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-21": {
    "P_kor": 0.0,
@@ -2443,8 +3483,11 @@
    "F": 1.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.18,
-   "bil": -6.18
+   "ET0": 6.06,
+   "bil": -6.06,
+   "S": 13.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-22": {
    "P_kor": 0.0,
@@ -2457,8 +3500,11 @@
    "F": 2.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.86,
-   "bil": -5.86
+   "ET0": 5.84,
+   "bil": -5.84,
+   "S": 14.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-23": {
    "P_kor": 0.0,
@@ -2471,8 +3517,11 @@
    "F": 2.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.0,
-   "bil": -5.0
+   "ET0": 5.39,
+   "bil": -5.39,
+   "S": 12.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-24": {
    "P_kor": 0.0,
@@ -2485,8 +3534,11 @@
    "F": 2.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.48,
-   "bil": -6.48
+   "ET0": 6.08,
+   "bil": -6.08,
+   "S": 15.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-25": {
    "P_kor": 0.0,
@@ -2499,8 +3551,11 @@
    "F": 1.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 7.59,
-   "bil": -7.59
+   "ET0": 6.04,
+   "bil": -6.04,
+   "S": 15.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-26": {
    "P_kor": 0.0,
@@ -2513,8 +3568,11 @@
    "F": 1.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 7.84,
-   "bil": -7.84
+   "ET0": 6.14,
+   "bil": -6.14,
+   "S": 14.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-27": {
    "P_kor": 0.0,
@@ -2527,8 +3585,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 7.39,
-   "bil": -7.39
+   "ET0": 6.42,
+   "bil": -6.42,
+   "S": 14.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-28": {
    "P_kor": 0.0,
@@ -2541,8 +3602,11 @@
    "F": 1.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 7.97,
-   "bil": -7.97
+   "ET0": 6.89,
+   "bil": -6.89,
+   "S": 14.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-29": {
    "P_kor": 1.0,
@@ -2555,8 +3619,11 @@
    "F": 2.0,
    "P": 1.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 7.91,
-   "bil": -6.91
+   "ET0": 6.78,
+   "bil": -5.78,
+   "S": 13.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-06-30": {
    "P_kor": 0.0,
@@ -2569,8 +3636,11 @@
    "F": 2.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.37,
-   "bil": -6.37
+   "ET0": 6.27,
+   "bil": -6.27,
+   "S": 13.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-01": {
    "P_kor": 3.4,
@@ -2583,8 +3653,11 @@
    "F": 2.1,
    "P": 3.4,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.06,
-   "bil": -2.66
+   "ET0": 5.62,
+   "bil": -2.22,
+   "S": 10.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-02": {
    "P_kor": 0.0,
@@ -2597,8 +3670,11 @@
    "F": 2.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.24,
-   "bil": -5.24
+   "ET0": 5.4,
+   "bil": -5.4,
+   "S": 12.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-03": {
    "P_kor": 0.2,
@@ -2611,8 +3687,11 @@
    "F": 2.2,
    "P": 0.2,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.03,
-   "bil": -4.83
+   "ET0": 4.65,
+   "bil": -4.45,
+   "S": 9.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-04": {
    "P_kor": 0.1,
@@ -2625,8 +3704,11 @@
    "F": 2.3,
    "P": 0.1,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.87,
-   "bil": -5.77
+   "ET0": 4.71,
+   "bil": -4.61,
+   "S": 9.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-05": {
    "P_kor": 3.5,
@@ -2639,8 +3721,11 @@
    "F": 1.4,
    "P": 3.5,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.32,
-   "bil": -0.82
+   "ET0": 2.69,
+   "bil": 0.81,
+   "S": 1.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-06": {
    "P_kor": 3.0,
@@ -2653,8 +3738,11 @@
    "F": 0.8,
    "P": 3.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.82,
-   "bil": -1.82
+   "ET0": 2.77,
+   "bil": 0.23,
+   "S": 3.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-07": {
    "P_kor": 0.2,
@@ -2667,8 +3755,11 @@
    "F": 2.4,
    "P": 0.2,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.46,
-   "bil": -5.26
+   "ET0": 4.38,
+   "bil": -4.18,
+   "S": 3.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-08": {
    "P_kor": 0.0,
@@ -2681,8 +3772,11 @@
    "F": 2.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.0,
-   "bil": -4.0
+   "ET0": 5.51,
+   "bil": -5.51,
+   "S": 11.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-09": {
    "P_kor": 0.0,
@@ -2695,8 +3789,11 @@
    "F": 2.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.25,
-   "bil": -5.25
+   "ET0": 4.01,
+   "bil": -4.01,
+   "S": 7.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-10": {
    "P_kor": 0.0,
@@ -2709,8 +3806,11 @@
    "F": 1.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.23,
-   "bil": -6.23
+   "ET0": 4.03,
+   "bil": -4.03,
+   "S": 7.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-11": {
    "P_kor": 0.0,
@@ -2723,8 +3823,11 @@
    "F": 1.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.6,
-   "bil": -5.6
+   "ET0": 4.62,
+   "bil": -4.62,
+   "S": 11.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-12": {
    "P_kor": 0.0,
@@ -2737,8 +3840,11 @@
    "F": 1.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.6,
-   "bil": -5.6
+   "ET0": 3.22,
+   "bil": -3.22,
+   "S": 3.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-13": {
    "P_kor": 0.0,
@@ -2751,8 +3857,11 @@
    "F": 2.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.02,
-   "bil": -6.02
+   "ET0": 5.35,
+   "bil": -5.35,
+   "S": 14.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-14": {
    "P_kor": 19.7,
@@ -2765,8 +3874,11 @@
    "F": 1.6,
    "P": 19.7,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.25,
-   "bil": 13.45
+   "ET0": 4.63,
+   "bil": 15.07,
+   "S": 9.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-15": {
    "P_kor": 0.8,
@@ -2779,8 +3891,11 @@
    "F": 2.0,
    "P": 0.8,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.39,
-   "bil": -3.59
+   "ET0": 3.81,
+   "bil": -3.01,
+   "S": 7.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-16": {
    "P_kor": 0.0,
@@ -2793,8 +3908,11 @@
    "F": 1.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.53,
-   "bil": -5.53
+   "ET0": 4.62,
+   "bil": -4.62,
+   "S": 10.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-17": {
    "P_kor": 0.0,
@@ -2807,8 +3925,11 @@
    "F": 1.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.84,
-   "bil": -5.84
+   "ET0": 4.84,
+   "bil": -4.84,
+   "S": 10.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-18": {
    "P_kor": 6.7,
@@ -2821,8 +3942,11 @@
    "F": 1.6,
    "P": 6.7,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.73,
-   "bil": 1.97
+   "ET0": 3.83,
+   "bil": 2.87,
+   "S": 8.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-19": {
    "P_kor": 1.6,
@@ -2835,8 +3959,11 @@
    "F": 1.4,
    "P": 1.6,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.57,
-   "bil": -2.97
+   "ET0": 3.09,
+   "bil": -1.49,
+   "S": 6.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-20": {
    "P_kor": 0.0,
@@ -2849,8 +3976,11 @@
    "F": 1.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.3,
-   "bil": -5.3
+   "ET0": 4.43,
+   "bil": -4.43,
+   "S": 11.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-21": {
    "P_kor": 0.0,
@@ -2863,8 +3993,11 @@
    "F": 1.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.8,
-   "bil": -4.8
+   "ET0": 3.87,
+   "bil": -3.87,
+   "S": 10.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-22": {
    "P_kor": 3.5,
@@ -2877,8 +4010,11 @@
    "F": 1.0,
    "P": 3.5,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.12,
-   "bil": -1.62
+   "ET0": 3.64,
+   "bil": -0.14,
+   "S": 8.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-23": {
    "P_kor": 2.0,
@@ -2891,8 +4027,11 @@
    "F": 2.8,
    "P": 2.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.6,
-   "bil": -1.6
+   "ET0": 3.41,
+   "bil": -1.41,
+   "S": 4.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-24": {
    "P_kor": 0.0,
@@ -2905,8 +4044,11 @@
    "F": 1.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.27,
-   "bil": -4.27
+   "ET0": 3.72,
+   "bil": -3.72,
+   "S": 9.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-25": {
    "P_kor": 0.0,
@@ -2919,8 +4061,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.95,
-   "bil": -5.95
+   "ET0": 4.83,
+   "bil": -4.83,
+   "S": 14.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-26": {
    "P_kor": 0.0,
@@ -2933,8 +4078,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.53,
-   "bil": -6.53
+   "ET0": 4.61,
+   "bil": -4.61,
+   "S": 9.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-27": {
    "P_kor": 0.0,
@@ -2947,8 +4095,11 @@
    "F": 1.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.22,
-   "bil": -4.22
+   "ET0": 3.34,
+   "bil": -3.34,
+   "S": 4.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-28": {
    "P_kor": 0.0,
@@ -2961,8 +4112,11 @@
    "F": 1.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.02,
-   "bil": -5.02
+   "ET0": 4.58,
+   "bil": -4.58,
+   "S": 11.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-29": {
    "P_kor": 0.0,
@@ -2975,8 +4129,11 @@
    "F": 1.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.41,
-   "bil": -6.41
+   "ET0": 5.62,
+   "bil": -5.62,
+   "S": 14.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-30": {
    "P_kor": 0.0,
@@ -2989,8 +4146,11 @@
    "F": 1.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.69,
-   "bil": -6.69
+   "ET0": 5.89,
+   "bil": -5.89,
+   "S": 14.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-07-31": {
    "P_kor": 0.0,
@@ -3003,8 +4163,11 @@
    "F": 1.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.77,
-   "bil": -6.77
+   "ET0": 6.1,
+   "bil": -6.1,
+   "S": 12.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-01": {
    "P_kor": 5.0,
@@ -3017,8 +4180,11 @@
    "F": 2.0,
    "P": 5.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.9,
-   "bil": -0.9
+   "ET0": 4.78,
+   "bil": 0.22,
+   "S": 7.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-02": {
    "P_kor": 0.0,
@@ -3031,8 +4197,11 @@
    "F": 3.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.45,
-   "bil": -3.45
+   "ET0": 3.68,
+   "bil": -3.68,
+   "S": 6.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-03": {
    "P_kor": 0.0,
@@ -3045,8 +4214,11 @@
    "F": 2.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.26,
-   "bil": -6.26
+   "ET0": 5.92,
+   "bil": -5.92,
+   "S": 13.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-04": {
    "P_kor": 0.0,
@@ -3059,8 +4231,11 @@
    "F": 1.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.72,
-   "bil": -6.72
+   "ET0": 6.08,
+   "bil": -6.08,
+   "S": 13.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-05": {
    "P_kor": 0.0,
@@ -3073,8 +4248,11 @@
    "F": 2.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.6,
-   "bil": -6.6
+   "ET0": 6.72,
+   "bil": -6.72,
+   "S": 12.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-06": {
    "P_kor": 5.0,
@@ -3087,8 +4265,11 @@
    "F": 1.3,
    "P": 5.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.38,
-   "bil": -1.38
+   "ET0": 4.68,
+   "bil": 0.32,
+   "S": 9.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-07": {
    "P_kor": 0.0,
@@ -3101,8 +4282,11 @@
    "F": 1.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.97,
-   "bil": -3.97
+   "ET0": 4.21,
+   "bil": -4.21,
+   "S": 8.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-08": {
    "P_kor": 0.0,
@@ -3115,8 +4299,11 @@
    "F": 2.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.41,
-   "bil": -4.41
+   "ET0": 5.17,
+   "bil": -5.17,
+   "S": 13.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-09": {
    "P_kor": 0.0,
@@ -3129,8 +4316,11 @@
    "F": 0.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.43,
-   "bil": -5.43
+   "ET0": 4.48,
+   "bil": -4.48,
+   "S": 13.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-10": {
    "P_kor": 0.0,
@@ -3143,8 +4333,11 @@
    "F": 0.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.24,
-   "bil": -6.24
+   "ET0": 4.08,
+   "bil": -4.08,
+   "S": 8.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-11": {
    "P_kor": 0.0,
@@ -3157,8 +4350,11 @@
    "F": 2.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.78,
-   "bil": -4.78
+   "ET0": 5.73,
+   "bil": -5.73,
+   "S": 13.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-12": {
    "P_kor": 0.0,
@@ -3171,8 +4367,11 @@
    "F": 2.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.72,
-   "bil": -4.72
+   "ET0": 4.77,
+   "bil": -4.77,
+   "S": 13.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-13": {
    "P_kor": 0.0,
@@ -3185,8 +4384,11 @@
    "F": 2.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.58,
-   "bil": -4.58
+   "ET0": 5.31,
+   "bil": -5.31,
+   "S": 13.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-14": {
    "P_kor": 0.0,
@@ -3199,8 +4401,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 5.45,
-   "bil": -5.45
+   "ET0": 4.68,
+   "bil": -4.68,
+   "S": 13.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-15": {
    "P_kor": 0.0,
@@ -3213,8 +4418,11 @@
    "F": 1.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.19,
-   "bil": -6.19
+   "ET0": 5.35,
+   "bil": -5.35,
+   "S": 13.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-16": {
    "P_kor": 4.0,
@@ -3227,8 +4435,11 @@
    "F": 2.2,
    "P": 4.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 6.09,
-   "bil": -2.09
+   "ET0": 5.21,
+   "bil": -1.21,
+   "S": 9.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-17": {
    "P_kor": 4.6,
@@ -3241,8 +4452,11 @@
    "F": 1.7,
    "P": 4.6,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.22,
-   "bil": 0.38
+   "ET0": 3.5,
+   "bil": 1.1,
+   "S": 7.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-18": {
    "P_kor": 0.5,
@@ -3255,8 +4469,11 @@
    "F": 1.8,
    "P": 0.5,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.77,
-   "bil": -3.27
+   "ET0": 2.62,
+   "bil": -2.12,
+   "S": 3.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-19": {
    "P_kor": 0.0,
@@ -3269,8 +4486,11 @@
    "F": 1.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.95,
-   "bil": -3.95
+   "ET0": 2.77,
+   "bil": -2.77,
+   "S": 4.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-20": {
    "P_kor": 7.8,
@@ -3283,8 +4503,11 @@
    "F": 2.2,
    "P": 7.8,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.6,
-   "bil": 3.2
+   "ET0": 3.55,
+   "bil": 4.25,
+   "S": 5.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-21": {
    "P_kor": 0.8,
@@ -3297,8 +4520,11 @@
    "F": 3.1,
    "P": 0.8,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.77,
-   "bil": -2.97
+   "ET0": 3.08,
+   "bil": -2.28,
+   "S": 5.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-22": {
    "P_kor": 0.0,
@@ -3311,8 +4537,11 @@
    "F": 2.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.47,
-   "bil": -3.47
+   "ET0": 3.31,
+   "bil": -3.31,
+   "S": 7.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-23": {
    "P_kor": 0.0,
@@ -3325,8 +4554,11 @@
    "F": 0.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.2,
-   "bil": -4.2
+   "ET0": 3.21,
+   "bil": -3.21,
+   "S": 11.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-24": {
    "P_kor": 0.0,
@@ -3339,8 +4571,11 @@
    "F": 2.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.78,
-   "bil": -3.78
+   "ET0": 4.13,
+   "bil": -4.13,
+   "S": 12.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-25": {
    "P_kor": 0.0,
@@ -3353,8 +4588,11 @@
    "F": 3.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.33,
-   "bil": -2.33
+   "ET0": 2.47,
+   "bil": -2.47,
+   "S": 0.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-26": {
    "P_kor": 0.0,
@@ -3367,8 +4605,11 @@
    "F": 3.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.51,
-   "bil": -3.51
+   "ET0": 3.07,
+   "bil": -3.07,
+   "S": 3.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-27": {
    "P_kor": 0.0,
@@ -3381,8 +4622,11 @@
    "F": 2.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.2,
-   "bil": -4.2
+   "ET0": 3.61,
+   "bil": -3.61,
+   "S": 7.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-28": {
    "P_kor": 7.0,
@@ -3395,8 +4639,11 @@
    "F": 2.3,
    "P": 7.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.77,
-   "bil": 2.23
+   "ET0": 4.4,
+   "bil": 2.6,
+   "S": 9.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-29": {
    "P_kor": 0.0,
@@ -3409,8 +4656,11 @@
    "F": 1.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.5,
-   "bil": -3.5
+   "ET0": 3.15,
+   "bil": -3.15,
+   "S": 9.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-30": {
    "P_kor": 0.0,
@@ -3423,8 +4673,11 @@
    "F": 1.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.65,
-   "bil": -4.65
+   "ET0": 3.76,
+   "bil": -3.76,
+   "S": 11.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-08-31": {
    "P_kor": 0.0,
@@ -3437,8 +4690,11 @@
    "F": 1.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.95,
-   "bil": -3.95
+   "ET0": 2.75,
+   "bil": -2.75,
+   "S": 3.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-01": {
    "P_kor": 0.0,
@@ -3451,8 +4707,11 @@
    "F": 0.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.61,
-   "bil": -3.61
+   "ET0": 2.84,
+   "bil": -2.84,
+   "S": 8.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-02": {
    "P_kor": 0.1,
@@ -3465,8 +4724,11 @@
    "F": 1.1,
    "P": 0.1,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.35,
-   "bil": -4.25
+   "ET0": 2.7,
+   "bil": -2.6,
+   "S": 5.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-03": {
    "P_kor": 0.0,
@@ -3479,8 +4741,11 @@
    "F": 1.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.58,
-   "bil": -3.58
+   "ET0": 2.14,
+   "bil": -2.14,
+   "S": 2.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-04": {
    "P_kor": 2.5,
@@ -3493,8 +4758,11 @@
    "F": 1.3,
    "P": 2.5,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.17,
-   "bil": -1.67
+   "ET0": 2.99,
+   "bil": -0.49,
+   "S": 6.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-05": {
    "P_kor": 0.1,
@@ -3507,8 +4775,11 @@
    "F": 2.3,
    "P": 0.1,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.02,
-   "bil": -2.92
+   "ET0": 3.22,
+   "bil": -3.12,
+   "S": 7.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-06": {
    "P_kor": 0.0,
@@ -3521,8 +4792,11 @@
    "F": 1.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.31,
-   "bil": -3.31
+   "ET0": 2.81,
+   "bil": -2.81,
+   "S": 10.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-07": {
    "P_kor": 0.0,
@@ -3535,8 +4809,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.04,
-   "bil": -4.04
+   "ET0": 2.82,
+   "bil": -2.82,
+   "S": 8.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-08": {
    "P_kor": 0.0,
@@ -3549,8 +4826,11 @@
    "F": 1.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.64,
-   "bil": -4.64
+   "ET0": 3.82,
+   "bil": -3.82,
+   "S": 11.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-09": {
    "P_kor": 13.4,
@@ -3563,8 +4843,11 @@
    "F": 1.3,
    "P": 13.4,
    "zdroj_P": "chmu_korycany",
-   "ET0": 4.02,
-   "bil": 9.38
+   "ET0": 3.45,
+   "bil": 9.95,
+   "S": 10.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-10": {
    "P_kor": 4.1,
@@ -3577,8 +4860,11 @@
    "F": 1.1,
    "P": 4.1,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.17,
-   "bil": 1.93
+   "ET0": 1.58,
+   "bil": 2.52,
+   "S": 2.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-11": {
    "P_kor": 9.2,
@@ -3591,8 +4877,11 @@
    "F": 2.0,
    "P": 9.2,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.56,
-   "bil": 7.64
+   "ET0": 1.09,
+   "bil": 8.11,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-12": {
    "P_kor": 0.0,
@@ -3605,8 +4894,11 @@
    "F": 1.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.07,
-   "bil": -3.07
+   "ET0": 1.85,
+   "bil": -1.85,
+   "S": 6.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-13": {
    "P_kor": 2.1,
@@ -3619,8 +4911,11 @@
    "F": 1.3,
    "P": 2.1,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.94,
-   "bil": -0.84
+   "ET0": 1.52,
+   "bil": 0.58,
+   "S": 2.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-14": {
    "P_kor": 4.4,
@@ -3633,8 +4928,11 @@
    "F": 0.5,
    "P": 4.4,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.08,
-   "bil": 2.32
+   "ET0": 1.57,
+   "bil": 2.83,
+   "S": 3.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-15": {
    "P_kor": 0.0,
@@ -3647,8 +4945,11 @@
    "F": 0.6,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.77,
-   "bil": -2.77
+   "ET0": 1.86,
+   "bil": -1.86,
+   "S": 6.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-16": {
    "P_kor": 9.8,
@@ -3661,8 +4962,11 @@
    "F": 2.0,
    "P": 9.8,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.56,
-   "bil": 6.24
+   "ET0": 2.46,
+   "bil": 7.34,
+   "S": 8.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-17": {
    "P_kor": 0.0,
@@ -3675,8 +4979,11 @@
    "F": 0.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.26,
-   "bil": -2.26
+   "ET0": 1.41,
+   "bil": -1.41,
+   "S": 1.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-18": {
    "P_kor": 0.0,
@@ -3689,8 +4996,11 @@
    "F": 1.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.83,
-   "bil": -2.83
+   "ET0": 1.67,
+   "bil": -1.67,
+   "S": 5.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-19": {
    "P_kor": 0.0,
@@ -3703,8 +5013,11 @@
    "F": 0.8,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.99,
-   "bil": -2.99
+   "ET0": 2.17,
+   "bil": -2.17,
+   "S": 10.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-20": {
    "P_kor": 0.0,
@@ -3717,8 +5030,11 @@
    "F": 1.4,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 3.29,
-   "bil": -3.29
+   "ET0": 2.4,
+   "bil": -2.4,
+   "S": 8.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-21": {
    "P_kor": 5.4,
@@ -3731,8 +5047,11 @@
    "F": 2.6,
    "P": 5.4,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.18,
-   "bil": 3.22
+   "ET0": 2.2,
+   "bil": 3.2,
+   "S": 4.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-22": {
    "P_kor": 0.1,
@@ -3745,8 +5064,11 @@
    "F": 2.7,
    "P": 0.1,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.74,
-   "bil": -1.64
+   "ET0": 1.66,
+   "bil": -1.56,
+   "S": 2.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-23": {
    "P_kor": 0.0,
@@ -3759,8 +5081,11 @@
    "F": 1.0,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.14,
-   "bil": -2.14
+   "ET0": 1.33,
+   "bil": -1.33,
+   "S": 4.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-24": {
    "P_kor": 3.0,
@@ -3773,8 +5098,11 @@
    "F": 1.4,
    "P": 3.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.92,
-   "bil": 1.08
+   "ET0": 1.01,
+   "bil": 1.99,
+   "S": 1.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-25": {
    "P_kor": 0.0,
@@ -3787,8 +5115,11 @@
    "F": 0.5,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 1.76,
-   "bil": -1.76
+   "ET0": 1.14,
+   "bil": -1.14,
+   "S": 2.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-26": {
    "P_kor": 0.0,
@@ -3801,8 +5132,11 @@
    "F": 1.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.41,
-   "bil": -2.41
+   "ET0": 1.74,
+   "bil": -1.74,
+   "S": 10.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-27": {
    "P_kor": 0.0,
@@ -3815,8 +5149,11 @@
    "F": 0.9,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.5,
-   "bil": -2.5
+   "ET0": 1.56,
+   "bil": -1.56,
+   "S": 6.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-28": {
    "P_kor": 0.0,
@@ -3829,8 +5166,11 @@
    "F": 0.7,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.61,
-   "bil": -2.61
+   "ET0": 1.82,
+   "bil": -1.82,
+   "S": 10.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-29": {
    "P_kor": 0.0,
@@ -3843,8 +5183,11 @@
    "F": 1.1,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.55,
-   "bil": -2.55
+   "ET0": 1.97,
+   "bil": -1.97,
+   "S": 10.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-09-30": {
    "P_kor": 0.0,
@@ -3857,8 +5200,11 @@
    "F": 2.2,
    "P": 0.0,
    "zdroj_P": "chmu_korycany",
-   "ET0": 2.76,
-   "bil": -2.76
+   "ET0": 2.6,
+   "bil": -2.6,
+   "S": 10.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-01": {
    "P_kor": null,
@@ -3871,8 +5217,11 @@
    "F": 1.5,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 2.4,
-   "bil": -2.4
+   "ET0": 2.2,
+   "bil": -2.2,
+   "S": 10.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-02": {
    "P_kor": null,
@@ -3885,8 +5234,11 @@
    "F": 1.2,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 2.33,
-   "bil": -2.33
+   "ET0": 1.92,
+   "bil": -1.92,
+   "S": 9.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-03": {
    "P_kor": null,
@@ -3899,8 +5251,11 @@
    "F": 1.2,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 2.43,
-   "bil": -2.43
+   "ET0": 1.86,
+   "bil": -1.86,
+   "S": 9.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-04": {
    "P_kor": null,
@@ -3913,8 +5268,11 @@
    "F": 0.9,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 2.44,
-   "bil": -2.44
+   "ET0": 1.58,
+   "bil": -1.58,
+   "S": 9.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-05": {
    "P_kor": null,
@@ -3927,8 +5285,11 @@
    "F": 0.8,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 2.06,
-   "bil": -2.06
+   "ET0": 1.27,
+   "bil": -1.27,
+   "S": 3.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-06": {
    "P_kor": null,
@@ -3941,8 +5302,11 @@
    "F": 1.0,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 2.35,
-   "bil": -2.35
+   "ET0": 1.54,
+   "bil": -1.54,
+   "S": 9.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-07": {
    "P_kor": null,
@@ -3955,8 +5319,11 @@
    "F": 2.7,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 2.72,
-   "bil": -2.72
+   "ET0": 2.35,
+   "bil": -2.35,
+   "S": 5.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-08": {
    "P_kor": null,
@@ -3969,8 +5336,11 @@
    "F": 2.9,
    "P": 3.8,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 2.11,
-   "bil": 1.69
+   "ET0": 1.32,
+   "bil": 2.48,
+   "S": 1.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-09": {
    "P_kor": null,
@@ -3983,8 +5353,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 1.59,
-   "bil": -1.59
+   "ET0": 1.24,
+   "bil": -1.24,
+   "S": 8.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-10": {
    "P_kor": null,
@@ -3997,8 +5370,11 @@
    "F": 1.0,
    "P": 0.7,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 1.7,
-   "bil": -1.0
+   "ET0": 1.01,
+   "bil": -0.31,
+   "S": 2.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-11": {
    "P_kor": null,
@@ -4011,8 +5387,11 @@
    "F": 1.1,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 1.42,
-   "bil": -1.42
+   "ET0": 1.11,
+   "bil": -1.11,
+   "S": 5.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-12": {
    "P_kor": null,
@@ -4025,8 +5404,11 @@
    "F": 1.2,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 1.51,
-   "bil": -1.51
+   "ET0": 0.91,
+   "bil": -0.91,
+   "S": 4.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-13": {
    "P_kor": null,
@@ -4039,8 +5421,11 @@
    "F": 0.4,
    "P": 0.1,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 1.48,
-   "bil": -1.38
+   "ET0": 0.83,
+   "bil": -0.73,
+   "S": 8.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-14": {
    "P_kor": null,
@@ -4053,8 +5438,11 @@
    "F": 0.7,
    "P": 0.1,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 1.82,
-   "bil": -1.72
+   "ET0": 0.85,
+   "bil": -0.75,
+   "S": 3.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-15": {
    "P_kor": null,
@@ -4067,8 +5455,11 @@
    "F": 0.6,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 1.48,
-   "bil": -1.48
+   "ET0": 0.66,
+   "bil": -0.66,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-16": {
    "P_kor": null,
@@ -4081,8 +5472,11 @@
    "F": 0.5,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 1.59,
-   "bil": -1.59
+   "ET0": 0.91,
+   "bil": -0.91,
+   "S": 9.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-17": {
    "P_kor": null,
@@ -4095,8 +5489,11 @@
    "F": 0.1,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 1.75,
-   "bil": -1.75
+   "ET0": 0.75,
+   "bil": -0.75,
+   "S": 7.9,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-18": {
    "P_kor": null,
@@ -4109,8 +5506,11 @@
    "F": 1.9,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 1.53,
-   "bil": -1.53
+   "ET0": 1.23,
+   "bil": -1.23,
+   "S": 7.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-19": {
    "P_kor": null,
@@ -4123,8 +5523,11 @@
    "F": 3.0,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 0.94,
-   "bil": -0.94
+   "ET0": 1.01,
+   "bil": -1.01,
+   "S": 2.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-20": {
    "P_kor": null,
@@ -4137,8 +5540,11 @@
    "F": 2.8,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 1.38,
-   "bil": -1.38
+   "ET0": 1.29,
+   "bil": -1.29,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-21": {
    "P_kor": null,
@@ -4156,8 +5562,11 @@
    },
    "P": 18.9,
    "zdroj_P": "pmo_korycany",
-   "ET0": 1.47,
-   "bil": 17.43
+   "ET0": 2.12,
+   "bil": 16.78,
+   "S": 7.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-22": {
    "P_kor": null,
@@ -4175,8 +5584,11 @@
    },
    "P": 2.3,
    "zdroj_P": "pmo_korycany",
-   "ET0": 1.24,
-   "bil": 1.06
+   "ET0": 0.59,
+   "bil": 1.71,
+   "S": 0.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-23": {
    "P_kor": null,
@@ -4194,8 +5606,11 @@
    },
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": 1.36,
-   "bil": -1.36
+   "ET0": 0.9,
+   "bil": -0.9,
+   "S": 4.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-24": {
    "P_kor": null,
@@ -4208,8 +5623,11 @@
    "F": 1.3,
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
-   "ET0": 1.13,
-   "bil": -1.13
+   "ET0": 0.66,
+   "bil": -0.66,
+   "S": 1.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-25": {
    "P_kor": null,
@@ -4227,8 +5645,11 @@
    },
    "P": 8.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": 1.16,
-   "bil": 6.84
+   "ET0": 0.59,
+   "bil": 7.41,
+   "S": 2.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-26": {
    "P_kor": null,
@@ -4246,8 +5667,11 @@
    },
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": 1.02,
-   "bil": -1.02
+   "ET0": 0.58,
+   "bil": -0.58,
+   "S": 3.8,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-27": {
    "P_kor": null,
@@ -4265,8 +5689,11 @@
    },
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": 1.01,
-   "bil": -1.01
+   "ET0": 0.45,
+   "bil": -0.45,
+   "S": 4.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-28": {
    "P_kor": null,
@@ -4284,8 +5711,11 @@
    },
    "P": 0.2,
    "zdroj_P": "pmo_korycany",
-   "ET0": 1.28,
-   "bil": -1.08
+   "ET0": 0.5,
+   "bil": -0.3,
+   "S": 5.3,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-29": {
    "P_kor": null,
@@ -4303,8 +5733,11 @@
    },
    "P": 0.2,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.76,
-   "bil": -0.56
+   "ET0": 0.67,
+   "bil": -0.47,
+   "S": 0.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-30": {
    "P_kor": null,
@@ -4322,8 +5755,11 @@
    },
    "P": 0.6,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.84,
-   "bil": -0.24
+   "ET0": 0.98,
+   "bil": -0.38,
+   "S": 5.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-10-31": {
    "P_kor": null,
@@ -4341,8 +5777,11 @@
    },
    "P": 0.5,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.83,
-   "bil": -0.33
+   "ET0": 0.64,
+   "bil": -0.14,
+   "S": 1.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-01": {
    "P_kor": null,
@@ -4360,8 +5799,11 @@
    },
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.73,
-   "bil": -0.73
+   "ET0": 0.81,
+   "bil": -0.81,
+   "S": 8.2,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-02": {
    "P_kor": null,
@@ -4379,8 +5821,11 @@
    },
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.47,
-   "bil": -0.47
+   "ET0": 1.17,
+   "bil": -1.17,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-03": {
    "P_kor": null,
@@ -4398,8 +5843,11 @@
    },
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.27,
-   "bil": -0.27
+   "ET0": 1.01,
+   "bil": -1.01,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-04": {
    "P_kor": null,
@@ -4413,7 +5861,10 @@
    "P": 0.0,
    "zdroj_P": "chmu_nemochovice",
    "ET0": 0.74,
-   "bil": -0.74
+   "bil": -0.74,
+   "S": 8.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-05": {
    "P_kor": null,
@@ -4431,8 +5882,11 @@
    },
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.74,
-   "bil": -0.74
+   "ET0": 0.28,
+   "bil": -0.28,
+   "S": 8.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-06": {
    "P_kor": null,
@@ -4450,8 +5904,11 @@
    },
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.7,
-   "bil": -0.7
+   "ET0": 0.37,
+   "bil": -0.37,
+   "S": 6.1,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-07": {
    "P_kor": null,
@@ -4469,8 +5926,11 @@
    },
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.65,
-   "bil": -0.65
+   "ET0": 0.25,
+   "bil": -0.25,
+   "S": 5.7,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-08": {
    "P_kor": null,
@@ -4488,8 +5948,11 @@
    },
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.85,
-   "bil": -0.85
+   "ET0": 0.24,
+   "bil": -0.24,
+   "S": 7.6,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-09": {
    "P_kor": null,
@@ -4507,8 +5970,11 @@
    },
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.76,
-   "bil": -0.76
+   "ET0": 0.47,
+   "bil": -0.47,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-10": {
    "P_kor": null,
@@ -4526,8 +5992,11 @@
    },
    "P": 1.1,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.53,
-   "bil": 0.57
+   "ET0": 0.34,
+   "bil": 0.76,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-11": {
    "P_kor": null,
@@ -4545,8 +6014,11 @@
    },
    "P": 3.4,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.67,
-   "bil": 2.73
+   "ET0": 0.33,
+   "bil": 3.07,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-12": {
    "P_kor": null,
@@ -4564,8 +6036,11 @@
    },
    "P": 10.2,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.46,
-   "bil": 9.74
+   "ET0": 0.29,
+   "bil": 9.91,
+   "S": 0.0,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-13": {
    "P_kor": null,
@@ -4583,13 +6058,16 @@
    },
    "P": 0.1,
    "zdroj_P": "pmo_korycany",
-   "ET0": 0.61,
-   "bil": -0.51
+   "ET0": 0.45,
+   "bil": -0.35,
+   "S": 0.5,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": "pm"
   },
   "2026-11-14": {
    "P_kor": null,
    "P_pmo": 0.0,
-   "P_nem": null,
+   "P_nem": 0.0,
    "T": null,
    "Tmin": null,
    "Tmax": null,
@@ -4603,32 +6081,93 @@
    "P": 0.0,
    "zdroj_P": "pmo_korycany",
    "ET0": null,
-   "bil": null
+   "bil": null,
+   "S": 8.4,
+   "zdroj_S": "Staré Město",
+   "zdroj_ET0": null
   }
  },
  "log": [
-  "12_pocasi.py 2026-11-15 11:55 UTC",
+  "12_pocasi.py 2026-11-15 18:12 UTC",
   "1) CHMU Korycany (srazky)",
   "  0-203-0-41701068002 2026-11: 84 zaznamu",
   "  0-203-0-41701068002 2026-10: 186 zaznamu",
   "  0-203-0-41701068002 2026-09: 180 zaznamu",
+  "  0-203-0-41701068002 2026-08: 186 zaznamu",
+  "  0-203-0-41701068002 2026-07: 186 zaznamu",
+  "  0-203-0-41701068002 2026-06: 180 zaznamu",
+  "  0-203-0-41701068002 2026-05: 186 zaznamu",
+  "  0-203-0-41701068002 2026-04: 180 zaznamu",
+  "  0-203-0-41701068002 2026-03: 186 zaznamu",
+  "  0-203-0-41701068002 2026-02: 168 zaznamu",
+  "  0-203-0-41701068002 2026-01: 186 zaznamu",
+  "  0-203-0-41701068002 2025-12: 186 zaznamu",
   "2) CHMU Nemochovice",
   "  0-203-0-41503035001 2026-11: 448 zaznamu",
   "  0-203-0-41503035001 2026-10: 992 zaznamu",
   "  0-203-0-41503035001 2026-09: 960 zaznamu",
-  "  Nemochovice P: 74 dni (2026-09-01..2026-11-13)",
-  "  Nemochovice T: 74 dni (2026-09-01..2026-11-13)",
-  "  Nemochovice Tmax: 74 dni (2026-09-01..2026-11-13)",
-  "  Nemochovice Tmin: 74 dni (2026-09-01..2026-11-13)",
-  "  Nemochovice H: 74 dni (2026-09-01..2026-11-13)",
-  "  Nemochovice F: 74 dni (2026-09-01..2026-11-13)",
-  "  Korycany P: 30 dni s hodnotou",
+  "  0-203-0-41503035001 2026-08: 992 zaznamu",
+  "  0-203-0-41503035001 2026-07: 992 zaznamu",
+  "  0-203-0-41503035001 2026-06: 960 zaznamu",
+  "  0-203-0-41503035001 2026-05: 992 zaznamu",
+  "  0-203-0-41503035001 2026-04: 960 zaznamu",
+  "  0-203-0-41503035001 2026-03: 992 zaznamu",
+  "  0-203-0-41503035001 2026-02: 896 zaznamu",
+  "  0-203-0-41503035001 2026-01: 992 zaznamu",
+  "  0-203-0-41503035001 2025-12: 992 zaznamu",
+  "  Nemochovice P: 349 dni (2025-12-01..2026-11-14)",
+  "  Nemochovice T: 348 dni (2025-12-01..2026-11-13)",
+  "  Nemochovice Tmax: 348 dni (2025-12-01..2026-11-13)",
+  "  Nemochovice Tmin: 348 dni (2025-12-01..2026-11-13)",
+  "  Nemochovice H: 348 dni (2025-12-01..2026-11-13)",
+  "  Nemochovice F: 348 dni (2025-12-01..2026-11-13)",
+  "  Korycany P: 304 dni s hodnotou",
+  "2b) slunecni svit (pro vypar)",
+  "  0-203-0-11754 2026-11: 742 zaznamu",
+  "  0-203-0-11754 2026-10: 1643 zaznamu",
+  "  0-203-0-11754 2026-09: 1590 zaznamu",
+  "  0-203-0-11754 2026-08: 1643 zaznamu",
+  "  0-203-0-11754 2026-07: 1643 zaznamu",
+  "  0-203-0-11754 2026-06: 1590 zaznamu",
+  "  0-203-0-11754 2026-05: 1643 zaznamu",
+  "  0-203-0-11754 2026-04: 1590 zaznamu",
+  "  0-203-0-11754 2026-03: 1643 zaznamu",
+  "  0-203-0-11754 2026-02: 1484 zaznamu",
+  "  0-203-0-11754 2026-01: 1643 zaznamu",
+  "  0-203-0-11754 2025-12: 1643 zaznamu",
+  "  svit Staré Město: 349 dni (2025-12-01..2026-11-14)",
+  "  0-203-0-11751 2026-11: 742 zaznamu",
+  "  0-203-0-11751 2026-10: 1643 zaznamu",
+  "  0-203-0-11751 2026-09: 1590 zaznamu",
+  "  0-203-0-11751 2026-08: 1643 zaznamu",
+  "  0-203-0-11751 2026-07: 1643 zaznamu",
+  "  0-203-0-11751 2026-06: 1590 zaznamu",
+  "  0-203-0-11751 2026-05: 1643 zaznamu",
+  "  0-203-0-11751 2026-04: 1590 zaznamu",
+  "  0-203-0-11751 2026-03: 1643 zaznamu",
+  "  0-203-0-11751 2026-02: 1484 zaznamu",
+  "  0-203-0-11751 2026-01: 1643 zaznamu",
+  "  0-203-0-11751 2025-12: 1643 zaznamu",
+  "  svit Kroměříž: 349 dni (2025-12-01..2026-11-14)",
+  "  0-20000-0-11774 2026-11: 560 zaznamu",
+  "  0-20000-0-11774 2026-10: 1240 zaznamu",
+  "  0-20000-0-11774 2026-09: 1200 zaznamu",
+  "  0-20000-0-11774 2026-08: 1240 zaznamu",
+  "  0-20000-0-11774 2026-07: 1240 zaznamu",
+  "  0-20000-0-11774 2026-06: 1200 zaznamu",
+  "  0-20000-0-11774 2026-05: 1240 zaznamu",
+  "  0-20000-0-11774 2026-04: 1200 zaznamu",
+  "  0-20000-0-11774 2026-03: 1240 zaznamu",
+  "  0-20000-0-11774 2026-02: 1120 zaznamu",
+  "  0-20000-0-11774 2026-01: 1240 zaznamu",
+  "  0-20000-0-11774 2025-12: 1240 zaznamu",
+  "  svit Holešov: 349 dni (2025-12-01..2026-11-14)",
   "3) Povodi Moravy KS Korycany",
-  "  24 hodinovych radku (14.11. 13:00 - 15.11. 12:00)",
-  "  archiv pmo_korycany.csv: 625 radku",
+  "  24 hodinovych radku (14.11. 20:00 - 15.11. 19:00)",
+  "  archiv pmo_korycany.csv: 632 radku",
   "4) hladiny.cz Nemotice_SR",
-  "  10 hodinovych radku (14.11. 19:00 - 15.11. 04:00)",
-  "  archiv nemotice.csv: 486 radku",
+  "  10 hodinovych radku (15.11. 03:00 - 15.11. 12:00)",
+  "  archiv nemotice.csv: 494 radku",
   "5) denni.json"
  ]
 }
