@@ -1,0 +1,29 @@
+name: Inventura zdroju dat
+
+# Pruzkum dalsich zdroju (CHMU prvky stanic a hydrologie, Open-Meteo, PVGIS, Intersucho). Nic nepocita a nemeni web.
+# Vysledek commitne do slozky docs/inventura/ ve vetvi, ze ktere bezel. Spousti se rucne nebo zmenou skriptu.
+on:
+  push:
+    branches: ['claude/**']
+    paths: [tools/inventura_zdroju.py, .github/workflows/inventura-zdroju.yml]
+  workflow_dispatch:
+
+jobs:
+  inventura:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get install -y -qq poppler-utils
+      - run: mkdir -p docs/inventura && python tools/inventura_zdroju.py docs/inventura 2>&1 | tee docs/inventura/log.txt
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f docs/inventura
+          git commit -m "[bot] inventura zdroju $(date -u +%Y-%m-%d)" || exit 0
+          git push origin HEAD:${GITHUB_REF_NAME}
