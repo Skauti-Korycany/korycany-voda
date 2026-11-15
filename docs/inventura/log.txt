@@ -1,0 +1,168 @@
+1) CHMU klima - stanice a prvky do 45 km
+   stanic: 171
+   meta2 sloupce: ['OBS_TYPE', 'WSI', 'BEGIN_DATE', 'END_DATE', 'EG_EL_ABBREVIATION', 'NAME', 'UN_DESCRIPTION', 'HEIGHT', 'SCHEDULE', '']
+     0.5 km Koryčany                     1873-3999 0-203-0-41701068002: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+     5.3 km Střílky                      1931-1981 0-203-0-11753: API30 D10 E F H SCE SCEdif SNO SRA SSV SSV1H SVH T TMA TMI TPM
+     5.7 km Brankovice                   1981-2000 0-203-0-11757: API30 D10 E F H SCE SCEdif SNO SRA SVH T TMA TMI TPM
+     8.2 km Nemochovice                  2000-3999 0-203-0-41503035001: API30 BO Casmax D D10 DE Dmax Dprum E F Fmax Fprum H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SV SVH T TMA TMI TMInoc TPM
+     9.1 km Staré Hutě                   1993-3999 0-203-0-41701068003: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SV SVH
+     9.5 km Bukovany                     1943-1983 0-203-0-11752: API30 D10 E F H SCE SCEdif SNO SRA T TMA TMI TPM
+     9.9 km Hýsly                        2007-3999 0-203-0-41701090001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    11.3 km Ždánice                      1881-3999 0-203-0-41701013001: API30 BO DE E H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SV SVH T TMA TMI TMInoc TPM
+    11.5 km Kyjov                        1909-2007 0-203-0-41701074001: API30 D10 E F H SCE SCEdif SNO SRA SVH T TMA TMI
+    12.6 km Buchlovice                   1881-3999 0-203-0-41302020001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    13.0 km Bučovice  Kloboučky          1903-3999 0-203-0-41503047001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    15.1 km Polešovice                   1925-1957 0-203-0-41302023001: API30 D10 E F H P SCE SCEdif SNO SRA SSV T TMA TMI TPM
+    15.6 km Morkovice-Slížany  Slížany   1895-3999 0-203-0-41202031001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    16.0 km Velehrad                     1953-1958 0-203-0-41301082001: API30 D10 E F H SCE SCEdif SNO SRA T TMA TMI
+    16.4 km Zdounky                      1883-1938 0-203-0-41202108001: API30 D10 F H SCE SCEdif SNO SRA SSV T TMA TMI
+    16.8 km Bzenec                       1932-3999 0-203-0-41302026001: API30 BO D10 DE E F H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SSV SSV1H SV SVH T TMA TMI TPM VY
+    18.1 km Újezdsko                     2016-2025 0-203-0-41202117001: API30 SCE SCEdif SNO SRA SVH
+    18.7 km Kostelany                    1897-2016 0-203-0-41202119001: API30 SCE SCEdif SNO SRA SVH T
+    18.8 km Lysovice                     2015-2024 0-203-0-41202011001: API30 SCE SCEdif SNO SRA SVH
+    19.2 km Staré Město                  1949-3999 0-203-0-11754: API30 BO Casmax D D10 DE Dmax Dprum E F Fmax Fprum H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SSV SSV10M SSV1H SV SVH T T05 T10 T100 T20 T50 TMA TMI TMInoc TPM
+    20.9 km Podbřežice                   1942-2012 0-203-0-41503074001: API30 SCE SCEdif SNO SRA SVH
+    20.9 km Kobeřice                     1981-2010 0-203-0-41503084002: API30 SCE SCEdif SNO SRA SVH
+    21.3 km Dubňany                      1885-3999 0-203-0-41701099001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    21.4 km Kunovice                     1954-1957 0-203-0-41302002001: API30 D10 E F H P SCE SCEdif SNO SRA SSV SVH T TMA TMI
+    21.7 km Uherské Hradiště             1888-1961 0-203-0-41301079001: API30 E F H P SCE SCEdif SRA T TMA TMI
+    21.7 km Slavkov u Brna               1882-3999 0-203-0-41503064001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    22.4 km Vyškov  Dědice               1920-2015 0-203-0-41202009002: API30 D10 E F H SCE SCEdif SNO SRA SVH T TMA TMI TPM
+    22.5 km Ivanovice na Hané            1923-3999 0-203-0-11749: API30 BO Casmax D D10 DE Dmax Dprum E F Fmax Fprum H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SSV SV SVH T T05 T10 T100 T20 T50 TMA TMI TMInoc TPM
+    22.6 km Halenkovice                  2023-3999 0-203-0-41301057001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    23.0 km Milešovice                   2010-3999 0-203-0-41503084001: API30 SCE SCEdif SNO SRA SVH
+    24.6 km Mutěnice                     1925-1961 0-203-0-41701101001: API30 D10 E F H SCE SCEdif SNO SRA SSV SVH T TMA TMI TPM
+    25.6 km Strážnice                    1908-2026 0-203-0-11755: API30 BO Casmax D D10 DE Dmax Dprum E F Fmax Fprum H JI KR LE ML MS NA P RGLB10 RGLB1H RGLB_D RO SCE SCEdif SN SNO SRA SRA10M SRA1H SSV SSV10M SSV1H SV SVH T T05 T10 T100 T20 T50 TMA TMI TMInoc TPM VY
+    25.8 km Napajedla                    1883-2022 0-203-0-41301054101: API30 D10 E F H P SCE SCEdif SNO SRA SVH T TMA TMI
+    26.0 km Klobouky u Brna              1895-3999 0-203-0-41701032001: API30 BO D10 DE E F H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH T TMA TMI TPM
+    26.5 km Kroměříž                     1924-3999 0-203-0-11751: API30 BO Casmax D D10 DE Dmax Dprum E F Fmax Fprum H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SSV SSV10M SSV1H SV SVH T T05 T10 T100 T20 T50 TMA TMI TMInoc TPM VY
+    26.6 km Kvasice                      1881-3999 0-203-0-41202144001: API30 BO D10 DE E F H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH T TMA TMI TPM
+    26.6 km Šaratice                     1947-1953 0-203-0-41503083001: API30 D10 E F H SCE SCEdif SNO SRA SSV SVH T TMA TMI TPM
+    27.1 km Otrokovice                   1946-1953 0-203-0-41301051001: API30 D10 E F H P SCE SCEdif SNO SRA SSV SVH T TMA TMI TPM
+    27.8 km Blatnice pod svatým Antonínk 1949-3999 0-203-0-41302015001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    28.1 km Čejkovice                    1881-1979 0-203-0-41701103001: API30 D10 E F H SCE SCEdif SNO SRA SVH T TMA TMI TPM
+    28.7 km Kojetín                      1937-3999 0-203-0-41202062001: API30 BO D10 DE E F H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SV SVH T TMA TMI TPM
+    29.1 km Hodonín                      1873-3999 0-203-0-11756: API30 BO D10 DE E F H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SSV SV SVH T TMA TMI TPM
+    29.4 km Hluk                         1895-3999 0-203-0-41302005002: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SV SVH
+    29.9 km Těšany                       1934-3999 0-203-0-41503106201: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    30.9 km Vyškov  Rychtářov            1881-2012 0-203-0-41202003001: API30 SCE SCEdif SNO SRA SVH
+    31.5 km Podivice                     1882-3999 0-203-0-41202048001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SV SVH
+    31.5 km Radějov                      1941-3999 0-203-0-41302058001: API30 BO Casmax D D10 DE Dmax Dprum E F Fmax Fprum H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SSV SSV10M SSV1H SV SVH T T05 T10 T100 T20 T50 TMA TMI TMInoc TPM
+    32.0 km Březolupy                    1952-1993 0-203-0-41301067001: API30 SCE SCEdif SNO SRA SVH
+    32.9 km Svárov                       1996-2012 0-203-0-41301068001: API30 SCE SCEdif SNO SRA SVH
+    32.9 km Částkov                      1994-1995 0-203-0-41301069001: API30 SCE SCEdif SNO SRA SVH
+    33.5 km Bukovinka                    1882-3999 0-203-0-41503067001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SV SVH
+    33.7 km Kobylí                       1925-3999 0-203-0-11725: API30 BO Casmax D D10 DE Dmax Dprum E F Fmax Fprum H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SSV SSV10M SSV1H SV SVH T T05 T10 T100 T20 T50 TMA TMI TMInoc TPM
+    34.1 km Prušánky                     1881-2023 0-203-0-41701105001: API30 SCE SCEdif SNO SRA SVH
+    34.5 km Brno  Tuřany                 1948-3999 0-20000-0-11723: API30 BO C-C1Av C-C1Co C-C1Mn C-C1Mx C-C2Av C-C2Co C-C2Mn C-C2Mx C-C3Av C-C3Co C-C3Mn C-C3Mx C-H1Av C-H1Co C-H1Mn C-H1Mx C-H2Av C-H2Co C-H2Mn C-H2Mx C-H3Av C-H3Co C-H3Mn C-H3Mx C-I1Co C-I1Md C-I1Su C-I2Co C-I2Md C-I2Su C-I3Co C-I3Md C-I3Su C-MLAv C-MLI Casmax D D10 DE Dmax Dprum E F Fmax Fprum H JI KR LE ML MS N NA P P_hm RGLB10 RGLB1H RGLB_D RO SCE SCEdif SN SNO SRA SRA10M SRA1H SSV SSV10M SSV1H 
+    34.5 km Brno  Černovice              1934-1968 0-203-0-41503025001: API30 Casmax D10 Dmax E F Fmax H P SCE SCEdif SNO SRA SSV SVH T TMA TMI TPM
+    35.7 km Moravská Nová Ves            1929-1940 0-203-0-41701115001: API30 D10 E F H SCE SCEdif SNO SRA SSV T TMA TMI TPM
+    36.0 km Velká nad Veličkou           1886-3999 0-203-0-41302039002: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    36.1 km Uherský Brod                 1882-2021 0-203-0-41301116001: API30 D10 E F H P SCE SCEdif SNO SRA SVH T TMA TMI
+    36.7 km Zlín  Louky                  1996-1997 0-203-0-41301037001: API30 SCE SCEdif SNO SRA SVH
+    36.9 km Tovačov                      1895-2012 0-203-0-41003136001: API30 SCE SCEdif SNO SRA SVH T
+    37.0 km Hustopeče                    1895-3999 0-203-0-41701004001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    37.2 km Křtiny                       1902-1957 0-203-0-41502099001: API30 D10 E F H SCE SCEdif SNO SRA SSV T TMA TMI
+    37.4 km Holešov                      1950-3999 0-20000-0-11774: API30 BO C-C1Av C-C1Co C-C1Mn C-C1Mx C-C2Av C-C2Co C-C2Mn C-C2Mx C-C3Av C-C3Co C-C3Mn C-C3Mx C-H1Av C-H1Co C-H1Mn C-H1Mx C-H2Av C-H2Co C-H2Mn C-H2Mx C-H3Av C-H3Co C-H3Mn C-H3Mx C-I1Co C-I1Md C-I1Su C-I2Co C-I2Md C-I2Su C-I3Co C-I3Md C-I3Su C-MLAv C-MLI Casmax D D10 DE Dmax Dprum E F Fmax Fprum H JI KR LE ML MS N NA P P_hm RDIF10 RDIF1H RDIF_D RGLB10 RGLB1H RGLB_D RO SCE SCEdif SN SNO SRA SRA10M SR
+    37.5 km Brno  Líšeň                  1926-1943 0-203-0-41502109602: API30 E F H SCE SCEdif SNO SRA SVH T TMA TMI TPM
+    37.9 km Hrušky                       1881-3999 0-203-0-41701115002: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    38.3 km Nivnice                      1934-3999 0-203-0-41301123001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    38.5 km Zlín                         1878-3999 0-203-0-11775: API30 BO D10 DE E F H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SSV SV SVH T TMA TMI TMInoc TPM
+    38.5 km Zlín                         1947-1951 0-203-0-41301035102: API30 D10 E F H SCE SCEdif SNO SRA SVH T TMA TMI
+    38.5 km Zlín  Malenovice             1889-2017 0-203-0-41301043002: API30 SCE SCEdif SNO SRA SVH
+    38.8 km Březůvky                     1947-1980 0-203-0-41301107001: API30 SCE SCEdif SNO SRA SVH
+    38.8 km Podivín                      1923-1961 0-203-0-41701045601: D10 E F H SCE SCEdif SNO SRA SSV SVH T TMA TMI TPM
+    38.9 km Kralice na Hané              1995-3999 0-203-0-41201060001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    39.5 km Babice nad Svitavou          1881-3999 0-203-0-41502105102: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    39.6 km Prostějov                    1925-3999 0-20000-0-11747: API30 BO Casmax D D10 DE Dmax Dprum E F Fmax Fprum H JI KR LE ML MS N NA P P_hm RO SCE SCEdif SN SNO SRA SRA10M SRA1H SSV SSV10M SSV1H SV SVH T T05 T10 T100 T20 T50 TMA TMI TMInoc TPM Td VV W1 W2 ppp ww
+    39.6 km Horní Moštěnice              1941-1962 0-203-0-41202099001: API30 D10 E F H SCE SCEdif SNO SRA SSV1H T TMA TMI TPM
+    39.6 km Brno  Židenice               1998-3999 0-203-0-41502109601: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    39.9 km Rozstání                     1925-2024 0-203-0-41502083001: API30 D10 E F H SCE SCEdif SNO SRA SSV SVH T TMA TMI TPM
+    40.6 km Korytná                      1946-1990 0-203-0-41301120001: API30 SCE SCEdif SNO SRA SVH
+    40.8 km Brno  Husovice               1996-1997 0-203-0-41502109603: API30 SCE SCEdif SNO SRA SVH
+    41.0 km Plumlov  Žárovice            1972-2008 0-203-0-41201054001: API30 SCE SCEdif SNO SRA SVH
+    41.2 km Mostkovice                   1946-1953 0-203-0-41201059001: API30 D10 E F H SCE SCEdif SNO SRA SVH T TMA TMI
+    41.2 km Brno  Lesná                  1929-1995 0-203-0-41502109502: API30 SCE SCEdif SNO SRA SVH
+    41.3 km Plumlov                      1925-3999 0-203-0-11743: API30 BO D10 DE E F H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SSV SV SVH T TMA TMI TPM
+    41.5 km Nová Lhota  ?                1926-1980 0-203-0-41302035001: API30 D10 F H P SCE SCEdif SNO SRA SSV SVH T TMA TMI
+    41.5 km Židlochovice                 1923-3999 0-203-0-41503125001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+    41.6 km Dluhonice                    1961-2012 0-203-0-41102072101: API30 SCE SCEdif SNO SRA SVH
+    42.4 km Brno  Město Brno             1884-1984 0-203-0-41501156203: API30 P SRA T
+    42.5 km Brno  Staré Brno             1848-1961 0-203-0-41501153003: API30 E F P SRA T TMA TMI
+    42.7 km Holštejn                     2006-2012 0-203-0-41502088001: API30 SCE SCEdif SNO SRA SVH
+    42.8 km Nová Lhota  Vápenky          1913-1976 0-203-0-41302035002: API30 SCE SCEdif SNO SRA SVH
+    42.9 km Přerov                       1874-3999 0-203-0-11748: API30 Casmax D D10 Dmax Dprum E F Fmax Fprum H N P P_hm SCE SCEdif SNO SRA SRA10M SRA1H SSV SSV10M SSV1H SVH T T05 T10 T100 T20 T50 TMA TMI TMInoc TPM Td VV W1 W2 ppp ww
+    42.9 km Luhačovice                   1905-2009 0-203-0-11778: API30 BO Casmax D D10 DE Dmax Dprum E F Fmax Fprum H JI KR LE ML MS NA P RO SCE SCEdif SN SNO SRA SRA10M SRA1H SSV SSV1H SV SVH T TMA TMI TMInoc TPM
+    43.2 km Brno  Bohunice               1923-1961 0-203-0-41501158001: API30 D10 E F H SCE SCEdif SRA SSV T TMA TMI TPM
+    43.6 km Brno  Veveří                 1904-1984 0-203-0-41501156201: API30 D10 E F H SCE SCEdif SNO SRA SSV SSV1H SVH T TMA TMI TPM
+    43.6 km Bulhary                      1937-2001 0-203-0-41701010301: API30 SCE SCEdif SNO SRA SVH
+    44.0 km Olomučany                    1937-1960 0-203-0-41502094001: API30 D10 E F H SCE SCEdif SNO SRA T TMA TMI TPM
+    44.1 km Lednice                      1898-3999 0-203-0-11727: API30 BO Casmax D D10 DE Dmax Dprum E F Fmax Fprum H JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SRA10M SRA1H SSV SSV10M SSV1H SV SVH T T05 T10 T100 T20 T50 TMA TMI TMInoc TPM
+    44.1 km Pozlovice                    1913-1993 0-203-0-41301103001: API30 SCE SCEdif SNO SRA SVH
+    44.3 km Břeclav                      1881-1995 0-203-0-41701046001: API30 SCE SCEdif SNO SRA SVH
+    44.5 km Brno  Pisárky                1885-1980 0-203-0-41501153001: API30 D10 E F H P SCE SCEdif SNO SRA SVH T TMA TMI
+    45.0 km Lanžhot                      1951-2007 0-203-0-41701113001: API30 BO DE JI KR LE ML MS NA RO SCE SCEdif SN SNO SRA SV SVH
+2) CHMU hydrologie
+3) Open-Meteo
+   1950           et0_fao_evapotranspiration         [5.29, 4.62, 5.15, 6.07, 6.09] mm  bunka 49.103687,17.201365 299.0 m
+   1950           shortwave_radiation_sum            [22.05, 22.42, 24.09, 25.22, 26.49] MJ/m²  bunka 49.103687,17.201365 299.0 m
+   1950           sunshine_duration                  [53543.9, 50253.6, 53024.93, 53890.65, 51478.57] s  bunka 49.103687,17.201365 299.0 m
+   1950           wind_speed_10m_mean                [9.7, 5.4, 8.7, 8.9, 9.0] km/h  bunka 49.103687,17.201365 299.0 m
+   1950           wind_speed_10m_max                 [17.8, 9.7, 13.6, 14.1, 11.8] km/h  bunka 49.103687,17.201365 299.0 m
+   1950           cloud_cover_mean                   [51, 60, 35, 23, 33] %  bunka 49.103687,17.201365 299.0 m
+   1950           relative_humidity_2m_mean          [61, 70, 71, 58, 60] %  bunka 49.103687,17.201365 299.0 m
+   1950           vapour_pressure_deficit_max        [2.32, 1.64, 2.3, 3.53, 3.32] kPa  bunka 49.103687,17.201365 299.0 m
+   1950           soil_moisture_0_to_7cm_mean        [0.175, 0.171, 0.177, 0.171, 0.164] m³/m³  bunka 49.103687,17.201365 299.0 m
+   1950           soil_moisture_7_to_28cm_mean       [0.182, 0.181, 0.179, 0.178, 0.176] m³/m³  bunka 49.103687,17.201365 299.0 m
+   1950           soil_moisture_28_to_100cm_mean     [0.246, 0.244, 0.243, 0.241, 0.239] m³/m³  bunka 49.103687,17.201365 299.0 m
+   1950           soil_moisture_0_to_100cm_mean      [0.228, 0.226, 0.225, 0.223, 0.221] m³/m³  bunka 49.103687,17.201365 299.0 m
+   1950           precipitation_sum                  [0.6, 0.8, 0.6, 0.0, 0.1] mm  bunka 49.103687,17.201365 299.0 m
+   1950           temperature_2m_mean                [25.0, 23.6, 24.4, 26.2, 25.8] °C  bunka 49.103687,17.201365 299.0 m
+   2025           et0_fao_evapotranspiration         [6.61, 6.89, 7.16, 4.44, 5.72] mm  bunka 49.103687,17.201365 299.0 m
+   2025           shortwave_radiation_sum            [29.24, 29.17, 25.83, 18.82, 28.96] MJ/m²  bunka 49.103687,17.201365 299.0 m
+   2025           sunshine_duration                  [57038.18, 57040.4, 49770.31, 39589.86, 55381.88] s  bunka 49.103687,17.201365 299.0 m
+   2025           wind_speed_10m_mean                [10.6, 8.3, 13.3, 15.7, 5.7] km/h  bunka 49.103687,17.201365 299.0 m
+   2025           wind_speed_10m_max                 [16.4, 11.3, 21.0, 20.5, 10.9] km/h  bunka 49.103687,17.201365 299.0 m
+   2025           cloud_cover_mean                   [0, 0, 47, 56, 28] %  bunka 49.103687,17.201365 299.0 m
+   2025           relative_humidity_2m_mean          [39, 34, 43, 64, 45] %  bunka 49.103687,17.201365 299.0 m
+   2025           vapour_pressure_deficit_max        [2.88, 3.4, 3.77, 1.86, 2.54] kPa  bunka 49.103687,17.201365 299.0 m
+   2025           soil_moisture_0_to_7cm_mean        [0.105, 0.109, 0.127, 0.132, 0.142] m³/m³  bunka 49.103687,17.201365 299.0 m
+   2025           soil_moisture_7_to_28cm_mean       [0.147, 0.147, 0.147, 0.147, 0.147] m³/m³  bunka 49.103687,17.201365 299.0 m
+   2025           soil_moisture_28_to_100cm_mean     [0.142, 0.142, 0.142, 0.142, 0.142] m³/m³  bunka 49.103687,17.201365 299.0 m
+   2025           soil_moisture_0_to_100cm_mean      [0.14, 0.141, 0.142, 0.142, 0.143] m³/m³  bunka 49.103687,17.201365 299.0 m
+   2025           precipitation_sum                  [0.0, 0.0, 0.1, 0.1, 0.0] mm  bunka 49.103687,17.201365 299.0 m
+   2025           temperature_2m_mean                [21.7, 24.5, 26.2, 20.1, 21.0] °C  bunka 49.103687,17.201365 299.0 m
+   2025_era5land  et0_fao_evapotranspiration         [None, None, None, None, None] mm  bunka 49.100006,17.199997 299.0 m
+   2025_era5land  shortwave_radiation_sum            [None, None, None, None, None] MJ/m²  bunka 49.100006,17.199997 299.0 m
+   2025_era5land  sunshine_duration                  [None, None, None, None, None] s  bunka 49.100006,17.199997 299.0 m
+   2025_era5land  wind_speed_10m_mean                [None, None, None, None, None] km/h  bunka 49.100006,17.199997 299.0 m
+   2025_era5land  wind_speed_10m_max                 [None, None, None, None, None] km/h  bunka 49.100006,17.199997 299.0 m
+   2025_era5land  cloud_cover_mean                   [None, None, None, None, None] %  bunka 49.100006,17.199997 299.0 m
+   2025_era5land  relative_humidity_2m_mean          [44, 43, 43, 62, 46] %  bunka 49.100006,17.199997 299.0 m
+   2025_era5land  vapour_pressure_deficit_max        [2.56, 3.28, 3.38, 1.75, 2.56] kPa  bunka 49.100006,17.199997 299.0 m
+   2025_era5land  soil_moisture_0_to_7cm_mean        [0.206, 0.192, 0.181, 0.194, 0.187] m³/m³  bunka 49.100006,17.199997 299.0 m
+   2025_era5land  soil_moisture_7_to_28cm_mean       [0.212, 0.208, 0.203, 0.2, 0.198] m³/m³  bunka 49.100006,17.199997 299.0 m
+   2025_era5land  soil_moisture_28_to_100cm_mean     [0.245, 0.243, 0.242, 0.24, 0.239] m³/m³  bunka 49.100006,17.199997 299.0 m
+   2025_era5land  soil_moisture_0_to_100cm_mean      [0.235, 0.232, 0.229, 0.228, 0.226] m³/m³  bunka 49.100006,17.199997 299.0 m
+   2025_era5land  precipitation_sum                  [None, None, None, None, None] mm  bunka 49.100006,17.199997 299.0 m
+   2025_era5land  temperature_2m_mean                [21.6, 23.9, 26.4, 20.9, 21.5] °C  bunka 49.100006,17.199997 299.0 m
+   1940_era5      et0_fao_evapotranspiration         [2.76, 4.58, 5.03, 3.57, 3.4] mm  bunka 49.0,17.25 299.0 m
+   1940_era5      shortwave_radiation_sum            [12.05, 24.06, 26.81, 19.41, 21.27] MJ/m²  bunka 49.0,17.25 299.0 m
+   1940_era5      sunshine_duration                  [19169.57, 52245.24, 54824.21, 39524.83, 52083.81] s  bunka 49.0,17.25 299.0 m
+   1940_era5      wind_speed_10m_mean                [18.9, 11.9, 6.1, 10.1, 8.6] km/h  bunka 49.0,17.25 299.0 m
+   1940_era5      wind_speed_10m_max                 [25.4, 15.9, 9.4, 16.6, 13.7] km/h  bunka 49.0,17.25 299.0 m
+   1940_era5      cloud_cover_mean                   [78, 20, 6, 53, 47] %  bunka 49.0,17.25 299.0 m
+   1940_era5      relative_humidity_2m_mean          [80, 77, 75, 84, 80] %  bunka 49.0,17.25 299.0 m
+   1940_era5      vapour_pressure_deficit_max        [0.8, 1.24, 1.76, 0.98, 0.79] kPa  bunka 49.0,17.25 299.0 m
+   1940_era5      soil_moisture_0_to_7cm_mean        [0.338, 0.323, 0.308, 0.331, 0.38] m³/m³  bunka 49.0,17.25 299.0 m
+   1940_era5      soil_moisture_7_to_28cm_mean       [0.341, 0.334, 0.325, 0.319, 0.346] m³/m³  bunka 49.0,17.25 299.0 m
+   1940_era5      soil_moisture_28_to_100cm_mean     [0.34, 0.339, 0.337, 0.335, 0.334] m³/m³  bunka 49.0,17.25 299.0 m
+   1940_era5      soil_moisture_0_to_100cm_mean      [0.34, 0.337, 0.332, 0.331, 0.34] m³/m³  bunka 49.0,17.25 299.0 m
+   1940_era5      precipitation_sum                  [0.0, 0.2, 0.0, 14.9, 1.5] mm  bunka 49.0,17.25 299.0 m
+   1940_era5      temperature_2m_mean                [19.8, 20.4, 20.1, 20.2, 16.9] °C  bunka 49.0,17.25 299.0 m
+4) PVGIS
+    PVGIS-SARAH3 hodin: 166536 od 20050101:0010 do 20231231:2310 {"radiation_db": "PVGIS-SARAH3", "meteo_db": "ERA5", "year_min": 2005, "year_max": 2023, "use_horizon": true, "horizon_db": null, "horizon_data": "DEM-calculated"}
+    PVGIS-ERA5 hodin: 166536 od 20050101:0030 do 20231231:2330 {"radiation_db": "PVGIS-ERA5", "meteo_db": "ERA5", "year_min": 2005, "year_max": 2023, "use_horizon": true, "horizon_db": null, "horizon_data": "DEM-calculated"}
+5) Intersucho
+   odkazy s daty/podminkami: ['/cs/kontakt/', '/cs/licence-a-odpovednost/', '/cs/o-projektu/', 'download()', 'https://fonts.googleapis.com', 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap']
+hotovo

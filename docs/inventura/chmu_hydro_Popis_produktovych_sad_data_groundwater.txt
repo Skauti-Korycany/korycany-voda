@@ -1,0 +1,178 @@
+                                                                             Hydrologické veličiny
+ Relativní cesta                Název produktové sady
+                                                                             Popis                         Ukazatel
+                                                                             Kategorizace stavu hladiny
+                                                                                                           DATUM, DTB,
+                                    w_RRRR-TTt_OBJECT_TYPE_kat_objekty.csv   podzemní vody/vydatnosti
+                                                                                                           SGI, KAT.N,
+ hydrology/product/data/groundwater m_RRRR-MMm_OBJECT_TYPE_kat_objekty.csv   jednotlivých objektů (DTB)
+                                                                                                           KAT, KAT.NAM,
+                                    y_RRRR_OBJECT_TYPE_kat_objekty.csv       podle SGI a odchylky od
+                                                                                                           COL
+                                                                             normálu
+                                                                                                           DATUM,
+                                                                             Kategorizace stavu hladiny
+                                    w_RRRR-TTt_OBJECT_TYPE_kat_skupiny.csv                                 SKUPINA, SGI,
+                                                                             podzemní vody/vydatnosti
+ hydrology/product/data/groundwater m_RRRR-MMm_OBJECT_TYPE_kat_skupiny.csv                                 KAT.N, KAT,
+                                                                             skupin povodí 3. řádu podle
+                                    y_RRRR_OBJECT_TYPE_kat_skupiny.csv                                     KAT.NAM, COL,
+                                                                             SGI a odchylky od normálu
+                                                                                                           ANGLE, DENSE
+                                                                             Kategorizace stavu hladiny    DATUM,
+                                    w_RRRR-TTt_OBJECT_TYPE_kat_povodi.csv
+                                                                             podzemní vody/vydatnosti      POVODI, SGI,
+ hydrology/product/data/groundwater m_RRRR-MMm_OBJECT_TYPE_kat_povodi.csv
+                                                                             dílčích povodí podle SGI a    KAT.N, KAT,
+                                    y_RRRR_OBJECT_TYPE_kat_povodi.csv
+                                                                             odchylky od normálu           KAT.NAM, COL
+                                                                             Kategorizace stavu hladiny    DATUM, CR,
+                                    w_RRRR-TTt_OBJECT_TYPE_kat_cr.csv
+                                                                             podzemní vody/vydatnosti      SGI, KAT.N,
+ hydrology/product/data/groundwater m_RRRR-MMm_OBJECT_TYPE_kat_cr.csv
+                                                                             ČR podle SGI a odchylky       KAT, KAT.NAM,
+                                    y_RRRR_OBJECT_TYPE_kat_cr.csv
+                                                                             od normálu                    COL
+
+
+Vysvětlivky názvu souborů:
+w – týdenní
+m – měsíční
+y – roční
+RRRR – rok
+TT – pořadové číslo týdne
+MM – pořadové číslo měsíce
+OBJECT_TYPE – typ objektu – mvrty (mělké vrty), hvrty (hluboké vrty), pram (prameny)
+Ukazatel:
+DATUM – datum
+DTB – identifikační číslo objektu
+SKUPINA – skupina povodí 3. řádu, pro OBJEKT_TYPE mvrty a pram jsou názvy uvedeny v číselníku 1. pro hvrty v číselníku 2.
+POVODI – dílčí povodí, pro OBJEKT_TYPE mvrty a pram jsou názvy uvedeny číselníku 3. pro hvrty v číselníku 4.
+CR – Česká republika
+SGI – Standardised Groundwater Index dle metodiky Vlnas 2015 (http://sucho.vuv.cz)
+KAT.N – kategorie odchylky od normálu: 1–7
+KAT – kategorie odchylky od normálu: -3–3
+KAT.NAM – název kategorie odchylky od normálu je stejný pro KAT.N i KAT: mimořádně podnormální, silně podnormální, mírně podnormální,
+normální, mírně nadnormální, silně nadnormální, mimořádně nadnormální
+COL – barva kategorie odchylky od normálu
+ANGLE – úhel šrafování v mapě pouze u OBJEKT_TYPE: hvrty
+DENSE – hustota šrafování v mapě pouze u OBJEKT_TYPE: hvrty
+Číselníky:
+Číselníky s názvy pro ukazatel SKUPINA v souborech w_RRRR-TTt_OBJECT_TYPE_kat_skupiny.csv; m_RRRR-
+MMm_OBJECT_TYPE_kat_skupiny.csv, y_RRRR_OBJECT_TYPE_kat_skupiny.csv
+
+
+   1. Pro OBJECT_TYPE: mvrty a pram se jedná o skupiny povodí 3. řádu
+
+Skupina Skupina název
+S1      horní Ohře
+S2      dolní Ohře
+S3      Ploučnice
+S4      horní Berounka
+S5      dolní Berounka
+S6      Labe od Vltavy po Ohři
+S7      Jizera
+S8      Otava
+S9      střední Vltava
+S10     horní Vltava
+S11     Lužnice
+S12     horní Sázava
+S13     dolní Sázava
+S14     Labe od Doubravy po Jizeru
+S15     Labe od Orlice po Doubravu
+S16     Orlice
+S17     horní Labe
+S18     „nehodnotí se“
+S19     Stěnava
+S20     Osoblaha
+S26      Dyje
+S27      Jihlava
+S28      Svratka a Svitava
+S29      horní Morava
+S30      střední Morava
+S31      dolní Morava
+S32      soutok Dyje a Moravy
+S33      „nehodnotí se“
+S34      Bečva
+S35      Odra
+S36      Olše a Ostravice
+S37      Opava
+S38      „nehodnotí se“
+
+
+  2. Pro OBJECT_TYPE – hvrty se jedná o skupiny hydrogeologických rajonu
+
+Skupina Skupina název
+S1A     Podkrušnohorské pánve
+S1B     Podkrušnohorské pánve
+S2A     Jihočeské pánve
+S2B     Jihočeské pánve
+S2C     Jihočeské pánve
+S2D     Jihočeské pánve
+S3A     Morava - terciér
+S3B     Morava - terciér
+S3C     Morava - terciér
+S4A     Severočeská křída - senon
+S4B     Severočeská křída - turon střední
+S4C   Severočeská křída - senon
+S4D   Severočeská křída - turon střední
+S5D   Východočeská křída - turon spodní
+S5A   Východočeská křída - turon střední
+S5B   Východočeská křída - turon spodní
+S5C   Východočeská křída - turon střední
+S6A   Severočeská křída - cenoman
+S6B   Severočeská křída - cenoman
+S6C   Severočeská křída - cenoman
+S6D   Severočeská křída - cenoman
+S6E   Severočeská křída - cenoman
+S7A   Východočeská křída - cenoman
+S7B   Východočeská křída - cenoman
+S7C   Východočeská křída - cenoman
+      Permokarbon středních a západních
+S8A
+      Čech
+      Permokarbon středních a západních
+S8B
+      Čech
+      Permokarbon středních a západních
+S8C
+      Čech
+S9A   Permokarbon východních Čech
+S9B   Permokarbon východních Čech
+Číselníky s názvy pro ukazatel POVODI v souborech w_RRRR-TTt_OBJECT_TYPE_kat_povodi.csv; m_RRRR-
+MMm_OBJECT_TYPE_kat_povodi.csv, y_RRRR_OBJECT_TYPE_kat_ povodi.csv
+     3. Pro OBJECT_TYPE: mvrty a pram se jedná o dílčí povodí
+
+Povodi         Povodi_název
+P1             Horní a střední Labe
+P2             Horní Vltava
+P3             Berounka
+P4             Dolní Vltava
+P5             Ohře, Dolní Labe a ostatní přítoky Labe
+P6             Horní Odra
+P7             Lužická Nisa a ostatní přítoky Odry
+P8             Morava a přítoky Váhu
+P9             Dyje
+
+
+     4. Pro OBJECT_TYPE – hvrty se jedná o hydrogeologické skupiny
+
+Skupina Skupina název
+P1      Podkrušnohorské pánve
+P2      Jihočeské pánve
+P3      Morava - terciér
+P4      Severočeská křída
+P5      Východočeská křída
+P6      Severočeská křída - cenoman
+P7      Východočeská křída - cenoman
+P8      Permokarbon středních a západních Čech
+P9      Permokarbon východních Čech
+S9B        Permokarbon východních Čech
+Kontakt:
+Mgr. Anna Lamačová, Ph.D.
+Oddělení podzemních vod
+Český hydrometeorologický ústav
+Na Šabatce 2050/17
+143 06 Praha 4-Komořany
+www.chmi.cz
+

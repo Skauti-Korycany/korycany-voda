@@ -1,0 +1,220 @@
+https://opendata.chmi.cz/meteorology/climate/historical_csv/  [2 složek, 0 souborů]
+  https://opendata.chmi.cz/meteorology/climate/historical_csv/data/  [6 složek, 0 souborů]
+    https://opendata.chmi.cz/meteorology/climate/historical_csv/data/10min/  [9 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/10min/air_pressure/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/10min/humidity/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/10min/precipitation/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/10min/radiation/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/10min/snow/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/10min/soil_temperature/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/10min/sunshine/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/10min/temperature/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/10min/wind/  [8 složek, 0 souborů]
+    https://opendata.chmi.cz/meteorology/climate/historical_csv/data/1hour/  [6 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/1hour/ceilometer/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/1hour/humidity/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/1hour/precipitation/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/1hour/radiation/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/1hour/sunshine/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/1hour/synop/  [8 složek, 0 souborů]
+    https://opendata.chmi.cz/meteorology/climate/historical_csv/data/daily/  [11 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/daily/air_pressure/  [0 složek, 149 souborů]
+        dly-0-20000-0-11406-P.csv
+        dly-0-20000-0-11414-P.csv
+        dly-0-20000-0-11423-P.csv
+        dly-0-20000-0-11433-P.csv
+        ... a dalších 145
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/daily/cloudiness/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/daily/evaporation/  [0 složek, 55 souborů]
+        dly-0-20000-0-11406-VY.csv
+        dly-0-20000-0-11423-VY.csv
+        dly-0-20000-0-11438-VY.csv
+        dly-0-20000-0-11450-VY.csv
+        ... a dalších 51
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/daily/humidity/  [0 složek, 1062 souborů]
+        dly-0-20000-0-11406-E.csv
+        dly-0-20000-0-11406-H.csv
+        dly-0-20000-0-11414-E.csv
+        dly-0-20000-0-11414-H.csv
+        ... a dalších 1058
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/daily/precipitation/  [0 složek, 3044 souborů]
+        dly-0-20000-0-11406-API30.csv
+        dly-0-20000-0-11406-SRA.csv
+        dly-0-20000-0-11414-API30.csv
+        dly-0-20000-0-11414-SRA.csv
+        ... a dalších 3040
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/daily/radiation/  [0 složek, 38 souborů]
+        dly-0-20000-0-11433-RGLB_D.csv
+        dly-0-20000-0-11438-RDIF_D.csv
+        dly-0-20000-0-11438-RGLB_D.csv
+        dly-0-20000-0-11450-RGLB_D.csv
+        ... a dalších 34
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/daily/snow/  [0 složek, 4972 souborů]
+        dly-0-20000-0-11406-SCE.csv
+        dly-0-20000-0-11406-SCEdif.csv
+        dly-0-20000-0-11406-SNO.csv
+        dly-0-20000-0-11406-SVH.csv
+        ... a dalších 4968
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/daily/soil_temperature/  [0 složek, 814 souborů]
+        dly-0-20000-0-11406-T05.csv
+        dly-0-20000-0-11406-T10.csv
+        dly-0-20000-0-11406-T100.csv
+        dly-0-20000-0-11406-T20.csv
+        ... a dalších 810
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/daily/sunshine/  [0 složek, 312 souborů]
+        dly-0-20000-0-11406-SSV.csv
+        dly-0-20000-0-11414-SSV.csv
+        dly-0-20000-0-11423-SSV.csv
+        dly-0-20000-0-11433-SSV.csv
+        ... a dalších 308
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/daily/temperature/  [0 složek, 2514 souborů]
+        dly-0-20000-0-11406-T.csv
+        dly-0-20000-0-11406-TMA.csv
+        dly-0-20000-0-11406-TMI.csv
+        dly-0-20000-0-11406-TMInoc.csv
+        ... a dalších 2510
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/daily/wind/  [0 složek, 1873 souborů]
+        dly-0-20000-0-11406-Casmax.csv
+        dly-0-20000-0-11406-D10.csv
+        dly-0-20000-0-11406-Dmax.csv
+        dly-0-20000-0-11406-F.csv
+        ... a dalších 1869
+    https://opendata.chmi.cz/meteorology/climate/historical_csv/data/monthly/  [10 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/monthly/air_pressure/  [0 složek, 253 souborů]
+        mly-0-20000-0-11406-P.csv
+        mly-0-20000-0-11406-P_hm.csv
+        mly-0-20000-0-11414-P.csv
+        mly-0-20000-0-11423-P.csv
+        ... a dalších 249
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/monthly/cloudiness/  [0 složek, 598 souborů]
+        mly-0-20000-0-11406-O.csv
+        mly-0-20000-0-11414-O.csv
+        mly-0-20000-0-11423-O.csv
+        mly-0-20000-0-11433-O.csv
+        ... a dalších 594
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/monthly/humidity/  [0 složek, 1455 souborů]
+        mly-0-20000-0-11406-E.csv
+        mly-0-20000-0-11406-H.csv
+        mly-0-20000-0-11406-SD.csv
+        mly-0-20000-0-11414-E.csv
+        ... a dalších 1451
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/monthly/precipitation/  [0 složek, 1535 souborů]
+        mly-0-20000-0-11406-SRA.csv
+        mly-0-20000-0-11414-SRA.csv
+        mly-0-20000-0-11423-SRA.csv
+        mly-0-20000-0-11433-SRA.csv
+        ... a dalších 1531
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/monthly/radiation/  [0 složek, 36 souborů]
+        mly-0-20000-0-11438-RDIF_D.csv
+        mly-0-20000-0-11438-RGLB_D.csv
+        mly-0-20000-0-11450-RGLB_D.csv
+        mly-0-20000-0-11457-RGLB_D.csv
+        ... a dalších 32
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/monthly/snow/  [0 složek, 3736 souborů]
+        mly-0-20000-0-11406-SCE.csv
+        mly-0-20000-0-11406-SNO.csv
+        mly-0-20000-0-11406-SVH.csv
+        mly-0-20000-0-11414-SCE.csv
+        ... a dalších 3732
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/monthly/soil_temperature/  [0 složek, 824 souborů]
+        mly-0-20000-0-11406-T05.csv
+        mly-0-20000-0-11406-T10.csv
+        mly-0-20000-0-11406-T100.csv
+        mly-0-20000-0-11406-T20.csv
+        ... a dalších 820
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/monthly/sunshine/  [0 složek, 311 souborů]
+        mly-0-20000-0-11406-SSV.csv
+        mly-0-20000-0-11414-SSV.csv
+        mly-0-20000-0-11423-SSV.csv
+        mly-0-20000-0-11433-SSV.csv
+        ... a dalších 307
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/monthly/temperature/  [0 složek, 2566 souborů]
+        mly-0-20000-0-11406-T.csv
+        mly-0-20000-0-11406-TMA.csv
+        mly-0-20000-0-11406-TMI.csv
+        mly-0-20000-0-11406-TMInoc.csv
+        ... a dalších 2562
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/monthly/wind/  [0 složek, 834 souborů]
+        mly-0-20000-0-11406-F.csv
+        mly-0-20000-0-11406-Fmax.csv
+        mly-0-20000-0-11414-F.csv
+        mly-0-20000-0-11414-Fmax.csv
+        ... a dalších 830
+    https://opendata.chmi.cz/meteorology/climate/historical_csv/data/phenomena/  [0 složek, 973 souborů]
+      ph-0-20000-0-11406.csv
+      ph-0-20000-0-11414.csv
+      ph-0-20000-0-11423.csv
+      ph-0-20000-0-11433.csv
+      ... a dalších 969
+    https://opendata.chmi.cz/meteorology/climate/historical_csv/data/yearly/  [11 složek, 0 souborů]
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/yearly/air_pressure/  [0 složek, 253 souborů]
+        yrs-0-20000-0-11406-P.csv
+        yrs-0-20000-0-11406-P_hm.csv
+        yrs-0-20000-0-11414-P.csv
+        yrs-0-20000-0-11423-P.csv
+        ... a dalších 249
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/yearly/cloudiness/  [0 složek, 592 souborů]
+        yrs-0-20000-0-11406-O.csv
+        yrs-0-20000-0-11414-O.csv
+        yrs-0-20000-0-11423-O.csv
+        yrs-0-20000-0-11433-O.csv
+        ... a dalších 588
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/yearly/humidity/  [0 složek, 1448 souborů]
+        yrs-0-20000-0-11406-E.csv
+        yrs-0-20000-0-11406-H.csv
+        yrs-0-20000-0-11406-SD.csv
+        yrs-0-20000-0-11414-E.csv
+        ... a dalších 1444
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/yearly/precipitation/  [0 složek, 1530 souborů]
+        yrs-0-20000-0-11406-SRA.csv
+        yrs-0-20000-0-11414-SRA.csv
+        yrs-0-20000-0-11423-SRA.csv
+        yrs-0-20000-0-11433-SRA.csv
+        ... a dalších 1526
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/yearly/radiation/  [0 složek, 36 souborů]
+        yrs-0-20000-0-11438-RDIF_D.csv
+        yrs-0-20000-0-11438-RGLB_D.csv
+        yrs-0-20000-0-11450-RGLB_D.csv
+        yrs-0-20000-0-11457-RGLB_D.csv
+        ... a dalších 32
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/yearly/snow/  [0 složek, 3722 souborů]
+        yrs-0-20000-0-11406-SCE.csv
+        yrs-0-20000-0-11406-SNO.csv
+        yrs-0-20000-0-11406-SVH.csv
+        yrs-0-20000-0-11414-SCE.csv
+        ... a dalších 3718
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/yearly/soil_temperature/  [0 složek, 824 souborů]
+        yrs-0-20000-0-11406-T05.csv
+        yrs-0-20000-0-11406-T10.csv
+        yrs-0-20000-0-11406-T100.csv
+        yrs-0-20000-0-11406-T20.csv
+        ... a dalších 820
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/yearly/sunshine/  [0 složek, 311 souborů]
+        yrs-0-20000-0-11406-SSV.csv
+        yrs-0-20000-0-11414-SSV.csv
+        yrs-0-20000-0-11423-SSV.csv
+        yrs-0-20000-0-11433-SSV.csv
+        ... a dalších 307
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/yearly/temperature/  [0 složek, 2543 souborů]
+        yrs-0-20000-0-11406-T.csv
+        yrs-0-20000-0-11406-TMA.csv
+        yrs-0-20000-0-11406-TMI.csv
+        yrs-0-20000-0-11406-TMInoc.csv
+        ... a dalších 2539
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/yearly/wind/  [0 složek, 822 souborů]
+        yrs-0-20000-0-11406-F.csv
+        yrs-0-20000-0-11406-Fmax.csv
+        yrs-0-20000-0-11414-F.csv
+        yrs-0-20000-0-11414-Fmax.csv
+        ... a dalších 818
+      https://opendata.chmi.cz/meteorology/climate/historical_csv/data/yearly/wind_rose/  [0 složek, 1147 souborů]
+        yrs-0-20000-0-11406-WR08.csv
+        yrs-0-20000-0-11406-WR16.csv
+        yrs-0-20000-0-11414-WR08.csv
+        yrs-0-20000-0-11414-WR16.csv
+        ... a dalších 1143
+  https://opendata.chmi.cz/meteorology/climate/historical_csv/metadata/  [0 složek, 4 souborů]
+    meta1.csv
+    meta2.csv
+    meta3.csv
+    meta4.csv

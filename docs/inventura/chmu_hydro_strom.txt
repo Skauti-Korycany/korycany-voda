@@ -1,0 +1,366 @@
+https://opendata.chmi.cz/hydrology/  [9 složek, 1 souborů]
+  hydrologicka_data_now_a_recent_popis.pdf
+  https://opendata.chmi.cz/hydrology/characteristic/  [2 složek, 0 souborů]
+    https://opendata.chmi.cz/hydrology/characteristic/data/  [3 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/characteristic/data/annual_peakflow/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/characteristic/data/discharge_rating_curve/  [0 složek, 731 souborů]
+        RC_0-203-1-000400.json
+        RC_0-203-1-001000.json
+        RC_0-203-1-002000.json
+        RC_0-203-1-002500.json
+        RC_0-203-1-003000.json
+        RC_0-203-1-003100.json
+        RC_0-203-1-004000.json
+        RC_0-203-1-004200.json
+        ... a dalších 723
+      https://opendata.chmi.cz/hydrology/characteristic/data/hydrological_characteristic/  [0 složek, 1845 souborů]
+        CHAR_MDQ_0-203-1-001000.json
+        CHAR_MDQ_0-203-1-002000.json
+        CHAR_MDQ_0-203-1-003000.json
+        CHAR_MDQ_0-203-1-003100.json
+        CHAR_MDQ_0-203-1-004000.json
+        CHAR_MDQ_0-203-1-004200.json
+        CHAR_MDQ_0-203-1-004300.json
+        CHAR_MDQ_0-203-1-004500.json
+        ... a dalších 1837
+    https://opendata.chmi.cz/hydrology/characteristic/metadata/  [3 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/characteristic/metadata/annual_peakflow/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/characteristic/metadata/discharge_rating_curve/  [0 složek, 2 souborů]
+        RC_SCHEMA.json
+        meta1.json
+      https://opendata.chmi.cz/hydrology/characteristic/metadata/hydrological_characteristic/  [0 složek, 4 souborů]
+        CHAR_MDQ_SCHEMA.json
+        CHAR_MONQ_SCHEMA.json
+        NY_SCHEMA.json
+        meta1.json
+  https://opendata.chmi.cz/hydrology/groundwater/  [4 složek, 0 souborů]
+    https://opendata.chmi.cz/hydrology/groundwater/characteristic/  [2 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/groundwater/characteristic/data/  [0 složek, 670 souborů]
+        GCHAR_0-203-1-PB0005.json
+        GCHAR_0-203-1-PB0013.json
+        GCHAR_0-203-1-PB0024.json
+        GCHAR_0-203-1-PB0030.json
+        GCHAR_0-203-1-PB0032.json
+        GCHAR_0-203-1-PB0037.json
+        GCHAR_0-203-1-PB0047.json
+        GCHAR_0-203-1-PB0049.json
+        ... a dalších 662
+      https://opendata.chmi.cz/hydrology/groundwater/characteristic/metadata/  [0 složek, 1 souborů]
+        GCHAR_SCHEMA.json
+    https://opendata.chmi.cz/hydrology/groundwater/historical/  [2 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/groundwater/historical/data/  [0 složek, 86758 souborů]
+        H_0-203-1-KB0022_W_1959.json
+        H_0-203-1-KB0022_W_1960.json
+        H_0-203-1-KB0022_W_1961.json
+        H_0-203-1-KB0022_W_1962.json
+        H_0-203-1-KB0022_W_1963.json
+        H_0-203-1-KB0022_W_1964.json
+        H_0-203-1-KB0022_W_1965.json
+        H_0-203-1-KB0022_W_1966.json
+        ... a dalších 86750
+      https://opendata.chmi.cz/hydrology/groundwater/historical/metadata/  [0 složek, 2 souborů]
+        meta1.json
+        meta2.json
+    https://opendata.chmi.cz/hydrology/groundwater/now/  [2 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/groundwater/now/data/  [0 složek, 277 souborů]
+        0-203-1-PB0013_D.json
+        0-203-1-PB0032_D.json
+        0-203-1-PB0337_D.json
+        0-203-1-PB0415_D.json
+        0-203-1-PO0019_D.json
+        0-203-1-PO4015_D.json
+        0-203-1-PP0035_D.json
+        0-203-1-PP0051_D.json
+        ... a dalších 269
+      https://opendata.chmi.cz/hydrology/groundwater/now/metadata/  [0 složek, 2 souborů]
+        meta1.json
+        meta2.json
+    https://opendata.chmi.cz/hydrology/groundwater/recent/  [2 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/groundwater/recent/data/  [0 složek, 12026 souborů]
+        0-203-1-PB0005_D_202501.json
+        0-203-1-PB0005_D_202502.json
+        0-203-1-PB0005_D_202503.json
+        0-203-1-PB0005_D_202504.json
+        0-203-1-PB0005_D_202505.json
+        0-203-1-PB0005_D_202506.json
+        0-203-1-PB0005_D_202507.json
+        0-203-1-PB0005_D_202508.json
+        ... a dalších 12018
+      https://opendata.chmi.cz/hydrology/groundwater/recent/metadata/  [0 složek, 1274 souborů]
+        meta1-20250210.json
+        meta1-20250211.json
+        meta1-20250217.json
+        meta1-20250218.json
+        meta1-20250219.json
+        meta1-20250220.json
+        meta1-20250221.json
+        meta1-20250222.json
+        ... a dalších 1266
+  https://opendata.chmi.cz/hydrology/groundwater_quality/  [2 složek, 0 souborů]
+    https://opendata.chmi.cz/hydrology/groundwater_quality/data/  [0 složek, 1880 souborů]
+      0-203-1-PB0002.json
+      0-203-1-PB0003.json
+      0-203-1-PB0004.json
+      0-203-1-PB0005.json
+      0-203-1-PB0008.json
+      0-203-1-PB0009.json
+      0-203-1-PB0010.json
+      0-203-1-PB0016.json
+      ... a dalších 1872
+    https://opendata.chmi.cz/hydrology/groundwater_quality/metadata/  [0 složek, 2 souborů]
+      meta1.json
+      meta2.json
+  https://opendata.chmi.cz/hydrology/historical/  [2 složek, 0 souborů]
+    https://opendata.chmi.cz/hydrology/historical/data/  [10 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/historical/data/daily/  [0 složek, 39291 souborů]
+        H_0-203-1-000400_DQ_2021.json
+        H_0-203-1-000400_DQ_2022.json
+        H_0-203-1-000400_DQ_2023.json
+        H_0-203-1-000400_DQ_2024.json
+        H_0-203-1-000400_DQ_2025.json
+        H_0-203-1-001000_DQ_1919.json
+        H_0-203-1-001000_DQ_1920.json
+        H_0-203-1-001000_DQ_1921.json
+        ... a dalších 39283
+      https://opendata.chmi.cz/hydrology/historical/data/flowmeter/  [0 složek, 49 souborů]
+        H_0-203-1-016000_OF_2009.json
+        H_0-203-1-016000_OF_2010.json
+        H_0-203-1-016000_OF_2011.json
+        H_0-203-1-016000_OF_2012.json
+        H_0-203-1-016000_OF_2013.json
+        H_0-203-1-016000_OF_2014.json
+        H_0-203-1-016000_OF_2015.json
+        H_0-203-1-016000_OF_2016.json
+        ... a dalších 41
+      https://opendata.chmi.cz/hydrology/historical/data/hourly/  [0 složek, 12358 souborů]
+        H_0-203-1-000400_HQ_2021.json
+        H_0-203-1-000400_HQ_2022.json
+        H_0-203-1-000400_HQ_2023.json
+        H_0-203-1-000400_HQ_2024.json
+        H_0-203-1-000400_HQ_2025.json
+        H_0-203-1-001000_HQ_2003.json
+        H_0-203-1-001000_HQ_2004.json
+        H_0-203-1-001000_HQ_2005.json
+        ... a dalších 12350
+      https://opendata.chmi.cz/hydrology/historical/data/measured_temperature/  [0 složek, 3453 souborů]
+        H_0-203-1-000400_OT_2021.json
+        H_0-203-1-000400_OT_2022.json
+        H_0-203-1-000400_OT_2023.json
+        H_0-203-1-000400_OT_2024.json
+        H_0-203-1-000400_OT_2025.json
+        H_0-203-1-004200_OT_2004.json
+        H_0-203-1-004200_OT_2005.json
+        H_0-203-1-004200_OT_2006.json
+        ... a dalších 3445
+      https://opendata.chmi.cz/hydrology/historical/data/measured_water_level/  [0 složek, 16397 souborů]
+        H_0-203-1-000400_OH_2021.json
+        H_0-203-1-000400_OH_2022.json
+        H_0-203-1-000400_OH_2023.json
+        H_0-203-1-000400_OH_2024.json
+        H_0-203-1-000400_OH_2025.json
+        H_0-203-1-001000_OH_1994.json
+        H_0-203-1-001000_OH_1995.json
+        H_0-203-1-001000_OH_1996.json
+        ... a dalších 16389
+      https://opendata.chmi.cz/hydrology/historical/data/monthly/  [0 složek, 39081 souborů]
+        H_0-203-1-000400_MQ_2021.json
+        H_0-203-1-000400_MQ_2022.json
+        H_0-203-1-000400_MQ_2023.json
+        H_0-203-1-000400_MQ_2024.json
+        H_0-203-1-000400_MQ_2025.json
+        H_0-203-1-001000_MQ_1919.json
+        H_0-203-1-001000_MQ_1920.json
+        H_0-203-1-001000_MQ_1921.json
+        ... a dalších 39073
+      https://opendata.chmi.cz/hydrology/historical/data/monthly_max/  [0 složek, 24957 souborů]
+        H_0-203-1-000400_MMQ_2021.json
+        H_0-203-1-000400_MMQ_2022.json
+        H_0-203-1-000400_MMQ_2023.json
+        H_0-203-1-000400_MMQ_2024.json
+        H_0-203-1-000400_MMQ_2025.json
+        H_0-203-1-001000_MMQ_1988.json
+        H_0-203-1-001000_MMQ_1989.json
+        H_0-203-1-001000_MMQ_1990.json
+        ... a dalších 24949
+      https://opendata.chmi.cz/hydrology/historical/data/morning_temperature/  [0 složek, 8415 souborů]
+        H_0-203-1-005900_OT7_1960.json
+        H_0-203-1-005900_OT7_1961.json
+        H_0-203-1-005900_OT7_1962.json
+        H_0-203-1-005900_OT7_1963.json
+        H_0-203-1-005900_OT7_1964.json
+        H_0-203-1-005900_OT7_1965.json
+        H_0-203-1-005900_OT7_1966.json
+        H_0-203-1-005900_OT7_1967.json
+        ... a dalších 8407
+      https://opendata.chmi.cz/hydrology/historical/data/morning_water_level/  [0 složek, 591 souborů]
+        H_0-203-1-016000_OH7_1970.json
+        H_0-203-1-016000_OH7_1971.json
+        H_0-203-1-016000_OH7_1972.json
+        H_0-203-1-016000_OH7_1973.json
+        H_0-203-1-016000_OH7_1974.json
+        H_0-203-1-016000_OH7_1975.json
+        H_0-203-1-016000_OH7_1976.json
+        H_0-203-1-016000_OH7_1977.json
+        ... a dalších 583
+      https://opendata.chmi.cz/hydrology/historical/data/natural/  [0 složek, 22929 souborů]
+        H_0-203-1-000400_NATQ_2021.json
+        H_0-203-1-000400_NATQ_2024.json
+        H_0-203-1-000400_NATQ_2025.json
+        H_0-203-1-001000_NATQ_1988.json
+        H_0-203-1-001000_NATQ_1989.json
+        H_0-203-1-001000_NATQ_1990.json
+        H_0-203-1-001000_NATQ_1991.json
+        H_0-203-1-001000_NATQ_1992.json
+        ... a dalších 22921
+    https://opendata.chmi.cz/hydrology/historical/metadata/  [0 složek, 12 souborů]
+      H_SCHEMA_DQ.json
+      H_SCHEMA_HQ.json
+      H_SCHEMA_MMQ.json
+      H_SCHEMA_MQ.json
+      H_SCHEMA_NATQ.json
+      H_SCHEMA_OF.json
+      H_SCHEMA_OH.json
+      H_SCHEMA_OH7.json
+      ... a dalších 4
+  https://opendata.chmi.cz/hydrology/now/  [2 složek, 0 souborů]
+    https://opendata.chmi.cz/hydrology/now/data/  [0 složek, 548 souborů]
+      0-203-1-001000.json
+      0-203-1-002000.json
+      0-203-1-002800.json
+      0-203-1-003000.json
+      0-203-1-004000.json
+      0-203-1-004200.json
+      0-203-1-006000.json
+      0-203-1-006800.json
+      ... a dalších 540
+    https://opendata.chmi.cz/hydrology/now/metadata/  [0 složek, 3 souborů]
+      meta1.json
+      meta2.json
+      meta3.json
+  https://opendata.chmi.cz/hydrology/product/  [2 složek, 0 souborů]
+    https://opendata.chmi.cz/hydrology/product/data/  [8 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/product/data/characteristic/  [0 složek, 2 souborů]
+        vodni_utvary_Qa_1991-2020_stojate.json
+        vodni_utvary_Qa_1991-2020_tekouci.json
+      https://opendata.chmi.cz/hydrology/product/data/daily_bulletin/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/product/data/flash_flood/  [0 složek, 3 souborů]
+        risk_FF_web.json
+        rsraz_exp_web.json
+        un_exp_web.json
+      https://opendata.chmi.cz/hydrology/product/data/gis_layer/  [0 složek, 5 souborů]
+        balance.gpkg
+        groundwater_monitoring_quantity.gpkg
+        hydrogeological_regions.gpkg
+        surfacewater_monitoring_quantity.gpkg
+        watersheds.gpkg
+      https://opendata.chmi.cz/hydrology/product/data/groundwater/  [0 složek, 810 souborů]
+        m_2024-06m_hvrty_kat_objekty.csv
+        m_2024-06m_hvrty_kat_skupiny.csv
+        m_2025-04m_hvrty_kat_objekty.csv
+        m_2025-04m_hvrty_kat_skupiny.csv
+        m_2025-04m_mvrty_kat_cr.csv
+        m_2025-04m_mvrty_kat_objekty.csv
+        m_2025-04m_mvrty_kat_povodi.csv
+        m_2025-04m_mvrty_kat_skupiny.csv
+        ... a dalších 802
+      https://opendata.chmi.cz/hydrology/product/data/hydrological_yearbook/  [0 složek, 63 souborů]
+        hydroyearbook2004.pdf
+        hydroyearbook2004_annex.pdf
+        hydroyearbook2005.pdf
+        hydroyearbook2005_annex.pdf
+        hydroyearbook2006.pdf
+        hydroyearbook2006_JH.pdf
+        hydroyearbook2006_annex.pdf
+        hydroyearbook2007.pdf
+        ... a dalších 55
+      https://opendata.chmi.cz/hydrology/product/data/report/  [0 složek, 215 souborů]
+        DROUGHT_202501.csv
+        DROUGHT_202502.csv
+        DROUGHT_202503.csv
+        DROUGHT_202504.csv
+        DROUGHT_202505.csv
+        DROUGHT_202506.csv
+        DROUGHT_202507.csv
+        DROUGHT_202508.csv
+        ... a dalších 207
+      https://opendata.chmi.cz/hydrology/product/data/snow/  [0 složek, 71 souborů]
+        SNOW_AREA_20250210.csv
+        SNOW_AREA_20250217.csv
+        SNOW_AREA_20250224.csv
+        SNOW_AREA_20250303.csv
+        SNOW_AREA_20250317.csv
+        SNOW_AREA_20250324.csv
+        SNOW_AREA_20250331.csv
+        SNOW_AREA_20250407.csv
+        ... a dalších 63
+    https://opendata.chmi.cz/hydrology/product/metadata/  [7 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/product/metadata/characteristic/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/product/metadata/flash_flood/  [0 složek, 1 souborů]
+        popis_flash_flood.pdf
+      https://opendata.chmi.cz/hydrology/product/metadata/gis_layer/  [0 složek, 9 souborů]
+        balance_basins.xml
+        balance_districts.xml
+        balance_watergauges.xml
+        watersheds_1_order.xml
+        watersheds_2_order.xml
+        watersheds_3_order.xml
+        watersheds_4_order.xml
+        watersheds_4_order_extended.xml
+        ... a dalších 1
+      https://opendata.chmi.cz/hydrology/product/metadata/groundwater/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/product/metadata/hydrological_yearbook/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/product/metadata/report/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/product/metadata/snow/  [0 složek, 0 souborů]
+  https://opendata.chmi.cz/hydrology/read_me/  [0 složek, 7 souborů]
+    Popis_datovych_sad_characteristic.pdf
+    Popis_datovych_sad_historical.pdf
+    Popis_kodu_historical.pdf
+    Popis_kodu_now_a_recent.pdf
+    Popis_produktovych_sad_data_groundwater.pdf
+    Pr%C5%AFvodce%20otev%C5%99en%C3%BDmi%20daty%20hydrologie.pdf
+    watersheds_attributies.pdf
+  https://opendata.chmi.cz/hydrology/recent/  [2 složek, 0 souborů]
+    https://opendata.chmi.cz/hydrology/recent/data/  [0 složek, 170171 souborů]
+      20260101_0-203-1-001000.json
+      20260101_0-203-1-002000.json
+      20260101_0-203-1-002800.json
+      20260101_0-203-1-003000.json
+      20260101_0-203-1-004000.json
+      20260101_0-203-1-004200.json
+      20260101_0-203-1-006000.json
+      20260101_0-203-1-006800.json
+      ... a dalších 170163
+    https://opendata.chmi.cz/hydrology/recent/metadata/  [0 složek, 1458 souborů]
+      meta1-20241021.json
+      meta1-20241022.json
+      meta1-20241023.json
+      meta1-20241024.json
+      meta1-20241025.json
+      meta1-20241026.json
+      meta1-20241027.json
+      meta1-20241028.json
+      ... a dalších 1450
+  https://opendata.chmi.cz/hydrology/surface_water_quality/  [2 složek, 0 souborů]
+    https://opendata.chmi.cz/hydrology/surface_water_quality/data/  [5 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/surface_water_quality/data/biota/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/surface_water_quality/data/sediment/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/surface_water_quality/data/suspended_particulate_matter/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/surface_water_quality/data/trapped_sediment/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/surface_water_quality/data/water/  [0 složek, 789 souborů]
+        0-203-1-CHMI_0400.json
+        0-203-1-CHMI_0420.json
+        0-203-1-CHMI_1009.json
+        0-203-1-CHMI_1011.json
+        0-203-1-CHMI_1013.json
+        0-203-1-CHMI_1017.json
+        0-203-1-CHMI_1019.json
+        0-203-1-CHMI_1030.json
+        ... a dalších 781
+    https://opendata.chmi.cz/hydrology/surface_water_quality/metadata/  [5 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/surface_water_quality/metadata/biota/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/surface_water_quality/metadata/sediment/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/surface_water_quality/metadata/suspended_particulate_matter/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/surface_water_quality/metadata/trapped_sediment/  [0 složek, 0 souborů]
+      https://opendata.chmi.cz/hydrology/surface_water_quality/metadata/water/  [0 složek, 2 souborů]
+        meta1.json
+        meta2.json

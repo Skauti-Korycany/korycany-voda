@@ -1,0 +1,37 @@
+Popis kódů použitých v metadatech pro soubory now a recent
+
+ Kód                                     Popis
+ DBC                                     Databázové číslo stanice
+ STATION_NAME                            Název stanice
+ STREAM_NAME                             Název toku
+ GEOGR1                                  Zeměpisná šířka
+ GEOGR2                                  Zeměpisná délka
+ H                                       Vodní stav
+ H_UNIT                                  CM (centimetr)
+ Q                                       Průtok
+ Q_UNIT                                  M3_S (metr krychlový za sekundu m3s-1)
+ TH                                      Teplota vody
+ TH_UNIT                                 0C (stupně Celsia °C)
+ SPA_TYP                                 Stanovení SPA podle (H/Q)
+ SPAH_DS                                 Vodní stav
+ SPAH_UNIT                               cm
+ DRYH                                    Vodní stav limitu stavu sucha
+ SPA1H                                   Vodní stav úrovně 1. SPA
+ SPA2H                                   Vodní stav úrovně 2. SPA
+ SPA3H                                   Vodní stav úrovně 3. SPA
+ SPA4H                                   Vodní stav úrovně 50 L průtoku
+ SPAQ_DS                                 Průtok
+ SPAQ_UNIT                               m3s-1
+ DRYQ                                    Průtok limitu stavu sucha
+ SPA1Q                                   Průtok úrovně 1. SPA
+ SPA2Q                                   Průtok úrovně 2. SPA
+ SPA3Q                                   Průtok úrovně 3. SPA
+ SPA4Q                                   Průtok úrovně 50 L průtoku
+
+
+
+
+Použité zkratky:
+SPA - Stupeň povodňové aktivity
+L – letého
+
