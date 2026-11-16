@@ -584,16 +584,16 @@ details.banner[open]>summary .more{display:none}
 <style>__LEAFLET_CSS__</style>
 
 <header class="top">
-  <div><h1>Voda v Koryčanech</h1><div class="tag">náhled - skutečný terén, půda, budovy a srážky; katalog v__KATV__</div></div>
+  <div><h1>Voda v Koryčanech</h1><div class="tag">aneb jak udržet vodu v katastru a omezit škody; katalog v__KATV__</div></div>
   <nav class="tabs" role="tablist">
-    <button role="tab" aria-selected="true" data-tab="jakbylo">Jak bylo</button>
-    <button role="tab" aria-selected="false" data-tab="pozemek">Můj pozemek</button>
+    <button role="tab" aria-selected="true" data-tab="jakbylo">Historie</button>
+    <button role="tab" aria-selected="false" data-tab="pozemek">Můj dům a pozemek</button>
     <button role="tab" aria-selected="false" data-tab="uzemi">Celé území</button>
-    <button role="tab" aria-selected="false" data-tab="katalog">Katalog</button>
+    <button role="tab" aria-selected="false" data-tab="katalog">Katalog opatření</button>
     <button role="tab" aria-selected="false" data-tab="model">O modelu</button>
   </nav>
 </header>
-<details class="banner"><summary><b>Zjednodušený model pro osvětu, ne projekt. Nevalidováno.</b> Nic se neukládá. <span class="more">víc</span></summary>Po kliku do mapy se sklon a půda berou z dat (DMR 5G ČÚZK, hydrologické skupiny půd VÚMOP, v.v.i., CC BY-NC); střechy a výměry z katastru (ČÚZK) po kliknutí na parcely, zpevněné plochy zadáváš sám. Katalog, vzorce, ceny a zdroje: data/opatreni.json, podrobnosti v záložce O modelu. Značky: ✅ ověřený zdroj, ✅⏳ starší než rok, 📄 citace, 🤔 odhad.</details>
+<details class="banner"><summary><b>Zjednodušený model založený na reálných datech z Koryčan a blízkého okolí. Určeno pro osvětu. Nevalidováno.</b> <span class="more">víc</span></summary>Po kliku do mapy se sklon a půda načtou z dat (DMR 5G ČÚZK, hydrologické skupiny půd VÚMOP, v.v.i., CC BY-NC); střechy a výměry načítáme z katastru (ČÚZK) po kliknutí na parcely. Zpevněné plochy zadáváš sám. Značky: ✅ ověřený zdroj, ⏳ starší než rok, 📄 citace, 🤔 AI odhad.</details>
 
 <main>
 <!-- ======================= JAK BYLO ======================= -->
@@ -601,8 +601,8 @@ details.banner[open]>summary .more{display:none}
   <div class="panel jb-story">
     <div class="jb-hero">
       <div class="jb-kicker">Jak bylo · data ČHMÚ 1921-<span id="jb-rok"></span></div>
-      <h2 class="jb-title">Prší stejně jako před sto lety. Vody v krajině přesto ubývá.</h2>
-      <p class="jb-lede" id="jb-lede">Roční úhrn srážek se v Koryčanech za sto let nezměnil. Od roku 2001 se ale otepluje, teplejší vzduch si bere víc vody a prameny v okolí slábnou. Část vody může zadržet každý u sebe doma.</p>
+      <h2 class="jb-title">Naprší zhruba stejně jako před sto lety, přesto krajině ubývá voda.</h2>
+      <p class="jb-lede" id="jb-lede">Srážek za rok je zhruba stejně jako před sto lety. Od roku 2001 se ale otepluje, teplejší vzduch si bere víc vody a prameny v okolí slábnou. Proto dává smysl zkusit odtékající vodu na katastru Koryčan zadržet a nechat vsáknout.</p>
       <p class="note">Data se stahují automaticky čtyřikrát denně. <span id="jb-upd"></span></p>
     </div>
     <div class="jb-key" id="jb-key"></div>
@@ -2381,7 +2381,7 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
   const kc=(n,c,t)=>`<div class="jb-k"><div class="num" style="color:var(${c})">${n}</div><div>${t}</div></div>`;
   const trT=lin(bV.map(b=>b.r),bV.map(b=>b.T))*10, P25=mean(p1.body.filter(b=>b[0]>=bV[0].r&&b[0]<=bV[bV.length-1].r).map(b=>b[1])), obdT=`${bV[0].r}-${bV[bV.length-1].r}`;
   const sgn=v=>(v>0?'+':v<0?'-':'')+fmt(Math.abs(v),1);
-  $('jb-lede').innerHTML=`Roční úhrn srážek se v Koryčanech za sto let nezměnil: v letech ${U0.a}-${U0.b} to bylo v průměru ${fmt0(U0.P)} mm, v letech ${A.a}-${A.b} ${fmt0(A.P)} mm. Od roku ${bV[0].r} se ale otepluje, v průměru o ${fmt(Math.abs(trT),1)} °C za každých deset let. Teplejší vzduch si bere víc vody, takže stejný déšť stačí krajině na méně. Část té vody může zadržet každý u sebe doma.`;
+  $('jb-lede').innerHTML=`V letech ${U0.a}-${U0.b} napršelo za rok průměrně ${fmt0(U0.P)} mm, v letech ${A.a}-${A.b} ${fmt0(A.P)} mm. Od roku ${bV[0].r} se ale otepluje o ${fmt(Math.abs(trT),1)} °C za každých deset let. Teplejší vzduch si bere víc vody. Proto dává smysl zkusit odtékající vodu na katastru Koryčan zadržet a nechat vsáknout.`;
   $('jb-key').innerHTML=kc(`${fmt0(A.P)} mm`,'--water',`naprší v průměru za rok (${A.a}-${A.b}). V letech ${U0.a}-${U0.b} to bylo v průměru ${fmt0(U0.P)} mm.`)
     +kc(`${sgn(trT)} °C`,'--soil',`za každých 10 let: tak se mění průměrná roční teplota (${obdT}, ČHMÚ Nemochovice).`)
     +kc(`${fmt0(d30a)} → ${fmt0(d30b)}`,'--bad',`tropických dní za rok: průměr 2001-2010 proti ${ROK-10}-${ROK-1}.`);
@@ -2398,7 +2398,7 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
   if(pr&&ky){
     const f2=v=>fmt(v,2), tp=pr.trend, tk=ky.trend, pct=t=>fmt0(100*t.poslednich_10[2]/t.prvnich_10[2]), ob=a=>`${a[0]}-${a[1]}`;
     $('jb-key').innerHTML+=kc(`${f2(tp.prvnich_10[2])} → ${f2(tp.poslednich_10[2])} l/s`,'--water',`dává pramen u Koryčan: průměr ${ob(tp.prvnich_10)} proti ${ob(tp.poslednich_10)} (měření ČHMÚ).`);
-    $('jb-lede').innerHTML=$('jb-lede').innerHTML.replace('Teplejší vzduch si bere víc vody, takže stejný déšť stačí krajině na méně.', `Teplejší vzduch si bere víc vody. Pramen v Chřibech nad Koryčany dává dnes ${pct(tp)} % toho, co v 80. letech, a potokem přitéká do přehrady ${pct(tk)} % vody proti letům ${ob(tk.prvnich_10)}.`);
+    $('jb-lede').innerHTML=$('jb-lede').innerHTML.replace('Teplejší vzduch si bere víc vody.', `Teplejší vzduch si bere víc vody. Měřený pramen v Chřibech nad Koryčany dává dnes ${pct(tp)} % toho, co v 80. letech, a potokem přitéká do přehrady ${pct(tk)} % vody proti letům ${ob(tk.prvnich_10)}.`);
     const dalsi=Object.entries(HY.prameny).filter(([k])=>k!=='PB0425').map(([k,z])=>`${z.nazev} (${z.km.toLocaleString('cs-CZ')} km) z ${f2(z.trend.prvnich_10[2])} na ${f2(z.trend.poslednich_10[2])} l/s`);
     $('jb-ch-h').innerHTML=`Že vody ubývá, je vidět na měření. Pramen v Chřibech nad Koryčany dával v letech ${ob(tp.prvnich_10)} v průměru ${f2(tp.prvnich_10[2])} litru za sekundu, v letech ${ob(tp.poslednich_10)} jen ${f2(tp.poslednich_10[2])} litru. Stejně slábnou i další měřené prameny v okolí: ${dalsi.join(', ')}. Kyjovka přiváděla do přehrady v letech ${ob(tk.prvnich_10)} v průměru ${fmt0(tk.prvnich_10[2])} litrů za sekundu, v letech ${ob(tk.poslednich_10)} už jen ${fmt0(tk.poslednich_10[2])}. Deště přitom neubylo.`;
     graf('jb-h1',pr,'--water',2); graf('jb-h2',ky,'--chip',0);
@@ -2418,7 +2418,7 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
   }
   // kapitola 1
   const pMin=p1.body.reduce((a,b)=>b[1]<a[1]?b:a), pMax=p1.body.reduce((a,b)=>b[1]>a[1]?b:a);
-  $('jb-ch1').innerHTML=`V Koryčanech naprší v průměru <b>${fmt0(A.P)} mm za rok</b> (${A.a}-${A.b}). Před sto lety to bylo ${fmt0(U0.P)} mm (${U0.a}-${U0.b}). Mokré a suché roky se střídají, ale deště za rok dlouhodobě neubývá ani nepřibývá.`;
+  $('jb-ch1').innerHTML=`V Koryčanech je historický normál <b>${fmt0(N.rok.P)} mm za rok</b> (1991-2020 je srovnávací období podle WMO). Před sto lety to bylo ${fmt0(U0.P)} mm (${U0.a}-${U0.b}). Mokré a suché roky se střídají, ale deště za rok dlouhodobě neubývá ani nepřibývá.`;
   $('jb-ch1-z').innerHTML=`Srážky se v Koryčanech měří přes sto let (stanice ČHMÚ, řada od roku ${p1.body[0][0]}). Jednotlivé roky se liší od ${fmt0(pMin[1])} mm (${pMin[0]}) po ${fmt0(pMax[1])} mm (${pMax[0]}). Oranžová čára je klouzavý průměr, tedy průměr vždy z posledních deseti let; drží se kolem 600 mm. Čárkované úseky jsou průměry vždy za 25 let (${p1.useky.map(u=>`${u.a}-${u.b}: ${fmt0(u.P)} mm`).join(', ')}), barevný úsek vpravo průměr posledních 5 let.`;
   // box 1: kam mizi dest
   const zizen=N.rok.ET0-P25;

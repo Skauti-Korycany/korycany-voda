@@ -2,6 +2,13 @@
 
 Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `docs/STAV.md`. Starší rozhodnutí mohou být nahrazena novějšími (u nahrazených je to v textu poznamenáno).
 
+## 16. 11. 2026 (večer) - první dávka přepsaných textů z tabulky
+
+- Uživatel poslal `TEXTY-PRO-LAIKY_v01.xlsx` (uložen v `docs/`), vyplněno SP-002 až JB-012; skutečně změněno 7 řádků, ostatní shodné s původním.
+- Propsáno do `build_dummy.py`: podtitul (SP-002), názvy záložek Historie / Můj dům a pozemek / Katalog opatření (SP-003, jen tlačítka; zmínky záložek v textech zatím beze změny), upozornění nahoře (SP-004, bez "ne projekt" a "Nic se neukládá" podle uživatele), rozbalené upozornění (SP-005), nadpis Jak bylo (JB-002), úvodní odstavec (JB-003) a kap. 1 (JB-010).
+- Sloučeno s `main` (srážky po 25 letech a průměr posledních 5 let). JB-003 napsán proti starým obdobím 1921-1950 / 1991-2020: použita nová období z kódu (1921-1945, 2021-2025). JB-010 "historický normál ... podle WMO" ukazuje skutečný normál 1991-2020 (633 mm), "před sto lety" první úsek 1921-1945. Záložní úvod bez JS přepsán v duchu JB-003 (vlastní znění).
+- `texty_laik_export.py` srovnán s novými texty a obdobími. Kontrola: Chromium 1300 px světlý, 390 px tmavý, bez chyb (kromě blokovaného externího zdroje), bez vodorovného posunu stránky; záložky na mobilu se posouvají uvnitř lišty.
+
 ## 16. 11. 2026 - laické texty v jedné tabulce pro přepis
 
 Zadání: vytáhnout laické texty webu do jednoho přehledného souboru, původní a nový text vedle sebe.

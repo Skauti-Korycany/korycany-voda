@@ -17,7 +17,7 @@ Web běží na GitHub Pages, 5 záložek, zkouší se neformálně s lidmi. Stá
 
 Před zveřejněním (pořadí určí uživatel):
 - Uživatel projde web po úpravě laik / zvídavý a řekne, kde je laická věta stále dlouhá nebo kde naopak něco chybí.
-- Uživatel přepíše texty pro laiky vlastními slovy v `docs/TEXTY-PRO-LAIKY.xlsx` (16. 11.; generuje `tools/texty_laik_export.py`, sloupec "Nový text"). Po vrácení přenést nové texty do `build_dummy.py` a `build_opatreni.py` podle čísel řádků; čísla `{...}` zachovat.
+- Přepis laických textů: uživatel vyplňuje `docs/TEXTY-PRO-LAIKY_v01.xlsx` (sloupec "Nový text"); zkušební dávka (Společné, Jak bylo úvod a kap. 1) propsána 16. 11. Další řádky přenášet ručně do `build_dummy.py` / `build_opatreni.py` podle čísel řádků; čísla `{...}` brát z aktuálního kódu (srážky už po 25 letech + posledních 5 let), ne z textu tabulky. Čistá tabulka podle aktuálního webu: `tools/texty_laik_export.py` -> `docs/TEXTY-PRO-LAIKY.xlsx`.
 - Místní fotografie (uživatel má, se souhlasem autorů): navrhnout místa v rozvržení (úvod Jak bylo, kapitoly, katalog "Kde to funguje"), formát a velikost; fotky dodá uživatel.
 - Vyzkoušet v prohlížeči blok "přítok shora" v Můj pozemek po úpravě textu (potřebuje vybranou parcelu, 15. 11. nezkoušeno).
 
