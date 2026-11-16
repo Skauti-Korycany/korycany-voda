@@ -55,6 +55,7 @@ Výpočty
 - Území 17,7 km² (hráz VN - jez před Mouchnicemi), budovy jen obec Koryčany, RD 1 076.
 
 Rozhraní a provoz
+- Názvy záložek: Historie, Můj dům a pozemek, Celé území, Katalog opatření, O modelu; odkazy v textech úsporné ("v Historii", "Spočítej je pro svůj dům", "Katalog opatření →"). Upozornění nahoře bez "ne projekt" (záměr uživatele). Značka 🤔 se na webu vysvětluje jako "AI odhad" (většina odhadů je z modelu).
 - Výchozí déšť: Můj pozemek 10 mm, Celé území 32 mm. Můj pozemek = průvodce 5 kroků se hrou Kapka / Louže / Tůňka / Oáza.
 - Katalog: KDE + CO ŘEŠÍM, jedno číslo na kartě, bez kódů opatření v textu.
 - Verze a datum nikdy natvrdo. Stav v URL hash, nic se neukládá. `index.html` a `opatreni.json` jen generovat.

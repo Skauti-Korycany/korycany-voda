@@ -600,7 +600,7 @@ details.banner[open]>summary .more{display:none}
 <section id="tab-jakbylo">
   <div class="panel jb-story">
     <div class="jb-hero">
-      <div class="jb-kicker">Jak bylo · data ČHMÚ 1921-<span id="jb-rok"></span></div>
+      <div class="jb-kicker">Historie · data ČHMÚ 1921-<span id="jb-rok"></span></div>
       <h2 class="jb-title">Naprší zhruba stejně jako před sto lety, přesto krajině ubývá voda.</h2>
       <p class="jb-lede" id="jb-lede">Srážek za rok je zhruba stejně jako před sto lety. Od roku 2001 se ale otepluje, teplejší vzduch si bere víc vody a prameny v okolí slábnou. Proto dává smysl zkusit odtékající vodu na katastru Koryčan zadržet a nechat vsáknout.</p>
       <p class="note">Data se stahují automaticky čtyřikrát denně. <span id="jb-upd"></span></p>
@@ -862,7 +862,7 @@ details.banner[open]>summary .more{display:none}
           <table class="flow" id="flow"></table>
           <p class="note" id="year"></p>
           <p class="note">Střechy a dlažba: součinitele odtoku ČSN 75 9010, první 1 mm deště zůstane na povrchu. Zahrada: metoda SCS-CN (Janeček a kol. 2012) podle půdy; u velkých dešťů vážený průměr běžně vlhké a nasycené půdy (Kavka a kol. 2023). Srážky: návrhové 6hodinové úhrny pro Koryčany (ČVUT a ČHMÚ 2023 ✅). Víc v záložce O modelu.</p>
-          <p class="note">Posledních 30 dní: srážky ČHMÚ Koryčany, dny bez ní srážkoměr Povodí Moravy pod přehradou a Nemochovice, předběžná data (stejná jako v Jak bylo); každý déšť se počítá zvlášť. Přítok shora: odhad z výškopisu DMR 5G (mřížka 5 m) a mapy půd, odtok SCS-CN 🤔.</p>
+          <p class="note">Posledních 30 dní: srážky ČHMÚ Koryčany, dny bez ní srážkoměr Povodí Moravy pod přehradou a Nemochovice, předběžná data (stejná jako v Historii); každý déšť se počítá zvlášť. Přítok shora: odhad z výškopisu DMR 5G (mřížka 5 m) a mapy půd, odtok SCS-CN 🤔.</p>
         </details>
       </div>
       <div class="pz-step" data-s="4">
@@ -921,7 +921,7 @@ details.banner[open]>summary .more{display:none}
       <div class="uz-q">Jedna domácnost:</div>
       <div class="filters" id="u-zaklad" role="group" aria-label="Z čeho počítat jednu domácnost" style="margin-top:.2rem">
         <button type="button" data-z="prumer" aria-pressed="true">průměrná v obci</button>
-        <button type="button" data-z="moje" aria-pressed="false" disabled title="Nejdřív projdi Můj pozemek">jako můj pozemek</button>
+        <button type="button" data-z="moje" aria-pressed="false" disabled title="Nejdřív spočítej svůj dům">jako můj pozemek</button>
       </div>
       <div class="callout ok" id="u-moje-n" hidden></div>
       <div class="callout" id="u-pozor" hidden></div>
@@ -1043,13 +1043,13 @@ details.banner[open]>summary .more{display:none}
     <div class="uz-ctx" id="u-context"></div>
   </section>
 
-  <div class="jb-cta uz-cta"><div class="jb-cta-t"><h3>Začni u sebe</h3><p>Nejrychleji se dá začít na vlastním pozemku. Spočítej, kolik vody ti uteče a co s tím jde udělat.</p><div class="mot-a"><a href="#" data-tab-go3="pozemek">Spočítej svůj pozemek →</a><a href="#" data-tab-go3="katalog">Všechna opatření (katalog) →</a></div></div></div>
+  <div class="jb-cta uz-cta"><div class="jb-cta-t"><h3>Začni u sebe</h3><p>Nejrychleji se dá začít na vlastním pozemku. Spočítej, kolik vody ti uteče a co s tím jde udělat.</p><div class="mot-a"><a href="#" data-tab-go3="pozemek">Spočítej svůj pozemek →</a><a href="#" data-tab-go3="katalog">Katalog opatření →</a></div></div></div>
 </section>
 
 <!-- ======================= KATALOG ======================= -->
 <section id="tab-katalog" class="hidden-tab kat">
   <header class="jb-hero">
-    <div class="jb-kicker">Katalog</div>
+    <div class="jb-kicker">Katalog opatření</div>
     <h2 class="jb-title">Co se dá udělat</h2>
     <p class="jb-lede">Od sudu pod okapem po rybník. U každého opatření najdeš, co udělá, kolik stojí, kdo ho může udělat a z čeho ho zaplatit.</p>
   </header>
@@ -1066,7 +1066,7 @@ details.banner[open]>summary .more{display:none}
     <div class="uz-q">Peníze a pracnost</div><div class="filters" id="k-fin"><button aria-pressed="false" data-f="otevreno">jen s dotací, která je teď otevřená</button><button aria-pressed="false" data-f="svepomoc">jen svépomoc (za víkend, bez povolení)</button></div>
     </details>
   </div>
-  <p class="note kt-n">Čísla jsou pro vzorový dům (100 m² střechy, 50 m² dvora, běžný déšť 10 mm). Pro tvůj dům je spočítá <a href="#" data-tab-go4="pozemek">Můj pozemek</a>. Zdroje, ceny a podrobnosti jsou u každého opatření v „Proč a jak“.</p>
+  <p class="note kt-n">Čísla jsou pro vzorový dům (100 m² střechy, 50 m² dvora, běžný déšť 10 mm). <a href="#" data-tab-go4="pozemek">Spočítej je pro svůj dům</a>. Zdroje, ceny a podrobnosti jsou u každého opatření v „Proč a jak“.</p>
   <nav class="kt-obsah" id="k-obsah" aria-label="Skupiny opatření"></nav>
   <div id="k-cards"></div>
 </section>
@@ -1092,18 +1092,18 @@ details.banner[open]>summary .more{display:none}
     <p class="jb-p">Aplikace běží na skutečných datech o terénu, půdě, budovách a srážkách v Koryčanech, ale zatím jsme ji neporovnali s měřením průtoku v potoce. Proto u ní stojí <b>nevalidováno</b>.</p>
     <div class="om-stav">
       <div class="om-s ok"><span class="jb-kicker">Hotovo</span><ul>
-        <li><b>Jak bylo:</b> srážky ČHMÚ Koryčany od roku 1921, teploty od roku 2001, měřené prameny a průtok Kyjovky, možný výpar z měření (Penman-Monteith); denní data se stahují sama čtyřikrát denně.</li>
-        <li><b>Můj pozemek:</b> skutečné parcely a budovy z katastru, sklon z výškopisu, půda z mapy VÚMOP, skutečný déšť za posledních 30 dní.</li>
+        <li><b>Historie:</b> srážky ČHMÚ Koryčany od roku 1921, teploty od roku 2001, měřené prameny a průtok Kyjovky, možný výpar z měření (Penman-Monteith); denní data se stahují sama čtyřikrát denně.</li>
+        <li><b>Můj dům a pozemek:</b> skutečné parcely a budovy z katastru, sklon z výškopisu, půda z mapy VÚMOP, skutečný déšť za posledních 30 dní.</li>
         <li><b>Půda:</b> podrobná mapa hydrologických skupin půd od VÚMOP (27. 10. 2026), i pro les a zástavbu; dřív byl skoro 40 % území odhad.</li>
         <li><b>Celé území:</b> střechy podle účelu budov, odtok z polí, luk a lesů po čtvercích 5 m, eroze orné půdy, objem vody za hrází na potoce.</li>
         <li><b>Katalog:</b> 66 opatření s účinkem, cenou, zdrojem a cestou k penězům.</li></ul></div>
       <div class="om-s wip"><span class="jb-kicker">Rozpracováno</span><ul>
         <li><b>Měření:</b> reakce Stříbrníku na déšť u Kachníku (léto 2026) je zpracovaná; data z přehrady od Povodí Moravy zatím nemáme.</li>
-        <li><b>Zkouška s lidmi:</b> Můj pozemek prošel první test s občanem a podle něj se upravil.</li></ul></div>
+        <li><b>Zkouška s lidmi:</b> Můj dům a pozemek prošel prvním testem s občanem a podle něj se upravil.</li></ul></div>
       <div class="om-s no"><span class="jb-kicker">Chybí</span><ul>
         <li><b>Ověření na měření</b> (validace): porovnat výpočet s průtokem v potoce po skutečném dešti.</li>
         <li><b>Průběh povodňové vlny:</b> model počítá objemy vody, ne to, jak rychle vlna přijde a jak ji opatření zpomalí.</li>
-        <li><b>Klima 2050 a 2090 v číslech pro Koryčany:</b> zatím jen výhled CzechGlobe a IPCC v Jak bylo.</li>
+        <li><b>Klima 2050 a 2090 v číslech pro Koryčany:</b> zatím jen výhled CzechGlobe a IPCC v Historii.</li>
         <li><b>Horko a vítr jako mapa</b> a <b>formulář pro měření školy</b>.</li></ul></div>
     </div>
   </section>
@@ -1115,8 +1115,8 @@ details.banner[open]>summary .more{display:none}
     <p class="note om-zn">Značky u čísel: ✅ zdroj jsme otevřeli a ověřili, ⏳ zdroj starší než rok, 📄 citováno z druhé ruky, 🤔 odhad, 💻 neověřeno.</p>
     <details class="jb-cist uz-det"><summary><b>Pro zvídavé</b> - metody po záložkách</summary>
     <div class="uz-kdo om-met" style="margin-top:.6rem">
-      <div><b>Jak bylo</b><span class="v">srážky, výpar, horko</span><ul><li>Denní srážky a teploty ČHMÚ (Koryčany, Nemochovice), předběžná data Povodí Moravy.</li><li>Možný výpar podle Penman-Monteith (FAO-56): teplota, vlhkost, vítr a sluneční svit ze stanic ČHMÚ.</li><li>Tropický den od 30 °C, tropická noc od 20 °C (ČHMÚ).</li></ul></div>
-      <div><b>Můj pozemek</b><span class="v">jeden pozemek, jeden déšť</span><ul><li>Střechy a dlažba: součinitel odtoku podle ČSN 75 9010, první 1 mm deště zůstane na povrchu.</li><li>Zahrada: metoda SCS-CN podle půdy A-D (Janeček a kol. 2012).</li><li>Účinek opatření jen tam, kde je doložený vzorcem nebo měřením.</li></ul></div>
+      <div><b>Historie</b><span class="v">srážky, výpar, horko</span><ul><li>Denní srážky a teploty ČHMÚ (Koryčany, Nemochovice), předběžná data Povodí Moravy.</li><li>Možný výpar podle Penman-Monteith (FAO-56): teplota, vlhkost, vítr a sluneční svit ze stanic ČHMÚ.</li><li>Tropický den od 30 °C, tropická noc od 20 °C (ČHMÚ).</li></ul></div>
+      <div><b>Můj dům a pozemek</b><span class="v">jeden pozemek, jeden déšť</span><ul><li>Střechy a dlažba: součinitel odtoku podle ČSN 75 9010, první 1 mm deště zůstane na povrchu.</li><li>Zahrada: metoda SCS-CN podle půdy A-D (Janeček a kol. 2012).</li><li>Účinek opatření jen tam, kde je doložený vzorcem nebo měřením.</li></ul></div>
       <div><b>Celé území</b><span class="v">1 770 ha nad jezem u Mouchnic</span><ul><li>Odtok z krajiny SCS-CN po čtvercích 5 m (výškopis DMR 5G, ZABAGED, půdy VÚMOP); u lijáků váha nasycené půdy podle Kavky a kol. 2023.</li><li>Eroze orné půdy USLE (R faktor VÚMOP/ČHMÚ 2022).</li><li>Nádrž za hrází: kam vystoupá voda v terénu DMR 5G.</li></ul></div>
       <div><b>Katalog</b><span class="v">66 opatření</span><ul><li>Každý účinek má zdroj a značku původu.</li><li>Nejistota jako rozsah, ne jedno číslo.</li><li>Odhady (🤔) se do součtů nepočítají.</li></ul></div>
     </div>
@@ -1137,9 +1137,9 @@ details.banner[open]>summary .more{display:none}
       <tr><td>výškopis DMR 5G, parcely, budovy, ZABAGED, mapy a ortofoto</td><td>ČÚZK, CC BY 4.0 ✅</td><td>sklon, kam teče voda, střechy, využití ploch</td></tr>
       <tr><td>hydrologické skupiny půd (HSP 2026)</td><td>VÚMOP, v.v.i., CC BY-NC (jen nekomerčně) ✅</td><td>jak rychle se vsákne voda (skupina půdy A-D)</td></tr>
       <tr><td>bonitované půdně ekologické jednotky (BPEJ)</td><td>Státní pozemkový úřad ✅</td><td>jak snadno se půda smývá (eroze)</td></tr>
-      <tr><td>vydatnost pramenů a průtok Kyjovky</td><td>ČHMÚ, otevřená data hydrologie ✅</td><td>Jak bylo: jestli vody v krajině ubývá</td></tr>
-      <tr><td>účel budov, hledání adres</td><td>RÚIAN (ČÚZK) ✅</td><td>velké střechy, hledání v Můj pozemek</td></tr>
-      <tr><td>denní srážky a teploty</td><td>ČHMÚ, otevřená data (podmínky užití ještě zapisujeme); Povodí Moravy, srážkoměr u přehrady (předběžná data)</td><td>Jak bylo, skutečný déšť za 30 dní</td></tr>
+      <tr><td>vydatnost pramenů a průtok Kyjovky</td><td>ČHMÚ, otevřená data hydrologie ✅</td><td>Historie: jestli vody v krajině ubývá</td></tr>
+      <tr><td>účel budov, hledání adres</td><td>RÚIAN (ČÚZK) ✅</td><td>velké střechy, hledání adresy</td></tr>
+      <tr><td>denní srážky a teploty</td><td>ČHMÚ, otevřená data (podmínky užití ještě zapisujeme); Povodí Moravy, srážkoměr u přehrady (předběžná data)</td><td>Historie, skutečný déšť za 30 dní</td></tr>
       <tr><td>návrhové deště N2-N100</td><td>ČVUT a ČHMÚ, metodika 2023 ✅</td><td>lijáky jednou za 2, 10 a 100 let</td></tr>
       <tr><td>R faktor eroze 2022</td><td>VÚMOP a ČHMÚ ✅</td><td>smyv půdy z polí</td></tr>
       <tr><td>toky, kritické body přívalových povodní</td><td>ČÚZK ✅, VÚV TGM (CC BY 4.0) ✅</td><td>hráz na potoce, místa ohrožená přívalem</td></tr>
@@ -1945,7 +1945,7 @@ function renderUzemi(){
   if(moje){ const z=zadrzeni(i, r, chosen); per=z.kept; perY=z.keptYear;
     const nazvy=[...chosen].filter(id=>byId[id] && z.ev.fit.some(x=>x.o.id===id)).map(id=>AK(byId[id]).t.toLowerCase());
     $('u-moje-n').hidden=false;
-    $('u-moje-n').innerHTML=`<b>Počítám, jako by každá zapojená domácnost měla pozemek jako ty:</b> střecha ${fmt0(i.roof)} m², dlažba ${fmt0(i.paved)} m², zahrada ${fmt0(i.green)} m², svody ${svodyTxt(i)}; opatření: ${nazvy.length?nazvy.join(', '):'zatím žádné, které zadrží vodu'}. Jedna domácnost tak udrží ${fmt(per)} m³ z deště ${P} mm. <button type="button" class="linkbtn" data-tab-go2="pozemek">Změnit v Můj pozemek</button><br><span class="note">Domy v obci mají různé střechy a půdy, je to „co kdyby“, ne odhad pro obec 🤔. Průměrný dům v území má půdorys __ROOF__ m² (ČÚZK ✅).</span>`;
+    $('u-moje-n').innerHTML=`<b>Počítám, jako by každá zapojená domácnost měla pozemek jako ty:</b> střecha ${fmt0(i.roof)} m², dlažba ${fmt0(i.paved)} m², zahrada ${fmt0(i.green)} m², svody ${svodyTxt(i)}; opatření: ${nazvy.length?nazvy.join(', '):'zatím žádné, které zadrží vodu'}. Jedna domácnost tak udrží ${fmt(per)} m³ z deště ${P} mm. <button type="button" class="linkbtn" data-tab-go2="pozemek">Změnit u svého domu</button><br><span class="note">Domy v obci mají různé střechy a půdy, je to „co kdyby“, ne odhad pro obec 🤔. Průměrný dům v území má půdorys __ROOF__ m² (ČÚZK ✅).</span>`;
   } else $('u-moje-n').hidden=true;
   const bezOkapu = !moje && !pack.includes('S02') && (pack.includes('Z01')||pack.includes('S01'));
   $('u-pozor').hidden = !bezOkapu;
@@ -1972,7 +1972,7 @@ function renderUzemi(){
   $('u-table').innerHTML=`<tr><th>část území (podíl podle počtu budov)</th><th class="num">domácností</th><th class="num">zapojí se</th><th class="num">m³ na déšť</th><th class="num">m³ za rok</th></tr>`+
     sidla.map(([s,p])=>`<tr><td>${s}</td><td class="num">${fmt0(n*p)}</td><td class="num">${fmt0(n*p*pct)}</td><td class="num">${fmt0(tot*p)}</td><td class="num">${fmt0(totY*p)}</td></tr>`).join('')+
     `<tr class="total"><td>celé území (Kyjovka pod Koryčany)</td><td class="num">${fmt0(n)}</td><td class="num">${fmt0(hh)}</td><td class="num">${fmt0(tot)}</td><td class="num">${fmt0(totY)}</td></tr>`;
-  $('u-zdroj').innerHTML=`V území modelu (${fmt0(U.plocha_ha)} ha, povodí Kyjovky k jezu před Mouchnicemi bez povodí nad přehradou) je ${fmt0(U.budov)} budov s půdorysem ${fmt0(U.strechy_m2/1e4*10)/10} ha, z toho ${fmt0(U.rd_pocet)} rodinných domů (${fmt0(U.rd_strechy_m2/1e4*10)/10} ha), ČÚZK INSPIRE BU ✅, 19. 10. 2026. Zpevněné plochy u domů v datech nejsou, je to odhad. Počítá se jen voda ze střech a dvorů rodinných domů; velké střechy jsou v kapitole 2.${od?` Povrchový odtok z celého území při ${P} mm je ${fmt0(od.objem_m3)} m³ (SCS-CN, průměrné číslo odtoku ${U.cn_vazene}, běžně vlhká půda); domácnosti z něj udrží ${fmt(100*tot/od.objem_m3,1)} %.`:''} Dešťový záhon, sud a propustná dlažba se počítají stejně jako v Můj pozemek (průměrný dům: zahrada 250 m², půda B, sklon 3 %).`;
+  $('u-zdroj').innerHTML=`V území modelu (${fmt0(U.plocha_ha)} ha, povodí Kyjovky k jezu před Mouchnicemi bez povodí nad přehradou) je ${fmt0(U.budov)} budov s půdorysem ${fmt0(U.strechy_m2/1e4*10)/10} ha, z toho ${fmt0(U.rd_pocet)} rodinných domů (${fmt0(U.rd_strechy_m2/1e4*10)/10} ha), ČÚZK INSPIRE BU ✅, 19. 10. 2026. Zpevněné plochy u domů v datech nejsou, je to odhad. Počítá se jen voda ze střech a dvorů rodinných domů; velké střechy jsou v kapitole 2.${od?` Povrchový odtok z celého území při ${P} mm je ${fmt0(od.objem_m3)} m³ (SCS-CN, průměrné číslo odtoku ${U.cn_vazene}, běžně vlhká půda); domácnosti z něj udrží ${fmt(100*tot/od.objem_m3,1)} %.`:''} Dešťový záhon, sud a propustná dlažba se počítají stejně jako u výpočtu pro jeden dům (průměrný dům: zahrada 250 m², půda B, sklon 3 %).`;
   // kapitola 5: velke projekty (bez kodu, kod jen v katalogu)
   $('u-context').innerHTML = D.opatreni.filter(o=>o.kontext).map(o=>{ const h=o.hlavni_cislo, c=cenaText(o);
     return `<div class="card"><b class="uz-ctx-t">${o.nazev}</b>${o.popis?`<p class="uz-ctx-p">${o.popis}</p>`:''}${h&&h.text?`<p class="uz-ctx-h"><b>Co to udělá:</b> ${h.text}</p>`:''}
@@ -2462,7 +2462,7 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
       +(c2?lc('--bad',`${c2.d30}`,`tropických dní, ${c2.d30>mxD?'nejvíc od roku '+bT[0].r:`rekord je ${mxD} (${mxDr.r})`}`):'')
       +(c2&&c2.lx!=null&&mxL!=null?lc('--hot',`${fmt(c2.lx,1)} °C`,`průměr letních maxim${c2.lx>mxL?`, nejteplejší léto od roku ${bT[0].r}`:`, rekord ${fmt(mxL,1)} °C`}`):''); }
   // 6: vyzva
-  $('jb-l-call').innerHTML=`<div class="jb-cta-t"><h3>7. Co s tím u vás doma</h3><p>Vodu, která spadne na střechu a dvůr, jde udržet tam, kde spadla: sud pod okapem, dešťový záhon, strom, propustná dlažba. Spočítej si, kolik to dělá na tvém pozemku.</p><div class="mot-a"><a href="#" data-go="pozemek">Spočítej svůj pozemek →</a><a href="#" data-go="katalog">Co se dá udělat (katalog) →</a></div></div>`
+  $('jb-l-call').innerHTML=`<div class="jb-cta-t"><h3>7. Co s tím u vás doma</h3><p>Vodu, která spadne na střechu a dvůr, jde udržet tam, kde spadla: sud pod okapem, dešťový záhon, strom, propustná dlažba. Spočítej si, kolik to dělá na tvém pozemku.</p><div class="mot-a"><a href="#" data-go="pozemek">Spočítej svůj pozemek →</a><a href="#" data-go="katalog">Katalog opatření →</a></div></div>`
     +`<svg class="il" viewBox="0 0 520 260" role="img" aria-label="Ilustrace: dům se sudem pod okapem, dešťovým záhonem, stromem a propustnou dlažbou"><rect class="soilbg" x="0" y="200" width="520" height="60"/><path class="soil" d="M0 200H520" stroke-width="2"/><path class="house" d="M60 200v-80h110v80" stroke-width="2.5"/><path class="ln" d="M46 122l69-52 69 52" fill="none" stroke-width="2.5"/><rect class="door ln" x="96" y="150" width="28" height="50" stroke-width="2"/><path class="ln" d="M184 122h8v40" fill="none" stroke-width="2.5"/><rect class="house" x="182" y="162" width="30" height="38" rx="4" stroke-width="2.5"/><rect class="wf2" x="185" y="176" width="24" height="21"/><path class="wfill soil" d="M236 200q30 22 60 0" stroke-width="2"/><g class="plant" stroke-width="2.5" stroke-linecap="round" fill="none"><path d="M252 202v-22M252 188q-6 0-8-8M252 186q6 0 8-8M280 202v-18M280 190q5 0 7-7"/></g><circle class="tree" cx="380" cy="104" r="44"/><path class="trunk" d="M380 148v52" stroke-width="5"/><g class="door ln" stroke-width="1.5"><rect x="440" y="206" width="22" height="10"/><rect x="466" y="206" width="22" height="10"/><rect x="492" y="206" width="22" height="10"/></g><g class="plant" stroke-width="2"><path d="M464 206v10M490 206v10"/></g><g class="num-b"><circle cx="197" cy="148" r="12"/><circle cx="266" cy="234" r="12"/><circle cx="380" cy="46" r="12"/><circle cx="477" cy="238" r="12"/></g><g class="num-t" text-anchor="middle"><text x="197" y="153">1</text><text x="266" y="239">2</text><text x="380" y="51">3</text><text x="477" y="243">4</text></g></svg>`;
   $('jb-l-call').querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault(); document.querySelector(`nav.tabs button[data-tab="${a.dataset.go}"]`).click(); window.scrollTo({top:0,behavior:'smooth'});}));
 })();

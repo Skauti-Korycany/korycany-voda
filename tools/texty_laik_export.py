@@ -29,7 +29,7 @@ SPOLECNE = [
 
 JAKBYLO = [
     ("#", "Úvod"),
-    ("úvod", "nadtitulek", "Jak bylo · data ČHMÚ 1921-{letošní rok}", ""),
+    ("úvod", "nadtitulek", "Historie · data ČHMÚ 1921-{letošní rok}", ""),
     ("úvod", "hlavní nadpis", "Naprší zhruba stejně jako před sto lety, přesto krajině ubývá voda.", ""),
     ("úvod", "úvodní odstavec", "V letech {první úsek, 1921-1945} napršelo za rok průměrně {srážky 1921-1945} mm, v letech {posledních 5 let, 2021-2025} {srážky 2021-2025} mm. Od roku 2001 se ale otepluje o {oteplení} °C za každých deset let. Teplejší vzduch si bere víc vody. Měřený pramen v Chřibech nad Koryčany dává dnes {pramen dnes v %} % toho, co v 80. letech, a potokem přitéká do přehrady {Kyjovka dnes v %} % vody proti letům {první desetiletí měření Kyjovky}. Proto dává smysl zkusit odtékající vodu na katastru Koryčan zadržet a nechat vsáknout.", "skládá se v JS; věta o pramenu a Kyjovce jen když se načtou data o pramenech"),
     ("úvod", "poznámka", "Data se stahují automaticky čtyřikrát denně. Poslední den s daty: {datum}, staženo {kdy}. ČHMÚ zveřejňuje denní data se zpožděním 1-2 dny (den měření končí v 8 ráno), proto tu včerejšek ještě nemusí být.", ""),
@@ -111,7 +111,7 @@ JAKBYLO = [
     ("#", "Kapitola 7: Výzva"),
     ("kap. 7", "nadpis", "7. Co s tím u vás doma", ""),
     ("kap. 7", "text", "Vodu, která spadne na střechu a dvůr, jde udržet tam, kde spadla: sud pod okapem, dešťový záhon, strom, propustná dlažba. Spočítej si, kolik to dělá na tvém pozemku.", ""),
-    ("kap. 7", "odkazy", "Spočítej svůj pozemek → | Co se dá udělat (katalog) →", ""),
+    ("kap. 7", "odkazy", "Spočítej svůj pozemek → | Katalog opatření →", ""),
 
     ("#", "Více o tématu (rozbalovací část na konci)"),
     ("více o tématu", "štítek", "Více o tématu - výběr období a srovnání ročníků, trendy v číslech, měsíční bilance, pojmy, metody a zdroje", ""),
@@ -255,8 +255,8 @@ UZEMI = [
     ("Zkus si to", "posuvník", "Kolik domácností se zapojí: {x} %", ""),
     ("Zkus si to", "popisek + tlačítka", "Co udělají: odpojit okap od kanálu | dešťový záhon | sud nebo nádrž 1 m³ | propustná dlažba místo betonu", ""),
     ("Zkus si to", "tvary do věty", "odpojený okap | dešťový záhon | sud nebo nádrž | propustnou dlažbu", "doplňuje se do věty \"každá měla ...\""),
-    ("Zkus si to", "popisek + tlačítka", "Jedna domácnost: průměrná v obci | jako můj pozemek", "druhé tlačítko má nápovědu \"Nejdřív projdi Můj pozemek\""),
-    ("jako můj pozemek", "text", "Počítám, jako by každá zapojená domácnost měla pozemek jako ty: střecha {x} m², dlažba {x} m², zahrada {x} m², svody {svody}; opatření: {seznam}. Jedna domácnost tak udrží {x} m³ z deště {mm} mm. [Změnit v Můj pozemek] Domy v obci mají různé střechy a půdy, je to „co kdyby“, ne odhad pro obec 🤔. Průměrný dům v území má půdorys {x} m² (ČÚZK ✅).", ""),
+    ("Zkus si to", "popisek + tlačítka", "Jedna domácnost: průměrná v obci | jako můj pozemek", "druhé tlačítko má nápovědu \"Nejdřív spočítej svůj dům\""),
+    ("jako můj pozemek", "text", "Počítám, jako by každá zapojená domácnost měla pozemek jako ty: střecha {x} m², dlažba {x} m², zahrada {x} m², svody {svody}; opatření: {seznam}. Jedna domácnost tak udrží {x} m³ z deště {mm} mm. [Změnit u svého domu] Domy v obci mají různé střechy a půdy, je to „co kdyby“, ne odhad pro obec 🤔. Průměrný dům v území má půdorys {x} m² (ČÚZK ✅).", ""),
     ("upozornění", "text", "Dešťový záhon a sud bez odpojeného okapu nic nezadrží, voda z okapu teče do kanálu a k nim se nedostane. Zapni i „odpojit okap od kanálu“.", ""),
     ("klíčová čísla, karta 1", "číslo + popis", "{x} - domácností z {x} se zapojí", ""),
     ("klíčová čísla, karta 2", "číslo + popis", "{x} m³ - zůstane z jednoho deště {mm} mm. Teď ze střech a dvorů všech domácností odteče {x} m³.", ""),
@@ -334,12 +334,12 @@ UZEMI = [
     ("#", "Výzva na konci"),
     ("výzva", "nadpis", "Začni u sebe", ""),
     ("výzva", "text", "Nejrychleji se dá začít na vlastním pozemku. Spočítej, kolik vody ti uteče a co s tím jde udělat.", ""),
-    ("výzva", "odkazy", "Spočítej svůj pozemek → | Všechna opatření (katalog) →", ""),
+    ("výzva", "odkazy", "Spočítej svůj pozemek → | Katalog opatření →", ""),
 ]
 
 KATALOG = [
     ("#", "Úvod a filtry"),
-    ("úvod", "nadtitulek", "Katalog", ""),
+    ("úvod", "nadtitulek", "Katalog opatření", ""),
     ("úvod", "hlavní nadpis", "Co se dá udělat", ""),
     ("úvod", "úvodní odstavec", "Od sudu pod okapem po rybník. U každého opatření najdeš, co udělá, kolik stojí, kdo ho může udělat a z čeho ho zaplatit.", ""),
     ("filtr Kde", "popisek", "Kde", ""),
@@ -351,7 +351,7 @@ KATALOG = [
     ("podrobné filtry", "štítek", "Podrobné filtry (pro školu a úřad)", ""),
     ("podrobné filtry", "popisky", "Místo | Kdo rozhoduje | Účinek | Peníze a pracnost", ""),
     ("podrobné filtry", "tlačítka", "jen s dotací, která je teď otevřená | jen svépomoc (za víkend, bez povolení)", ""),
-    ("pod filtry", "poznámka", "Čísla jsou pro vzorový dům (100 m² střechy, 50 m² dvora, běžný déšť 10 mm). Pro tvůj dům je spočítá Můj pozemek. Zdroje, ceny a podrobnosti jsou u každého opatření v „Proč a jak“.", ""),
+    ("pod filtry", "poznámka", "Čísla jsou pro vzorový dům (100 m² střechy, 50 m² dvora, běžný déšť 10 mm). Spočítej je pro svůj dům. Zdroje, ceny a podrobnosti jsou u každého opatření v „Proč a jak“.", ""),
 
     ("#", "Skupiny a dlaždice"),
     ("rozcestník", "popisek", "Přejít na:", ""),
@@ -377,16 +377,16 @@ OMODELU = [
     ("kap. 1", "nadtitulek", "Kapitola 1 · Stav", ""),
     ("kap. 1", "nadpis", "Co je hotové a co chybí", ""),
     ("kap. 1", "věta pro laika", "Aplikace běží na skutečných datech o terénu, půdě, budovách a srážkách v Koryčanech, ale zatím jsme ji neporovnali s měřením průtoku v potoce. Proto u ní stojí nevalidováno.", ""),
-    ("Hotovo", "bod", "Jak bylo: srážky ČHMÚ Koryčany od roku 1921, teploty od roku 2001, měřené prameny a průtok Kyjovky, možný výpar z měření (Penman-Monteith); denní data se stahují sama čtyřikrát denně.", ""),
-    ("Hotovo", "bod", "Můj pozemek: skutečné parcely a budovy z katastru, sklon z výškopisu, půda z mapy VÚMOP, skutečný déšť za posledních 30 dní.", ""),
+    ("Hotovo", "bod", "Historie: srážky ČHMÚ Koryčany od roku 1921, teploty od roku 2001, měřené prameny a průtok Kyjovky, možný výpar z měření (Penman-Monteith); denní data se stahují sama čtyřikrát denně.", ""),
+    ("Hotovo", "bod", "Můj dům a pozemek: skutečné parcely a budovy z katastru, sklon z výškopisu, půda z mapy VÚMOP, skutečný déšť za posledních 30 dní.", ""),
     ("Hotovo", "bod", "Půda: podrobná mapa hydrologických skupin půd od VÚMOP (27. 10. 2026), i pro les a zástavbu; dřív byl skoro 40 % území odhad.", ""),
     ("Hotovo", "bod", "Celé území: střechy podle účelu budov, odtok z polí, luk a lesů po čtvercích 5 m, eroze orné půdy, objem vody za hrází na potoce.", ""),
     ("Hotovo", "bod", "Katalog: 66 opatření s účinkem, cenou, zdrojem a cestou k penězům.", ""),
     ("Rozpracováno", "bod", "Měření: reakce Stříbrníku na déšť u Kachníku (léto 2026) je zpracovaná; data z přehrady od Povodí Moravy zatím nemáme.", ""),
-    ("Rozpracováno", "bod", "Zkouška s lidmi: Můj pozemek prošel první test s občanem a podle něj se upravil.", ""),
+    ("Rozpracováno", "bod", "Zkouška s lidmi: Můj dům a pozemek prošel prvním testem s občanem a podle něj se upravil.", ""),
     ("Chybí", "bod", "Ověření na měření (validace): porovnat výpočet s průtokem v potoce po skutečném dešti.", ""),
     ("Chybí", "bod", "Průběh povodňové vlny: model počítá objemy vody, ne to, jak rychle vlna přijde a jak ji opatření zpomalí.", ""),
-    ("Chybí", "bod", "Klima 2050 a 2090 v číslech pro Koryčany: zatím jen výhled CzechGlobe a IPCC v Jak bylo.", ""),
+    ("Chybí", "bod", "Klima 2050 a 2090 v číslech pro Koryčany: zatím jen výhled CzechGlobe a IPCC v Historii.", ""),
     ("Chybí", "bod", "Horko a vítr jako mapa a formulář pro měření školy.", ""),
 
     ("#", "Kapitola 2: Metody"),

@@ -9,7 +9,7 @@ Osvětová webová aplikace pro obyvatele Koryčan (okres Kroměříž): reáln�
 - Repozitář: https://github.com/Skauti-Korycany/korycany-voda (větev `main` = pravda)
 - Web (GitHub Pages): https://skauti-korycany.github.io/korycany-voda/ (+ `stav.html`, `web/test.html`)
 - Cíl není projektový model. Cíl je, aby lidé pochopili souvislosti a věděli, co může udělat kdo (domácnost, obec, zemědělec, lesník, škola).
-- Aplikace musí vždy viditelně říkat: zjednodušený model pro osvětu, ne projekt; **nevalidováno** (dokud není porovnání s měřením).
+- Aplikace musí vždy viditelně říkat: zjednodušený model pro osvětu; **nevalidováno** (dokud není porovnání s měřením). "Ne projekt" uživatel z upozornění nahoře záměrně vypustil (16. 11.), zůstává v O modelu.
 
 ## 2. Uživatel a pravidla spolupráce
 
@@ -71,6 +71,8 @@ docs/                              sumáře: STAV, VRSTVY, JADRO, CN, SRAZKY, US
 ```
 
 ### Aplikace (`index.html`, 5 záložek, `data-tab`)
+
+Názvy záložek na webu (16. 11.): Historie (`jakbylo`), Můj dům a pozemek (`pozemek`), Celé území, Katalog opatření, O modelu. V textech odkazovat úsporně: "v Historii", odkaz "Spočítej svůj pozemek / svůj dům", "Katalog opatření".
 
 | záložka | obsah | hlavní funkce v build_dummy.py |
 |---|---|---|

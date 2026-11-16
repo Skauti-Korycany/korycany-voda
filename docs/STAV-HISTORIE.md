@@ -4,6 +4,8 @@ Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `d
 
 ## 16. 11. 2026 (večer) - první dávka přepsaných textů z tabulky
 
+- Rozhodnutí uživatele: "ne projekt" v upozornění nahoře záměrně vypuštěno; 🤔 = "AI odhad" ponecháno; odkazy na záložky sjednotit úsporně. Provedeno: nadtitulek "Historie · data ČHMÚ", "v Historii", "Katalog opatření" (nadtitulek katalogu a odkazy "→"), katalog "Spočítej je pro svůj dům", Celé území "Změnit u svého domu", nápověda tlačítka "Nejdřív spočítej svůj dům", O modelu Historie / Můj dům a pozemek; v Pro zvídavé "hledání adresy", "stejně jako u výpočtu pro jeden dům". Odkazy "Spočítej svůj pozemek →" ponechány. `stav.html` (2 zmínky "Jak bylo") beze změny, čeká na rozhodnutí o stav.html. Kontrola 1300/390 px bez chyb a posunu.
+
 - Uživatel poslal `TEXTY-PRO-LAIKY_v01.xlsx` (uložen v `docs/`), vyplněno SP-002 až JB-012; skutečně změněno 7 řádků, ostatní shodné s původním.
 - Propsáno do `build_dummy.py`: podtitul (SP-002), názvy záložek Historie / Můj dům a pozemek / Katalog opatření (SP-003, jen tlačítka; zmínky záložek v textech zatím beze změny), upozornění nahoře (SP-004, bez "ne projekt" a "Nic se neukládá" podle uživatele), rozbalené upozornění (SP-005), nadpis Jak bylo (JB-002), úvodní odstavec (JB-003) a kap. 1 (JB-010).
 - Sloučeno s `main` (srážky po 25 letech a průměr posledních 5 let). JB-003 napsán proti starým obdobím 1921-1950 / 1991-2020: použita nová období z kódu (1921-1945, 2021-2025). JB-010 "historický normál ... podle WMO" ukazuje skutečný normál 1991-2020 (633 mm), "před sto lety" první úsek 1921-1945. Záložní úvod bez JS přepsán v duchu JB-003 (vlastní znění).
