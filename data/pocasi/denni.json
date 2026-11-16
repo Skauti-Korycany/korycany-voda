@@ -1,5 +1,5 @@
 {
- "vytvoreno": "2026-11-16T12:27Z",
+ "vytvoreno": "2026-11-16T18:13Z",
  "stanice": {
   "chmu_korycany": {
    "wsi": "0-203-0-41701068002",
@@ -6089,7 +6089,7 @@
   "2026-11-15": {
    "P_kor": null,
    "P_pmo": 0.0,
-   "P_nem": null,
+   "P_nem": 0.0,
    "T": null,
    "Tmin": null,
    "Tmax": null,
@@ -6110,7 +6110,7 @@
   }
  },
  "log": [
-  "12_pocasi.py 2026-11-16 12:27 UTC",
+  "12_pocasi.py 2026-11-16 18:13 UTC",
   "1) CHMU Korycany (srazky)",
   "  0-203-0-41701068002 2026-11: 90 zaznamu",
   "  0-203-0-41701068002 2026-10: 186 zaznamu",
@@ -6119,7 +6119,7 @@
   "  0-203-0-41503035001 2026-11: 480 zaznamu",
   "  0-203-0-41503035001 2026-10: 992 zaznamu",
   "  0-203-0-41503035001 2026-09: 960 zaznamu",
-  "  Nemochovice P: 75 dni (2026-09-01..2026-11-14)",
+  "  Nemochovice P: 76 dni (2026-09-01..2026-11-15)",
   "  Nemochovice T: 75 dni (2026-09-01..2026-11-14)",
   "  Nemochovice Tmax: 75 dni (2026-09-01..2026-11-14)",
   "  Nemochovice Tmin: 75 dni (2026-09-01..2026-11-14)",
@@ -6140,8 +6140,8 @@
   "  0-20000-0-11774 2026-09: 1200 zaznamu",
   "  svit Holešov: 76 dni (2026-09-01..2026-11-15)",
   "3) Povodi Moravy KS Korycany",
-  "  24 hodinovych radku (15.11. 14:00 - 16.11. 13:00)",
-  "  archiv pmo_korycany.csv: 650 radku",
+  "  24 hodinovych radku (15.11. 20:00 - 16.11. 19:00)",
+  "  archiv pmo_korycany.csv: 656 radku",
   "4) hladiny.cz Nemotice_SR",
   "  10 hodinovych radku (16.11. 05:00 - 16.11. 12:00)",
   "  archiv nemotice.csv: 520 radku",
