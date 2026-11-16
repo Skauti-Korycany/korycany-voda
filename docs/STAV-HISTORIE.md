@@ -2,6 +2,14 @@
 
 Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `docs/STAV.md`. Starší rozhodnutí mohou být nahrazena novějšími (u nahrazených je to v textu poznamenáno).
 
+## 16. 11. 2026 - laické texty v jedné tabulce pro přepis
+
+Zadání: vytáhnout laické texty webu do jednoho přehledného souboru, původní a nový text vedle sebe.
+- `tools/texty_laik_export.py` -> `docs/TEXTY-PRO-LAIKY.xlsx`. Listy: Návod, Společné, Jak bylo, Můj pozemek, Celé území, Katalog, Opatření, Dotace, O modelu. Sloupce: Č. (např. JB-012), Kde na webu, Druh textu, Původní text, Nový text (žlutý, prázdný), Tvoje poznámka, Poznámka k textu. Řádky v pořadí stránky, oddíly podle kapitol.
+- Texty šablony a vět z JS opsané ručně (snímek k 16. 11.); čísla, která web doplňuje, jako `{popis}`; varianty oddělené `/`, krátké položky `|`. Opatření (název, název v Můj pozemek z `AKCE`, popis, hlavní věta, přenositelnost, rizika) a věty dotací se berou z `data/opatreni.json` při každém spuštění.
+- Nevytahuje se obsah "Pro zvídavé", osy grafů, formulář Upřesnit čísla, důvody "Nehodí se" (EFF) a texty upozornění hráze z `web/jadro.js`.
+- Web se nemění; kód zatím texty z tabulky nečte. Po vrácení vyplněné tabulky se nové texty přenesou ručně do `build_dummy.py` / `build_opatreni.py` podle čísla řádku.
+
 ## 15. 11. 2026 (noc) - laik / zvídavý na zbytku webu
 
 Zadání: dotáhnout dvě úrovně textu mimo kap. 2 a 3 v Jak bylo. Vše v `tools/build_dummy.py`, výpočty beze změny, žádné číslo se nezměnilo ani nezmizelo, jen se přesunulo.
