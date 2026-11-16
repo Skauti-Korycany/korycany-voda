@@ -370,6 +370,23 @@ details.jb-vice[open]{padding-bottom:1rem}
 .jb-card .cmp.plus b{color:var(--water)} .jb-card .cmp.minus b{color:var(--bad)}
 .jb-card .src{margin-top:.35rem}
 .jb-chart{width:100%;height:auto;margin-top:.6rem;display:block;font-family:var(--f-mono);font-size:10px}
+/* Historie: jeden sloupec stejne siroky pro text i grafy, vzdusnejsi bloky (16. 11. 2026) */
+.jb-story{--jb-w:52rem;align-items:center}
+@media(min-width:700px){ .jb-story{padding:1.6rem 1.6rem 2rem} }
+.jb-story>*{width:100%;max-width:var(--jb-w);box-sizing:border-box}
+.jb-story .jb-hero,.jb-story>.jb-p,.jb-story>.jb-zdroj,.jb-story>.jb-lijak{max-width:var(--jb-w)}
+.jb-story .jb-box .jb-p,.jb-story #jb-vyp-box>*{max-width:none}
+.jb-story .jb-key{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.jb-story>.jb-p{margin:.3rem 0 .6rem}
+.jb-story .legend{margin-top:.5rem;row-gap:.3rem}
+.jb-story .jb-zdroj{margin-top:.4rem}
+.jb-story .legend+.zoom-wrap{margin-top:1.8rem}
+.jb-story #jb-vyp-box{margin-top:2.2rem;display:flex;flex-direction:column}
+.jb-story #jb-vyp-box[hidden]{display:none}
+.jb-story details.jb-cist{margin-top:1.4rem}
+.jb-story .jb-box{margin:2.2rem 0 .4rem}
+.jb-story h3.jb-ch{margin-top:3rem}
+.jb-story .jb-lijak{margin:1rem 0 .5rem}
 /* zvetseni grafu do okna (22. 10. 2026) */
 .zoom-wrap{display:flex;flex-direction:column}
 .zoom-wrap>svg.jb-chart{cursor:zoom-in}

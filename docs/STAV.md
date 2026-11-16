@@ -40,6 +40,9 @@ Před zveřejněním (pořadí určí uživatel):
 
 ## Platná rozhodnutí
 
+Vzhled
+- Historie (16. 11.): text i grafy v jednom sloupci 52rem (CSS proměnná `--jb-w` u `.jb-story`), sloupec vystředěný v panelu; větší mezery mezi grafy, bloky a kapitolami. Na mobilu beze změny.
+
 Obsah a tón
 - Východisko jsou dlouhé řady a trendy, ne jeden rok; letošek je doplněk. Nestranně, jen čísla z dat. Zpráva: vody ubývá, i vy můžete něco změnit, začněme doma.
 - Tvrdit jen to, co data ukazují: srážky za rok se od 1921 nemění; teplota roste (+0,5 °C / 10 let, průkazně); prameny a přítok Kyjovky klesají (průkazně, příčinu měření neurčuje); výpar roste průkazně v Kroměříži a Holešově od 50. let, pro Koryčany je řada krátká; velkých lijáků v místní řadě nepřibývá - častější extrémy srážek jen jako výhled se zdrojem.

@@ -2,6 +2,12 @@
 
 Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `docs/STAV.md`. Starší rozhodnutí mohou být nahrazena novějšími (u nahrazených je to v textu poznamenáno).
 
+## 16. 11. 2026 (noc) - vzhled Historie: jednotná šířka a mezery
+
+- Text měl strop 46rem (736 px), grafy plnou šířku panelu (1134 px). Sjednoceno: vše v Historii v jednom vystředěném sloupci 52rem (832 px), text řádky ~100 znaků, grafy se zmenšily blíž k návrhové šířce viewBox 720.
+- Mezery: graf po legendě +1,8rem, blok "Výparu přibývá" +2,2rem, "Pro zvídavé" +1,4rem, vysvětlující boxy 2,2rem, kapitoly 3rem; klíčová čísla 4 v řadě. Obsah beze změny. Jen CSS v `build_dummy.py`.
+- Kontrola Chromium 1300 px světlý/tmavý, 390 px: bez chyb, bez vodorovného posunu.
+
 ## 16. 11. 2026 (večer) - první dávka přepsaných textů z tabulky
 
 - Rozhodnutí uživatele: "ne projekt" v upozornění nahoře záměrně vypuštěno; 🤔 = "AI odhad" ponecháno; odkazy na záložky sjednotit úsporně. Provedeno: nadtitulek "Historie · data ČHMÚ", "v Historii", "Katalog opatření" (nadtitulek katalogu a odkazy "→"), katalog "Spočítej je pro svůj dům", Celé území "Změnit u svého domu", nápověda tlačítka "Nejdřív spočítej svůj dům", O modelu Historie / Můj dům a pozemek; v Pro zvídavé "hledání adresy", "stejně jako u výpočtu pro jeden dům". Odkazy "Spočítej svůj pozemek →" ponechány. `stav.html` (2 zmínky "Jak bylo") beze změny, čeká na rozhodnutí o stav.html. Kontrola 1300/390 px bez chyb a posunu.
