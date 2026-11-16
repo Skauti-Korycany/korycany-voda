@@ -3422,7 +3422,11 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
   let cur=null;
   if(!R[ROK]){ const dd=DNY.filter(d=>d.startsWith(ROK+'-')); let P=0,nP=0,Pn=0; dd.forEach(d=>{const p=W.dny[d][0], m=+d.slice(5,7); Pn+=N.mesic[m].P/dim(ROK,m); if(p!=null){P+=p;nP++;}});
     if(nP>60) cur={r:ROK,P,Pn,do:dd[dd.length-1],n:nP,dni:dd.length}; }
-  JB.p1={cur,body};
+  // 25leté úseky od začátku řady (bez překryvu s posledními 5 lety) a aktuální průměr = posledních 5 úplných let
+  const avg_=(a,b)=>mean(body.filter(x=>x[0]>=a&&x[0]<=b).map(x=>x[1])), Rk=body[body.length-1][0], useky=[], akt={a:Rk-4,b:Rk};
+  for(let a=body[0][0];a+24<akt.a;a+=25) useky.push({a,b:a+24,P:avg_(a,a+24)});
+  akt.P=avg_(akt.a,akt.b);
+  JB.p1={cur,body,useky,akt};
   // osa x po letech: chybějící rok = mezera (ne posun ostatních)
   const R0=body[0][0], n=(cur?cur.r:body[body.length-1][0])-R0+1;
   const norm=N.rok.P, Wd=720,Hd=220,L=40,Rr=6,T=12,B=24,w=Wd-L-Rr,h=Hd-T-B, sc=nice(0,Math.max(...body.map(b=>b[1])),4), vmax=sc.hi, bw=w/n, y=v=>T+h-h*v/vmax, X=r=>L+(r-R0)*bw;
@@ -3433,7 +3437,7 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
     o+=`<rect class="rY ${cls}" x="${X(r).toFixed(1)}" y="${y(v)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${T+h-y(v)}"><title>${r}: ${fmt(v,0)} mm${DOPL_T(r,'P')}</title></rect>`;
     if(r%10===0&&!(cur&&r>=cur.r-6))o+=`<text x="${X(r)+bw/2}" y="${Hd-8}" text-anchor="middle">${r}</text>`;});
   // klouzavý průměr 10 let jen přes 10 po sobě jdoucích let
-  const P_=Object.fromEntries(body), a50=mean(body.filter(b=>b[0]>=1921&&b[0]<=1950).map(b=>b[1])); let p='',prev=null;
+  const P_=Object.fromEntries(body), p_=''; let p='',prev=null;
   body.forEach(([r])=>{const okno=[]; for(let k=r-9;k<=r;k++) if(P_[k]!=null) okno.push(P_[k]); if(okno.length<10){prev=null;return;}
     p+=(prev===r-1?'L':'M')+(X(r)+bw/2).toFixed(1)+' '+y(mean(okno)).toFixed(1)+' '; prev=r;});
   const dt=cur?cur.do.slice(8,10).replace(/^0/,'')+'. '+cur.do.slice(5,7).replace(/^0/,'')+'.':'';
@@ -3441,17 +3445,16 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
     o+=`<rect x="${xx.toFixed(1)}" y="${y(cur.P)}" width="${Math.max(1,bw-1).toFixed(1)}" height="${T+h-y(cur.P)}" style="fill:var(--dry);opacity:.45;stroke:var(--dry);stroke-dasharray:2 2"><title>${cur.r} do ${dt}: ${fmt(cur.P,0)} mm (normál za stejné období ${fmt(cur.Pn,0)} mm)</title></rect>`+
       `<line x1="${xx.toFixed(1)}" x2="${(xx+bw).toFixed(1)}" y1="${y(cur.Pn)}" y2="${y(cur.Pn)}" style="stroke:var(--fg);stroke-width:1.5"><title>normál do ${dt}: ${fmt(cur.Pn,0)} mm</title></line>`+
       `<text x="${xx+bw/2}" y="${Hd-8}" text-anchor="end">${cur.r}*</text>`; }
-  o+=`<path class="lT" d="${p}"/><line class="nrm" style="stroke-width:1.6" x1="${X(1991).toFixed(1)}" x2="${X(2021).toFixed(1)}" y1="${y(norm)}" y2="${y(norm)}"/><text x="${X(2021).toFixed(1)}" y="${T+8}" text-anchor="end">průměr 1991-2020: ${fmt(norm,0)} mm</text>`
-    +`<line class="nrm" style="stroke-width:1.6" x1="${X(1921).toFixed(1)}" x2="${X(1951).toFixed(1)}" y1="${y(a50)}" y2="${y(a50)}"/><text x="${X(1921).toFixed(1)}" y="${T+8}">průměr 1921-1950: ${fmt(a50,0)} mm</text>`;
+  o+=`<path class="lT" d="${p}"/>`+useky.map(u=>`<line class="nrm" style="stroke-width:1.6" x1="${X(u.a).toFixed(1)}" x2="${X(u.b+1).toFixed(1)}" y1="${y(u.P)}" y2="${y(u.P)}"><title>průměr ${u.a}-${u.b}: ${fmt(u.P,0)} mm</title></line><text x="${(X(u.a)+2).toFixed(1)}" y="${T+8}">${u.a}-${u.b}: ${fmt(u.P,0)}</text>`).join('')
+    +`<line class="nrm" style="stroke-width:2.4;stroke:var(--accent)" x1="${X(akt.a).toFixed(1)}" x2="${X(akt.b+1).toFixed(1)}" y1="${y(akt.P)}" y2="${y(akt.P)}"><title>průměr ${akt.a}-${akt.b}: ${fmt(akt.P,0)} mm</title></line><text x="${X(akt.b+1).toFixed(1)}" y="${T+8}" text-anchor="end" style="fill:var(--accent);font-weight:600">${akt.a}-${akt.b}: ${fmt(akt.P,0)}</text>`;
   // popisky primo v grafu: nejdestivejsi rok od 1950 a letosek
   const mk=body.filter(b=>b[0]>=1950).reduce((a,b)=>b[1]>a[1]?b:a);
   o+=`<text class="ann" x="${(X(mk[0])-3).toFixed(1)}" y="${(y(mk[1])+4).toFixed(1)}" text-anchor="end">${mk[0]}: ${fmt0(mk[1])} mm</text>`;
   if(cur) o+=`<text class="ann" x="${(X(cur.r)-3).toFixed(1)}" y="${(y(cur.P)+4).toFixed(1)}" text-anchor="end">letos zatím ${fmt0(cur.P)} mm</text>`;
   $('jb-l1').innerHTML=o;
-  const p10=mean(body.filter(b=>b[0]>=ROK-10).map(b=>b[1])), p30=mean(body.filter(b=>b[0]>=1961&&b[0]<=1990).map(b=>b[1]));
   const sucha=body.filter(b=>b[1]<norm*0.75).map(b=>b[0]+(DOPL(b[0],'P')>=DOPL_MIN?' (doplněný)':''));
   const doplR=body.filter(b=>DOPL(b[0],'P')>=DOPL_MIN).map(b=>b[0]), chybi=[]; for(let r=R0;r<=body[body.length-1][0];r++) if(P_[r]==null) chybi.push(r);
-  $('jb-l1-n').innerHTML=`${body.length} úplných let, ČHMÚ Koryčany ✅`+(doplR.length?`; roky ${roky_(doplR)} mají chybějící dny doplněné z nejbližší okolní stanice (tečka pod rokem, podrobnosti po najetí na sloupec)`:'')+(chybi.length?`; chybí ${roky_(chybi)}`:'')+`. Průměr ${ROK-10}-${ROK-1}: <b class="num">${fmt(p10,0)} mm</b>, normál 1991-2020 ${fmt(norm,0)} mm, 1961-1990 ${fmt(p30,0)} mm. Roční úhrn se dlouhodobě drží; roky pod 75 % normálu: ${sucha.length?sucha.join(', '):'žádné'}.`+
+  $('jb-l1-n').innerHTML=`${body.length} úplných let, ČHMÚ Koryčany ✅`+(doplR.length?`; roky ${roky_(doplR)} mají chybějící dny doplněné z nejbližší okolní stanice (tečka pod rokem, podrobnosti po najetí na sloupec)`:'')+(chybi.length?`; chybí ${roky_(chybi)}`:'')+`. Průměr ${akt.a}-${akt.b}: <b class="num">${fmt(akt.P,0)} mm</b>; po 25 letech: ${useky.map(u=>`${u.a}-${u.b} ${fmt(u.P,0)} mm`).join(', ')}. Průměr 5 let je jen orientační, jeden mokrý nebo suchý rok ho posune o desítky mm. Normál 1991-2020 (${fmt(norm,0)} mm, srovnávací období podle WMO) zůstává základem pro srovnání letoška. Roční úhrn se dlouhodobě drží; roky pod 75 % normálu: ${sucha.length?sucha.join(', '):'žádné'}.`+
     (cur?` <b>${cur.r}*</b> = neúplný rok do ${dt} (předběžná data, dny bez stanice Koryčany doplněny z KS Koryčany a Nemochovic): <b class="num">${fmt(cur.P,0)} mm</b>, normál za stejné období ${fmt(cur.Pn,0)} mm (černá čárka u sloupce) = ${fmt(100*cur.P/cur.Pn,0)} %.`:'');
 })();
 
@@ -3546,15 +3549,15 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
 // ---------- Jak bylo jako datovy pribeh (22. 10. 2026): klicova cisla, texty kapitol, vysvetleni, lijaky, letosek, vyzva
 (function(){
   const p1=JB.p1, p2=JB.p2; if(!p1||!p2) return;
-  const Py=Object.fromEntries(p1.body), avgP=(a,b)=>mean(Object.entries(Py).filter(([r])=>r>=a&&r<=b).map(([,v])=>v));
+  const A=p1.akt, U0=p1.useky[0];
   const bT=p2.bodyT, bV=p2.body, rng=(arr,a,b,k)=>mean(arr.filter(x=>x.r>=a&&x.r<=b&&x[k]!=null).map(x=>x[k]));
   const trE=lin(bV.map(b=>b.r),bV.map(b=>b.E))*10, d30a=rng(bT,2001,2010,'d30'), d30b=rng(bT,ROK-10,ROK-1,'d30');
   $('jb-rok').textContent=ROK;
   const kc=(n,c,t)=>`<div class="jb-k"><div class="num" style="color:var(${c})">${n}</div><div>${t}</div></div>`;
   const trT=lin(bV.map(b=>b.r),bV.map(b=>b.T))*10, P25=mean(p1.body.filter(b=>b[0]>=bV[0].r&&b[0]<=bV[bV.length-1].r).map(b=>b[1])), obdT=`${bV[0].r}-${bV[bV.length-1].r}`;
   const sgn=v=>(v>0?'+':v<0?'-':'')+fmt(Math.abs(v),1);
-  $('jb-lede').innerHTML=`Roční úhrn srážek se v Koryčanech za sto let nezměnil: v letech 1921-1950 to bylo v průměru ${fmt0(avgP(1921,1950))} mm, v letech 1991-2020 ${fmt0(N.rok.P)} mm. Od roku ${bV[0].r} se ale otepluje, v průměru o ${fmt(Math.abs(trT),1)} °C za každých deset let. Teplejší vzduch si bere víc vody, takže stejný déšť stačí krajině na méně. Část té vody může zadržet každý u sebe doma.`;
-  $('jb-key').innerHTML=kc(`${fmt0(N.rok.P)} mm`,'--water',`naprší v průměru za rok (1991-2020). V letech 1921-1950 to bylo v průměru ${fmt0(avgP(1921,1950))} mm.`)
+  $('jb-lede').innerHTML=`Roční úhrn srážek se v Koryčanech za sto let nezměnil: v letech ${U0.a}-${U0.b} to bylo v průměru ${fmt0(U0.P)} mm, v letech ${A.a}-${A.b} ${fmt0(A.P)} mm. Od roku ${bV[0].r} se ale otepluje, v průměru o ${fmt(Math.abs(trT),1)} °C za každých deset let. Teplejší vzduch si bere víc vody, takže stejný déšť stačí krajině na méně. Část té vody může zadržet každý u sebe doma.`;
+  $('jb-key').innerHTML=kc(`${fmt0(A.P)} mm`,'--water',`naprší v průměru za rok (${A.a}-${A.b}). V letech ${U0.a}-${U0.b} to bylo v průměru ${fmt0(U0.P)} mm.`)
     +kc(`${sgn(trT)} °C`,'--soil',`za každých 10 let: tak se mění průměrná roční teplota (${obdT}, ČHMÚ Nemochovice).`)
     +kc(`${fmt0(d30a)} → ${fmt0(d30b)}`,'--bad',`tropických dní za rok: průměr 2001-2010 proti ${ROK-10}-${ROK-1}.`);
   // kapitola 3: merene prameny a prutok (data/hydro_rocni.json)
@@ -3590,8 +3593,8 @@ const roky_=a=>{const o=[];a.forEach(r=>{const l=o[o.length-1]; if(l&&l[1]===r-1
   }
   // kapitola 1
   const pMin=p1.body.reduce((a,b)=>b[1]<a[1]?b:a), pMax=p1.body.reduce((a,b)=>b[1]>a[1]?b:a);
-  $('jb-ch1').innerHTML=`V Koryčanech naprší v průměru <b>${fmt0(N.rok.P)} mm za rok</b> (1991-2020). Před sto lety to bylo ${fmt0(avgP(1921,1950))} mm (1921-1950). Mokré a suché roky se střídají, ale deště za rok dlouhodobě neubývá ani nepřibývá.`;
-  $('jb-ch1-z').innerHTML=`Srážky se v Koryčanech měří přes sto let (stanice ČHMÚ, řada od roku ${p1.body[0][0]}). Jednotlivé roky se liší od ${fmt0(pMin[1])} mm (${pMin[0]}) po ${fmt0(pMax[1])} mm (${pMax[0]}). Oranžová čára je klouzavý průměr, tedy průměr vždy z posledních deseti let; drží se kolem 600 mm. Čárkované úseky jsou průměry let 1921-1950 a 1991-2020 (takzvaný normál).`;
+  $('jb-ch1').innerHTML=`V Koryčanech naprší v průměru <b>${fmt0(A.P)} mm za rok</b> (${A.a}-${A.b}). Před sto lety to bylo ${fmt0(U0.P)} mm (${U0.a}-${U0.b}). Mokré a suché roky se střídají, ale deště za rok dlouhodobě neubývá ani nepřibývá.`;
+  $('jb-ch1-z').innerHTML=`Srážky se v Koryčanech měří přes sto let (stanice ČHMÚ, řada od roku ${p1.body[0][0]}). Jednotlivé roky se liší od ${fmt0(pMin[1])} mm (${pMin[0]}) po ${fmt0(pMax[1])} mm (${pMax[0]}). Oranžová čára je klouzavý průměr, tedy průměr vždy z posledních deseti let; drží se kolem 600 mm. Čárkované úseky jsou průměry vždy za 25 let (${p1.useky.map(u=>`${u.a}-${u.b}: ${fmt0(u.P)} mm`).join(', ')}), barevný úsek vpravo průměr posledních 5 let.`;
   // box 1: kam mizi dest
   const zizen=N.rok.ET0-P25;
   $('jb-box1').innerHTML=`V letech ${obdT} napršelo na metr čtvereční v průměru ${fmt0(P25)} litrů za rok. Slunce, teplo a vítr by ale dokázaly odpařit v průměru ${fmt0(N.rok.ET0)} litrů, kdyby voda byla. Tomu rozdílu říkáme žízeň krajiny. Vypaří se jen tolik, kolik vody opravdu je. Čím je půda sušší, tím méně má co odpařit a tím víc rostliny strádají. Co steče do kanálu, krajině chybí.`;

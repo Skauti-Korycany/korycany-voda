@@ -43,6 +43,7 @@ Před zveřejněním (pořadí určí uživatel):
 Obsah a tón
 - Východisko jsou dlouhé řady a trendy, ne jeden rok; letošek je doplněk. Nestranně, jen čísla z dat. Zpráva: vody ubývá, i vy můžete něco změnit, začněme doma.
 - Tvrdit jen to, co data ukazují: srážky za rok se od 1921 nemění; teplota roste (+0,5 °C / 10 let, průkazně); prameny a přítok Kyjovky klesají (průkazně, příčinu měření neurčuje); výpar roste průkazně v Kroměříži a Holešově od 50. let, pro Koryčany je řada krátká; velkých lijáků v místní řadě nepřibývá - častější extrémy srážek jen jako výhled se zdrojem.
+- Srážky za rok (16. 11.): hlavní číslo = průměr posledních 5 úplných let (teď 2021-2025, 655 mm), srovnání po 25 letech od 1921 (1921-1945 630, 1946-1970 650, 1971-1995 571, 1996-2020 646 mm); úseky se posouvají samy. Normál 1991-2020 zůstává základem pro srovnání letoška (% normálu, karty).
 - Každé číslo "za rok" nese "v průměru" a období. Tykání, klidný tón. "Listnatý les zadrží víc vody" se nepoužívá.
 - Dvě úrovně textu laik / zvídavý (viz `CLAUDE.md` kap. 2). Rozbalovací část se všude jmenuje "Pro zvídavé - ..." (`<details class="jb-cist">`, v Celém území a O modelu navíc `uz-det`). Značky původu (✅ 📄 🤔 ⏳) se v laické větě neukazují, jsou u téhož čísla v části pro zvídavé nebo v "Proč a jak". "Proč a jak" a "Kde to funguje" u opatření zůstávají pod svým názvem (praktické informace, ne metoda).
 

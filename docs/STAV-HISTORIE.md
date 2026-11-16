@@ -2,6 +2,13 @@
 
 Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `docs/STAV.md`. Starší rozhodnutí mohou být nahrazena novějšími (u nahrazených je to v textu poznamenáno).
 
+## 16. 11. 2026 - srážky po 25 letech a průměr posledních 5 let
+
+- Na žádost uživatele: Jak bylo místo 1921-1950 proti 1991-2020 ukazuje 25leté úseky od 1921 a jako aktuální číslo průměr posledních 5 úplných let (2021-2025, 655 mm). Úseky počítá prohlížeč (`JB.p1.useky`, `JB.p1.akt`), bez překryvu s posledními 5 lety.
+- Změněno: klíčové číslo, úvodní věta, kap. 1, graf ročních srážek (čárky po 25 letech, barevná čárka posledních 5 let), poznámka pod grafem (doplněno, že průměr 5 let je orientační). Normál 1991-2020 dál pro letošek.
+- Předpoklad: uživatel napsal 2020-2025; zvoleno 2021-2025 (5 let, rok 2020 patří do úseku 1996-2020; s rokem 2020 by vyšlo 677 mm).
+- Kontrola: headless Chromium 1300 px světlý, 390 px tmavý, bez chyb (kromě blokovaného externího zdroje), bez vodorovného posunu.
+
 ## 15. 11. 2026 (noc) - laik / zvídavý na zbytku webu
 
 Zadání: dotáhnout dvě úrovně textu mimo kap. 2 a 3 v Jak bylo. Vše v `tools/build_dummy.py`, výpočty beze změny, žádné číslo se nezměnilo ani nezmizelo, jen se přesunulo.
