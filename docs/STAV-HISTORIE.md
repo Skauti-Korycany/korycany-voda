@@ -12,7 +12,8 @@ Zadání: dotáhnout dvě úrovně textu mimo kap. 2 a 3 v Jak bylo. Vše v `too
 - **Katalog:** jedno číslo na dlaždici bez značky původu, úvodní poznámka odkazuje na "Proč a jak".
 - **O modelu:** kratší úvod; kap. 2 metody po záložkách a konstanty pod "Pro zvídavé", legenda značek zůstala viditelná; kap. 3 tabulka zdrojů a licencí pod "Pro zvídavé".
 - Kontrola: headless Chromium 1300 a 390 px, světlý i tmavý režim, všechny záložky a kroky 2-5 Můj pozemek, rozbalené i sbalené: bez chyb v konzoli, bez vodorovného posunu. Testy jádra nespouštěny (jádro beze změny).
-- Nevyzkoušeno v prohlížeči: výstup hráze po kliknutí na tok (`h-tech`), blok přítoku shora (vyžaduje vybranou parcelu).
+- Výstup hráze (`h-tech`) vyzkoušen na jednom místě toku. Nevyzkoušeno: blok přítoku shora (vyžaduje vybranou parcelu).
+- 16. 11.: sloučeno do `main` po svolení uživatele. O modelu kap. 1: odstraněno datum natvrdo, bod Jak bylo doplněn o prameny, Kyjovku a výpar Penman-Monteith.
 
 ## 15. 11. 2026 (večer) - zkrácení STAV.md a CLAUDE.md
 

@@ -1,6 +1,6 @@
 # STAV projektu Koryčany resilience
 
-Aktualizováno: 15. 11. 2026. Jen to, co je potřeba pro pokračování. Pravidla a architektura: `CLAUDE.md`. Data a skripty: `docs/PIPELINE.md`. Podrobnosti, čísla z rozborů a starší rozhodnutí: `docs/STAV-HISTORIE.md` (číst cíleně; na konci je plné znění tohoto souboru před zkrácením).
+Aktualizováno: 16. 11. 2026. Jen to, co je potřeba pro pokračování. Pravidla a architektura: `CLAUDE.md`. Data a skripty: `docs/PIPELINE.md`. Podrobnosti, čísla z rozborů a starší rozhodnutí: `docs/STAV-HISTORIE.md` (číst cíleně; na konci je plné znění tohoto souboru před zkrácením).
 
 ## Kde jsme
 
@@ -10,7 +10,7 @@ Web běží na GitHub Pages, 5 záložek, zkouší se neformálně s lidmi. Stá
 - **Výpar** se v celé aplikaci počítá metodou Penman-Monteith FAO-56 (dřív Hargreaves z teplot, nadhodnocoval o ~23 %). Denní sběr stahuje i sluneční svit.
 - **Měření ČHMÚ** nově v repu: prameny u Koryčan a průtok Kyjovky (`data/hydro/`, `hydro_rocni.json`), podklady výparu (`data/vypar/`, `vypar_rocni.json`).
 - **Můj pozemek:** svody v poměru 100/75/50/25/0 % do kanalizace.
-- **Laik / zvídavý na celém webu** (druhá relace 15. 11.): nahoře krátká věta s jedním číslem, metody, zdroje, značky původu a tabulky pod rozbalovacím "Pro zvídavé". Hotovo v Jak bylo (kap. 1, 4, 5, výhled), Můj pozemek (kroky 2-4, dlaždice), Celé území (kap. 1-4), Katalog a O modelu (kap. 2, 3). Zatím jen na větvi `claude/dazzling-einstein-sf1qa8`, do `main` po svolení uživatele.
+- **Laik / zvídavý na celém webu** (druhá relace 15. 11.): nahoře krátká věta s jedním číslem, metody, zdroje, značky původu a tabulky pod rozbalovacím "Pro zvídavé". Hotovo v Jak bylo (kap. 1, 4, 5, výhled), Můj pozemek (kroky 2-4, dlaždice), Celé území (kap. 1-4), Katalog a O modelu (kap. 2, 3). V `main` od 16. 11.
 - **Provoz:** workflow počasí a normálů se už nepotkají v konfliktu; testy jádra jdou přes `npm test` a běží samy na GitHubu (`testy.yml`).
 
 ## Další krok
@@ -19,7 +19,7 @@ Před zveřejněním (pořadí určí uživatel):
 - Uživatel projde web po úpravě laik / zvídavý a řekne, kde je laická věta stále dlouhá nebo kde naopak něco chybí.
 - Uživatel přepíše texty pro laiky vlastními slovy. Připravit mu je pohromadě: vytáhnout laické texty do jednoho souboru (např. `data/texty.json` nebo oddíl v šabloně), ať je může upravovat bez zásahu do kódu. Dnes jsou zčásti v HTML šabloně, zčásti ve větách skládaných v JS (`jb-ch1`, `jb-ch3`, `s-veta`, `er-sum`, `u-veta`, `pz-*`).
 - Místní fotografie (uživatel má, se souhlasem autorů): navrhnout místa v rozvržení (úvod Jak bylo, kapitoly, katalog "Kde to funguje"), formát a velikost; fotky dodá uživatel.
-- O modelu kap. 1: datum "Stav k 25. 10. 2026" je natvrdo a seznam Hotovo nezmiňuje prameny, Kyjovku ani nový výpočet výparu. Aktualizovat nebo generovat.
+- Vyzkoušet v prohlížeči blok "přítok shora" v Můj pozemek po úpravě textu (potřebuje vybranou parcelu, 15. 11. nezkoušeno).
 
 ## Potom (pořadí)
 
