@@ -8,6 +8,7 @@ Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `d
 - Změněno: klíčové číslo, úvodní věta, kap. 1, graf ročních srážek (čárky po 25 letech, barevná čárka posledních 5 let), poznámka pod grafem (doplněno, že průměr 5 let je orientační). Normál 1991-2020 dál pro letošek.
 - Předpoklad: uživatel napsal 2020-2025; zvoleno 2021-2025 (5 let, rok 2020 patří do úseku 1996-2020; s rokem 2020 by vyšlo 677 mm).
 - Kontrola: headless Chromium 1300 px světlý, 390 px tmavý, bez chyb (kromě blokovaného externího zdroje), bez vodorovného posunu.
+- Pod grafem srážek odkaz na zdroj (CSV ČHMÚ Koryčany od 1920, složka předběžných denních dat); legenda opravena na "průměr 25 let" + "průměr posledních 5 let". Sloučeno do `main` po svolení uživatele.
 
 ## 15. 11. 2026 (noc) - laik / zvídavý na zbytku webu
 
