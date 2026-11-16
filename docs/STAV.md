@@ -11,6 +11,7 @@ Web běží na GitHub Pages, 5 záložek, zkouší se neformálně s lidmi. Stá
 - **Měření ČHMÚ** nově v repu: prameny u Koryčan a průtok Kyjovky (`data/hydro/`, `hydro_rocni.json`), podklady výparu (`data/vypar/`, `vypar_rocni.json`).
 - **Můj pozemek:** svody v poměru 100/75/50/25/0 % do kanalizace.
 - **Laik / zvídavý na celém webu** (druhá relace 15. 11.): nahoře krátká věta s jedním číslem, metody, zdroje, značky původu a tabulky pod rozbalovacím "Pro zvídavé". Hotovo v Jak bylo (kap. 1, 4, 5, výhled), Můj pozemek (kroky 2-4, dlaždice), Celé území (kap. 1-4), Katalog a O modelu (kap. 2, 3). V `main` od 16. 11.
+- **Fotopruhy (16. 11.):** 10 fotek uživatele (vlastní, práva má) v `web/foto/` (WebP 1200 + 2400 px, 4:1, ~4 MB celkem, líné načítání): nahoře v každé záložce a mezi kapitolami 2-6 Historie. V šabloně značka `<!--FOTO:jméno|popis-->` v `build_dummy.py`; ořez `object-fit`, motiv drží střed. Nevyužité: `koryto-potoka`, `most-pres-vodu`.
 - **Provoz:** workflow počasí a normálů se už nepotkají v konfliktu; testy jádra jdou přes `npm test` a běží samy na GitHubu (`testy.yml`).
 
 ## Další krok
@@ -18,7 +19,6 @@ Web běží na GitHub Pages, 5 záložek, zkouší se neformálně s lidmi. Stá
 Před zveřejněním (pořadí určí uživatel):
 - Uživatel projde web po úpravě laik / zvídavý a řekne, kde je laická věta stále dlouhá nebo kde naopak něco chybí.
 - Přepis laických textů: uživatel vyplňuje `docs/TEXTY-PRO-LAIKY_v01.xlsx` (sloupec "Nový text"); zkušební dávka (Společné, Jak bylo úvod a kap. 1) propsána 16. 11. Další řádky přenášet ručně do `build_dummy.py` / `build_opatreni.py` podle čísel řádků; čísla `{...}` brát z aktuálního kódu (srážky už po 25 letech + posledních 5 let), ne z textu tabulky. Čistá tabulka podle aktuálního webu: `tools/texty_laik_export.py` -> `docs/TEXTY-PRO-LAIKY.xlsx`.
-- Místní fotografie (uživatel má, se souhlasem autorů): navrhnout místa v rozvržení (úvod Jak bylo, kapitoly, katalog "Kde to funguje"), formát a velikost; fotky dodá uživatel.
 - Vyzkoušet v prohlížeči blok "přítok shora" v Můj pozemek po úpravě textu (potřebuje vybranou parcelu, 15. 11. nezkoušeno).
 
 ## Potom (pořadí)

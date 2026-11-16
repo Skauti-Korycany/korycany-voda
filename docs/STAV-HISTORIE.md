@@ -2,6 +2,12 @@
 
 Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `docs/STAV.md`. Starší rozhodnutí mohou být nahrazena novějšími (u nahrazených je to v textu poznamenáno).
 
+## 16. 11. 2026 - fotopruhy
+- Uživatel dodal 12 vlastních fotek 2400-2576 × 600-644 px (+1 menší 1225 px). Převod na WebP 1200 px (q74) a 2400 px (q60), ořez na 4:1.
+- Rozmístění: Historie nahoře oblačnost; kap. 2 hladina Kyjovky, 3 Kyjovka, 4 suché stromy, 5 tekoucí voda, 6 odtékající voda (jen 1200 px); Můj pozemek malá tůň (mobil 80 px výška, ať mapa zůstane v obraze); Celé území velká tůň; Katalog bobří hráz; O modelu odtékající voda 2. Rezerva: koryto potoka, most přes vodu.
+- Výška pruhu: záložky 110-200 px, kapitoly 90-140 px. prototyp/index.html dostává cesty `../web/foto/`.
+- Kontrola headless 1366/390 px, světlý i tmavý, bez chyb a bez vodorovného posunu.
+
 ## 16. 11. 2026 (noc) - vzhled Historie: jednotná šířka a mezery
 
 - Text měl strop 46rem (736 px), grafy plnou šířku panelu (1134 px). Sjednoceno: vše v Historii v jednom vystředěném sloupci 52rem (832 px), text řádky ~100 znaků, grafy se zmenšily blíž k návrhové šířce viewBox 720.
