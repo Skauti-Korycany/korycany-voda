@@ -194,6 +194,12 @@ input[type=range]{width:100%}
 .filters button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .src{font-size:.8rem;color:var(--muted)} .src a{color:var(--accent)}
 .hidden-tab{display:none}
+/* fotopruhy (fotky Tomáš Papež, web/foto, zdroj 2400x600 = 4:1; ořez object-fit, motiv drží střed) */
+.foto-pas{margin:0 0 1rem;border-radius:12px;overflow:hidden;background:var(--line)}
+.foto-pas img{display:block;width:100%;height:clamp(110px,16.7vw,200px);object-fit:cover;object-position:50% 50%}
+.jb-story>.foto-pas{margin:1.8rem 0 .4rem}
+.jb-story>.foto-pas img{height:clamp(90px,15vw,140px)}
+@media(max-width:599px){ .pz>.foto-pas img{height:80px} }
 /* Jak bylo */
 .jb-story{display:flex;flex-direction:column}
 .jb-hero{max-width:46rem;display:flex;flex-direction:column;gap:.6rem;margin:.4rem 0 .2rem}
@@ -615,6 +621,7 @@ details.banner[open]>summary .more{display:none}
 <main>
 <!-- ======================= JAK BYLO ======================= -->
 <section id="tab-jakbylo">
+  <!--FOTO:oblacnost|Mraky nad Koryčany, za větvemi prosvítá slunce|eager-->
   <div class="panel jb-story">
     <div class="jb-hero">
       <div class="jb-kicker">Historie · data ČHMÚ 1921-<span id="jb-rok"></span></div>
@@ -653,6 +660,7 @@ details.banner[open]>summary .more{display:none}
       </svg>
     </div>
 
+    <!--FOTO:hladina-kyjovky|Slunce se odráží na hladině Kyjovky-->
     <h3 class="jb-ch">2. V létě má krajina větší žízeň, než kolik naprší</h3>
     <p class="jb-p" id="jb-ch2"></p>
     <svg class="jb-chart" id="jb-l2" viewBox="0 0 720 220" role="img" aria-label="Srážky minus výpar a možný výpar 2001-2025"></svg>
@@ -697,6 +705,7 @@ details.banner[open]>summary .more{display:none}
       </div>
     </div>
 
+    <!--FOTO:kyjovka|Kyjovka mezi stromy-->
     <h3 class="jb-ch">3. Prameny slábnou a potoku ubývá</h3>
     <p class="jb-p" id="jb-ch-h"></p>
     <svg class="jb-chart" id="jb-h1" viewBox="0 0 720 200" role="img" aria-label="Vydatnost pramene u Koryčan po letech"></svg>
@@ -706,6 +715,7 @@ details.banner[open]>summary .more{display:none}
     <p class="jb-zdroj">Měření ČHMÚ, roční průměry.</p>
     <details class="jb-cist"><summary><b>Pro zvídavé</b> - jak se to měří a jak jistý je pokles</summary><p id="jb-h-n"></p></details>
 
+    <!--FOTO:suche-stromy|Usychající stromy proti modré obloze-->
     <h3 class="jb-ch">4. Horka přibývá</h3>
     <p class="jb-p" id="jb-ch3"></p>
     <svg class="jb-chart" id="jb-l3" viewBox="0 0 720 210" role="img" aria-label="Tropické a supertropické dny, tropické noci a letní maxima 2001-2025"></svg>
@@ -713,12 +723,14 @@ details.banner[open]>summary .more{display:none}
     <p class="jb-zdroj">Měření ČHMÚ v Nemochovicích (8 km od Koryčan).</p>
     <details class="jb-cist"><summary><b>Pro zvídavé</b> - prahy, trendy a jak graf číst</summary><p id="jb-l3-n"></p></details>
 
+    <!--FOTO:tekouci-voda|Rozbouřená hladina s bublinami-->
     <h3 class="jb-ch">5. Když přijde liják</h3>
     <p class="jb-p">Sucho a povodeň nejsou protiklady. Vyschlá a utužená půda nestihne vsáknout, voda steče po povrchu a vezme s sebou ornici. <span id="jb-ch4"></span> Největší deště za den v řadě od roku 1921:</p>
     <div class="jb-lijak" id="jb-lijak"></div>
     <p class="note" id="jb-lijak-n"></p>
     <details class="jb-cist"><summary><b>Pro zvídavé</b> - přibývá lijáků?</summary><p id="jb-lijak-z"></p></details>
 
+    <!--FOTO:odtekajici-voda|Voda přetéká přes kamenný stupeň-->
     <h3 class="jb-ch" id="jb-letos-h">6. Letošek</h3>
     <div class="jb-cards" id="jb-letos"></div>
     <p class="jb-zdroj">Předběžná data ČHMÚ. Výběr období a srovnání s minulými roky najdeš níže v části <a href="#" data-vice="1">Více o tématu</a>.</p>
@@ -776,6 +788,7 @@ details.banner[open]>summary .more{display:none}
 
 <!-- ======================= MŮJ POZEMEK ======================= -->
 <section id="tab-pozemek" class="hidden-tab pz" data-step="1">
+  <!--FOTO:mala-tun|Malá tůň v nivě, kolem suchá tráva a vrby-->
   <nav class="pz-prog" aria-label="Postup">
     <ol>
       <li class="cur"><button type="button" data-go="1" aria-current="step"><span class="n">1</span><span class="t">Kde</span></button></li>
@@ -909,6 +922,7 @@ details.banner[open]>summary .more{display:none}
 
 <!-- ======================= CELÉ ÚZEMÍ ======================= -->
 <section id="tab-uzemi" class="hidden-tab uz">
+  <!--FOTO:velka-tun|Velká tůň pod zalesněným svahem Chřibů-->
   <header class="jb-hero">
     <div class="jb-kicker">Celé území</div>
     <h2 class="jb-title">Kdo v Koryčanech rozhoduje o vodě</h2>
@@ -1065,6 +1079,7 @@ details.banner[open]>summary .more{display:none}
 
 <!-- ======================= KATALOG ======================= -->
 <section id="tab-katalog" class="hidden-tab kat">
+  <!--FOTO:bobri-hraz|Bobří hráz na potoce-->
   <header class="jb-hero">
     <div class="jb-kicker">Katalog opatření</div>
     <h2 class="jb-title">Co se dá udělat</h2>
@@ -1090,6 +1105,7 @@ details.banner[open]>summary .more{display:none}
 
 <!-- ======================= O MODELU ======================= -->
 <section id="tab-model" class="hidden-tab om uz">
+  <!--FOTO:odtekajici-voda-2|Voda přepadá přes stupeň v korytě-->
   <header class="jb-hero">
     <div class="jb-kicker">O modelu</div>
     <h2 class="jb-title">Jak to počítáme a co ještě neumíme</h2>
@@ -2638,7 +2654,16 @@ html = (HTML.replace("__LEAFLET_CSS__", LEAFLET_CSS).replace("__LEAFLET_JS__", L
         .replace("__RD__", str(data["uzemi"]["rd_pocet"])).replace("__ROOF__", str(round(data["uzemi"]["rd_strechy_m2"] / data["uzemi"]["rd_pocet"]))))
 pre = '<!doctype html>\n<html lang="cs">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
 i = html.index('<header class="top">')
+FOTO_ALT = {}
+def _foto(m):
+    jm, alt, lazy = m.group(1), m.group(2), m.group(3) != "eager"
+    velka = os.path.exists(os.path.join(ROOT, "web", "foto", f"{jm}-2400.webp"))
+    srcset = f' srcset="web/foto/{jm}-1200.webp 1200w, web/foto/{jm}-2400.webp 2400w" sizes="(min-width:1232px) 1168px, 100vw"' if velka else ""
+    return (f'<figure class="foto-pas"><img src="web/foto/{jm}-1200.webp"{srcset} width="1200" height="300" alt="{alt}"'
+            + (' loading="lazy"' if lazy else ' fetchpriority="high"') + ' decoding="async"></figure>')
+html = re.sub(r'<!--FOTO:([a-z0-9-]+)\|([^|\n]*?)(?:\|(eager))?-->', _foto, html)
 html = pre + html[:i] + '</head>\n<body>\n' + html[i:] + '\n</body>\n</html>\n'
 for out in (os.path.join(ROOT, "prototyp", "index.html"), os.path.join(ROOT, "index.html")):
-    open(out, "w", encoding="utf-8").write(html)
+    h = html.replace('web/foto/', '../web/foto/') if os.sep + "prototyp" + os.sep in out else html
+    open(out, "w", encoding="utf-8").write(h)
 print("ok", len(html)//1024, "KB ->", "prototyp/index.html, index.html")

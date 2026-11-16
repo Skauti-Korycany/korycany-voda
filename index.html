@@ -129,6 +129,12 @@ input[type=range]{width:100%}
 .filters button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .src{font-size:.8rem;color:var(--muted)} .src a{color:var(--accent)}
 .hidden-tab{display:none}
+/* fotopruhy (fotky Tomáš Papež, web/foto, zdroj 2400x600 = 4:1; ořez object-fit, motiv drží střed) */
+.foto-pas{margin:0 0 1rem;border-radius:12px;overflow:hidden;background:var(--line)}
+.foto-pas img{display:block;width:100%;height:clamp(110px,16.7vw,200px);object-fit:cover;object-position:50% 50%}
+.jb-story>.foto-pas{margin:1.8rem 0 .4rem}
+.jb-story>.foto-pas img{height:clamp(90px,15vw,140px)}
+@media(max-width:599px){ .pz>.foto-pas img{height:80px} }
 /* Jak bylo */
 .jb-story{display:flex;flex-direction:column}
 .jb-hero{max-width:46rem;display:flex;flex-direction:column;gap:.6rem;margin:.4rem 0 .2rem}
@@ -1213,6 +1219,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <main>
 <!-- ======================= JAK BYLO ======================= -->
 <section id="tab-jakbylo">
+  <figure class="foto-pas"><img src="web/foto/oblacnost-1200.webp" srcset="web/foto/oblacnost-1200.webp 1200w, web/foto/oblacnost-2400.webp 2400w" sizes="(min-width:1232px) 1168px, 100vw" width="1200" height="300" alt="Mraky nad Koryčany, za větvemi prosvítá slunce" fetchpriority="high" decoding="async"></figure>
   <div class="panel jb-story">
     <div class="jb-hero">
       <div class="jb-kicker">Historie · data ČHMÚ 1921-<span id="jb-rok"></span></div>
@@ -1251,6 +1258,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       </svg>
     </div>
 
+    <figure class="foto-pas"><img src="web/foto/hladina-kyjovky-1200.webp" srcset="web/foto/hladina-kyjovky-1200.webp 1200w, web/foto/hladina-kyjovky-2400.webp 2400w" sizes="(min-width:1232px) 1168px, 100vw" width="1200" height="300" alt="Slunce se odráží na hladině Kyjovky" loading="lazy" decoding="async"></figure>
     <h3 class="jb-ch">2. V létě má krajina větší žízeň, než kolik naprší</h3>
     <p class="jb-p" id="jb-ch2"></p>
     <svg class="jb-chart" id="jb-l2" viewBox="0 0 720 220" role="img" aria-label="Srážky minus výpar a možný výpar 2001-2025"></svg>
@@ -1295,6 +1303,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       </div>
     </div>
 
+    <figure class="foto-pas"><img src="web/foto/kyjovka-1200.webp" srcset="web/foto/kyjovka-1200.webp 1200w, web/foto/kyjovka-2400.webp 2400w" sizes="(min-width:1232px) 1168px, 100vw" width="1200" height="300" alt="Kyjovka mezi stromy" loading="lazy" decoding="async"></figure>
     <h3 class="jb-ch">3. Prameny slábnou a potoku ubývá</h3>
     <p class="jb-p" id="jb-ch-h"></p>
     <svg class="jb-chart" id="jb-h1" viewBox="0 0 720 200" role="img" aria-label="Vydatnost pramene u Koryčan po letech"></svg>
@@ -1304,6 +1313,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <p class="jb-zdroj">Měření ČHMÚ, roční průměry.</p>
     <details class="jb-cist"><summary><b>Pro zvídavé</b> - jak se to měří a jak jistý je pokles</summary><p id="jb-h-n"></p></details>
 
+    <figure class="foto-pas"><img src="web/foto/suche-stromy-1200.webp" srcset="web/foto/suche-stromy-1200.webp 1200w, web/foto/suche-stromy-2400.webp 2400w" sizes="(min-width:1232px) 1168px, 100vw" width="1200" height="300" alt="Usychající stromy proti modré obloze" loading="lazy" decoding="async"></figure>
     <h3 class="jb-ch">4. Horka přibývá</h3>
     <p class="jb-p" id="jb-ch3"></p>
     <svg class="jb-chart" id="jb-l3" viewBox="0 0 720 210" role="img" aria-label="Tropické a supertropické dny, tropické noci a letní maxima 2001-2025"></svg>
@@ -1311,12 +1321,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <p class="jb-zdroj">Měření ČHMÚ v Nemochovicích (8 km od Koryčan).</p>
     <details class="jb-cist"><summary><b>Pro zvídavé</b> - prahy, trendy a jak graf číst</summary><p id="jb-l3-n"></p></details>
 
+    <figure class="foto-pas"><img src="web/foto/tekouci-voda-1200.webp" srcset="web/foto/tekouci-voda-1200.webp 1200w, web/foto/tekouci-voda-2400.webp 2400w" sizes="(min-width:1232px) 1168px, 100vw" width="1200" height="300" alt="Rozbouřená hladina s bublinami" loading="lazy" decoding="async"></figure>
     <h3 class="jb-ch">5. Když přijde liják</h3>
     <p class="jb-p">Sucho a povodeň nejsou protiklady. Vyschlá a utužená půda nestihne vsáknout, voda steče po povrchu a vezme s sebou ornici. <span id="jb-ch4"></span> Největší deště za den v řadě od roku 1921:</p>
     <div class="jb-lijak" id="jb-lijak"></div>
     <p class="note" id="jb-lijak-n"></p>
     <details class="jb-cist"><summary><b>Pro zvídavé</b> - přibývá lijáků?</summary><p id="jb-lijak-z"></p></details>
 
+    <figure class="foto-pas"><img src="web/foto/odtekajici-voda-1200.webp" width="1200" height="300" alt="Voda přetéká přes kamenný stupeň" loading="lazy" decoding="async"></figure>
     <h3 class="jb-ch" id="jb-letos-h">6. Letošek</h3>
     <div class="jb-cards" id="jb-letos"></div>
     <p class="jb-zdroj">Předběžná data ČHMÚ. Výběr období a srovnání s minulými roky najdeš níže v části <a href="#" data-vice="1">Více o tématu</a>.</p>
@@ -1374,6 +1386,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 <!-- ======================= MŮJ POZEMEK ======================= -->
 <section id="tab-pozemek" class="hidden-tab pz" data-step="1">
+  <figure class="foto-pas"><img src="web/foto/mala-tun-1200.webp" srcset="web/foto/mala-tun-1200.webp 1200w, web/foto/mala-tun-2400.webp 2400w" sizes="(min-width:1232px) 1168px, 100vw" width="1200" height="300" alt="Malá tůň v nivě, kolem suchá tráva a vrby" loading="lazy" decoding="async"></figure>
   <nav class="pz-prog" aria-label="Postup">
     <ol>
       <li class="cur"><button type="button" data-go="1" aria-current="step"><span class="n">1</span><span class="t">Kde</span></button></li>
@@ -1507,6 +1520,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 <!-- ======================= CELÉ ÚZEMÍ ======================= -->
 <section id="tab-uzemi" class="hidden-tab uz">
+  <figure class="foto-pas"><img src="web/foto/velka-tun-1200.webp" srcset="web/foto/velka-tun-1200.webp 1200w, web/foto/velka-tun-2400.webp 2400w" sizes="(min-width:1232px) 1168px, 100vw" width="1200" height="300" alt="Velká tůň pod zalesněným svahem Chřibů" loading="lazy" decoding="async"></figure>
   <header class="jb-hero">
     <div class="jb-kicker">Celé území</div>
     <h2 class="jb-title">Kdo v Koryčanech rozhoduje o vodě</h2>
@@ -1663,6 +1677,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 <!-- ======================= KATALOG ======================= -->
 <section id="tab-katalog" class="hidden-tab kat">
+  <figure class="foto-pas"><img src="web/foto/bobri-hraz-1200.webp" srcset="web/foto/bobri-hraz-1200.webp 1200w, web/foto/bobri-hraz-2400.webp 2400w" sizes="(min-width:1232px) 1168px, 100vw" width="1200" height="300" alt="Bobří hráz na potoce" loading="lazy" decoding="async"></figure>
   <header class="jb-hero">
     <div class="jb-kicker">Katalog opatření</div>
     <h2 class="jb-title">Co se dá udělat</h2>
@@ -1688,6 +1703,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 <!-- ======================= O MODELU ======================= -->
 <section id="tab-model" class="hidden-tab om uz">
+  <figure class="foto-pas"><img src="web/foto/odtekajici-voda-2-1200.webp" srcset="web/foto/odtekajici-voda-2-1200.webp 1200w, web/foto/odtekajici-voda-2-2400.webp 2400w" sizes="(min-width:1232px) 1168px, 100vw" width="1200" height="300" alt="Voda přepadá přes stupeň v korytě" loading="lazy" decoding="async"></figure>
   <header class="jb-hero">
     <div class="jb-kicker">O modelu</div>
     <h2 class="jb-title">Jak to počítáme a co ještě neumíme</h2>
