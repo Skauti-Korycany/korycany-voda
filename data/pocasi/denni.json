@@ -1,5 +1,5 @@
 {
- "vytvoreno": "2026-11-18T06:20Z",
+ "vytvoreno": "2026-11-18T12:12Z",
  "stanice": {
   "chmu_korycany": {
    "wsi": "0-203-0-41701068002",
@@ -6154,7 +6154,7 @@
   }
  },
  "log": [
-  "12_pocasi.py 2026-11-18 06:20 UTC",
+  "12_pocasi.py 2026-11-18 12:12 UTC",
   "1) CHMU Korycany (srazky)",
   "  0-203-0-41701068002 2026-11: 102 zaznamu",
   "  0-203-0-41701068002 2026-10: 186 zaznamu",
@@ -6184,8 +6184,8 @@
   "  0-20000-0-11774 2026-09: 1200 zaznamu",
   "  svit Holešov: 78 dni (2026-09-01..2026-11-17)",
   "3) Povodi Moravy KS Korycany",
-  "  24 hodinovych radku (17.11. 08:00 - 18.11. 07:00)",
-  "  archiv pmo_korycany.csv: 692 radku",
+  "  24 hodinovych radku (17.11. 14:00 - 18.11. 13:00)",
+  "  archiv pmo_korycany.csv: 698 radku",
   "4) hladiny.cz Nemotice_SR",
   "  10 hodinovych radku (17.11. 20:00 - 18.11. 04:00)",
   "  archiv nemotice.csv: 566 radku",
