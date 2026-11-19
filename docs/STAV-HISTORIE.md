@@ -2,6 +2,12 @@
 
 Původní znění docs/STAV.md po relacích, beze změn. Aktuální stav je v `docs/STAV.md`. Starší rozhodnutí mohou být nahrazena novějšími (u nahrazených je to v textu poznamenáno).
 
+## 19. 11. 2026 - návrh školní meteostanice
+- `docs/SKOLA-METEOSTANICE.md`: 3 varianty (Základ ~5 400, Doporučená ~9 400, Rozšířená ~11 400-12 300 Kč), ceny ověřeny 19. 11. na rpishop.cz (API obchodu) a laskakit.cz; SparkFun sada jen z výpisu vyhledávače (Mouser), krabice, průchodky, stožár a SD High Endurance nedohledány.
+- Vstupy uživatele: rozpočet 5-10 tis. Kč, u místa není 230 V (Wi-Fi + baterie / powerbanka), škola má pájku.
+- Rozhodnutí v návrhu: Pi Zero 2 WH (spotřeba), šroubovací svorkovnice místo pájení, srážkoměr 0,2794 mm/překlop, solár 10 W + 3× 18650 + v zimě výměna powerbanek; alternativa B = Pi uvnitř na 230 V + Pico 2 W venku.
+- Pro relaci vytvořeno osobní prostředí `korycany-voda` s povolenými e-shopy. Laskakit (Shoptet) po sérii dotazů dočasně blokoval IP.
+
 ## 16. 11. 2026 - fotopruhy
 - Uživatel dodal 12 vlastních fotek 2400-2576 × 600-644 px (+1 menší 1225 px). Převod na WebP 1200 px (q74) a 2400 px (q60), ořez na 4:1.
 - Rozmístění: Historie nahoře oblačnost; kap. 2 hladina Kyjovky, 3 Kyjovka, 4 suché stromy, 5 tekoucí voda, 6 odtékající voda (jen 1200 px); Můj pozemek malá tůň (mobil 80 px výška, ať mapa zůstane v obraze); Celé území velká tůň; Katalog bobří hráz; O modelu odtékající voda 2. Rezerva: koryto potoka, most přes vodu.

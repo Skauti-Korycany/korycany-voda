@@ -27,7 +27,7 @@ Před zveřejněním (pořadí určí uživatel):
 2. Widgety pro web města (iframe; nejdřív podmínky užití dat ČHMÚ a PMO, zjistit, zda web města iframe povolí).
 3. Prameny: ověřit u ČHMÚ, zda se u PB0425 neměnilo jímání (2022 přechod z týdenního na denní měření); dohledat podmínky užití otevřených dat hydrologie.
 4. Zkouška s lidmi: Můj pozemek, Celé území kap. 3 a mapa eroze, hráz.
-5. "Co dělat při vedru" (H01, H02), kontakt / zpětná vazba z aplikace, měřená půdní vlhkost (čidlo u školy, Intersucho jen odkazem).
+5. "Co dělat při vedru" (H01, H02), kontakt / zpětná vazba z aplikace, měřená půdní vlhkost (čidlo u školy, Intersucho jen odkazem). Návrh školní meteostanice na Raspberry Pi (19. 11.): `docs/SKOLA-METEOSTANICE.md`; čeká na výběr varianty školou a změření Wi-Fi v místě.
 6. Jádro: transformace vlny poldrem, tůň u potoka v Můj pozemek. Mobil: ořez rastrů (PC + `.bat`).
 7. Fáze 5 škola/expert + formulář měření. Rešerše biodiverzity. Krátké úhrny ČSN 75 9010 pro Koryčany.
 8. **Březen 2027:** znovu `normaly.yml`, `hydro.yml` + `build_hydro.py`, `vypar.yml` + `build_vypar.py` (ročník 2026).
