@@ -1,4 +1,4 @@
-12_pocasi.py 2026-11-19 14:28 UTC
+12_pocasi.py 2026-11-19 23:36 UTC
 1) CHMU Korycany (srazky)
   0-203-0-41701068002 2026-11: 108 zaznamu
   0-203-0-41701068002 2026-10: 186 zaznamu
@@ -28,11 +28,11 @@
   0-20000-0-11774 2026-09: 1200 zaznamu
   svit Holešov: 79 dni (2026-09-01..2026-11-18)
 3) Povodi Moravy KS Korycany
-  23 hodinovych radku (18.11. 16:00 - 19.11. 14:00)
-  archiv pmo_korycany.csv: 723 radku
+  24 hodinovych radku (19.11. 01:00 - 20.11. 00:00)
+  archiv pmo_korycany.csv: 733 radku
 4) hladiny.cz Nemotice_SR
-  10 hodinovych radku (19.11. 03:00 - 19.11. 12:00)
-  archiv nemotice.csv: 586 radku
+  10 hodinovych radku (19.11. 11:00 - 19.11. 20:00)
+  archiv nemotice.csv: 594 radku
 5) denni.json
   zpusob vypoctu vyparu (dni): {'pm': 352, None: 1}
   dni celkem 353, s ET0 352, s P 353
