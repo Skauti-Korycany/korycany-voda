@@ -1,38 +1,38 @@
-12_pocasi.py 2026-11-23 16:04 UTC
+12_pocasi.py 2026-11-24 03:21 UTC
 1) CHMU Korycany (srazky)
-  0-203-0-41701068002 2026-11: 132 zaznamu
+  0-203-0-41701068002 2026-11: 138 zaznamu
   0-203-0-41701068002 2026-10: 186 zaznamu
   0-203-0-41701068002 2026-09: 180 zaznamu
 2) CHMU Nemochovice
-  0-203-0-41503035001 2026-11: 704 zaznamu
+  0-203-0-41503035001 2026-11: 736 zaznamu
   0-203-0-41503035001 2026-10: 992 zaznamu
   0-203-0-41503035001 2026-09: 960 zaznamu
   Nemochovice P: 83 dni (2026-09-01..2026-11-22)
-  Nemochovice T: 82 dni (2026-09-01..2026-11-21)
-  Nemochovice Tmax: 82 dni (2026-09-01..2026-11-21)
-  Nemochovice Tmin: 82 dni (2026-09-01..2026-11-21)
-  Nemochovice H: 82 dni (2026-09-01..2026-11-21)
-  Nemochovice F: 82 dni (2026-09-01..2026-11-21)
+  Nemochovice T: 83 dni (2026-09-01..2026-11-22)
+  Nemochovice Tmax: 83 dni (2026-09-01..2026-11-22)
+  Nemochovice Tmin: 83 dni (2026-09-01..2026-11-22)
+  Nemochovice H: 83 dni (2026-09-01..2026-11-22)
+  Nemochovice F: 83 dni (2026-09-01..2026-11-22)
   Korycany P: 30 dni s hodnotou
 2b) slunecni svit (pro vypar)
-  0-203-0-11754 2026-11: 1166 zaznamu
+  0-203-0-11754 2026-11: 1219 zaznamu
   0-203-0-11754 2026-10: 1643 zaznamu
   0-203-0-11754 2026-09: 1590 zaznamu
-  svit Staré Město: 83 dni (2026-09-01..2026-11-22)
-  0-203-0-11751 2026-11: 1166 zaznamu
+  svit Staré Město: 84 dni (2026-09-01..2026-11-23)
+  0-203-0-11751 2026-11: 1219 zaznamu
   0-203-0-11751 2026-10: 1643 zaznamu
   0-203-0-11751 2026-09: 1590 zaznamu
-  svit Kroměříž: 83 dni (2026-09-01..2026-11-22)
-  0-20000-0-11774 2026-11: 880 zaznamu
+  svit Kroměříž: 84 dni (2026-09-01..2026-11-23)
+  0-20000-0-11774 2026-11: 920 zaznamu
   0-20000-0-11774 2026-10: 1240 zaznamu
   0-20000-0-11774 2026-09: 1200 zaznamu
-  svit Holešov: 83 dni (2026-09-01..2026-11-22)
+  svit Holešov: 84 dni (2026-09-01..2026-11-23)
 3) Povodi Moravy KS Korycany
-  24 hodinovych radku (22.11. 17:00 - 23.11. 16:00)
-  archiv pmo_korycany.csv: 821 radku
+  24 hodinovych radku (23.11. 05:00 - 24.11. 04:00)
+  archiv pmo_korycany.csv: 833 radku
 4) hladiny.cz Nemotice_SR
-  10 hodinovych radku (23.11. 03:00 - 23.11. 12:00)
-  archiv nemotice.csv: 658 radku
+  10 hodinovych radku (23.11. 11:00 - 23.11. 20:00)
+  archiv nemotice.csv: 666 radku
 5) denni.json
-  zpusob vypoctu vyparu (dni): {'pm': 356, None: 1}
-  dni celkem 357, s ET0 356, s P 357
+  zpusob vypoctu vyparu (dni): {'pm': 357}
+  dni celkem 357, s ET0 357, s P 357
